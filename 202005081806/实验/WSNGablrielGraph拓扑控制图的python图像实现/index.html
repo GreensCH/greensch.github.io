@@ -388,6 +388,17 @@ def node_init(_a&#x3D;[wid, hei], _rad_max&#x3D;rad_max, _num&#x3D;node_num):
       <br><br>
       
       
+  <script defer src="https://utteranc.es/client.js"
+          repo="GreensCH/commitutterances"
+          issue-term="title"
+  
+          label="utterances"
+    
+          theme="preferred-color-scheme"
+          crossorigin="anonymous"
+          async>
+  </script>
+
 
     
   </div>
@@ -425,6 +436,23 @@ def node_init(_a&#x3D;[wid, hei], _rad_max&#x3D;rad_max, _num&#x3D;node_num):
   </div>
 </div>
   
+
+  
+    <!-- APlayer 音乐播放器 -->
+    <div id="aplayer"></div>
+    <script  src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js" ></script>
+<link  rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css" />
+<script>
+  const ap = new APlayer({
+    container: document.getElementById('aplayer'),
+    fixed: true,
+    autoplay: false,
+    loop: 'all',
+    order: 'random',
+    preload: 'auto',
+    audio: [{"name":"The Sound of a Lost Generation","artist":"Blitz Kids","url":"/music/Blitz Kids - The Sound of a Lost Generation.mp3","cover":"/music/The Sound of a Lost Generation.jpg"},{"name":"シャナ","artist":"Guiano,IA","url":"/music/Guiano,IA - シャナ.mp3","cover":"/music/シャナ.jpg"}]
+  });
+</script>
 
   
 
@@ -529,8 +557,24 @@ def node_init(_a&#x3D;[wid, hei], _rad_max&#x3D;rad_max, _num&#x3D;node_num):
 
 
 
+  
+<script src="/js/scripts.js"></script>
+
+
 
 <!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  <!-- cnzz Analytics -->
+  
 
 
 
@@ -553,7 +597,7 @@ def node_init(_a&#x3D;[wid, hei], _rad_max&#x3D;rad_max, _num&#x3D;node_num):
       ],
       cursorChar: "_",
       typeSpeed: 70,
-      loop: false,
+      loop: true,
     });
     typed.stop();
     $(document).ready(function () {
@@ -749,8 +793,24 @@ def node_init(_a&#x3D;[wid, hei], _rad_max&#x3D;rad_max, _num&#x3D;node_num):
 
 
 
+  
+<script src="/js/scripts.js"></script>
+
+
 
 <!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  <!-- cnzz Analytics -->
+  
 
 
 
@@ -773,7 +833,7 @@ def node_init(_a&#x3D;[wid, hei], _rad_max&#x3D;rad_max, _num&#x3D;node_num):
       ],
       cursorChar: "_",
       typeSpeed: 70,
-      loop: false,
+      loop: true,
     });
     typed.stop();
     $(document).ready(function () {
@@ -865,5 +925,5 @@ def node_init(_a&#x3D;[wid, hei], _rad_max&#x3D;rad_max, _num&#x3D;node_num):
  -->
 
 
-</body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"superSample":2,"position":"right","width":300,"height":600,"vOffset":-100},"mobile":{"show":true},"log":false});</script></body>
 </html>
