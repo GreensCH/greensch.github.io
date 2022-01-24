@@ -1,0 +1,897 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/con1.png">
+  <link rel="icon" href="/img/con1.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="“无论最终结果将人类历史导向何处，我们决定选择希望”">
+  <meta name="author" content="友人律 | Guilin Chang">
+  <meta name="keywords" content="三差学生、不学无术">
+  <meta name="description" content="参考文档链接：https:&#x2F;&#x2F;verificationacademy.com&#x2F;verification-methodology-reference&#x2F;uvm&#x2F;docs_1.2&#x2F;html&#x2F; 注意，本文内大部分组件介绍分为两节：第一节主要介绍该组件，第二节介绍该组件的定义示例 0 组件家族0.0 回顾上节课内容 UVM实验一到实验二的代码会突然增加，实验二会看到如何把SV中的组件过度到UVM的组件的，过">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UVM入门和进阶3：组件家族（如何例化部分较为重要）">
+<meta property="og:url" content="http://yoursite.com/202111241036/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B63%EF%BC%9A%E7%BB%84%E4%BB%B6%E5%AE%B6%E6%97%8F/index.html">
+<meta property="og:site_name" content="友人律的博客">
+<meta property="og:description" content="参考文档链接：https:&#x2F;&#x2F;verificationacademy.com&#x2F;verification-methodology-reference&#x2F;uvm&#x2F;docs_1.2&#x2F;html&#x2F; 注意，本文内大部分组件介绍分为两节：第一节主要介绍该组件，第二节介绍该组件的定义示例 0 组件家族0.0 回顾上节课内容 UVM实验一到实验二的代码会突然增加，实验二会看到如何把SV中的组件过度到UVM的组件的，过">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124104754455.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124105111186.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124105238593.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124105324168.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124105518697.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124110131847.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124142246033.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124151813694.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124151949354.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124153841240.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124153914184.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124154308328.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124154538786.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124155629037.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124155807937.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124160942941.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124161005246.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124161226221.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124161529897.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124161740460.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124164434848.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124164836919.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124165025458.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124165048530.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124165551344.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124172218854.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124172351965.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124171724994.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124172717681.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124172727238.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124173759946.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124173845213.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124185258724.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124190748961.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124191859795-16377527411321.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124192241725.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124193620637.png">
+<meta property="article:published_time" content="2021-11-24T02:36:00.000Z">
+<meta property="article:modified_time" content="2022-01-24T13:59:35.481Z">
+<meta property="article:author" content="友人律 | Guilin Chang">
+<meta property="article:tag" content="IC">
+<meta property="article:tag" content="uvm学习">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124104754455.png">
+  
+  <title>UVM入门和进阶3：组件家族（如何例化部分较为重要） - 友人律的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/stackoverflow-dark.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"eca4a4d34dadf0d4e282cc6ef2dc3de6","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body><!-- hexo injector body_begin start --><div id="web_bg"></div><!-- hexo injector body_begin end -->
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>友人律的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E9%80%9A%E7%9F%A5/">
+                <i class="iconfont icon-link-fill"></i>
+                通知
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1/">
+                <i class="iconfont icon-link-fill"></i>
+                项目与设计
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">
+                <i class="iconfont icon-link-fill"></i>
+                开发工具
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/CS/">
+                <i class="iconfont icon-link-fill"></i>
+                CS
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/IC/">
+                <i class="iconfont icon-link-fill"></i>
+                IC
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://note.youdao.com/yws/api/personal/file/FDCD397DDBAF4A06B8925394CCE654F7?method=download&shareKey=466c9494a628c54696edbf7f0f62e6f1') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="UVM入门和进阶3：组件家族（如何例化部分较为重要）">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-11-24 10:36" pubdate>
+        2021年11月24日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.8k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      15 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">UVM入门和进阶3：组件家族（如何例化部分较为重要）</h1>
+            
+            <div class="markdown-body">
+              <p>参考文档链接：<a target="_blank" rel="noopener" href="https://verificationacademy.com/verification-methodology-reference/uvm/docs_1.2/html/">https://verificationacademy.com/verification-methodology-reference/uvm/docs_1.2/html/</a></p>
+<p><strong>注意，本文内大部分组件介绍分为两节：</strong>第一节主要介绍该组件，第二节介绍该组件的定义示例</p>
+<h1 id="0-组件家族"><a href="#0-组件家族" class="headerlink" title="0 组件家族"></a>0 组件家族</h1><h2 id="0-0-回顾"><a href="#0-0-回顾" class="headerlink" title="0.0 回顾"></a>0.0 回顾</h2><h3 id="上节课内容"><a href="#上节课内容" class="headerlink" title="上节课内容"></a>上节课内容</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124104754455.png" srcset="/img/loading.gif" lazyload alt="image-20211124104754455"></p>
+<p>UVM实验一到实验二的代码会突然增加，实验二会看到如何把SV中的组件过度到UVM的组件的，过度比较简单的组件</p>
+<h3 id="SV验证环境回顾"><a href="#SV验证环境回顾" class="headerlink" title="SV验证环境回顾"></a>SV验证环境回顾</h3><p>SV实验四、实验五的时候</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124105111186.png" srcset="/img/loading.gif" lazyload alt="image-20211124105111186"></p>
+<p>没有体现出各个agent的generator，</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124105238593.png" srcset="/img/loading.gif" lazyload alt="image-20211124105238593"></p>
+<h2 id="0-1-概述"><a href="#0-1-概述" class="headerlink" title="0.1 概述"></a>0.1 概述</h2><p><strong>前言</strong></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124105324168.png" srcset="/img/loading.gif" lazyload alt="image-20211124105324168"></p>
+<p>为什么要把generator拆分成sequence(产生)和sequencer(发送)，入门进阶4会见讲</p>
+<hr>
+<p><strong>三个核心组件：</strong>stimulator、monitor、checker</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124105518697.png" srcset="/img/loading.gif" lazyload alt="image-20211124105518697"></p>
+<ul>
+<li>uvm_agent, uvm_env, uvm_test：构成整个环境的层次结构</li>
+<li>uvm_driver, uvm_random_stimulus, uvm_sequencer_base, uvm_sequencer：发送激励</li>
+<li>uvm_monitor：监测激励</li>
+<li>uvm_scoreboard, uvm_in_order_comparator, uvm_algorithm_comparator：数据比较</li>
+<li>uvm_reg_predictor：UVM专门的，寄存器包，构建寄存器模型的时候（第五周会谈到）</li>
+</ul>
+<hr>
+<p><strong>组件都有phase机制</strong>，九大phase共同完成环境的构建，并由uvm_root顶层控制（在后台运行，core_servicer）</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124110131847.png" srcset="/img/loading.gif" lazyload alt="image-20211124110131847"></p>
+<h1 id="1-uvm-driver"><a href="#1-uvm-driver" class="headerlink" title="1 uvm_driver"></a>1 uvm_driver</h1><ul>
+<li>学习思路：基于component又添加了什么成员方法</li>
+<li>更具体的学习在第四周，这里简单了解</li>
+</ul>
+<h2 id="1-1-概述"><a href="#1-1-概述" class="headerlink" title="1.1 概述"></a>1.1 概述</h2><h3 id="大体功能"><a href="#大体功能" class="headerlink" title="大体功能"></a>大体功能</h3><p>uvm_driver与sv_driver类似的都要获取trans，sv的stimulator是从generator获取trans，uvm_driver从sequencer获取</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124142246033.png" srcset="/img/loading.gif" lazyload alt="image-20211124142246033"></p>
+<h3 id="类声明形式"><a href="#类声明形式" class="headerlink" title="类声明形式"></a>类声明形式</h3><figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">uvm_driver</span> <span class="hljs-title">#</span>(<span class="hljs-params">type <span class="hljs-type">REQ</span>=uvm_sequence_item, type <span class="hljs-type">RSP</span>=<span class="hljs-type">REQ</span></span>) <span class="hljs-keyword">extends</span> <span class="hljs-title">uvm_component</span></span>;<br><span class="hljs-comment">//REQ参数：默认情况下为uvm_sequence_item</span><br><span class="hljs-comment">//RSP参数和REQ在默认情况下一样</span><br></code></pre></div></td></tr></table></figure>
+<p>你不能直接使用uvm_driver，所有的dirver你必须自己去定义，然后继承于uvm_driver</p>
+<h3 id="与component比较"><a href="#与component比较" class="headerlink" title="与component比较"></a>与component比较</h3><p>uvm_driver在uvm_component基础上<strong>没有扩展新的函数</strong>，而有一些新的通信端口和变量：</p>
+<figure class="highlight leaf"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs leaf">uvm_seq_item_pull_port <span class="hljs-function"><span class="hljs-keyword">#</span><span class="hljs-params">(<span class="hljs-variable">REQ</span>, <span class="hljs-variable">RSP</span>)</span></span> seq_item_port;//通信端口1<br>uvm_analysis_port <span class="hljs-function"><span class="hljs-keyword">#</span><span class="hljs-params">(<span class="hljs-variable">RSP</span>)</span></span> rsq_port;//通信端口2<br>REQ req;//变量1<br>RSP rsp;//变量2<br></code></pre></div></td></tr></table></figure>
+<h3 id="端口的连接（第四周）"><a href="#端口的连接（第四周）" class="headerlink" title="端口的连接（第四周）"></a>端口的连接（第四周）</h3><p>driver类与sequencer类之间的通信时未来获取新的事务对象，这一操作时通过pull方式（即端口的连接）实现的</p>
+<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk"><span class="hljs-regexp">//</span>两种端口连接的方法<br>driver.seq_item_port.connect(sequencer.seq_item_export);<span class="hljs-regexp">//</span>req,rsp双向都可以（rsp的方式第四周讲）<br>driver.rsp_port.connect(sequencer.rsp_export);<span class="hljs-regexp">//</span>返回rsp<br></code></pre></div></td></tr></table></figure>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124151813694.png" srcset="/img/loading.gif" lazyload alt="image-20211124151813694"></p>
+<h2 id="1-2-示例代码：如何定义一个driver"><a href="#1-2-示例代码：如何定义一个driver" class="headerlink" title="1.2 示例代码：如何定义一个driver"></a>1.2 示例代码：如何定义一个driver</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124151949354.png" srcset="/img/loading.gif" lazyload alt="image-20211124151949354"></p>
+<p><strong>经典步骤</strong>：</p>
+<ol>
+<li>extends</li>
+<li>注册</li>
+<li>new函数</li>
+</ol>
+<p><strong>虚接口</strong></p>
+<figure class="highlight arduino"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs arduino"><span class="hljs-keyword">virtual</span> chip_if vif;<span class="hljs-comment">//接口指针，用来把激励发送到接口上</span><br></code></pre></div></td></tr></table></figure>
+<p><strong>phase</strong></p>
+<p>我们不一定全部写九大phase，只有在哦们真正要用的时候定义</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs reasonml">extern task run<span class="hljs-constructor">_phase(<span class="hljs-params">uvm_phase</span> <span class="hljs-params">phase</span>)</span>;<span class="hljs-comment">//参考c++，在外部通过dut_driver::run_phase定义</span><br></code></pre></div></td></tr></table></figure>
+<p>extern补充：.sv和.svh</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124153841240.png" srcset="/img/loading.gif" lazyload alt="image-20211124153841240"></p>
+<h1 id="2-uvm-monitor"><a href="#2-uvm-monitor" class="headerlink" title="2 uvm_monitor"></a>2 uvm_monitor</h1><h2 id="2-1概述"><a href="#2-1概述" class="headerlink" title="2.1概述"></a>2.1概述</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124153914184.png" srcset="/img/loading.gif" lazyload alt="image-20211124153914184"></p>
+<p>我们定义的monitor完全继承于uvm_monitor，但也要老老实实的继承uvm_monitor</p>
+<p><strong>PASSIVE模式：</strong>我不做任何主动修改内部设计的信号，不和激励一样。即要求我们的monitor永远只做监测</p>
+<h2 id="2-2-示例代码"><a href="#2-2-示例代码" class="headerlink" title="2.2 示例代码"></a>2.2 示例代码</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124154308328.png" srcset="/img/loading.gif" lazyload alt="image-20211124154308328"></p>
+<p><strong>虚接口</strong></p>
+<figure class="highlight arduino"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs arduino"><span class="hljs-keyword">virtual</span> serial_if.monitor mi;<span class="hljs-comment">//使用vi中的一个modport</span><br></code></pre></div></td></tr></table></figure>
+<h3 id="run-phase"><a href="#run-phase" class="headerlink" title="run_phase"></a>run_phase</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124154538786.png" srcset="/img/loading.gif" lazyload alt="image-20211124154538786"></p>
+<p><strong>执行步骤</strong></p>
+<ul>
+<li><p>我们要监测一个tr</p>
+</li>
+<li><p>首先我们要等待interface上一个信号<code>wait(mi.rts);</code></p>
+</li>
+<li><p>又等待一个下降沿</p>
+</li>
+<li>再等待一个时刻</li>
+<li>接下来按照特定时刻<code>#(bit_period)</code>对数据进行监测</li>
+<li>for之后检查协议</li>
+<li>最后put</li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124155629037.png" srcset="/img/loading.gif" lazyload alt="image-20211124155629037"></p>
+<h1 id="3-uvm-sequencer"><a href="#3-uvm-sequencer" class="headerlink" title="3 uvm_sequencer"></a>3 uvm_sequencer</h1><h2 id="3-1-概述"><a href="#3-1-概述" class="headerlink" title="3.1 概述"></a>3.1 概述</h2><p><strong>my_sequencer所有组件功能都在父类uvm_sequencer，定义起来最简单</strong></p>
+<p>sequencer就像一个管道一样，本身不产生激励，激励从sequence来的，然后激励传递给了driver</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124155807937.png" srcset="/img/loading.gif" lazyload alt="image-20211124155807937"></p>
+<hr>
+<p>为什么不讲uvm_sequencer_base, uvm_sequencer_param_base<REQ,RSP> ,uvm_report_object类：</p>
+<ul>
+<li>因为它们都是中间类，中间类添加了单一职责，但它们在uvm继承上不是终点，不是直接面向用户的</li>
+<li>如uvm_report_object在uvm_object基础上添加了report机制，而component又在uvm_report_object基础上添加了phase机制和override机制</li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124160942941.png" srcset="/img/loading.gif" lazyload alt="image-20211124160942941"></p>
+<hr>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124161005246.png" srcset="/img/loading.gif" lazyload alt="image-20211124161005246"></p>
+<p>第四周讲，sequencer没有那么简单，有路由器的作用</p>
+<p>路由器：我们有很多很多sequence1…n，都传送到sequencer，再交给drv；因此需要sequencer有arbiter仲裁作用；同时接收信号传送回哪个sequence</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124161226221.png" srcset="/img/loading.gif" lazyload alt="image-20211124161226221"></p>
+<hr>
+<p>为什么sequence是obj，sequencer是component：</p>
+<ul>
+<li>sequence是动态产生的用完可以丢掉</li>
+</ul>
+<h2 id="3-2-示例代码：sequencer是我们所有组件定义起来最最简单的"><a href="#3-2-示例代码：sequencer是我们所有组件定义起来最最简单的" class="headerlink" title="3.2 示例代码：sequencer是我们所有组件定义起来最最简单的"></a>3.2 示例代码：sequencer是我们所有组件定义起来最最简单的</h2><p>my_sequencer所有组件功能都在父类uvm_sequencer</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124161529897.png" srcset="/img/loading.gif" lazyload alt="image-20211124161529897"></p>
+<h2 id="4-uvm-agent（重要参考）"><a href="#4-uvm-agent（重要参考）" class="headerlink" title="4 uvm_agent（重要参考）"></a>4 uvm_agent（重要参考）</h2><h2 id="4-1-概述"><a href="#4-1-概述" class="headerlink" title="4.1 概述"></a>4.1 概述</h2><p>简介与功能：agent就是一个标准的验证环境<strong>基本单位</strong>，包括了monitor，driver和sequencer</p>
+<p>额外成员：见5.2</p>
+<p>内部：具体实现了三个组建的例化(build)与连接(connect)</p>
+<p>同时为了复用有时候只包括monitor不需要例化driver与sequencer</p>
+<ul>
+<li>uvm_active_passive_enum is_active为agent内一个成员<ul>
+<li>is_active = UVM_ACTIVE时，uvm为ACTIVE态 agent需要发送激励</li>
+<li>is_active = UVM_PASSIVE时，uvm为PASSIVE态 agent只做监测</li>
+<li>is_active由谁控制<ul>
+<li>由更高一层的环境控制，通过config_db来做</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124161740460.png" srcset="/img/loading.gif" lazyload alt="image-20211124161740460"></p>
+<h3 id="4-1-2-master与slave的概念"><a href="#4-1-2-master与slave的概念" class="headerlink" title="4.1.2 master与slave的概念"></a>4.1.2 master与slave的概念</h3><ul>
+<li><p>master agent：</p>
+<ul>
+<li><p>register agent</p>
+</li>
+<li><p>channel agent</p>
+</li>
+</ul>
+</li>
+<li><p>slave agent：</p>
+<ul>
+<li>formatter agent，被动的做相应，被动发起grand信号，</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124164434848.png" srcset="/img/loading.gif" lazyload alt="image-20211124164434848"></p>
+<h2 id="4-2-示例代码"><a href="#4-2-示例代码" class="headerlink" title="4.2 示例代码"></a>4.2 示例代码</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124164836919.png" srcset="/img/loading.gif" lazyload alt="image-20211124164836919"></p>
+<p><strong>成员</strong></p>
+<ul>
+<li>sequencer</li>
+<li>driver</li>
+<li>monitor</li>
+<li>vif</li>
+<li>is_active</li>
+</ul>
+<p><strong>phase</strong></p>
+<ul>
+<li>build</li>
+<li>connect</li>
+</ul>
+<h3 id="4-2-2-phase"><a href="#4-2-2-phase" class="headerlink" title="4.2.2 phase"></a>4.2.2 phase</h3><p><strong>build_phase</strong></p>
+<ul>
+<li>创建组件/其他实例</li>
+<li>根据is_active判断是否例化seqr与driver<ul>
+<li>此处省略了一个从顶层(is_active)::get()的方法</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124165025458.png" srcset="/img/loading.gif" lazyload alt="image-20211124165025458"></p>
+<p><strong>connect_phase</strong></p>
+<ul>
+<li>driver和sequencer之间做连接</li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124165048530.png" srcset="/img/loading.gif" lazyload alt="image-20211124165048530"></p>
+<h1 id="5-uvm-scoreboard"><a href="#5-uvm-scoreboard" class="headerlink" title="5 uvm_scoreboard"></a>5 uvm_scoreboard</h1><h2 id="5-1-概述"><a href="#5-1-概述" class="headerlink" title="5.1 概述"></a>5.1 概述</h2><p>功能：进行数据比较和报告，与SV checker类似；会接受来自多个monitor的监测数据，继而进行对比和报告</p>
+<ul>
+<li>scoreboard内部是否需要例化一些reference model?<ul>
+<li>取决于实际情况，如果DUT复杂则需要自己写reference model且继承于uvm_component从而参与到组件构建过程中</li>
+</ul>
+</li>
+</ul>
+<p>额外成员：没有添加额外的成员变量和方法，与monitor类似，直接自定义一个类继承就行，特殊情况需要例化一些reference model</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124165551344.png" srcset="/img/loading.gif" lazyload alt="image-20211124165551344"></p>
+<h3 id="5-1-2-自带的数据比较方法"><a href="#5-1-2-自带的数据比较方法" class="headerlink" title="5.1.2 自带的数据比较方法"></a>5.1.2 自带的数据比较方法</h3><p>SV中推荐自己实现数据比较方法，uvm自带两个数据比较方法但了解即可实际工程中很少去用，因为他们的工作非常有限大部分需要自己实现</p>
+<figure class="highlight leaf"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs leaf">uvm_in_order_comparator <span class="hljs-function"><span class="hljs-keyword">#</span><span class="hljs-params">(<span class="hljs-variable">type</span> <span class="hljs-variable">T</span>)</span></span>//一个组件，往往放在sb<br>uvm_algorithm_comparator <span class="hljs-function"><span class="hljs-keyword">#</span><span class="hljs-params">(<span class="hljs-variable">type</span> <span class="hljs-variable">BEFORE</span>, <span class="hljs-variable">type</span> <span class="hljs-variable">AFTER</span>, <span class="hljs-variable">type</span> <span class="hljs-variable">TRANSFORMER</span>)</span></span><br></code></pre></div></td></tr></table></figure>
+<ul>
+<li>uvm_in_order_comparator（数据类型，完整性，顺序一样的时候比较）</li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124172218854.png" srcset="/img/loading.gif" lazyload alt="image-20211124172218854"></p>
+<p>输入输出数据自动作比较</p>
+<p>不推荐的原因是：你往往在数据比较的时候还有其他的逻辑</p>
+<ul>
+<li>uvm_algorithm_comparator（不同类型比较）</li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124172351965.png" srcset="/img/loading.gif" lazyload alt="image-20211124172351965"></p>
+<p>before，after两种类型</p>
+<p>TRANSFORMER为bef转换成after的转换类</p>
+<p>不适合MDCF比较</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124171724994.png" srcset="/img/loading.gif" lazyload alt="image-20211124171724994"></p>
+<h2 id="5-2-示例代码：如何定义一个sb-typedef在create时的作用-重要"><a href="#5-2-示例代码：如何定义一个sb-typedef在create时的作用-重要" class="headerlink" title="5.2 示例代码：如何定义一个sb|typedef在create时的作用(重要)"></a>5.2 示例代码：如何定义一个sb|typedef在create时的作用(重要)</h2><ul>
+<li>在sb中通常会声明TLM端口供monitor传输数据（下周讲端口连接），这些端口(in_export,out_export)最终和monitor相连</li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124172717681.png" srcset="/img/loading.gif" lazyload alt="image-20211124172717681"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124172727238.png" srcset="/img/loading.gif" lazyload alt="image-20211124172727238"></p>
+<p><strong>创建一个comparator</strong></p>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-comment">//写法1:使用typedef后的类型进行create</span><br>tyepdef uvm_in_order_comparator <span class="hljs-variable">#(bus_xact)</span> comp_t;<br>comp_t m_comp;<br>...<br><span class="hljs-keyword">function</span> build_phase();<br>	...<br>    m_comp = comp_t::type_id::create(<span class="hljs-string">&quot;m_comp&quot;</span>,<span class="hljs-keyword">this</span>);<br>    ...<br><span class="hljs-keyword">endfunction</span><br></code></pre></div></td></tr></table></figure>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-comment">//写法2:带参数的声明，与带参数的create</span><br>uvm_in_order_comparator <span class="hljs-variable">#(bus_xact)</span> m_comp;<br>...<br><span class="hljs-keyword">function</span> build_phase();<br>	...<br>    m_comp = uvm_in_order_comparator <span class="hljs-variable">#(bus_xact)::type_id::create(&quot;m_comp&quot;,this)</span>;<br>    ...<br><span class="hljs-keyword">endfunction</span><br></code></pre></div></td></tr></table></figure>
+<p><strong>端口接入comparator</strong></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124173759946.png" srcset="/img/loading.gif" lazyload alt="image-20211124173759946"></p>
+<h1 id="6-uvm-env"><a href="#6-uvm-env" class="headerlink" title="6 uvm_env"></a>6 uvm_env</h1><h2 id="6-1-概述"><a href="#6-1-概述" class="headerlink" title="6.1 概述"></a>6.1 概述</h2><p>uvm_env<strong>一种结构化的容器</strong></p>
+<p>简介：与SVenv没有区别，就是做一个层次，从环境层次层次，uvm_env可能包含多个uvm_agent或其他component</p>
+<p>不同的组件<strong>共同</strong>构成一个完整的验证环境，并且这个黄健在将来服用中可以作为子环境被进一步集成到更高的环境中。如下图的验证结构中，就定义了一个高层的环境，它里包含sub_env、agent、scoreboard</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124173845213.png" srcset="/img/loading.gif" lazyload alt="一种验证结构"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124185258724.png" srcset="/img/loading.gif" lazyload alt="sub_env可以作为复用"></p>
+<p>解释：</p>
+<ul>
+<li>sub_env原来验证M1模块，现在M1被集成到M2大的模块中。此时sub_env可以通过被封装在top_env继续对M1进行验证，同时接口也对应相连；对M2的其他部分，它们再与top_env中新添加的agent相连</li>
+<li>对于sb：top_env的scoreboard是M2的，而M1对应的sb在原来的sub_env里面</li>
+<li>对于顶层：只能由一个env</li>
+</ul>
+<h3 id="6-1-2-uvm-env的角色，以及与agent对比"><a href="#6-1-2-uvm-env的角色，以及与agent对比" class="headerlink" title="6.1.2 uvm_env的角色，以及与agent对比"></a>6.1.2 uvm_env的角色，以及与agent对比</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124190748961.png" srcset="/img/loading.gif" lazyload alt="image-20211124190748961"></p>
+<p>env可以嵌套而，agent一定不要去嵌套agent</p>
+<h2 id="6-2-示例代码"><a href="#6-2-示例代码" class="headerlink" title="6.2 示例代码"></a>6.2 示例代码</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124191859795-16377527411321.png" srcset="/img/loading.gif" lazyload alt="image-20211124191859795"></p>
+<h1 id="7-uvm-test"><a href="#7-uvm-test" class="headerlink" title="7 uvm_test"></a>7 uvm_test</h1><h2 id="7-1-概论"><a href="#7-1-概论" class="headerlink" title="7.1 概论"></a>7.1 概论</h2><p>与SV test几乎没有差别</p>
+<p>sv中test：sv测试以test为单位进行。test规定了测试场景，即规定了发送什么样的激励</p>
+<p>uvm的test：也规定了发送什么样的激励，只不过激励是sequence产生的</p>
+<p>uvm的结构：例化唯一的env顶层，并决定结构和连接关系</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124192241725.png" srcset="/img/loading.gif" lazyload alt="image-20211124192241725"></p>
+<h2 id="7-2-示例代码"><a href="#7-2-示例代码" class="headerlink" title="7.2 示例代码"></a>7.2 示例代码</h2><p>这里两个env只是做演示，工程里面应该把env1,env2与a1封装到一个top_env中</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211124193620637.png" srcset="/img/loading.gif" lazyload alt="image-20211124193620637"></p>
+<p>之后就是sv实验5的组件过度到uvm实验2，两个实验验证结构一致</p>
+<p>验证结构到uvm实验3才会进行变化</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/">IC</a>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/uvm%E5%AD%A6%E4%B9%A0/">uvm学习</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/IC/">IC</a>
+                    
+                      <a class="hover-with-bg" href="/tags/uvm%E5%AD%A6%E4%B9%A0/">uvm学习</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/202111242221/IC/sv%E5%AD%A6%E4%B9%A0/%E5%AE%9E%E9%AA%8Cessay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E7%BB%83%E4%B9%A0%E9%80%89%E4%BF%AE/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">SV练习选修</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/202111241036/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B64%EF%BC%9A%E7%BB%93%E6%9E%84_%E9%A1%B6%E5%B1%82%E6%96%B9%E6%A1%88_%E7%8E%AF%E5%A2%83%E5%85%83%E7%B4%A0/">
+                        <span class="hidden-mobile">UVM入门和进阶4：结构_顶层方案_环境元素</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'preferred-color-scheme';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'GreensCH/commitutterances');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <span> | </span> <a href="https://weibo.com/u/7453939976" target="_blank" rel="nofollow noopener"> Green Weibo</a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?eca4a4d34dadf0d4e282cc6ef2dc3de6";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<!-- hexo injector body_end start --><script src="/js/backgroundize.js"></script>
+  <link defer rel="stylesheet" href="/css/backgroundize.css" />
+  <!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"superSample":1,"position":"right","width":250,"height":500,"vOffset":-100},"mobile":{"show":false},"dialog":{"enable":false,"hitokoto":true,"width":10,"height":10,"vOffset":-100},"log":false});</script></body>
+</html>

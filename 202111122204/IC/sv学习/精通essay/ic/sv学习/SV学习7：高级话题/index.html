@@ -1,0 +1,830 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/con1.png">
+  <link rel="icon" href="/img/con1.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="“无论最终结果将人类历史导向何处，我们决定选择希望”">
+  <meta name="author" content="友人律 | Guilin Chang">
+  <meta name="keywords" content="三差学生、不学无术">
+  <meta name="description" content="一、类型转换概述：类型转换分为静态动态两种转换 静态转换：int&#39;(4.0) &#x2F;&#x2F;实数转成一个整形,是否成功无从得知 动态转换：$cast(tgt , src)右边的转成左边的类型，可以把中间的”,”理解成”&#x3D;” 2 动态转换 子类句柄转父类句柄：h1&#x3D;h2，但转换成的父类句柄无法访问子类成员 父类句柄转子类句柄：$cast(h2,h1) 测试题 答案：AB 3 子类句柄赋值于父类句柄">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SV精通7：高级话题|SV理论知识完结🎉">
+<meta property="og:url" content="http://yoursite.com/202111122204/IC/sv%E5%AD%A6%E4%B9%A0/%E7%B2%BE%E9%80%9Aessay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AD%A6%E4%B9%A07%EF%BC%9A%E9%AB%98%E7%BA%A7%E8%AF%9D%E9%A2%98/index.html">
+<meta property="og:site_name" content="友人律的博客">
+<meta property="og:description" content="一、类型转换概述：类型转换分为静态动态两种转换 静态转换：int&#39;(4.0) &#x2F;&#x2F;实数转成一个整形,是否成功无从得知 动态转换：$cast(tgt , src)右边的转成左边的类型，可以把中间的”,”理解成”&#x3D;” 2 动态转换 子类句柄转父类句柄：h1&#x3D;h2，但转换成的父类句柄无法访问子类成员 父类句柄转子类句柄：$cast(h2,h1) 测试题 答案：AB 3 子类句柄赋值于父类句柄">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112220604793.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112220950634.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112221319401.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112221502557.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112221514473.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112221558027.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112221659539.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112221721147.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112221750376.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112221916497.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112222220698.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112222415541.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112222914131.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112222926037.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112222943787.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112223140274.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112223250929.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112223310179.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112223353297.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112223634781.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113193044171.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113193450909.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113193553972.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113193642312.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113193656716.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113193915025.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113194409221.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113194616350.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113195519471.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113200203617.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113200733862.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113201009701.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113201219936.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113203045002.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113203307071.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113203723480.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113203928872.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113204202872.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113204317704.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113205418610.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113205639763.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113210058383.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113210148500.png">
+<meta property="article:published_time" content="2021-11-12T14:04:00.000Z">
+<meta property="article:modified_time" content="2022-01-24T13:59:35.270Z">
+<meta property="article:author" content="友人律 | Guilin Chang">
+<meta property="article:tag" content="IC">
+<meta property="article:tag" content="sv学习">
+<meta property="article:tag" content="精通">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112220604793.png">
+  
+  <title>SV精通7：高级话题|SV理论知识完结🎉 - 友人律的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/stackoverflow-dark.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"eca4a4d34dadf0d4e282cc6ef2dc3de6","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body><!-- hexo injector body_begin start --><div id="web_bg"></div><!-- hexo injector body_begin end -->
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>友人律的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E9%80%9A%E7%9F%A5/">
+                <i class="iconfont icon-link-fill"></i>
+                通知
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1/">
+                <i class="iconfont icon-link-fill"></i>
+                项目与设计
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">
+                <i class="iconfont icon-link-fill"></i>
+                开发工具
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/CS/">
+                <i class="iconfont icon-link-fill"></i>
+                CS
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/IC/">
+                <i class="iconfont icon-link-fill"></i>
+                IC
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110230643036.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="SV精通7：高级话题|SV理论知识完结🎉">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-11-12 22:04" pubdate>
+        2021年11月12日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      6 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">SV精通7：高级话题|SV理论知识完结🎉</h1>
+            
+            <div class="markdown-body">
+              <h1 id="一、类型转换"><a href="#一、类型转换" class="headerlink" title="一、类型转换"></a>一、类型转换</h1><h2 id="概述：类型转换分为静态动态两种转换"><a href="#概述：类型转换分为静态动态两种转换" class="headerlink" title="概述：类型转换分为静态动态两种转换"></a>概述：类型转换分为静态动态两种转换</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112220604793.png" srcset="/img/loading.gif" lazyload alt="image-20211112220604793"></p>
+<p><strong>静态转换：</strong><code>int&#39;(4.0) //实数转成一个整形</code>,是否成功无从得知</p>
+<p>动态转换：<code>$cast(tgt , src)</code>右边的转成左边的类型，可以把中间的”,”理解成”=”</p>
+<h2 id="2-动态转换"><a href="#2-动态转换" class="headerlink" title="2 动态转换"></a>2 动态转换</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112220950634.png" srcset="/img/loading.gif" lazyload alt="image-20211112220950634"></p>
+<p>子类句柄转父类句柄：<code>h1=h2</code>，但转换成的父类句柄无法访问子类成员</p>
+<p>父类句柄转子类句柄：<code>$cast(h2,h1)</code></p>
+<h3 id="测试题"><a href="#测试题" class="headerlink" title="测试题"></a>测试题</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112221319401.png" srcset="/img/loading.gif" lazyload alt="image-20211112221319401"></p>
+<p>答案：AB</p>
+<h2 id="3-子类句柄赋值于父类句柄"><a href="#3-子类句柄赋值于父类句柄" class="headerlink" title="3 子类句柄赋值于父类句柄"></a>3 子类句柄赋值于父类句柄</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112221502557.png" srcset="/img/loading.gif" lazyload alt="image-20211112221502557"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112221514473.png" srcset="/img/loading.gif" lazyload alt="image-20211112221514473"></p>
+<h3 id="测试题-1"><a href="#测试题-1" class="headerlink" title="测试题"></a>测试题</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112221558027.png" srcset="/img/loading.gif" lazyload alt="image-20211112221558027"></p>
+<p>A</p>
+<hr>
+<h2 id="4-父类句柄转换为子类句柄"><a href="#4-父类句柄转换为子类句柄" class="headerlink" title="4 父类句柄转换为子类句柄"></a>4 父类句柄转换为子类句柄</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112221659539.png" srcset="/img/loading.gif" lazyload alt="image-20211112221659539"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112221721147.png" srcset="/img/loading.gif" lazyload alt="image-20211112221721147"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112221750376.png" srcset="/img/loading.gif" lazyload alt="image-20211112221750376"></p>
+<p>可以成功因为bad指向子类对象<br>tr也指向子类对象</p>
+<h3 id="测试题-2"><a href="#测试题-2" class="headerlink" title="测试题"></a>测试题</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112221916497.png" srcset="/img/loading.gif" lazyload alt="image-20211112221916497"></p>
+<p>答案：B</p>
+<hr>
+<h1 id="二、虚方法：virtual"><a href="#二、虚方法：virtual" class="headerlink" title="二、虚方法：virtual"></a>二、虚方法：virtual</h1><h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1 概述"></a>1 概述</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112222220698.png" srcset="/img/loading.gif" lazyload alt="image-20211112222220698"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112222415541.png" srcset="/img/loading.gif" lazyload alt="image-20211112222415541"></p>
+<p><strong>为什么虚方法：</strong></p>
+<p>父类句柄只能调用父类成员，子类句柄只能调用子类成员<br>当子类句柄赋值给父类句柄时，父类句柄调用的是父类中的<strong>同名成员</strong><br>想要调用，必须要把父类句柄转成子类句柄进行调用，<strong>不够简洁容易出错</strong></p>
+<p>虚方法：</p>
+<p>动态绑定(dynamic binding) / SV中称动态方法查找(dynamic method lookup)</p>
+<h2 id="2-非虚函数的调用：即override覆盖写法-同名函数-，不是我们期望的"><a href="#2-非虚函数的调用：即override覆盖写法-同名函数-，不是我们期望的" class="headerlink" title="2 非虚函数的调用：即override覆盖写法(同名函数)，不是我们期望的"></a>2 非虚函数的调用：即override覆盖写法(同名函数)，不是我们期望的</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112222914131.png" srcset="/img/loading.gif" lazyload alt="image-20211112222914131"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112222926037.png" srcset="/img/loading.gif" lazyload alt="image-20211112222926037"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112222943787.png" srcset="/img/loading.gif" lazyload alt="image-20211112222943787"></p>
+<h2 id="3-虚函数的调用"><a href="#3-虚函数的调用" class="headerlink" title="3 虚函数的调用"></a>3 虚函数的调用</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112223140274.png" srcset="/img/loading.gif" lazyload alt="image-20211112223140274"></p>
+<p>为了实现动态绑定，我们应该将父类方法定义为虚函数</p>
+<h3 id="声明为：virtual"><a href="#声明为：virtual" class="headerlink" title="声明为：virtual"></a>声明为：virtual</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112223250929.png" srcset="/img/loading.gif" lazyload alt="image-20211112223250929"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112223310179.png" srcset="/img/loading.gif" lazyload alt="image-20211112223310179"></p>
+<h2 id="4-建议：定义父类方法时，直接声明为虚方法"><a href="#4-建议：定义父类方法时，直接声明为虚方法" class="headerlink" title="4 建议：定义父类方法时，直接声明为虚方法"></a>4 建议：定义父类方法时，直接声明为虚方法</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112223353297.png" srcset="/img/loading.gif" lazyload alt="image-20211112223353297"></p>
+<p><strong>子类无需再次声明，只需父类声明即可</strong></p>
+<h3 id="测试题-3"><a href="#测试题-3" class="headerlink" title="测试题"></a>测试题</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112223634781.png" srcset="/img/loading.gif" lazyload alt="image-20211112223634781"></p>
+<p>答案：A</p>
+<p>C是错的，没有虚成员的概念，<strong>请牢记！！！</strong>，没有任何办法可以通过父类句柄找到子类对象中的变量</p>
+<p>D不能使用不同类型参数</p>
+<h1 id="三、对象拷贝"><a href="#三、对象拷贝" class="headerlink" title="三、对象拷贝"></a>三、对象拷贝</h1><h2 id="1-赋值和拷贝"><a href="#1-赋值和拷贝" class="headerlink" title="1 赋值和拷贝"></a>1 赋值和拷贝</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113193044171.png" srcset="/img/loading.gif" lazyload alt="image-20211113193044171"></p>
+<h2 id="2-声明变量和创建对象"><a href="#2-声明变量和创建对象" class="headerlink" title="2 声明变量和创建对象"></a>2 声明变量和创建对象</h2><p>是两个过程，也可以一步完成</p>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog">Packet p1;<br>p1 = <span class="hljs-keyword">new</span>();<br></code></pre></div></td></tr></table></figure>
+<p>new不可以有返回值，也不可定义为虚函数</p>
+<h2 id="3-从p1拷贝到p2：浅拷贝shallow-copy"><a href="#3-从p1拷贝到p2：浅拷贝shallow-copy" class="headerlink" title="3 从p1拷贝到p2：浅拷贝shallow copy"></a>3 从p1拷贝到p2：浅拷贝shallow copy</h2><figure class="highlight smali"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs smali">Packet p1;<br>Packet p2;<br>p1 = new();<br>p2 = new() p1;//把p1的值拷贝给p2，并通过new创建对象<br></code></pre></div></td></tr></table></figure>
+<h2 id="4-对象的拷贝让人当心"><a href="#4-对象的拷贝让人当心" class="headerlink" title="4 对象的拷贝让人当心"></a>4 对象的拷贝让人当心</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113193450909.png" srcset="/img/loading.gif" lazyload alt="image-20211113193450909"></p>
+<p>不要与<strong>句柄的拷贝搞混</strong>：子类变父类，父类变子类</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113193553972.png" srcset="/img/loading.gif" lazyload alt="image-20211113193553972"></p>
+<h2 id="5-自定义拷贝函数：自己声明定义的赋值函数与copy函数"><a href="#5-自定义拷贝函数：自己声明定义的赋值函数与copy函数" class="headerlink" title="5 自定义拷贝函数：自己声明定义的赋值函数与copy函数"></a>5 自定义拷贝函数：自己声明定义的赋值函数与copy函数</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113193642312.png" srcset="/img/loading.gif" lazyload alt="image-20211113193642312"></p>
+<h3 id="父类copy"><a href="#父类copy" class="headerlink" title="父类copy"></a>父类copy</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113193656716.png" srcset="/img/loading.gif" lazyload alt="image-20211113193656716"></p>
+<ul>
+<li>copy_data()用于数据赋值</li>
+<li>copy()用于创建对象和返回句柄</li>
+</ul>
+<p><strong>子类对象copy会创建一个子类的对象，但返回的是父类类型的句柄</strong></p>
+<h3 id="子类copy（重点1）"><a href="#子类copy（重点1）" class="headerlink" title="子类copy（重点1）"></a>子类copy（重点1）</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113193915025.png" srcset="/img/loading.gif" lazyload alt="image-20211113193915025"></p>
+<ul>
+<li><p>t是子类句柄，直接带入copy_data隐式转换成父类句柄</p>
+</li>
+<li><p>super.copy_data调用父类的copy_data，</p>
+</li>
+<li><p>填入一行代码：<code>$cast(h,t);</code>，<strong>h.def才能把子类同名变量赋值</strong></p>
+</li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113194409221.png" srcset="/img/loading.gif" lazyload alt="image-20211113194409221"></p>
+<p><strong>即：子类中用到的同名变量要转换成子类句柄进行copy</strong>，如果直接t.def，则会导致赋值到父类的def中</p>
+<h3 id="module中（重点2）"><a href="#module中（重点2）" class="headerlink" title="module中（重点2）"></a>module中（重点2）</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113194616350.png" srcset="/img/loading.gif" lazyload alt="image-20211113194616350"></p>
+<p><strong>子类对象copy会创建一个子类的对象，但返回的是父类类型的句柄</strong></p>
+<p><code>$cast(h,wr.copy());</code></p>
+<p>最终结果是：</p>
+<ul>
+<li>wr = new () ; //创建了一个test_wr子类对象</li>
+<li>h句柄通过wr.copy获得了拷贝过的一个未命名对象的父类句柄，并通过$cast完成父类转到h子类句柄上</li>
+<li>所以存在wr，h两个句柄分别指向的不同的子类对象</li>
+</ul>
+<h2 id="6-总结"><a href="#6-总结" class="headerlink" title="6 总结"></a>6 总结</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113195519471.png" srcset="/img/loading.gif" lazyload alt="image-20211113195519471"></p>
+<p><strong>copy,copy_data声明为虚函数很重要</strong></p>
+<p>遵循只拷贝改类的域成员的原则：</p>
+<ul>
+<li>子类的copy_data里的方法：<ul>
+<li>调用父类的copy_data，为了更好的复用</li>
+<li>拷贝子类中数据</li>
+</ul>
+</li>
+</ul>
+<h1 id="四、回调函数-callback-钩子函数"><a href="#四、回调函数-callback-钩子函数" class="headerlink" title="四、回调函数(callback,钩子函数)"></a>四、回调函数(callback,钩子函数)</h1><h2 id="1-概述-1"><a href="#1-概述-1" class="headerlink" title="1 概述"></a>1 概述</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113200203617.png" srcset="/img/loading.gif" lazyload alt="image-20211113200203617"></p>
+<p>复用：水平复用、垂直复用</p>
+<p>为什么回调：解决<strong>直接修改父类</strong>会牵一发而动全身的情况，通过<strong>预留回调函数</strong>入口在子函数补充完成对父类方法的修改</p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113200733862.png" srcset="/img/loading.gif" lazyload alt="image-20211113200733862"></p>
+<h2 id="2-实例：定义虚类和虚函数virtual-class-amp-virtual-function"><a href="#2-实例：定义虚类和虚函数virtual-class-amp-virtual-function" class="headerlink" title="2 实例：定义虚类和虚函数virtual class &amp; virtual function"></a>2 实例：定义虚类和虚函数virtual class &amp; virtual function</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113201009701.png" srcset="/img/loading.gif" lazyload alt="image-20211113201009701"></p>
+<p>虚类（或者说类的一个模板），虚类是不能例化的，为了你不例化这个类</p>
+<hr>
+<p>同时你也可以不定义虚类就定义普通的，事实上目前我们可以这样做简单</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113201219936.png" srcset="/img/loading.gif" lazyload alt="image-20211113201219936"></p>
+<h3 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113203045002.png" srcset="/img/loading.gif" lazyload alt="image-20211113203045002"></p>
+<p>把callback类型的句柄放在队列<code>Driver_cbs cbs</code> 里面</p>
+<p>按行分析：</p>
+<ul>
+<li>agt2drv.get(tr)//拿到一个transcation</li>
+<li>foreach挨个调用句柄，如果返回的drop是1则不会执行<code>transmit(tr)</code>（即不会发送tr了），直接continue到forever入口处</li>
+<li>transmit(tr)//发送transcation</li>
+</ul>
+<p>大致意思：</p>
+<p>重点是callback作用是可能返回drop<strong>进一步控制driver的行为</strong>，driver什么时候可以发送什么时候不发送</p>
+<h4 id="定义了一个类：虚类不可以例化但能继承"><a href="#定义了一个类：虚类不可以例化但能继承" class="headerlink" title="定义了一个类：虚类不可以例化但能继承"></a>定义了一个类：虚类不可以例化但能继承</h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113203307071.png" srcset="/img/loading.gif" lazyload alt="image-20211113203307071"></p>
+<p>drop声类型可以ref也可以output</p>
+<ul>
+<li><p>drop = 1 ：1%概率</p>
+</li>
+<li><p>drop = 0 ：99%概率</p>
+</li>
+</ul>
+<h3 id="要使用回调函数了（看标红的代码）"><a href="#要使用回调函数了（看标红的代码）" class="headerlink" title="要使用回调函数了（看标红的代码）"></a>要使用回调函数了（看标红的代码）</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113203723480.png" srcset="/img/loading.gif" lazyload alt="image-20211113203723480">7</p>
+<ul>
+<li>begin…end里面考虑要不要修改driver行为<ul>
+<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113203928872.png" srcset="/img/loading.gif" lazyload alt="image-20211113203928872"></li>
+</ul>
+</li>
+</ul>
+<h2 id="3-如何使用回调函数（记一下，因为UVM中的回调和这个的步骤一摸一样）"><a href="#3-如何使用回调函数（记一下，因为UVM中的回调和这个的步骤一摸一样）" class="headerlink" title="3 如何使用回调函数（记一下，因为UVM中的回调和这个的步骤一摸一样）"></a>3 如何使用回调函数（记一下，因为UVM中的回调和这个的步骤一摸一样）</h2><ul>
+<li>预留回调函数入口</li>
+<li>定义回调类和回调函数</li>
+<li>例化及添加回调类实例</li>
+</ul>
+<h2 id="测试题-4"><a href="#测试题-4" class="headerlink" title="测试题"></a>测试题</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113204202872.png" srcset="/img/loading.gif" lazyload alt="image-20211113204202872"></p>
+<p>答案：ABCD</p>
+<h1 id="五、参数化的类：类似于C-模板"><a href="#五、参数化的类：类似于C-模板" class="headerlink" title="五、参数化的类：类似于C++模板"></a>五、参数化的类：类似于C++模板</h1><h2 id="1-概述-2"><a href="#1-概述-2" class="headerlink" title="1 概述"></a>1 概述</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113204317704.png" srcset="/img/loading.gif" lazyload alt="image-20211113204317704"></p>
+<p><strong>类型也可以做参数</strong></p>
+<h2 id="2-例子"><a href="#2-例子" class="headerlink" title="2 例子"></a>2 例子</h2><h3 id="（1-一个简单的mailbox"><a href="#（1-一个简单的mailbox" class="headerlink" title="（1) 一个简单的mailbox"></a>（1) 一个简单的mailbox</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113205418610.png" srcset="/img/loading.gif" lazyload alt="image-20211113205418610"></p>
+<p>只能操作整形</p>
+<h3 id="使用参数化的类：-type-T-int-声明参数化的类，同时默认类型int"><a href="#使用参数化的类：-type-T-int-声明参数化的类，同时默认类型int" class="headerlink" title="使用参数化的类： # (type T = int)//声明参数化的类，同时默认类型int"></a>使用参数化的类： <code># (type T = int)</code>//声明参数化的类，同时默认类型int</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113205639763.png" srcset="/img/loading.gif" lazyload alt="image-20211113205639763"></p>
+<hr>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113210058383.png" srcset="/img/loading.gif" lazyload alt="image-20211113210058383"></p>
+<h2 id="测试题-5"><a href="#测试题-5" class="headerlink" title="测试题"></a>测试题</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211113210148500.png" srcset="/img/loading.gif" lazyload alt="image-20211113210148500"></p>
+<p>答案：ABD</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/">IC</a>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/sv%E5%AD%A6%E4%B9%A0/">sv学习</a>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/sv%E5%AD%A6%E4%B9%A0/%E7%B2%BE%E9%80%9A/">精通</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/IC/">IC</a>
+                    
+                      <a class="hover-with-bg" href="/tags/sv%E5%AD%A6%E4%B9%A0/">sv学习</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%B2%BE%E9%80%9A/">精通</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/202111141520/IC/%E5%AE%9E%E9%AA%8Cessay/ic/sv%E5%AD%A6%E4%B9%A0/%E5%AE%9E%E9%AA%8C%E7%9B%AE%E5%BD%95/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">SV|UVM 学习实验目录</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/202111121646/IC/sv%E5%AD%A6%E4%B9%A0/%E7%B2%BE%E9%80%9Aessay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AD%A6%E4%B9%A06-2%EF%BC%9A%E9%AA%8C%E8%AF%81%E7%9A%84%E9%87%8F%E5%8C%96%E4%B8%8E%E5%8A%9F%E8%83%BD%E8%A6%86%E7%9B%96%E7%8E%87/">
+                        <span class="hidden-mobile">SV精通6：验证的量化与功能覆盖率</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'preferred-color-scheme';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'GreensCH/commitutterances');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <span> | </span> <a href="https://weibo.com/u/7453939976" target="_blank" rel="nofollow noopener"> Green Weibo</a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?eca4a4d34dadf0d4e282cc6ef2dc3de6";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<!-- hexo injector body_end start --><script src="/js/backgroundize.js"></script>
+  <link defer rel="stylesheet" href="/css/backgroundize.css" />
+  <!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"superSample":1,"position":"right","width":250,"height":500,"vOffset":-100},"mobile":{"show":false},"dialog":{"enable":false,"hitokoto":true,"width":10,"height":10,"vOffset":-100},"log":false});</script></body>
+</html>

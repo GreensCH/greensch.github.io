@@ -1,0 +1,1178 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/con1.png">
+  <link rel="icon" href="/img/con1.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="“无论最终结果将人类历史导向何处，我们决定选择希望”">
+  <meta name="author" content="友人律 | Guilin Chang">
+  <meta name="keywords" content="三差学生、不学无术">
+  <meta name="description" content="参考文档链接：https:&#x2F;&#x2F;verificationacademy.com&#x2F;verification-methodology-reference&#x2F;uvm&#x2F;docs_1.2&#x2F;html&#x2F; 本节目录：  TLM通信  单向通信 双向通信 多向通信 通信管道   TLM2.0   双向通信（使用较少）与TLM2.0（与SystemC通信），都作为了解 1 TLM通信transaction level m">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UVM入门进阶5：TLM通信_单向双向多向_通信管道_TLM2.0">
+<meta property="og:url" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/index.html">
+<meta property="og:site_name" content="友人律的博客">
+<meta property="og:description" content="参考文档链接：https:&#x2F;&#x2F;verificationacademy.com&#x2F;verification-methodology-reference&#x2F;uvm&#x2F;docs_1.2&#x2F;html&#x2F; 本节目录：  TLM通信  单向通信 双向通信 多向通信 通信管道   TLM2.0   双向通信（使用较少）与TLM2.0（与SystemC通信），都作为了解 1 TLM通信transaction level m">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127173613007-16381918085062.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127173627851-16381918085094.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127174154049-16381918085096.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127174214668-16381918085108.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127174327342-163819180851010.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127185549442-163819180851012.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127185613000-163819180851114.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127185746270-163819180851116.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127190821795-163819180851218.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127190837689-163819180851220.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127192644202.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127195412692-163819180851324.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127193020422-163819180851426.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127193208516-163819180851428.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127195110198-163819180851530.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127195005868-163819180851532.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127194942991-163819180851634.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127200002390.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127202106862-163819180851638.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127203157709-163819180851740.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127203247382-163819180851742.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127203326914-163819180851844.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127204455138-163819180851846.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127204113119-163819180851848.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127204821405-163819180851950.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127205350698-163819180851954.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127205728745-163819180851952.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127205412314-163819180852056.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211128122449307-163819180852058.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211128122841747.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211128122924921-163819180852162.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211128122953437-163819180852164.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211128124144451-163819180852166.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211128124351358.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211128124421630-163819180852270.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211128125224093-163819180852272.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211128124518033-16381062899701.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211128125224093-163819180852272.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211128221446172.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211128221811119.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211128221758250.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211128214115156.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211128221858109.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211128222125651.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211128222642907.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211128222656394.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211129102446101.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211129102358636.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211129102358636.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211129103636616.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211129103747402.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211129104134652.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211129104816121.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211129104259780.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211129112631868.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211129112735235-16381564560181.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211129113506603.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211129113521538.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211129113633263.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211129113923124.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129204050389.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129204417791.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129205403805.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129205432385.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129205521092.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129205557115.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129205653551.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129205707575.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129205747604-16381906688471.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129205825619.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129205855177.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129205938411.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129210001509.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129210352251.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129210411249.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129210541718.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129210558006.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129210851775.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129211419275.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129210811424.png">
+<meta property="og:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129211211453.png">
+<meta property="article:published_time" content="2021-11-27T08:41:00.000Z">
+<meta property="article:modified_time" content="2022-01-24T13:59:35.619Z">
+<meta property="article:author" content="友人律 | Guilin Chang">
+<meta property="article:tag" content="IC">
+<meta property="article:tag" content="uvm学习">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://yoursite.com/202111271641/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127173613007-16381918085062.png">
+  
+  <title>UVM入门进阶5：TLM通信_单向双向多向_通信管道_TLM2.0 - 友人律的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/stackoverflow-dark.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"eca4a4d34dadf0d4e282cc6ef2dc3de6","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body><!-- hexo injector body_begin start --><div id="web_bg"></div><!-- hexo injector body_begin end -->
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>友人律的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E9%80%9A%E7%9F%A5/">
+                <i class="iconfont icon-link-fill"></i>
+                通知
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1/">
+                <i class="iconfont icon-link-fill"></i>
+                项目与设计
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">
+                <i class="iconfont icon-link-fill"></i>
+                开发工具
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/CS/">
+                <i class="iconfont icon-link-fill"></i>
+                CS
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/IC/">
+                <i class="iconfont icon-link-fill"></i>
+                IC
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://note.youdao.com/yws/api/personal/file/FDCD397DDBAF4A06B8925394CCE654F7?method=download&shareKey=466c9494a628c54696edbf7f0f62e6f1') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="UVM入门进阶5：TLM通信_单向双向多向_通信管道_TLM2.0">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-11-27 16:41" pubdate>
+        2021年11月27日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      9.7k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      30 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">UVM入门进阶5：TLM通信_单向双向多向_通信管道_TLM2.0</h1>
+            
+            <div class="markdown-body">
+              <p>参考文档链接：<a target="_blank" rel="noopener" href="https://verificationacademy.com/verification-methodology-reference/uvm/docs_1.2/html/">https://verificationacademy.com/verification-methodology-reference/uvm/docs_1.2/html/</a></p>
+<p>本节目录：</p>
+<ul>
+<li><p>TLM通信</p>
+<ul>
+<li>单向通信</li>
+<li>双向通信</li>
+<li>多向通信</li>
+<li>通信管道</li>
+</ul>
+</li>
+<li><p>TLM2.0</p>
+</li>
+</ul>
+<p>双向通信（使用较少）与TLM2.0（与SystemC通信），都作为<strong>了解</strong></p>
+<h1 id="1-TLM通信"><a href="#1-TLM通信" class="headerlink" title="1 TLM通信"></a>1 TLM通信</h1><p>transaction level module</p>
+<h2 id="1-1-概述"><a href="#1-1-概述" class="headerlink" title="1.1 概述"></a>1.1 概述</h2><p>不用端口也是ok的（如实验2）但使用端口可以降低耦合度，有利于更长远的维护</p>
+<h3 id="1-1-1-系统原型与芯片验证"><a href="#1-1-1-系统原型与芯片验证" class="headerlink" title="1.1.1 系统原型与芯片验证"></a>1.1.1 系统原型与芯片验证</h3><p>芯片开发流程中，两个地方对项目的助推起到关键作用：</p>
+<ul>
+<li>系统原型</li>
+<li>芯片验证</li>
+</ul>
+<p>系统原型：</p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127173613007-16381918085062.png" srcset="/img/loading.gif" lazyload alt="image-20211127173613007"></p>
+<p>芯片验证：</p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127173627851-16381918085094.png" srcset="/img/loading.gif" lazyload alt="image-20211127173627851"></p>
+<p>实际上sv在组件间发送的数据都是trans，把硬件发送的数据抽象到一个数据包中，模拟硬件内部多个周期的数据传输</p>
+<p>两者中的TLM与其作用：</p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127174154049-16381918085096.png" srcset="/img/loading.gif" lazyload alt="image-20211127174154049"></p>
+<p>TLM是一个标准，而不一种特定语言：</p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127174214668-16381918085108.png" srcset="/img/loading.gif" lazyload alt="image-20211127174214668"></p>
+<p>TLM引用越来越广泛，uvm与sv验证平台互通可以通过这个标准</p>
+<h3 id="1-1-2-开发结构图（软件开发消耗人力较多）"><a href="#1-1-2-开发结构图（软件开发消耗人力较多）" class="headerlink" title="1.1.2 开发结构图（软件开发消耗人力较多）"></a>1.1.2 开发结构图（软件开发消耗人力较多）</h3><p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127174327342-163819180851010.png" srcset="/img/loading.gif" lazyload alt="image-20211127174327342"></p>
+<p>软件开发的两方面：</p>
+<ul>
+<li>对系统原型开发，没有硬件</li>
+<li>等到设计开发到达稳定阶段时在稳定系统（simulator,FPGA,emulator硬件加速器）基础上</li>
+</ul>
+<h3 id="1-2-1-TLM"><a href="#1-2-1-TLM" class="headerlink" title="1.2.1 TLM"></a>1.2.1 TLM</h3><p>TLM：</p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127185549442-163819180851012.png" srcset="/img/loading.gif" lazyload alt="image-20211127185549442"></p>
+<p>如何提高系统模型仿真性能：1、自身运算优化；2、通信优化</p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127185613000-163819180851114.png" srcset="/img/loading.gif" lazyload alt="image-20211127185613000"></p>
+<p>TLM就是通信角度的一种优化方式</p>
+<h3 id="1-2-2-TLM通信基本概念"><a href="#1-2-2-TLM通信基本概念" class="headerlink" title="1.2.2 TLM通信基本概念"></a>1.2.2 TLM通信基本概念</h3><ul>
+<li>基于事务的通信方式，可用于多种语言的模型中</li>
+<li>需要两个通信对象，initiator与target，谁先发请求谁是initiator，谁响应谁是target<ul>
+<li>initiator,target并不代表数据传输方向</li>
+</ul>
+</li>
+<li>transaction数据流向分类分为producer（数据产生）与consumer（数据流向）</li>
+<li>producer/consumer，initiator/target，关系不是固定的</li>
+</ul>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127185746270-163819180851116.png" srcset="/img/loading.gif" lazyload alt="image-20211127185746270"></p>
+<h3 id="1-2-3-TLM通信步骤："><a href="#1-2-3-TLM通信步骤：" class="headerlink" title="1.2.3 TLM通信步骤："></a>1.2.3 TLM通信步骤：</h3><ul>
+<li>确定通信对象</li>
+<li>将TLM<strong>通信方法</strong>在target一段实现（从而init调用target方法）</li>
+<li>两个对象中创建TLM端口（uvm中端口预设，只需例化）</li>
+<li>在更高层次中将两个对象的端口进行连接</li>
+</ul>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127190821795-163819180851218.png" srcset="/img/loading.gif" lazyload alt="image-20211127190821795"></p>
+<h3 id="1-2-4-示意图"><a href="#1-2-4-示意图" class="headerlink" title="1.2.4 示意图"></a>1.2.4 示意图</h3><p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127190837689-163819180851220.png" srcset="/img/loading.gif" lazyload alt="image-20211127190837689"></p>
+<h3 id="1-2-5-分类"><a href="#1-2-5-分类" class="headerlink" title="1.2.5 分类"></a>1.2.5 分类</h3><p>单向(unidirection)和双向(bidirection)传输：</p>
+<ul>
+<li>单向传输：由initor发起req trans</li>
+<li>双向传输：由initor发起req trans，传送到target；target处理req trans后发起rsp trans，返回initor</li>
+</ul>
+<p>端口类型三种：</p>
+<ul>
+<li>prot：常作为initor发起端，initor借助port才能访问target的TLM通信方法（port也能连接到port上）</li>
+<li><p>export：作为initor与target中间层次的端口</p>
+</li>
+<li><p>imp(implementation)：作为target接收rsp的末端，无法作为中间层次端口，所以imp的连接无法再次延伸（无法再连接到imp或其他端口上）</p>
+</li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127192644202.png" srcset="/img/loading.gif" lazyload alt="image-20211127192644202"></p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127195412692-163819180851324.png" srcset="/img/loading.gif" lazyload alt="image-20211127195412692"></p>
+<p>单向通信补充(参考1.3节)：</p>
+<ul>
+<li>多个port可以连到同一port/export/imp上</li>
+<li>一个port不能连接到多个imp</li>
+<li>为什么：<ul>
+<li>多个initor可对同一组件发起req请求</li>
+<li>同一initor无法连接多个target</li>
+</ul>
+</li>
+</ul>
+<p>如上可知，将传输方向与端口类型组合，得出TLM端口共六类，进而理解TLM端口的继承树：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog">uvm_UNDIR_port <span class="hljs-variable">#(trans_t)</span><br>uvm_UNDIR_export <span class="hljs-variable">#(trans_t)</span><br>uvm_UNDIR_imp <span class="hljs-variable">#(trans_t)</span><br>uvm_BIDIR_port <span class="hljs-variable">#(trans_t, imp_parent_t)</span><br>uvm_BIDIR_export <span class="hljs-variable">#(trans_t, imp_parent_t)</span><br>uvm_BIDIR_imp <span class="hljs-variable">#(trans_t, imp_parent_t)</span><br></code></pre></div></td></tr></table></figure>
+<p>端口既不是obj也不是comp类型，比较特殊<strong>不能通过type_id::create创建，即不存在factory的注册与创建</strong>：</p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127193020422-163819180851426.png" srcset="/img/loading.gif" lazyload alt="image-20211127193020422"></p>
+<h2 id="1-3-端口的使用："><a href="#1-3-端口的使用：" class="headerlink" title="1.3 端口的使用："></a>1.3 端口的使用：</h2><h3 id="1-3-1-结构示意图，port-import-export的符号"><a href="#1-3-1-结构示意图，port-import-export的符号" class="headerlink" title="1.3.1 结构示意图，port,import,export的符号"></a>1.3.1 结构示意图，port,import,export的符号</h3><p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127193208516-163819180851428.png" srcset="/img/loading.gif" lazyload alt="image-20211127193208516"></p>
+<h3 id="1-3-2-上述结构图代码"><a href="#1-3-2-上述结构图代码" class="headerlink" title="1.3.2 上述结构图代码"></a>1.3.2 上述结构图代码</h3><p>注意端口类型：</p>
+<p>port：<code>uvm_blocking_get_port</code></p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127195110198-163819180851530.png" srcset="/img/loading.gif" lazyload alt="image-20211127195110198"></p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127195005868-163819180851532.png" srcset="/img/loading.gif" lazyload alt="image-20211127195005868"></p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127194942991-163819180851634.png" srcset="/img/loading.gif" lazyload alt="image-20211127194942991"></p>
+<h3 id="1-3-3-示例得出的TLM通信常规步骤"><a href="#1-3-3-示例得出的TLM通信常规步骤" class="headerlink" title="1.3.3 示例得出的TLM通信常规步骤"></a>1.3.3 示例得出的TLM通信常规步骤</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127200002390.png" srcset="/img/loading.gif" lazyload alt="image-20211127200002390"></p>
+<h1 id="2-单向通信"><a href="#2-单向通信" class="headerlink" title="2 单向通信"></a>2 单向通信</h1><h2 id="2-1-概述"><a href="#2-1-概述" class="headerlink" title="2.1 概述"></a>2.1 概述</h2><h3 id="2-1-1-单向通信-unidirection-communication"><a href="#2-1-1-单向通信-unidirection-communication" class="headerlink" title="2.1.1 单向通信(unidirection communication)"></a>2.1.1 单向通信(unidirection communication)</h3><p>指的是从initiator到target之间的数据刘翔是单一方向的，也就是书initor与target只能扮演producer或consumer其中之一</p>
+<p>UVM中单一数据流向的TLM端口：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-comment">//put</span><br>uvm_blockong_put_PORT<br>uvm_nonblockong_put_PORT<br>uvm_put_PORT<br><span class="hljs-comment">//get</span><br>uvm_blockong_get_PORT<br>uvm_nonblockong_get_PORT<br>uvm_get_PORT<br><span class="hljs-comment">//peek</span><br>uvm_blockong_peek_PORT<br>uvm_nonblockong_peek_PORT<br>uvm_peek_PORT<br><span class="hljs-comment">//get_peek</span><br>uvm_blockong_get_peek_PORT<br>uvm_nonblockong_get_peek_PORT<br>uvm_get_peek_PORT<br></code></pre></div></td></tr></table></figure>
+<h3 id="2-1-2-类型与表（非常重要）"><a href="#2-1-2-类型与表（非常重要）" class="headerlink" title="2.1.2 类型与表（非常重要）"></a>2.1.2 类型与表（非常重要）</h3><p>PORT代表三种端口名：port、export和imp，例如：</p>
+<ul>
+<li><code>uvm_blocking_put_PORT</code></li>
+<li><code>uvm_blocking_put_EXPORT</code></li>
+<li><code>uvm_blocking_put_IMP</code></li>
+</ul>
+<p>按照UVM端口命名规则，它们指出了通信的两个要素：</p>
+<ul>
+<li>是否是阻塞方式（block/nonblock）</li>
+<li>何种通信方法（put/get/peek/get_peek）</li>
+</ul>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127202106862-163819180851638.png" srcset="/img/loading.gif" lazyload alt="image-20211127202106862"></p>
+<p>例如：</p>
+<ul>
+<li><p>看到<code>uvm_blocking_put_PORT</code></p>
+<ul>
+<li>我们要在target实现<code>task put(T t)</code>这一个方法</li>
+</ul>
+</li>
+<li><p>看到<code>uvm_nonblocking_put_PORT</code></p>
+<ul>
+<li>我们要在target实现实现 <code>function bit try_put(T t)</code>，<code>function bit can_put()</code></li>
+</ul>
+</li>
+<li>看到<code>uvm_put_PORT</code><ul>
+<li>我们要在target实现上述三个方法</li>
+</ul>
+</li>
+</ul>
+<p>关于put，get，peek，get_peek：</p>
+<ul>
+<li>put：initiator—&gt;target</li>
+<li>get：target—&gt;initiator</li>
+<li>peek：与get方向一样，但没有把target_buf内数据移除</li>
+</ul>
+<h3 id="2-1-3-方法"><a href="#2-1-3-方法" class="headerlink" title="2.1.3 方法"></a>2.1.3 方法</h3><p>阻塞的是任务，非阻塞的是函数（函数有返回值）</p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127203157709-163819180851740.png" srcset="/img/loading.gif" lazyload alt="image-20211127203157709"></p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127203247382-163819180851742.png" srcset="/img/loading.gif" lazyload alt="image-20211127203247382"></p>
+<h2 id="2-2-代码示例"><a href="#2-2-代码示例" class="headerlink" title="2.2 代码示例"></a>2.2 代码示例</h2><p>数据传输结构图：</p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127203326914-163819180851844.png" srcset="/img/loading.gif" lazyload alt="image-20211127203326914"></p>
+<hr>
+<p>代码：</p>
+<p><strong>数据类型、组件一：</strong></p>
+<p>传输的数据类型一定写的明明白白</p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127204455138-163819180851846.png" srcset="/img/loading.gif" lazyload alt="image-20211127204455138"></p>
+<hr>
+<p><strong>组件1在run_phase是怎么做的呢</strong></p>
+<p>线程1：</p>
+<ul>
+<li>通过bp_port.put发送出去<ul>
+<li>port没有实现任何方法，这个方法不是port提供的，而是连接到的imp的组件2提供的</li>
+</ul>
+</li>
+<li>更好的隔离性：完全看不到组件2，组件2的句柄，组件2的方法，完全不知道trans要发送到哪里；只知道要调用我的put方法</li>
+</ul>
+<p>线程2：</p>
+<ul>
+<li>try_get进行forever轮询</li>
+</ul>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127204113119-163819180851848.png" srcset="/img/loading.gif" lazyload alt="image-20211127204113119"></p>
+<hr>
+<p><strong>组件2：</strong></p>
+<p>为什么要多传递所例化在的类型？</p>
+<ul>
+<li>这样才能在port找到imp端口后，再通过imp找到组件二的方法</li>
+</ul>
+<p>省略号省略例化</p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127204821405-163819180851950.png" srcset="/img/loading.gif" lazyload alt="image-20211127204821405"></p>
+<hr>
+<p><strong>组件二方法定义续，端口连接</strong></p>
+<ul>
+<li>对c1,c2例化</li>
+<li>对c1,c2连接<ul>
+<li>从initor_port连接到target_imp</li>
+</ul>
+</li>
+</ul>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127205350698-163819180851954.png" srcset="/img/loading.gif" lazyload alt="image-20211127205350698"></p>
+<hr>
+<p><strong>示例代码总结</strong></p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127205728745-163819180851952.png" srcset="/img/loading.gif" lazyload alt="image-20211127205728745"></p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211127205412314-163819180852056.png" srcset="/img/loading.gif" lazyload alt="image-20211127205412314"></p>
+<h2 id="2-3-调用端口方法之前的几个步骤是必不可少的"><a href="#2-3-调用端口方法之前的几个步骤是必不可少的" class="headerlink" title="2.3 调用端口方法之前的几个步骤是必不可少的"></a>2.3 调用端口方法之前的几个步骤是必不可少的</h2><ul>
+<li>定义端口</li>
+<li>实现对应方法啊</li>
+<li>在上层将端口进行连接</li>
+</ul>
+<h1 id="3-双向通信"><a href="#3-双向通信" class="headerlink" title="3 双向通信"></a>3 双向通信</h1><h2 id="3-1-概述"><a href="#3-1-概述" class="headerlink" title="3.1 概述"></a>3.1 概述</h2><h3 id="3-1-1-双向通信-bidirectional-communication"><a href="#3-1-1-双向通信-bidirectional-communication" class="headerlink" title="3.1.1 双向通信(bidirectional communication)"></a>3.1.1 双向通信(bidirectional communication)</h3><p>应用场景较少，目前大多数是单向通信</p>
+<p>与单向通信相同的是，双向通信(bidirectional communication)的两端也分为initiator与target</p>
+<p>但数据流向在端对端之间是双向的，两端同时扮演者着producer与consumer的角色，而initiator作为request发起方在发起request之后还会等待response返回</p>
+<p>UVM双向端口分为以下类型：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-comment">//transport</span><br>uvm_blockong_transport_PORT<br>uvm_nonblockong_transport_PORT<br>uvm_transport_PORT<br><span class="hljs-comment">//master</span><br>uvm_blockong_master_PORT<br>uvm_nonblockong_master_PORT<br>uvm_master_PORT<br><span class="hljs-comment">//slave</span><br>uvm_blockong_slave_PORT<br>uvm_nonblockong_slave_PORT<br>uvm_slave_PORT<br></code></pre></div></td></tr></table></figure>
+<h3 id="3-1-2-类型与表"><a href="#3-1-2-类型与表" class="headerlink" title="3.1.2 类型与表"></a>3.1.2 类型与表</h3><ul>
+<li>transport双向通信<ul>
+<li>调用task transport/nb_transport 使得在一次传输中同时完成req与rsp的返回</li>
+</ul>
+</li>
+<li>master/slave成对双向通信<ul>
+<li>至少要调用两次对应的方法</li>
+</ul>
+</li>
+</ul>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211128122449307-163819180852058.png" srcset="/img/loading.gif" lazyload alt="image-20211128122449307"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211128122841747.png" srcset="/img/loading.gif" lazyload alt="image-20211128122841747"></p>
+<h2 id="3-2-代码示例"><a href="#3-2-代码示例" class="headerlink" title="3.2 代码示例"></a>3.2 代码示例</h2><p>数据传输结构图：</p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211128122924921-163819180852162.png" srcset="/img/loading.gif" lazyload alt="image-20211128122924921"></p>
+<p><strong>transport双向通信方式，因为它明显区分于之前的单向通信方式</strong></p>
+<hr>
+<p>代码：</p>
+<p>组件一：</p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211128122953437-163819180852164.png" srcset="/img/loading.gif" lazyload alt="image-20211128122953437"></p>
+<p>组件二：</p>
+<ul>
+<li><p>下二语句内类型严格一致：</p>
+<ul>
+<li><p>uvm_blocking_transport_imp #（类型）</p>
+</li>
+<li><p>task transport(类型)</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211128124144451-163819180852166.png" srcset="/img/loading.gif" lazyload alt="image-20211128124144451"></p>
+<p>env例化：</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211128124351358.png" srcset="/img/loading.gif" lazyload alt="image-20211128124351358"></p>
+<p>输出结果：</p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211128124421630-163819180852270.png" srcset="/img/loading.gif" lazyload alt="image-20211128124421630"></p>
+<h1 id="4-多向通信"><a href="#4-多向通信" class="headerlink" title="4 多向通信"></a>4 多向通信</h1><h2 id="4-1-概述"><a href="#4-1-概述" class="headerlink" title="4.1 概述"></a>4.1 概述</h2><h3 id="4-1-1-多向通信-multi-directional-communication"><a href="#4-1-1-多向通信-multi-directional-communication" class="headerlink" title="4.1.1 多向通信(multi-directional communication)"></a>4.1.1 多向通信(multi-directional communication)</h3><p>仍然是两个组件的通信，但是两个组件的通信由多个端口完成</p>
+<p>数据传输结构图：</p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211128125224093-163819180852272.png" srcset="/img/loading.gif" lazyload alt="image-20211128125224093"></p>
+<p>具体内容：</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211128124518033-16381062899701.png" srcset="/img/loading.gif" lazyload alt="image-20211128124518033"></p>
+<p>多向通信解决的问题：</p>
+<ul>
+<li><p>comp2中需要实现两个put造成的命名冲突</p>
+</li>
+<li><p>同时降低了耦合性</p>
+</li>
+</ul>
+<h3 id="4-1-2-解决方案与命名方式"><a href="#4-1-2-解决方案与命名方式" class="headerlink" title="4.1.2 解决方案与命名方式"></a>4.1.2 解决方案与命名方式</h3><p>UVM通过<strong>端口宏</strong>声明端口来解决</p>
+<p>它解决问题的核心在于<strong>让不同端口对应不同名的任务</strong></p>
+<ul>
+<li>也就是让方法名不一样</li>
+</ul>
+<p>UVM 为解决多向通信问题的宏按照端口名的命名方式分为：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-comment">//put</span><br><span class="hljs-meta">`uvm_blockong_put_imp_decl(SFX)</span><br><span class="hljs-meta">`uvm_nonblockong_put_imp_decl(SFX)</span><br><span class="hljs-meta">`uvm_put_imp_decl(SFX)</span><br><span class="hljs-comment">//get</span><br><span class="hljs-meta">`uvm_blockong_get_imp_decl(SFX)</span><br><span class="hljs-meta">`uvm_nonblockong_get_imp_decl(SFX)</span><br><span class="hljs-meta">`uvm_get_imp_decl(SFX)</span><br><span class="hljs-comment">//peek</span><br><span class="hljs-meta">`uvm_blockong_peek_imp_decl(SFX)</span><br><span class="hljs-meta">`uvm_nonblockong_peek_imp_decl(SFX)</span><br><span class="hljs-meta">`uvm_peek_imp_decl(SFX)</span><br><span class="hljs-comment">//get_peek</span><br><span class="hljs-meta">`uvm_blockong_get_peek_imp_decl(SFX)</span><br><span class="hljs-meta">`uvm_nonblockong_get_peek_imp_decl(SFX)</span><br><span class="hljs-meta">`uvm_get_peek_imp_decl(SFX)</span><br><span class="hljs-comment">//transport</span><br><span class="hljs-meta">`uvm_blockong_transport_imp_decl(SFX)</span><br><span class="hljs-meta">`uvm_nonblockong_transport_imp_decl(SFX)</span><br><span class="hljs-meta">`uvm_transport_imp_decl(SFX)</span><br><span class="hljs-comment">//master</span><br><span class="hljs-meta">`uvm_blockong_master_imp_decl(SFX)</span><br><span class="hljs-meta">`uvm_nonblockong_master_imp_decl(SFX)</span><br><span class="hljs-meta">`uvm_master_imp_decl(SFX)</span><br><span class="hljs-comment">//slave</span><br><span class="hljs-meta">`uvm_blockong_slave_imp_decl(SFX)</span><br><span class="hljs-meta">`uvm_nonblockong_slave_imp_decl(SFX)</span><br><span class="hljs-meta">`uvm_slave_PORT</span><br></code></pre></div></td></tr></table></figure>
+<p>上述宏名称解释：</p>
+<ul>
+<li>decl：表明要声明一个新的端口</li>
+<li>SFX：独一无二的名称</li>
+</ul>
+<h2 id="4-2-代码示例"><a href="#4-2-代码示例" class="headerlink" title="4.2 代码示例"></a>4.2 代码示例</h2><p>数据传输结构图：</p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211128125224093-163819180852272.png" srcset="/img/loading.gif" lazyload alt="image-20211128125224093"></p>
+<hr>
+<p>代码：</p>
+<p><strong>宏声明与组件一</strong></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211128221446172.png" srcset="/img/loading.gif" lazyload alt="image-20211128221446172"></p>
+<p><strong>组件二</strong></p>
+<ul>
+<li>方法实现</li>
+<li>push到buf里<ul>
+<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211128221811119.png" srcset="/img/loading.gif" lazyload alt="image-20211128221811119"></li>
+</ul>
+</li>
+<li>旗语锁定buf</li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211128221758250.png" srcset="/img/loading.gif" lazyload alt="image-20211128221758250"></p>
+<p><strong>env（顶层）做连接</strong></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211128214115156.png" srcset="/img/loading.gif" lazyload alt="image-20211128214115156"></p>
+<h3 id="4-3-总结"><a href="#4-3-总结" class="headerlink" title="4.3 总结"></a>4.3 总结</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211128221858109.png" srcset="/img/loading.gif" lazyload alt="image-20211128221858109"></p>
+<hr>
+<p>与这种端口区别开，这种直接单向通信就可以</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211128222125651.png" srcset="/img/loading.gif" lazyload alt="image-20211128222125651"></p>
+<h1 id="5-通信管道"><a href="#5-通信管道" class="headerlink" title="5 通信管道"></a>5 通信管道</h1><h2 id="5-1-问题及相关TLM组件和端口"><a href="#5-1-问题及相关TLM组件和端口" class="headerlink" title="5.1 问题及相关TLM组件和端口"></a>5.1 问题及相关TLM组件和端口</h2><p>TLM通信的实现方式都是端到端的，即target实现传输方法</p>
+<ul>
+<li><p>如何可以自己不是现这些传输方法同时使用到TLM呢</p>
+</li>
+<li><p>对于monitor、coverage collector等组件存在一端到多端的传输如何解决</p>
+</li>
+</ul>
+<p>几个TLM组件和端口可以解决：</p>
+<ul>
+<li>TLM FIFO</li>
+<li>analysis port</li>
+<li>analysis TLM FIFO</li>
+<li>request &amp; response 通信管道</li>
+</ul>
+<h2 id="5-2-TLM-FIFO组件"><a href="#5-2-TLM-FIFO组件" class="headerlink" title="5.2 TLM_FIFO组件"></a>5.2 TLM_FIFO组件</h2><h3 id="5-2-1-概述：TLM-FIFO是一个组件"><a href="#5-2-1-概述：TLM-FIFO是一个组件" class="headerlink" title="5.2.1 概述：TLM_FIFO是一个组件"></a>5.2.1 概述：TLM_FIFO是一个组件</h3><p>put方法一般就是往FIFO里面送数据，我们使用UVM组件进行简单化就不用我们自己实现了</p>
+<hr>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog">TLM　FIFO uvm_tlm_fifo<br></code></pre></div></td></tr></table></figure>
+<p>TLM_FIFO是一个组件，继承于uvm_component，预先<strong>内置多个端口</strong>以及<strong>实现了多个对应方法</strong>供用户使用</p>
+<ul>
+<li><p>为什么是组件？</p>
+<ul>
+<li>因为只有组件才可以例化端口</li>
+</ul>
+</li>
+<li><p>因此transaction不能例化该端口（组件），因为obj不是继承于comp</p>
+</li>
+</ul>
+<p>uvm_tlm_fifo功能类似于mailbox，只不过提供了各种端口使用</p>
+<p>我们推荐在initiator例化put_port，或者get_peek_port来匹配uvm_tlm_fifo的端口类型。当然如果用户例化了其它类型的端口，uvm_tlm_fifo还提供了put、get、peek对应端口</p>
+<hr>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211128222642907.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<hr>
+<p>uvm_tlm_fifo结构图：</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211128222656394.png" srcset="/img/loading.gif" lazyload alt="image-20211128222656394"></p>
+<h3 id="5-2-2-TLM-FIFO-具有的端口"><a href="#5-2-2-TLM-FIFO-具有的端口" class="headerlink" title="5.2.2 TLM_FIFO 具有的端口"></a>5.2.2 TLM_FIFO 具有的端口</h3><p>uvm_tlm_fifo功能类似于mailbox，只不过提供了各种端口使用</p>
+<p>我们推荐在initiator例化put_port，或者get_peek_port来匹配uvm_tlm_fifo的端口类型。当然如果用户例化了其它类型的端口，uvm_tlm_fifo还提供了put、get、peek对应端口：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-comment">//put</span><br>uvm_put_imp <span class="hljs-variable">#(T, this_type)</span> blockong_put_export<br>uvm_put_imp <span class="hljs-variable">#(T, this_type)</span> nonblockong_put_export<br><span class="hljs-comment">//get</span><br>uvm_get_peek_imp <span class="hljs-variable">#(T, this_type)</span> blockong_get_export<br>uvm_get_peek_imp <span class="hljs-variable">#(T, this_type)</span> nonblockong_get_export<br>uvm_get_peek_imp <span class="hljs-variable">#(T, this_type)</span> get_export<br><span class="hljs-comment">//peek</span><br>uvm_get_peek_imp <span class="hljs-variable">#(T, this_type)</span> blockong_peek_export<br>uvm_get_peek_imp <span class="hljs-variable">#(T, this_type)</span> nonblockong_peek_export<br>uvm_get_peek_imp <span class="hljs-variable">#(T, this_type)</span> peek_export<br><span class="hljs-comment">//get_peek</span><br>uvm_get_peek_imp <span class="hljs-variable">#(T, this_type)</span> blockong_get_peek_export<br>uvm_get_peek_imp <span class="hljs-variable">#(T, this_type)</span> nonblockong_get_peek_export<br>uvm_get_peek_imp <span class="hljs-variable">#(T, this_type)</span> get_peek_export<br></code></pre></div></td></tr></table></figure>
+<ul>
+<li>_export：实际上都是实现的方法</li>
+</ul>
+<h2 id="5-3-Analysis-Port"><a href="#5-3-Analysis-Port" class="headerlink" title="5.3 Analysis Port"></a>5.3 Analysis Port</h2><p>本节内容唯一一个一端到多端的组件，利用到观察者模式/广播模式实现</p>
+<hr>
+<p>observer patten的核心：</p>
+<ul>
+<li>从一个initiator到多个target端</li>
+<li>analysis port采取push模式，即从initiator端调用多个target端的<strong>write</strong>函数实现传输</li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211129102446101.png" srcset="/img/loading.gif" lazyload alt="image-20211129102446101"></p>
+<p>Analysis Port连接结构图：</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211129102358636.png" srcset="/img/loading.gif" lazyload alt="image-20211129102358636"></p>
+<ul>
+<li>我只管把消息发送出来</li>
+</ul>
+<h3 id="5-3-2-连接思路"><a href="#5-3-2-连接思路" class="headerlink" title="5.3.2 连接思路"></a>5.3.2 连接思路</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211129102358636.png" srcset="/img/loading.gif" lazyload alt="image-20211129102358636"></p>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog">initiator<span class="hljs-variable">.ap</span><span class="hljs-variable">.connect</span>(target1<span class="hljs-variable">.amp</span>);<br>initiator<span class="hljs-variable">.ap</span><span class="hljs-variable">.connect</span>(target2<span class="hljs-variable">.amp</span>);<br>initiator<span class="hljs-variable">.ap</span><span class="hljs-variable">.connect</span>(target3<span class="hljs-variable">.amp</span>);<br></code></pre></div></td></tr></table></figure>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211129103636616.png" srcset="/img/loading.gif" lazyload alt="image-20211129103636616"></p>
+<h2 id="5-3-Analysis-TLM-FIFO"><a href="#5-3-Analysis-TLM-FIFO" class="headerlink" title="5.3 Analysis TLM FIFO"></a>5.3 Analysis TLM FIFO</h2><h3 id="5-3-1-uvm-tlm-analysis-fifo"><a href="#5-3-1-uvm-tlm-analysis-fifo" class="headerlink" title="5.3.1 uvm_tlm_analysis_fifo"></a>5.3.1 uvm_tlm_analysis_fifo</h3><p>Analysis TLM FIFO就是Analysis Port中间加一个fifo的一种结构封装为的类</p>
+<ul>
+<li>第一部分是端到端</li>
+<li>第二部分是单向传递的port</li>
+</ul>
+<p>uvm_tlm_analysis_fifo类继承于uvm_tlm_fifo类，再此基础上添加了uvm_analysis_imp端口</p>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog">uvm_analysis_imp <span class="hljs-variable">#(T,uvm_tlm_analysis_fifo #(T))</span> analysis_export<br></code></pre></div></td></tr></table></figure>
+<ul>
+<li>端口名称就叫analysis_export</li>
+<li>FIFO参数类为T</li>
+</ul>
+<p>Analysis TLM FIFO连接结构图：</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211129103747402.png" srcset="/img/loading.gif" lazyload alt="image-20211129103747402"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211129104134652.png" srcset="/img/loading.gif" lazyload alt="image-20211129104134652"></p>
+<h3 id="5-3-2-连接思路-1"><a href="#5-3-2-连接思路-1" class="headerlink" title="5.3.2 连接思路"></a>5.3.2 连接思路</h3><p>两部分连接：</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211129104816121.png" srcset="/img/loading.gif" lazyload alt="image-20211129104816121"></p>
+<hr>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211129104259780.png" srcset="/img/loading.gif" lazyload alt="image-20211129104259780"></p>
+<ul>
+<li>ap</li>
+<li>fifo1~3</li>
+<li>target1~3</li>
+</ul>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog">initiator<span class="hljs-variable">.ap</span><span class="hljs-variable">.connect</span>(tlm_analysis_fifo1<span class="hljs-variable">.analysis_export</span>);<br>target1<span class="hljs-variable">.get_port</span><span class="hljs-variable">.connect</span>(tlm_analysis_fifo1<span class="hljs-variable">.get_export</span>);<br><br>initiator<span class="hljs-variable">.ap</span><span class="hljs-variable">.connect</span>(tlm_analysis_fifo2<span class="hljs-variable">.analysis_export</span>);<br>target2<span class="hljs-variable">.get_port</span><span class="hljs-variable">.connect</span>(tlm_analysis_fifo2<span class="hljs-variable">.get_export</span>);<br><br>initiator<span class="hljs-variable">.ap</span><span class="hljs-variable">.connect</span>(tlm_analysis_fifo3<span class="hljs-variable">.analysis_export</span>);<br>target3<span class="hljs-variable">.get_port</span><span class="hljs-variable">.connect</span>(tlm_analysis_fifo3<span class="hljs-variable">.get_export</span>);<br></code></pre></div></td></tr></table></figure>
+<h2 id="5-4-Request-amp-Response管道"><a href="#5-4-Request-amp-Response管道" class="headerlink" title="5.4 Request&amp;Response管道"></a>5.4 Request&amp;Response管道</h2><h3 id="5-4-1-概述"><a href="#5-4-1-概述" class="headerlink" title="5.4.1 概述"></a>5.4.1 概述</h3><ul>
+<li>单端（单向通信）：<ul>
+<li>TLM FIFO、analysis port、analysis TLM FIFO</li>
+</ul>
+</li>
+<li>双向通信，匹配双向通信的FIFO：<ul>
+<li>request &amp; response 通信管道</li>
+</ul>
+</li>
+</ul>
+<p>双向通信端口名：transport</p>
+<p>需要在target实现transport()方法完成一次传输既发送req又接受rsp</p>
+<p>UVM提供两种简便的通信管道作为数据缓冲区，<strong>既有TLM端口从外侧接收req和rsp</strong>，同时也有TLM端口供外侧获取req和rsp，这两种TLM通信管道分别是：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog">uvm_tlm_req_rsp_channel<br>uvm_tlm_transport_channel<br></code></pre></div></td></tr></table></figure>
+<h3 id="5-4-2-端口"><a href="#5-4-2-端口" class="headerlink" title="5.4.2 端口"></a>5.4.2 端口</h3><p>对uvm_tlm_req_rsp_channel而言，提供端口是单一方向的，为简洁只列出该类例化的端口：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog">uvm_put_export <span class="hljs-variable">#(REQ)</span> put_request_export;<br>uvm_put_export <span class="hljs-variable">#(RSP)</span> put_response_export;<br><br>uvm_get_peek_export <span class="hljs-variable">#(REQ)</span> get_peek_response_export;<br>uvm_put_peek_export <span class="hljs-variable">#(RSP)</span> get_peek_request_export;<br><br>uvm_analysis_port <span class="hljs-variable">#(REQ)</span> request_ap;<br>uvm_analysis_port <span class="hljs-variable">#(RSP)</span> response_ap;<br><br>uvm_master_imp <span class="hljs-variable">#(REQ, RSP, this_type, uvm_tlm_fifo #(REQ), uvm_tlm_fifo #(RSP))</span> master_export<br>uvm_slave_imp <span class="hljs-variable">#(REQ, RSP, this_type, uvm_tlm_fifo #(REQ), uvm_tlm_fifo #(RSP))</span> slave_export<br></code></pre></div></td></tr></table></figure>
+<p>例化这么多端口，使用户可以在使用成对的端口进行数据的存储和访问</p>
+<h3 id="5-4-3-示例结构一"><a href="#5-4-3-示例结构一" class="headerlink" title="5.4.3 示例结构一"></a>5.4.3 示例结构一</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211129112631868.png" srcset="/img/loading.gif" lazyload alt="image-20211129112631868"></p>
+<hr>
+<p>uvm_tlm_req_rsp_channel内部例化了两个mailbox分别用来存储req和rsp</p>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">protected</span> uvm_tlm_fifo <span class="hljs-variable">#(REQ)</span> m_request_fifo;<br><span class="hljs-keyword">protected</span> uvm_tlm_fifo <span class="hljs-variable">#(RSP)</span> m_response_fifo;<br></code></pre></div></td></tr></table></figure>
+<p>例如initiator端可以连接channel的put_request_export, target连接channel的get_peek_request_export,同时target连接channel的put_response_export, initiator连接channel的 get_peek_response_export端口</p>
+<hr>
+<p>target不需要再实现对应的put,get,peek，对应的端口连接代码：</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211129112735235-16381564560181.png" srcset="/img/loading.gif" lazyload alt="image-20211129112735235"></p>
+<h3 id="5-4-4-示例结构二：利用一个端口实现双向通信（master-amp-slave）"><a href="#5-4-4-示例结构二：利用一个端口实现双向通信（master-amp-slave）" class="headerlink" title="5.4.4 示例结构二：利用一个端口实现双向通信（master&amp;slave）"></a>5.4.4 示例结构二：利用一个端口实现双向通信（master&amp;slave）</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211129113506603.png" srcset="/img/loading.gif" lazyload alt="image-20211129113506603"></p>
+<hr>
+<p>•也可以利用另外一种连接方式：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog">initiator<span class="hljs-variable">.master_port</span><span class="hljs-variable">.connect</span>(req_rsp_channel,master_export);<br>target<span class="hljs-variable">.slave_port</span><span class="hljs-variable">.connect</span>(req_rsp_channel<span class="hljs-variable">.slave_export</span>);<br></code></pre></div></td></tr></table></figure>
+<p>通过所述的这些方式，我们可以实现initiator与target之间自由的request和 response传输，而这两种连接方式仍然需要分别调用两次方法才可以完成 request 和 response 的传输。</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211129113521538.png" srcset="/img/loading.gif" lazyload alt="image-20211129113521538"></p>
+<hr>
+<p>过程：</p>
+<p>端口虽然减少了，调用的方法并没有减少</p>
+<ul>
+<li><p>put(rsp)-&gt;get(rsq)</p>
+</li>
+<li><p>get(rsp)&lt;-put(rsp)//target组件put时rr_channel才有数据</p>
+</li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211129113633263.png" srcset="/img/loading.gif" lazyload alt="image-20211129113633263"></p>
+<hr>
+<h3 id="5-4-5-uvm-tlm-transport-channel"><a href="#5-4-5-uvm-tlm-transport-channel" class="headerlink" title="5.4.5 uvm_tlm_transport_channel"></a>5.4.5 uvm_tlm_transport_channel</h3><p>在uvm_t[m_req_rsp_channel的基础上，UVM又添加了具备transport端口的管道组件uvm_tlm_transport_channel类</p>
+<p>它继承于 uvm_tlm_req_rsp_channel,并且新例化了transport端口：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog">uvm transport imp <span class="hljs-variable">#(REQ, RSP, this type)</span> transport_export<br></code></pre></div></td></tr></table></figure>
+<p>新添加的这个TLM FIFO组件类型是针对于一些无法流水化处理的 request和response传输，例如initiator一端要求每次发送完 request,必须等到response接收到以后才可以发送下一个request, 这时transport。方法就可以满足这一需求<br>如果将上面的传输方式进行修改，需要变化的是initiator端到 req_rsp_channel的连接，应该修改为：</p>
+ <figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog">initiator<span class="hljs-variable">.transport_port</span><span class="hljs-variable">.connect</span>(transport_channel<span class="hljs-variable">.transport_export</span>)<br></code></pre></div></td></tr></table></figure>
+<p>•至于transport_channel和target之间的连接，则可以仍然保留之 前的单向传输连接方式</p>
+<p>过程：</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211129113923124.png" srcset="/img/loading.gif" lazyload alt="image-20211129113923124"></p>
+<h1 id="6-TLM2-0通信（了解）"><a href="#6-TLM2-0通信（了解）" class="headerlink" title="6 TLM2.0通信（了解）"></a>6 TLM2.0通信（了解）</h1><h2 id="6-1-概述"><a href="#6-1-概述" class="headerlink" title="6.1 概述"></a>6.1 概述</h2><h3 id="6-1-1-由TLM1-0到TLM2-0"><a href="#6-1-1-由TLM1-0到TLM2-0" class="headerlink" title="6.1.1 由TLM1.0到TLM2.0"></a>6.1.1 由TLM1.0到TLM2.0</h3><ul>
+<li>TLM1.0用UVM各个组件之间连接</li>
+<li>TLM2.0用于与SystemC进行连接</li>
+</ul>
+<p>目前TLM开源包也是基于TLM2.0，且TLM2.0早于UVM成立的标准</p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129204050389.png" srcset="/img/loading.gif" lazyload alt="image-20211129204050389"></p>
+<h3 id="6-1-2-对比、主要内容"><a href="#6-1-2-对比、主要内容" class="headerlink" title="6.1.2 对比、主要内容"></a>6.1.2 对比、主要内容</h3><p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129204417791.png" srcset="/img/loading.gif" lazyload alt="image-20211129204417791"></p>
+<p><strong>什么时候用到</strong>TLM2.0，uvm与systemc做继承，把systemc作为reference model的时候</p>
+<ul>
+<li>因为systemc是纯设计模型，没有时间概念 </li>
+</ul>
+<p>纯验证环境中不需要TLM2.0</p>
+<h2 id="6-2-接口实现"><a href="#6-2-接口实现" class="headerlink" title="6.2 接口实现"></a>6.2 接口实现</h2><p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129205403805.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<hr>
+<h3 id="6-2-1-传输方法"><a href="#6-2-1-传输方法" class="headerlink" title="6.2.1 传输方法"></a>6.2.1 传输方法</h3><p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129205432385.png" srcset="/img/loading.gif" lazyload alt="image-20211129205432385"></p>
+<p>两种方法：</p>
+<ul>
+<li>_fw：forward拿过来一个req</li>
+<li>_bw：backward拿过来一个rsp</li>
+</ul>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129205521092.png" srcset="/img/loading.gif" lazyload alt="image-20211129205521092"></p>
+<h3 id="6-2-2-传输端口：端口类socket"><a href="#6-2-2-传输端口：端口类socket" class="headerlink" title="6.2.2 传输端口：端口类socket"></a>6.2.2 传输端口：端口类socket</h3><p>socket由port,export和imp组合而成</p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129205557115.png" srcset="/img/loading.gif" lazyload alt="image-20211129205557115"></p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129205653551.png" srcset="/img/loading.gif" lazyload alt="image-20211129205653551"></p>
+<h3 id="6-2-3-端口类socket继承于uvm-port-base"><a href="#6-2-3-端口类socket继承于uvm-port-base" class="headerlink" title="6.2.3 端口类socket继承于uvm_port_base"></a>6.2.3 端口类socket继承于uvm_port_base</h3><p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129205707575.png" srcset="/img/loading.gif" lazyload alt="image-20211129205707575"></p>
+<h2 id="6-3-传输数据"><a href="#6-3-传输数据" class="headerlink" title="6.3 传输数据"></a>6.3 传输数据</h2><h3 id="6-3-1-传输数据类型uvm-tlm-generic-payload"><a href="#6-3-1-传输数据类型uvm-tlm-generic-payload" class="headerlink" title="6.3.1 传输数据类型uvm_tlm_generic_payload"></a>6.3.1 传输数据类型uvm_tlm_generic_payload</h3><p>严格使用uvm_tlm_generic_payload类进行数据传输</p>
+<p>这样才能与systemc无缝连接</p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129205747604-16381906688471.png" srcset="/img/loading.gif" lazyload alt="image-20211129205747604"></p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129205825619.png" srcset="/img/loading.gif" lazyload alt="image-20211129205825619"></p>
+<h3 id="6-3-2-uvm-tlm-generic-payload内部变量"><a href="#6-3-2-uvm-tlm-generic-payload内部变量" class="headerlink" title="6.3.2 uvm_tlm_generic_payload内部变量"></a>6.3.2 uvm_tlm_generic_payload内部变量</h3><p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129205855177.png" srcset="/img/loading.gif" lazyload alt="image-20211129205855177"></p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129205938411.png" srcset="/img/loading.gif" lazyload alt="image-20211129205938411"></p>
+<h3 id="6-3-3-其他数据类型：两种解决方法"><a href="#6-3-3-其他数据类型：两种解决方法" class="headerlink" title="6.3.3 其他数据类型：两种解决方法"></a>6.3.3 其他数据类型：两种解决方法</h3><p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129210001509.png" srcset="/img/loading.gif" lazyload alt="image-20211129210001509"></p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129210352251.png" srcset="/img/loading.gif" lazyload alt="image-20211129210352251"></p>
+<h2 id="6-4-时间标记"><a href="#6-4-时间标记" class="headerlink" title="6.4 时间标记"></a>6.4 时间标记</h2><h3 id="6-4-1-uvm-tlm-tim"><a href="#6-4-1-uvm-tlm-tim" class="headerlink" title="6.4.1 uvm_tlm_tim"></a>6.4.1 uvm_tlm_tim</h3><p>原则上systemc可以自己创建一些时钟，当我们很少这样做，因为会大幅度降低仿真效率</p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129210411249.png" srcset="/img/loading.gif" lazyload alt="image-20211129210411249"></p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129210541718.png" srcset="/img/loading.gif" lazyload alt="image-20211129210541718"></p>
+<h2 id="6-5-通信代码示例"><a href="#6-5-通信代码示例" class="headerlink" title="6.5 通信代码示例"></a>6.5 通信代码示例</h2><p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129210558006.png" srcset="/img/loading.gif" lazyload alt="image-20211129210558006"></p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129210851775.png" srcset="/img/loading.gif" lazyload alt="image-20211129210851775"></p>
+<ul>
+<li>数据类型固定所以不需要再指定数据传输类型</li>
+<li>自始至终rsq与rsp都是一个对象</li>
+</ul>
+<p>顶层代码：</p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129211419275.png" srcset="/img/loading.gif" lazyload alt="image-20211129211419275"></p>
+<h2 id="6-6-通信代码示例（有标注版）"><a href="#6-6-通信代码示例（有标注版）" class="headerlink" title="6.6 通信代码示例（有标注版）"></a>6.6 通信代码示例（有标注版）</h2><p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129210811424.png" srcset="/img/loading.gif" lazyload alt="image-20211129210811424"></p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129211211453.png" srcset="/img/loading.gif" lazyload alt="image-20211129211211453"></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/">IC</a>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/uvm%E5%AD%A6%E4%B9%A0/">uvm学习</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/IC/">IC</a>
+                    
+                      <a class="hover-with-bg" href="/tags/uvm%E5%AD%A6%E4%B9%A0/">uvm学习</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/202111292035/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B66%EF%BC%9A%E5%90%8C%E6%AD%A5%E9%80%9A%E4%BF%A1%E5%85%83%E4%BB%B6/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">UVM入门进阶6：同步通信元件（解决组件同步与进程同步）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/202111242221/IC/sv%E5%AD%A6%E4%B9%A0/%E5%AE%9E%E9%AA%8Cessay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E7%BB%83%E4%B9%A0%E9%80%89%E4%BF%AE/">
+                        <span class="hidden-mobile">SV练习选修</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'preferred-color-scheme';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'GreensCH/commitutterances');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <span> | </span> <a href="https://weibo.com/u/7453939976" target="_blank" rel="nofollow noopener"> Green Weibo</a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?eca4a4d34dadf0d4e282cc6ef2dc3de6";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<!-- hexo injector body_end start --><script src="/js/backgroundize.js"></script>
+  <link defer rel="stylesheet" href="/css/backgroundize.css" />
+  <!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"superSample":1,"position":"right","width":250,"height":500,"vOffset":-100},"mobile":{"show":false},"dialog":{"enable":false,"hitokoto":true,"width":10,"height":10,"vOffset":-100},"log":false});</script></body>
+</html>

@@ -1,0 +1,707 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/con1.png">
+  <link rel="icon" href="/img/con1.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="方案背景microblaze上跑linux的方案，包括如何启动和固化">
+  <meta name="author" content="友人律 | Guilin Chang">
+  <meta name="keywords" content="三差学生、不学无术">
+  <meta name="description" content="方案背景microblaze上跑linux的方案，包括如何启动和固化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="microblaze运行linux方案探索">
+<meta property="og:url" content="http://yoursite.com/202109131145/%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1essay/projects/1/index.html">
+<meta property="og:site_name" content="友人律的博客">
+<meta property="og:description" content="方案背景microblaze上跑linux的方案，包括如何启动和固化">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210912195221.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210912221635.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210913101354.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210913101955.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210913105356.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210913105918.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210913112526.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210913110611.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210912221254.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210913111726.png">
+<meta property="article:published_time" content="2021-09-13T03:45:37.000Z">
+<meta property="article:modified_time" content="2022-01-24T13:59:36.651Z">
+<meta property="article:author" content="友人律 | Guilin Chang">
+<meta property="article:tag" content="项目与设计">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210912195221.png">
+  
+  <title>microblaze运行linux方案探索 - 友人律的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/stackoverflow-dark.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"eca4a4d34dadf0d4e282cc6ef2dc3de6","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body><!-- hexo injector body_begin start --><div id="web_bg"></div><!-- hexo injector body_begin end -->
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>友人律的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E9%80%9A%E7%9F%A5/">
+                <i class="iconfont icon-link-fill"></i>
+                通知
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1/">
+                <i class="iconfont icon-link-fill"></i>
+                项目与设计
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">
+                <i class="iconfont icon-link-fill"></i>
+                开发工具
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/CS/">
+                <i class="iconfont icon-link-fill"></i>
+                CS
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/IC/">
+                <i class="iconfont icon-link-fill"></i>
+                IC
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://note.youdao.com/yws/api/personal/file/FDCD397DDBAF4A06B8925394CCE654F7?method=download&shareKey=466c9494a628c54696edbf7f0f62e6f1') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="microblaze运行linux方案探索">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-09-13 11:45" pubdate>
+        2021年9月13日 中午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.1k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      6 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">microblaze运行linux方案探索</h1>
+            
+            <div class="markdown-body">
+              <h2 id="方案背景"><a href="#方案背景" class="headerlink" title="方案背景"></a>方案背景</h2><p>microblaze上跑linux的方案，包括如何启动和固化<br> <span id="more"></span></p>
+<h2 id="解决方案-1"><a href="#解决方案-1" class="headerlink" title="解决方案(1)"></a>解决方案(1)</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210912195221.png" srcset="/img/loading.gif" lazyload/></p>
+<h3 id="1-相关技术"><a href="#1-相关技术" class="headerlink" title="1 相关技术"></a>1 相关技术</h3><h4 id="1-1-microblaze运行linux可行性"><a href="#1-1-microblaze运行linux可行性" class="headerlink" title="1.1 microblaze运行linux可行性"></a>1.1 microblaze运行linux可行性</h4><ol>
+<li>主要开发文档<br><a target="_blank" rel="noopener" href="https://china.xilinx.com/content/dam/xilinx/support/documentation/sw_manuals/xilinx2019_1/c_ug1144-petalinux-tools-reference-guide.pdf">ug1144</a></li>
+</ol>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210912221635.png" srcset="/img/loading.gif" lazyload/></p>
+<ol>
+<li>microblaze官方wiki</li>
+</ol>
+<p>介绍mmu,处理器结构,microblaze with linux</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210913101354.png" srcset="/img/loading.gif" lazyload/></p>
+<p><a target="_blank" rel="noopener" href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842560/MicroBlaze">原文链接</a></p>
+<ol>
+<li>4种启动方案与一种实现案例(博客)</li>
+</ol>
+<p><span id="MicroBlaze处理器的PetaLinux操作系统移植"></p>
+<p><a target="_blank" rel="noopener" href="http://www.eepw.com.cn/article/191233.htm">MicroBlaze处理器的PetaLinux操作系统移植：</a>PetaLinux有4种启动方案：XMD下载启动、TFTP网络下载启动、Flash启动和SysACE CF卡启动。其中，XMD和TFTP网络下载启动方案，在每次系统上电后都必须重新下载，适用于系统调试；Flash启动方案在系统上电后自动从Flash中读取配置文件，但Flash烧写速度较慢，更改系统配置较为不便。因此，本系统选用SysACECF卡启动方案..</p>
+<ol>
+<li>mircoblaze的vivado搭建官方指南</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://www.xilinx.com/support/documentation-navigation/design-hubs/dh0020-microblaze-hub.html">相关文档大全</a><br><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210913101955.png" srcset="/img/loading.gif" lazyload/></p>
+<p>《ug940》</p>
+<h4 id="1-2固化bitstream文件"><a href="#1-2固化bitstream文件" class="headerlink" title="1.2固化bitstream文件?"></a>1.2固化bitstream文件?</h4><p>1.传统方法对Bitstream进行flash固化</p>
+<p>需要说明的是，下载完比特流后，如果开发板断电，程序会丢失。如果想要程序断电不丢失的话，需要将程序固化至开发板中，这个需要在嵌入式 SDK 软件中完成， ZYNQ 芯片无法单独固化比特流文件(PL的配置文件)。这是由于 ZYNQ 非易失性存储器的引脚(如 SD 卡、QSPI Flash)是 ZYNQ PS 部分的专用引脚， 这些非易失性存储器由 PS 的 ARM 处理器进行驱动，需要将bit流文件和elf文件（软件程序的下载文件） 合成一个 BOOT.BIN，才能进行固化， 因此需要学习 ZYNQ 嵌入式 SDK 的开发流程。</p>
+<ol>
+<li><strong>尚不明确micrblaze软核是先进行固化后在完成镜像移植启动，还是在镜像移植</strong></li>
+</ol>
+<!--2.如果要实现Linux系统，是需要进行petalinux移植时固化？-->
+<!--[参考文章：](#MicroBlaze处理器的PetaLinux操作系统移植)-->
+<!--PetaLinux有4种启动方案：XMD下载启动、TFTP网络下载启动、Flash启动和SysACE CF卡启动。其中，XMD和TFTP网络下载启动方案，在每次系统上电后都必须重新下载，适用于系统调试；Flash启动方案在系统上电后自动从Flash中读取配置文件，但Flash烧写速度较慢，更改系统配置较为不便。因此，本系统选用SysACECF卡启动方案。-->
+<!--在petalinux创建ps端linux系统时的hdf中包括microblaze软核及其周边外设-->
+<h3 id="2-相关设计参考"><a href="#2-相关设计参考" class="headerlink" title="2 相关设计参考"></a>2 相关设计参考</h3><h4 id="2-1-启动-使用flash完成操作系统启动"><a href="#2-1-启动-使用flash完成操作系统启动" class="headerlink" title="2.1 启动(使用flash完成操作系统启动)"></a>2.1 启动(使用flash完成操作系统启动)</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weiaipan1314/article/details/110679080">参考启动流程：</a><br><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210913105356.png" srcset="/img/loading.gif" lazyload/></p>
+<p><a target="_blank" rel="noopener" href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842560/MicroBlaze">参考文章MicroBlaze 上的嵌入式软件堆栈概述：</a><br>MicroBlaze 的软件堆栈不像Xilinx的其他嵌入式设备那样从加固的BootROM开始。相反，初始引导代码必须包含在FPGA比特流中，通常通过初始化映射到MicroBlaze引导向量的一小块 BlockRAM来实现。对于某些系统，整个应用程序可能会驻留在这个BlockRAM 中。对于更复杂的系统（例如Linux），可以在BlockRAM中初始化第一阶段引导加载程序。Xilinx 提供了一个称为 FS-Boot的第一阶段引导加载程序，它在启动时执行并负责将第二阶段引导加载程序（通常是U-Boot，但可能是最终应用程序）从非易失性存储器复制到 MicroBlaze可以从中执行的存储器中，通常为DDR。FS-Boot 至少需要 8KB 的 BlockRAM。 </p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210913105918.png" srcset="/img/loading.gif" lazyload/></p>
+<p>有关创建 FS-Boot 并将其合并到比特流中的更多信息，请参阅PetaLinux 工具指南。 </p>
+<p><a target="_blank" rel="noopener" href="https://china.xilinx.com/content/dam/xilinx/support/documentation/sw_manuals/xilinx2019_1/c_ug1144-petalinux-tools-reference-guide.pdf">microblaze启动手册说明—《ug11440》:</a><br><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210913112526.png" srcset="/img/loading.gif" lazyload/></p>
+<p><a target="_blank" rel="noopener" href="https://china.xilinx.com/content/dam/xilinx/support/documentation/sw_manuals/xilinx2019_1/c_ug1144-petalinux-tools-reference-guide.pdf">flash做uboot—《ug1144》:</a></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210913110611.png" srcset="/img/loading.gif" lazyload/></h2><p><a target="_blank" rel="noopener" href="https://www.xilinx.com/support/answers/50991.html">zynq支持的flash容量</a></p>
+<h4 id="2-2-BD设计结构参考"><a href="#2-2-BD设计结构参考" class="headerlink" title="2.2 BD设计结构参考"></a>2.2 BD设计结构参考</h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210912221254.png" srcset="/img/loading.gif" lazyload/></p>
+<h4 id="2-3-设计方案猜想"><a href="#2-3-设计方案猜想" class="headerlink" title="2.3 设计方案猜想"></a>2.3 设计方案猜想</h4><p>通过petalinux配置位于flash启动镜像并封装，使用jtag完成镜像启动？</p>
+<h3 id="3-其他注意点"><a href="#3-其他注意点" class="headerlink" title="3 其他注意点"></a>3 其他注意点</h3><h4 id="3-1-ug1144-P17"><a href="#3-1-ug1144-P17" class="headerlink" title="3.1 ug1144,P17"></a>3.1 ug1144,P17</h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210913111726.png" srcset="/img/loading.gif" lazyload/></p>
+<!--正点原子zynq5pynq开发指南P99-->
+<h2 id="解决方案-2-—还未研究"><a href="#解决方案-2-—还未研究" class="headerlink" title="解决方案(2)—还未研究"></a>解决方案(2)—还未研究</h2><h3 id="相关技术"><a href="#相关技术" class="headerlink" title="相关技术"></a>相关技术</h3><h4 id="1-uclinux"><a href="#1-uclinux" class="headerlink" title="1 uclinux"></a>1 uclinux</h4><p>运行uclinux嵌入式系统uclinux表示micro-control linux</p>
+<p><a target="_blank" rel="noopener" href="http://www.doc88.com/p-1505465960626.html">在Microblaze处理器上进行uclinux移植</a><br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/66072428">除了uclinux，在单片机上可以移植哪些版本的linux</a></p>
+<p>无名无名 (提问者)2017-10-09<br>也就是说，在目前的嵌入式市场里面，不带mmu的系统已经占比特别少了，对吗？</p>
+<p>jiangtao9999<br>jiangtao9999 (作者) 回复无名 (提问者)2017-10-12<br>所以我说放弃单片机这个概念。因为你用的东西也不一定就真的是通用 CPU 但也不一定就真的是几千个晶体管的只能当作 DPS 看待的玩意。现在技术提升了，很多功能溢出的 CPU 也不贵。很多人就会倾向于选择通用设备而方便开发。而且现在这种产品的需求量也是很大的，功能残缺的东西，也大有人用。这些东西，有的时候不是再跑个 uclinux 去浪费资源，而是直接写成运行功能的代码，不用操作系统直接运行的了。</p>
+<p>怎么说呢。现在定义上，只要能实现一个芯片搞定，就叫单片机。但是随着技术发展，很多东西都能封装到一个芯片上，但是实际上内部设计，还是不同功能独立区分的。所以相对来说 ARM 更多的类似于多个芯片集成封装。更何况 ARM 内部集成的电路还有更多的功能。而不是传统的那种真的只有一个芯片设计的 CPU 了。你可以理解单片机就是为了一件任务做设计的，没有高级系统。而 ARM 跑 Linux ，属于通用 CPU 运行通用型操作系统。</p>
+<p>印象里当初 uclinux 其实主要用在没有 mmu 的 arm 上，但是现在硬件基本都有 mmu ，甚至 arm 的 vfp/neon 都成标配了（当然也可以选择没有的，但是没有浮点运算现在这种什么都要求计算性能的地方用整数计算机很慢的）。</p>
+<p>综上，现在最好放弃单片机这种概念了。比较容易乱。</p>
+<h3 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h3><p><strong>和普通单片机一样完成系统移植？</strong></p>
+<!--## 解决方案(3)--还未研究-->
+<!--#### 1 MicroBlaze V7 新添内存管理单元（MMU）-->
+<!--[MicroBlaze V7 新添内存管理单元（MMU）part1(转)](http://blog.sina.com.cn/s/blog_538eef960100h7dc.html)-->
+<!--[利用Vivado进行MicroBlaze处理器应用教程](https://blog.csdn.net/weiaipan1314/article/details/110674762)-->
+<!--#### 2 全功能操作系统是Lynuxworks BlueCat Linux-->
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1/">项目与设计</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1/">项目与设计</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/202109272059/IC/%E7%9F%A5%E8%AF%86essay/ic/verilog%E5%AD%A6%E4%B9%A0/01Verilog%E5%8F%AF%E7%BB%BC%E5%90%88%E7%9A%84%E8%AF%AD%E6%B3%95/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Verilog可综合的语法</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/202109071200/%E5%AE%9E%E7%94%A8%E6%89%8B%E5%86%8Cstart/common_command/">
+                        <span class="hidden-mobile">常用命令</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'preferred-color-scheme';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'GreensCH/commitutterances');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <span> | </span> <a href="https://weibo.com/u/7453939976" target="_blank" rel="nofollow noopener"> Green Weibo</a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?eca4a4d34dadf0d4e282cc6ef2dc3de6";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<!-- hexo injector body_end start --><script src="/js/backgroundize.js"></script>
+  <link defer rel="stylesheet" href="/css/backgroundize.css" />
+  <!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"superSample":1,"position":"right","width":250,"height":500,"vOffset":-100},"mobile":{"show":false},"dialog":{"enable":false,"hitokoto":true,"width":10,"height":10,"vOffset":-100},"log":false});</script></body>
+</html>

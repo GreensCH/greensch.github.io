@@ -1,0 +1,832 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/con1.png">
+  <link rel="icon" href="/img/con1.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="“无论最终结果将人类历史导向何处，我们决定选择希望”">
+  <meta name="author" content="友人律 | Guilin Chang">
+  <meta name="keywords" content="三差学生、不学无术">
+  <meta name="description" content="一、覆盖率1 概述 2 覆盖率反馈回路  随机约束(constrained random tests) 很窄的时候会变成定向测试(directed testcase) Many runs , different seeds ： 跑多次使用不同的种子 Functionall Coverage ： 功能覆盖率 Identify holes：分析漏洞   即一开始可以使用定向测试 测试题 答案：AB 3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SV精通6：验证的量化与功能覆盖率">
+<meta property="og:url" content="http://yoursite.com/202111121646/IC/sv%E5%AD%A6%E4%B9%A0/%E7%B2%BE%E9%80%9Aessay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AD%A6%E4%B9%A06-2%EF%BC%9A%E9%AA%8C%E8%AF%81%E7%9A%84%E9%87%8F%E5%8C%96%E4%B8%8E%E5%8A%9F%E8%83%BD%E8%A6%86%E7%9B%96%E7%8E%87/index.html">
+<meta property="og:site_name" content="友人律的博客">
+<meta property="og:description" content="一、覆盖率1 概述 2 覆盖率反馈回路  随机约束(constrained random tests) 很窄的时候会变成定向测试(directed testcase) Many runs , different seeds ： 跑多次使用不同的种子 Functionall Coverage ： 功能覆盖率 Identify holes：分析漏洞   即一开始可以使用定向测试 测试题 答案：AB 3">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112165259519.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112172014070.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112172300816.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112172336045.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112193838775.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112172457412-16367090980413.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112172807856.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112173008178.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112173150029.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112193553513.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112194059827.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112194448584.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112195017497.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112195116210.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112195304711.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112195645515.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112195858313.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112200010561.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112200059155.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112201312010.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112202040146.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112202147138.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112202248248.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112202342351.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112210126670.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112210244773.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112210343326.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112210432170-16367222726244.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112210817547.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112211158581.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112211257808.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112211500653.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112211609744.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112211746972.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112211810842.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112212537184.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112212947981.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112213224109.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112213515343.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112213606529.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112213705741.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112213730283.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112214020363.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112214219083.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112215446401.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112215549608.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112215611103.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112215640227.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112215930314.png">
+<meta property="article:published_time" content="2021-11-12T08:46:00.000Z">
+<meta property="article:modified_time" content="2022-01-24T13:59:35.180Z">
+<meta property="article:author" content="友人律 | Guilin Chang">
+<meta property="article:tag" content="IC">
+<meta property="article:tag" content="sv学习">
+<meta property="article:tag" content="精通">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112165259519.png">
+  
+  <title>SV精通6：验证的量化与功能覆盖率 - 友人律的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/stackoverflow-dark.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"eca4a4d34dadf0d4e282cc6ef2dc3de6","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body><!-- hexo injector body_begin start --><div id="web_bg"></div><!-- hexo injector body_begin end -->
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>友人律的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E9%80%9A%E7%9F%A5/">
+                <i class="iconfont icon-link-fill"></i>
+                通知
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1/">
+                <i class="iconfont icon-link-fill"></i>
+                项目与设计
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">
+                <i class="iconfont icon-link-fill"></i>
+                开发工具
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/CS/">
+                <i class="iconfont icon-link-fill"></i>
+                CS
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/IC/">
+                <i class="iconfont icon-link-fill"></i>
+                IC
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://note.youdao.com/yws/api/personal/file/FDCD397DDBAF4A06B8925394CCE654F7?method=download&shareKey=466c9494a628c54696edbf7f0f62e6f1') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="SV精通6：验证的量化与功能覆盖率">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-11-12 16:46" pubdate>
+        2021年11月12日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.5k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      8 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">SV精通6：验证的量化与功能覆盖率</h1>
+            
+            <div class="markdown-body">
+              <h1 id="一、覆盖率"><a href="#一、覆盖率" class="headerlink" title="一、覆盖率"></a>一、覆盖率</h1><h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1 概述"></a>1 概述</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112165259519.png" srcset="/img/loading.gif" lazyload alt="image-20211112165259519"></p>
+<h2 id="2-覆盖率反馈回路"><a href="#2-覆盖率反馈回路" class="headerlink" title="2 覆盖率反馈回路"></a>2 覆盖率反馈回路</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112172014070.png" srcset="/img/loading.gif" lazyload alt="image-20211112172014070"></p>
+<ul>
+<li>随机约束(constrained random tests) 很窄的时候会变成定向测试(directed testcase)</li>
+<li>Many runs , different seeds ： 跑多次使用不同的种子</li>
+<li>Functionall Coverage ： 功能覆盖率</li>
+<li>Identify holes：分析漏洞</li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112172300816.png" srcset="/img/loading.gif" lazyload alt="image-20211112172300816"></p>
+<p>即一开始可以使用定向测试</p>
+<h3 id="测试题"><a href="#测试题" class="headerlink" title="测试题"></a>测试题</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112172336045.png" srcset="/img/loading.gif" lazyload alt="image-20211112172336045"></p>
+<p>答案：AB</p>
+<h2 id="3-漏洞率曲线"><a href="#3-漏洞率曲线" class="headerlink" title="3 漏洞率曲线"></a>3 漏洞率曲线</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112193838775.png" srcset="/img/loading.gif" lazyload alt="image-20211112193838775"></p>
+<p><strong>漏洞率下降时</strong>，应寻找各种不同的办法去测试可能的边界情况(corner case)</p>
+<h2 id="4-功能覆盖率步骤"><a href="#4-功能覆盖率步骤" class="headerlink" title="4 功能覆盖率步骤"></a>4 功能覆盖率步骤</h2><h1 id="二、-覆盖率类型"><a href="#二、-覆盖率类型" class="headerlink" title="二、 覆盖率类型"></a>二、 覆盖率类型</h1><h2 id="1-代码覆盖率"><a href="#1-代码覆盖率" class="headerlink" title="1 代码覆盖率"></a>1 代码覆盖率</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112172457412-16367090980413.png" srcset="/img/loading.gif" lazyload alt="image-20211112172457412"></p>
+<p><strong>工具分析，编译时添加选项，不需要额外代码</strong></p>
+<ul>
+<li>行覆盖率</li>
+<li>路径覆盖率</li>
+<li>反转覆盖率</li>
+<li>状态机覆盖率</li>
+</ul>
+<p><strong>最终结果用于衡量设计代码</strong>，关注点在设计代码的分析上，而不是测试平台</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112172807856.png" srcset="/img/loading.gif" lazyload alt="image-20211112172807856"></p>
+<p><strong>代码覆盖率100%是必要不充分条件</strong></p>
+<h3 id="测试题-1"><a href="#测试题-1" class="headerlink" title="测试题"></a>测试题</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112173008178.png" srcset="/img/loading.gif" lazyload alt="image-20211112173008178"></p>
+<p>答案：C</p>
+<p>实际情况常常达不到100%，我们会：1、设置编译器这部分达不到；2、设置100%的阈值</p>
+<h2 id="2-断言覆盖率"><a href="#2-断言覆盖率" class="headerlink" title="2 断言覆盖率"></a>2 断言覆盖率</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112173150029.png" srcset="/img/loading.gif" lazyload alt="image-20211112173150029"></p>
+<p>可以使用SV的程序性代码：<code>assert</code></p>
+<p>但使用SVA更简单</p>
+<hr>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112193553513.png" srcset="/img/loading.gif" lazyload alt="image-20211112193553513"></p>
+<p>断言除了用于信号和状态的检查外，还可以用作覆盖率收集</p>
+<p>只有代码覆盖率会自动收集，断言覆盖率需要自己定义</p>
+<h2 id="3-功能覆盖率（重要）"><a href="#3-功能覆盖率（重要）" class="headerlink" title="3 功能覆盖率（重要）"></a>3 功能覆盖率（重要）</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112194059827.png" srcset="/img/loading.gif" lazyload alt="image-20211112194059827"></p>
+<h3 id="功能覆盖率关系图"><a href="#功能覆盖率关系图" class="headerlink" title="功能覆盖率关系图"></a>功能覆盖率关系图</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112194448584.png" srcset="/img/loading.gif" lazyload alt="image-20211112194448584"></p>
+<p>不止仿真，形式验证、加速都可以收集覆盖率</p>
+<p>pass：功能测试有没有通过</p>
+<h3 id="功能覆盖率步骤"><a href="#功能覆盖率步骤" class="headerlink" title="功能覆盖率步骤"></a>功能覆盖率步骤</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112195017497.png" srcset="/img/loading.gif" lazyload alt="image-20211112195017497"></p>
+<p><strong>合并覆盖率</strong></p>
+<h3 id="测试题-2"><a href="#测试题-2" class="headerlink" title="测试题"></a>测试题</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112195116210.png" srcset="/img/loading.gif" lazyload alt="image-20211112195116210"></p>
+<p>答案：BCD</p>
+<h1 id="三、功能覆盖策略"><a href="#三、功能覆盖策略" class="headerlink" title="三、功能覆盖策略"></a>三、功能覆盖策略</h1><h2 id="1-收集信息而非数据"><a href="#1-收集信息而非数据" class="headerlink" title="1 收集信息而非数据"></a>1 收集信息而非数据</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112195304711.png" srcset="/img/loading.gif" lazyload alt="image-20211112195304711"></p>
+<p>着眼于感兴趣的状态，而不是具体数值</p>
+<h2 id="2-只测量需要的内容"><a href="#2-只测量需要的内容" class="headerlink" title="2 只测量需要的内容"></a>2 只测量需要的内容</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112195645515.png" srcset="/img/loading.gif" lazyload alt="image-20211112195645515"></p>
+<ul>
+<li><p>什么时候打开覆盖率收集，什么时候关闭</p>
+</li>
+<li><p>只收集哪些？功能点…</p>
+</li>
+<li><p>合理的定义覆盖率采样事件</p>
+</li>
+</ul>
+<h2 id="3-验证的完备性：代码覆盖率与功能覆盖率的关系"><a href="#3-验证的完备性：代码覆盖率与功能覆盖率的关系" class="headerlink" title="3 验证的完备性：代码覆盖率与功能覆盖率的关系"></a>3 验证的完备性：代码覆盖率与功能覆盖率的关系</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112195858313.png" srcset="/img/loading.gif" lazyload alt="image-20211112195858313"></p>
+<p>目标是同时<strong>驱动</strong>高的代码覆盖率和功能覆盖率</p>
+<h3 id="Functional-Coverage-amp-Code-Coverage-figure"><a href="#Functional-Coverage-amp-Code-Coverage-figure" class="headerlink" title="Functional Coverage &amp; Code Coverage figure"></a>Functional Coverage &amp; Code Coverage figure</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112200010561.png" srcset="/img/loading.gif" lazyload alt="image-20211112200010561"></p>
+<ul>
+<li>Need more FC points ,including corner cases : 部分代码代表的功能还没有提取，需要定义更多的功能覆盖率</li>
+<li>Is design complete ? : （最常见的）某些感兴趣的状态还是没有被测试到，分析我们的功能覆盖率哪些没有测试到，针对他们去添加修改约束和性能测试</li>
+</ul>
+<h3 id="测试题-3"><a href="#测试题-3" class="headerlink" title="测试题"></a>测试题</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112200059155.png" srcset="/img/loading.gif" lazyload alt="image-20211112200059155"></p>
+<p>答案：CD</p>
+<h1 id="四、覆盖组-关键词covergroup"><a href="#四、覆盖组-关键词covergroup" class="headerlink" title="四、覆盖组(关键词covergroup)"></a>四、覆盖组(关键词covergroup)</h1><h2 id="1-概念"><a href="#1-概念" class="headerlink" title="1 概念"></a>1 概念</h2><ul>
+<li><code>covergroup</code>与类相似，一次定义多次例化</li>
+<li><code>covergroup</code>可定义在类、interface、module中</li>
+<li><code>covergroup</code>包含一个或多个<code>coverpoint</code>，所有points全部同一时间采集</li>
+<li><code>covergroup</code>可采样任何可见变量，例如程序变量、接口信号、设计端口</li>
+<li>一个类里面面可包含多个<code>covergroup</code></li>
+<li>你拥有多个独立的<code>covergroup</code>时，每个<code>covergroup</code>可以根据需要自行使能或禁止</li>
+<li>每个<code>covergroup</code>可以定义单独的触发采样时间，允许从多个源头收集数据</li>
+<li><code>covergroup</code>必须例化后才能收集数据</li>
+</ul>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog">CovPort ck = <span class="hljs-keyword">new</span> ();<br>ck<span class="hljs-variable">.start</span>();<span class="hljs-comment">//new之后默认已经启动，只有stop只有才需要重启</span><br>ck<span class="hljs-variable">.stop</span>();<br>ck<span class="hljs-variable">.sample</span>();<span class="hljs-comment">//采样</span><br></code></pre></div></td></tr></table></figure>
+<h2 id="2-在类里定义covergroup"><a href="#2-在类里定义covergroup" class="headerlink" title="2 在类里定义covergroup"></a>2 在类里定义covergroup</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112201312010.png" srcset="/img/loading.gif" lazyload alt="image-20211112201312010"></p>
+<h3 id="两种例化方式"><a href="#两种例化方式" class="headerlink" title="两种例化方式"></a>两种例化方式</h3><p><strong>第一种：</strong>实例名和类名一致，但类名还是类名，实例名也是实例名，但没法例化多次</p>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">covergroup</span> CovPort;<br>	....<br>CovPort = <span class="hljs-keyword">new</span> ();<span class="hljs-comment">//和类的例化不太一样</span><br></code></pre></div></td></tr></table></figure>
+<p><strong>第二种（建议）：</strong>实例名与类名不一致，我们定义类也是用这种，可以例化多次</p>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog">CovPort cg1 = <span class="hljs-keyword">new</span>();<br></code></pre></div></td></tr></table></figure>
+<h3 id="采样"><a href="#采样" class="headerlink" title="采样"></a>采样</h3><p><strong>第一种</strong>采样方式（手动）</p>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog">cg1<span class="hljs-variable">.sample</span>();<br></code></pre></div></td></tr></table></figure>
+<p><strong>第二种</strong>采样方式：<strong>covergroup的采样触发</strong>等待某些特定的信号（自动）</p>
+<h2 id="3-covergroup的采样触发"><a href="#3-covergroup的采样触发" class="headerlink" title="3 covergroup的采样触发"></a>3 covergroup的采样触发</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112202040146.png" srcset="/img/loading.gif" lazyload alt="image-20211112202040146"></p>
+<h3 id="使用事件触发"><a href="#使用事件触发" class="headerlink" title="使用事件触发"></a>使用事件触发</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112202147138.png" srcset="/img/loading.gif" lazyload alt="image-20211112202147138"></p>
+<p>借助已有事件，比如已有的时钟或event</p>
+<h2 id="测试题-4"><a href="#测试题-4" class="headerlink" title="测试题"></a>测试题</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112202248248.png" srcset="/img/loading.gif" lazyload alt="image-20211112202248248"></p>
+<p>答案：ABC</p>
+<h1 id="五、数据采样"><a href="#五、数据采样" class="headerlink" title="五、数据采样"></a>五、数据采样</h1><h2 id="1-概述：仓bin"><a href="#1-概述：仓bin" class="headerlink" title="1 概述：仓bin"></a>1 概述：仓bin</h2><p>定义coverpoint时，SV会创建很多仓，可以是自己定义的bin，也可以是自动生成的bin，推荐自己定义</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112202342351.png" srcset="/img/loading.gif" lazyload alt="image-20211112202342351"></p>
+<h2 id="2-coverpoint-和-bin"><a href="#2-coverpoint-和-bin" class="headerlink" title="2 coverpoint 和 bin"></a>2 coverpoint 和 bin</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112210126670.png" srcset="/img/loading.gif" lazyload alt="image-20211112210126670"></p>
+<h2 id="3-bin的创建和应用"><a href="#3-bin的创建和应用" class="headerlink" title="3 bin的创建和应用"></a>3 bin的创建和应用</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112210244773.png" srcset="/img/loading.gif" lazyload alt="image-20211112210244773"></p>
+<h2 id="4-命名coverpoint和bin"><a href="#4-命名coverpoint和bin" class="headerlink" title="4 命名coverpoint和bin"></a>4 命名coverpoint和bin</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112210343326.png" srcset="/img/loading.gif" lazyload alt="image-20211112210343326"></p>
+<p><strong>misc</strong> = default</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112210432170-16367222726244.png" srcset="/img/loading.gif" lazyload alt="image-20211112210432170"></p>
+<h2 id="5-条件覆盖率：iff关键词给coverpoint添加额外条件"><a href="#5-条件覆盖率：iff关键词给coverpoint添加额外条件" class="headerlink" title="5 条件覆盖率：iff关键词给coverpoint添加额外条件"></a>5 条件覆盖率：iff关键词给coverpoint添加额外条件</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112210817547.png" srcset="/img/loading.gif" lazyload alt="image-20211112210817547"></p>
+<p>关注port变量，不单单要触发采样条件<code>ck.sample()</code>，还要<code>(!bus_if.reset)</code>即已经复位</p>
+<p>为什么ck要先关闭：因为要操作复位信号</p>
+<h2 id="6-翻转覆盖率：-gt-符号"><a href="#6-翻转覆盖率：-gt-符号" class="headerlink" title="6 翻转覆盖率：=&gt; 符号"></a>6 翻转覆盖率：=&gt; 符号</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112211158581.png" srcset="/img/loading.gif" lazyload alt="image-20211112211158581"></p>
+<h3 id="测试题-5"><a href="#测试题-5" class="headerlink" title="测试题"></a>测试题</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112211257808.png" srcset="/img/loading.gif" lazyload alt="image-20211112211257808"></p>
+<p>答案：ABD</p>
+<h2 id="7-wildcard覆盖率：把X-Z或？当成0，1的通配"><a href="#7-wildcard覆盖率：把X-Z或？当成0，1的通配" class="headerlink" title="7 wildcard覆盖率：把X,Z或？当成0，1的通配"></a>7 wildcard覆盖率：把X,Z或？当成0，1的通配</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112211500653.png" srcset="/img/loading.gif" lazyload alt="image-20211112211500653"></p>
+<h2 id="8-忽略某些bin：关键词ignore-bins"><a href="#8-忽略某些bin：关键词ignore-bins" class="headerlink" title="8 忽略某些bin：关键词ignore_bins"></a>8 忽略某些bin：关键词ignore_bins</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112211609744.png" srcset="/img/loading.gif" lazyload alt="image-20211112211609744"></p>
+<p>使用<code>ignore_bins</code>定义bin</p>
+<h2 id="9-非法某些bin：关键词illegal-bins"><a href="#9-非法某些bin：关键词illegal-bins" class="headerlink" title="9 非法某些bin：关键词illegal_bins"></a>9 非法某些bin：关键词illegal_bins</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112211746972.png" srcset="/img/loading.gif" lazyload alt="image-20211112211746972"></p>
+<h2 id="10-交叉覆盖率：关键词cross"><a href="#10-交叉覆盖率：关键词cross" class="headerlink" title="10 交叉覆盖率：关键词cross"></a>10 交叉覆盖率：关键词cross</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112211810842.png" srcset="/img/loading.gif" lazyload alt="image-20211112211810842"></p>
+<h3 id="1-排除部分cross-bin：ignore-bins-binsof-intersect"><a href="#1-排除部分cross-bin：ignore-bins-binsof-intersect" class="headerlink" title="(1) 排除部分cross bin：ignore_bins + binsof + intersect"></a>(1) 排除部分cross bin：ignore_bins + binsof + intersect</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112212537184.png" srcset="/img/loading.gif" lazyload alt="image-20211112212537184"></p>
+<figure class="highlight stylus"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">binsof</span><span class="hljs-params">(覆盖率组变量A)</span></span> itersect &#123;整形&#125;<br><span class="hljs-comment">//与7有关的“A”组合</span><br><br></code></pre></div></td></tr></table></figure>
+<hr>
+<p><code>ignore_bins md = binsof(port) intersect&#123;0&#125; &amp;&amp; binsof(kind) intersect &#123;[9:11]&#125;</code></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112212947981.png" srcset="/img/loading.gif" lazyload alt="image-20211112212947981"></p>
+<hr>
+<p><code>ignore_bins lo = binsof(kind.lo)//lo在前面定义了bin lo = &#123;[8:$]&#125;</code></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112213224109.png" srcset="/img/loading.gif" lazyload alt="image-20211112213224109"></p>
+<h3 id="2-精细的交叉覆盖率指定：交叉后bin由于过于多了，我们更常用指定，只用binsof"><a href="#2-精细的交叉覆盖率指定：交叉后bin由于过于多了，我们更常用指定，只用binsof" class="headerlink" title="(2) 精细的交叉覆盖率指定：交叉后bin由于过于多了，我们更常用指定，只用binsof"></a>(2) 精细的交叉覆盖率指定：交叉后bin由于过于多了，我们更常用指定，只用binsof</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112213515343.png" srcset="/img/loading.gif" lazyload alt="image-20211112213515343"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112213606529.png" srcset="/img/loading.gif" lazyload alt="image-20211112213606529"></p>
+<p>尽量不做排除法，而是指定法</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112213705741.png" srcset="/img/loading.gif" lazyload alt="image-20211112213705741"></p>
+<h3 id="测试题-6"><a href="#测试题-6" class="headerlink" title="测试题"></a>测试题</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112213730283.png" srcset="/img/loading.gif" lazyload alt="image-20211112213730283"></p>
+<p>答案：ABC</p>
+<p>D错是因为，如果不连续（漏掉）某些bin，SV可能会自动帮你填充如：</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112214020363.png" srcset="/img/loading.gif" lazyload alt="image-20211112214020363"></p>
+<p>456没有关心</p>
+<h4 id="采样到illegal-bins仿真会停止"><a href="#采样到illegal-bins仿真会停止" class="headerlink" title="采样到illegal_bins仿真会停止"></a>采样到illegal_bins仿真会停止</h4><h1 id="六、覆盖选项"><a href="#六、覆盖选项" class="headerlink" title="六、覆盖选项"></a>六、覆盖选项</h1><h2 id="1-单个实例的覆盖率：查看单个覆盖率option-per-instance-1"><a href="#1-单个实例的覆盖率：查看单个覆盖率option-per-instance-1" class="headerlink" title="1 单个实例的覆盖率：查看单个覆盖率option.per_instance = 1"></a>1 单个实例的覆盖率：查看单个覆盖率option.per_instance = 1</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112214219083.png" srcset="/img/loading.gif" lazyload alt="image-20211112214219083"></p>
+<h2 id="2-添加注释-option-commet-string"><a href="#2-添加注释-option-commet-string" class="headerlink" title="2 添加注释 option.commet = string*"></a>2 添加注释 option.commet = string*</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112215446401.png" srcset="/img/loading.gif" lazyload alt="："></p>
+<h2 id="3-覆盖次数限定：option-at-least"><a href="#3-覆盖次数限定：option-at-least" class="headerlink" title="3 覆盖次数限定：option.at_least"></a>3 覆盖次数限定：option.at_least</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112215549608.png" srcset="/img/loading.gif" lazyload alt="image-20211112215549608"></p>
+<h2 id="4-覆盖率目标：option-goal"><a href="#4-覆盖率目标：option-goal" class="headerlink" title="4 覆盖率目标：option.goal"></a>4 覆盖率目标：option.goal</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112215611103.png" srcset="/img/loading.gif" lazyload alt="image-20211112215611103"></p>
+<h2 id="5-covergroup方法"><a href="#5-covergroup方法" class="headerlink" title="5 covergroup方法"></a>5 covergroup方法</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112215640227.png" srcset="/img/loading.gif" lazyload alt="image-20211112215640227"></p>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog">get_coverage()<span class="hljs-comment">//所有group加权以后的覆盖率</span><br>get_inst_coverage()<span class="hljs-comment">//特定覆盖组实例覆盖率</span><br><span class="hljs-comment">//返回的0-100实数就是百分比</span><br>set_inst_name(<span class="hljs-keyword">string</span>)设置覆盖组名称<br></code></pre></div></td></tr></table></figure>
+<h1 id="七、数据分析"><a href="#七、数据分析" class="headerlink" title="七、数据分析"></a>七、数据分析</h1><h2 id="1-概述-1"><a href="#1-概述-1" class="headerlink" title="1 概述"></a>1 概述</h2><p><strong>获得总体覆盖率</strong>：使用系统函数，或使用<code>get_inst_coverage()</code></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112215930314.png" srcset="/img/loading.gif" lazyload alt="image-20211112215930314"></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/">IC</a>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/sv%E5%AD%A6%E4%B9%A0/">sv学习</a>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/sv%E5%AD%A6%E4%B9%A0/%E7%B2%BE%E9%80%9A/">精通</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/IC/">IC</a>
+                    
+                      <a class="hover-with-bg" href="/tags/sv%E5%AD%A6%E4%B9%A0/">sv学习</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%B2%BE%E9%80%9A/">精通</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/202111122204/IC/sv%E5%AD%A6%E4%B9%A0/%E7%B2%BE%E9%80%9Aessay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AD%A6%E4%B9%A07%EF%BC%9A%E9%AB%98%E7%BA%A7%E8%AF%9D%E9%A2%98/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">SV精通7：高级话题|SV理论知识完结🎉</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/202111112121/IC/sv%E5%AD%A6%E4%B9%A0/%E7%B2%BE%E9%80%9Aessay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AD%A6%E4%B9%A05-2%EF%BC%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%8E%A7%E5%88%B6%E5%92%8C%E5%90%8C%E6%AD%A5/">
+                        <span class="hidden-mobile">SV精通5：线程的控制和同步</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'preferred-color-scheme';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'GreensCH/commitutterances');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <span> | </span> <a href="https://weibo.com/u/7453939976" target="_blank" rel="nofollow noopener"> Green Weibo</a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?eca4a4d34dadf0d4e282cc6ef2dc3de6";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<!-- hexo injector body_end start --><script src="/js/backgroundize.js"></script>
+  <link defer rel="stylesheet" href="/css/backgroundize.css" />
+  <!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"superSample":1,"position":"right","width":250,"height":500,"vOffset":-100},"mobile":{"show":false},"dialog":{"enable":false,"hitokoto":true,"width":10,"height":10,"vOffset":-100},"log":false});</script></body>
+</html>

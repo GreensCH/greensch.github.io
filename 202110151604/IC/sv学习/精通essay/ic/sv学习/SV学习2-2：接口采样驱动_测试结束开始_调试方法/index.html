@@ -1,0 +1,886 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/con1.png">
+  <link rel="icon" href="/img/con1.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="“无论最终结果将人类历史导向何处，我们决定选择希望”">
+  <meta name="author" content="友人律 | Guilin Chang">
+  <meta name="keywords" content="三差学生、不学无术">
+  <meta name="description" content="绪论主要内容：  接口 采样和数据驱动 测试的开始和结束 调试方法  注意重点采样：输入 驱动：输出 一般的采样是直接采样 而采样可以对于Interface采样，在clocking下采样 采样和驱动都可以通过并行的initial块进行监控具体可参考第二章第二节的几个例子：initital forever 学习的定义和系统函数 interface clocking program run 0 &#x2F;&#x2F;命">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SV精通2：接口采样驱动_测试结束开始_调试方法1">
+<meta property="og:url" content="http://yoursite.com/202110151604/IC/sv%E5%AD%A6%E4%B9%A0/%E7%B2%BE%E9%80%9Aessay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AD%A6%E4%B9%A02-2%EF%BC%9A%E6%8E%A5%E5%8F%A3%E9%87%87%E6%A0%B7%E9%A9%B1%E5%8A%A8_%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9D%9F%E5%BC%80%E5%A7%8B_%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="友人律的博客">
+<meta property="og:description" content="绪论主要内容：  接口 采样和数据驱动 测试的开始和结束 调试方法  注意重点采样：输入 驱动：输出 一般的采样是直接采样 而采样可以对于Interface采样，在clocking下采样 采样和驱动都可以通过并行的initial块进行监控具体可参考第二章第二节的几个例子：initital forever 学习的定义和系统函数 interface clocking program run 0 &#x2F;&#x2F;命">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016190705553.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016190936562.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016190958859.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016191110431.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016191323553.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016191622363.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016191704811.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016191941795.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016192730438.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016194430737.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016195117342.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016194954692.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016195832325.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016195852932.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016202543007.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016202836218.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016202911254.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016203031929.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016214722868.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016215024641.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016215612699.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016220043661.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016220306611.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016220901083.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016220934039.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016221247525.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016221400065.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016221421817.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016221528823.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016222523208.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016222747548.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016223616175.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016225255238.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016225510071.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016225608127.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016225657272.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016225749237.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016230130087.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016230346911.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016230400490.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016230631471.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016230729220.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016230800874.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016230924609.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016231000603.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016231107723.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016231202857.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016231351379.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016231402018.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016194056429.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016194629074.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016195852932.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016220131851.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016222747548.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016222828300.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016222954064.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016225928352.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016231351379.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016231402018.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016231520344.png">
+<meta property="article:published_time" content="2021-10-15T08:04:00.000Z">
+<meta property="article:modified_time" content="2022-01-24T13:59:34.684Z">
+<meta property="article:author" content="友人律 | Guilin Chang">
+<meta property="article:tag" content="IC">
+<meta property="article:tag" content="sv学习">
+<meta property="article:tag" content="精通">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016190705553.png">
+  
+  <title>SV精通2：接口采样驱动_测试结束开始_调试方法1 - 友人律的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/stackoverflow-dark.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"eca4a4d34dadf0d4e282cc6ef2dc3de6","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body><!-- hexo injector body_begin start --><div id="web_bg"></div><!-- hexo injector body_begin end -->
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>友人律的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E9%80%9A%E7%9F%A5/">
+                <i class="iconfont icon-link-fill"></i>
+                通知
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1/">
+                <i class="iconfont icon-link-fill"></i>
+                项目与设计
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">
+                <i class="iconfont icon-link-fill"></i>
+                开发工具
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/CS/">
+                <i class="iconfont icon-link-fill"></i>
+                CS
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/IC/">
+                <i class="iconfont icon-link-fill"></i>
+                IC
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://note.youdao.com/yws/api/personal/file/FDCD397DDBAF4A06B8925394CCE654F7?method=download&shareKey=466c9494a628c54696edbf7f0f62e6f1') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="SV精通2：接口采样驱动_测试结束开始_调试方法1">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-10-15 16:04" pubdate>
+        2021年10月15日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.4k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      7 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">SV精通2：接口采样驱动_测试结束开始_调试方法1</h1>
+            
+            <div class="markdown-body">
+              <h1 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h1><p>主要内容：</p>
+<ul>
+<li>接口</li>
+<li>采样和数据驱动</li>
+<li>测试的开始和结束</li>
+<li>调试方法</li>
+</ul>
+<h2 id="注意重点"><a href="#注意重点" class="headerlink" title="注意重点"></a>注意重点</h2><p>采样：输入</p>
+<p>驱动：输出</p>
+<p>一般的采样是直接采样</p>
+<p>而采样可以对于Interface采样，在clocking下采样</p>
+<p>采样和驱动都可以通过并行的initial块进行监控具体可参考第二章第二节的几个例子：initital forever</p>
+<h2 id="学习的定义和系统函数"><a href="#学习的定义和系统函数" class="headerlink" title="学习的定义和系统函数"></a>学习的定义和系统函数</h2><ul>
+<li>interface</li>
+<li>clocking</li>
+<li>program</li>
+<li>run 0 //命令</li>
+<li>$stop()</li>
+<li>$finish()</li>
+<li>$exit()</li>
+</ul>
+<h1 id="一、接口-interface"><a href="#一、接口-interface" class="headerlink" title="一、接口(interface)"></a>一、接口(interface)</h1><h2 id="1-什么是接口"><a href="#1-什么是接口" class="headerlink" title="1 什么是接口"></a>1 什么是接口</h2><h3 id="1-简介"><a href="#1-简介" class="headerlink" title="(1) 简介"></a>(1) 简介</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016190705553.png" srcset="/img/loading.gif" lazyload alt="image-20211016190705553"></p>
+<p><strong>硬件很重要，可以在软硬环境传递：如图上第三点</strong></p>
+<h3 id="2-有无接口的测试方法对比"><a href="#2-有无接口的测试方法对比" class="headerlink" title="　(2) 有无接口的测试方法对比"></a>　(2) 有无接口的测试方法对比</h3><p>测试arbiter现有经典方法</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016190936562.png" srcset="/img/loading.gif" lazyload alt="image-20211016190936562"></p>
+<p>使用了interface后的测试关系</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016190958859.png" srcset="/img/loading.gif" lazyload alt="image-20211016190958859">‘</p>
+<h3 id="3-interface代码定义"><a href="#3-interface代码定义" class="headerlink" title="(3) interface代码定义"></a>(3) interface代码定义</h3><p><strong>下图对应design</strong></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016191110431.png" srcset="/img/loading.gif" lazyload alt="image-20211016191110431"></p>
+<ul>
+<li><p>可作为形参在module的参数列表中声明，不需要声明方向</p>
+</li>
+<li><p>通过一个点表明层次关系（例如arbif.rst）</p>
+</li>
+</ul>
+<hr>
+<p><strong>下图对应testbench（要有壳子把design和testbench包起来）</strong></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016191323553.png" srcset="/img/loading.gif" lazyload alt="image-20211016191323553"></p>
+<ul>
+<li>也是用initital作为驱动，</li>
+<li>arbif.clk作为始终驱动，$finish结束仿真</li>
+</ul>
+<hr>
+<p><strong>下图对应top</strong></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016191622363.png" srcset="/img/loading.gif" lazyload alt="image-20211016191622363"></p>
+<h2 id="2-接口的优势"><a href="#2-接口的优势" class="headerlink" title="2 接口的优势"></a>2 接口的优势</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016191704811.png" srcset="/img/loading.gif" lazyload alt="image-20211016191704811"></p>
+<ul>
+<li>更易于维护和使用</li>
+<li>接口作为软(class)硬(module)的媒介</li>
+<li>对于多组相同的总线，例化更为灵活</li>
+</ul>
+<hr>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016191941795.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>对最后一条：stimulator拿到接口的指针对其进行驱动</p>
+<h2 id="3-接口的定义和使用"><a href="#3-接口的定义和使用" class="headerlink" title="3 接口的定义和使用"></a>3 接口的定义和使用</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016192730438.png" srcset="/img/loading.gif" lazyload alt="image-20211016192730438"></p>
+<ul>
+<li>用法与module类似</li>
+<li>interface不定义任何端口信号，定义：复位、时钟等公共信号</li>
+<li>interface可以添加参数提高复用性</li>
+<li>例化的时候和module一样</li>
+</ul>
+<h1 id="二、采样和数据驱动"><a href="#二、采样和数据驱动" class="headerlink" title="二、采样和数据驱动"></a>二、采样和数据驱动</h1><h2 id="1-竞争问题"><a href="#1-竞争问题" class="headerlink" title="1 竞争问题"></a>1 竞争问题</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016194430737.png" srcset="/img/loading.gif" lazyload alt="image-20211016194430737"></p>
+<p><strong>避免竞争：使用非阻塞赋值或者特定的信号延迟来解决同步问题</strong></p>
+<hr>
+<p><strong>对于真实的物理环境下会有延迟</strong></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016195117342.png" srcset="/img/loading.gif" lazyload alt="image-20211016195117342"></p>
+<ul>
+<li>clk时钟驱动数据a会有延迟：对应上图中间的”X”</li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016194954692.png" srcset="/img/loading.gif" lazyload alt="image-20211016194954692"></p>
+<p><strong>延迟只会在门级仿真的时候才会体现出来，我们RTL的时候没有</strong></p>
+<p>那怎么办：我们只能每一个都加上一个最小单位的延迟（delta-cycle）</p>
+<h3 id="时间片和delta-cycle："><a href="#时间片和delta-cycle：" class="headerlink" title="时间片和delta-cycle："></a>时间片和delta-cycle：</h3><p>run 1m , s, ms, us, ns, ps, fs, 0<br>0就是时间片，一个时间片里又包括无穷个delta-cycle，在仿真时无法用最小的时间单位衡量</p>
+<h3 id="delta-cycle的进一步了解（了解其对数据驱动和采样有很大帮助）"><a href="#delta-cycle的进一步了解（了解其对数据驱动和采样有很大帮助）" class="headerlink" title="delta-cycle的进一步了解（了解其对数据驱动和采样有很大帮助）"></a>delta-cycle的进一步了解（了解其对数据驱动和采样有很大帮助）</h3><p>有两个时钟第一个时钟五纳秒翻转一次</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016195832325.png" srcset="/img/loading.gif" lazyload alt="image-20211016195832325"></p>
+<hr>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016195852932.png" srcset="/img/loading.gif" lazyload alt="image-20211016195852932"></p>
+<h3 id="race-sv"><a href="#race-sv" class="headerlink" title="race.sv"></a>race.sv</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016202543007.png" srcset="/img/loading.gif" lazyload alt="image-20211016202543007"></p>
+<h4 id="EDA如何显示delta-cycle"><a href="#EDA如何显示delta-cycle" class="headerlink" title="EDA如何显示delta-cycle"></a>EDA如何显示delta-cycle</h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016202836218.png" srcset="/img/loading.gif" lazyload alt="image-20211016202836218"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016202911254.png" srcset="/img/loading.gif" lazyload alt="image-20211016202911254"></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016203031929.png" srcset="/img/loading.gif" lazyload alt="image-20211016203031929"></p>
+<ul>
+<li>仿真采样存在不稳定性</li>
+</ul>
+<p><strong>如何避免：</strong></p>
+<ul>
+<li>添加认为延迟</li>
+<li>采样时间前的某段时刻进行采样</li>
+</ul>
+<h2 id="2-接口中的clocking-时钟块"><a href="#2-接口中的clocking-时钟块" class="headerlink" title="2 接口中的clocking 时钟块"></a>2 接口中的clocking 时钟块</h2><h3 id="1-clocking学习背景modport在clocking中，不用额外去学"><a href="#1-clocking学习背景modport在clocking中，不用额外去学" class="headerlink" title="(1) clocking学习背景modport在clocking中，不用额外去学"></a>(1) clocking学习背景modport在clocking中，不用额外去学</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016214722868.png" srcset="/img/loading.gif" lazyload alt="image-20211016214722868"></p>
+<ul>
+<li>modport有方向</li>
+<li>clocking基于时钟进行采样，使得testbench不在苦恼于如何即使准确的对信号进行驱动和采样，消除了信号竞争问题</li>
+</ul>
+<hr>
+<h3 id="2-clocking代码定义"><a href="#2-clocking代码定义" class="headerlink" title="(2) clocking代码定义"></a>(2) clocking代码定义</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016215024641.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>第一行@(信号)：定义上升沿事件</li>
+<li>第二行指定的是：默认情况下所有的输出相比较上升沿后2ns延迟，对所有输入信号在上升沿之前10ns做一个采样。和电路里面建立保持时间差不多</li>
+<li>第三行：我们要对data,ready和enable信号做采样了，且以及声明方向了</li>
+<li>属于输出驱动额外强调在时钟下降沿</li>
+<li><h1 id="1step-过上一个单位的step表示，可以看作一个时间片或者上升沿上一个时间片之间的采样域内"><a href="#1step-过上一个单位的step表示，可以看作一个时间片或者上升沿上一个时间片之间的采样域内" class="headerlink" title="1step 过上一个单位的step表示，可以看作一个时间片或者上升沿上一个时间片之间的采样域内"></a>1step 过上一个单位的step表示，可以看作一个时间片或者上升沿上一个时间片之间的采样域内</h1></li>
+</ul>
+<hr>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016215612699.png" srcset="/img/loading.gif" lazyload alt="image-20211016215612699"></p>
+<ul>
+<li>对于时钟而言可以定义在：module，Interface,program中</li>
+<li>clocking内列举的信号是由interface或其他的地方去定义</li>
+<li>对于时钟块他只声明而不定义</li>
+<li>没有定义的画默认输入在事件前1step，驱动在事件后#0（一个时钟片相当于无穷多个step，肯定比step大）</li>
+<li>处理定义默认的采样和驱动时间，可以用新的时间对默认事件覆盖</li>
+</ul>
+<h3 id="3-一个例子"><a href="#3-一个例子" class="headerlink" title="(3) 一个例子"></a>(3) 一个例子</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016220043661.png" srcset="/img/loading.gif" lazyload alt="image-20211016220043661"></p>
+<h3 id="4-一个例子：利用clocking的采样"><a href="#4-一个例子：利用clocking的采样" class="headerlink" title="(4) 一个例子：利用clocking的采样"></a>(4) 一个例子：利用clocking的采样</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016220306611.png" srcset="/img/loading.gif" lazyload alt="image-20211016220306611"></p>
+<ul>
+<li><p>用了三个initial，第一个做驱动，第二三个做采样</p>
+</li>
+<li><p>@ck 等价于 @(posedge clk)</p>
+</li>
+<li>@ck 意思是在clocking这个变化事件</li>
+<li>第二个在时钟的每一个上升沿直接对vld做采样@ck</li>
+<li>在每一个上升沿利用clocking块进行采样</li>
+</ul>
+<p><strong>输出结果</strong></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016220901083.png" srcset="/img/loading.gif" lazyload alt="image-20211016220901083"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016220934039.png" srcset="/img/loading.gif" lazyload alt="image-20211016220934039"></p>
+<h3 id="5-一个例子：利用clocking的驱动"><a href="#5-一个例子：利用clocking的驱动" class="headerlink" title="(5)一个例子：利用clocking的驱动"></a>(5)一个例子：利用clocking的驱动</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016221247525.png" srcset="/img/loading.gif" lazyload alt="image-20211016221247525"></p>
+<p>@ck ck.grt &lt;= 1 ; //<strong>利用clocking</strong>在每个上升沿<strong>进行驱动</strong></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016221400065.png" srcset="/img/loading.gif" lazyload alt="image-20211016221400065"></p>
+<h3 id="6-结论"><a href="#6-结论" class="headerlink" title="(6) 结论"></a>(6) 结论</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016221421817.png" srcset="/img/loading.gif" lazyload alt="image-20211016221421817"></p>
+<h1 id="三、测试的开始和结束"><a href="#三、测试的开始和结束" class="headerlink" title="三、测试的开始和结束"></a>三、测试的开始和结束</h1><h2 id="1-介绍：各个设计自身可以作为一个大的线程"><a href="#1-介绍：各个设计自身可以作为一个大的线程" class="headerlink" title="1.介绍：各个设计自身可以作为一个大的线程"></a>1.介绍：各个设计自身可以作为一个大的线程</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016221528823.png" srcset="/img/loading.gif" lazyload alt="image-20211016221528823"></p>
+<p>但是如果只提供复位和时钟信号，整个仿真会一直持续下去并不会主动结束，这时候需要verilog系统函数主动结束仿真</p>
+<h2 id="2-系统函数结束仿真"><a href="#2-系统函数结束仿真" class="headerlink" title="2. 系统函数结束仿真"></a>2. 系统函数结束仿真</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016222523208.png" srcset="/img/loading.gif" lazyload alt="image-20211016222523208"></p>
+<h3 id="finish-直接结束仿真"><a href="#finish-直接结束仿真" class="headerlink" title="$finish():直接结束仿真"></a>$finish():直接结束仿真</h3><h3 id="stop-暂停仿真，可以再次启动"><a href="#stop-暂停仿真，可以再次启动" class="headerlink" title="$stop():暂停仿真，可以再次启动"></a>$stop():暂停仿真，可以再次启动</h3><h2 id="3-仿真开始"><a href="#3-仿真开始" class="headerlink" title="3.仿真开始"></a>3.仿真开始</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016222747548.png" srcset="/img/loading.gif" lazyload alt="image-20211016222747548"></p>
+<p><strong>下文参考答案一章</strong></p>
+<h2 id="4-program隐式结束：program已经是软件的领域，是SV为了设计与验证隔离推出，而在UVM中有更好的控制手段失去了program的意义了，用的很少"><a href="#4-program隐式结束：program已经是软件的领域，是SV为了设计与验证隔离推出，而在UVM中有更好的控制手段失去了program的意义了，用的很少" class="headerlink" title="4. program隐式结束：program已经是软件的领域，是SV为了设计与验证隔离推出，而在UVM中有更好的控制手段失去了program的意义了，用的很少"></a>4. program隐式结束：program已经是软件的领域，是SV为了设计与验证隔离推出，而在UVM中有更好的控制手段失去了program的意义了，用的很少</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016223616175.png" srcset="/img/loading.gif" lazyload alt="image-20211016223616175"></p>
+<h4 id="具体例子"><a href="#具体例子" class="headerlink" title="具体例子"></a>具体例子</h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016225255238.png" srcset="/img/loading.gif" lazyload alt="image-20211016225255238"></p>
+<h5 id="program相当于把initial的内容封装到program里面了"><a href="#program相当于把initial的内容封装到program里面了" class="headerlink" title="program相当于把initial的内容封装到program里面了"></a>program相当于把initial的内容封装到program里面了</h5><p>最终放到tb里面，最终仿真自动结束，不需要调用$finish</p>
+<h2 id="5-program显式-强制-结束：-exit-专门对program的结束函数"><a href="#5-program显式-强制-结束：-exit-专门对program的结束函数" class="headerlink" title="5.program显式(强制)结束：$exit()专门对program的结束函数"></a>5.program显式(强制)结束：$exit()专门对program的结束函数</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016225510071.png" srcset="/img/loading.gif" lazyload alt="image-20211016225510071"></p>
+<h4 id="具体例子-1"><a href="#具体例子-1" class="headerlink" title="具体例子"></a>具体例子</h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016225608127.png" srcset="/img/loading.gif" lazyload alt="image-20211016225608127"></p>
+<h2 id="6-program和module"><a href="#6-program和module" class="headerlink" title="6. program和module"></a>6. program和module</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016225657272.png" srcset="/img/loading.gif" lazyload alt="image-20211016225657272"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016225749237.png" srcset="/img/loading.gif" lazyload alt="image-20211016225749237"></p>
+<h1 id="四、调试方法"><a href="#四、调试方法" class="headerlink" title="四、调试方法"></a>四、调试方法</h1><h2 id="1-使用库、仿真和过程方法"><a href="#1-使用库、仿真和过程方法" class="headerlink" title="1. 使用库、仿真和过程方法"></a>1. 使用库、仿真和过程方法</h2><h2 id="2-不同仿真器是共通的"><a href="#2-不同仿真器是共通的" class="headerlink" title="2. 不同仿真器是共通的"></a>2. 不同仿真器是共通的</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016230130087.png" srcset="/img/loading.gif" lazyload alt="image-20211016230130087"></p>
+<h2 id="3-库窗口"><a href="#3-库窗口" class="headerlink" title="3. 库窗口"></a>3. 库窗口</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016230346911.png" srcset="/img/loading.gif" lazyload alt="image-20211016230346911"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016230400490.png" srcset="/img/loading.gif" lazyload alt="image-20211016230400490"></p>
+<p><strong>可以创建属于自己的库</strong></p>
+<p>实验里面默认library</p>
+<p><strong>所有的文件编译都离不开库</strong></p>
+<h2 id="4-仿真窗口"><a href="#4-仿真窗口" class="headerlink" title="4.仿真窗口"></a>4.仿真窗口</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016230631471.png" srcset="/img/loading.gif" lazyload alt="image-20211016230631471"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016230729220.png" srcset="/img/loading.gif" lazyload alt="image-20211016230729220"></p>
+<p><strong>最大帮助是用来看层次</strong></p>
+<h2 id="5-过程窗口"><a href="#5-过程窗口" class="headerlink" title="5. 过程窗口"></a>5. 过程窗口</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016230800874.png" srcset="/img/loading.gif" lazyload alt="image-20211016230800874"></p>
+<p>hang-on：仿真进入死循环<br>active,ready</p>
+<h2 id="6-查看信号和波形"><a href="#6-查看信号和波形" class="headerlink" title="6. 查看信号和波形"></a>6. 查看信号和波形</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016230924609.png" srcset="/img/loading.gif" lazyload alt="image-20211016230924609"></p>
+<h2 id="7-打印消息：-display"><a href="#7-打印消息：-display" class="headerlink" title="7. 打印消息：$display"></a>7. 打印消息：$display</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016231000603.png" srcset="/img/loading.gif" lazyload alt="image-20211016231000603"></p>
+<p>尽量格式化，字符串赋值和拼接</p>
+<h2 id="8-设置断点（verify重点）"><a href="#8-设置断点（verify重点）" class="headerlink" title="8. 设置断点（verify重点）"></a>8. 设置断点（verify重点）</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016231107723.png" srcset="/img/loading.gif" lazyload alt="image-20211016231107723"></p>
+<h3 id="理解程序执行顺序"><a href="#理解程序执行顺序" class="headerlink" title="理解程序执行顺序"></a>理解程序执行顺序</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016231202857.png" srcset="/img/loading.gif" lazyload alt="image-20211016231202857"></p>
+<h3 id="一个例子"><a href="#一个例子" class="headerlink" title="一个例子"></a>一个例子</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016231351379.png" srcset="/img/loading.gif" lazyload alt="image-20211016231351379"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016231402018.png" srcset="/img/loading.gif" lazyload alt="image-20211016231402018"></p>
+<h1 id="答案"><a href="#答案" class="headerlink" title="答案"></a>答案</h1><h3 id="1-ABCD"><a href="#1-ABCD" class="headerlink" title="1.ABCD"></a>1.ABCD</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016194056429.png" srcset="/img/loading.gif" lazyload alt="image-20211016194056429"></p>
+<p>哪些事情不能做：模块里面可以例化模块和接口，但是接口里面不可以例化模块可以例化接口</p>
+<h3 id="2-b-1"><a href="#2-b-1" class="headerlink" title="2. b=1"></a>2. b=1</h3><p>a被综合成4位寄存器，使用非阻塞赋值可以确定b是flip-flop，而这里不确定b被综合成什么</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016194629074.png" srcset="/img/loading.gif" lazyload alt="image-20211016194629074"></p>
+<h3 id="3-对应delta-cycle小节"><a href="#3-对应delta-cycle小节" class="headerlink" title="3.对应delta-cycle小节"></a>3.对应delta-cycle小节</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016195852932.png" srcset="/img/loading.gif" lazyload alt="image-20211016195852932"></p>
+<h3 id="4-clocking：C都可以"><a href="#4-clocking：C都可以" class="headerlink" title="4 .clocking：C都可以"></a>4 .clocking：C都可以</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016220131851.png" srcset="/img/loading.gif" lazyload alt="image-20211016220131851"></p>
+<h3 id="5-仿真开始，run0：A？"><a href="#5-仿真开始，run0：A？" class="headerlink" title="5. 仿真开始，run0：A？"></a>5. 仿真开始，run0：A？</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016222747548.png" srcset="/img/loading.gif" lazyload alt="image-20211016222747548"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016222828300.png" srcset="/img/loading.gif" lazyload alt="image-20211016222828300"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016222954064.png" srcset="/img/loading.gif" lazyload alt="image-20211016222954064"></p>
+<h3 id="6-哪些可以在program中定义-AC"><a href="#6-哪些可以在program中定义-AC" class="headerlink" title="6.哪些可以在program中定义 AC"></a>6.哪些可以在program中定义 AC</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016225928352.png" srcset="/img/loading.gif" lazyload alt="image-20211016225928352"></p>
+<h3 id="7"><a href="#7" class="headerlink" title="7."></a>7.</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016231351379.png" srcset="/img/loading.gif" lazyload alt="image-20211016231351379"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016231402018.png" srcset="/img/loading.gif" lazyload alt="image-20211016231402018"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016231520344.png" srcset="/img/loading.gif" lazyload alt="image-20211016231520344"></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/">IC</a>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/sv%E5%AD%A6%E4%B9%A0/">sv学习</a>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/sv%E5%AD%A6%E4%B9%A0/%E7%B2%BE%E9%80%9A/">精通</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/IC/">IC</a>
+                    
+                      <a class="hover-with-bg" href="/tags/sv%E5%AD%A6%E4%B9%A0/">sv学习</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%B2%BE%E9%80%9A/">精通</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/202110292004/IC/sv%E5%AD%A6%E4%B9%A0/%E5%AE%9E%E9%AA%8Cessay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AD%A6%E4%B9%A00-1%EF%BC%9A%E8%BD%AF%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">SV学习0-1：EDA的使用</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/202110112211/IC/sv%E5%AD%A6%E4%B9%A0/%E9%80%9A%E8%AF%86essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AD%A6%E4%B9%A02-1%EF%BC%9A%E9%AA%8C%E8%AF%81%E7%8E%AF%E5%A2%83%E7%9A%84%E7%BB%93%E6%9E%84%E5%92%8C%E7%BB%84%E4%BB%B6/">
+                        <span class="hidden-mobile">SV通识2：验证环境的结构和组件</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'preferred-color-scheme';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'GreensCH/commitutterances');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <span> | </span> <a href="https://weibo.com/u/7453939976" target="_blank" rel="nofollow noopener"> Green Weibo</a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?eca4a4d34dadf0d4e282cc6ef2dc3de6";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<!-- hexo injector body_end start --><script src="/js/backgroundize.js"></script>
+  <link defer rel="stylesheet" href="/css/backgroundize.css" />
+  <!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"superSample":1,"position":"right","width":250,"height":500,"vOffset":-100},"mobile":{"show":false},"dialog":{"enable":false,"hitokoto":true,"width":10,"height":10,"vOffset":-100},"log":false});</script></body>
+</html>
