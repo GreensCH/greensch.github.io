@@ -4,6 +4,64 @@
   
   
   <entry>
+    <title>TCL入门</title>
+    <link href="/202202110058/IC/TCL%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/TCL%E5%85%A5%E9%97%A8/"/>
+    <url>/202202110058/IC/TCL%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/TCL%E5%85%A5%E9%97%A8/</url>
+    
+    <content type="html"><![CDATA[<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/Eclipse-dltk-itcl_en_fedora_11_con_KDE_4.2.4.png" alt="Eclipse-dltk-itcl_en_fedora_11_con_KDE_4.2.4"></p><h1 id="6-流程控制"><a href="#6-流程控制" class="headerlink" title="6 流程控制"></a>6 流程控制</h1><h2 id="6-1-语法重点"><a href="#6-1-语法重点" class="headerlink" title="6.1 语法重点"></a>6.1 语法重点</h2><ul><li>各种控制语句包括：if,switch,while,for,foreach(在列表和数组中提到),source</li><li>控制语句内部执行的脚本实际上是本语句的一个参数（本质上执行了一条语句）</li><li><p>有关大括号{}和换行符的</p><ul><li>Tcl解释器认为换行符是前一个命令的分隔符，除非换行符在花括号或者双引号之内（参考if语句的参数二）</li></ul></li></ul><figure class="highlight tcl"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs tcl"><span class="hljs-number">123</span><br></code></pre></div></td></tr></table></figure><ul><li>有关大括号{}和双引号的</li><li><p>表达式真假：</p><ul><li>真：非0、yes、true</li><li>假：0、no、false</li></ul></li></ul><h2 id="6-2-各种控制语句"><a href="#6-2-各种控制语句" class="headerlink" title="6.2 各种控制语句"></a>6.2 各种控制语句</h2><h3 id="6-2-1-if-语句"><a href="#6-2-1-if-语句" class="headerlink" title="6.2.1 if 语句"></a>6.2.1 if 语句</h3><h4 id="标准if"><a href="#标准if" class="headerlink" title="标准if"></a>标准if</h4><p>标准语句：</p><p><code>if&#123;参数一&#125;&#123;参数二&#125;</code>：第一个参数是一个表达式，第二个参数是待执行的TCL脚本</p><figure class="highlight tcl"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs tcl"><span class="hljs-keyword">set</span> x <span class="hljs-number">1</span><br><span class="hljs-keyword">if</span>&#123;<span class="hljs-variable">$x</span>&gt;<span class="hljs-number">0</span>&#125;&#123;<br><span class="hljs-keyword">set</span> x -<span class="hljs-variable">$x</span><br>&#125;<br></code></pre></div></td></tr></table></figure><p>错误语句（类C）：</p><figure class="highlight tcl"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs tcl"><span class="hljs-keyword">set</span> x <span class="hljs-number">1</span><br><span class="hljs-keyword">if</span>&#123;<span class="hljs-variable">$x</span>&gt;<span class="hljs-number">0</span>&#125;<br>&#123;<br><span class="hljs-keyword">set</span> x -<span class="hljs-variable">$x</span><br>&#125;<br></code></pre></div></td></tr></table></figure><ul><li>错误原因查看上一节有关大括号和双引号内容</li></ul><h4 id="if-else"><a href="#if-else" class="headerlink" title="if-else"></a>if-else</h4><p>标准语句：</p><figure class="highlight tcl"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs tcl"><span class="hljs-keyword">if</span>&#123;表达式一&#125;&#123;<br>脚本一<br>&#125; else &#123;<br>脚本二<br>&#125;<br>脚本三<br></code></pre></div></td></tr></table></figure><p>错误语句（类C）：</p><figure class="highlight tcl"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs tcl"><span class="hljs-keyword">if</span>&#123;表达式一&#125;<br>&#123;<br>脚本一<br>&#125; <br>else &#123;<br>脚本二<br>&#125;<br>脚本三<br></code></pre></div></td></tr></table></figure><ul><li>错误原因查看上一节有关大括号和双引号内容</li></ul><h4 id="if-elseif-else"><a href="#if-elseif-else" class="headerlink" title="if-elseif-else"></a>if-elseif-else</h4><p>标准语句：</p><figure class="highlight tcl"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs tcl"><span class="hljs-keyword">if</span>&#123;表达式一&#125;&#123;<br>脚本一<br>&#125; elseif &#123;<br>脚本二<br>&#125; else &#123;<br>脚本三<br>&#125;<br>脚本四<br></code></pre></div></td></tr></table></figure><p>有时候switch比if-elseif-else更高效</p><h3 id="6-2-2-switch"><a href="#6-2-2-switch" class="headerlink" title="6.2.2 switch"></a>6.2.2 switch</h3><h4 id="标准语句："><a href="#标准语句：" class="headerlink" title="标准语句："></a>标准语句：</h4><figure class="highlight tcl"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs tcl"><span class="hljs-keyword">if</span>&#123;表达式一&#125;&#123;<br>脚本一<br>&#125; else &#123;<br>脚本二<br>&#125;<br>脚本三<br></code></pre></div></td></tr></table></figure><h4 id="匹配模式参数"><a href="#匹配模式参数" class="headerlink" title="匹配模式参数"></a>匹配模式参数</h4><h2 id="2-3-while"><a href="#2-3-while" class="headerlink" title="2.3 while"></a>2.3 while</h2><h2 id="2-4-for"><a href="#2-4-for" class="headerlink" title="2.4 for"></a>2.4 for</h2><h2 id="2-5-source"><a href="#2-5-source" class="headerlink" title="2.5 source"></a>2.5 source</h2><h2 id="3-其他"><a href="#3-其他" class="headerlink" title="3 其他"></a>3 其他</h2><h1 id="7-过程"><a href="#7-过程" class="headerlink" title="7 过程"></a>7 过程</h1><p>Tcl分为：</p><ul><li>内建(Build-in)过程（如power()、exp()等）</li><li>用户自定义过程</li></ul><p>``proc 参数一 {参数二} {参数三}</p><figure class="highlight tcl"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs Tcl"><span class="hljs-keyword">proc</span><span class="hljs-title"> func</span> &#123;ref1 ref2&#125;&#123;<br>tcl_sentence<br>&#125;<br></code></pre></div></td></tr></table></figure><p>proc只是一个普通的Tcl命令而不是特殊的语法声明，因此pro的参数处理方法和其他Tcl命令相同</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>IC</category>
+      
+      <category>TCL学习</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>入门</tag>
+      
+      <tag>TCL</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Linux基础内容（一）</title>
+    <link href="/202202100117/CS/Linuxessay/cs/linux/Linux%E5%9F%BA%E7%A1%80%E5%86%85%E5%AE%B9%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <url>/202202100117/CS/Linuxessay/cs/linux/Linux%E5%9F%BA%E7%A1%80%E5%86%85%E5%AE%B9%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Linux基础内容（一）"><a href="#Linux基础内容（一）" class="headerlink" title="Linux基础内容（一）"></a>Linux基础内容（一）</h1><span id="more"></span><p>git遇到fatal: unable to access ‘<a href="https://github.com/xxx/xxx/’:OpenSSL">https://github.com/xxx/xxx/’:OpenSSL</a> SSL_read: Connection was aborted, errno 10053的问题</p><h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>Git默认限制推送的大小，运行命令更改限制大小即可</p><h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ol><li>增加缓冲</li></ol><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">git config http.postBuffer 524288000<br></code></pre></div></td></tr></table></figure><ol><li>更改网络认证设置</li></ol><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">git config --global http.sslVerify <span class="hljs-string">&quot;false&quot;</span><br></code></pre></div></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>CS</category>
+      
+      <category>Linux</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Linux</tag>
+      
+      <tag>概论</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>hexo框架下的博客多主机写作方案</title>
     <link href="/202201111602/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7essay/tools/hexo%E6%A1%86%E6%9E%B6%E4%B8%8B%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%A4%9A%E4%B8%BB%E6%9C%BA%E5%86%99%E4%BD%9C%E6%96%B9%E6%A1%88/"/>
     <url>/202201111602/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7essay/tools/hexo%E6%A1%86%E6%9E%B6%E4%B8%8B%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%A4%9A%E4%B8%BB%E6%9C%BA%E5%86%99%E4%BD%9C%E6%96%B9%E6%A1%88/</url>
@@ -50,32 +108,6 @@
       <tag>开发工具</tag>
       
     </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title></title>
-    <link href="/202201031521/uncategorizedessay/ic/sv%E5%AD%A6%E4%B9%A0/TCL07-%E8%BF%87%E7%A8%8B/"/>
-    <url>/202201031521/uncategorizedessay/ic/sv%E5%AD%A6%E4%B9%A0/TCL07-%E8%BF%87%E7%A8%8B/</url>
-    
-    <content type="html"><![CDATA[<h1 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h1><p>Tcl分为：</p><ul><li>内建(Build-in)过程（如power()、exp()等）</li><li>用户自定义过程</li></ul><p>``proc 参数一 {参数二} {参数三}</p><figure class="highlight tcl"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs Tcl"><span class="hljs-keyword">proc</span><span class="hljs-title"> func</span> &#123;ref1 ref2&#125;&#123;<br>tcl_sentence<br>&#125;<br></code></pre></div></td></tr></table></figure><p>proc只是一个普通的Tcl命令而不是特殊的语法声明，因此pro的参数处理方法和其他Tcl命令相同</p>]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title></title>
-    <link href="/202201031413/uncategorizedessay/ic/sv%E5%AD%A6%E4%B9%A0/TCL06-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/"/>
-    <url>/202201031413/uncategorizedessay/ic/sv%E5%AD%A6%E4%B9%A0/TCL06-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/</url>
-    
-    <content type="html"><![CDATA[<h1 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h1><h2 id="1-语法重点"><a href="#1-语法重点" class="headerlink" title="1 语法重点"></a>1 语法重点</h2><ul><li><p>各种控制语句包括：if,switch,while,for,foreach(在列表和数组中提到),source</p></li><li><p>控制语句内部执行的脚本实际上是本语句的一个参数（本质上执行了一条语句）</p></li><li><p>有关大括号{}和换行符的</p><ul><li><p>Tcl解释器认为换行符是前一个命令的分隔符，除非换行符在花括号或者双引号之内（参考if语句的参数二）</p></li><li><p>```tcl</p><figure class="highlight routeros"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs routeros"><br>+ 有关大括号&#123;&#125;和双引号的<br><br>+ 表达式真假：<br><br>  + 真：非0、<span class="hljs-literal">yes</span>、<span class="hljs-literal">true</span><br>  + 假：0、<span class="hljs-literal">no</span>、<span class="hljs-literal">false</span><br><br><br><span class="hljs-comment">## 2 各种控制语句</span><br><br><span class="hljs-comment">### 2.1 if 语句</span><br><br><span class="hljs-comment">### 标准if</span><br><br>标准语句：<br><br>``<span class="hljs-keyword">if</span>&#123;参数一&#125;&#123;参数二&#125;``：第一个参数是一个表达式，第二个参数是待执行的TCL脚本<br><br>```tcl<br><span class="hljs-builtin-name">set</span> x 1<br><span class="hljs-keyword">if</span>&#123;<span class="hljs-variable">$x</span>&gt;0&#125;&#123;<br><span class="hljs-builtin-name">set</span> x -<span class="hljs-variable">$x</span><br>&#125;<br></code></pre></div></td></tr></table></figure></li></ul></li></ul><p>错误语句（类C）：</p><figure class="highlight tcl"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs tcl"><span class="hljs-keyword">set</span> x <span class="hljs-number">1</span><br><span class="hljs-keyword">if</span>&#123;<span class="hljs-variable">$x</span>&gt;<span class="hljs-number">0</span>&#125;<br>&#123;<br><span class="hljs-keyword">set</span> x -<span class="hljs-variable">$x</span><br>&#125;<br></code></pre></div></td></tr></table></figure><ul><li>错误原因查看上一节有关大括号和双引号内容</li></ul><h3 id="if-else"><a href="#if-else" class="headerlink" title="if-else"></a>if-else</h3><p>标准语句：</p><figure class="highlight tcl"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs tcl"><span class="hljs-keyword">if</span>&#123;表达式一&#125;&#123;<br>脚本一<br>&#125; else &#123;<br>脚本二<br>&#125;<br>脚本三<br></code></pre></div></td></tr></table></figure><p>错误语句（类C）：</p><figure class="highlight tcl"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs tcl"><span class="hljs-keyword">if</span>&#123;表达式一&#125;<br>&#123;<br>脚本一<br>&#125; <br>else &#123;<br>脚本二<br>&#125;<br>脚本三<br></code></pre></div></td></tr></table></figure><ul><li>错误原因查看上一节有关大括号和双引号内容</li></ul><h3 id="if-elseif-else"><a href="#if-elseif-else" class="headerlink" title="if-elseif-else"></a>if-elseif-else</h3><p>标准语句：</p><figure class="highlight tcl"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs tcl"><span class="hljs-keyword">if</span>&#123;表达式一&#125;&#123;<br>脚本一<br>&#125; elseif &#123;<br>脚本二<br>&#125; else &#123;<br>脚本三<br>&#125;<br>脚本四<br></code></pre></div></td></tr></table></figure><p>有时候switch比if-elseif-else更高效</p><h2 id="2-2-switch"><a href="#2-2-switch" class="headerlink" title="2.2 switch"></a>2.2 switch</h2><h3 id="标准语句："><a href="#标准语句：" class="headerlink" title="标准语句："></a>标准语句：</h3><figure class="highlight tcl"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs tcl"><span class="hljs-keyword">if</span>&#123;表达式一&#125;&#123;<br>脚本一<br>&#125; else &#123;<br>脚本二<br>&#125;<br>脚本三<br></code></pre></div></td></tr></table></figure><h3 id="匹配模式参数"><a href="#匹配模式参数" class="headerlink" title="匹配模式参数"></a>匹配模式参数</h3><h2 id="2-3-while"><a href="#2-3-while" class="headerlink" title="2.3 while"></a>2.3 while</h2><h2 id="2-4-for"><a href="#2-4-for" class="headerlink" title="2.4 for"></a>2.4 for</h2><h2 id="2-5-source"><a href="#2-5-source" class="headerlink" title="2.5 source"></a>2.5 source</h2><h2 id="3-其他"><a href="#3-其他" class="headerlink" title="3 其他"></a>3 其他</h2>]]></content>
-    
-    
     
   </entry>
   
@@ -510,7 +542,7 @@
     <link href="/202111141924/%E9%80%9A%E7%9F%A5notify/hexo_d%E6%97%B6%E6%8A%A5%E9%94%99/"/>
     <url>/202111141924/%E9%80%9A%E7%9F%A5notify/hexo_d%E6%97%B6%E6%8A%A5%E9%94%99/</url>
     
-    <content type="html"><![CDATA[<h1 id="hexo执行hexo-d时报错：OpenSSL-SSL-read-Connection-was-aborted-errno-10053"><a href="#hexo执行hexo-d时报错：OpenSSL-SSL-read-Connection-was-aborted-errno-10053" class="headerlink" title="hexo执行hexo d时报错：OpenSSL SSL_read: Connection was aborted, errno 10053"></a>hexo执行hexo d时报错：OpenSSL SSL_read: Connection was aborted, errno 10053</h1><span id="more"></span><p>git遇到fatal: unable to access ‘<a href="https://github.com/xxx/xxx/’:OpenSSL">https://github.com/xxx/xxx/’:OpenSSL</a> SSL_read: Connection was aborted, errno 10053的问题</p><h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>Git默认限制推送的大小，运行命令更改限制大小即可</p><h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ol><li>增加缓冲</li></ol><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">git config http.postBuffer 524288000<br></code></pre></div></td></tr></table></figure><ol><li>更改网络认证设置</li></ol><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">git config http.sslVerify <span class="hljs-string">&quot;false&quot;</span><br></code></pre></div></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h1 id="hexo执行hexo-d时报错：OpenSSL-SSL-read-Connection-was-aborted-errno-10053"><a href="#hexo执行hexo-d时报错：OpenSSL-SSL-read-Connection-was-aborted-errno-10053" class="headerlink" title="hexo执行hexo d时报错：OpenSSL SSL_read: Connection was aborted, errno 10053"></a>hexo执行hexo d时报错：OpenSSL SSL_read: Connection was aborted, errno 10053</h1><span id="more"></span><p>git遇到fatal: unable to access ‘<a href="https://github.com/xxx/xxx/’:OpenSSL">https://github.com/xxx/xxx/’:OpenSSL</a> SSL_read: Connection was aborted, errno 10053的问题</p><h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>Git默认限制推送的大小，运行命令更改限制大小即可</p><h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ol><li>增加缓冲</li></ol><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">git config http.postBuffer 524288000<br></code></pre></div></td></tr></table></figure><ol><li>更改网络认证设置</li></ol><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">git config --global http.sslVerify <span class="hljs-string">&quot;false&quot;</span><br></code></pre></div></td></tr></table></figure>]]></content>
     
     
     <categories>
