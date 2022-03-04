@@ -32,8 +32,9 @@
 <meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220301120214795.png">
 <meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220301121507718.png">
 <meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0MjkxNTA1,size_16,color_FFFFFF,t_70.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0MjkxNTA1,size_16,color_FFFFFF,t_70.png">
 <meta property="article:published_time" content="2022-02-25T17:17:00.000Z">
-<meta property="article:modified_time" content="2022-03-03T03:39:01.235Z">
+<meta property="article:modified_time" content="2022-03-03T09:33:29.412Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="学习">
 <meta property="article:tag" content="CS">
@@ -267,7 +268,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      31k 字
+      36k 字
     </span>
   
 
@@ -276,7 +277,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      96 分钟
+      112 分钟
     </span>
   
 
@@ -581,7 +582,7 @@
 <figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala">scala&gt; myAssert(() =&gt; <span class="hljs-number">5</span> / <span class="hljs-number">0</span> == <span class="hljs-number">0</span>)<br><br>scala&gt; byNameAssert(<span class="hljs-number">5</span> / <span class="hljs-number">0</span> == <span class="hljs-number">0</span>)<br><br>scala&gt; boolAssert(<span class="hljs-number">5</span> / <span class="hljs-number">0</span> == <span class="hljs-number">0</span>)<br>java.lang.<span class="hljs-type">ArithmeticException</span>: / by zero<br>  ... <span class="hljs-number">28</span> elided<br></code></pre></div></td></tr></table></figure>
 <div class="hljs code-wrapper"><pre><code> 如果把变量assertionEnabled设置为true，让&amp;&amp;右侧的代码执行，那么三个函数都会抛出除零异常：
 </code></pre></div><figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala">scala&gt; assertionEnabled = <span class="hljs-literal">true</span><br>assertionEnabled: <span class="hljs-type">Boolean</span> = <span class="hljs-literal">true</span><br><br>scala&gt; myAssert(() =&gt; <span class="hljs-number">5</span> / <span class="hljs-number">0</span> == <span class="hljs-number">0</span>)<br>java.lang.<span class="hljs-type">ArithmeticException</span>: / by zero<br>  at .$anonfun$res30$<span class="hljs-number">1</span>(&lt;console&gt;:<span class="hljs-number">13</span>)<br>  at .myAssert(&lt;console&gt;:<span class="hljs-number">13</span>)<br>  ... <span class="hljs-number">28</span> elided<br><br>scala&gt; byNameAssert(<span class="hljs-number">5</span> / <span class="hljs-number">0</span> == <span class="hljs-number">0</span>)<br>java.lang.<span class="hljs-type">ArithmeticException</span>: / by zero<br>  at .$anonfun$res31$<span class="hljs-number">1</span>(&lt;console&gt;:<span class="hljs-number">13</span>)<br>  at .byNameAssert(&lt;console&gt;:<span class="hljs-number">13</span>)<br>  ... <span class="hljs-number">28</span> elided<br><br>scala&gt; boolAssert(<span class="hljs-number">5</span> / <span class="hljs-number">0</span> == <span class="hljs-number">0</span>)<br>java.lang.<span class="hljs-type">ArithmeticException</span>: / by zero<br>  ... <span class="hljs-number">28</span> elided<br></code></pre></div></td></tr></table></figure>
-<h2 id="4-10-总结"><a href="#4-10-总结" class="headerlink" title="4.10 总结"></a>4.10 总结</h2><p>​    本章内容是对Scala的函数的讲解，重点在于理解函数作为一等值的概念，函数字面量的作用以及部分应用函数的作用。在阅读复杂的代码时，常常遇见诸如<strong>“def xxx(f: T =&gt; U, …) …”或 “def xxx(…): T =&gt; U”</strong>的代码，要理解前者表示需要传入一个函数作为参数，后者表示函数返回的对象是一个函数。在学习初期，理解函数是一等值的概念可能有些费力，通过大量阅读和编写代码才能熟能生巧。同时不要忘记前一章说过，<strong>函数的参数都是val类型的，在函数体内不能修改传入的参数。</strong></p>
+<h2 id="4-10-章节总结"><a href="#4-10-章节总结" class="headerlink" title="4.10 章节总结"></a>4.10 章节总结</h2><p>​    本章内容是对Scala的函数的讲解，重点在于理解函数作为一等值的概念，函数字面量的作用以及部分应用函数的作用。在阅读复杂的代码时，常常遇见诸如<strong>“def xxx(f: T =&gt; U, …) …”或 “def xxx(…): T =&gt; U”</strong>的代码，要理解前者表示需要传入一个函数作为参数，后者表示函数返回的对象是一个函数。在学习初期，理解函数是一等值的概念可能有些费力，通过大量阅读和编写代码才能熟能生巧。同时不要忘记前一章说过，<strong>函数的参数都是val类型的，在函数体内不能修改传入的参数。</strong></p>
 <h1 id="5-类和对象"><a href="#5-类和对象" class="headerlink" title="5 类和对象"></a>5 类和对象</h1><h2 id="5-1-类"><a href="#5-1-类" class="headerlink" title="5.1 类"></a>5.1 类</h2><p>说了一堆废话，和Java差不多就是</p>
 <blockquote>
 <p>​        在Scala里，类是用关键字<strong>“class”</strong>开头的代码定义。它是对象的<strong>蓝图</strong>，一旦定义完成，就可以通过<strong>“new 类名”</strong>的方式来<strong>构造一个对象</strong>。而这个对象的类型，就是这个类。换句话说，一个类就是一个类型，不同的类就是不同的类型。在后续的章节中，会讲到类的继承关系，以及超类、子类和子类型多态的概念。</p>
@@ -722,7 +723,7 @@
 <figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala"><span class="hljs-comment">// main2.scala</span><br><span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">Start2</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">App</span> </span>&#123;<br>  <span class="hljs-keyword">try</span> &#123;<br>    <span class="hljs-keyword">var</span> sum = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span>(arg &lt;- args) &#123;<br>      sum += arg.toInt<br>    &#125;<br>    println(<span class="hljs-string">&quot;sum = &quot;</span> + sum)<br>  &#125; <span class="hljs-keyword">catch</span> &#123;<br>    <span class="hljs-keyword">case</span> ex: <span class="hljs-type">NumberFormatException</span> =&gt; println(<span class="hljs-string">&quot;Arguments must be Int!&quot;</span>)<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 <p>将文件编译后，就可以如下使用：</p>
 <figure class="highlight powershell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs powershell"><span class="hljs-built_in">PS</span> E:\Microsoft VS\Scala&gt; scala Start2 <span class="hljs-number">10</span> <span class="hljs-literal">-8</span> <span class="hljs-number">20</span> AAA<br>Arguments must be Int!<br><span class="hljs-built_in">PS</span> E:\Microsoft VS\Scala&gt; scala Start2 <span class="hljs-number">10</span> <span class="hljs-literal">-8</span> <span class="hljs-number">20</span> <span class="hljs-number">8</span><br>sum = <span class="hljs-number">30</span><br></code></pre></div></td></tr></table></figure>
-<h2 id="5-10-总结"><a href="#5-10-总结" class="headerlink" title="5.10 总结"></a>5.10 总结</h2><p>​    本章讲解了Scala的类和对象，从中可以初窥Scala在语法精简和便捷上的努力。<strong>难点是</strong>理解单例对象的概念、类与类型的关系和工厂方法的作用。如果读者有其他oop语言基础，在这里也并不是能一下就接受Scala的语法。最后一个重点就是学会灵活使用apply方法。</p>
+<h2 id="5-10-章节总结"><a href="#5-10-章节总结" class="headerlink" title="5.10 章节总结"></a>5.10 章节总结</h2><p>​    本章讲解了Scala的类和对象，从中可以初窥Scala在语法精简和便捷上的努力。<strong>难点是</strong>理解单例对象的概念、类与类型的关系和工厂方法的作用。如果读者有其他oop语言基础，在这里也并不是能一下就接受Scala的语法。最后一个重点就是学会灵活使用apply方法。</p>
 <h1 id="6-操作符即方法"><a href="#6-操作符即方法" class="headerlink" title="6 操作符即方法"></a>6 操作符即方法</h1><h2 id="6-1-操作符在Scala里的解释"><a href="#6-1-操作符在Scala里的解释" class="headerlink" title="6.1 操作符在Scala里的解释"></a>6.1 操作符在Scala里的解释</h2><blockquote>
 <p>​    在诸如C++、Java等oop语言里，定义了像byte、short、int、char、float之类的基本类型，但是<strong>这些基本类型不属于面向对象的范畴</strong>。就好比C语言也有这些类型，但是C语言根本没有面向对象的概念。 比如只能说“1”是一个int类型的常量，却不能说它是一个int类型的对象。与之对应的，这些语言还定义了与基本类型相关的操作符。例如，有算术操作符加法“+”，它可以连接左、右两个操作数，然后算出相应的总和。</p>
 </blockquote>
@@ -875,11 +876,149 @@
 <li>可以重写隐式继承来的“equals”方法</li>
 </ul>
 <figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala">scala&gt; <span class="hljs-keyword">val</span> a = <span class="hljs-type">List</span>(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>)<br>a: <span class="hljs-type">List</span>[<span class="hljs-type">Int</span>] = <span class="hljs-type">List</span>(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>)<br><br>scala&gt; <span class="hljs-keyword">val</span> b = <span class="hljs-type">List</span>(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>)<br>b: <span class="hljs-type">List</span>[<span class="hljs-type">Int</span>] = <span class="hljs-type">List</span>(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>)<br><br>scala&gt; <span class="hljs-keyword">val</span> c = <span class="hljs-type">List</span>(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>)<br>c: <span class="hljs-type">List</span>[<span class="hljs-type">Int</span>] = <span class="hljs-type">List</span>(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>)<br><br>scala&gt; <span class="hljs-keyword">val</span> d = a<br>d: <span class="hljs-type">List</span>[<span class="hljs-type">Int</span>] = <span class="hljs-type">List</span>(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>)<br><br>scala&gt; a == c<br>res0: <span class="hljs-type">Boolean</span> = <span class="hljs-literal">false</span><br><br>scala&gt; a == b<br>res1: <span class="hljs-type">Boolean</span> = <span class="hljs-literal">true</span><br><br>scala&gt; a equals b<br>res2: <span class="hljs-type">Boolean</span> = <span class="hljs-literal">true</span><br><br>scala&gt; a eq b<br>res3: <span class="hljs-type">Boolean</span> = <span class="hljs-literal">false</span><br><br>scala&gt; a eq d<br>res4: <span class="hljs-type">Boolean</span> = <span class="hljs-literal">true</span><br></code></pre></div></td></tr></table></figure>
-<h2 id="6-6-总结"><a href="#6-6-总结" class="headerlink" title="6.6 总结"></a>6.6 总结</h2><p>​    本章又进一步阐释了Scala追求的纯粹的面向对象，介绍了“操作符即方法”这个重要概念。这一概念对构建良好的DSL语言很重要，因为它使得不仅内建类型可以写成表达式，也让自定义的类在计算时可以写出自然的表达式风格。</p>
+<h2 id="6-6-章节总结"><a href="#6-6-章节总结" class="headerlink" title="6.6 章节总结"></a>6.6 章节总结</h2><p>​    本章又进一步阐释了Scala追求的纯粹的面向对象，介绍了“操作符即方法”这个重要概念。这一概念对构建良好的DSL语言很重要，因为它使得不仅内建类型可以写成表达式，也让自定义的类在计算时可以写出自然的表达式风格。</p>
 <p>​    关于对象相等性，这是一个较为复杂的概念。在自定义类里，如果要比较对象相等性，则不仅是简单地重写equals方法，还需要其他手段。这里不再赘述，如有必要，后续会继续讨论。</p>
-<h1 id="7-类继承"><a href="#7-类继承" class="headerlink" title="7 类继承"></a>7 类继承</h1><h2 id="7-1-Scala的类集成"><a href="#7-1-Scala的类集成" class="headerlink" title="7.1 Scala的类集成"></a>7.1 Scala的类集成</h2><p>​    在面向对象编程里，为了节省代码量，也为了反映实际各种类之间的联系，通常采取两种策略：包含和继承。包含代表了一种has-a的关系，也就是一个类包括了另一个类的实例。例如，午餐的菜单含有水果，那么就可以先编写一个水果类，然后再编写一个午餐类，并在午餐类里包含水果类的对象，但这两者没有必然联系。继承代表了一种is-a的关系，也就是从一个宽泛的类可以派生出更加具体的类。例如，编写的水果类包含了一些常见水果的公有属性，然后要编写一个更具体的苹果类。考虑到现实世界中，苹果就是(is-a，更准确来说应该是is-a-kind-of)一种特殊的水果，那么苹果类完全可以把水果类里定义的属性都继承过来，而且这两者有必然联系。</p>
-<p>​    本章介绍的内容就是关于类继承的Scala语法，以及一些特性。</p>
-<p>​    通过在类的参数列表后面加上关键字“extends”和被继承类的类名，就完成了一个继承的过程。被继承的类称为“超类”或者“父类”，而派生出来的类称为“子类”。如果继承层次较深，最顶层的类通常也叫“基类”。继承关系只有“超类”和“子类”的概念，即超类的超类也叫超类，子类的子类还叫子类。例如：</p>
+<h1 id="7-类继承"><a href="#7-类继承" class="headerlink" title="7 类继承"></a>7 类继承</h1><h2 id="7-1-Scala的类集成"><a href="#7-1-Scala的类集成" class="headerlink" title="7.1 Scala的类集成"></a>7.1 Scala的类集成</h2><p>​    在类的参数列表后面加上关键字<strong>“extends”</strong>和被继承类的类名，就完成了一个继承的过程。通常使用的三个名词：</p>
+<ul>
+<li>超类：基本的一种继承关系<ul>
+<li>父类：只限定于一级继承时这么称呼</li>
+</ul>
+</li>
+<li>子类</li>
+</ul>
+<blockquote>
+<p>​    被继承的类称为“超类”或者“父类”，而派生出来的类称为“子类”。如果继承层次较深，最顶层的类通常也叫“基类”。继承关系只有“超类”和“子类”的概念，即超类的超类也叫超类，子类的子类还叫子类。例如：</p>
+</blockquote>
+<p>示例代码（纯粹演示Scala语法，没有实际意义）：</p>
+<figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala">scala&gt; <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span> </span>&#123;undefined<br>         |    <span class="hljs-keyword">val</span> a = <span class="hljs-string">&quot;Class A&quot;</span><br>         |  &#125;<br>defined <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span></span><br><br>scala&gt; <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">A</span> </span>&#123;undefined<br>         |    <span class="hljs-keyword">val</span> b = <span class="hljs-string">&quot;Class B inherits from A&quot;</span><br>         |  &#125;<br>defined <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span></span><br><br>scala&gt; <span class="hljs-keyword">val</span> x = <span class="hljs-keyword">new</span> <span class="hljs-type">B</span><br>x: <span class="hljs-type">B</span> = <span class="hljs-type">B</span>@<span class="hljs-number">5922</span>cff3<br><br>scala&gt; x.a<br>res0: <span class="hljs-type">String</span> = <span class="hljs-type">Class</span> <span class="hljs-type">A</span><br><br>scala&gt; x.b<br>res1: <span class="hljs-type">String</span> = <span class="hljs-type">Class</span> <span class="hljs-type">B</span> inherits from <span class="hljs-type">A</span><br></code></pre></div></td></tr></table></figure>
+<h2 id="7-2-构造方法"><a href="#7-2-构造方法" class="headerlink" title="7.2 构造方法"></a>7.2 构造方法</h2><p>​    子类调用超类的构造方法的语法是：</p>
+<figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">子类</span>(<span class="hljs-params">子类从外接收的参数</span>) <span class="hljs-keyword">extends</span> <span class="hljs-title">超类</span>(<span class="hljs-params">子类给超类的参数</span>)</span><br></code></pre></div></td></tr></table></figure>
+<p>​    父类构造方法没有参数：6.1中的例子中，父类的构造方法<strong>没有参数，所以“extends A”也就不需要参数</strong></p>
+<p>​    只有主构造方法才能调用超类的构造方法：Scala<strong>只允许主构造方法调用超类的构造方法</strong>，而这种写法就是子类的主构造方法在调用超类的构造方法。例如：</p>
+<figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala">scala&gt; <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span>(<span class="hljs-params">val a: <span class="hljs-type">Int</span></span>)</span><br>defined <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span></span><br><br>scala&gt; <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span>(<span class="hljs-params">giveA: <span class="hljs-type">Int</span>, val b: <span class="hljs-type">Int</span></span>) <span class="hljs-keyword">extends</span> <span class="hljs-title">A</span>(<span class="hljs-params">giveA</span>)</span><br>defined <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span></span><br><br>scala&gt; <span class="hljs-keyword">val</span> x = <span class="hljs-keyword">new</span> <span class="hljs-type">B</span>(<span class="hljs-number">10</span>, <span class="hljs-number">20</span>)<br>x: <span class="hljs-type">B</span> = <span class="hljs-type">B</span>@<span class="hljs-number">5</span>f81507a<br><br>scala&gt; x.a<br>res0: <span class="hljs-type">Int</span> = <span class="hljs-number">10</span><br><br>scala&gt; x.b<br>res1: <span class="hljs-type">Int</span> = <span class="hljs-number">20</span><br></code></pre></div></td></tr></table></figure>
+<h2 id="7-3-一些特殊性质"><a href="#7-3-一些特殊性质" class="headerlink" title="7.3 一些特殊性质"></a>7.3 一些特殊性质</h2><p><strong>（1）覆盖：override</strong></p>
+<p>​    覆盖超类的成员时，应该在定义的开头<strong>加上关键字“override”</strong>。例如：</p>
+<figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala">scala&gt; <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Mercury</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Metal</span> </span>&#123;undefined<br>         |    <span class="hljs-keyword">override</span> <span class="hljs-keyword">val</span> state = <span class="hljs-string">&quot;liquid&quot;</span><br>         |  &#125;<br>defined <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Mercury</span></span><br></code></pre></div></td></tr></table></figure>
+<hr>
+<p><strong>（2）不可覆盖的成员、不可被继承的类：final</strong></p>
+<ul>
+<li><p>如果超类成员在开头用<strong>关键字“final”</strong>修饰，那么<strong>子类就只能继承，而不能重写</strong>。</p>
+</li>
+<li><p><strong>“final”也可以用于修饰class</strong>，那么这个类就禁止被其他类继承。</p>
+</li>
+</ul>
+<hr>
+<p><strong>（3）无参方法与字段</strong></p>
+<p>​    Scala的<strong>无参方法在调用时，可以省略空括号</strong>。</p>
+<blockquote>
+<p>鉴于此，对用户代码而言，如果看不到类库的具体实现，那么调用无参方法和调用同名的字段则没有什么不同，甚至无法区分其具体实现到底是方法还是字段。如果把类库里的无参方法改成字段，或是把字段改成无参方法，那么客户代码不用更改也能运行。</p>
+</blockquote>
+<p>​    为了方便在这两种定义之间进行切换，Scala允许<strong>超类的无参方法</strong>被子类<strong>重写为字段</strong>，<strong>但字段不能反过来被重写为无参方法</strong>，而且<strong>方法的返回类型必须和字段的类型一致</strong>。示例代码如下：</p>
+<figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala">scala&gt; <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span> </span>&#123;undefined<br>         |    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">justA</span></span>() = <span class="hljs-string">&quot;A&quot;</span><br>         |  &#125;<br>defined <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span></span><br><br>scala&gt; <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">A</span> </span>&#123;undefined<br>         |    <span class="hljs-keyword">override</span> <span class="hljs-keyword">val</span> justA = <span class="hljs-string">&quot;B&quot;</span> <span class="hljs-comment">//超类的无参方法被子类重写为字段</span><br>         |  &#125;<br>defined <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span></span><br><br>scala&gt; <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">C</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">A</span> </span>&#123;undefined<br>         |    <span class="hljs-keyword">override</span> <span class="hljs-keyword">val</span> justA = <span class="hljs-number">1</span> <span class="hljs-comment">//方法的返回类型必须和字段的类型一致</span><br>         |  &#125;<br>&lt;console&gt;:<span class="hljs-number">13</span>: error: overriding method justA in <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span> <span class="hljs-title">of</span> <span class="hljs-title">type</span> (<span class="hljs-params"></span>)<span class="hljs-title">String</span></span>;<br> value justA has incompatible <span class="hljs-class"><span class="hljs-keyword">type</span></span><br>         <span class="hljs-keyword">override</span> <span class="hljs-keyword">val</span> justA = <span class="hljs-number">1</span><br>                      ^<br><br>scala&gt; <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">D</span> </span>&#123;undefined<br>         |    <span class="hljs-keyword">val</span> d = <span class="hljs-number">10</span> <br>         |  &#125;<br>defined <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">D</span></span><br><br>scala&gt; <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">E</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">D</span> </span>&#123;undefined<br>         |    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">d</span></span>() = <span class="hljs-number">100</span>  <span class="hljs-comment">//超类的字段不能反过来被重写为无参方法</span><br>         |  &#125;<br>&lt;console&gt;:<span class="hljs-number">13</span>: error: overriding value d in <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">D</span> <span class="hljs-title">of</span> <span class="hljs-title">type</span> <span class="hljs-title">Int</span></span>;<br> method d needs to be a stable, immutable value<br>         <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">d</span></span>() = <span class="hljs-number">100</span><br>                      ^<br></code></pre></div></td></tr></table></figure>
+<blockquote>
+<p>​    <strong>字段与方法的区别</strong>在于：字段一旦被初始化之后，就会被保存在内存中，以后每次调用都只需直接读取内存即可；方法不会占用内存空间，但是每次调用都需要执行一遍程序段，速度比字段要慢。因此，到底定义成无参方法还是字段，就是在速度和内存之间折衷。</p>
+<p>​    <strong>字段能重写无参方法的原理</strong>是<strong>Scala只有两种命名空间</strong>：</p>
+<ul>
+<li>值——字段、方法、包、单例对象</li>
+<li>类型——类、特质。</li>
+</ul>
+<p>​    因为<strong>字段和方法同处一个命名空间</strong>，所以字段可以重写无参方法。这也告诉我们，同处一个命名空间的定义类型，在同一个作用域内不能以相同的名字同时出现。例如，同一个类里不能同时出现同名的字段、无参方法和单例对象：</p>
+</blockquote>
+<h2 id="7-4-多态与动态绑定"><a href="#7-4-多态与动态绑定" class="headerlink" title="7.4 多态与动态绑定"></a>7.4 多态与动态绑定</h2><p>​    类型为超类的变量可以指向子类的对象，这一现象被称为<strong>子类型多态</strong>，也是面向对象的多态之一。但是对于方法而言，尽管变量的类型是超类，<strong>方法的版本却是“动态绑定”的</strong>。也就是说，调用的方法要运行哪个版本，<strong>是由变量指向的对象来决定</strong>。例如：</p>
+<figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala">scala&gt; <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span> </span>&#123;undefined<br>         |    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">display</span></span>() = <span class="hljs-string">&quot;I&#x27;m A.&quot;</span><br>         |  &#125;<br>defined <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span></span><br><br>scala&gt; <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">A</span> </span>&#123;undefined<br>         |    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">display</span></span>() = <span class="hljs-string">&quot;I&#x27;m B.&quot;</span><br>         |  &#125;<br>defined <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span></span><br><br>scala&gt; <span class="hljs-keyword">val</span> x: <span class="hljs-type">A</span> = <span class="hljs-keyword">new</span> <span class="hljs-type">B</span><br>x: <span class="hljs-type">A</span> = <span class="hljs-type">B</span>@<span class="hljs-number">6</span>c5abd8f<br><br>scala&gt; x.display<br>res0: <span class="hljs-type">String</span> = <span class="hljs-type">I</span><span class="hljs-symbol">&#x27;m</span> <span class="hljs-type">B</span>.<br></code></pre></div></td></tr></table></figure>
+<h2 id="7-5-抽象类（abstract）"><a href="#7-5-抽象类（abstract）" class="headerlink" title="7.5 抽象类（abstract）"></a>7.5 抽象类（abstract）</h2><p>抽象类：</p>
+<ul>
+<li>类里<strong>包含了没有具体定义的成员</strong>（没有初始化的字段或没有函数体的方法）</li>
+<li>必须用关键字“abstract”修饰</li>
+</ul>
+<p>抽象成员：</p>
+<ul>
+<li>没有具体定义的成员</li>
+<li>不需要“abstract”的修饰</li>
+</ul>
+<p>​    <strong>抽象类无法构造</strong>出具体的对象，不能通过”new”构造实例对象</p>
+<blockquote>
+<p>​    如果类里<strong>包含了没有具体定义的成员</strong>（没有初始化的字段或没有函数体的方法），那么这个类就是<strong>抽象类</strong>，<strong>必须用关键字“abstract”修饰</strong>。相应的成员称为<strong>抽象成员</strong>，<strong>不需要“abstract”的修饰</strong>。因为存在抽象成员，所以这个类不可能构造出具体的对象，因为有无法初始化抽象字段或者无法执行抽象方法，所以抽象类不能通过“new”来构造实例对象。</p>
+</blockquote>
+<p>​    <strong>抽象类的子类</strong>可以对父类抽象成员进行定义，此时<strong>关键字”override”可以不写</strong></p>
+<p>​    <strong>抽象类常用于定义基类</strong>，因为基类会派生出很多不同的子类，这些子类往往具有行为不同的同名成员，所以基类只需要声明有哪些公共成员，让子类去实现它们各自期望的版本。 </p>
+<blockquote>
+<p>​    抽象类缺失的抽象成员的定义，可以由抽象类的子类来补充。也就是说，抽象类“声明”了抽象成员，却没有立即“定义”它。如果子类补齐了抽象成员的相关定义，就称子类“实现”了超类的抽象成员。相对的，我们称超类的成员是“抽象”的，而子类的成员是“具体”的。子类实现超类的抽象成员时，关键字“override”可写可不写。例如</p>
+</blockquote>
+<figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala">scala&gt; <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span> </span>&#123;undefined<br>         |    <span class="hljs-keyword">val</span> a: <span class="hljs-type">Int</span><br>         |  &#125;<br>defined <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span></span><br><br>scala&gt; <span class="hljs-keyword">val</span> x = <span class="hljs-keyword">new</span> <span class="hljs-type">A</span><br>&lt;console&gt;:<span class="hljs-number">12</span>: error: <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span> <span class="hljs-title">is</span> <span class="hljs-title">abstract</span></span>; cannot be instantiated<br>       <span class="hljs-keyword">val</span> x = <span class="hljs-keyword">new</span> <span class="hljs-type">A</span><br>               ^<br><br>scala&gt; <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span>(<span class="hljs-params">val b: <span class="hljs-type">Int</span></span>) <span class="hljs-keyword">extends</span> <span class="hljs-title">A</span> </span>&#123;undefined<br>         |    <span class="hljs-keyword">val</span> a = b * <span class="hljs-number">2</span><br>         |  &#125;<br>defined <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span></span><br><br>scala&gt; <span class="hljs-keyword">val</span> y = <span class="hljs-keyword">new</span> <span class="hljs-type">B</span>(<span class="hljs-number">1</span>)<br>y: <span class="hljs-type">B</span> = <span class="hljs-type">B</span>@<span class="hljs-number">7</span>fe87c0e<br><br>scala&gt; y.a<br>res0: <span class="hljs-type">Int</span> = <span class="hljs-number">2</span><br><br>scala&gt; y.b<br>res1: <span class="hljs-type">Int</span> = <span class="hljs-number">1</span><br></code></pre></div></td></tr></table></figure>
+<h2 id="7-6-没有多重继承"><a href="#7-6-没有多重继承" class="headerlink" title="7.6 没有多重继承"></a>7.6 没有多重继承</h2><p>​    <strong>Scala没有多重继承</strong>，也就是说，在“extends”后面只能有一个类，这与大多数oop语言不同。多重继承其实是一个很让人头疼的问题，使用起来很复杂，也很容易出错。在笔者学习C++的时候，看到了C++为了使用多重继承而不得不做出的大量语法规则修改，和单个继承混在一起时常把人搞晕。<strong>Scala舍弃多重继承的做法，对于程序员而言是莫大的帮助</strong>，不用在编写代码时考虑冗长的代码设计。尤其是对超类方法的调用，当存在多个超类时，为了避免歧义而不得不仔细设计方法的行为。</p>
+<p>​    虽然多重继承不好用，但是它实现的功能在某些时候又不可或缺。为此，Scala<strong>专门设计了“特质”来实现相同的功能</strong>，并且特质的规则更简单、更明了。特质将在后一章介绍。</p>
+<h2 id="7-7-Scala类的层次结构"><a href="#7-7-Scala类的层次结构" class="headerlink" title="7.7 Scala类的层次结构"></a>7.7 Scala类的层次结构</h2><p>​    Scala所有的类——不管是标准库里已有的类还是自定义的类<strong>都存在层次关系</strong>。这种关系如下图所示，其中<strong>实线箭头</strong>表示属于指向的<strong>类的子类</strong>，<strong>虚线箭头</strong>表示可以<strong>隐式转换</strong>成指向的类：</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0MjkxNTA1,size_16,color_FFFFFF,t_70.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>最顶部的类是抽象类Any，它是所有类的超类。Any类定义了几个成员方法，如下表所示：</p>
+<center><b>Any类的成员方法</b></center>
+
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法定义</th>
+<th style="text-align:center">属性</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>def getClass(): Class[_]</td>
+<td style="text-align:center">抽象</td>
+<td style="text-align:center">返回运行时对象所属的类的表示</td>
+</tr>
+<tr>
+<td>final def !=(arg0: Any): Boolean</td>
+<td style="text-align:center">具体</td>
+<td style="text-align:center">比较两个对象的自然相等性是否不相等</td>
+</tr>
+<tr>
+<td>final def ==(arg0: Any): Boolean</td>
+<td style="text-align:center">具体</td>
+<td style="text-align:center">比较两个对象的自然相等性是否相等</td>
+</tr>
+<tr>
+<td>def equals(arg0: Any): Boolean</td>
+<td style="text-align:center">具体</td>
+<td style="text-align:center">比较两个对象的自然相等性，被!=和==调用</td>
+</tr>
+<tr>
+<td>final def ##(): Int</td>
+<td style="text-align:center">具体</td>
+<td style="text-align:center">计算对象的哈希值，等同于hashCode，但是自然相等性相等的两个对象会得到相同的哈希值，并且不能计算null对象</td>
+</tr>
+<tr>
+<td>def hashCode(): Int</td>
+<td style="text-align:center">具体</td>
+<td style="text-align:center">计算对象的哈希值</td>
+</tr>
+<tr>
+<td>final def asInstanceOf[T]: T</td>
+<td style="text-align:center">具体</td>
+<td style="text-align:center">把对象强制转换为T类型</td>
+</tr>
+<tr>
+<td>final def isInstanceOf[T]: Boolean</td>
+<td style="text-align:center">具体</td>
+<td style="text-align:center">判断对象是否属于T类型，或T的子类</td>
+</tr>
+<tr>
+<td>def toString(): String</td>
+<td style="text-align:center">具体</td>
+<td style="text-align:center">返回一个字符串来表示对象</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>也就是说，任何类都有这几个方法。注意，不能出现同名的方法，若确实需要自定义版本，则记得带上“override”。</p>
+<p>再往下一层，Any类有两个子类：AnyVal和AnyRef。也就是说，所有类被分成两大部分：值类和引用类。值类也就是前面讲过的对应Java的九种基本类型，并且其中七个存在一定的隐式转换，例如Byte可以扩展成Short等等。隐式转换是Scala的一个语法，用于对象在两个类之间进行类型转换，后面章节会讲到。除了标准库里已有的隐式转换，也可以自定义隐式转换。</p>
+<p>除了这九个值类，也可以自定义值类，即定义时显式地继承自AnyVal类。如果没有显式地继承自AnyVal类，则都认为是AnyRef类的子类，也就是说一般自定义的类都属于引用类。大部分标准库里的类都是引用类，比如常见的字符串类String，还有后续会讲解的列表类、映射类、集合类等等。Java的类都属于引用类，因为Java的基本类型都在值类里面。</p>
+<p>前面讲过引用相等性，很显然只有引用类才有引用相等性。事实上，比较引用相等性的两个方法——eq和ne，都定义在AnyRef类里。值类AnyVal是没有这两个方法的，也不需要。</p>
+<p>在层次结构的底部有两个底类型——Null类和Nothing类。其中Null类是所有引用类的子类，表示空引用，即指向JVM里的空内存，这与Java的null概念是一样的。但是Null并不兼容值类，所以Scala还有一个类——Nothing，它是所有值类和引用类的子类，甚至还是Null类的子类。因此Nothing不仅表示空引用，还表示空值。Scala里有一个可选值语法，也就是把各种类型打包成一个特殊的可选值。为了表示“空”、“没有”这个特殊的概念，以及兼容各种自定义、非自定义的值和引用类，这个特殊的可选值其实就是把Nothing类进行打包。</p>
+<p>除了自定义的普通类属于引用类，后一章讲解的特质，也是属于引用类的范畴。</p>
+<h2 id="7-8-章节总结"><a href="#7-8-章节总结" class="headerlink" title="7.8 章节总结"></a>7.8 章节总结</h2><p>​    本章介绍了类继承的语法，其内容不多，也简单易懂。这一章真正的难点是阅读大型系统软件时，遇到的纷繁复杂的类层次，要梳理这些类的继承关系往往费时费力。还有自己编写代码时，如何设计类的结构，让系统稳定、简单、逻辑清晰，也不是一件容易事。</p>
+<p>​    在编写Chisel时，类继承主要用于编写接口，因为接口可以扩展，但是实际的硬件电路并没有很强烈的继承关系。</p>
 
             </div>
             <hr>
