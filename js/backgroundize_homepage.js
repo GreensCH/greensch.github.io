@@ -1,5 +1,13 @@
 var image_list = [
     "https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/背景页.jpg",
+    "https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20220310112417.png",
+    "https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20220310112708.png",
+    "https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20220310112826.png",
+    "https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20220310112900.png",
+    "https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20220310113317.png",
+    //"https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20220310112049.png",
+    "https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20220310112213.png",
+    //"https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20220310112332.png",
     "https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/96733090_p2.jpg",
     "https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/96733090_p3.jpg",
     "https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/96733090_p4.jpg",
@@ -11,22 +19,48 @@ image_list.forEach((item,index,image_list)=>{
     url_image_list.push(' url(' + item +') ')
 })
 
+//以下代码是随机切换图片的代码
 var times = 1;
-setInterval(function () {
-    if(times<image_list.length){
-        changeBg(times)
-        times++;
-    }
+var image_ready = 1;
+const image_fade_time = 1500;
+const image_switch_time = 20000;
+function randomTimes(_times){
+    var _times_temp = Math.floor(Math.random()*(image_list.length-1)); 
+    if(times!=_times_temp)
+        return _times_temp;
     else{
-        changeBg(times);
-        times=0;
+        return randomTimes(_times_temp);
     }
-}, 10000);
+        
+}
+setInterval(function () {
+    if(image_ready){
+        times = randomTimes(times)
+        changeBg(times);
+        console.log(times);
+    }
+}, image_switch_time);
+//以下代码是顺序切换图片的代码
+// setInterval(function () {
+//     if(image_ready){
+//         if(times<image_list.length){
+//             changeBg(times)
+//             times++;
+//         }
+//         else{
+//             changeBg(times);
+//             times=0;
+//         }
+//     }
+// }, image_switch_time);
 
 function changeBg(times)
 {
-    $(viewBg).css("background-image", url_image_list[times]);
-    console.log(times);
+    image_ready=0;
+    $(viewBg).fadeOut(image_fade_time,function(){
+        $(viewBg).css("background-image", url_image_list[times]);
+        $(viewBg).fadeIn(image_fade_time,function(){image_ready=1})
+    });
 }
 
 const bannerContainer = $("#banner");
