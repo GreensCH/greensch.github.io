@@ -49,14 +49,18 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"eca4a4d34dadf0d4e282cc6ef2dc3de6","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"eca4a4d34dadf0d4e282cc6ef2dc3de6","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 
-<body><!-- hexo injector body_begin start --><div id="web_bg"></div><!-- hexo injector body_begin end -->
+<body><!-- hexo injector body_begin start --><div id="web_bg"></div>
+  <div id="aplayer"></div>
+  <link defer rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css" />
+  <script src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js"></script>
+  <script defer src="/js/aplayer.js"></script><!-- hexo injector body_begin end -->
   <header style="height: 60vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
@@ -746,41 +750,6 @@
     <div class="category-sub row">
       <a
         class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
-        id="heading-6b80d642bb8048fba27816efd8b1bc7f" role="tab" data-toggle="collapse" href="#collapse-6b80d642bb8048fba27816efd8b1bc7f"
-        aria-expanded="false"
-      >
-        知识
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      <a href="/categories/IC/%E7%9F%A5%E8%AF%86/" class="category-count col-2 col-md-1">
-        <i class="iconfont icon-articles"></i>
-        <span>1</span>
-      </a>
-      <div class="category-collapse collapse" id="collapse-6b80d642bb8048fba27816efd8b1bc7f" role="tabpanel" aria-labelledby="heading-6b80d642bb8048fba27816efd8b1bc7f">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/202109272059/IC/%E7%9F%A5%E8%AF%86essay/ic/verilog%E5%AD%A6%E4%B9%A0/01Verilog%E5%8F%AF%E7%BB%BC%E5%90%88%E7%9A%84%E8%AF%AD%E6%B3%95/" class="list-group-item list-group-item-action">
-          <span class="category-post">Verilog可综合的语法</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
-    
-    
-    <div class="category-sub row">
-      <a
-        class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
         id="heading-9f50ccd8efc555216580ff1a87051f5a" role="tab" data-toggle="collapse" href="#collapse-9f50ccd8efc555216580ff1a87051f5a"
         aria-expanded="false"
       >
@@ -802,6 +771,41 @@
       
         <a href="/202111141520/IC/%E5%AE%9E%E9%AA%8Cessay/ic/sv%E5%AD%A6%E4%B9%A0/%E5%AE%9E%E9%AA%8C%E7%9B%AE%E5%BD%95/" class="list-group-item list-group-item-action">
           <span class="category-post">SV|UVM 学习实验目录</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category-sub row">
+      <a
+        class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-6b80d642bb8048fba27816efd8b1bc7f" role="tab" data-toggle="collapse" href="#collapse-6b80d642bb8048fba27816efd8b1bc7f"
+        aria-expanded="false"
+      >
+        知识
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/IC/%E7%9F%A5%E8%AF%86/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse collapse" id="collapse-6b80d642bb8048fba27816efd8b1bc7f" role="tabpanel" aria-labelledby="heading-6b80d642bb8048fba27816efd8b1bc7f">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/202109272059/IC/%E7%9F%A5%E8%AF%86essay/ic/verilog%E5%AD%A6%E4%B9%A0/01Verilog%E5%8F%AF%E7%BB%BC%E5%90%88%E7%9A%84%E8%AF%AD%E6%B3%95/" class="list-group-item list-group-item-action">
+          <span class="category-post">Verilog可综合的语法</span>
         </a>
       
     

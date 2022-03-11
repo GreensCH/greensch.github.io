@@ -23,17 +23,17 @@
 <meta property="og:site_name" content="友人律的博客">
 <meta property="og:description" content="0 Chisel的常见问题（必读）（1）Firrtl中间格式：Chisel是寄宿在Scala里的语言，所以它本质还是Scala。为了从Chisel转变成Verilog，语言开发人员开发了一个中间的标准交换格式——Firrtl，它跟Vrilog是同一级别的，两者都比Chisel低一级。编写的Chisel代码首先会经过Firrtl编译器，生成Firrtl代码，也就是一个后缀格式为“.fir”的文件，然">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/202203091915/IC/Chieslessay/cs/scala/2022-3-9-chisel/2022-3-9-chisel/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0MjkxNTA1,size_16,color_FFFFFF,t_70.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0MjkxNTA1,size_16,color_FFFFFF,t_70.png">
 <meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/96733090_p2.jpg">
 <meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/96733090_p3.jpg">
 <meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/96733090_p4.jpg">
 <meta property="article:published_time" content="2022-03-09T11:15:00.000Z">
-<meta property="article:modified_time" content="2022-03-11T11:05:02.269Z">
+<meta property="article:modified_time" content="2022-03-11T12:12:21.872Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="IC">
 <meta property="article:tag" content="学习">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://yoursite.com/202203091915/IC/Chieslessay/cs/scala/2022-3-9-chisel/2022-3-9-chisel/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0MjkxNTA1,size_16,color_FFFFFF,t_70.png">
+<meta name="twitter:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0MjkxNTA1,size_16,color_FFFFFF,t_70.png">
   
   <title>Chisel（一）：初步 - 友人律的博客</title>
 
@@ -72,14 +72,18 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"eca4a4d34dadf0d4e282cc6ef2dc3de6","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"eca4a4d34dadf0d4e282cc6ef2dc3de6","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 
-<body><!-- hexo injector body_begin start --><div id="web_bg"></div><!-- hexo injector body_begin end -->
+<body><!-- hexo injector body_begin start --><div id="web_bg"></div>
+  <div id="aplayer"></div>
+  <link defer rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css" />
+  <script src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js"></script>
+  <script defer src="/js/aplayer.js"></script><!-- hexo injector body_begin end -->
   <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
@@ -321,7 +325,7 @@
 <h2 id="1-1-Java安装"><a href="#1-1-Java安装" class="headerlink" title="1.1 Java安装"></a>1.1 Java安装</h2><p>根据下面这个博客来的，但在修改环境变量处出现了问题，导致无法进入系统（详情参考本博客《解决Ubuntu修改环境变量后导致登录循环进不去系统的问题》）</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41204464/article/details/90314834">https://blog.csdn.net/qq_41204464/article/details/90314834</a></p>
 <hr>
-<h3 id="（1）下载安装包"><a href="#（1）下载安装包" class="headerlink" title="（1）下载安装包"></a>（1）下载安装包</h3><p>记得下载Linux 64位的 <a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/javase/javase8u211-later-archive-downloads.html">官网地址</a></p>
+<h3 id="（1）下载安装包"><a href="#（1）下载安装包" class="headerlink" title="（1）下载安装包"></a>（1）下载安装包</h3><p>记得下载Linux64位的<a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/javase/javase8u211-later-archive-downloads.html">官网地址</a></p>
 <h3 id="（2）解压并移动"><a href="#（2）解压并移动" class="headerlink" title="（2）解压并移动"></a>（2）解压并移动</h3><p>解压并移动到<code>/usr/lib/jdk</code>目录下</p>
 <figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">tar -zxvf ./jdk-8u311-linux-x64.tar.gz<br>mkdir /usr/lib/jdk<br>mv ./jdk1.8.0_311 /usr/lib/jdk/<br></code></pre></div></td></tr></table></figure>
 <h3 id="（3）修改环境变量"><a href="#（3）修改环境变量" class="headerlink" title="（3）修改环境变量"></a>（3）修改环境变量</h3><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">sudo gedit /etc/profile<br></code></pre></div></td></tr></table></figure>
@@ -380,7 +384,7 @@
 <p>​        Scala中数据类型在Chisel用于参数和内建控制结构</p>
 <p>​        Chisel自己的数据类型用于构建硬件电路还是得用</p>
 <p>​        Chisel定义的数据类型如下图所示，其中<strong>绿色方块是class</strong>，<strong>红色是object</strong>，<strong>蓝色是trait</strong>，<strong>箭头指向的是超类和混入的特质</strong>： </p>
-<p><img src="2022-3-9-chisel/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0MjkxNTA1,size_16,color_FFFFFF,t_70.png" srcset="/img/loading.gif" lazyload alt="Chisel的数据类型关系图"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0MjkxNTA1,size_16,color_FFFFFF,t_70.png" srcset="/img/loading.gif" lazyload alt="Chisel的数据类型关系图"></p>
 <ul>
 <li><p><strong>Data类：所有数据类型都继承自抽象基类Data</strong>，它混入了两个特质HasId和NamedComponent。如果读者查看Chisel3的源代码，就会看到很多参数传递时都用下界表明了是Data的子类。<u>在实际硬件构成里，并不会用到Data</u>，读者也不用关心它的具体实现细节。更多的，应该关注Data类的两大子类：聚合类Aggregate和元素类Element。</p>
 </li>
@@ -508,16 +512,13 @@
 <p>​        位宽推测过程会持续到没有位宽改变。 除了通过已知固定数量的右移之外，位宽推测规定了输出位宽度不能小于输入位宽度，因此输出位宽度增长或保持相同。 此外，寄存器的宽度必须由用户明确地或根据复位值或下一个参数的位宽指定。根据这两个要求，我们可以将位宽推测过程将收敛到一个固定点。</p>
 <p><strong>有关自动截断的问题：</strong></p>
 <p>​        当把一个短位宽的信号值或硬件结构赋值给长位宽的硬件结构时，会自动扩展符号位。但是反过来会报错，并不是像Verilog那样把多余的高位截断，这需要注意(注：最新的chisel3版本已经可以像Verilog一样自动把高位截断了)</p>
-<h1 id="3-模块与硬件配置"><a href="#3-模块与硬件配置" class="headerlink" title="3 模块与硬件配置"></a>3 模块与硬件配置</h1><p>Chisel在构建硬件的思路上类似Verilog。在Verilog中，是以“模块(module)”为基本单位组成一个完整的独立功能实体，所以Chisel也是按模块划分的，只不过不是用关键字“module”开头来定义模块，而是用一个继承自Module类的自定义class。</p>
-<p>在Verilog里，模块内部主要有“线网(wire)”和“四态变量(reg)”两种硬件类型，它们用于描述数字电路的组合逻辑和时序逻辑。在Chisel里，也按这个思路定义了一些硬件类型，包括基本的线网和寄存器，以及一些常用的其它类型。前一章介绍了Chisel的数据类型，这还不够，因为这些数据类型是无法独立工作的。实际的电路应该是由硬件类型的对象构成的，不管是信号的声明，还是用赋值进行信号传递，都是由硬件类型的对象来完成的。数据类型和硬件类型融合在一起，才能构成完整、可运行的组件。比如要声明一个线网，这部分工作由硬件类型来完成；这个线网的位宽是多少、按无符号数还是有符号数解释、是不是向量等等，这些则是由作为参数的数据类型对象来定义的。</p>
+<h1 id="3-模块与硬件配置"><a href="#3-模块与硬件配置" class="headerlink" title="3 模块与硬件配置"></a>3 模块与硬件配置</h1><p>​        Chisel在构建硬件的思路上类似Verilog。在Verilog中，是以“模块(module)”为基本单位组成一个完整的独立功能实体，所以Chisel也是按模块划分的，只不过不是用关键字“module”开头来定义模块，而是用一个继承自Module类的自定义class。</p>
+<p>​        在Verilog里，模块内部主要有“线网(wire)”和“四态变量(reg)”两种硬件类型，它们用于描述数字电路的组合逻辑和时序逻辑。在Chisel里，也按这个思路定义了一些硬件类型，包括基本的线网和寄存器，以及一些常用的其它类型。前一章介绍了Chisel的数据类型，这还不够，因为这些数据类型是无法独立工作的。实际的电路应该是由硬件类型的对象构成的，不管是信号的声明，还是用赋值进行信号传递，都是由硬件类型的对象来完成的。数据类型和硬件类型融合在一起，才能构成完整、可运行的组件。比如要声明一个线网，这部分工作由硬件类型来完成；这个线网的位宽是多少、按无符号数还是有符号数解释、是不是向量等等，这些则是由作为参数的数据类型对象来定义的。</p>
 <p>本章将介绍Chisel里的常用硬件类型以及如何编写一个基本的模块，对于高级类型，读者可以自行研究。这些类型的语法很简单，都是由定义在单例对象里的apply工厂方法来完成。字面的名字已经把硬件含义表明得很清楚，至于它们的具体实现是什么，读者可以不用关心。</p>
-<p>一、Chisel是如何赋值的<br>有了硬件类型后，就可以用赋值操作来进行信号的传递或者电路的连接。只有硬件赋值才有意义，单纯的数据对象进行赋值并不会被编译器转换成实际的电路，因为在Verilog里也是对wire、reg类型的硬件进行赋值。那么，赋值操作需要什么样的操作符来完成呢？</p>
+<h2 id="3-1-Chisel是如何赋值的"><a href="#3-1-Chisel是如何赋值的" class="headerlink" title="3.1 Chisel是如何赋值的"></a>3.1 Chisel是如何赋值的</h2><p>​        有了硬件类型后，就可以用赋值操作来进行信号的传递或者电路的连接。只有硬件赋值才有意义，单纯的数据对象进行赋值并不会被编译器转换成实际的电路，因为在Verilog里也是对wire、reg类型的硬件进行赋值。那么，赋值操作需要什么样的操作符来完成呢？</p>
 <p>在Chisel里，所有对象都应该由val类型的变量来引用，因为硬件电路的不可变性。因此，一个变量一旦初始化时绑定了一个对象，就不能再发生更改。但是，引用的对象很可能需要被重新赋值。例如，输出端口在定义时使用了“=”与端口变量名进行了绑定，那等到驱动该端口时，就需要通过变量名来进行赋值操作，更新数据。很显然，此时“=”已经不可用了，因为变量在声明的时候不是var类型。即使是var类型，这也只是让变量引用新的对象，而不是直接更新原来的可变对象。</p>
 <p>为了解决这个问题，几乎所有的Chisel类都定义了方法“:=”，作为等号赋值的代替。所以首次创建变量时用等号初始化，如果变量引用的对象不能立即确定状态或本身就是可变对象，则在后续更新状态时应该用“:=”。从前面讲的操作符优先级来判断，该操作符以等号结尾，而且不是四种逻辑比较符号之一，所以优先级与等号一致，是最低的。例如：</p>
-<p>val x = Wire(UInt(4.W))</p>
-<p>val y = Wire(UInt(4.W))</p>
-<p>x := “b1010”.U  // 向4bit的线网x赋予了无符号数10</p>
-<p>y := ~x  // 把x按位取反，传递给y</p>
+<figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala"><span class="hljs-keyword">val</span> x = <span class="hljs-type">Wire</span>(<span class="hljs-type">UInt</span>(<span class="hljs-number">4.</span><span class="hljs-type">W</span>))<br><br><span class="hljs-keyword">val</span> y = <span class="hljs-type">Wire</span>(<span class="hljs-type">UInt</span>(<span class="hljs-number">4.</span><span class="hljs-type">W</span>))<br><br>x := <span class="hljs-string">&quot;b1010&quot;</span>.<span class="hljs-type">U</span>  <span class="hljs-comment">// 向4bit的线网x赋予了无符号数10</span><br><br>y := ~x  <span class="hljs-comment">// 把x按位取反，传递给y</span><br></code></pre></div></td></tr></table></figure>
 <p>二、端口<br>   Ⅰ、定义端口列表<br>定义一个模块前一定要先定义好端口。整个端口列表是由方法“IO<a href="iodef: T">T &lt;: Data</a>”来定义的，通常其参数是一个Bundle类型的对象，而且引用的字段名称必须是“io”。因为端口存在方向，所以还需要方法“Input<a href="source: T">T &lt;: Data</a>”和“Output<a href="source: T">T &lt;: Data</a>”来为每个端口表明具体的方向。注意，“Input<a href="source: T">T &lt;: Data</a>”和“Output<a href="source: T">T &lt;: Data</a>”仅仅是复制它们的参数，所以不能是已经被硬件类型包裹的数据类型。目前Chisel还不支持双向端口inout，只能通过黑盒里的Analog端口来模拟外部Verilog的双向端口。</p>
 <p>一旦端口列表定义完成，就可以通过“io.xxx”来使用。输入可以驱动内部其它信号，输出可以被其他信号驱动。可以直接进行赋值操作，布尔类型的端口还能直接作为使能信号。端口不需要再使用其它硬件类型来定义，不过要注意从性质上来说它仍然属于组合逻辑的线网。例如：</p>
 <p>class MyIO extends Bundle {<br>   val in = Input(Vec(5, UInt(32.W)))<br>   val out = Output(UInt(32.W))<br>}</p>
