@@ -16,23 +16,24 @@
   <meta name="description" content="“无论最终结果将人类历史导向何处，我们决定选择希望”">
   <meta name="author" content="友人律 | Guilin Chang">
   <meta name="keywords" content="三差学生、不学无术">
-  <meta name="description" content="1 环境搭建以下环境搭建基于Ubuntu16.04 1.1 Scala安装2 数据类型​        读者在学习本章后，应该理清Chisel数据类型的关系。 ​        常用的类型就五种，重点学会这五种即可：  UInt SInt Bool Bundle Vec[T]  ​        三种值类：UInt、SInt和Bool的操作符与Verilog差不多，很快就能理解。 2.1 Chis">
+  <meta name="description" content="0 Chisel的常见问题（必读）（1）Firrtl中间格式：Chisel是寄宿在Scala里的语言，所以它本质还是Scala。为了从Chisel转变成Verilog，语言开发人员开发了一个中间的标准交换格式——Firrtl，它跟Vrilog是同一级别的，两者都比Chisel低一级。编写的Chisel代码首先会经过Firrtl编译器，生成Firrtl代码，也就是一个后缀格式为“.fir”的文件，然">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Chisel（一）：初步">
 <meta property="og:url" content="http://yoursite.com/202203091915/IC/Chieslessay/cs/scala/2022-3-9-chisel/index.html">
 <meta property="og:site_name" content="友人律的博客">
-<meta property="og:description" content="1 环境搭建以下环境搭建基于Ubuntu16.04 1.1 Scala安装2 数据类型​        读者在学习本章后，应该理清Chisel数据类型的关系。 ​        常用的类型就五种，重点学会这五种即可：  UInt SInt Bool Bundle Vec[T]  ​        三种值类：UInt、SInt和Bool的操作符与Verilog差不多，很快就能理解。 2.1 Chis">
+<meta property="og:description" content="0 Chisel的常见问题（必读）（1）Firrtl中间格式：Chisel是寄宿在Scala里的语言，所以它本质还是Scala。为了从Chisel转变成Verilog，语言开发人员开发了一个中间的标准交换格式——Firrtl，它跟Vrilog是同一级别的，两者都比Chisel低一级。编写的Chisel代码首先会经过Firrtl编译器，生成Firrtl代码，也就是一个后缀格式为“.fir”的文件，然">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/202203091915/IC/Chieslessay/cs/scala/2022-3-9-chisel/2022-3-9-chisel/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0MjkxNTA1,size_16,color_FFFFFF,t_70.png">
 <meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/96733090_p2.jpg">
 <meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/96733090_p3.jpg">
 <meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/96733090_p4.jpg">
 <meta property="article:published_time" content="2022-03-09T11:15:00.000Z">
-<meta property="article:modified_time" content="2022-03-10T09:33:18.426Z">
+<meta property="article:modified_time" content="2022-03-11T10:40:49.163Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="IC">
 <meta property="article:tag" content="学习">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/96733090_p2.jpg">
+<meta name="twitter:image" content="http://yoursite.com/202203091915/IC/Chieslessay/cs/scala/2022-3-9-chisel/2022-3-9-chisel/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0MjkxNTA1,size_16,color_FFFFFF,t_70.png">
   
   <title>Chisel（一）：初步 - 友人律的博客</title>
 
@@ -261,7 +262,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      7.6k 字
+      11k 字
     </span>
   
 
@@ -270,7 +271,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      24 分钟
+      36 分钟
     </span>
   
 
@@ -302,8 +303,70 @@
             <h1 style="display: none">Chisel（一）：初步</h1>
             
             <div class="markdown-body">
-              <h1 id="1-环境搭建"><a href="#1-环境搭建" class="headerlink" title="1 环境搭建"></a>1 环境搭建</h1><p>以下环境搭建基于Ubuntu16.04</p>
-<h2 id="1-1-Scala安装"><a href="#1-1-Scala安装" class="headerlink" title="1.1 Scala安装"></a>1.1 Scala安装</h2><h1 id="2-数据类型"><a href="#2-数据类型" class="headerlink" title="2 数据类型"></a>2 数据类型</h1><p>​        读者在学习本章后，<strong>应该理清Chisel数据类型的关系</strong>。</p>
+              <h1 id="0-Chisel的常见问题（必读）"><a href="#0-Chisel的常见问题（必读）" class="headerlink" title="0 Chisel的常见问题（必读）"></a>0 Chisel的常见问题（必读）</h1><p>（1）<strong>Firrtl中间格式：</strong>Chisel是寄宿在Scala里的语言，所以它本质还是Scala。为了从Chisel转变成Verilog，语言开发人员开发了一个中间的标准交换格式——Firrtl，它跟Vrilog是同一级别的，两者都比Chisel低一级。编写的Chisel代码首先会经过Firrtl编译器，生成Firrtl代码，也就是一个后缀格式为“.fir”的文件，然后由这个Firrtl文件再去生成对应的Verilog代码。如果读者有兴趣看一看Firrtl的格式，其实与Verilog很接近，只不过是由机器生成的、很死板的代码。Firrtl编译器也并不是只针对Chisel，有兴趣和能力的读者也可以开发针对Java、Python、C++等语言的Firrtl编译器。因为Firrtl只是一种标准的中间媒介，如何从一端到另一端，完全是自定义的。另外，Firrtl也并不仅仅是生成Verilog，同样可以开发工具生成VHDL、SystemVerilog等语言</p>
+<p>（2）<u>Chisel与Firrtl双检查：</u>Scala里的语法，在Chisel里也基本能用，比如Scala的基本值类、内建控制结构、函数抽象、柯里化、模式匹配、隐式参数等等。但是读者要记住这些代码不仅要通过Scala编译器的检查，还需要通过Firrtl编译器的检查</p>
+<p>（3）<strong>Chisel完全可综合：</strong>Verilog的最初目的是用于电路验证，所以它有很多不可综合的语法。Firrtl在转变成Verilog时，只会采用可综合的语法，因此读者完全不用担心用Chisel写出来的电路不可综合。只要能正确生成Verilog，那就能被综合器生成电路</p>
+<p>（4）<strong>Chisel只支持二值逻辑：</strong>Chisel目前<strong>只支持0和1</strong>，<strong>不支持四态逻辑里的x和z</strong>。由于只有芯片对外的IO处才能出现三态门，所以内部设计几乎用不到x和z。而且x和z在设计中会带来危害，忽略掉它们也不影响大多数设计，还简化了模型。当然，<u>如果确实需要，可以通过黑盒语法与外部的Verilog代码互动，也可以在下游工具链里添加四态逻辑</u></p>
+<p>（5）<strong>Chisel检查未驱动：</strong>Chisel会对未被驱动的输出型端口和线网进行检测，如果存在，会进行报错。报错选项可以关闭和打开，取决于读者对设计模型的需求。推荐把该选项打开，尽量不要残留无用的声明。</p>
+<p>（6）<mark><strong>Chisel需手动导环境包：</strong></mark>Chisel的代码包并不会像Scala的标准库那样被编译器隐式导入，所以每个Chisel文件都应该在开头都需要导包</p>
+<ul>
+<li>import chisel3._：必选，包含了基本语法</li>
+<li>import chisel3.util._：高级语法必选</li>
+<li>import chisel3.experimental._：高级语法必选</li>
+<li>import chisel3.testers._：高级语法必选</li>
+</ul>
+<p>（7）<strong>不同层次打包封装：</strong>应该用一个名字有意义的包来打包实现某个功能的文件集。例如，要实现一个自定义的微处理器，则可以把顶层包命名为“mycpu”，进而再划分成“myio”、“mymem”、“mybus”、“myalu”等子包，每个子包里包含相关的源文件。</p>
+<p>​        Chisel现在仍在更新中，很可能会添加新功能或删去老功能。因此，本教程介绍的内容在将来并不一定就正确，读者应该持续关注Chisel3的GitHub的发展动向</p>
+<h1 id="1-环境搭建"><a href="#1-环境搭建" class="headerlink" title="1 环境搭建"></a>1 环境搭建</h1><p>以下环境搭建基于Ubuntu16.04</p>
+<h2 id="1-1-Java安装"><a href="#1-1-Java安装" class="headerlink" title="1.1 Java安装"></a>1.1 Java安装</h2><p>根据下面这个博客来的，但在修改环境变量处出现了问题，导致无法进入系统（详情参考本博客《解决Ubuntu修改环境变量后导致登录循环进不去系统的问题》）</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41204464/article/details/90314834">https://blog.csdn.net/qq_41204464/article/details/90314834</a></p>
+<hr>
+<h3 id="（1）下载安装包"><a href="#（1）下载安装包" class="headerlink" title="（1）下载安装包"></a>（1）下载安装包</h3><p>记得下载Linux 64位的 <a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/javase/javase8u211-later-archive-downloads.html">官网地址</a></p>
+<h3 id="（2）解压并移动"><a href="#（2）解压并移动" class="headerlink" title="（2）解压并移动"></a>（2）解压并移动</h3><p>解压并移动到<code>/usr/lib/jdk</code>目录下</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">tar -zxvf ./jdk-8u311-linux-x64.tar.gz<br>mkdir /usr/lib/jdk<br>mv ./jdk1.8.0_311 /usr/lib/jdk/<br></code></pre></div></td></tr></table></figure>
+<h3 id="（3）修改环境变量"><a href="#（3）修改环境变量" class="headerlink" title="（3）修改环境变量"></a>（3）修改环境变量</h3><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">sudo gedit /etc/profile<br></code></pre></div></td></tr></table></figure>
+<p>在文件的<strong>最后</strong>添加：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs make"># JDK,TOMCAT,ORACLE<br>export JAVA_HOME=/home/pu/jdk1.8.0_211<br>export JRE_HOME=$JAVA_HOME/jre<br><br># two sentence belong may crash your env<br># export CLASSPATH=.:$JAVA_HOME/lib:$JRE_HOME/lib <br># export PATH=$PATH:$JAVA_HOME/bin<br></code></pre></div></td></tr></table></figure>
+<h3 id="（4）测试环境变量是否出问题"><a href="#（4）测试环境变量是否出问题" class="headerlink" title="（4）测试环境变量是否出问题"></a>（4）测试环境变量是否出问题</h3><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> /etc/profile <br></code></pre></div></td></tr></table></figure>
+<p>如果运行后发现环境变量失效，则修改有问题</p>
+<h2 id="1-2-Scala安装"><a href="#1-2-Scala安装" class="headerlink" title="1.2 Scala安装"></a>1.2 Scala安装</h2><ul>
+<li><p>随便从官网找一个安装包<a target="_blank" rel="noopener" href="https://www.scala-lang.org/download/all.html，我这里用的rpm安装包，省的我再配置环境变量了">https://www.scala-lang.org/download/all.html，我这里用的rpm安装包，省的我再配置环境变量了</a></p>
+</li>
+<li><p>安装rpm使用命令：</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">sudo rpm  -ivh ./scala-2.11.8.rpm<br></code></pre></div></td></tr></table></figure>
+<ul>
+<li>安装sbt(官网<a target="_blank" rel="noopener" href="https://www.scala-sbt.org/download.html)：">https://www.scala-sbt.org/download.html)：</a></li>
+</ul>
+<blockquote>
+<p>Scala开发环境，官方名字叫“sbt”，最好选择最新的发布版本的安装，不然你还得蛋疼得安装一个叫<a target="_blank" rel="noopener" href="https://github.com/ucb-bar/firrtl">Firrtl</a> 的软件。这个需要先下载再安装</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;deb https://repo.scala-sbt.org/scalasbt/debian all main&quot;</span> | sudo tee /etc/apt/sources.list.d/sbt.list<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;deb https://repo.scala-sbt.org/scalasbt/debian /&quot;</span> | sudo tee /etc/apt/sources.list.d/sbt_old.list<br>curl -sL <span class="hljs-string">&quot;https://keyserver.ubuntu.com/pks/lookup?op=get&amp;search=0x2EE0EA64E40A89B84B2DF73499E82A75642AC823&quot;</span> | sudo apt-key add<br>sudo apt-get update<br>sudo apt-get install sbt<br></code></pre></div></td></tr></table></figure>
+<ul>
+<li>sbt安装完检查：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">sbt<br>sbt -version<br>sbt version <span class="hljs-keyword">in</span> this project: 1.6.2<br>sbt script version: 1.6.2<br></code></pre></div></td></tr></table></figure>
+<h2 id="1-3-安装Verilator"><a href="#1-3-安装Verilator" class="headerlink" title="1.3 安装Verilator"></a>1.3 安装Verilator</h2><p>执行命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">sudo apt-get install verilator <br><br>verilator -version<br>Verilator 3.904 2017-05-30 rev verilator_3_904 <br></code></pre></div></td></tr></table></figure>
+<h2 id="1-4-Chisel安装"><a href="#1-4-Chisel安装" class="headerlink" title="1.4 Chisel安装"></a>1.4 Chisel安装</h2><p>参考官方文档：</p>
+<ul>
+<li>template：<a target="_blank" rel="noopener" href="https://github.com/freechipsproject/chisel-template">https://github.com/freechipsproject/chisel-template</a></li>
+<li>doc：<a target="_blank" rel="noopener" href="https://github.com/chipsalliance/chisel3">https://github.com/chipsalliance/chisel3</a></li>
+<li>homepage：<a target="_blank" rel="noopener" href="https://www.chisel-lang.org/">https://www.chisel-lang.org/</a></li>
+</ul>
+<p>参考指导博客：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34291505/article/details/87365907">https://blog.csdn.net/qq_34291505/article/details/87365907</a></li>
+</ul>
+<h3 id="方法一：直接git-clone-template"><a href="#方法一：直接git-clone-template" class="headerlink" title="方法一：直接git clone template"></a>方法一：直接git clone template</h3><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/freechipsproject/chisel-template <br></code></pre></div></td></tr></table></figure>
+<h2 id="1-10-第一个工程"><a href="#1-10-第一个工程" class="headerlink" title="1.10 第一个工程"></a>1.10 第一个工程</h2><ul>
+<li><p>对于小规模电路，可以直接用Chisel写testbench文件，然后联合Verilator生成C++文件来仿真，输出波形图。该方法会在后续章节介绍。</p>
+</li>
+<li><p>对于大规模电路，Verilator仿真很吃力，建议还是用生成的Verilog文件在专业EDA工具里仿真。当前Chisel不支持UVM，也没有工具支持Chisel，所以尽量用别的工具做测试。</p>
+</li>
+</ul>
+<h1 id="2-数据类型"><a href="#2-数据类型" class="headerlink" title="2 数据类型"></a>2 数据类型</h1><p>​        读者在学习本章后，<strong>应该理清Chisel数据类型的关系</strong>。</p>
 <p>​        <strong>常用的类型就五种</strong>，重点学会这五种即可：</p>
 <ul>
 <li>UInt</li>
@@ -313,53 +376,138 @@
 <li>Vec[T]</li>
 </ul>
 <p>​        <strong>三种值类</strong>：UInt、SInt和Bool的操作符与Verilog差不多，很快就能理解。</p>
-<h2 id="2-1-Chisel的常见问题"><a href="#2-1-Chisel的常见问题" class="headerlink" title="2.1 Chisel的常见问题"></a>2.1 Chisel的常见问题</h2><p>在学习Chisel前，应该熟悉一些常见问题，这些问题在编写Chisel的任何时候都应该牢记。</p>
-<p>①Chisel是寄宿在Scala里的语言，所以它本质还是Scala。为了从Chisel转变成Verilog，语言开发人员开发了一个中间的标准交换格式——Firrtl，它跟Vrilog是同一级别的，两者都比Chisel低一级。编写的Chisel代码首先会经过Firrtl编译器，生成Firrtl代码，也就是一个后缀格式为“.fir”的文件，然后由这个Firrtl文件再去生成对应的Verilog代码。如果读者有兴趣看一看Firrtl的格式，其实与Verilog很接近，只不过是由机器生成的、很死板的代码。Firrtl编译器也并不是只针对Chisel，有兴趣和能力的读者也可以开发针对Java、Python、C++等语言的Firrtl编译器。因为Firrtl只是一种标准的中间媒介，如何从一端到另一端，完全是自定义的。另外，Firrtl也并不仅仅是生成Verilog，同样可以开发工具生成VHDL、SystemVerilog等语言。</p>
-<p>②Scala里的语法，在Chisel里也基本能用，比如Scala的基本值类、内建控制结构、函数抽象、柯里化、模式匹配、隐式参数等等。但是读者要记住这些代码不仅要通过Scala编译器的检查，还需要通过Firrtl编译器的检查。</p>
-<p>③Verilog的最初目的是用于电路验证，所以它有很多不可综合的语法。Firrtl在转变成Verilog时，只会采用可综合的语法，因此读者完全不用担心用Chisel写出来的电路不可综合。只要能正确生成Verilog，那就能被综合器生成电路。</p>
-<p>④Chisel目前不支持四态逻辑里的x和z，只支持0和1。由于只有芯片对外的IO处才能出现三态门，所以内部设计几乎用不到x和z。而且x和z在设计中会带来危害，忽略掉它们也不影响大多数设计，还简化了模型。当然，如果确实需要，可以通过黑盒语法与外部的Verilog代码互动，也可以在下游工具链里添加四态逻辑。</p>
-<p>⑤Chisel会对未被驱动的输出型端口和线网进行检测，如果存在，会进行报错。报错选项可以关闭和打开，取决于读者对设计模型的需求。推荐把该选项打开，尽量不要残留无用的声明。</p>
-<p>⑥Chisel的代码包并不会像Scala的标准库那样被编译器隐式导入，所以每个Chisel文件都应该在开头至少写一句“import chisel3.<em>”。这个包包含了基本的语法，对于某些高级语法，则可能需要“import chisel3.util.</em>”、“import chisel3.experimental.<em>”、 “import chisel3.testers.</em>”等等。</p>
-<p>⑦应该用一个名字有意义的包来打包实现某个功能的文件集。例如，要实现一个自定义的微处理器，则可以把顶层包命名为“mycpu”，进而再划分成“myio”、“mymem”、“mybus”、“myalu”等子包，每个子包里包含相关的源文件。</p>
-<p>⑧Chisel现在仍在更新中，很可能会添加新功能或删去老功能。因此，本教程介绍的内容在将来并不一定就正确，读者应该持续关注Chisel3的GitHub的发展动向。</p>
-<p>二、Chisel的数据类型<br>Chisel定义了自己的一套数据类型，读者应该跟Scala的九种基本值类区分开来。而且Chisel也能使用Scala的数据类型，但是Scala的数据类型都是用于参数和内建控制结构，构建硬件电路还是得用Chisel自己的数据类型，在使用时千万不要混淆。当前Chisel定义的数据类型如下图所示，其中绿色方块是class，红色是object，蓝色是trait，箭头指向的是超类和混入的特质： </p>
-<p>Chisel的数据类型关系图<br>所有数据类型都继承自抽象基类Data，它混入了两个特质HasId和NamedComponent。如果读者查看Chisel3的源代码，就会看到很多参数传递时都用下界表明了是Data的子类。在实际硬件构成里，并不会用到Data，读者也不用关心它的具体实现细节。更多的，应该关注Data类的两大子类：聚合类Aggregate和元素类Element。</p>
-<p>聚合类Aggregate的常用子类是向量类Vec[T]和包裹类Bundle。Vec[T]类用于包含相同的元素，元素类型T可以是任意的Data子类。因为Vec[T]混入了特质IndexedSeq[T]，所以向量的元素能从下标0开始索引访问。Bundle类用于被自定义的类继承，这样自定义的类就能包含任意Data的子类对象，常用于协助构造模块的端口，故而衍生出了一些预定义的端口子类。混合向量类MixedVec[T]是Chisel3.2以上版本添加的语法，它与Vec[T]的不同在于可以包含不同类型的元素。</p>
-<p>Element类衍生出了Analog、Bits和Clock三个子类，单例对象DontCare和特质Reset。Analog用于在黑盒中模拟inout端口，目前在实际Chisel里并无其他用途。Bits类的两个子类SInt和UInt是最常用的两个数据类型，它们是用补码表示的有符号整数和无符号整数。不仅用来协助定义端口位宽，还用来进行赋值。FixedPoint类提供的API带有试验性质，而且将来可能会发生改变，所以不常用。Bool类是Chisel自己的布尔类型，区别于Scala的Boolean。Bool类是UInt类的子类，因为它可以看成是1bit的UInt，而且它被混入Reset特质，因为复位信号都是用Bool类型的线网或寄存器使能的。此外，Bits类混入了特质ToBoolable，也就是说FixedPoint、SInt和UInt都能转换成多bit的Bool类型。Clock类表示时钟，Chisel里的时钟是专门的一个类型，并不像Verilog里那样是1bit的线网。复位类型Reset也是如此。单例对象DontCare用于赋值给未驱动的端口或线网，防止编译器报错。</p>
-<p>三、数据字面量<br>能够表示具体值的数据类型为UInt、SInt和Bool。实际可综合的电路都是若干个bit，所以只能表示整数，这与Verilog是一致的。要表示浮点数，本质还是用多个bit来构建，而且要遵循IEEE的浮点标准。对于UInt，可以构成任意位宽的线网或寄存器。对于SInt，在Chisel里会按补码解读，转换成Verilog后会使用系统函数$signed，这是可综合的。对于Bool，转换成Verilog后就是1bit的线网或寄存器。</p>
-<p>要表示值，则必须有相应的字面量。Chisel定义了一系列隐式类：fromBigIntToLiteral、fromtIntToLiteral、fromtLongToLiteral、fromStringToLiteral、fromBooleanToLiteral。回顾前面讲述的隐式类的内容，也就是会有相应的隐式转换。以隐式类fromtIntToLiteral为例，存在一个同名的隐式转换，把相应的Scala的Int对象转换成一个fromtIntToLiteral的对象。而fromtIntToLiteral类有两个方法U和S，分别构造一个等值的UInt对象和SInt对象。再加上Scala的基本值类都是用字面量构造对象，所以要表示一个UInt对象，可以写成“1.U”的格式，这样编译器会插入隐式转换，变成“fromtIntToLiteral(1).U”，进而构造出字面值为“1”的UInt对象。同理，也可以构造SInt。还有相同行为的方法asUInt和asSInt。</p>
-<p>从几个隐式类的名字就可以看出，可以通过BigInt、Int、Long和String四种类型的Scala字面量来构造UInt和SInt。按Scala的语法，其中BigInt、Int、Long三种类型默认是十进制的，但可以加前缀“0x”或“0X”变成十六进制。对于字符串类型的字面量，Chisel编译器默认也是十进制的，但是可以加上首字母“h”、“o”、“b”来分别表示十六进制、八进制和二进制。此外，字符串字面量可以用下划线间隔。</p>
-<p>可以通过Boolean类型的字面量——true和false——来构造fromBooleanToLiteral类型的对象，然后调用名为B和asBool的方法进一步构造Bool类型的对象。例如：</p>
-<p>1.U                // 字面值为“1”的UInt对象</p>
-<p>-8.S               // 字面值为“-8”的SInt对象</p>
-<p>“b0101”.U     // 字面值为“5”的UInt对象</p>
-<p>true.B            // 字面值为“true”的Bool对象 </p>
-<p>四、数据宽度<br>默认情况下，数据的宽度按字面值取最小，例如字面值为“8”的UInt对象是4位宽，SInt就是5位宽。但是也可以指定宽度。在Chisel2里，宽度是由Int类型的参数表示的，而Chisel3专门设计了宽度类Width。还有一个隐式类fromIntToWidth，就是把Int对象转换成fromIntToWidth类型的对象，然后通过方法W返回一个Width对象。方法U、asUInt、S和asSInt都有一个重载的版本，接收一个Width类型的参数，构造指定宽度的SInt和UInt对象。注意，Bool类型固定是1位宽。例如：</p>
-<p>1.U              // 字面值为“1”、宽度为1bit的UInt对象</p>
-<p>1.U(32.W)   // 字面值为“1”、宽度为32bit的UInt对象</p>
-<p>UInt、SInt和Bool都不是抽象类，除了可以通过字面量构造对象以外，也可以直接通过apply工厂方法构造没有字面量的对象。UInt和SInt的apply方法有两个版本，一个版本接收Width类型的参数构造指定宽度的对象，另一个则是无参版本构造位宽可自动推断的对象。有字面量的数据类型用于赋值、初始化寄存器等操作，而无字面量的数据类型则用于声明端口、构造向量等。</p>
-<p> 五、类型转换<br>UInt、SInt和Bool三个类都包含四个方法：asUInt、asSInt、toBool和toBools。其中asUInt和asSInt分别把字面值按无符号数和有符号数解释，并且位宽不会变化，要注意转换过程中可能发生符号位和数值的变化。例如，3bit的UInt值“b111”，其字面量是“7”，转换成SInt后字面量就变成了“-1”。toBool会把1bit的“1”转换成Bool类型的true，“0”转换成false。如果位宽超过1bit，则用toBools转换成Bool类型的序列Seq[Bool]。</p>
-<p>另外，Bool类还有一个方法asClock，把true转换成电压常高的时钟，false转换成电压常低的时钟。Clock类只有一个方法asUInt，转换成对应的0或1。</p>
-<p>六、向量<br>如果需要一个集合类型的数据，除了可以使用Scala内建的数组、列表、集等数据结构外，还可以使用Chisel专属的Vec[T]。T必须是Data的子类，而且每个元素的类型、位宽必须一样。Vec[T]的伴生对象里有一个apply工厂方法，接收两个参数，第一个是Int类型，表示元素的个数，第二个是元素。它属于可索引的序列，下标从0开始。例如：</p>
-<p>val myVec = Wire(Vec(3, UInt(32.W)))</p>
-<p>val myReg = myVec(0)</p>
-<p>还有一个工厂方法VecInit[T]，通过接收一个Seq[T]作为参数来构造向量，或者是多个重复参数。不过，这个工厂方法常把有字面值的数据作为参数，用于初始化寄存器组、ROM、RAM等，或者用来构造多个模块。</p>
-<p>因为Vec[T]也是一种序列，所以它也定义了诸如map、flatMap、zip、foreach、filter、exists、contains等方法。尽管这些方法应该出现在软件里，但是它们也可以简化硬件逻辑的编写，减少手工代码量。</p>
-<p>七、混合向量<br>混合向量MixedVec[T]与普通的向量Vec[T]类似，只不过包含的元素可以不全都一样。它的工厂方法是通过重复参数或者序列作为参数来构造的，并且也有一个叫MixedVecInit[T]的单例对象。</p>
-<p>对于构造Vec[T]和MixedVec[T]的序列，并不一定要逐个手写，可以通过Scala的函数，比如fill、map、flatMap、to、until等来生成。例如：</p>
-<p>val mixVec = Wire(MixedVec((1 to 10) map { i =&gt; UInt(i.W) }))</p>
-<p> 八、包裹<br>抽象类Bundle很像C语言的结构体(struct)，用户可以编写一个自定义类来继承自它，然后在自定义的类里包含其它各种Data类型的字段。它可以协助构建线网或寄存器，但是最常见的用途是用于构建一个模块的端口列表，或者一部分端口。例如：</p>
-<p>class MyModule extends Module {<br>   val io = IO(new Bundle {<br>       val in = Input(UInt(32.W))<br>       val out = Output(UInt(32.W))<br>   })</p>
-<p> Bundle可以和UInt进行相互转换。Bundle类有一个方法asUInt，可以把所含的字段拼接成一个UInt数据，并且前面的字段在高位。例如：</p>
-<p>class MyBundle extends Bundle {<br>   val foo = UInt(4.W)  // 高位<br>   val bar = UInt(4.W)  // 低位<br>}</p>
-<p>val bundle = Wire(new MyBundle)<br>bundle.foo := 0xc.U<br>bundle.bar := 0x3.U<br>val uint = bundle.asUInt  // 12*16 + 3 = 195</p>
-<p>有一个隐式类fromBitsable，可以把Data类型的对象转化成该类型，然后通过方法fromBits来接收一个Bits类型的参数来给该对象赋值。不过，该方法在Chisel3中已经被标注为过时，不推荐使用。例如：</p>
-<p>class MyBundle extends Bundle {<br>   val foo = UInt(4.W)  // 高位<br>   val bar = UInt(4.W)  // 低位<br>}</p>
-<p>val uint = 0xb4.U<br>val bundle = Wire(new MyBundle).fromBits(uint)  // foo = 11, bar = 4</p>
-<p>九、Chisel的内建操作符<br>有了数据类型，还需要预定义一些相关的操作符进行基本的操作。下表是Chisel内建的操作符：</p>
-<p>Chisel的内建操作符<br>操作符    释义<br>位操作符    作用类型: SInt, UInt, Bool<br>val invertedX = ~x    位取反<br>val hiBits = x &amp; “h_ffff_0000”.U    位与<br>val flagsOut = flagsIn | overflow    位或<br>val flagsOut = flagsIn ^ toggle    位异或<br>缩减位操作符    作用类型: SInt, UInt  返回类型: Bool<br>val allSet = x.andR    缩减与<br>val anySet = x.orR    缩减或<br>val parity = x.xorR    缩减异或<br>相等性比较符    作用类型: SInt, UInt, Bool  返回类型: Bool<br>val equ = x === y    相等<br>val neq = x =/= y    不相等<br>移位操作符    作用类型: SInt, UInt<br>val twoToTheX = 1.S &lt;&lt; x    逻辑左移<br>val hiBits = 16.U &gt;&gt; x    右移(UInt逻辑右移，SInt算术右移)<br>部分位操作符    作用类型: SInt, UInt, Bool<br>val xLSB = x(0)    抽取1bit，最低位下标0，最高位下标n-1<br>val xTopNibble = x(15, 12)    抽取多个bit，左边是高位，右边是低位<br>val usDebt = Fill(3, “hA”.U)    拼接一个UInt类型的数据多次(位于util包)<br>val float = Cat(sign, exponent, mantissa)    拼接多个bit，左边的参数是高位(位于util包)<br>逻辑操作符    作用类型: Bool<br>val sleep = !busy    逻辑非<br>val hit = tagMatch &amp;&amp; valid    逻辑与<br>val stall = src1busy || src2busy    逻辑或<br>val out = Mux(sel, inTrue, inFalse)    双输入多路选择器，sel是Bool类型<br>算术操作符    作用类型: SInt, UInt<br>val sum = a + b  or  val sum = a +% b    加法(不进行宽度扩展)<br>val sum = a +&amp; b    加法(扩展一位进位位)<br>val diff = a - b  or  val diff = a -% b    减法(不进行宽度扩展)<br>val diff = a -&amp; b    减法(扩展一位进位位)<br>val prod = a * b    乘法<br>val div = a / b    除法<br>val mod = a % b    求余数<br>算术比较符    作用类型: SInt, UInt  返回类型: Bool<br>val gt = a &gt; b    大于<br>val gte = a &gt;= b    大于等于<br>val lt = a &lt; b    小于<br>val lte = a &lt;= b    小于等于<br>这里要注意的一点是相等性比较的两个符号是“===”和“=/=”。因为“==”和“!=”已经被Scala占用，所以Chisel另设了这两个新的操作符。按照优先级的判断准则，“===”和“=/=”的优先级以首个字符为“=”来判断，也就是在逻辑操作中，相等性比较的优先级要比与、或、异或都高。</p>
-<p>十、位宽推断<br>某些操作符会发生位宽的改变，这些返回的结果会生成一个自动推断的位宽。如下表所示：</p>
-<p>Chisel的位宽推断<br>操作符    位宽<br>z = x + y  or  z = x +% y    w(z) = max(w(x), w(y))<br>z = x +&amp; y    w(z) = max(w(x), w(y)) + 1<br>z = x - y or z = x -% y    w(z) = max(w(x), w(y))<br>z = x -&amp; y    w(z) = max(w(x), w(y)) + 1<br>z = x &amp; y    w(z) = min(w(x), w(y))<br>z = Mux(c, x, y)    w(z) = max(w(x), w(y))<br>z = w <em> y    w(z) = w(x) + w(y)<br>z = x &lt;&lt; n    w(z) = w(x) + maxNum(n)<br>z = x &gt;&gt; n    w(z) = w(x) - minNum(n)<br>z = Cat(x, y)    w(z) = w(x) + w(y)<br>z = Fill(n, x)    w(z) = w(x) </em> maxNum(n)<br>当把一个短位宽的信号值或硬件结构赋值给长位宽的硬件结构时，会自动扩展符号位。但是反过来会报错，并不是像Verilog那样把多余的高位截断，这需要注意(注：最新的chisel3版本已经可以像Verilog一样自动把高位截断了)。</p>
+<h2 id="2-1-Chisel的数据类型"><a href="#2-1-Chisel的数据类型" class="headerlink" title="2.1 Chisel的数据类型"></a>2.1 Chisel的数据类型</h2><p>​        Chisel定义了自己的一套数据类型，读者应该跟Scala的九种基本值类区分开来。</p>
+<p>​        Scala中数据类型在Chisel用于参数和内建控制结构</p>
+<p>​        Chisel自己的数据类型用于构建硬件电路还是得用</p>
+<p>​        Chisel定义的数据类型如下图所示，其中<strong>绿色方块是class</strong>，<strong>红色是object</strong>，<strong>蓝色是trait</strong>，<strong>箭头指向的是超类和混入的特质</strong>： </p>
+<p><img src="2022-3-9-chisel/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0MjkxNTA1,size_16,color_FFFFFF,t_70.png" srcset="/img/loading.gif" lazyload alt="Chisel的数据类型关系图"></p>
+<ul>
+<li><p><strong>Data类：所有数据类型都继承自抽象基类Data</strong>，它混入了两个特质HasId和NamedComponent。如果读者查看Chisel3的源代码，就会看到很多参数传递时都用下界表明了是Data的子类。<u>在实际硬件构成里，并不会用到Data</u>，读者也不用关心它的具体实现细节。更多的，应该关注Data类的两大子类：聚合类Aggregate和元素类Element。</p>
+</li>
+<li><p><strong>Aggregate聚合类：</strong>Aggregate聚合类常用子类是<strong>向量类Vec[T]和包裹类Bundle</strong></p>
+<ul>
+<li><strong>Vec[T]子类：</strong>用于<strong>包含相同的元素</strong>，元素类型T可以是任意的Data子类。因为Vec[T]混入了特质IndexedSeq[T]，所以向量的元素能从下标0开始索引访问</li>
+<li><strong>Bundle子类</strong>：用于<strong>被自定义的类继承，这样自定义的类就能包含任意Data的子类对象</strong>，常用于<strong>协助构造模块的端口</strong>，故而衍生出了一些预定义的端口子类</li>
+<li>MixedVec[T]子类：混合向量类是Chisel3.2以上版本添加的语法，它与Vec[T]的不同在于<strong>可以包含不同类型的元素</strong>。</li>
+</ul>
+</li>
+<li><p><strong>Element类：</strong>衍生出了Analog、Bits和Clock三个子类，单例对象DontCare和特质Reset</p>
+<ul>
+<li><strong>Analog子类：</strong>用于<strong>在黑盒中模拟inout端口</strong>，目前在实际Chisel里并无其他用途</li>
+<li><strong>Bits子类：</strong>的两个子类SInt和UInt是最常用的两个数据类型，它们是用补码表示的有符号整数和无符号整数。不仅用来协助定义端口位宽，还用来进行赋值</li>
+<li>FixedPoint子类提供的API带有试验性质，而且将来可能会发生改变，所以不常用</li>
+<li><strong>Bool子类：</strong>是Chisel自己的布尔类型，<strong>区别于Scala的Boolean</strong>。Bool类是UInt类的子类，因为它可以看成是1bit的UInt，而且它被混入Reset特质，因为复位信号都是用Bool类型的线网或寄存器使能的。此外，Bits类混入了特质ToBoolable，也就是说FixedPoint、SInt和UInt都能转换成多bit的Bool类型</li>
+<li><strong>Clock类：</strong>表示时钟，Chisel里的时钟是专门的一个类型，并不像Verilog里那样是1bit的线网。复位类型Reset也是如此</li>
+<li><strong>Reset特质</strong>：表示复位，Chisel里的特质是专门的一个特质，并不像Verilog里那样是1bit的线网</li>
+<li><strong>DontCare单例对象：</strong>用于赋值给未驱动的端口或线网，防止编译器报错。</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-2-能表示数据的字面量"><a href="#2-2-能表示数据的字面量" class="headerlink" title="2.2 能表示数据的字面量"></a>2.2 能表示数据的字面量</h2><p><strong>字面量（literal）</strong>：有直接意义的，能直接表示的固定值</p>
+<p><strong>BigInt、Int、Long和String四种类型的Scala字面量来构造UInt和SInt，具体分类两类：</strong></p>
+<ul>
+<li>数值字面量</li>
+<li>字符串字面量</li>
+</ul>
+<hr>
+<p><strong>（1）Chisel具体数的数据类型：</strong>        </p>
+<p>​        能够表示具体值的数据类型为<strong>UInt、SInt和Bool</strong>。实际可综合的电路都是若干个bit，所以只能表示整数，这与Verilog是一致的。</p>
+<p>​        <strong>要表示浮点数，本质还是用多个bit来构建</strong>，而且要遵循IEEE的浮点标准。</p>
+<p><strong>（2）Chisel中的UInt、SInt、Bool：</strong></p>
+<ul>
+<li>对于UInt，可以构成任意位宽的线网或寄存器</li>
+<li>对于SInt，在Chisel里会按补码解读，转换成Verilog后会使用系统函数$signed，这是可综合的</li>
+<li>对于Bool，转换成Verilog后就是1bit的线网或寄存器</li>
+</ul>
+<p><strong>（3）如何用字面量表示数：</strong></p>
+<blockquote>
+<p>要表示值，则必须有相应的字面量。Chisel定义了一系列隐式类：fromBigIntToLiteral、fromtIntToLiteral、fromtLongToLiteral、fromStringToLiteral、fromBooleanToLiteral。回顾前面讲述的隐式类的内容，也就是会有相应的隐式转换。以隐式类fromtIntToLiteral为例，存在一个同名的隐式转换，把相应的Scala的Int对象转换成一个fromtIntToLiteral的对象。而fromtIntToLiteral类有两个方法U和S，分别构造一个等值的UInt对象和SInt对象。再加上Scala的基本值类都是用字面量构造对象，所以要表示一个UInt对象，可以写成“1.U”的格式，这样编译器会插入隐式转换，变成“fromtIntToLiteral(1).U”，进而构造出字面值为“1”的UInt对象。同理，<strong>也可以构造SInt。还有相同行为的方法asUInt和asSInt。</strong></p>
+<p>​        从几个隐式类的名字就可以看出，可以通过BigInt、Int、Long和String四种类型的Scala字面量来构造UInt和SInt。按Scala的语法，其中BigInt、Int、Long三种类型默认是十进制的，但可以加前缀“0x”或“0X”变成十六进制。对于字符串类型的字面量，Chisel编译器默认也是十进制的，但是可以加上首字母“h”、“o”、“b”来分别表示十六进制、八进制和二进制。此外，字符串字面量可以用下划线间隔。</p>
+<p>​        可以通过Boolean类型的字面量——true和false——来构造fromBooleanToLiteral类型的对象，然后调用名为B和asBool的方法进一步构造Bool类型的对象</p>
+</blockquote>
+<p>以上内容总结为：</p>
+<ul>
+<li>Chisel定义了一系列隐式类，隐式的从<strong>四种Scala字面量到Chisel数据类型的转变</strong><ul>
+<li><strong>隐式类：</strong>fromBigIntToLiteral、fromtIntToLiteral、fromtLongToLiteral、fromStringToLiteral、fromBooleanToLiteral<ul>
+<li>隐式类中存在相应的隐式转换方法，同名方法、U方法、S方法，分别把字面量转为：同款隐式类、UInt、SInt</li>
+<li>如果要表示一个UInt对象可以写成：<code>1.U</code></li>
+</ul>
+</li>
+<li><strong>四种Scala字面量：</strong>BigInt、Int、Long和String，对应的表示方法：<ul>
+<li>BigInt、Int、Long：加前缀0x或0X改变进制</li>
+<li>String：首字母“h”、“o”、“b”来分别表示十六进制、八进制和二进制，并可以用下划线间隔</li>
+</ul>
+</li>
+<li>完整形式举例<ul>
+<li>表示一个UInt对象可以写成<code>1.U</code>的格式，这样编译器会插入隐式转换，变成<code>fromtIntToLiteral(1).U</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Scala的Boolean字面量转变方法：</strong><ul>
+<li>可以通过Boolean类型的字面量true、false，来构造fromBooleanToLiteral类型的对象</li>
+<li>然后<strong>调用名为B</strong>或<strong>asBool的方法</strong>进一步构造Bool类型的对象</li>
+</ul>
+</li>
+</ul>
+<p><strong>一些表示数的例子：</strong></p>
+<figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala"><span class="hljs-number">1.</span><span class="hljs-type">U</span>                <span class="hljs-comment">// Int字面值为&quot;1&quot;的UInt对象</span><br><span class="hljs-number">0x1</span>.<span class="hljs-type">U</span>			<span class="hljs-comment">//Int字面值为16进制1的UInt对象</span><br><span class="hljs-number">-8.</span><span class="hljs-type">S</span>               <span class="hljs-comment">// Int字面值为&quot;-8&quot;的SInt对象</span><br><br><span class="hljs-string">&quot;b0101&quot;</span>.<span class="hljs-type">U</span>		<span class="hljs-comment">// String字面值为&quot;5&quot;的UInt对象</span><br><br><span class="hljs-literal">true</span>.<span class="hljs-type">B</span>            <span class="hljs-comment">// Boolean字面值为&quot;true&quot;的Bool对象 </span><br></code></pre></div></td></tr></table></figure>
+<p><strong>（4）构造没有字面量的对象</strong></p>
+<p>​        UInt、SInt和Bool都不是抽象类，除了可以<strong>通过字面量构造对象</strong>以外，也可以<strong>直接通过apply工厂方法构造没有字面量的对象</strong></p>
+<p>​        <strong>有字面量的数据类型</strong>用于赋值、初始化寄存器等操作，而<strong>无字面量的数据类型</strong>则用于声明端口、构造向量等</p>
+<h2 id="2-3-数据宽度"><a href="#2-3-数据宽度" class="headerlink" title="2.3 数据宽度"></a>2.3 数据宽度</h2><p><strong>（1）数据的默认宽度：</strong></p>
+<p>​        默认情况下，<strong>数据的宽度按字面值取最小</strong>，例如字面值为“8”的UInt对象是4位宽，SInt就是5位宽。但是也可以指定宽度。注意，<strong>Bool类型固定是1位宽</strong>、</p>
+<p><strong>（2）宽度类Width、宽度隐式类fromIntToWidth</strong></p>
+<p>​        Chisel2里，宽度是由Int类型的参数表示的</p>
+<p>​        <strong>Chisel3专门设计了宽度类Width</strong>，还有一个<strong>隐式类fromIntToWidth</strong>（把Int对象转换成fromIntToWidth类型的对象），然后<strong>通过方法W返回一个Width对象</strong>。</p>
+<p><strong>（3）如何指定数据宽度：</strong></p>
+<p>​        <strong>方法U、asUInt、S和asSInt</strong>都有一个重载的版本，接收一个Width类型的参数，构造指定宽度的SInt和UInt对象</p>
+<figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala"><span class="hljs-number">1.</span><span class="hljs-type">U</span>              <span class="hljs-comment">// 字面值为“1”、宽度为1bit的UInt对象</span><br><br><span class="hljs-number">1.</span><span class="hljs-type">U</span>(<span class="hljs-number">32.</span><span class="hljs-type">W</span>)   <span class="hljs-comment">// 字面值为“1”、宽度为32bit的UInt对象</span><br></code></pre></div></td></tr></table></figure>
+<p>​        也可以直接给定：</p>
+<figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala"><span class="hljs-type">UInt</span>(<span class="hljs-string">&quot;ha&quot;</span>, <span class="hljs-number">8</span>) 		<span class="hljs-comment">// hexadecimal 8-bit lit of type UInt </span><br><span class="hljs-type">UInt</span>(<span class="hljs-string">&quot;o12&quot;</span>, <span class="hljs-number">6</span>) 		<span class="hljs-comment">// octal 6-bit lit of type UInt </span><br><span class="hljs-type">UInt</span>(<span class="hljs-string">&quot;b1010&quot;</span>, <span class="hljs-number">12</span>) 	<span class="hljs-comment">// binary 12-bit lit of type UInt</span><br><span class="hljs-type">SInt</span>(<span class="hljs-number">5</span>, <span class="hljs-number">7</span>) 			<span class="hljs-comment">// signed decimal 7-bit lit of type SInt </span><br><span class="hljs-type">UInt</span>(<span class="hljs-number">5</span>, <span class="hljs-number">8</span>) 			<span class="hljs-comment">// unsigned decimal 8-bit lit of type UInt</span><br></code></pre></div></td></tr></table></figure>
+<p><strong>（4）UInt、SInt、Bool类中的重载</strong></p>
+<p>​        UInt、SInt和Bool都不是抽象类，除了可以<strong>通过字面量构造对象</strong>以外，也可以<strong>直接通过apply工厂方法构造没有字面量的对象</strong></p>
+<p>​        UInt和SInt的apply方法有两个版本：</p>
+<ul>
+<li>一个版本接收Width类型的参数构造指定宽度的对象</li>
+<li>另一个则是无参版本构造位宽可自动推断的对象</li>
+</ul>
+<p>​        有字面量的数据类型用于赋值、初始化寄存器等操作，而无字面量的数据类型则用于声明端口、构造向量等。</p>
+<h2 id="2-4-数据类型转换asXXX"><a href="#2-4-数据类型转换asXXX" class="headerlink" title="2.4 数据类型转换asXXX"></a>2.4 数据类型转换asXXX</h2><p>​        UInt、SInt和Bool三个类都包含四个方法：asUInt、asSInt、toBool和toBools：</p>
+<ul>
+<li>asUInt和asSInt分别把字面值按无符号数和有符号数解释，并且位宽不会变化，要注意转换过程中可能发生符号位和数值的变化。例如，3bit的UInt值“b111”，其字面量是“7”，转换成SInt后字面量就变成了“-1”</li>
+<li>toBool会把1bit的“1”转换成Bool类型的true，“0”转换成false</li>
+<li>toBools转换成Bool类型的序列Seq[Bool]，当位宽超过1bit</li>
+<li>另外，Bool类还有一个方法asClock，把true转换成电压常高的时钟，false转换成电压常低的时钟。Clock类只有一个方法asUInt，转换成对应的0或1</li>
+</ul>
+<h2 id="2-5-向量Vec-T"><a href="#2-5-向量Vec-T" class="headerlink" title="2.5 向量Vec[T]"></a>2.5 向量Vec[T]</h2><div class="hljs code-wrapper"><pre><code>     如果需要一个集合类型的数据，除了可以使用Scala内建的数组、列表、集等数据结构外，还可以使用Chisel专属的Vec[T]。T必须是Data的子类，而且每个元素的类型、位宽必须一样。Vec[T]的伴生对象里有一个apply工厂方法，接收两个参数，第一个是Int类型，表示元素的个数，第二个是元素。它属于可索引的序列，下标从0开始。例如：
+</code></pre></div><figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala"><span class="hljs-keyword">val</span> myVec = <span class="hljs-type">Wire</span>(<span class="hljs-type">Vec</span>(<span class="hljs-number">3</span>, <span class="hljs-type">UInt</span>(<span class="hljs-number">32.</span><span class="hljs-type">W</span>)))<br><span class="hljs-keyword">val</span> myReg = myVec(<span class="hljs-number">0</span>)<br></code></pre></div></td></tr></table></figure>
+<p>​        还有一个工厂方法VecInit[T]，通过接收一个Seq[T]作为参数来构造向量，或者是多个重复参数。不过，这个工厂方法常把有字面值的数据作为参数，用于初始化寄存器组、ROM、RAM等，或者用来构造多个模块。</p>
+<p>​        因为Vec[T]也是一种序列，所以它也定义了诸如map、flatMap、zip、foreach、filter、exists、contains等方法。尽管这些方法应该出现在软件里，但是它们也可以简化硬件逻辑的编写，减少手工代码量。</p>
+<h2 id="2-6-混合向量MixedVec-T"><a href="#2-6-混合向量MixedVec-T" class="headerlink" title="2.6 混合向量MixedVec[T]"></a>2.6 混合向量MixedVec[T]</h2><p>​        混合向量MixedVec[T]与普通的向量Vec[T]类似，只不过包含的元素可以不全都一样。它的工厂方法是通过重复参数或者序列作为参数来构造的，并且也有一个叫MixedVecInit[T]的单例对象。</p>
+<p>​        对于构造Vec[T]和MixedVec[T]的序列，并<strong>不一定要逐个手写，可以通过Scala的函数，比如fill、map、flatMap、to、until等来生成。</strong>例如：</p>
+<figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala"><span class="hljs-keyword">val</span> mixVec = <span class="hljs-type">Wire</span>(<span class="hljs-type">MixedVec</span>((<span class="hljs-number">1</span> to <span class="hljs-number">10</span>) map &#123; i =&gt; <span class="hljs-type">UInt</span>(i.<span class="hljs-type">W</span>) &#125;))<br></code></pre></div></td></tr></table></figure>
+<h2 id="2-7-包裹Bundle"><a href="#2-7-包裹Bundle" class="headerlink" title="2.7 包裹Bundle"></a>2.7 包裹Bundle</h2><p>​        <strong>抽象类Bundle很像C语言的结构体(struct)</strong>，用户可以编写一个自定义类来继承自它，然后在自定义的类里包含其它各种Data类型的字段。它可以协助构建线网或寄存器，但是<strong>最常见的用途是用于构建一个模块的端口列表，或者一部分端口</strong></p>
+<figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala"><span class="hljs-comment">//直接使用Bundle的方法示例</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyModule</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Module</span> </span>&#123;<br>   <span class="hljs-keyword">val</span> io = <span class="hljs-type">IO</span>(<span class="hljs-keyword">new</span> <span class="hljs-type">Bundle</span> &#123;<br>       <span class="hljs-keyword">val</span> in = <span class="hljs-type">Input</span>(<span class="hljs-type">UInt</span>(<span class="hljs-number">32.</span><span class="hljs-type">W</span>))<br>       <span class="hljs-keyword">val</span> out = <span class="hljs-type">Output</span>(<span class="hljs-type">UInt</span>(<span class="hljs-number">32.</span><span class="hljs-type">W</span>))<br>   &#125;)<br>  <br> <span class="hljs-comment">//使用extends Bundle的方法示例</span><br> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyBundle</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Bundle</span> </span>&#123;<br>   <span class="hljs-keyword">val</span> foo = <span class="hljs-type">UInt</span>(<span class="hljs-number">4.</span><span class="hljs-type">W</span>)  <span class="hljs-comment">// 高位</span><br>   <span class="hljs-keyword">val</span> bar = <span class="hljs-type">UInt</span>(<span class="hljs-number">4.</span><span class="hljs-type">W</span>)  <span class="hljs-comment">// 低位</span><br>&#125;<br></code></pre></div></td></tr></table></figure>
+<p><strong>（2）Bundle和UInt转换</strong></p>
+<p>​        <strong>Bundle-&gt;UInt：</strong>Bundle可以和UInt进行相互转换。Bundle类有一个方法asUInt，可以把所含的字段拼接成一个UInt数据，并且前面的字段在高位</p>
+<figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyBundle</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Bundle</span> </span>&#123;<br>   <span class="hljs-keyword">val</span> foo = <span class="hljs-type">UInt</span>(<span class="hljs-number">4.</span><span class="hljs-type">W</span>)  <span class="hljs-comment">// 高位</span><br>   <span class="hljs-keyword">val</span> bar = <span class="hljs-type">UInt</span>(<span class="hljs-number">4.</span><span class="hljs-type">W</span>)  <span class="hljs-comment">// 低位</span><br>&#125;<br><br><span class="hljs-keyword">val</span> bundle = <span class="hljs-type">Wire</span>(<span class="hljs-keyword">new</span> <span class="hljs-type">MyBundle</span>)<br>bundle.foo := <span class="hljs-number">0xc</span>.<span class="hljs-type">U</span><br>bundle.bar := <span class="hljs-number">0x3</span>.<span class="hljs-type">U</span><br><span class="hljs-keyword">val</span> uint = bundle.asUInt  <span class="hljs-comment">// 12*16 + 3 = 195</span><br></code></pre></div></td></tr></table></figure>
+<p>​        <strong>Data-&gt;Bundle：</strong>有一个隐式类fromBitsable，可以把Data类型的对象转化成该类型，然后通过方法fromBits来接收一个Bits类型的参数来给该对象赋值。不过，该方法在Chisel3中已经被标注为过时，不推荐使用。例如：</p>
+<figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyBundle</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Bundle</span> </span>&#123;<br>   <span class="hljs-keyword">val</span> foo = <span class="hljs-type">UInt</span>(<span class="hljs-number">4.</span><span class="hljs-type">W</span>)  <span class="hljs-comment">// 高位</span><br>   <span class="hljs-keyword">val</span> bar = <span class="hljs-type">UInt</span>(<span class="hljs-number">4.</span><span class="hljs-type">W</span>)  <span class="hljs-comment">// 低位</span><br>&#125;<br><br><span class="hljs-keyword">val</span> uint = <span class="hljs-number">0xb4</span>.<span class="hljs-type">U</span><br><span class="hljs-keyword">val</span> bundle = <span class="hljs-type">Wire</span>(<span class="hljs-keyword">new</span> <span class="hljs-type">MyBundle</span>).fromBits(uint)  <span class="hljs-comment">// foo = 11, bar = 4</span><br></code></pre></div></td></tr></table></figure>
+<h2 id="2-8-Chisel的内建操作符"><a href="#2-8-Chisel的内建操作符" class="headerlink" title="2.8 Chisel的内建操作符"></a>2.8 Chisel的内建操作符</h2><p>​        有了数据类型，还需要预定义一些相关的操作符进行基本的操作。下表是Chisel内建的操作符：</p>
+<table align="center" border="1" cellpadding="1" cellspacing="1" style="width:557px;"><caption>
+  Chisel的内建操作符
+ </caption><thead><tr><th style="text-align:center;vertical-align:middle;width:268px;">操作符</th><th style="text-align:center;vertical-align:middle;width:286px;">释义</th></tr></thead><tbody><tr><th style="text-align:center;vertical-align:middle;width:268px;">位操作符</th><th style="text-align:center;vertical-align:middle;width:286px;"><strong>作用类型: </strong><strong>SInt, UInt, Bool</strong></th></tr><tr><td style="text-align:center;vertical-align:middle;width:268px;">val invertedX = ~x</td><td style="text-align:center;vertical-align:middle;width:286px;">位取反</td></tr><tr><td style="text-align:center;vertical-align:middle;width:268px;">val hiBits = x &amp; "h_ffff_0000".U</td><td style="text-align:center;vertical-align:middle;width:286px;">位与</td></tr><tr><td style="text-align:center;vertical-align:middle;width:268px;">val flagsOut = flagsIn | overflow</td><td style="text-align:center;vertical-align:middle;width:286px;">位或</td></tr><tr><td style="text-align:center;vertical-align:middle;width:268px;">val flagsOut = flagsIn ^ toggle</td><td style="text-align:center;vertical-align:middle;width:286px;">位异或</td></tr><tr><th style="text-align:center;vertical-align:middle;width:268px;"><strong>缩减位操作符</strong></th><th style="text-align:center;vertical-align:middle;width:286px;"><strong>作用类型: </strong><strong>SInt, UInt&nbsp; 返回类型: Bool</strong></th></tr><tr><td style="text-align:center;vertical-align:middle;width:268px;">val allSet = x.andR</td><td style="text-align:center;vertical-align:middle;width:286px;">缩减与</td></tr><tr><td style="text-align:center;vertical-align:middle;width:268px;">val anySet = x.orR</td><td style="text-align:center;vertical-align:middle;width:286px;">缩减或</td></tr><tr><td style="text-align:center;vertical-align:middle;width:268px;">val parity = x.xorR</td><td style="text-align:center;vertical-align:middle;width:286px;">缩减异或</td></tr><tr><th style="text-align:center;vertical-align:middle;width:268px;"><strong>相等性比较符</strong></th><th style="text-align:center;vertical-align:middle;width:286px;"><strong>作用类型: </strong><strong>SInt, UInt, Bool </strong>&nbsp;<strong>返回类型: Bool</strong></th></tr><tr><td style="text-align:center;vertical-align:middle;width:268px;">val equ = x === y</td><td style="text-align:center;vertical-align:middle;width:286px;">相等</td></tr><tr><td style="text-align:center;vertical-align:middle;width:268px;">val neq = x =/= y</td><td style="text-align:center;vertical-align:middle;width:286px;">不相等</td></tr><tr><th style="text-align:center;vertical-align:middle;width:268px;"><strong>移位操作符</strong></th><th style="text-align:center;vertical-align:middle;width:286px;"><strong>作用类型: </strong><strong>SInt, UInt</strong></th></tr><tr><td style="text-align:center;vertical-align:middle;width:268px;">val twoToTheX = 1.S &lt;&lt; x</td><td style="text-align:center;vertical-align:middle;width:286px;">逻辑左移</td></tr><tr><td style="text-align:center;vertical-align:middle;width:268px;">val hiBits = 16.U &gt;&gt; x</td><td style="text-align:center;vertical-align:middle;width:286px;">右移(UInt逻辑右移，SInt算术右移)</td></tr><tr><th style="text-align:center;vertical-align:middle;width:268px;"><strong>部分位操作符</strong></th><th style="text-align:center;vertical-align:middle;width:286px;"><strong>作用类型: </strong><strong>SInt, UInt, Bool</strong></th></tr><tr><td style="text-align:center;vertical-align:middle;width:268px;">val xLSB = x(0)</td><td style="text-align:center;vertical-align:middle;width:286px;">抽取1bit，最低位下标0，最高位下标n-1</td></tr><tr><td style="text-align:center;vertical-align:middle;width:268px;">val xTopNibble = x(15, 12)</td><td style="text-align:center;vertical-align:middle;width:286px;">抽取多个bit，左边是高位，右边是低位</td></tr><tr><td style="text-align:center;vertical-align:middle;width:268px;">val usDebt = Fill(3, "hA".U)</td><td style="text-align:center;vertical-align:middle;width:286px;">拼接一个UInt类型的数据多次(位于util包)</td></tr><tr><td style="text-align:center;vertical-align:middle;width:268px;">val float = Cat(sign, exponent, mantissa)</td><td style="text-align:center;vertical-align:middle;width:286px;">拼接多个bit，左边的参数是高位(位于util包)</td></tr><tr><th style="text-align:center;vertical-align:middle;width:268px;"><strong>逻辑操作符</strong></th><th style="text-align:center;vertical-align:middle;width:286px;"><strong>作用类型: </strong><strong>Bool</strong></th></tr><tr><td style="text-align:center;vertical-align:middle;width:268px;">val sleep = !busy</td><td style="text-align:center;vertical-align:middle;width:286px;">逻辑非</td></tr><tr><td style="text-align:center;vertical-align:middle;width:268px;">val hit = tagMatch &amp;&amp; valid</td><td style="text-align:center;vertical-align:middle;width:286px;">逻辑与</td></tr><tr><td style="text-align:center;vertical-align:middle;width:268px;">val stall = src1busy || src2busy</td><td style="text-align:center;vertical-align:middle;width:286px;">逻辑或</td></tr><tr><td style="text-align:center;vertical-align:middle;width:268px;">val out = Mux(sel, inTrue, inFalse)</td><td style="text-align:center;vertical-align:middle;width:286px;">双输入多路选择器，sel是Bool类型</td></tr><tr><th style="text-align:center;vertical-align:middle;width:268px;"><strong>算术操作符</strong></th><th style="text-align:center;vertical-align:middle;width:286px;"><strong>作用类型: </strong><strong>SInt, UInt</strong></th></tr><tr><td style="text-align:center;vertical-align:middle;width:268px;">val sum = a + b&nbsp;&nbsp;<em>or</em>&nbsp; val sum = a +% b</td><td style="text-align:center;vertical-align:middle;width:286px;">加法(不进行宽度扩展)</td></tr><tr><td style="text-align:center;vertical-align:middle;width:268px;">val sum = a +&amp; b</td><td style="text-align:center;vertical-align:middle;width:286px;">加法(扩展一位进位位)</td></tr><tr><td style="text-align:center;vertical-align:middle;width:268px;">val diff = a - b&nbsp;&nbsp;<em>or</em>&nbsp; val diff = a -% b</td><td style="text-align:center;vertical-align:middle;width:286px;">减法(不进行宽度扩展)</td></tr><tr><td style="text-align:center;vertical-align:middle;width:268px;">val diff = a -&amp; b</td><td style="text-align:center;vertical-align:middle;width:286px;">减法(扩展一位进位位)</td></tr><tr><td style="text-align:center;vertical-align:middle;width:268px;">val prod = a * b</td><td style="text-align:center;vertical-align:middle;width:286px;">乘法</td></tr><tr><td style="text-align:center;vertical-align:middle;width:268px;">val div = a / b</td><td style="text-align:center;vertical-align:middle;width:286px;">除法</td></tr><tr><td style="text-align:center;vertical-align:middle;width:268px;">val mod = a % b</td><td style="text-align:center;vertical-align:middle;width:286px;">求余数</td></tr><tr><th style="text-align:center;vertical-align:middle;width:268px;"><strong>算术比较符</strong></th><th style="text-align:center;vertical-align:middle;width:286px;"><strong>作用类型: </strong><strong>SInt, UInt </strong>&nbsp;<strong>返回类型: Bool</strong></th></tr><tr><td style="text-align:center;vertical-align:middle;width:268px;">val gt = a &gt; b</td><td style="text-align:center;vertical-align:middle;width:286px;">大于</td></tr><tr><td style="text-align:center;vertical-align:middle;width:268px;">val gte = a &gt;= b</td><td style="text-align:center;vertical-align:middle;width:286px;">大于等于</td></tr><tr><td style="text-align:center;vertical-align:middle;width:268px;">val lt = a &lt; b</td><td style="text-align:center;vertical-align:middle;width:286px;">小于</td></tr><tr><td style="text-align:center;vertical-align:middle;width:268px;">val lte = a &lt;= b</td><td style="text-align:center;vertical-align:middle;width:286px;">小于等于</td></tr></tbody></table>
+
+<p>​        这里要注意的一点是相等性比较的两个符号是<mark>“===”和“=/=”</mark>，因为“==”和“!=”已经被Scala占用，所以Chisel另设了这两个新的操作符。按照优先级的判断准则，<strong>“===”和“=/=”的优先级</strong>以首个字符为“=”来判断，也就是在逻辑操作中，相等性比较的优先级要比与、或、异或都高。</p>
+<h2 id="2-9-位宽推断"><a href="#2-9-位宽推断" class="headerlink" title="2.9 位宽推断"></a>2.9 位宽推断</h2><p>​        用户需要设置端口和寄存器的位宽，除非用户手动设置，否则编译器会自动推测wire上的位宽。位宽推测引擎会从节点图的输入端口开始，并根据以下规则集从它们各自的输入位宽度计算节点输出位宽度：</p>
+<p><table align="center" border="1" cellpadding="1" cellspacing="1" style="width:500px;"><caption>
+  Chisel的位宽推断
+ </caption><thead><tr><th style="text-align:center;vertical-align:middle;"><strong>操作符</strong></th><th style="text-align:center;vertical-align:middle;">位宽</th></tr></thead><tbody><tr><td style="text-align:center;vertical-align:middle;">z = x + y&nbsp;&nbsp;<em>or</em>&nbsp; z = x +% y</td><td style="text-align:center;vertical-align:middle;">w(z) = max(w(x), w(y))</td></tr><tr><td style="text-align:center;vertical-align:middle;">z = x +&amp; y</td><td style="text-align:center;vertical-align:middle;">w(z) = max(w(x), w(y)) + 1</td></tr><tr><td style="text-align:center;vertical-align:middle;">z = x - y&nbsp;<em>or</em>&nbsp;z = x -% y</td><td style="text-align:center;vertical-align:middle;">w(z) = max(w(x), w(y))</td></tr><tr><td style="text-align:center;vertical-align:middle;">z = x -&amp; y</td><td style="text-align:center;vertical-align:middle;">w(z) = max(w(x), w(y)) + 1</td></tr><tr><td style="text-align:center;vertical-align:middle;">z = x &amp; y</td><td style="text-align:center;vertical-align:middle;">w(z) = min(w(x), w(y))</td></tr><tr><td style="text-align:center;vertical-align:middle;">z = Mux(c, x, y)</td><td style="text-align:center;vertical-align:middle;">w(z) = max(w(x), w(y))</td></tr><tr><td style="text-align:center;vertical-align:middle;">z = w * y</td><td style="text-align:center;vertical-align:middle;">w(z) = w(x) + w(y)</td></tr><tr><td style="text-align:center;vertical-align:middle;">z = x &lt;&lt; n</td><td style="text-align:center;vertical-align:middle;">w(z) = w(x) + maxNum(n)</td></tr><tr><td style="text-align:center;vertical-align:middle;">z = x &gt;&gt; n</td><td style="text-align:center;vertical-align:middle;">w(z) = w(x) - minNum(n)</td></tr><tr><td style="text-align:center;vertical-align:middle;">z = Cat(x, y)</td><td style="text-align:center;vertical-align:middle;">w(z) = w(x) + w(y)</td></tr><tr><td style="text-align:center;vertical-align:middle;">z = Fill(n, x)</td><td style="text-align:center;vertical-align:middle;">w(z) = w(x) * maxNum(n)</td></tr></tbody></table><br>​        其中例如wz是wire z的位宽，＆规则可应用于所有按位逻辑运算</p>
+<p><strong>位宽推测过程：</strong></p>
+<p>​        位宽推测过程会持续到没有位宽改变。 除了通过已知固定数量的右移之外，位宽推测规定了输出位宽度不能小于输入位宽度，因此输出位宽度增长或保持相同。 此外，寄存器的宽度必须由用户明确地或根据复位值或下一个参数的位宽指定。根据这两个要求，我们可以将位宽推测过程将收敛到一个固定点。</p>
+<p><strong>有关自动截断的问题：</strong></p>
+<p>​        当把一个短位宽的信号值或硬件结构赋值给长位宽的硬件结构时，会自动扩展符号位。但是反过来会报错，并不是像Verilog那样把多余的高位截断，这需要注意(注：最新的chisel3版本已经可以像Verilog一样自动把高位截断了)</p>
 <hr>
 <p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/96733090_p2.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
 <p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/96733090_p3.jpg" srcset="/img/loading.gif" lazyload alt="96733090_p3"></p>
@@ -401,6 +549,12 @@
                 <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/202307152029/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/hexoessay/debug/%E8%A7%A3%E5%86%B3hexo%E7%A9%BA%E6%A0%BC%E9%97%AE%E9%A2%98/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">解决hexo空格问题</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
@@ -703,5 +857,5 @@
 
 <!-- hexo injector body_end start --><script src="/js/backgroundize.js"></script>
   <link defer rel="stylesheet" href="/css/backgroundize.css" />
-  <!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"superSample":1,"position":"right","width":250,"height":500,"vOffset":-100},"mobile":{"show":false},"dialog":{"enable":false,"hitokoto":true,"width":10,"height":10,"vOffset":-100},"log":false});</script></body>
+  <!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"superSample":1,"position":"left","width":250,"height":500,"vOffset":-100},"mobile":{"show":false},"dialog":{"enable":false,"hitokoto":true,"width":10,"height":10,"vOffset":-100},"log":false});</script></body>
 </html>
