@@ -7,6 +7,7 @@
   
       new APlayer({
         container: document.getElementById('aplayer'),
+        listFolded: true,
         fixed: false,
         autoplay: false,
         loop: 'all',
