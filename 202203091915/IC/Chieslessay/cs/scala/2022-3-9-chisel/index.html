@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/96733090_p3.jpg">
 <meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/96733090_p4.jpg">
 <meta property="article:published_time" content="2022-03-09T11:15:00.000Z">
-<meta property="article:modified_time" content="2022-03-11T10:40:49.163Z">
+<meta property="article:modified_time" content="2022-03-11T11:05:02.269Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="IC">
 <meta property="article:tag" content="学习">
@@ -262,7 +262,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      11k 字
+      17k 字
     </span>
   
 
@@ -271,7 +271,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      36 分钟
+      54 分钟
     </span>
   
 
@@ -480,8 +480,8 @@
 <li>toBools转换成Bool类型的序列Seq[Bool]，当位宽超过1bit</li>
 <li>另外，Bool类还有一个方法asClock，把true转换成电压常高的时钟，false转换成电压常低的时钟。Clock类只有一个方法asUInt，转换成对应的0或1</li>
 </ul>
-<h2 id="2-5-向量Vec-T"><a href="#2-5-向量Vec-T" class="headerlink" title="2.5 向量Vec[T]"></a>2.5 向量Vec[T]</h2><div class="hljs code-wrapper"><pre><code>     如果需要一个集合类型的数据，除了可以使用Scala内建的数组、列表、集等数据结构外，还可以使用Chisel专属的Vec[T]。T必须是Data的子类，而且每个元素的类型、位宽必须一样。Vec[T]的伴生对象里有一个apply工厂方法，接收两个参数，第一个是Int类型，表示元素的个数，第二个是元素。它属于可索引的序列，下标从0开始。例如：
-</code></pre></div><figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala"><span class="hljs-keyword">val</span> myVec = <span class="hljs-type">Wire</span>(<span class="hljs-type">Vec</span>(<span class="hljs-number">3</span>, <span class="hljs-type">UInt</span>(<span class="hljs-number">32.</span><span class="hljs-type">W</span>)))<br><span class="hljs-keyword">val</span> myReg = myVec(<span class="hljs-number">0</span>)<br></code></pre></div></td></tr></table></figure>
+<h2 id="2-5-向量Vec-T"><a href="#2-5-向量Vec-T" class="headerlink" title="2.5 向量Vec[T]"></a>2.5 向量Vec[T]</h2><p>​        如果需要一个集合类型的数据，除了可以使用Scala内建的数组、列表、集等数据结构外，还可以使用Chisel专属的Vec[T]。T必须是Data的子类，而且每个元素的类型、位宽必须一样。Vec[T]的伴生对象里有一个apply工厂方法，接收两个参数，第一个是Int类型，表示元素的个数，第二个是元素。它属于可索引的序列，下标从0开始</p>
+<figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala"><span class="hljs-keyword">val</span> myVec = <span class="hljs-type">Wire</span>(<span class="hljs-type">Vec</span>(<span class="hljs-number">3</span>, <span class="hljs-type">UInt</span>(<span class="hljs-number">32.</span><span class="hljs-type">W</span>)))<br><span class="hljs-keyword">val</span> myReg = myVec(<span class="hljs-number">0</span>)<br></code></pre></div></td></tr></table></figure>
 <p>​        还有一个工厂方法VecInit[T]，通过接收一个Seq[T]作为参数来构造向量，或者是多个重复参数。不过，这个工厂方法常把有字面值的数据作为参数，用于初始化寄存器组、ROM、RAM等，或者用来构造多个模块。</p>
 <p>​        因为Vec[T]也是一种序列，所以它也定义了诸如map、flatMap、zip、foreach、filter、exists、contains等方法。尽管这些方法应该出现在软件里，但是它们也可以简化硬件逻辑的编写，减少手工代码量。</p>
 <h2 id="2-6-混合向量MixedVec-T"><a href="#2-6-混合向量MixedVec-T" class="headerlink" title="2.6 混合向量MixedVec[T]"></a>2.6 混合向量MixedVec[T]</h2><p>​        混合向量MixedVec[T]与普通的向量Vec[T]类似，只不过包含的元素可以不全都一样。它的工厂方法是通过重复参数或者序列作为参数来构造的，并且也有一个叫MixedVecInit[T]的单例对象。</p>
@@ -508,6 +508,53 @@
 <p>​        位宽推测过程会持续到没有位宽改变。 除了通过已知固定数量的右移之外，位宽推测规定了输出位宽度不能小于输入位宽度，因此输出位宽度增长或保持相同。 此外，寄存器的宽度必须由用户明确地或根据复位值或下一个参数的位宽指定。根据这两个要求，我们可以将位宽推测过程将收敛到一个固定点。</p>
 <p><strong>有关自动截断的问题：</strong></p>
 <p>​        当把一个短位宽的信号值或硬件结构赋值给长位宽的硬件结构时，会自动扩展符号位。但是反过来会报错，并不是像Verilog那样把多余的高位截断，这需要注意(注：最新的chisel3版本已经可以像Verilog一样自动把高位截断了)</p>
+<h1 id="3-模块与硬件配置"><a href="#3-模块与硬件配置" class="headerlink" title="3 模块与硬件配置"></a>3 模块与硬件配置</h1><p>Chisel在构建硬件的思路上类似Verilog。在Verilog中，是以“模块(module)”为基本单位组成一个完整的独立功能实体，所以Chisel也是按模块划分的，只不过不是用关键字“module”开头来定义模块，而是用一个继承自Module类的自定义class。</p>
+<p>在Verilog里，模块内部主要有“线网(wire)”和“四态变量(reg)”两种硬件类型，它们用于描述数字电路的组合逻辑和时序逻辑。在Chisel里，也按这个思路定义了一些硬件类型，包括基本的线网和寄存器，以及一些常用的其它类型。前一章介绍了Chisel的数据类型，这还不够，因为这些数据类型是无法独立工作的。实际的电路应该是由硬件类型的对象构成的，不管是信号的声明，还是用赋值进行信号传递，都是由硬件类型的对象来完成的。数据类型和硬件类型融合在一起，才能构成完整、可运行的组件。比如要声明一个线网，这部分工作由硬件类型来完成；这个线网的位宽是多少、按无符号数还是有符号数解释、是不是向量等等，这些则是由作为参数的数据类型对象来定义的。</p>
+<p>本章将介绍Chisel里的常用硬件类型以及如何编写一个基本的模块，对于高级类型，读者可以自行研究。这些类型的语法很简单，都是由定义在单例对象里的apply工厂方法来完成。字面的名字已经把硬件含义表明得很清楚，至于它们的具体实现是什么，读者可以不用关心。</p>
+<p>一、Chisel是如何赋值的<br>有了硬件类型后，就可以用赋值操作来进行信号的传递或者电路的连接。只有硬件赋值才有意义，单纯的数据对象进行赋值并不会被编译器转换成实际的电路，因为在Verilog里也是对wire、reg类型的硬件进行赋值。那么，赋值操作需要什么样的操作符来完成呢？</p>
+<p>在Chisel里，所有对象都应该由val类型的变量来引用，因为硬件电路的不可变性。因此，一个变量一旦初始化时绑定了一个对象，就不能再发生更改。但是，引用的对象很可能需要被重新赋值。例如，输出端口在定义时使用了“=”与端口变量名进行了绑定，那等到驱动该端口时，就需要通过变量名来进行赋值操作，更新数据。很显然，此时“=”已经不可用了，因为变量在声明的时候不是var类型。即使是var类型，这也只是让变量引用新的对象，而不是直接更新原来的可变对象。</p>
+<p>为了解决这个问题，几乎所有的Chisel类都定义了方法“:=”，作为等号赋值的代替。所以首次创建变量时用等号初始化，如果变量引用的对象不能立即确定状态或本身就是可变对象，则在后续更新状态时应该用“:=”。从前面讲的操作符优先级来判断，该操作符以等号结尾，而且不是四种逻辑比较符号之一，所以优先级与等号一致，是最低的。例如：</p>
+<p>val x = Wire(UInt(4.W))</p>
+<p>val y = Wire(UInt(4.W))</p>
+<p>x := “b1010”.U  // 向4bit的线网x赋予了无符号数10</p>
+<p>y := ~x  // 把x按位取反，传递给y</p>
+<p>二、端口<br>   Ⅰ、定义端口列表<br>定义一个模块前一定要先定义好端口。整个端口列表是由方法“IO<a href="iodef: T">T &lt;: Data</a>”来定义的，通常其参数是一个Bundle类型的对象，而且引用的字段名称必须是“io”。因为端口存在方向，所以还需要方法“Input<a href="source: T">T &lt;: Data</a>”和“Output<a href="source: T">T &lt;: Data</a>”来为每个端口表明具体的方向。注意，“Input<a href="source: T">T &lt;: Data</a>”和“Output<a href="source: T">T &lt;: Data</a>”仅仅是复制它们的参数，所以不能是已经被硬件类型包裹的数据类型。目前Chisel还不支持双向端口inout，只能通过黑盒里的Analog端口来模拟外部Verilog的双向端口。</p>
+<p>一旦端口列表定义完成，就可以通过“io.xxx”来使用。输入可以驱动内部其它信号，输出可以被其他信号驱动。可以直接进行赋值操作，布尔类型的端口还能直接作为使能信号。端口不需要再使用其它硬件类型来定义，不过要注意从性质上来说它仍然属于组合逻辑的线网。例如：</p>
+<p>class MyIO extends Bundle {<br>   val in = Input(Vec(5, UInt(32.W)))<br>   val out = Output(UInt(32.W))<br>}</p>
+<p>……<br>   val io = IO(new MyIO)  // 模块的端口列表<br>……</p>
+<p>   Ⅱ、翻转端口列表的方向<br>对于两个相连的模块，可能存在大量同名但方向相反的端口。仅仅为了翻转方向而不得不重写一遍端口显得费时费力，所以Chisel提供了“Flipped<a href="source: T">T &lt;: Data</a>”方法，可以把参数里所有的输入转输出，输出转输入。如果是黑盒里的Analog端口，则仍是双向的。例如：</p>
+<p> class MyIO extends Bundle {<br>   val in = Input(Vec(5, UInt(32.W)))<br>   val out = Output(UInt(32.W))<br>}</p>
+<p>……<br>   val io = IO(new MyIO)  // in是输入，out是输出<br>……<br>   val io = IO(Flipped(new MyIO))  // out是输入，in是输出</p>
+<p>   Ⅲ、整体连接<br>翻转方向的端口列表通常配合整体连接符号“&lt;&gt;”使用。该操作符会把左右两边的端口列表里所有同名的端口进行连接，而且同一级的端口方向必须是输入连输出、输出连输入，父级和子级的端口方向则是输入连输入、输出连输出。注意，方向必须按这个规则匹配，而且不能存在端口名字、数量、类型不同的情况。这样就省去了大量连线的代码。例如：</p>
+<p>class MyIO extends Bundle {<br>   val in = Input(Vec(5, UInt(32.W)))<br>   val out = Output(UInt(32.W))<br>}</p>
+<p>……<br>   val io = IO(new Bundle {<br>       val x = new MyIO<br>       val y = Flipped(new MyIO)<br>   })</p>
+<p>   io.x &lt;&gt; io.y  // 相当于 io.y.in := io.x.in; io.x.out := io.y.out<br>……</p>
+<p>三、模块<br>   Ⅰ、定义模块<br>在Chisel里面是用一个自定义的类来定义模块的，这个类有以下三个特点：①继承自Module类。②有一个抽象字段“io”需要实现，该字段必须引用前面所说的端口对象。③在类的主构造器里进行内部电路连线。因为非字段、非方法的内容都属于主构造方法，所以用操作符“:=”进行的赋值、用“&lt;&gt;”进行的连线或一些控制结构等等，都属于主构造方法。从Scala的层面来讲，这些代码在实例化时表示如何构造一个对象；从Chisel的层面来讲，它们就是在声明如何进行模块内部子电路的连接、信号的传递，类似于Verilog的assign和always语句。实际上这些用赋值表示的电路连接在转换成Verilog时，组合逻辑就是大量的assign语句，时序逻辑就是always语句。</p>
+<p>还有一点需要注意，这样定义的模块会继承一个字段“clock”，类型是Clock，它表示全局时钟，在整个模块内都可见。对于组合逻辑，是用不上它的，而时序逻辑虽然需要这个时钟，但也不用显式声明。还有一个继承的字段“reset”，类型是Reset，表示全局复位信号，在整个模块内可见。对于需要复位的时序元件，也可以不用显式使用该字段。如果确实需要用到全局时钟和复位，则可以通过它们的字段名称来使用，但要注意类型是否匹配，经常需要“reset.toBool”这样的语句把Reset类型转换成Bool类型用于控制。隐式的全局时钟和复位端口只有在生成Verilog代码时才能看到。</p>
+<p>要编写一个双输入多路选择器，其代码如下所示：</p>
+<p>// mux2.scala<br>package test</p>
+<p>import chisel3._</p>
+<p>class Mux2 extends Module {<br>  val io = IO(new Bundle{<br>    val sel = Input(UInt(1.W))<br>    val in0 = Input(UInt(1.W))<br>    val in1 = Input(UInt(1.W))<br>    val out = Output(UInt(1.W))<br>  })</p>
+<p>  io.out := (io.sel &amp; io.in1) | (~io.sel &amp; io.in0)<br>}<br>在这里，“new Bundle { … }”的写法是声明一个匿名类继承自Bundle，然后实例化匿名类。对于短小、简单的端口列表，可以使用这种简便写法。对于大的公用接口，应该单独写成具名的Bundle子类，方便修改。“io.out := …”其实就是主构造方法的一部分，通过内建操作符和三个输入端口，实现了输出端口的逻辑行为。</p>
+<p>   Ⅱ、例化模块<br>要例化一个模块，并不是直接用new生成一个实例对象就完成了，还需要再把实例的对象传递给单例对象Module的apply方法。这种别扭的语法是Scala的语法限制造成的，就像端口需要写成“IO(new Bundle {…})”，无符号数要写成“UInt(n.W)”等等一样。例如，下面的代码通过例化刚才的双输入多路选择器构建四输入多路选择器：</p>
+<p>// mux4.scala<br>package test</p>
+<p>import chisel3._<br>class Mux4 extends Module {<br>  val io = IO(new Bundle {<br>    val in0 = Input(UInt(1.W))<br>    val in1 = Input(UInt(1.W))<br>    val in2 = Input(UInt(1.W))<br>    val in3 = Input(UInt(1.W))<br>    val sel = Input(UInt(2.W))<br>    val out = Output(UInt(1.W))<br>  })<br>  val m0 = Module(new Mux2)<br>  m0.io.sel := io.sel(0)<br>  m0.io.in0 := io.in0<br>  m0.io.in1 := io.in1<br>  val m1 = Module(new Mux2)<br>  m1.io.sel := io.sel(0)<br>  m1.io.in0 := io.in2<br>  m1.io.in1 := io.in3<br>  val m2 = Module(new Mux2)<br>  m2.io.sel := io.sel(1)<br>  m2.io.in0 := m0.io.out<br>  m2.io.in1 := m1.io.out<br>  io.out := m2.io.out<br>}<br>   Ⅲ、例化多个模块<br>像上个例子中，模块Mux2例化了三次，实际只需要一次性例化三个模块就可以了。对于要多次例化的重复模块，可以利用向量的工厂方法VecInit[T &lt;: Data]。因为该方法接收的参数类型是Data的子类，而模块的字段io正好是Bundle类型，并且实际的电路连线仅仅只需针对模块的端口，所以可以把待例化模块的io字段组成一个序列，或者按重复参数的方式作为参数传递。通常使用序列作为参数，这样更节省代码。生成序列的一种方法是调用单例对象Seq里的方法fill，该方法的一个重载版本有两个单参数列表，第一个接收Int类型的对象，表示序列的元素个数，第二个是传名参数，接收序列的元素。</p>
+<p>因为Vec是一种可索引的序列，所以这种方式例化的多个模块类似于“模块数组”，用下标索引第n个模块。另外，因为Vec的元素已经是模块的端口字段io，所以要引用例化模块的某个具体端口时，路径里不用再出现“io”。例如：</p>
+<p>// mux4_2.scala<br>package test</p>
+<p>import chisel3._<br>class Mux4_2 extends Module {<br>  val io = IO(new Bundle {<br>    val in0 = Input(UInt(1.W))<br>    val in1 = Input(UInt(1.W))<br>    val in2 = Input(UInt(1.W))<br>    val in3 = Input(UInt(1.W))<br>    val sel = Input(UInt(2.W))<br>    val out = Output(UInt(1.W))<br>  })<br>  val m = VecInit(Seq.fill(3)(Module(new Mux2).io))  // 例化了三个Mux2，并且参数是端口字段io<br>  m(0).sel := io.sel(0)  // 模块的端口通过下标索引，并且路径里没有“io”<br>  m(0).in0 := io.in0<br>  m(0).in1 := io.in1<br>  m(1).sel := io.sel(0)<br>  m(1).in0 := io.in2<br>  m(1).in1 := io.in3<br>  m(2).sel := io.sel(1)<br>  m(2).in0 := m(0).out<br>  m(2).in1 := m(1).out<br>  io.out := m(2).out<br>}<br>四、线网<br>Chisel把线网作为电路的节点，通过工厂方法“Wire<a href="t: T">T &lt;: Data</a>”来定义。可以对线网进行赋值，也可以连接到其他电路节点，这是组成组合逻辑的基本硬件类型。例如：</p>
+<p>val myNode = Wire(UInt(8.W))</p>
+<p>myNode := 0.U </p>
+<p>因为Scala作为软件语言是顺序执行的，定义具有覆盖性，所以如果对同一个线网多次赋值，则只有最后一次有效。例如下面的代码与上面的例子是等效的： </p>
+<p>val myNode = Wire(UInt(8.W))</p>
+<p>myNode := 10.U</p>
+<p>myNode := 0.U</p>
+<p>五、寄存器<br>寄存器是时序逻辑的基本硬件类型，它们都是由当前时钟域的时钟上升沿触发的。如果模块里没有多时钟域的语句块，那么寄存器都是由隐式的全局时钟来控制。对于有复位信号的寄存器，如果不在多时钟域语句块里，则由隐式的全局复位来控制，并且高有效。目前Chisel所有的复位都是同步复位，异步复位功能还在开发中。如果需要异步复位寄存器，则需要通过黑盒引入。</p>
+<p>有五种内建的寄存器，第一种是跟随寄存器“RegNext<a href="next: T">T &lt;: Data</a>”，在每个时钟上升沿，它都会采样一次传入的参数，并且没有复位信号。它的另一个版本的apply工厂方法是“RegNext<a href="next: T, init: T">T &lt;: Data</a>”，也就是由复位信号控制，当复位信号有效时，复位到指定值，否则就跟随。</p>
+<p>第二种是复位到指定值的寄存器“RegInit<a href="init: T">T &lt;: Data</a>”，参数需要声明位宽，否则就是默认位宽。可以用内建的when语句进行条件赋值。</p>
+<p>第三种是普通的寄存器“Reg<a href="t: T">T &lt;: Data</a>”，它可以在when语句里用全局reset信号进行同步复位(reset信号是Reset类型，要用toBool进行类型转换)，也可以进行条件赋值或无条件跟随。参数同样要指定位宽。</p>
+<p>第四种是util包里的带一个使能端的寄存器“RegEnable<a href="next: T, init: T, enable: Bool">T &lt;: Data</a>”，如果不需要复位信号，则第二个参数可以省略给出。</p>
+<p>第五种是util包里的移位寄存器“ShiftRegister<a href="in: T, n: Int, resetData: T, en: Bool">T &lt;: Data</a>”，其中第一个参数in是带移位的数据，第二个参数n是需要延迟的周期数，第三个参数resetData是指定的复位值，可以省略，第四个参数en是使能移位的信号，默认为true.B。</p>
+<p>假如有如下代码：</p>
 <hr>
 <p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/96733090_p2.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
 <p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/96733090_p3.jpg" srcset="/img/loading.gif" lazyload alt="96733090_p3"></p>
@@ -550,9 +597,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/202307152029/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/hexoessay/debug/%E8%A7%A3%E5%86%B3hexo%E7%A9%BA%E6%A0%BC%E9%97%AE%E9%A2%98/">
+                      <a href="/202203092029/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/Linuxessay/debug/%E8%A7%A3%E5%86%B3Ubuntu%E4%BF%AE%E6%94%B9%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E5%90%8E%E5%AF%BC%E8%87%B4%E7%99%BB%E5%BD%95%E5%BE%AA%E7%8E%AF%E8%BF%9B%E4%B8%8D%E5%8E%BB%E7%B3%BB%E7%BB%9F%E7%9A%84%E9%97%AE%E9%A2%98/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">解决hexo空格问题</span>
+                        <span class="hidden-mobile">解决Ubuntu修改环境变量后导致登录循环进不去系统的问题</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
