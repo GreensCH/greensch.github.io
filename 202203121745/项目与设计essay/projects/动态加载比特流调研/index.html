@@ -25,14 +25,14 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220312160044823.png">
 <meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220312135213832.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image%20(1">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220312194209296.png">
 <meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image.webp">
 <meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220312143654431.png">
 <meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220312143821630.png">
 <meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220312153002976.png">
 <meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220312152943394.png">
 <meta property="article:published_time" content="2022-03-12T09:45:37.000Z">
-<meta property="article:modified_time" content="2022-03-12T10:48:17.270Z">
+<meta property="article:modified_time" content="2022-03-12T12:32:49.388Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="调研">
 <meta name="twitter:card" content="summary_large_image">
@@ -348,12 +348,12 @@
 <h3 id="1-4-部分重配置"><a href="#1-4-部分重配置" class="headerlink" title="1.4 部分重配置"></a>1.4 部分重配置</h3><p>在 Xilinx 的概念中有两种比特动态重配置概念，一种叫<strong>部分重配置</strong>区别于普通的重配置。部分重配置并不会重新加载一个完整的比特流，而是重新配置<strong>部分逻辑</strong>，保持其他逻辑不变（静态逻辑），以提高重配置的速度，最快能达到数毫秒之快。<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/95751537">（解释来自此处）</a></p>
 <h2 id="2-裸机下的嵌入式应用开发"><a href="#2-裸机下的嵌入式应用开发" class="headerlink" title="2 裸机下的嵌入式应用开发"></a>2 裸机下的嵌入式应用开发</h2><h3 id="2-1-开发思路"><a href="#2-1-开发思路" class="headerlink" title="2.1 开发思路"></a>2.1 开发思路</h3><p>软件动态重配置在 Linux 下可以通过 DevCfg 驱动进行(2018.1版本前)，在没有操作系统的情况下，我们也可以<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/95751537"><strong>在 SDK 中通过用户代码调用DevCfg开发</strong></a></p>
 <p>XILINX官方的<a target="_blank" rel="noopener" href="https://blog.csdn.net/vinnie__/article/details/52829874">BSP裸机例程里有xdevcfg的驱动代码</a>，里面有个例程叫做POLL_EXAMPLE，就是实现PS配置PL比特流的，可以将指定的DDR空间里的数据给FPGA加载，如果这段数据是正确的比特流，那么FPGA就可以成功加载。但是这个代码经过实测，在PL已经CONFIG DONE的情况下是不工作的，我们要对其进行修改。</p>
-<h3 id="有关DONE状态的问题"><a href="#有关DONE状态的问题" class="headerlink" title="有关DONE状态的问题"></a>有关DONE状态的问题</h3><p>刚刚开发思路里提到DONE状态，这里<a target="_blank" rel="noopener" href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841847/Solution+ZynqMP+PL+Programming#SolutionZynqMPPLProgramming-KnownIssuesforPLPrograming">官方文档</a>也给了一定的提示</p>
+<h3 id="2-2-有关DONE状态的问题"><a href="#2-2-有关DONE状态的问题" class="headerlink" title="2.2 有关DONE状态的问题"></a>2.2 有关DONE状态的问题</h3><p>刚刚开发思路里提到DONE状态，这里<a target="_blank" rel="noopener" href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841847/Solution+ZynqMP+PL+Programming#SolutionZynqMPPLProgramming-KnownIssuesforPLPrograming">官方文档</a>也给了一定的提示</p>
 <p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220312160044823.png" srcset="/img/loading.gif" lazyload alt="image-20220312160044823"></p>
 <blockquote>
 <p>需要注意的是，有时，依赖 XilFPGA 库的裸机应用程序在获取 DONE 状态时可能会产生错误。更多详细信息请参见回答记录70504- <a target="_blank" rel="noopener" href="https://www.xilinx.com/support/answers/70504.html">https://www.xilinx.com/support/answers/70504.html</a></p>
 </blockquote>
-<h3 id="2-2-参考开发教程"><a href="#2-2-参考开发教程" class="headerlink" title="2.2 参考开发教程"></a>2.2 参考开发教程</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/95751537">Zynq SDK 驱动探求（五）软件动态重配置硬件比特流</a></p>
+<h3 id="2-3-参考开发教程"><a href="#2-3-参考开发教程" class="headerlink" title="2.3 参考开发教程"></a>2.3 参考开发教程</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/95751537">Zynq SDK 驱动探求（五）软件动态重配置硬件比特流</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/vinnie__/article/details/52829874">Zynq动态更新FPGA比特流</a></p>
 <h2 id="3-Linux系统下的动态加载"><a href="#3-Linux系统下的动态加载" class="headerlink" title="3 Linux系统下的动态加载"></a>3 Linux系统下的动态加载</h2><p><strong>一定要参考的官方文档：</strong></p>
 <p><a target="_blank" rel="noopener" href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841645/Solution+Zynq+PL+Programming+With+FPGA+Manager">Solution Zynq PL Programming With FPGA Manager</a></p>
@@ -368,7 +368,7 @@
 </li>
 </ul>
 <h3 id="3-2-fpga-manage框架"><a href="#3-2-fpga-manage框架" class="headerlink" title="3.2 fpga_manage框架"></a>3.2 fpga_manage框架</h3><p><strong>flow：</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image%20(1" srcset="/img/loading.gif" lazyload alt="">.webp)</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220312194209296.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image.webp" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>可以看到FPGA Manager Driver是内核中的驱动，简介完成对XilfpgaLib的调用，最终实现PL的重配置</p>
 <h2 id="4-fpga-manage框架下的部分重配置"><a href="#4-fpga-manage框架下的部分重配置" class="headerlink" title="4 fpga manage框架下的部分重配置"></a>4 fpga manage框架下的部分重配置</h2><p><strong>配置与运行流程：</strong></p>
