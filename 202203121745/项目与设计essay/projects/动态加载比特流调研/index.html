@@ -1,0 +1,865 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/con1.png">
+  <link rel="icon" href="/img/con1.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="“无论最终结果将人类历史导向何处，我们决定选择希望”">
+  <meta name="author" content="友人律 | Guilin Chang">
+  <meta name="keywords" content="三差学生、不学无术">
+  <meta name="description" content="动态加载比特流调研1 主要内容1.1 Zynq搭载Petalinux后的加载顺序： FLASH&#x2F;SD  加载zynq_fsbl.elf：建立硬件系统，加载uboot到内核 ARM内核启动执行PS的代码，将FLASH&#x2F;SD卡的第一阶段的bootloader拷贝到DDR3执行，完成FPGA配置（如果没有BIT流就不用配置），初始化MIO，初始化DDR3，初始化时钟，然后加载uboot到DDR3 ）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="动态加载比特流调研">
+<meta property="og:url" content="http://yoursite.com/202203121745/%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1essay/projects/%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E6%AF%94%E7%89%B9%E6%B5%81%E8%B0%83%E7%A0%94/index.html">
+<meta property="og:site_name" content="友人律的博客">
+<meta property="og:description" content="动态加载比特流调研1 主要内容1.1 Zynq搭载Petalinux后的加载顺序： FLASH&#x2F;SD  加载zynq_fsbl.elf：建立硬件系统，加载uboot到内核 ARM内核启动执行PS的代码，将FLASH&#x2F;SD卡的第一阶段的bootloader拷贝到DDR3执行，完成FPGA配置（如果没有BIT流就不用配置），初始化MIO，初始化DDR3，初始化时钟，然后加载uboot到DDR3 ）">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220312160044823.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220312135213832.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image%20(1">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image.webp">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220312143654431.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220312143821630.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220312153002976.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220312152943394.png">
+<meta property="article:published_time" content="2022-03-12T09:45:37.000Z">
+<meta property="article:modified_time" content="2022-03-12T10:48:17.270Z">
+<meta property="article:author" content="友人律 | Guilin Chang">
+<meta property="article:tag" content="调研">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220312160044823.png">
+  
+  <title>动态加载比特流调研 - 友人律的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/stackoverflow-dark.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"eca4a4d34dadf0d4e282cc6ef2dc3de6","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body><!-- hexo injector body_begin start -->
+<link defer rel="stylesheet" href="/css/article_para.css" />
+<div id="web_bg"></div><!-- hexo injector body_begin end -->
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>友人律的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E9%80%9A%E7%9F%A5/">
+                <i class="iconfont icon-link-fill"></i>
+                通知
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1/">
+                <i class="iconfont icon-link-fill"></i>
+                项目与设计
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">
+                <i class="iconfont icon-link-fill"></i>
+                开发工具
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/CS/">
+                <i class="iconfont icon-link-fill"></i>
+                CS
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/IC/">
+                <i class="iconfont icon-link-fill"></i>
+                IC
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/背景页.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="动态加载比特流调研">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-03-12 17:45" pubdate>
+        2022年3月12日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      7.3k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      23 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">动态加载比特流调研</h1>
+            
+            <div class="markdown-body">
+              <h1 id="动态加载比特流调研"><a href="#动态加载比特流调研" class="headerlink" title="动态加载比特流调研"></a>动态加载比特流调研</h1><h2 id="1-主要内容"><a href="#1-主要内容" class="headerlink" title="1 主要内容"></a>1 主要内容</h2><h3 id="1-1-Zynq搭载Petalinux后的加载顺序："><a href="#1-1-Zynq搭载Petalinux后的加载顺序：" class="headerlink" title="1.1 Zynq搭载Petalinux后的加载顺序："></a>1.1 Zynq搭载Petalinux后的加载顺序：</h3><ol>
+<li>FLASH/SD </li>
+<li>加载zynq_fsbl.elf：建立硬件系统，加载uboot到内核<ul>
+<li>ARM内核启动执行PS的代码，将FLASH/SD卡的第一阶段的bootloader拷贝到DDR3执行，<strong>完成FPGA配置</strong>（如果没有BIT流就不用配置），初始化MIO，初始化DDR3，初始化时钟，然后加载uboot到DDR3 ）</li>
+</ul>
+</li>
+<li>加载uboot.elf：加载内核到DDR<ul>
+<li>加载第二阶段bootloader，负责将image.ub加载到DDR3。</li>
+</ul>
+</li>
+<li>加载Image.ub：建立内核系统<ul>
+<li>petalinux的image，包括ramdisk，设备树等</li>
+</ul>
+</li>
+</ol>
+<h3 id="1-2-主要的四种种加载比特流方案："><a href="#1-2-主要的四种种加载比特流方案：" class="headerlink" title="1.2 主要的四种种加载比特流方案："></a>1.2 主要的四种种加载比特流方案：</h3><ul>
+<li><p><strong>① 裸机下的嵌入式应用开发</strong></p>
+</li>
+<li><p>Linux系统下的动态加载</p>
+<ul>
+<li><p><strong>② fpga_manager框架</strong>（现在大多使用，基于框架包括多种实现方法）</p>
+</li>
+<li><p>③ libdfx（资料较少）</p>
+</li>
+<li><p><strong>④ 使用/dev/字符设备 加载比特流</strong>（2018.1后被移除，现已不用）</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841750/Solution+Zynq+PL+Programming">官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40604731/article/details/100690049">运行脚本介绍</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/xijingmingxijingming/article/details/102911031">运行脚本介绍2</a></li>
+</ul>
+<p>（<a target="_blank" rel="noopener" href="https://blog.csdn.net/wangjie36/article/details/121805043">两种方法的介绍博客</a>）</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-3-安全启动"><a href="#1-3-安全启动" class="headerlink" title="1.3 安全启动"></a>1.3 安全启动</h3><p>安全启动无论是用哪种方法加载比特流都有提到，为防止提到时不了解因此把概念提前</p>
+<p><strong>secure 安全启动</strong>是指比特流会经过 AES 等安全模块的验证后，再配置到硬件中。<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/95751537">（解释来自此处）</a></p>
+<h3 id="1-4-部分重配置"><a href="#1-4-部分重配置" class="headerlink" title="1.4 部分重配置"></a>1.4 部分重配置</h3><p>在 Xilinx 的概念中有两种比特动态重配置概念，一种叫<strong>部分重配置</strong>区别于普通的重配置。部分重配置并不会重新加载一个完整的比特流，而是重新配置<strong>部分逻辑</strong>，保持其他逻辑不变（静态逻辑），以提高重配置的速度，最快能达到数毫秒之快。<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/95751537">（解释来自此处）</a></p>
+<h2 id="2-裸机下的嵌入式应用开发"><a href="#2-裸机下的嵌入式应用开发" class="headerlink" title="2 裸机下的嵌入式应用开发"></a>2 裸机下的嵌入式应用开发</h2><h3 id="2-1-开发思路"><a href="#2-1-开发思路" class="headerlink" title="2.1 开发思路"></a>2.1 开发思路</h3><p>软件动态重配置在 Linux 下可以通过 DevCfg 驱动进行(2018.1版本前)，在没有操作系统的情况下，我们也可以<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/95751537"><strong>在 SDK 中通过用户代码调用DevCfg开发</strong></a></p>
+<p>XILINX官方的<a target="_blank" rel="noopener" href="https://blog.csdn.net/vinnie__/article/details/52829874">BSP裸机例程里有xdevcfg的驱动代码</a>，里面有个例程叫做POLL_EXAMPLE，就是实现PS配置PL比特流的，可以将指定的DDR空间里的数据给FPGA加载，如果这段数据是正确的比特流，那么FPGA就可以成功加载。但是这个代码经过实测，在PL已经CONFIG DONE的情况下是不工作的，我们要对其进行修改。</p>
+<h3 id="有关DONE状态的问题"><a href="#有关DONE状态的问题" class="headerlink" title="有关DONE状态的问题"></a>有关DONE状态的问题</h3><p>刚刚开发思路里提到DONE状态，这里<a target="_blank" rel="noopener" href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841847/Solution+ZynqMP+PL+Programming#SolutionZynqMPPLProgramming-KnownIssuesforPLPrograming">官方文档</a>也给了一定的提示</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220312160044823.png" srcset="/img/loading.gif" lazyload alt="image-20220312160044823"></p>
+<blockquote>
+<p>需要注意的是，有时，依赖 XilFPGA 库的裸机应用程序在获取 DONE 状态时可能会产生错误。更多详细信息请参见回答记录70504- <a target="_blank" rel="noopener" href="https://www.xilinx.com/support/answers/70504.html">https://www.xilinx.com/support/answers/70504.html</a></p>
+</blockquote>
+<h3 id="2-2-参考开发教程"><a href="#2-2-参考开发教程" class="headerlink" title="2.2 参考开发教程"></a>2.2 参考开发教程</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/95751537">Zynq SDK 驱动探求（五）软件动态重配置硬件比特流</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/vinnie__/article/details/52829874">Zynq动态更新FPGA比特流</a></p>
+<h2 id="3-Linux系统下的动态加载"><a href="#3-Linux系统下的动态加载" class="headerlink" title="3 Linux系统下的动态加载"></a>3 Linux系统下的动态加载</h2><p><strong>一定要参考的官方文档：</strong></p>
+<p><a target="_blank" rel="noopener" href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841645/Solution+Zynq+PL+Programming+With+FPGA+Manager">Solution Zynq PL Programming With FPGA Manager</a></p>
+<p><a target="_blank" rel="noopener" href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841847/Solution+ZynqMP+PL+Programming">Solution ZynqMP PL Programming</a></p>
+<h3 id="3-1-Linux系统下加载fpga上的三种主要方案"><a href="#3-1-Linux系统下加载fpga上的三种主要方案" class="headerlink" title="3.1 Linux系统下加载fpga上的三种主要方案"></a>3.1 Linux系统下加载fpga上的三种主要方案</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220312135213832.png" srcset="/img/loading.gif" lazyload alt="图片来自&quot;Solution ZynqMP PL Programming&quot;wiki目录"></p>
+<ul>
+<li><p>fpga manage 原生框架开发：提供3个attributes来事项不同功能， sysfs（比特流加载）、debugfs（回读）、configfs（比特流和 PL 驱动程序的 DTBO一起加载）</p>
+</li>
+<li><p>fpgautil应用程序：Xilinx 开发的实用程序为所有 FPGA  manager 用例提供了一个易于使用的界面。</p>
+</li>
+<li><p>Libdfx：未研究，推测提供多种适用于C中的api</p>
+</li>
+</ul>
+<h3 id="3-2-fpga-manage框架"><a href="#3-2-fpga-manage框架" class="headerlink" title="3.2 fpga_manage框架"></a>3.2 fpga_manage框架</h3><p><strong>flow：</strong></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image%20(1" srcset="/img/loading.gif" lazyload alt="">.webp)</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image.webp" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>可以看到FPGA Manager Driver是内核中的驱动，简介完成对XilfpgaLib的调用，最终实现PL的重配置</p>
+<h2 id="4-fpga-manage框架下的部分重配置"><a href="#4-fpga-manage框架下的部分重配置" class="headerlink" title="4 fpga manage框架下的部分重配置"></a>4 fpga manage框架下的部分重配置</h2><p><strong>配置与运行流程：</strong></p>
+<ul>
+<li><p>petalinux搭建，配置内核完成对fpgamanage支持</p>
+</li>
+<li><p>对重加载的PL资源的配置</p>
+<ul>
+<li>bitstream转换为bin格式</li>
+<li>PL生成dtbo</li>
+</ul>
+</li>
+<li><p>zynq加载相应逻辑</p>
+<ul>
+<li>（简单）使用fpgautil间接操作fpgamanager完成比特流加载</li>
+<li>（复杂）使用fpga manager驱动的3种接口中的attritude完成对PL部分的加载、(帧)回读<ul>
+<li>sysfs接口</li>
+<li>debugfs接口</li>
+<li>configfs接口/使用DTO进行动态加载</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-1-petalinux搭建"><a href="#4-1-petalinux搭建" class="headerlink" title="4.1 petalinux搭建"></a>4.1 petalinux搭建</h3><p>petalinx环境搭建参考网上各种教程</p>
+<p>zynq的petalinux生成中的fpga manager支持选项可参考后方链接进行检查：<a target="_blank" rel="noopener" href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841645/Solution+Zynq+PL+Programming+With+FPGA+Manager#SolutionZynqPLProgrammingWithFPGAManager-FeaturessupportedintheDriver">Solution Zynq PL Programming With FPGA Manager</a></p>
+<p>zynqMP的petalinux生成中的fpga manager支持选项可参考后方链接进行检查：<a target="_blank" rel="noopener" href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841847/Solution+ZynqMP+PL+Programming#SolutionZynqMPPLProgramming-KernelConfiguration">Solution Zynq PL Programming With FPGA Manager</a></p>
+<h3 id="生成petalinux的要点"><a href="#生成petalinux的要点" class="headerlink" title="生成petalinux的要点"></a>生成petalinux的要点</h3><p><strong>（1）环境介绍</strong></p>
+<p>成功运行的环境：</p>
+<ul>
+<li>petalinux 2021.2</li>
+<li>vivado 2019.2 （注意生成的是.xsa硬件描述文件，且导出时一定要包含bitstream文件）</li>
+</ul>
+<p>注意！在下述环境下找不到fpga manager选项：</p>
+<ul>
+<li>petalinux 2015</li>
+<li>.hdf硬件描述文件</li>
+</ul>
+<p><strong>（2）petalinux-config</strong></p>
+<p>根据官方wiki，zynq系列生成petalinux时在config界面选择fpga manager后即可完成对该驱动的相关支持的配置，经检查确实在petalinx-config选中fpga manager后wiki中提到的各个选项也配置完全</p>
+<ul>
+<li>petalinux-config中开启fpga manager</li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220312143654431.png" srcset="/img/loading.gif" lazyload alt="image-20220312143654431"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220312143821630.png" srcset="/img/loading.gif" lazyload alt="image-20220312143821630"></p>
+<p><strong>（3）其他</strong></p>
+<p>其他petalinux生成过程中的配置可参考链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/long_fly/article/details/78727813">https://blog.csdn.net/long_fly/article/details/78727813</a></p>
+<h3 id="4-2-bin格式比特流生成"><a href="#4-2-bin格式比特流生成" class="headerlink" title="4.2 bin格式比特流生成"></a>4.2 bin格式比特流生成</h3><p>使用bootgen工具完成对动态加载的比特流文件的转换</p>
+<ul>
+<li>bootgen程序在vivado/bin或vitis/bin目录中</li>
+<li>运行方式</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs hell">bootgen -image Full_Bitstream.bif -arch zynq -process_bitstream bin<br></code></pre></div></td></tr></table></figure>
+<ul>
+<li>Full_Bitstream.bif 文件中应该包括</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">all:<br>&#123;<br>        design_1_wrapper.bit /* Bitstream file name */<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<p>补充：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/luego/p/11777104.html">进阶的自动化脚本链接</a></p>
+<h3 id="4-3-使用fpgautil完成对PL的重加载"><a href="#4-3-使用fpgautil完成对PL的重加载" class="headerlink" title="4.3 使用fpgautil完成对PL的重加载"></a>4.3 使用fpgautil完成对PL的重加载</h3><p>参考<a target="_blank" rel="noopener" href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841847/Solution+ZynqMP+PL+Programming#SolutionZynqMPPLProgramming-ExercisingFPGAprogrammingusingfpgautil">官方文档</a>直接调用即可，能够实现4.4节中的全部功能，使用起来较为简便，fpgautil实现的源码地址<a target="_blank" rel="noopener" href="https://github.com/Xilinx/meta-xilinx-tools/blob/master/recipes-bsp/fpga-manager-script/files/fpgautil.c">fpgautil.c</a>基本上就是在FPGA Manager驱动的一种简化操作。<strong>fpgautil操作示例如下</strong>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">root@xilinx-zcu102-2018_3:~# fpgautil -h<br> <br>fpgautil: FPGA Utility for Loading/reading PL Configuration in zynqMP<br> <br>Usage:  fpgautil -b &lt;bin file path&gt; -o &lt;dtbo file path&gt;<br> <br>Options: -b &lt;binfile&gt;           (Bin file path)<br>         -o &lt;dtbofile&gt;          (DTBO file path)<br>         -f &lt;flags&gt;             Optional: &lt;Bitstream type flags&gt;<br>                                   f := &lt;Full | Partial &gt;<br>                                Default: &lt;Full&gt;<br>          -s &lt;secure flags&gt;     Optional: &lt;Secure flags&gt;<br>                                   s := &lt;AuthDDR | AuthOCM | EnUsrKey | EnDevKey | AuthEnUsrKeyDDR | AuthEnUsrK&gt;<br>          -k &lt;AesKey&gt;           Optional: &lt;AES User Key&gt;<br>          -r &lt;Readback&gt;         Optional: &lt;file name&gt;<br>                                Default: By default Read back contents will be stored in readback.bin file<br>          -t                    Optional: &lt;Readback Type&gt;<br>                                   0 - Configuration Register readback<br>                                   1 - Configuration Data Frames readback<br>                                Default: 0 (Configuration register readback)<br>          -R                    Optional: Remove overlay from a live tree<br>  <br>Examples:<br>(Load Full Bitstream using Overlay)<br>fpgautil -b top.bit.bin -o can.dtbo<br>(Load Partial Bitstream through the sysfs interface)<br>fpgautil -b top.bit.bin -f Partial<br>(Load Authenticated Bitstream through the sysfs interface)<br>fpgautil -b top.bit.bin -f Full -s AuthDDR<br>(Load Parital Encrypted Userkey Bitstream using Overlay)<br>fpgautil -b top.bit.bin -o pl.dtbo -f Partial -s EnUsrKey -k &lt;32byte key value&gt;<br>(Read PL Configuration Registers)<br>fpgautil -b top.bit.bin -r<br></code></pre></div></td></tr></table></figure>
+<h3 id="4-4-使用fpga-attritude完成对PL的重加载"><a href="#4-4-使用fpga-attritude完成对PL的重加载" class="headerlink" title="4.4 使用fpga attritude完成对PL的重加载"></a>4.4 使用fpga attritude完成对PL的重加载</h3><p> Linux FPGA Manager framework provides <em>sysfs</em> (Bitstream loading), <em>debugfs</em> (readback), <em>configfs</em> (Bitstream loading along with DTBO for PL drivers) attributes.</p>
+<p>直接操作FPGA Manager驱动的各种接口，<strong>以下内容建议直接参考官方文档</strong></p>
+<h3 id="4-4-1-sysfs-接口（用于加载比特流）"><a href="#4-4-1-sysfs-接口（用于加载比特流）" class="headerlink" title="4.4.1 sysfs 接口（用于加载比特流）"></a>4.4.1 sysfs 接口（用于加载比特流）</h3><p>FPGA Manager Driver在 <code>/sys/class/fpga_manager/&lt;fpga&gt;/</code>位置处提供了控制逻辑和状态信息分别是：firmware，flag，status，name，key</p>
+<p>对这些文件操作从而完成比特流的加载、部分加载等功能<strong>（懒得写了可以直接参考官方文档）</strong></p>
+<p><strong>具体操作请参考<a target="_blank" rel="noopener" href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841847/Solution+ZynqMP+PL+Programming#SolutionZynqMPPLProgramming-FPGAprogrammingusingsysfsattributes">官方文档</a>实现</strong></p>
+<h3 id="4-4-2-debug-接口（用于readback"><a href="#4-4-2-debug-接口（用于readback" class="headerlink" title="4.4.2 debug 接口（用于readback)"></a>4.4.2 debug 接口（用于readback)</h3><p>FPGA Manager Driver在 <code>/sys/kernel/debug/fpga/</code>位置处提供了包含提供回读内容的image属性操作文件：readback_type,image</p>
+<ul>
+<li>readback_type（ 是一个模块参数）：声明回读类型，0 - 读取配置寄存器 1 - 读取配置数据</li>
+<li>image（image 是一个 debugfs 属性）：根据 readback_type 模块参数提供回读信息</li>
+</ul>
+<p><strong>具体操作请参考官方文档<a target="_blank" rel="noopener" href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841847/Solution+ZynqMP+PL+Programming#SolutionZynqMPPLProgramming-FPGAReadbackusingdebugfsattributes">官方文档</a></strong></p>
+<p><strong>（1）读取普通数据的步骤</strong>：</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220312153002976.png" srcset="/img/loading.gif" lazyload alt="读取普通数据"></p>
+<p><strong>（2）读取帧数据的步骤：</strong></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220312152943394.png" srcset="/img/loading.gif" lazyload alt="读取帧数据"></p>
+<h3 id="4-4-3-configfs接口-使用DTO进行动态加载（用于比特流和-PL-驱动程序的-DTBO一起加载）"><a href="#4-4-3-configfs接口-使用DTO进行动态加载（用于比特流和-PL-驱动程序的-DTBO一起加载）" class="headerlink" title="4.4.3 configfs接口/使用DTO进行动态加载（用于比特流和 PL 驱动程序的 DTBO一起加载）"></a>4.4.3 configfs接口/使用DTO进行动态加载（用于比特流和 PL 驱动程序的 DTBO一起加载）</h3><p>Device Tree Overlay(DTO)用于在 Linux 运行时对 FPGA 进行重新编程。DTO 覆盖将添加子节点和来自。在 Bitstream 编程之后，新添加的设备节点/驱动程序将被探测。</p>
+<p><strong>具体操作请参考<a target="_blank" rel="noopener" href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841847/Solution+ZynqMP+PL+Programming#SolutionZynqMPPLProgramming-FPGAprogrammingusingDeviceTreeOverlay(DTO">官方文档</a>)实现</strong></p>
+<hr>
+<p><strong>（1）其中DTO文件应该包括：</strong></p>
+<ul>
+<li>Target FPGA Region<br>- “target-path” or “target” - The insertion point where the the contents of the overlay will go into the live tree.<br>target-path is a full path, while target is a phandle.</li>
+<li>FPGA Image firmware file name<br>- “firmware-name” - Specifies the name of the FPGA image file on the firmware search path.<br>The search path is described in the firmware class documentation.</li>
+<li>Image specific information<br>- external-fpga-config : boolean, set if the FPGA has already been configured prior to Linux boot up.</li>
+<li>Child devices<br>- child nodes corresponding to hardware that will be loaded in this region of the FPGA.</li>
+</ul>
+<p><strong>（2）提示：</strong></p>
+<ul>
+<li>如果用户尝试加载未对齐的位/bin 文件，与对齐（字对齐）位/bin 文件相比，PL 配置需要更长的时间</li>
+<li>使用覆盖我们可以添加一个新节点或添加/更新现有节点属性。但它不允许替换已经是活动树一部分的现有节点</li>
+</ul>
+<p><strong>（3）使用DTO加载完整比特流的步骤</strong></p>
+<p>加载步骤（Steps for programming the Full Bitstream using overlay）：</p>
+<ul>
+<li><p>复制Full bitstream (.bin)和pl.dtbo文件到固件(firmware)文件夹后进行如下操作：</p>
+<ul>
+<li><p>mkdir /configfs</p>
+</li>
+<li><p>mount -t configfs configfs /configfs</p>
+</li>
+<li><p>cd /configfs/device-tree/overlays/</p>
+</li>
+<li><p>mkdir full</p>
+</li>
+<li><p>echo -n “pl.dtbo” &gt; full/path</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>删除步骤（Steps to remove the drivers got added as part of DTO）：</p>
+<ul>
+<li>rmdir /configfs/device-tree/overlays/full</li>
+</ul>
+<p><strong>（4）可能的使用DTO加载部分比特流步骤</strong></p>
+<p>加载步骤：</p>
+<ul>
+<li><p>复制Partial Bitstream (.bin) 和 rm.dtbo文件到 lib/firmware文件夹后进行如下操作：</p>
+<ul>
+<li><p>mkdir /configfs</p>
+</li>
+<li><p>mount -t configfs configfs /configfs</p>
+</li>
+<li><p>cd /configfs/device-tree/overlays/</p>
+</li>
+<li><p>mkdir partial</p>
+</li>
+<li><p>echo 1 &gt; /sys/class/fpga_manager/fpga0/flags</p>
+</li>
+<li><p>echo -n “pl.dtbo” &gt; partial/path</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>删除步骤（To remove a device tree overlay）:</p>
+<ul>
+<li>rmdir /configfs/device-tree/overlays/partial</li>
+</ul>
+<h3 id="4-5-如何生成dtbo文件"><a href="#4-5-如何生成dtbo文件" class="headerlink" title="4.5 如何生成dtbo文件"></a>4.5 如何生成dtbo文件</h3><p><a target="_blank" rel="noopener" href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841847/Solution+ZynqMP+PL+Programming#SolutionZynqMPPLProgramming-KnownIssuesforPLPrograming">官方文档</a>中有这么一段内容：</p>
+<blockquote>
+<p>The Xilinx device tree generator (<a target="_blank" rel="noopener" href="https://github.com/Xilinx/device-tree-xlnx">https://github.com/Xilinx/device-tree-xlnx</a>) currently lacks automated support for device tree overlay generation for Partial Reconfiguration / DFX designs. For systems requiring runtime device tree overlay (eg, Linux device driver support) support, hand-crafted device trees can be deployed and loaded. See the “Working with Device Tree Overlay (DTBO)” section below for details on how to load these at runtime.</p>
+<p>Occasionally, bare-metal applications relying on the XilFPGA library may produce an error getting the DONE status. See Answer Record 70504 for more details - <a target="_blank" rel="noopener" href="https://www.xilinx.com/support/answers/70504.html">https://www.xilinx.com/support/answers/70504.html</a> </p>
+<p>Xilinx 设备树生成器(Xilinx device tree generator， <a target="_blank" rel="noopener" href="https://github.com/Xilinx/device-tree-xlnx">https://github.com/Xilinx/device-tree-xlnx</a> )目前缺乏对部分重构/DFX 设计的设备树覆盖生成的自动支持。对于需要运行时设备树覆盖(例如，Linux 设备驱动程序支持)支持的系统，可以部署和加载手工制作的设备树。请参阅下面的“使用设备树覆盖(DTBO)”部分了解如何在运行时加载这些内容的详细信息。</p>
+<p>有时，依赖 XilFPGA 库的裸机应用程序在获取 DONE 状态时可能会产生错误。更多详细信息请参见回答记录70504- <a target="_blank" rel="noopener" href="https://www.xilinx.com/support/answers/70504.html">https://www.xilinx.com/support/answers/70504.html</a></p>
+</blockquote>
+<p>根据上面内容得出，可能dtx缺少对重构设备树的自动化支持，<strong>需要手动制作</strong></p>
+<p>但根据4.4.3节中官方提供的dto代码推测可以通过hsi工具<strong>从.xsa文件中自动生成</strong>，这里有两个文档分别介绍了如何制作dtbo以及hsi工具，可以<strong>从这两个文档进一步研究</strong>：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842279/Build+Device+Tree+Blob">Build Device Tree Blob wiki</a></li>
+<li><a target="_blank" rel="noopener" href="https://xilinx.github.io/kria-apps-docs/creating_applications/1.0/build/html/docs/creating_applications_dtsi_dtbo_generation.html">生成 DTSI 和 DTBO 覆盖文件</a></li>
+</ul>
+<h2 id="5-Libdfx方案"><a href="#5-Libdfx方案" class="headerlink" title="5 Libdfx方案"></a>5 Libdfx方案</h2><p>该库是构建在 Linux 驱动程序堆栈之上的轻量级用户空间库，以支持 FPGA 设备编程。这个“C”库可以静态构建，需要与用户应用程序集成。它提供了不同的 API，可以解决 DFX 或 PL 配置数据编程的多个用例。它还通过避免其他方法中涉及的多个缓冲区副本来提供更快的编程能力。</p>
+<p><a target="_blank" rel="noopener" href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/1959854475/libdfx+-+Linux+User+Space+Solution+for+FPGA+Programming">https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/1959854475/libdfx+-+Linux+User+Space+Solution+for+FPGA+Programming</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1/">项目与设计</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%B0%83%E7%A0%94/">调研</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/202203111929/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/hexoessay/debug/%E8%A7%A3%E5%86%B3hexo%E7%A9%BA%E6%A0%BC%E9%97%AE%E9%A2%98/">
+                        <span class="hidden-mobile">解决hexo空格问题</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'preferred-color-scheme';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'GreensCH/commitutterances');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <span> | </span> <a href="https://weibo.com/u/7453939976" target="_blank" rel="nofollow noopener"> Green Weibo</a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    
+      <script  src="/js/img-lazyload.js" ></script>
+    
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?eca4a4d34dadf0d4e282cc6ef2dc3de6";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<!-- hexo injector body_end start --><script src="/js/backgroundize.js"></script>
+  <link defer rel="stylesheet" href="/css/backgroundize.css" />
+  
+  <div id="aplayer" style="width:300px"></div>
+  <link defer rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css" />
+  <script src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js"></script>
+  <script defer src="/js/aplayer.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"superSample":1,"position":"left","width":250,"height":500,"vOffset":-18},"mobile":{"show":false},"dialog":{"enable":false,"hitokoto":true,"width":10,"height":10,"vOffset":-100},"log":false});</script></body>
+</html>

@@ -325,8 +325,8 @@ body a:hover {
   text-decoration: none;
   transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
 }
-body p {
-  word-spacing: 2em;
+body p code {
+  word-spacing: 1px;
 }
 code {
   color: inherit;
