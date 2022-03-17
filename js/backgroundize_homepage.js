@@ -11,6 +11,8 @@ var image_list = [
     "https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20220312211357.png",
     "https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20220312211342.png",
     "https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20220312211206.png",
+    "https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/63883229_p0.jpg",
+    "https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/94525092_p0.jpg",
     //"https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20220310112049.png",
     //"https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20220310112213.png",
     //"https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20220310112332.png",

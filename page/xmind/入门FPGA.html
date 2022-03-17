@@ -1,0 +1,219 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<title>入门FPGA</title>
+</head>
+<body>
+<h1 align="center" class="root">
+<a name="b9aa22deba98b3b20c7ac8aca2">入门FPGA</a>
+</h1>
+<div align="center" class="globalOverview">
+<img src="%E5%85%A5%E9%97%A8FPGA_files/images/%E5%85%A5%E9%97%A8FPGA.jpg"></div>
+<h2 class="topic">
+<a name="b58888b5ceebbf0e68dada0656">1、首先要掌握HDL</a>
+</h2>
+<h3 class="topic">
+<a name="2at1bkp3egljpuq79qfv2afhi2">&nbsp;可以不看的书</a>
+</h3>
+<h3 class="topic">
+<a name="70c890a9-872b-41a9-879e-e131c442e77e">&nbsp;&nbsp;《Verilog HDL高级数字设计》、《Verilog 数字系统设计教程》、《Verilog编程艺术》</a>
+</h3>
+<h3 class="topic">
+<a name="8a7f6f27-dc97-48f2-9f1f-cd131aca7699">&nbsp;强烈推荐的网站</a>
+</h3>
+<h3 class="topic">
+<a href="http://asic-world.com/" name="57ogdn0plf7bktamdgia1gdg93">&nbsp;&nbsp;http://asic-world.com/</a>
+</h3>
+<h3 class="topic">
+<a name="68atqu8phpql6s98dj3ab3c3bo">&nbsp;&nbsp;&nbsp;verilog语法准备的非常到位</a>
+</h3>
+<h3 class="topic">
+<a href="https://www.01xz.net/wiki/Main_Page" name="7m17d6qehfai5681q7k60k7pso">&nbsp;&nbsp;https://www.01xz.net/wiki/Main_Page</a>
+</h3>
+<h3 class="topic">
+<a name="6vkphch475qici1p6u8qbcedhr">&nbsp;&nbsp;&nbsp;HDLBits用来刷题的</a>
+</h3>
+<h3 class="topic">
+<a name="924b5106-8a46-4070-aff4-1990284648d6">&nbsp;官方手册</a>
+</h3>
+<h3 class="topic">
+<a name="36qrj2hahp6mar66dqt0qoq4t3">&nbsp;&nbsp;verilog_IEEE官方标准手册</a>
+</h3>
+<h3 class="topic">
+<a name="108urejih8ridt45m0tf6878d3">&nbsp;&nbsp;&nbsp;没事翻一番，不需要去看，主要后期有想不到的地方去看一看</a>
+</h3>
+<h3 class="topic">
+<a name="9d0365ab-e64b-4426-b2ba-7578dde979d6">&nbsp;注重编程思想</a>
+</h3>
+<h3 class="topic">
+<a name="1e9mlc5ep1attuo0r6fkl4rbj0">&nbsp;&nbsp;能够完成一个三段式的状态机</a>
+</h3>
+<h2 class="topic">
+<a name="193b56735e689ae86a01d91513">2、仿真的工具和图书推荐</a>
+</h2>
+<h3 class="topic">
+<a name="e90565e9-a85a-4b4f-b786-aa172409c33c">&nbsp;仿真工具</a>
+</h3>
+<h3 class="topic">
+<a name="b17cd17b-8c11-4b9d-b0a7-980985706835">&nbsp;&nbsp;modelsim、QuestaSim、NC verilog、Diamond的Active-HDL、VCS、Debussy/Verdi等仿真工具</a>
+</h3>
+<h3 class="topic">
+<a name="1erj01jm4arfrh1fhauof79i02">&nbsp;testbench可以参考的图书</a>
+</h3>
+<h3 class="topic">
+<a name="93ef53c0-e812-4818-aa81-c29f127e2247">&nbsp;&nbsp;《WRITING TESTBENCHES Functional Verification of HDL Models》</a>
+</h3>
+<h2 class="topic">
+<a name="67ddbcb1-85c9-4478-a0aa-580e9fdcd971">3、掌握设计方法和设计原则</a>
+</h2>
+<h3 class="topic">
+<a name="7klr5kubg0edda7r8e2u262erk">&nbsp;设计方法与原则</a>
+</h3>
+<h3 class="topic">
+<a name="7upmjvucqobsq1ktra08a0690l">&nbsp;&nbsp;同步设计原则</a>
+</h3>
+<h3 class="topic">
+<a name="2u00mps1m1jol4qqpqrcbgo069">&nbsp;&nbsp;优化电路，是速度优先还是面积优先</a>
+</h3>
+<h3 class="topic">
+<a name="3olgjt7jmqnjd0qm103tp9cuu5">&nbsp;&nbsp;时钟树应该怎样设计</a>
+</h3>
+<h3 class="topic">
+<a name="1ufln9ghejsgugtnui18ljnqct">&nbsp;图书推荐</a>
+</h3>
+<h3 class="topic">
+<a name="058otiml1q0qiljuq0nbg3n3lk">&nbsp;&nbsp;《FPGA权威指南》</a>
+</h3>
+<h3 class="topic">
+<a name="4rp5drqv2obnus8m2qph08vel5">&nbsp;&nbsp;《IP核芯志-数字逻辑设计思想》</a>
+</h3>
+<h3 class="topic">
+<a name="5og969itn7d1njgblepu934cg7">&nbsp;&nbsp;《Altera FPGA/CPLD设计》基础篇和高级篇两本</a>
+</h3>
+<h3 class="topic">
+<a name="4kpva6du1tqcjm7gr7t2ohd94b">&nbsp;&nbsp;&nbsp;高级篇涉及到很多偏理论的设计方法</a>
+</h3>
+<h3 class="topic">
+<a name="42omq2gqqh42f9jte20ogtjijo">&nbsp;&nbsp;《Verilog HDL数字设计与综合》</a>
+</h3>
+<h3 class="topic">
+<a name="2r1137jqqe3hih2lkkmog8flg6">&nbsp;&nbsp;&nbsp;有建模的思想在里面</a>
+</h3>
+<h3 class="topic">
+<a name="3vuf2j7jtthsflusekcgn3kdpp">&nbsp;EDA工具的使用方法（可略过，在实践中进行）</a>
+</h3>
+<h3 class="topic">
+<a name="7kid76hce93g8tuhb43121uapf">&nbsp;&nbsp;静态时序分析（timequest）</a>
+</h3>
+<h3 class="topic">
+<a name="543jqlspq1pm5gsm9u9mdtpsdg">&nbsp;&nbsp;嵌入式逻辑分析仪等工具使用</a>
+</h3>
+<h3 class="topic">
+<a name="1b70848d-40a5-49ad-a97b-03c25173e515">&nbsp;TIPS:有一些地方不理解可以略过，后续实践中去理解</a>
+</h3>
+<h2 class="topic">
+<a name="23ce8c4c-e5a2-419f-93d7-e0d532ad0aed">为什么已经存在那么多IP核，仍然需要写HDL？</a>
+</h2>
+<h3 class="topic">
+<a name="a10d9b90-6799-42f0-85be-b97a6c94d1bb">&nbsp;IP核并非万能，不能满足所有需求。</a>
+</h3>
+<h3 class="topic">
+<a name="56a1e936-2ce0-4b40-8098-ebe148843def">&nbsp;大部分IP都是闭源，尽量少用闭源IP核，一旦出问题，这种黑匣子很可能让产品难产。</a>
+</h3>
+<h3 class="topic">
+<a name="9eabaadb-9a5b-45ed-ad87-773a4b7ba13c">&nbsp;深入理解低一层次，可以更好地使用高一层次。该法则可以适用于所有编程语言。</a>
+</h3>
+<h2 class="topic">
+<a name="028ede44-0a98-41b9-b3ed-8e2d760b6708">6、足量的实践</a>
+</h2>
+<h3 class="topic">
+<a name="413bb7ef-02d8-4d29-99f2-03c67a954706">&nbsp;保持良好的代码风格，增加元件例化语句的可读性，绘制流程图/时序图，撰写文档的习惯</a>
+</h3>
+<h2 class="topic">
+<a name="1958d85d-6584-4e16-a1b6-2fdad7a1dc8d">5、增强理论基础</a>
+</h2>
+<h3 class="topic">
+<a name="a7c31e32-c4a4-46f8-a104-fa0a99ec2338">&nbsp;信号处理</a>
+</h3>
+<h3 class="topic">
+<a name="f0592f14-b8f6-4fa3-95d6-721414976945">&nbsp;&nbsp;信号与系统、数字信号处理、数字图像处理、现代数字信号处理、盲信号处理、自适应滤波器原理、雷达信号处理</a>
+</h3>
+<h3 class="topic">
+<a name="700a2b84-6f0e-4c96-b945-260f09de274c">&nbsp;接口应用</a>
+</h3>
+<h3 class="topic">
+<a name="44fa3be9-ac56-483f-bc42-fda7cce2d242">&nbsp;&nbsp;UART、SPI、IIC、USB、CAN、PCIE、Rapid IO、DDR、TCP/IP、SPI4.2(10G以太网接口)、SATA、光纤、DisplayPort</a>
+</h3>
+<h3 class="topic">
+<a name="3fb54646-84df-4501-8d2b-d993a888eedd">&nbsp;无线通信</a>
+</h3>
+<h3 class="topic">
+<a name="23007863-e817-42dc-b61c-692bfecd299d">&nbsp;&nbsp;信号与系统、数字信号处理、通信原理、移动通信基础、随机过程、信息论与编码</a>
+</h3>
+<h3 class="topic">
+<a name="63f4fe00-e084-40c6-986a-f40e480b64f9">&nbsp;SoC设计</a>
+</h3>
+<h3 class="topic">
+<a name="be69b6db-df96-4035-a166-b6abc243dde4">&nbsp;&nbsp;计算机组成原理、单片机、计算机体系结构、编译原理</a>
+</h3>
+<h3 class="topic">
+<a name="aa17fe57-d851-442c-af7d-09d2cbc14daf">&nbsp;仪器仪表</a>
+</h3>
+<h3 class="topic">
+<a name="13410b68-2337-452b-a7f0-4a1ab4c72545">&nbsp;&nbsp;模拟电子技术、高频电子线路、电子测量技术、智能仪器原理及应用</a>
+</h3>
+<h3 class="topic">
+<a name="8e083eba-9290-4ed9-bcca-4007e9d1f124">&nbsp;控制系统</a>
+</h3>
+<h3 class="topic">
+<a name="4fa12191-cee4-4642-a805-df4c86382e4d">&nbsp;&nbsp;自动控制原理、现代控制理论、过程控制工程、模糊控制器理论与应用</a>
+</h3>
+<h3 class="topic">
+<a name="d023880f-7dcb-4ebe-af5b-98fffea1d873">&nbsp;压缩、编码、加密、金融</a>
+</h3>
+<h3 class="topic">
+<a name="0b3ee756-c233-42d8-89b2-e1cbd00b58f8">&nbsp;&nbsp;数论、抽象代数、现代编码技术、信息论与编码、数据压缩导论、应用密码学、音频信息处理技术、数字视频编码技术原理</a>
+</h3>
+<h3 class="topic">
+<a name="fa1d995f-9df8-457e-a45c-5fcf923356ae">&nbsp;以上选择自己感兴趣的，数学和英语是进步的阶梯</a>
+</h3>
+<h2 class="topic">
+<a name="84a36d83-9605-4981-b8a0-2904235b2e1b">4、学会提高开发效率</a>
+</h2>
+<h3 class="topic">
+<a name="860202e1-4766-4cc2-8b33-5cb805038e53">&nbsp;更换文本编辑器</a>
+</h3>
+<h3 class="topic">
+<a name="3f9fe22e-6a7f-4f7b-8494-395ba065e883">&nbsp;&nbsp;NotePad、Sublime、VSCode、VIM等等</a>
+</h3>
+<h3 class="topic">
+<a name="9820d8ff-2be4-4733-be5e-7f66ec8ff4aa">&nbsp;脚本语言</a>
+</h3>
+<h3 class="topic">
+<a name="53372be3-b778-4ea9-8bda-12185f9fa0c3">&nbsp;&nbsp;TCL、Python（无聊时学学，一劳永逸）</a>
+</h3>
+<h3 class="topic">
+<a name="fb03ed37-8323-47dc-a44e-dd080bbd1731">&nbsp;&nbsp;&nbsp;图书：Vivado/Tcl零基础入门与案例实战</a>
+</h3>
+<h3 class="topic">
+<a name="59085dda-7bf4-4b91-a8ff-28649094010c">&nbsp;代码备份</a>
+</h3>
+<h3 class="topic">
+<a name="f90c3ba8-4c37-4321-aa13-a3bb24041be6">&nbsp;&nbsp;GIT、SVN</a>
+</h3>
+<h3 class="topic">
+<a name="4c26fc4f-57b9-4d10-8e8f-1b01c35e412d">&nbsp;文件比较器</a>
+</h3>
+<h3 class="topic">
+<a name="91e0d24f-4bf3-420e-aa86-ac8edea6542b">&nbsp;&nbsp;Beyond Compare</a>
+</h3>
+<h2 class="topic">
+<a name="1e7sotv5rbp86irtvcq6j9h8s7">0、重点博客推荐！</a>
+</h2>
+<h3 class="topic">
+<a href="https://blog.csdn.net/k331922164/article/details/44626989" name="1tu940il6dcgmb8duanu2e9a8m">&nbsp;https://blog.csdn.net/k331922164/article/details/44626989</a>
+</h3>
+</body>
+</html>

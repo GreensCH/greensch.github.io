@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>关于之后学习的脑图</title>
+    <link href="/202203162201/%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1start/%E5%85%B3%E4%BA%8E%E4%B9%8B%E5%90%8E%E5%AD%A6%E4%B9%A0%E7%9A%84%E8%84%91%E5%9B%BE/"/>
+    <url>/202203162201/%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1start/%E5%85%B3%E4%BA%8E%E4%B9%8B%E5%90%8E%E5%AD%A6%E4%B9%A0%E7%9A%84%E8%84%91%E5%9B%BE/</url>
+    
+    <content type="html"><![CDATA[<h1 id="关于之后学习的脑图"><a href="#关于之后学习的脑图" class="headerlink" title="关于之后学习的脑图"></a>关于之后学习的脑图</h1><ul><li><p><a href="../../../page/xmind/老石谈芯.html">fpga总览</a></p><ul><li><a href="../../../page/xmind/source/老石谈芯.xmind">源文件下载</a></li></ul></li><li><p><a href="../../../page/xmind/入门FPGA.html">fpga入门</a></p><ul><li><a href="../../../page/xmind/source/入门FPGA.xmind">源文件下载</a></li></ul></li><li><p><a href="../../../page/xmind/数字IC功利式学习.html">数字IC功利式学习</a></p><ul><li><a href="../../../page/xmind/source/数字IC功利式学习.xmind">源文件下载</a></li></ul></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>项目与设计</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>调研</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>动态加载比特流调研</title>
     <link href="/202203121745/%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1essay/projects/%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E6%AF%94%E7%89%B9%E6%B5%81%E8%B0%83%E7%A0%94/"/>
     <url>/202203121745/%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1essay/projects/%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E6%AF%94%E7%89%B9%E6%B5%81%E8%B0%83%E7%A0%94/</url>
@@ -80,9 +105,9 @@
       
       <tag>Linux</tag>
       
-      <tag>Ubuntu</tag>
-      
       <tag>账户</tag>
+      
+      <tag>Ubuntu</tag>
       
     </tags>
     
@@ -761,9 +786,9 @@
       
       <tag>Linux</tag>
       
-      <tag>账户</tag>
-      
       <tag>Centos</tag>
+      
+      <tag>账户</tag>
       
     </tags>
     
@@ -1349,9 +1374,9 @@
       
       <tag>IC</tag>
       
-      <tag>sv学习</tag>
-      
       <tag>标准</tag>
+      
+      <tag>sv学习</tag>
       
     </tags>
     
@@ -1382,9 +1407,9 @@
       
       <tag>IC</tag>
       
-      <tag>指导</tag>
-      
       <tag>sv学习</tag>
+      
+      <tag>指导</tag>
       
     </tags>
     
