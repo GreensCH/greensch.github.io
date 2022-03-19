@@ -1,0 +1,1676 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/con1.png">
+  <link rel="icon" href="/img/con1.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="“无论最终结果将人类历史导向何处，我们决定选择希望”">
+  <meta name="author" content="友人律 | Guilin Chang">
+  <meta name="keywords" content="三差学生、不学无术">
+  <meta name="description" content="静态时序分析 讲义下载：https:&#x2F;&#x2F;customizablecomputinglab.gitee.io&#x2F;2020&#x2F;08&#x2F;07&#x2F;class-STA&#x2F;  课程网站：https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1if4y1p7Dq   1 静态时序分析课程概述 数字芯片与FPGA设计流程 静态时序分析概述 课程内容规划  1.1 数字芯片与FPGA设计流程1）数字芯片设计流程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="静态时序分析">
+<meta property="og:url" content="http://yoursite.com/202203181046/IC/STAessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E9%9D%99%E6%80%81%E6%97%B6%E5%BA%8F%E5%88%86%E6%9E%90/index.html">
+<meta property="og:site_name" content="友人律的博客">
+<meta property="og:description" content="静态时序分析 讲义下载：https:&#x2F;&#x2F;customizablecomputinglab.gitee.io&#x2F;2020&#x2F;08&#x2F;07&#x2F;class-STA&#x2F;  课程网站：https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1if4y1p7Dq   1 静态时序分析课程概述 数字芯片与FPGA设计流程 静态时序分析概述 课程内容规划  1.1 数字芯片与FPGA设计流程1）数字芯片设计流程">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318155702422.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318160253018.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318160916709.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318161016638.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318163158471.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318163342384.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318163959732.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318103658100.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318181822073.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318183846486.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318183841393.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318183834051.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318183826545.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318183814580.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318183808846.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318183720772.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318183756875.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318183801162.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318193627628.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318193647268.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318193714932.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318193947722.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318194006528.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318194235024.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318194627432.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318194540792.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318194611783.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318194706157.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318194754283.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318194810615.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318194831384.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318194921157.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318195150479.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318195158489.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318195209153.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318195556944.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318195606460.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318195630423.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318200458387.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318200700143.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318200849674.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318200831652.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318200947546.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318201022384.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318201052306.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318201139621.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318201346344.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318201453575.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318201457781.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318204130447.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318205024338.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318205031792.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318205205873.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318205320168.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318205535901.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318205540639.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318210032291.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318210109341.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318210145522.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319105334288.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319105500547.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319105519299.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319105741790.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319110802450.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319114405318.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319114056990.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319114339658.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319120120742.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319120312492.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319120531348.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319121422700.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319122442026.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319123402190.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319123302498.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319123433534.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319151721313.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319153315752.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319153757629.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319153908478.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319160418849.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319160505719.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319160739125.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319160852657.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319161004468.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319161143888.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319162146819.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319163249315.png">
+<meta property="article:published_time" content="2022-03-18T02:46:48.834Z">
+<meta property="article:modified_time" content="2022-03-19T08:59:59.729Z">
+<meta property="article:author" content="友人律 | Guilin Chang">
+<meta property="article:tag" content="IC">
+<meta property="article:tag" content="学习">
+<meta property="article:tag" content="STA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318155702422.png">
+  
+  <title>静态时序分析 - 友人律的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/stackoverflow-dark.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"eca4a4d34dadf0d4e282cc6ef2dc3de6","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body><!-- hexo injector body_begin start -->
+<link defer rel="stylesheet" href="/css/article_para.css" />
+<div id="web_bg"></div><!-- hexo injector body_begin end -->
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>友人律的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E9%80%9A%E7%9F%A5/">
+                <i class="iconfont icon-link-fill"></i>
+                通知
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1/">
+                <i class="iconfont icon-link-fill"></i>
+                项目与设计
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">
+                <i class="iconfont icon-link-fill"></i>
+                开发工具
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/CS/">
+                <i class="iconfont icon-link-fill"></i>
+                CS
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/IC/">
+                <i class="iconfont icon-link-fill"></i>
+                IC
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/背景页.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="静态时序分析">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-03-18 10:46" pubdate>
+        2022年3月18日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      16k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      51 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">静态时序分析</h1>
+            
+            <div class="markdown-body">
+              <h1 id="静态时序分析"><a href="#静态时序分析" class="headerlink" title="静态时序分析"></a>静态时序分析</h1><ul>
+<li><p>讲义下载：<a target="_blank" rel="noopener" href="https://customizablecomputinglab.gitee.io/2020/08/07/class-STA/">https://customizablecomputinglab.gitee.io/2020/08/07/class-STA/</a></p>
+</li>
+<li><p>课程网站：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1if4y1p7Dq">https://www.bilibili.com/video/BV1if4y1p7Dq</a></p>
+</li>
+</ul>
+<h1 id="1-静态时序分析课程概述"><a href="#1-静态时序分析课程概述" class="headerlink" title="1 静态时序分析课程概述"></a>1 静态时序分析课程概述</h1><ul>
+<li>数字芯片与FPGA设计流程</li>
+<li>静态时序分析概述</li>
+<li>课程内容规划</li>
+</ul>
+<h2 id="1-1-数字芯片与FPGA设计流程"><a href="#1-1-数字芯片与FPGA设计流程" class="headerlink" title="1.1 数字芯片与FPGA设计流程"></a>1.1 数字芯片与FPGA设计流程</h2><h3 id="1）数字芯片设计流程"><a href="#1）数字芯片设计流程" class="headerlink" title="1）数字芯片设计流程"></a>1）数字芯片设计流程</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318155702422.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li><strong>数字前端</strong><ul>
+<li><strong>功能验证</strong>（前仿真）：逻辑功能的仿真</li>
+<li>1~4步（功能验证）和实际的工艺库没有强依赖关系</li>
+<li>逻辑综合、优化：加入工艺库</li>
+<li>一致性验证：netlist和rtl design进行比较</li>
+</ul>
+</li>
+<li><strong>数字后端</strong><ul>
+<li>DRC/LVS：生成版图</li>
+<li><strong>功能验证</strong>（后仿真）：时序仿真</li>
+</ul>
+</li>
+</ul>
+<h3 id="2）FPGA设计流程"><a href="#2）FPGA设计流程" class="headerlink" title="2）FPGA设计流程"></a>2）FPGA设计流程</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318160253018.png" srcset="/img/loading.gif" lazyload alt="image-20220318160253018"></p>
+<ul>
+<li><strong>综合</strong><ul>
+<li>综合后得到netlist，此netlist未在fpga上规划坐标</li>
+</ul>
+</li>
+<li><strong>实现</strong><ul>
+<li>布局</li>
+<li>布线</li>
+</ul>
+</li>
+</ul>
+<p><strong>fpga设计也要求加入约束完成静态时序分析</strong></p>
+<h2 id="1-2-静态时序分析概述"><a href="#1-2-静态时序分析概述" class="headerlink" title="1.2 静态时序分析概述"></a>1.2 静态时序分析概述</h2><h3 id="1）核心两点"><a href="#1）核心两点" class="headerlink" title="1）核心两点"></a>1）核心两点</h3><p><strong>Setup Time</strong> ：<strong>采样的D触发器的时钟上升沿之前</strong>，数据稳定下来的时间（保证采样稳定）</p>
+<blockquote>
+<p>Setup Time 建立时间 -The length of time that data must stabilize before the clock transition.</p>
+</blockquote>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318160916709.png" srcset="/img/loading.gif" lazyload alt="image-20220318160916709"></p>
+<p><strong>Hold Time</strong>：<strong>采样的D触发器的时钟上升沿之后</strong>，数据依然保持稳定的时间（如果不稳定，造成数据传输错误）</p>
+<blockquote>
+<p>Hold Time保持时间：The length of time that data must remain stable at the input pin after the active clock transition.</p>
+</blockquote>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318161016638.png" srcset="/img/loading.gif" lazyload alt="image-20220318161016638"></p>
+<p><strong><mark>静态时序分析的内容：</mark></strong></p>
+<p>​    <strong>静态时序分析最核心的两点就是检查setup和hold，来确认每一个触发器的工作是否能正确采集数据</strong></p>
+<ul>
+<li>对于同步电路需满足每一个触发器的setup和hold<ul>
+<li>补充：大部分EDA</li>
+</ul>
+</li>
+<li>对于异步电路不一样，其指标不同<ul>
+<li>补充：异步电路单独拿出来处理，通常需要单独重点处理</li>
+</ul>
+</li>
+<li>实际上当下soc复杂，可以看作<strong>全局异步局部同步</strong>的电路<ul>
+<li>局部模块中使用STA的方法分析setup\hold</li>
+<li>整体时考虑每个时钟域下，数据传递的样态、怎么降低样态出现的概率</li>
+</ul>
+</li>
+</ul>
+<h3 id="2）静态时序分析所在阶段"><a href="#2）静态时序分析所在阶段" class="headerlink" title="2）静态时序分析所在阶段"></a>2）静态时序分析所在阶段</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318163158471.png" srcset="/img/loading.gif" lazyload alt="image-20220318163158471"></p>
+<p>Synthesis、Scan、Place、ClockTree、Route，每一个区域中的STA模型略有区别</p>
+<h3 id="3）功能验证与STA的大体区别"><a href="#3）功能验证与STA的大体区别" class="headerlink" title="3）功能验证与STA的大体区别"></a>3）功能验证与STA的大体区别</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318163342384.png" srcset="/img/loading.gif" lazyload alt="image-20220318163342384"></p>
+<p>保持功能正常的两种手段：simulation、sta</p>
+<ul>
+<li><p><strong>simulation：</strong>不同的生成各种测试向量确保功能覆盖率</p>
+<ul>
+<li>仿真太慢，很多公司使用<strong>emulator</strong>来加速</li>
+</ul>
+</li>
+<li><p><strong>sta：</strong>确认每一个触发器的setup,hold是否能正确地采样，不关心功能，不需要设计测试向量</p>
+<ul>
+<li><strong>优点：</strong>相对简单，不需要穷举性的测试向量；耗时短，快速</li>
+<li><strong>可能的场景：</strong>当没有把握测试到所有功能，可以使用sta进行补充</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-3-课程主要内容"><a href="#1-3-课程主要内容" class="headerlink" title="1.3 课程主要内容"></a>1.3 课程主要内容</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318163959732.png" srcset="/img/loading.gif" lazyload alt="image-20220318163959732"></p>
+<p>STA工具用的最多的：synopsys的Pertime（PT），每个EDA公司都有自己的静态时序分析工具，每个功能处(数字综合、DFT、布局布线）其实也都嵌入了PT引擎</p>
+<p><strong>参考图书：</strong></p>
+<p>①《Static Timing Analysis for Nanometer Designs:A Practical Approach》J.4Bhasker，Rakesh Chadha.Springer Science Business Media，LLC 2009.</p>
+<ul>
+<li>非常经典，课程教材，希望精读，专讲静态时序机理</li>
+</ul>
+<p>②《综合与时序分析的设计约束：Synopsys设计约束（SDC）实用指南》[美]斯里达尔·甘加达兰（Sridhar Gangadharan），[印度]桑杰·丘里瓦拉（Sanjay，Chur著，韩德强张丽艳王宗侠等译译.出版社：机械工业出版社出版时间：2016-06-01.</p>
+<ul>
+<li>感兴趣可以看</li>
+</ul>
+<p>③《集成电路静态时序分析与建模》.刘峰，机械工业出版社.出版时间：2016-07-01.</p>
+<ul>
+<li>国内写的，tcl脚本讲的好，可以补充12本的知识</li>
+</ul>
+<p>④《Using Tcl with Synopsys Tools.Version B-2008.09》March 2011.Synopsys.</p>
+<ul>
+<li>Synopsys的tcl手册</li>
+</ul>
+<h1 id="2-TCL"><a href="#2-TCL" class="headerlink" title="2 TCL"></a>2 TCL</h1><ul>
+<li>概述</li>
+<li>变量、数组、列表</li>
+<li>控制流</li>
+<li>过程函数</li>
+<li>正则匹配（重要）</li>
+<li>文本处理</li>
+</ul>
+<h2 id="2-1-概述"><a href="#2-1-概述" class="headerlink" title="2.1 概述"></a>2.1 概述</h2><h3 id="1）TCL"><a href="#1）TCL" class="headerlink" title="1）TCL"></a>1）TCL</h3><p>TCL在EDA工具中非常重要</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318103658100.png" srcset="/img/loading.gif" lazyload alt="image-20220318103658100"></p>
+<p>不同语言的区别</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318181822073.png" srcset="/img/loading.gif" lazyload alt="image-20220318181822073"></p>
+<ul>
+<li>shell原生兼容性较好</li>
+<li>tcl整个eda工具的标准语言</li>
+<li>per更像转接头，eda工具无法原生支持，使用tcl操作eda工具，外层使用perl处理文本控制字符串</li>
+<li>python近些年用的多一些</li>
+</ul>
+<h3 id="2）如何使用tcl"><a href="#2）如何使用tcl" class="headerlink" title="2）如何使用tcl"></a>2）如何使用tcl</h3><p>Linux系统下</p>
+<ul>
+<li>输入<code>tclsh</code></li>
+<li>在文本第一行<code>#！/user/bin/tclsh</code>（TCL的安装路径）</li>
+</ul>
+<p>Windows系统下</p>
+<ul>
+<li>安装active tcl并双击wish.exe</li>
+</ul>
+<h2 id="2-2-置换机制"><a href="#2-2-置换机制" class="headerlink" title="2.2 置换机制"></a>2.2 置换机制</h2><p><strong>TCL解释器运用规则把命令分成一个个独立的单词，同时进行必要的置换</strong></p>
+<p>TCL置换分为以下三类：</p>
+<ul>
+<li>变量置换$</li>
+<li>命令置换[]</li>
+<li>反斜杠置换\<ul>
+<li>C语言常用</li>
+</ul>
+</li>
+</ul>
+<h3 id="1）变量置换"><a href="#1）变量置换" class="headerlink" title="1）变量置换"></a>1）变量置换</h3><p>用<strong>$</strong>表示变量置换</p>
+<ul>
+<li>TCL解释器会将认为<strong>$</strong>后面为变量名，将变量置换成它的值</li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318183846486.png" srcset="/img/loading.gif" lazyload alt="image-20220318183846486"></p>
+<h3 id="2）命令置换"><a href="#2）命令置换" class="headerlink" title="2）命令置换"></a>2）命令置换</h3><p>用<strong>[]</strong>表示命令置换</p>
+<ul>
+<li><strong>[]</strong>内是<strong>一个独立的TCL语句</strong></li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318183841393.png" srcset="/img/loading.gif" lazyload alt="image-20220318183841393"></p>
+<h3 id="3）反斜杠置换"><a href="#3）反斜杠置换" class="headerlink" title="3）反斜杠置换"></a>3）反斜杠置换</h3><p>用<strong>\</strong>表示反斜杠置换</p>
+<ul>
+<li>换行符、空格、[、$等被TCL解释器当作特殊符号对待的字符，加上反斜杠后变成普通字符</li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318183834051.png" srcset="/img/loading.gif" lazyload alt="image-20220318183834051"></p>
+<h3 id="4）其他符号"><a href="#4）其他符号" class="headerlink" title="4）其他符号"></a>4）其他符号</h3><ul>
+<li><p><strong>双引号””</strong> TCL解释器对双引号中$和[]符号会<strong>进行变量置换和命令置换</strong></p>
+<ul>
+<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318183826545.png" srcset="/img/loading.gif" lazyload alt="image-20220318183826545"></li>
+</ul>
+</li>
+<li><p><strong>花括号{}</strong> 花括号中所有特殊字符都将成为<strong>普通字符</strong>，TCL解释器不会对其作特殊处理。</p>
+<ul>
+<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318183814580.png" srcset="/img/loading.gif" lazyload alt="image-20220318183814580"></li>
+</ul>
+</li>
+<li><p><strong>#</strong>表示注释</p>
+</li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318183808846.png" srcset="/img/loading.gif" lazyload alt="image-20220318183808846"></p>
+<h2 id="2-3-变量、数组、列表"><a href="#2-3-变量、数组、列表" class="headerlink" title="2.3 变量、数组、列表"></a>2.3 变量、数组、列表</h2><h3 id="1）变量"><a href="#1）变量" class="headerlink" title="1）变量"></a>1）变量</h3><ul>
+<li><p>定义：set 变量名 变量值 </p>
+</li>
+<li><p>取值：$变量名</p>
+</li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318183720772.png" srcset="/img/loading.gif" lazyload alt="image-20220318183720772"></p>
+<ul>
+<li>例题：假设我们想打印变量varible，后面跟一个”_1”，会发生什么呢？  </li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318183756875.png" srcset="/img/loading.gif" lazyload alt="image-20220318183756875"></p>
+<blockquote>
+<p>直接写a_1会造成引用</p>
+</blockquote>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318183801162.png" srcset="/img/loading.gif" lazyload alt="image-20220318183801162"></p>
+<blockquote>
+<p>使用{}置换做限定</p>
+</blockquote>
+<h3 id="2）数组"><a href="#2）数组" class="headerlink" title="2）数组"></a>2）数组</h3><ul>
+<li><p>数组： TCL中数组可以存储很多值，通过元素名来进行检索。类似于某件事物（数组名）几种不同属性（元素名），每一种属性有其独立的值</p>
+</li>
+<li><p>定义： set 数组名（元素名） 值  </p>
+</li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318193627628.png" srcset="/img/loading.gif" lazyload alt="image-20220318193627628"></p>
+<ul>
+<li>取值： $数组名（元素名）  </li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318193647268.png" srcset="/img/loading.gif" lazyload alt="image-20220318193647268"></p>
+<ul>
+<li>使用array指令获取数组信息  </li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318193714932.png" srcset="/img/loading.gif" lazyload alt="image-20220318193714932"></p>
+<h3 id="3）列表（重要的数据结构）"><a href="#3）列表（重要的数据结构）" class="headerlink" title="3）列表（重要的数据结构）"></a>3）列表（重要的数据结构）</h3><ul>
+<li>列表是标量的有序集合。</li>
+<li>定义 set 列表名 {元素1 元素2 元素3……}</li>
+<li>取值 $列表名  </li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318193947722.png" srcset="/img/loading.gif" lazyload alt="image-20220318193947722"></p>
+<p><strong>TCL中有一系列十分方便的列表操作命令</strong> </p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318194006528.png" srcset="/img/loading.gif" lazyload alt="image-20220318194006528"></p>
+<ul>
+<li><p>列表指令-concat</p>
+<ul>
+<li>语法格式 ： concat 列表1 列表2</li>
+<li>功能： 将列表1和列表2合并 （设计中很常用，比如合并两个时钟组放在一起）</li>
+<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318194235024.png" srcset="/img/loading.gif" lazyload alt="image-20220318194235024"></li>
+</ul>
+</li>
+<li><p>列表指令-llength</p>
+<ul>
+<li><p>语法格式 ： llength 列表  </p>
+</li>
+<li><p>功能：返回列表中的元素个数  </p>
+</li>
+<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318194627432.png" srcset="/img/loading.gif" lazyload alt="image-20220318194627432"></li>
+<li>例题： list1为{bufx1 bufx2 bufx4}，那么 llength [concat $list1 $list1] 会得到多少呢？  <ul>
+<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318194540792.png" srcset="/img/loading.gif" lazyload alt="image-20220318194540792"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>列表指令-lindex<ul>
+<li>语法格式 ： lindex 列表 n  </li>
+<li>返回列表中第n个元素（从0开始计数）  </li>
+<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318194611783.png" srcset="/img/loading.gif" lazyload alt="image-20220318194611783"></li>
+<li>如何得到列表list1 {a b c d e f}的最后一个元素？  <ul>
+<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318194706157.png" srcset="/img/loading.gif" lazyload alt="image-20220318194706157"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>列表指令-lappend  </p>
+<ul>
+<li>语法格式 ： lappend 列表 新元素</li>
+<li>功能： 列表末尾加入新元素  </li>
+<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318194754283.png" srcset="/img/loading.gif" lazyload alt="image-20220318194754283"></li>
+<li>例题：如果我们lappend一个列表会怎么样？  <ul>
+<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318194810615.png" srcset="/img/loading.gif" lazyload alt="image-20220318194810615"></li>
+</ul>
+</li>
+<li>如果我们想得到4 用什么样的命令？  <ul>
+<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318194831384.png" srcset="/img/loading.gif" lazyload alt="image-20220318194831384"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>列表指令-lsort  </p>
+<ul>
+<li>语法格式 ： lsort 开关 列表</li>
+<li>功能： 将列表按照一定规则排序</li>
+<li>开关： 缺省时默认按照ASCII码进行排序。<ul>
+<li>–real 按照浮点数值大小排序</li>
+<li>-unique唯一化，删除重复元素  </li>
+</ul>
+</li>
+<li>按照ASICC码排序  <ul>
+<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318194921157.png" srcset="/img/loading.gif" lazyload alt="image-20220318194921157"></li>
+</ul>
+</li>
+<li>按照数字大小排序  <ul>
+<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318195150479.png" srcset="/img/loading.gif" lazyload alt="image-20220318195150479"></li>
+</ul>
+</li>
+<li>唯一化<ul>
+<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318195158489.png" srcset="/img/loading.gif" lazyload alt="image-20220318195158489"></li>
+</ul>
+</li>
+<li>例题：如何得到列表list1 {0 1.2 -4 3 5}中的最小值？  <ul>
+<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318195209153.png" srcset="/img/loading.gif" lazyload alt="image-20220318195209153"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-4-运算"><a href="#2-4-运算" class="headerlink" title="2.4 运算"></a>2.4 运算</h2><p>数学运算：<code>+,-,*,/</code></p>
+<p>逻辑运算：<code>&lt;=,&gt;=,==,!=</code></p>
+<h3 id="1）数学运算指令-expr"><a href="#1）数学运算指令-expr" class="headerlink" title="1）数学运算指令-expr"></a>1）数学运算指令-expr</h3><ul>
+<li>语法格式 ： expr 运算表达式</li>
+<li>功能： 将运算表达式求值  </li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318195556944.png" srcset="/img/loading.gif" lazyload alt="image-20220318195556944"></p>
+<ul>
+<li>例题：我们在TCL中经常会遇到下面的现象  <ul>
+<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318195606460.png" srcset="/img/loading.gif" lazyload alt="image-20220318195606460"></li>
+<li>其原因是表达式5/2中5和2都是整数型参数， 默认运算结果也是整数型。如果想要进行浮点运算， 只要将其中任意一个数值， 写成浮点形式（有小数点） 即可  </li>
+<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318195630423.png" srcset="/img/loading.gif" lazyload alt="image-20220318195630423"></li>
+</ul>
+</li>
+</ul>
+<h2 id="2-5-控制流"><a href="#2-5-控制流" class="headerlink" title="2.5 控制流"></a>2.5 控制流</h2><h3 id="1）控制流-if"><a href="#1）控制流-if" class="headerlink" title="1）控制流-if"></a>1）控制流-if</h3><ul>
+<li>语法格式：<strong>注意括号一定要在一行里面，不能在下一行</strong></li>
+<li>注意，下例中脚本语句的’{‘一定要写在上一行，因为如果不这样， TCL 解释<br>器会认为if命令在换行符处已结束，下一行会被当成新的命令，从而导致错误  </li>
+</ul>
+<figure class="highlight tcl"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs tcl"><span class="hljs-keyword">if</span> &#123;判断条件&#125; &#123; #括号只能在这行<br>脚本语句<br>&#125; elseif &#123;判断条件&#125; &#123; <br>脚本语句<br>&#125; else &#123;<br>脚本语句<br>&#125;<br><br><span class="hljs-keyword">if</span> &#123;判断条件&#125; <br>&#123; #括号在这里是错误的<br>脚本语句<br>&#125;<br><br></code></pre></div></td></tr></table></figure>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318200458387.png" srcset="/img/loading.gif" lazyload alt="image-20220318200458387"></p>
+<ul>
+<li>例题：我们如何判断一个列表{0 1 2 3 4}的长度是大于3，还是等3，还是小于3？  </li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318200700143.png" srcset="/img/loading.gif" lazyload alt="image-20220318200700143"></p>
+<h3 id="2）循环指令-foreach"><a href="#2）循环指令-foreach" class="headerlink" title="2）循环指令-foreach"></a>2）循环指令-foreach</h3><ul>
+<li><p>语法格式 ： foreach 变量 列表 循环主体</p>
+<ul>
+<li>与C语言for不一样，在tcl里面很强大</li>
+</ul>
+</li>
+<li><p>功能：从第0个元素开始， 每次按顺序取得列表的一个元素， 将其赋值给变量， 然后执行循环主体一次， 直到列表最后一个元素  </p>
+</li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318200849674.png" srcset="/img/loading.gif" lazyload alt="image-20220318200849674"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318200831652.png" srcset="/img/loading.gif" lazyload alt="image-20220318200831652"></p>
+<h3 id="3）循环控制指令-break"><a href="#3）循环控制指令-break" class="headerlink" title="3）循环控制指令-break"></a>3）循环控制指令-break</h3><ul>
+<li>语法格式 ： break</li>
+<li>功能: 结束整个循环过程，并从循环中跳出 </li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318200947546.png" srcset="/img/loading.gif" lazyload alt="image-20220318200947546"></p>
+<h3 id="4）循环控制指令-continue"><a href="#4）循环控制指令-continue" class="headerlink" title="4）循环控制指令-continue"></a>4）循环控制指令-continue</h3><ul>
+<li>语法格式 ： continue</li>
+<li>功能: 仅结束本次循环  </li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318201022384.png" srcset="/img/loading.gif" lazyload alt="image-20220318201022384"></p>
+<h3 id="5）循环控制指令-while"><a href="#5）循环控制指令-while" class="headerlink" title="5）循环控制指令-while"></a>5）循环控制指令-while</h3><ul>
+<li>语法格式 ： while 判断语句 循环主体</li>
+<li>功能: 如果判断语句成立（返回值非0），就运行脚本，直到不满足判断条件停止循环，此时while命令中断并返回一个空字符串。 </li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318201052306.png" srcset="/img/loading.gif" lazyload alt="image-20220318201052306"></p>
+<h3 id="6）循环控制指令-for"><a href="#6）循环控制指令-for" class="headerlink" title="6）循环控制指令-for"></a>6）循环控制指令-for</h3><ul>
+<li><p>语法格式 ：<br>for 参数初始化 判断语句 重新初始化参数 循环主体</p>
+</li>
+<li><p>功能: 如果判断语句返回值非0就进入循环，执行循环主体后，再重新初始化参数。然后再次进行判断，直到判断语句返回值为0，循环结束。  </p>
+</li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318201139621.png" srcset="/img/loading.gif" lazyload alt="image-20220318201139621"></p>
+<h2 id="2-6-过程函数"><a href="#2-6-过程函数" class="headerlink" title="2.6 过程函数"></a>2.6 过程函数</h2><h3 id="1）过程函数-proc"><a href="#1）过程函数-proc" class="headerlink" title="1）过程函数-proc"></a>1）过程函数-proc</h3><ul>
+<li>语法格式 ： proc 函数名 参数列表 函数主体</li>
+<li>功能: 类似于C语言中的函数。即用户自定义的功能，方便多次调用。  </li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318201346344.png" srcset="/img/loading.gif" lazyload alt="image-20220318201346344"></p>
+<h3 id="2）全局变量与局部变量"><a href="#2）全局变量与局部变量" class="headerlink" title="2）全局变量与局部变量"></a>2）全局变量与局部变量</h3><ul>
+<li>全局变量：在所有过程之外定义的变量。</li>
+<li>局部变量：对于在过程中定义的变量，因为它们只能在过程中被访问，并且当过程退出时会被自动删除。</li>
+<li><strong>指令global</strong>，可以在过程内部引用全部变量  </li>
+</ul>
+<p>使用global引用</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318201453575.png" srcset="/img/loading.gif" lazyload alt="image-20220318201453575"></p>
+<p>不使用gloabl引用，导致出错</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318201457781.png" srcset="/img/loading.gif" lazyload alt="image-20220318201457781"></p>
+<h2 id="2-6-正则匹配"><a href="#2-6-正则匹配" class="headerlink" title="2.6 正则匹配"></a>2.6 正则匹配</h2><h3 id="1）正则匹配"><a href="#1）正则匹配" class="headerlink" title="1）正则匹配"></a>1）正则匹配</h3><ul>
+<li><p>定义：正则表达式是一种特殊的字符串模式，<strong>用来去匹配符合规则的字符串</strong>。  </p>
+</li>
+<li><p>正则表达式的\w，用来匹配一个字母、数字、下划线</p>
+</li>
+<li><p>正则表达式的\d ,用来匹配一个数字  </p>
+</li>
+</ul>
+<figure class="highlight tcl"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs tcl">字符串 abc123<br>正则表达式 \w\w\w\d\d\d 正确<br>正则表达式 \d\w\w\d\d\d 错误<br></code></pre></div></td></tr></table></figure>
+<h3 id="2）正则匹配-量词"><a href="#2）正则匹配-量词" class="headerlink" title="2）正则匹配-量词"></a>2）正则匹配-量词</h3><ul>
+<li>\w\w\w\d\d\d这种写法过于繁琐，我们可以用代替重复的量词进行表示 ，在TCL中常用一下三种量词</li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318204130447.png" srcset="/img/loading.gif" lazyload alt="image-20220318204130447"></p>
+<figure class="highlight tcl"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs tcl">字符串 abc123<br>正则表达式 \w+\d+ 或者 \w*\d*<br></code></pre></div></td></tr></table></figure>
+<ul>
+<li><em>和+的区别： </em>可以是零次， +一个至少是一次  </li>
+</ul>
+<figure class="highlight tcl"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs tcl">字符串 abc123<br>正则表达式 \d*\w*\d* 正确<br>正则表达式 \d+\w+\d+ 错误<br></code></pre></div></td></tr></table></figure>
+<ul>
+<li>?表示零次或者一次匹配</li>
+</ul>
+<figure class="highlight tcl"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs tcl">正则表达式 \w?\w?\d\d\w\w\d\d<br>字符串 <span class="hljs-number">12</span>ab34<br>字符串 ab12ab34<br></code></pre></div></td></tr></table></figure>
+<h3 id="3）正则匹配-锚位"><a href="#3）正则匹配-锚位" class="headerlink" title="3）正则匹配-锚位"></a>3）正则匹配-锚位</h3><p>锚位，用来指示字符串当中的开头和结尾的位置，使我们能够匹配到正确的字符  </p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318205024338.png" srcset="/img/loading.gif" lazyload alt="image-20220318205024338"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318205031792.png" srcset="/img/loading.gif" lazyload alt="image-20220318205031792"></p>
+<h3 id="4）正则匹配-其他字符"><a href="#4）正则匹配-其他字符" class="headerlink" title="4）正则匹配-其他字符"></a>4）正则匹配-其他字符</h3><ul>
+<li>常用的其他字符还有<mark>\s</mark>和<mark>.</mark></li>
+<li>\s表示空格 <ul>
+<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318205205873.png" srcset="/img/loading.gif" lazyload alt="image-20220318205205873"></li>
+</ul>
+</li>
+<li>. 表示任意一个字符  <ul>
+<li>我们不确定具体是什么字符是就可以用.表示。例如已知知字符串为”xxx空格xxx空格xxx”(x为未知字符)。用.+\s.+\s.+就可以匹配  </li>
+</ul>
+</li>
+</ul>
+<h3 id="5）正则匹配指令-regexp"><a href="#5）正则匹配指令-regexp" class="headerlink" title="5）正则匹配指令-regexp"></a>5）正则匹配指令-regexp</h3><ul>
+<li><p>语法格式 ： regexp? switches? exp string? matchVar? ?subMatchVar subMatchVar …?</p>
+</li>
+<li><p>功能: 在字符串中使用正则表达式匹配</p>
+<ul>
+<li>switches：<ul>
+<li>-nocase将字符串中的大写都当成小写看待。</li>
+</ul>
+</li>
+<li>exp 正则表达式</li>
+<li>string 用来进行匹配的字符串</li>
+<li>matchstring表示用正则表示式匹配的所有字符串</li>
+<li>sub1表示正则表达式中的第一个子表达式匹配的字符串</li>
+<li>sub2表示正则表达式中的第二个子表达式匹配的字符串  </li>
+</ul>
+</li>
+<li><p>例题：</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318205320168.png" srcset="/img/loading.gif" lazyload alt="image-20220318205320168"></p>
+</li>
+</ul>
+<h3 id="6）捕获变量"><a href="#6）捕获变量" class="headerlink" title="6）捕获变量"></a>6）捕获变量</h3><ul>
+<li>通过()可以捕获字符串<ul>
+<li>例如如何将字符串“Snow is 30 years old”中<strong>30</strong>捕获出来？<ul>
+<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318205535901.png" srcset="/img/loading.gif" lazyload alt="image-20220318205535901"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>一次捕获多个字符串(多加几个变量)<ul>
+<li>例如如何将字符串“Snow is 30 years old”中<strong>Snow 和30一次捕获</strong>？  <ul>
+<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318205540639.png" srcset="/img/loading.gif" lazyload alt="image-20220318205540639"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-7-文本处理"><a href="#2-7-文本处理" class="headerlink" title="2.7 文本处理"></a>2.7 文本处理</h2><p>用TCL处理文本在工作中十分常用，主要掌握以下三个指令：</p>
+<ul>
+<li>get</li>
+<li>gets</li>
+<li>close</li>
+</ul>
+<p>gets</p>
+<ul>
+<li>语法格式 gets fileId 变量名</li>
+<li>功能 gets读fileId标识的文件的下一行，并把该行赋给变量，并返回该行的字符数（文件尾返回-1）</li>
+</ul>
+<p>open</p>
+<ul>
+<li>语法格式 open 文件 打开方式（打开方式 r表示读模式， w表示写模式。）</li>
+<li>功能 打开文件</li>
+</ul>
+<p>close</p>
+<ul>
+<li>语法格式 close fileid</li>
+<li>功能 关闭文件  </li>
+</ul>
+<p>例题： 整个读入文件过程 ：</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318210032291.png" srcset="/img/loading.gif" lazyload alt="image-20220318210032291"></p>
+<p>例题：一个完整写入文件过程</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318210109341.png" srcset="/img/loading.gif" lazyload alt="image-20220318210109341"></p>
+<p>例题：现有文本file.txt其内容如下。请写一TCL脚本求出所有Slack值之和</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220318210145522.png" srcset="/img/loading.gif" lazyload alt="image-20220318210145522"></p>
+<ul>
+<li>使用正则匹配Slack = -</li>
+</ul>
+<h2 id="2-8-参考书"><a href="#2-8-参考书" class="headerlink" title="2.8 参考书"></a>2.8 参考书</h2><ul>
+<li>《Using Tcl with Synopsys Tools》. Version B-2008.09, March 2011. Synopsys.</li>
+<li>《集成电路静态时序分析与建模》. 刘峰, 机械工业出版社.出版时间： 2016-07-01  </li>
+</ul>
+<h1 id="3-Synopsys-TCL语言入门"><a href="#3-Synopsys-TCL语言入门" class="headerlink" title="3 Synopsys TCL语言入门"></a>3 Synopsys TCL语言入门</h1><ul>
+<li>TCL在EDA工具中的扩展与应用</li>
+<li>使用TCL控制EDA工具流程</li>
+</ul>
+<h2 id="3-1-TCL的应用"><a href="#3-1-TCL的应用" class="headerlink" title="3.1 TCL的应用"></a>3.1 TCL的应用</h2><h3 id="1）Overview"><a href="#1）Overview" class="headerlink" title="1）Overview"></a>1）Overview</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319105334288.png" srcset="/img/loading.gif" lazyload alt="image-20220319105334288"></p>
+<ul>
+<li><p>内建命令</p>
+</li>
+<li><p>应用命令</p>
+</li>
+<li><p>用户自定义命令</p>
+</li>
+</ul>
+<h3 id="2）Why-Synopysy-TCL"><a href="#2）Why-Synopysy-TCL" class="headerlink" title="2）Why Synopysy TCL"></a>2）Why Synopysy TCL</h3><p>数时钟</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319105500547.png" srcset="/img/loading.gif" lazyload alt="image-20220319105500547"></p>
+<p>使用TCL更简单</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319105519299.png" srcset="/img/loading.gif" lazyload alt="image-20220319105519299"></p>
+<p>SynopsysTCL扩展命令参考资料：</p>
+<ul>
+<li>Using Tcl with SynopsysTools</li>
+<li>PrimeTime User Guide: Fundamentals:</li>
+<li>PrimeTime User Guide: Advanced Timing Analysis </li>
+</ul>
+<h2 id="3-2-TCL在EDA工具中的扩展与应用"><a href="#3-2-TCL在EDA工具中的扩展与应用" class="headerlink" title="3.2 TCL在EDA工具中的扩展与应用"></a>3.2 TCL在EDA工具中的扩展与应用</h2><h3 id="1）TCL的应用：Design-Object"><a href="#1）TCL的应用：Design-Object" class="headerlink" title="1）TCL的应用：Design Object"></a>1）TCL的应用：Design Object</h3><p>通过对Design Object的分析，我们来了解和学习DC获取电路并进行解析的方法</p>
+<ul>
+<li>指令都在DC环境中输入，可以在GUI界面下方窗口，也可以在DC命令行</li>
+<li>DC里面net是一种collection</li>
+<li>ref与inst<ul>
+<li>reference是module</li>
+<li>inst是实例化的module</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319105741790.png" srcset="/img/loading.gif" lazyload alt="image-20220319105741790"></p>
+<h3 id="2）综合软件当中TCL的常见指令（SynopsysTCL扩展的指令）"><a href="#2）综合软件当中TCL的常见指令（SynopsysTCL扩展的指令）" class="headerlink" title="2）综合软件当中TCL的常见指令（SynopsysTCL扩展的指令）"></a>2）综合软件当中TCL的常见指令（SynopsysTCL扩展的指令）</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319110802450.png" srcset="/img/loading.gif" lazyload alt="结构示例图"></p>
+<h4 id="（1）获取对象"><a href="#（1）获取对象" class="headerlink" title="（1）获取对象"></a>（1）获取对象</h4><p><strong>获取port object</strong></p>
+<ul>
+<li>语法格式： get_ports portsName</li>
+<li>指令功能：返回design中对应的ports object  </li>
+<li><p>例-1：如何查看design当中有没有一个port叫做CLK？  </p>
+<ul>
+<li>Shell&gt; get_ports CLK<br>{CLK}</li>
+</ul>
+</li>
+<li><p>例-2：我们想查看design当中有没有一个port叫做SPI？</p>
+<ul>
+<li>Shell&gt; get_ports SPI<br>No object Found!  </li>
+</ul>
+</li>
+<li><p>例-3：我们想查看design当中所有的port （*可以通配任何字符）  </p>
+<ul>
+<li>Shell&gt; get_ports *<br>{A B C D CLK OUT[0] OUT[1]}</li>
+</ul>
+</li>
+<li>例-4：假设我们有port名字叫 {CLKA CLKB OUTA OUTB INA INB}<br>如果我们想得到所有C开头的port 怎么做？<ul>
+<li>Shell&gt; get_ports C*<br>{CLKA CLKB}</li>
+</ul>
+</li>
+</ul>
+<p><strong>获取cell object</strong></p>
+<ul>
+<li>语法格式： get_cells cellsName</li>
+<li>指令功能：返回design中对应的cell的instance name object  </li>
+<li>举例-1：我们想查看design当中有没有一个cell叫做U4？<ul>
+<li>Shell&gt; get_cells U4<br>{U4}</li>
+</ul>
+</li>
+<li>举例-2：我们想查看design当中所有的cell<ul>
+<li>Shell&gt; get_cells *<br>{U1 U2 U3 U4}</li>
+</ul>
+</li>
+<li>举例-3：我们想查看design当中以3为结尾的cells<ul>
+<li>Shell&gt; get_cells *3<br>{U3}  </li>
+</ul>
+</li>
+</ul>
+<p><strong>获取net object</strong></p>
+<ul>
+<li>语法格式： get_nets netsName</li>
+<li>指令功能：返回design中net的object</li>
+<li>举例-1：查看design当中有没有一个net以INV开头？<ul>
+<li>Shell&gt; get_nets INV*<br>{INV0 INV1}  </li>
+</ul>
+</li>
+<li>举例-2：我们想查看design当中所有的nets<ul>
+<li>Shell&gt; get_nets *<br>{A B C D CLK BUS0 BUS1 INV0 INV1 OUT[0] OUT[1]</li>
+</ul>
+</li>
+<li>举例-3：我们想查看design当中有多少个net？<ul>
+<li>方法1，<strong>TCL基本语法</strong>的写法：<br>Shell&gt; llength [get_object_name [get_nets *]]<br>11</li>
+<li>方法2，使用<strong>DC命令</strong>sizeof_collection获取：<br>Shell&gt; sizeof_collection [get_nets *]<br>11</li>
+<li>注意两条指令的区别噢！  </li>
+</ul>
+</li>
+</ul>
+<p><strong>获取pin object（引脚）</strong></p>
+<ul>
+<li>语法格式： get_pins pinsName</li>
+<li>指令功能：返回design中pin的object  </li>
+<li>举例-1：查看design当中有哪些pin的名字叫做Z?<ul>
+<li>Shell&gt; get_pins */Z<br>{INV0/Z INV1/Z}</li>
+</ul>
+</li>
+<li>举例-2：查看design当中有哪些pin的名字以Q开头?<ul>
+<li>Shell&gt; get_pins */Q*<br>{ENCODER/Q0 ENCODER/Q1 REGFILE/Q[1] REGFILE/Q[0]}  </li>
+</ul>
+</li>
+</ul>
+<h4 id="（2）“数据类型：-object-（对象）-”与其“属性”"><a href="#（2）“数据类型：-object-（对象）-”与其“属性”" class="headerlink" title="（2）“数据类型： object （对象） ”与其“属性”"></a>（2）“数据类型： object （对象） ”与其“属性”</h4><p><strong>object说明：</strong></p>
+<ul>
+<li>object是对于tcl脚本一个重要的扩展；</li>
+<li>常见的对象有四种 cell, net, port, pin；</li>
+<li>每种object有它的属性。</li>
+<li>get_object_name </li>
+</ul>
+<p><strong>下面将介绍一些常见属性：</strong></p>
+<ul>
+<li>任何一个属性都可以用<strong>get_attribute</strong>得到，</li>
+<li><strong>list_attribute –class * 可以得到所有object 的属性，</strong></li>
+<li>部分属性可以用<strong>set_attribute来设置</strong>  </li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319114405318.png" srcset="/img/loading.gif" lazyload alt="示例结构图"></p>
+<p><strong>Cell object</strong></p>
+<ul>
+<li>属性 <strong>ref_name</strong> : 用来保存其map到的reference cell名称</li>
+<li>例题：后端中常用于获取cell的ref<ul>
+<li>Shell&gt; get_attribute [get_cells –h U3] ref_name<br>{INV} </li>
+<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319114056990.png" srcset="/img/loading.gif" lazyload alt="指令作用对象示意图"></li>
+</ul>
+</li>
+</ul>
+<p><strong>Pin object</strong></p>
+<ul>
+<li>属性 <strong>owner_net</strong> : 用来保存<strong>与之相连的net的名称</strong><ul>
+<li>Shell&gt; get_attribute [get_pins U2/A] owner_net<br>{BUS0}  </li>
+<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319114339658.png" srcset="/img/loading.gif" lazyload alt="指令作用对象示意图"></li>
+</ul>
+</li>
+</ul>
+<p><strong>Port object</strong></p>
+<ul>
+<li><p>属性 <strong>direction</strong> : 用来保存port 的方向</p>
+<ul>
+<li><p>方法1<br>Shell&gt; get_attribute [get_ports A] direction<br>{in}</p>
+</li>
+<li><p>方法2，<strong>get_port OUT[i]</strong></p>
+<p>Shell&gt; get_attribute [get_ports OUT[1]] direction<br>{out}</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Net object:</strong></p>
+<ul>
+<li>属性 <strong>full_name</strong> : 用来保存net的名称<ul>
+<li>Shell&gt; get_attribute [get_nets INV0] full_name<br>{INV0}</li>
+<li>Shell&gt; get_object_name [get_nets INV0]<br>{INV0}</li>
+<li>一定需要通过[get_nets INV0]把net取出来<br>*Shell&gt; get_attribute INV0 full_name<br>Error: No attribute found</li>
+</ul>
+</li>
+</ul>
+<p><strong>扩展get_* -f：</strong></p>
+<ul>
+<li><strong>过滤属性</strong></li>
+<li>get_<em> -f :<br>-f 这个option可以用来<em>*过滤</em></em>属性，以得到我们想要的object</li>
+<li>例子-1：想得到所有方向是input的port<ul>
+<li>Shell&gt; get_ports * –f “direction==in”<br>{A B C D CLK}</li>
+</ul>
+</li>
+<li>例子-2：想得到所有方向是output的pin<ul>
+<li>Shell&gt;get_pins * -f “direction ==out”<br>{U1/Q0 U1/Q1 U2/Z U3/Z REGFILE/Q[0] REGFILE/Q[1]}</li>
+</ul>
+</li>
+<li>例子-3：想得到所有ref_name 是INV的 cell<ul>
+<li>Shell&gt;get_cells * -f “ref_name == INV”<br>{U2 U3}  </li>
+</ul>
+</li>
+</ul>
+<p><strong>扩展最关键的option  -of：</strong></p>
+<ul>
+<li><strong>获取连接的对象</strong></li>
+<li>get_<em> [object]-of:<br>-of 这个option可以用来得到与你指定<em>*object相连接的object</em></em></li>
+<li>object的连接关系：<ul>
+<li>—port object &lt;-&gt; net object<br>>get_nets –of [get_port A]<br>A</li>
+<li>—net object &lt;-&gt; port object / pin object<br>> get_net –of [get_pin U2/A]<br>BUS0</li>
+<li>—pin object &lt;-&gt; net object<br>> get_pin -of [get_net INV1]<br>U3/Z</li>
+<li>—cell object &lt;-&gt; pin object<br>>get_pins –of [get_cell U4]<br>{U4/D0 U4/D1 REGFILE/Q1 REGFILE/Q2}  </li>
+</ul>
+</li>
+</ul>
+<p><strong>自定义扩展TCL指令练习</strong></p>
+<ul>
+<li>得到电路中的所有inverter</li>
+<li>解答：<ul>
+<li>（1） 直接使用Synopsys TCL指令： get_buffers -inverter</li>
+<li>（2） 人工扩展TCL指令： get_inverters </li>
+</ul>
+</li>
+</ul>
+<p><strong>人工扩展TCL指令： get_inverters</strong> </p>
+<figure class="highlight tcl"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs tcl">解题思路：<br>（<span class="hljs-number">1</span>）使用get_lib_cells 得到所有引脚总数为<span class="hljs-number">2</span>的cell<br><span class="hljs-keyword">set</span> lcells [filter_collection [get_lib_cells -quiet [get_attr <span class="hljs-variable">$lib</span> extended_name]/*] <span class="hljs-string">&quot;number_of_pins==2 &amp;&amp;</span><br><span class="hljs-string">base_name=~$&#123;pattern&#125;&quot;</span>]<br>（<span class="hljs-number">2</span>）使用foreach_in_collection，循环检测每一个cell。<br>（<span class="hljs-number">3</span>）对于每一个cell，使用-filter 得到输入引脚、输出引脚的全名，以及功能名称。<br><span class="hljs-keyword">set</span> opin [get_lib_pins -quiet -of_object <span class="hljs-variable">$&#123;lcell&#125;</span> -filter <span class="hljs-string">&quot;pin_direction==out&quot;</span>]<br><span class="hljs-keyword">set</span> ipin [get_lib_pins -quiet -of_object <span class="hljs-variable">$&#123;lcell&#125;</span> -filter <span class="hljs-string">&quot;pin_direction==in&quot;</span>]<br><span class="hljs-keyword">set</span> opin_name [get_attribute -quiet <span class="hljs-variable">$&#123;opin&#125;</span> base_name]<br><span class="hljs-keyword">set</span> ipin_name [get_attribute -quiet <span class="hljs-variable">$&#123;ipin&#125;</span> base_name]<br><span class="hljs-keyword">set</span> cell_func [get_attribute -quiet <span class="hljs-variable">$&#123;opin&#125;</span> function]<br>（<span class="hljs-number">4</span>）输入引脚和输出引脚数量都为<span class="hljs-number">1</span>，且功能为反相器，则就是我们想要的cell<br>（<span class="hljs-number">5</span>）循环执行第（<span class="hljs-number">1</span>）执行的步骤，最终可获得所有的反相器<br></code></pre></div></td></tr></table></figure>
+<h2 id="3-3-使用TCL控制EDA工具流程"><a href="#3-3-使用TCL控制EDA工具流程" class="headerlink" title="3.3 使用TCL控制EDA工具流程"></a>3.3 使用TCL控制EDA工具流程</h2><h3 id="1）使用TCL语言设计DC的自动化Flow"><a href="#1）使用TCL语言设计DC的自动化Flow" class="headerlink" title="1）使用TCL语言设计DC的自动化Flow"></a>1）使用TCL语言设计DC的自动化Flow</h3><p><strong>内容：</strong>讲述一个简单的、入门级的Synopsys DesignComplier自动化方案，供初学者参考，感兴趣的同学对该方案进行优化和升级  </p>
+<p><strong>特点：</strong></p>
+<ul>
+<li>该过程无需人为操作，用户只需要输入一条shell启动指令就能完全自动化的完成整个综合过程。</li>
+<li>具备普适性和可重用性。在综合不同的设计时，只需要修改参数配置文件中的环境变量，不需要修<br>改脚本  </li>
+</ul>
+<p><strong>思路：</strong>自动化电路综合平台只需用户将待综合的设计和库文件放入一个文件夹，修改与待综合设计对象有关的环境变量参数，在命令窗口唤醒DC的指令，即自动化地完成综合过程，并得到综合后的网表文件和所需的报告。  </p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319120120742.png" srcset="/img/loading.gif" lazyload alt="image-20220319120120742"></p>
+<p><strong>运行流程：</strong></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319120312492.png" srcset="/img/loading.gif" lazyload alt="image-20220319120312492"></p>
+<p>① 运行run.csh脚本，启动DC </p>
+<figure class="highlight tcl"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs tcl"><span class="hljs-comment">#!/bin/csh -f</span><br>\rm -rf *.log *.svf alib* reports log work #清除之前的文档<br>mkdir reports work #新建文件夹<br>dc_shell-xg-t <span class="hljs-number">-32</span>bit -f ./top.tcl #启动Design Compiler并运行top.tcl<br></code></pre></div></td></tr></table></figure>
+<ul>
+<li>top.tcl就是我们之后要写的自动化运行的TCL脚本，负责进行345所有的工作</li>
+</ul>
+<p>② 建立reports与work两个文件夹。 </p>
+<ul>
+<li>reports文件夹用于存放生成的报告， </li>
+<li>work文件夹用于存放该平台运行过程中生成的文档、脚本。</li>
+</ul>
+<p>③ 启动顶层脚本top.tcl文件；<br>④ top.tcl按先后顺序启动各个子脚本，最终生成script.tcl；</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319120531348.png" srcset="/img/loading.gif" lazyload alt="image-20220319120531348"></p>
+<ul>
+<li>运行script.tcl之前全部都是DC自动的，主要目的是生成约束脚本script.tcl，最终DC读取script.tcl通过它完成综合，并根据script.tcl生成报告</li>
+</ul>
+<p>⑤ <strong>DC读取script.tcl中的约束，最终完成综合，并将所有报告写入reports文件夹中</strong>。  </p>
+<p><strong>top.tcl脚本运行机制：生成DC所需要的约束文件.tcl，同意放进script.tcl来供DC去读取，所有流程自动</strong></p>
+<ul>
+<li>set_library.tcl：生成设定库文件和search path的约束</li>
+<li>read_design.tcl：生成读入设计文件的约束<ul>
+<li>主要对所有verilog生成readverilog约束，写道script.tcl里面</li>
+</ul>
+</li>
+<li>create_clock.tcl：生成时钟源相关的约束<ul>
+<li>这些约束也要生成到script.tcl里面</li>
+</ul>
+</li>
+<li>set_rst.tcl：生成复位端口约束的约束</li>
+<li>set_io.tcl：生成输入输出端口的约束</li>
+<li>set_cons.tcl：生成保存门级网表、各种reprot文件的约束</li>
+</ul>
+<p><strong><mark>注意：</mark></strong></p>
+<ul>
+<li><strong>以上所有约束都自动生成，无需人为干预；</strong></li>
+<li><strong>库文件、代码、时钟、复位、输入输出等均根据代码自动进行匹配，并生成相应的约束；</strong></li>
+<li><strong>最终所有的约束都被写入script.tcl中，供DC读取，完成最终的逻辑综合过程。</strong>  </li>
+<li>我们要做的就直接run就完事了，约束自动生成了，然后DC在跑</li>
+</ul>
+<h3 id="2）重要模块分析"><a href="#2）重要模块分析" class="headerlink" title="2）重要模块分析"></a>2）重要模块分析</h3><p><strong>（1）重要的脚本子模块——代码读入约束生成</strong> </p>
+<ul>
+<li><strong>工作流程：</strong></li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319121422700.png" srcset="/img/loading.gif" lazyload alt="脚本运行流程"></p>
+<p>① 设计文件通常使用verilog语言，所以扩展名通常为v，所以先将变量extension设为v；</p>
+<p>② 调用filelist.tcl脚本， filelist.tcl脚本会将所有扩展名为v的文件的<strong>文件路径</strong>输出到一个名为v_list的文档</p>
+<p>③ 打开v_list文档，根据文件的内容将读入设计文件的指令输出到script.tcl脚本。</p>
+<ul>
+<li><strong>源码：</strong></li>
+</ul>
+<figure class="highlight tcl"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs tcl"><span class="hljs-keyword">set</span> extension v #设置扩展为.v，只要是.v都读取<br><span class="hljs-keyword">source</span> [<span class="hljs-keyword">file</span> <span class="hljs-keyword">join</span> <span class="hljs-variable">$::script_path</span> test/filelist.tcl] #调用filelist.tcl脚本<br><span class="hljs-keyword">set</span> des [<span class="hljs-keyword">open</span> [<span class="hljs-keyword">file</span> <span class="hljs-keyword">join</span> <span class="hljs-variable">$::script_path</span> test/work/v_list] r] #读取文件<br><span class="hljs-keyword">set</span> design [<span class="hljs-keyword">gets</span> <span class="hljs-variable">$des</span>] #打开v_list文档<br><span class="hljs-comment">#写约束</span><br><span class="hljs-keyword">for</span> &#123;&#125; &#123;<span class="hljs-variable">$design</span>!=<span class="hljs-string">&quot;&quot;</span>&#125; &#123;<span class="hljs-keyword">set</span> design [<span class="hljs-keyword">gets</span> <span class="hljs-variable">$des</span>]&#125; &#123;<br><span class="hljs-comment">#输出读入设计文件指令</span><br><span class="hljs-keyword">puts</span> <span class="hljs-variable">$script</span> [<span class="hljs-keyword">format</span> <span class="hljs-string">&quot;read_file -format verilog %s&quot;</span> <span class="hljs-variable">$design</span>] # DC中读verilog的指令<span class="hljs-string">&quot;read_file -format verilog</span><br><span class="hljs-string">&#125;</span><br><span class="hljs-string">puts $script [format &quot;</span>current_design %s<span class="hljs-string">&quot; $top] #输出设置顶层设计指令</span><br></code></pre></div></td></tr></table></figure>
+<p><strong>（2）重要的脚本子模块——代码filelist生成模块filelist.tcl</strong> </p>
+<ul>
+<li><p><strong>功能：</strong><br>本模块用filelist.tcl脚本实现，遍历目标文件下的所有文件，并将扩展名（.v）符合要求的文件完整路径输出到指定的文档，最终形成DC读取verilog代码的约束，写入script.tcl中。  </p>
+</li>
+<li><p><strong>工作流程：</strong></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319122442026.png" srcset="/img/loading.gif" lazyload alt="脚本运行流程"></p>
+</li>
+</ul>
+<p>① 将工作路径切换到指定的工作路径</p>
+<p>② 判断当前目录下的文件扩展名是否与设置的变量extension一致，如果一致，就将该文件路径输出到指定的文件</p>
+<p>③ 如果有文件夹，则递归调用本程序，直至结束。  </p>
+<ul>
+<li>源码</li>
+</ul>
+<figure class="highlight tcl"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs tcl"><span class="hljs-keyword">proc</span><span class="hljs-title"> FindFile</span> &#123; myDir result &#125; &#123;<br>    <span class="hljs-keyword">if</span> &#123;[<span class="hljs-keyword">catch</span> &#123;<span class="hljs-keyword">cd</span> <span class="hljs-variable">$myDir</span>&#125; err]&#125; &#123;<br>        <span class="hljs-keyword">puts</span> <span class="hljs-variable">$result</span> <span class="hljs-variable">$err</span><br>        <span class="hljs-keyword">return</span>&#125;<br>	<span class="hljs-keyword">foreach</span> myfile [<span class="hljs-keyword">glob</span> -nocomplain *] &#123;<br>    	<span class="hljs-keyword">cd</span> <span class="hljs-variable">$myDir</span> #切换到对应路径<br>    	<span class="hljs-keyword">if</span> &#123;[<span class="hljs-keyword">string</span> equal <span class="hljs-variable">$myfile</span> <span class="hljs-string">&quot;&quot;</span>]&#125; &#123;<br>    		<span class="hljs-keyword">return</span> &#125; #如果是空文件夹就返回<br>		<span class="hljs-keyword">set</span> fullfile [<span class="hljs-keyword">file</span> <span class="hljs-keyword">join</span> <span class="hljs-variable">$myDir</span> <span class="hljs-variable">$myfile</span>]<br>		<span class="hljs-keyword">if</span> &#123;[<span class="hljs-keyword">file</span> isdirectory <span class="hljs-variable">$myfile</span>]&#125; &#123;<br>			FindFile <span class="hljs-variable">$fullfile</span> <span class="hljs-variable">$result</span> #如果有下一级路径则递归调用本函数<br>		&#125; elseif &#123;[<span class="hljs-keyword">string</span> equal [<span class="hljs-keyword">file</span> extension <span class="hljs-variable">$fullfile</span>] [<span class="hljs-keyword">format</span> <span class="hljs-string">&quot;.%s&quot;</span> <span class="hljs-variable">$::extension</span>]]&#125; &#123; #判断扩展名是否与要求一致<br>		<span class="hljs-keyword">puts</span> <span class="hljs-variable">$result</span> <span class="hljs-variable">$fullfile</span>&#125;&#125;&#125;<br></code></pre></div></td></tr></table></figure>
+<p><strong>（3）重要的脚本子模块——时钟约束生成子模块</strong>  </p>
+<ul>
+<li>功能和流程：</li>
+</ul>
+<p>① 首先调用parameter.tcl脚本， 读取其中用户对时钟源指定的参数， 如时钟周期等；</p>
+<p>② 调用find_clk.tcl脚本， 该脚本会将搜索顶层设计中的所有的clk端口， 并将所有搜索结果输出到一个名为clk_list的文档；</p>
+<p>③ 打开clk_list文档， 将对时钟端口施加约束的指令输出到script.tcl脚本</p>
+<p> <img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319123402190.png" srcset="/img/loading.gif" lazyload alt="3，4的结构"></p>
+<p><strong>（4）重要的脚本子模块——匹配时钟端口子模块find_clk.tcl  </strong></p>
+<ul>
+<li><p>功能：<br>搜索代码中的所有的时钟端口，将结果到work文件夹下的clk_list文档  </p>
+</li>
+<li><p>工作流程：</p>
+</li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319123302498.png" srcset="/img/loading.gif" lazyload alt="脚本运行流程"></p>
+<p>① 打开v_list文档，在其中找到顶层设计的路径，并打开改设计文件；</p>
+<p>② 利用正则表达式匹配其中的clk端口；</p>
+<p>③ 并将匹配到的时钟端口的端口名输出到work文件夹下的clk_list文档</p>
+<p><strong>（5）其余脚本工作机制</strong></p>
+<ul>
+<li>其余脚本工作机制类似。</li>
+<li>最终，所有的约束都被写入了script.tcl中。script.tcl脚本完全由自动化电路综合平台生成并非人工编写；</li>
+<li>在自动化电路综合平台运行后，由顶层脚本调用各子模块脚本生成该脚本。生成该脚本后，由顶层脚本调用该脚本，由此实现对设计的综合</li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319123433534.png" srcset="/img/loading.gif" lazyload alt="image-20220319123433534"></p>
+<h2 id="3-4-参考书"><a href="#3-4-参考书" class="headerlink" title="3.4 参考书"></a>3.4 参考书</h2><ul>
+<li>《Using Tcl with Synopsys Tools》. Version B-2008.09, March 2011. Synopsys.</li>
+<li>《集成电路静态时序分析与建模》. 刘峰, 机械工业出版社.出版时间： 2016-07-01  </li>
+</ul>
+<h1 id="4-STA基本概念"><a href="#4-STA基本概念" class="headerlink" title="4 STA基本概念"></a>4 STA基本概念</h1><ul>
+<li>PrimeTime</li>
+<li>STA Conceptse</li>
+</ul>
+<h2 id="4-1-PrimerTime"><a href="#4-1-PrimerTime" class="headerlink" title="4.1 PrimerTime"></a>4.1 PrimerTime</h2><p>PT是synopsys提出的全芯片过程中做STA的一个工具，在逻辑综合和PR的整个流程都很重要的存在</p>
+<ul>
+<li>PrimeTime is a full-chip, gate-level static timing analysis tool that is an essential part of<br>the design and analysis flow for today’s large chip designs.</li>
+<li>PrimeTime exhaustively validates the timing performance of a design by checking all<br>possible paths for timing violations, without using logic simulation or test vectors.</li>
+<li>PrimeTime fits ideally into the Synopsys physical synthesis flow because it uses many of the same libraries, databases, and commands as other Synopsys tools such as Design Compiler. It can also operate as a standalone static timing analyzer in other design flows  </li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319151721313.png" srcset="/img/loading.gif" lazyload alt="PT关联的文件及其内容，各种阶段流程"></p>
+<ul>
+<li><p>PT基于门级</p>
+</li>
+<li><p>PT在逻辑综合阶段和PR(Place &amp; Route)阶段不一样，两种阶段的模型延迟精度不同，越往后时序分析模型越准确</p>
+</li>
+<li><p>静态时序中的库文件：</p>
+<ul>
+<li><p>Technology library：库文件</p>
+</li>
+<li><p>Timing models：时序模型</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>2）两种运行模式</p>
+<ul>
+<li><p>pt_shell  </p>
+</li>
+<li><p>the graphical user interface (GUI).  GUI中的命令行</p>
+</li>
+</ul>
+<h2 id="4-2-STA-Concepts"><a href="#4-2-STA-Concepts" class="headerlink" title="4.2 STA Concepts"></a>4.2 STA Concepts</h2><h3 id="1）Timng-Arc时序图"><a href="#1）Timng-Arc时序图" class="headerlink" title="1）Timng Arc时序图"></a>1）Timng Arc时序图</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319153315752.png" srcset="/img/loading.gif" lazyload alt="image-20220319153315752"></p>
+<p>STA中的Timng Arc描述两个节点延迟信息的数据</p>
+<p>Timing Arc分为：</p>
+<ul>
+<li><p>连线延迟：单元输出端口和扇出网络负载之间的延迟信息</p>
+</li>
+<li><p>Cell delay单元延迟：单元输入端口和输出网络负载之间的延迟信息</p>
+</li>
+<li>完整的时序路径信息：连线延时+单元延时</li>
+</ul>
+<h3 id="2）Cell-delay"><a href="#2）Cell-delay" class="headerlink" title="2）Cell delay"></a>2）Cell delay</h3><p>（1）Transition delay：信号翻转延迟</p>
+<ul>
+<li>分为两种：0—&gt;1或者1—&gt;0</li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319153757629.png" srcset="/img/loading.gif" lazyload alt="image-20220319153757629"></p>
+<p>（2）Logic gate delay：Cell由输入端口到输出端口的延迟</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319153908478.png" srcset="/img/loading.gif" lazyload alt="image-20220319153908478"></p>
+<h3 id="3）Setup-time-and-hold-time"><a href="#3）Setup-time-and-hold-time" class="headerlink" title="3）Setup time and hold time"></a>3）Setup time and hold time</h3><p><strong>Setup time：</strong></p>
+<ul>
+<li>Setup time：A setup constraint specifies how much time is necessary for data to be available at the input of a sequential device <strong>before</strong> the clock edge that captures the data in the device  </li>
+<li>This constraint enforces a <strong>maximum</strong> delay on the data path relative to the clock path. （通过建立时间限制整个电路的<strong>最大延迟值</strong>）</li>
+<li>两种Path</li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319160418849.png" srcset="/img/loading.gif" lazyload alt="image-20220319160418849"></p>
+<p><strong>Hold time：</strong></p>
+<ul>
+<li><p>A hold constraint specifies how much time is necessary for data to be stable at the input of a sequential device after the clock edge that captures the data in the device.</p>
+</li>
+<li><p>This constraint enforces a <strong>minimum</strong> delay on the data path relative to the clock path.（最小延迟）</p>
+</li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319160505719.png" srcset="/img/loading.gif" lazyload alt="image-20220319160505719"></p>
+<h3 id="4）Timg-path时序路径"><a href="#4）Timg-path时序路径" class="headerlink" title="4）Timg path时序路径"></a>4）Timg path时序路径</h3><ul>
+<li>STA把电路划分为不同的时序路径，然后分析每一条路径上的st和ht是否符合要求的约束</li>
+<li>每一条Time path包括起点和终点，一定要分清pin和port</li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319160739125.png" srcset="/img/loading.gif" lazyload alt="image-20220319160739125"></p>
+<p><strong>Time path startpoint有两种：</strong></p>
+<ul>
+<li>a <strong>clock pin</strong> of a sequential element, or possibly an <strong>input port</strong> of the design (because the input data can be launched from some external source).  </li>
+<li>startpoint in below design：D_clk_pin , A_input_port</li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319160852657.png" srcset="/img/loading.gif" lazyload alt="image-20220319160852657"></p>
+<p><strong>Time path endpoint有两种：</strong></p>
+<ul>
+<li>a data <strong>input pin</strong> of a sequential element, or possibly <strong>an output port</strong> of the design (because the output data can be captured by some external sink).  </li>
+<li>endpoint in below design：D_clk_pin , Z_output_port</li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319161004468.png" srcset="/img/loading.gif" lazyload alt="image-20220319161004468"></p>
+<p><strong>上述Path1~4的分析</strong></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319161143888.png" srcset="/img/loading.gif" lazyload alt="image-20220319161143888"></p>
+<ul>
+<li>这种定义(time path , start ,begin)覆盖了每一条门级路径</li>
+<li>任何路径都会被划分为4种（两种起点*两种重点=4种path），一定要分清pin和port：<ul>
+<li>clk pin  -&gt; D</li>
+<li>clk pin  -&gt; output port</li>
+<li>input -&gt; D</li>
+<li>input -&gt; output port</li>
+</ul>
+</li>
+<li>diff between pin &amp; port：<ul>
+<li>pin for cell</li>
+<li>port for core</li>
+</ul>
+</li>
+</ul>
+<h3 id="5）Clock-Domains时钟域"><a href="#5）Clock-Domains时钟域" class="headerlink" title="5）Clock Domains时钟域"></a>5）Clock Domains时钟域</h3><p>如今大部分芯片都是全局异步、局部同步，如下所示：</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319162146819.png" srcset="/img/loading.gif" lazyload alt="image-20220319162146819"></p>
+<p>DC/PT处理同步电路，对异步电路无能为力的。因此我们在做整体分析时：</p>
+<ul>
+<li>首先根据时钟域区分哪些是同步电路，哪些是异步电路</li>
+<li>对局部的同步电路使用PT/DC综合和分析</li>
+<li>对跨时钟域电路进行一些时钟约束（定义一些时序的路径），让PT知道这部分我们无法做STA</li>
+</ul>
+<h3 id="6）Operating-Condition操作条件"><a href="#6）Operating-Condition操作条件" class="headerlink" title="6）Operating Condition操作条件"></a>6）Operating Condition操作条件</h3><p><strong>Operating Condition操作条件：</strong></p>
+<ul>
+<li><p>Static timing analysis is typically performed at a specific operating condition.</p>
+<blockquote>
+<p>STA时需要指定条件，才能对该特定条件cell或线进行检查，是否满足setup、hold</p>
+</blockquote>
+</li>
+<li><p>An operating condition is defined as a combination of PVT： Process（工艺制成）, Voltage（电压） and Temperature （温度）</p>
+<blockquote>
+<p>operation condition条件指的是PVT</p>
+</blockquote>
+</li>
+<li><p>Cell delays and interconnect delays are computed based upon the specified operating<br>condition.  </p>
+<blockquote>
+<p>cell和互连线的delay必须是基于特定的PVT，才能进行精准分析</p>
+</blockquote>
+</li>
+<li><p>There are three kinds of manufacturing process models that are provided by the<br>semiconductor foundry for digital designs: slow process models, typical process models,and fast process models.</p>
+<blockquote>
+<p>PVT分为三种：slow，typical，fast</p>
+</blockquote>
+</li>
+<li><p>The slow and fast process models represent the extreme corners of the manufacturing process of a foundry.</p>
+<blockquote>
+<p>slow，fast通常是极限条件进行测试</p>
+</blockquote>
+</li>
+<li><p>For robust design, the design is validated at the extreme corners of the manufacturing process as well as environment extremes for temperature and power supply. </p>
+</li>
+</ul>
+<p><strong>PVT与delay的关系：</strong></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220319163249315.png" srcset="/img/loading.gif" lazyload alt="image-20220319163249315"></p>
+<ul>
+<li>高温+低电压：确保延迟最差/慢，ss-&gt;max-&gt;check setup</li>
+<li>低温+高电压：确保延迟最小，ff-&gt;min-&gt;check hold</li>
+<li>典型值没有ff和ss有代表性</li>
+</ul>
+<p><strong>PVT的数值表现在库中：</strong></p>
+<p>The choice of what operating condition to use for STA is also governed by the operating conditions under which <strong>cell libraries are available</strong>. Three standard operating conditions are:  </p>
+<blockquote>
+<p>一下是我们假设的等级的通常要求</p>
+</blockquote>
+<ul>
+<li><strong>WCS</strong> (Worst-Case Slow): <ul>
+<li>Process is slow, temperature is highest (say 125C) and voltage is lowest (say nominal 1.2V minus 10%)  </li>
+</ul>
+</li>
+<li><strong>BCF</strong> (Best-Case Fast): <ul>
+<li>Process is fast, temperature is lowest (say -40C) and voltage is highest (say nominal 1.2V plus 10%).  </li>
+</ul>
+</li>
+<li><strong>TYP</strong> (Typical): <ul>
+<li>Process is typical, temperature is nominal (say 25C) and voltage is nominal (say 1.2V).  </li>
+</ul>
+</li>
+</ul>
+<p><strong>SynopsysTCL指定操作条件：</strong></p>
+<figure class="highlight tcl"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs tcl">set_operating_conditions “WCCOM” -library mychip<br><span class="hljs-comment"># Use the operating condition called WCCOM defined in the cell library mychip</span><br></code></pre></div></td></tr></table></figure>
+<h2 id="4-3-参考书"><a href="#4-3-参考书" class="headerlink" title="4.3 参考书"></a>4.3 参考书</h2><ul>
+<li>Static Timing Analysis for Nanometer Designs: A Practical Approach. J.Bhasker, Rakesh Chadha. Springer Science Business Media, LLC 2009.Chaper 2.</li>
+<li>集成电路静态时序分析与建模. 刘峰, 机械工业出版社.出版时间： 2016-07-01.第二章.</li>
+<li>PrimeTime ® Fundamentals User Guide. Synopsys. Version F-2011.12,December 2011 </li>
+</ul>
+<h1 id="5-标准单元库"><a href="#5-标准单元库" class="headerlink" title="5 标准单元库"></a>5 标准单元库</h1>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/">IC</a>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/STA/">STA</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/IC/">IC</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                      <a class="hover-with-bg" href="/tags/STA/">STA</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/202203162201/%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1start/%E5%85%B3%E4%BA%8E%E4%B9%8B%E5%90%8E%E5%AD%A6%E4%B9%A0%E7%9A%84%E8%84%91%E5%9B%BE/">
+                        <span class="hidden-mobile">关于之后学习的脑图</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'preferred-color-scheme';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'GreensCH/commitutterances');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <span> | </span> <a href="https://weibo.com/u/7453939976" target="_blank" rel="nofollow noopener"> Green Weibo</a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?eca4a4d34dadf0d4e282cc6ef2dc3de6";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<!-- hexo injector body_end start --><script src="/js/backgroundize.js"></script>
+  <link defer rel="stylesheet" href="/css/backgroundize.css" />
+  
+  <div id="aplayer" style="width:300px"></div>
+  <link defer rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css" />
+  <script src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js"></script>
+  <script defer src="/js/aplayer.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"superSample":1,"position":"left","width":250,"height":500,"vOffset":-18},"mobile":{"show":false},"dialog":{"enable":false,"hitokoto":true,"width":10,"height":10,"vOffset":-100},"log":false});</script></body>
+</html>
