@@ -84,7 +84,7 @@
 <meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016231402018.png">
 <meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016231520344.png">
 <meta property="article:published_time" content="2021-10-15T08:04:00.000Z">
-<meta property="article:modified_time" content="2022-01-24T13:59:34.684Z">
+<meta property="article:modified_time" content="2022-03-19T11:05:55.635Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="IC">
 <meta property="article:tag" content="sv学习">
@@ -383,14 +383,14 @@
 <li>$finish()</li>
 <li>$exit()</li>
 </ul>
-<h1 id="一、接口-interface"><a href="#一、接口-interface" class="headerlink" title="一、接口(interface)"></a>一、接口(interface)</h1><h2 id="1-什么是接口"><a href="#1-什么是接口" class="headerlink" title="1 什么是接口"></a>1 什么是接口</h2><h3 id="1-简介"><a href="#1-简介" class="headerlink" title="(1) 简介"></a>(1) 简介</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016190705553.png" srcset="/img/loading.gif" lazyload alt="image-20211016190705553"></p>
+<h1 id="一、接口-interface"><a href="#一、接口-interface" class="headerlink" title="一、接口(interface)"></a>一、接口(interface)</h1><h2 id="1-什么是接口"><a href="#1-什么是接口" class="headerlink" title="1 什么是接口"></a>1 什么是接口</h2><h3 id="1-简介"><a href="#1-简介" class="headerlink" title="(1) 简介"></a>(1) 简介</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016190705553.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p><strong>硬件很重要，可以在软硬环境传递：如图上第三点</strong></p>
 <h3 id="2-有无接口的测试方法对比"><a href="#2-有无接口的测试方法对比" class="headerlink" title="　(2) 有无接口的测试方法对比"></a>　(2) 有无接口的测试方法对比</h3><p>测试arbiter现有经典方法</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016190936562.png" srcset="/img/loading.gif" lazyload alt="image-20211016190936562"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016190936562.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>使用了interface后的测试关系</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016190958859.png" srcset="/img/loading.gif" lazyload alt="image-20211016190958859">‘</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016190958859.png" srcset="/img/loading.gif" lazyload alt="">‘</p>
 <h3 id="3-interface代码定义"><a href="#3-interface代码定义" class="headerlink" title="(3) interface代码定义"></a>(3) interface代码定义</h3><p><strong>下图对应design</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016191110431.png" srcset="/img/loading.gif" lazyload alt="image-20211016191110431"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016191110431.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
 <li><p>可作为形参在module的参数列表中声明，不需要声明方向</p>
 </li>
@@ -399,15 +399,15 @@
 </ul>
 <hr>
 <p><strong>下图对应testbench（要有壳子把design和testbench包起来）</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016191323553.png" srcset="/img/loading.gif" lazyload alt="image-20211016191323553"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016191323553.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
 <li>也是用initital作为驱动，</li>
 <li>arbif.clk作为始终驱动，$finish结束仿真</li>
 </ul>
 <hr>
 <p><strong>下图对应top</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016191622363.png" srcset="/img/loading.gif" lazyload alt="image-20211016191622363"></p>
-<h2 id="2-接口的优势"><a href="#2-接口的优势" class="headerlink" title="2 接口的优势"></a>2 接口的优势</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016191704811.png" srcset="/img/loading.gif" lazyload alt="image-20211016191704811"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016191622363.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="2-接口的优势"><a href="#2-接口的优势" class="headerlink" title="2 接口的优势"></a>2 接口的优势</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016191704811.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
 <li>更易于维护和使用</li>
 <li>接口作为软(class)硬(module)的媒介</li>
@@ -416,33 +416,33 @@
 <hr>
 <p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016191941795.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>对最后一条：stimulator拿到接口的指针对其进行驱动</p>
-<h2 id="3-接口的定义和使用"><a href="#3-接口的定义和使用" class="headerlink" title="3 接口的定义和使用"></a>3 接口的定义和使用</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016192730438.png" srcset="/img/loading.gif" lazyload alt="image-20211016192730438"></p>
+<h2 id="3-接口的定义和使用"><a href="#3-接口的定义和使用" class="headerlink" title="3 接口的定义和使用"></a>3 接口的定义和使用</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016192730438.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
 <li>用法与module类似</li>
 <li>interface不定义任何端口信号，定义：复位、时钟等公共信号</li>
 <li>interface可以添加参数提高复用性</li>
 <li>例化的时候和module一样</li>
 </ul>
-<h1 id="二、采样和数据驱动"><a href="#二、采样和数据驱动" class="headerlink" title="二、采样和数据驱动"></a>二、采样和数据驱动</h1><h2 id="1-竞争问题"><a href="#1-竞争问题" class="headerlink" title="1 竞争问题"></a>1 竞争问题</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016194430737.png" srcset="/img/loading.gif" lazyload alt="image-20211016194430737"></p>
+<h1 id="二、采样和数据驱动"><a href="#二、采样和数据驱动" class="headerlink" title="二、采样和数据驱动"></a>二、采样和数据驱动</h1><h2 id="1-竞争问题"><a href="#1-竞争问题" class="headerlink" title="1 竞争问题"></a>1 竞争问题</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016194430737.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p><strong>避免竞争：使用非阻塞赋值或者特定的信号延迟来解决同步问题</strong></p>
 <hr>
 <p><strong>对于真实的物理环境下会有延迟</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016195117342.png" srcset="/img/loading.gif" lazyload alt="image-20211016195117342"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016195117342.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
 <li>clk时钟驱动数据a会有延迟：对应上图中间的”X”</li>
 </ul>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016194954692.png" srcset="/img/loading.gif" lazyload alt="image-20211016194954692"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016194954692.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p><strong>延迟只会在门级仿真的时候才会体现出来，我们RTL的时候没有</strong></p>
 <p>那怎么办：我们只能每一个都加上一个最小单位的延迟（delta-cycle）</p>
 <h3 id="时间片和delta-cycle："><a href="#时间片和delta-cycle：" class="headerlink" title="时间片和delta-cycle："></a>时间片和delta-cycle：</h3><p>run 1m , s, ms, us, ns, ps, fs, 0<br>0就是时间片，一个时间片里又包括无穷个delta-cycle，在仿真时无法用最小的时间单位衡量</p>
 <h3 id="delta-cycle的进一步了解（了解其对数据驱动和采样有很大帮助）"><a href="#delta-cycle的进一步了解（了解其对数据驱动和采样有很大帮助）" class="headerlink" title="delta-cycle的进一步了解（了解其对数据驱动和采样有很大帮助）"></a>delta-cycle的进一步了解（了解其对数据驱动和采样有很大帮助）</h3><p>有两个时钟第一个时钟五纳秒翻转一次</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016195832325.png" srcset="/img/loading.gif" lazyload alt="image-20211016195832325"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016195832325.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <hr>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016195852932.png" srcset="/img/loading.gif" lazyload alt="image-20211016195852932"></p>
-<h3 id="race-sv"><a href="#race-sv" class="headerlink" title="race.sv"></a>race.sv</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016202543007.png" srcset="/img/loading.gif" lazyload alt="image-20211016202543007"></p>
-<h4 id="EDA如何显示delta-cycle"><a href="#EDA如何显示delta-cycle" class="headerlink" title="EDA如何显示delta-cycle"></a>EDA如何显示delta-cycle</h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016202836218.png" srcset="/img/loading.gif" lazyload alt="image-20211016202836218"></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016202911254.png" srcset="/img/loading.gif" lazyload alt="image-20211016202911254"></p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016203031929.png" srcset="/img/loading.gif" lazyload alt="image-20211016203031929"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016195852932.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="race-sv"><a href="#race-sv" class="headerlink" title="race.sv"></a>race.sv</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016202543007.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="EDA如何显示delta-cycle"><a href="#EDA如何显示delta-cycle" class="headerlink" title="EDA如何显示delta-cycle"></a>EDA如何显示delta-cycle</h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016202836218.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016202911254.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016203031929.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
 <li>仿真采样存在不稳定性</li>
 </ul>
@@ -451,7 +451,7 @@
 <li>添加认为延迟</li>
 <li>采样时间前的某段时刻进行采样</li>
 </ul>
-<h2 id="2-接口中的clocking-时钟块"><a href="#2-接口中的clocking-时钟块" class="headerlink" title="2 接口中的clocking 时钟块"></a>2 接口中的clocking 时钟块</h2><h3 id="1-clocking学习背景modport在clocking中，不用额外去学"><a href="#1-clocking学习背景modport在clocking中，不用额外去学" class="headerlink" title="(1) clocking学习背景modport在clocking中，不用额外去学"></a>(1) clocking学习背景modport在clocking中，不用额外去学</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016214722868.png" srcset="/img/loading.gif" lazyload alt="image-20211016214722868"></p>
+<h2 id="2-接口中的clocking-时钟块"><a href="#2-接口中的clocking-时钟块" class="headerlink" title="2 接口中的clocking 时钟块"></a>2 接口中的clocking 时钟块</h2><h3 id="1-clocking学习背景modport在clocking中，不用额外去学"><a href="#1-clocking学习背景modport在clocking中，不用额外去学" class="headerlink" title="(1) clocking学习背景modport在clocking中，不用额外去学"></a>(1) clocking学习背景modport在clocking中，不用额外去学</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016214722868.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
 <li>modport有方向</li>
 <li>clocking基于时钟进行采样，使得testbench不在苦恼于如何即使准确的对信号进行驱动和采样，消除了信号竞争问题</li>
@@ -466,7 +466,7 @@
 <li><h1 id="1step-过上一个单位的step表示，可以看作一个时间片或者上升沿上一个时间片之间的采样域内"><a href="#1step-过上一个单位的step表示，可以看作一个时间片或者上升沿上一个时间片之间的采样域内" class="headerlink" title="1step 过上一个单位的step表示，可以看作一个时间片或者上升沿上一个时间片之间的采样域内"></a>1step 过上一个单位的step表示，可以看作一个时间片或者上升沿上一个时间片之间的采样域内</h1></li>
 </ul>
 <hr>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016215612699.png" srcset="/img/loading.gif" lazyload alt="image-20211016215612699"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016215612699.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
 <li>对于时钟而言可以定义在：module，Interface,program中</li>
 <li>clocking内列举的信号是由interface或其他的地方去定义</li>
@@ -474,8 +474,8 @@
 <li>没有定义的画默认输入在事件前1step，驱动在事件后#0（一个时钟片相当于无穷多个step，肯定比step大）</li>
 <li>处理定义默认的采样和驱动时间，可以用新的时间对默认事件覆盖</li>
 </ul>
-<h3 id="3-一个例子"><a href="#3-一个例子" class="headerlink" title="(3) 一个例子"></a>(3) 一个例子</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016220043661.png" srcset="/img/loading.gif" lazyload alt="image-20211016220043661"></p>
-<h3 id="4-一个例子：利用clocking的采样"><a href="#4-一个例子：利用clocking的采样" class="headerlink" title="(4) 一个例子：利用clocking的采样"></a>(4) 一个例子：利用clocking的采样</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016220306611.png" srcset="/img/loading.gif" lazyload alt="image-20211016220306611"></p>
+<h3 id="3-一个例子"><a href="#3-一个例子" class="headerlink" title="(3) 一个例子"></a>(3) 一个例子</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016220043661.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="4-一个例子：利用clocking的采样"><a href="#4-一个例子：利用clocking的采样" class="headerlink" title="(4) 一个例子：利用clocking的采样"></a>(4) 一个例子：利用clocking的采样</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016220306611.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
 <li><p>用了三个initial，第一个做驱动，第二三个做采样</p>
 </li>
@@ -486,55 +486,55 @@
 <li>在每一个上升沿利用clocking块进行采样</li>
 </ul>
 <p><strong>输出结果</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016220901083.png" srcset="/img/loading.gif" lazyload alt="image-20211016220901083"></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016220934039.png" srcset="/img/loading.gif" lazyload alt="image-20211016220934039"></p>
-<h3 id="5-一个例子：利用clocking的驱动"><a href="#5-一个例子：利用clocking的驱动" class="headerlink" title="(5)一个例子：利用clocking的驱动"></a>(5)一个例子：利用clocking的驱动</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016221247525.png" srcset="/img/loading.gif" lazyload alt="image-20211016221247525"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016220901083.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016220934039.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="5-一个例子：利用clocking的驱动"><a href="#5-一个例子：利用clocking的驱动" class="headerlink" title="(5)一个例子：利用clocking的驱动"></a>(5)一个例子：利用clocking的驱动</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016221247525.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>@ck ck.grt &lt;= 1 ; //<strong>利用clocking</strong>在每个上升沿<strong>进行驱动</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016221400065.png" srcset="/img/loading.gif" lazyload alt="image-20211016221400065"></p>
-<h3 id="6-结论"><a href="#6-结论" class="headerlink" title="(6) 结论"></a>(6) 结论</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016221421817.png" srcset="/img/loading.gif" lazyload alt="image-20211016221421817"></p>
-<h1 id="三、测试的开始和结束"><a href="#三、测试的开始和结束" class="headerlink" title="三、测试的开始和结束"></a>三、测试的开始和结束</h1><h2 id="1-介绍：各个设计自身可以作为一个大的线程"><a href="#1-介绍：各个设计自身可以作为一个大的线程" class="headerlink" title="1.介绍：各个设计自身可以作为一个大的线程"></a>1.介绍：各个设计自身可以作为一个大的线程</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016221528823.png" srcset="/img/loading.gif" lazyload alt="image-20211016221528823"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016221400065.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="6-结论"><a href="#6-结论" class="headerlink" title="(6) 结论"></a>(6) 结论</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016221421817.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="三、测试的开始和结束"><a href="#三、测试的开始和结束" class="headerlink" title="三、测试的开始和结束"></a>三、测试的开始和结束</h1><h2 id="1-介绍：各个设计自身可以作为一个大的线程"><a href="#1-介绍：各个设计自身可以作为一个大的线程" class="headerlink" title="1.介绍：各个设计自身可以作为一个大的线程"></a>1.介绍：各个设计自身可以作为一个大的线程</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016221528823.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>但是如果只提供复位和时钟信号，整个仿真会一直持续下去并不会主动结束，这时候需要verilog系统函数主动结束仿真</p>
-<h2 id="2-系统函数结束仿真"><a href="#2-系统函数结束仿真" class="headerlink" title="2. 系统函数结束仿真"></a>2. 系统函数结束仿真</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016222523208.png" srcset="/img/loading.gif" lazyload alt="image-20211016222523208"></p>
-<h3 id="finish-直接结束仿真"><a href="#finish-直接结束仿真" class="headerlink" title="$finish():直接结束仿真"></a>$finish():直接结束仿真</h3><h3 id="stop-暂停仿真，可以再次启动"><a href="#stop-暂停仿真，可以再次启动" class="headerlink" title="$stop():暂停仿真，可以再次启动"></a>$stop():暂停仿真，可以再次启动</h3><h2 id="3-仿真开始"><a href="#3-仿真开始" class="headerlink" title="3.仿真开始"></a>3.仿真开始</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016222747548.png" srcset="/img/loading.gif" lazyload alt="image-20211016222747548"></p>
+<h2 id="2-系统函数结束仿真"><a href="#2-系统函数结束仿真" class="headerlink" title="2. 系统函数结束仿真"></a>2. 系统函数结束仿真</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016222523208.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="finish-直接结束仿真"><a href="#finish-直接结束仿真" class="headerlink" title="$finish():直接结束仿真"></a>$finish():直接结束仿真</h3><h3 id="stop-暂停仿真，可以再次启动"><a href="#stop-暂停仿真，可以再次启动" class="headerlink" title="$stop():暂停仿真，可以再次启动"></a>$stop():暂停仿真，可以再次启动</h3><h2 id="3-仿真开始"><a href="#3-仿真开始" class="headerlink" title="3.仿真开始"></a>3.仿真开始</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016222747548.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p><strong>下文参考答案一章</strong></p>
-<h2 id="4-program隐式结束：program已经是软件的领域，是SV为了设计与验证隔离推出，而在UVM中有更好的控制手段失去了program的意义了，用的很少"><a href="#4-program隐式结束：program已经是软件的领域，是SV为了设计与验证隔离推出，而在UVM中有更好的控制手段失去了program的意义了，用的很少" class="headerlink" title="4. program隐式结束：program已经是软件的领域，是SV为了设计与验证隔离推出，而在UVM中有更好的控制手段失去了program的意义了，用的很少"></a>4. program隐式结束：program已经是软件的领域，是SV为了设计与验证隔离推出，而在UVM中有更好的控制手段失去了program的意义了，用的很少</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016223616175.png" srcset="/img/loading.gif" lazyload alt="image-20211016223616175"></p>
-<h4 id="具体例子"><a href="#具体例子" class="headerlink" title="具体例子"></a>具体例子</h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016225255238.png" srcset="/img/loading.gif" lazyload alt="image-20211016225255238"></p>
+<h2 id="4-program隐式结束：program已经是软件的领域，是SV为了设计与验证隔离推出，而在UVM中有更好的控制手段失去了program的意义了，用的很少"><a href="#4-program隐式结束：program已经是软件的领域，是SV为了设计与验证隔离推出，而在UVM中有更好的控制手段失去了program的意义了，用的很少" class="headerlink" title="4. program隐式结束：program已经是软件的领域，是SV为了设计与验证隔离推出，而在UVM中有更好的控制手段失去了program的意义了，用的很少"></a>4. program隐式结束：program已经是软件的领域，是SV为了设计与验证隔离推出，而在UVM中有更好的控制手段失去了program的意义了，用的很少</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016223616175.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="具体例子"><a href="#具体例子" class="headerlink" title="具体例子"></a>具体例子</h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016225255238.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h5 id="program相当于把initial的内容封装到program里面了"><a href="#program相当于把initial的内容封装到program里面了" class="headerlink" title="program相当于把initial的内容封装到program里面了"></a>program相当于把initial的内容封装到program里面了</h5><p>最终放到tb里面，最终仿真自动结束，不需要调用$finish</p>
-<h2 id="5-program显式-强制-结束：-exit-专门对program的结束函数"><a href="#5-program显式-强制-结束：-exit-专门对program的结束函数" class="headerlink" title="5.program显式(强制)结束：$exit()专门对program的结束函数"></a>5.program显式(强制)结束：$exit()专门对program的结束函数</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016225510071.png" srcset="/img/loading.gif" lazyload alt="image-20211016225510071"></p>
-<h4 id="具体例子-1"><a href="#具体例子-1" class="headerlink" title="具体例子"></a>具体例子</h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016225608127.png" srcset="/img/loading.gif" lazyload alt="image-20211016225608127"></p>
-<h2 id="6-program和module"><a href="#6-program和module" class="headerlink" title="6. program和module"></a>6. program和module</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016225657272.png" srcset="/img/loading.gif" lazyload alt="image-20211016225657272"></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016225749237.png" srcset="/img/loading.gif" lazyload alt="image-20211016225749237"></p>
-<h1 id="四、调试方法"><a href="#四、调试方法" class="headerlink" title="四、调试方法"></a>四、调试方法</h1><h2 id="1-使用库、仿真和过程方法"><a href="#1-使用库、仿真和过程方法" class="headerlink" title="1. 使用库、仿真和过程方法"></a>1. 使用库、仿真和过程方法</h2><h2 id="2-不同仿真器是共通的"><a href="#2-不同仿真器是共通的" class="headerlink" title="2. 不同仿真器是共通的"></a>2. 不同仿真器是共通的</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016230130087.png" srcset="/img/loading.gif" lazyload alt="image-20211016230130087"></p>
-<h2 id="3-库窗口"><a href="#3-库窗口" class="headerlink" title="3. 库窗口"></a>3. 库窗口</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016230346911.png" srcset="/img/loading.gif" lazyload alt="image-20211016230346911"></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016230400490.png" srcset="/img/loading.gif" lazyload alt="image-20211016230400490"></p>
+<h2 id="5-program显式-强制-结束：-exit-专门对program的结束函数"><a href="#5-program显式-强制-结束：-exit-专门对program的结束函数" class="headerlink" title="5.program显式(强制)结束：$exit()专门对program的结束函数"></a>5.program显式(强制)结束：$exit()专门对program的结束函数</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016225510071.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="具体例子-1"><a href="#具体例子-1" class="headerlink" title="具体例子"></a>具体例子</h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016225608127.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="6-program和module"><a href="#6-program和module" class="headerlink" title="6. program和module"></a>6. program和module</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016225657272.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016225749237.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="四、调试方法"><a href="#四、调试方法" class="headerlink" title="四、调试方法"></a>四、调试方法</h1><h2 id="1-使用库、仿真和过程方法"><a href="#1-使用库、仿真和过程方法" class="headerlink" title="1. 使用库、仿真和过程方法"></a>1. 使用库、仿真和过程方法</h2><h2 id="2-不同仿真器是共通的"><a href="#2-不同仿真器是共通的" class="headerlink" title="2. 不同仿真器是共通的"></a>2. 不同仿真器是共通的</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016230130087.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="3-库窗口"><a href="#3-库窗口" class="headerlink" title="3. 库窗口"></a>3. 库窗口</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016230346911.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016230400490.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p><strong>可以创建属于自己的库</strong></p>
 <p>实验里面默认library</p>
 <p><strong>所有的文件编译都离不开库</strong></p>
-<h2 id="4-仿真窗口"><a href="#4-仿真窗口" class="headerlink" title="4.仿真窗口"></a>4.仿真窗口</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016230631471.png" srcset="/img/loading.gif" lazyload alt="image-20211016230631471"></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016230729220.png" srcset="/img/loading.gif" lazyload alt="image-20211016230729220"></p>
+<h2 id="4-仿真窗口"><a href="#4-仿真窗口" class="headerlink" title="4.仿真窗口"></a>4.仿真窗口</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016230631471.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016230729220.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p><strong>最大帮助是用来看层次</strong></p>
-<h2 id="5-过程窗口"><a href="#5-过程窗口" class="headerlink" title="5. 过程窗口"></a>5. 过程窗口</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016230800874.png" srcset="/img/loading.gif" lazyload alt="image-20211016230800874"></p>
+<h2 id="5-过程窗口"><a href="#5-过程窗口" class="headerlink" title="5. 过程窗口"></a>5. 过程窗口</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016230800874.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>hang-on：仿真进入死循环<br>active,ready</p>
-<h2 id="6-查看信号和波形"><a href="#6-查看信号和波形" class="headerlink" title="6. 查看信号和波形"></a>6. 查看信号和波形</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016230924609.png" srcset="/img/loading.gif" lazyload alt="image-20211016230924609"></p>
-<h2 id="7-打印消息：-display"><a href="#7-打印消息：-display" class="headerlink" title="7. 打印消息：$display"></a>7. 打印消息：$display</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016231000603.png" srcset="/img/loading.gif" lazyload alt="image-20211016231000603"></p>
+<h2 id="6-查看信号和波形"><a href="#6-查看信号和波形" class="headerlink" title="6. 查看信号和波形"></a>6. 查看信号和波形</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016230924609.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="7-打印消息：-display"><a href="#7-打印消息：-display" class="headerlink" title="7. 打印消息：$display"></a>7. 打印消息：$display</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016231000603.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>尽量格式化，字符串赋值和拼接</p>
-<h2 id="8-设置断点（verify重点）"><a href="#8-设置断点（verify重点）" class="headerlink" title="8. 设置断点（verify重点）"></a>8. 设置断点（verify重点）</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016231107723.png" srcset="/img/loading.gif" lazyload alt="image-20211016231107723"></p>
-<h3 id="理解程序执行顺序"><a href="#理解程序执行顺序" class="headerlink" title="理解程序执行顺序"></a>理解程序执行顺序</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016231202857.png" srcset="/img/loading.gif" lazyload alt="image-20211016231202857"></p>
-<h3 id="一个例子"><a href="#一个例子" class="headerlink" title="一个例子"></a>一个例子</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016231351379.png" srcset="/img/loading.gif" lazyload alt="image-20211016231351379"></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016231402018.png" srcset="/img/loading.gif" lazyload alt="image-20211016231402018"></p>
-<h1 id="答案"><a href="#答案" class="headerlink" title="答案"></a>答案</h1><h3 id="1-ABCD"><a href="#1-ABCD" class="headerlink" title="1.ABCD"></a>1.ABCD</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016194056429.png" srcset="/img/loading.gif" lazyload alt="image-20211016194056429"></p>
+<h2 id="8-设置断点（verify重点）"><a href="#8-设置断点（verify重点）" class="headerlink" title="8. 设置断点（verify重点）"></a>8. 设置断点（verify重点）</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016231107723.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="理解程序执行顺序"><a href="#理解程序执行顺序" class="headerlink" title="理解程序执行顺序"></a>理解程序执行顺序</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016231202857.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="一个例子"><a href="#一个例子" class="headerlink" title="一个例子"></a>一个例子</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016231351379.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016231402018.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="答案"><a href="#答案" class="headerlink" title="答案"></a>答案</h1><h3 id="1-ABCD"><a href="#1-ABCD" class="headerlink" title="1.ABCD"></a>1.ABCD</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016194056429.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>哪些事情不能做：模块里面可以例化模块和接口，但是接口里面不可以例化模块可以例化接口</p>
 <h3 id="2-b-1"><a href="#2-b-1" class="headerlink" title="2. b=1"></a>2. b=1</h3><p>a被综合成4位寄存器，使用非阻塞赋值可以确定b是flip-flop，而这里不确定b被综合成什么</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016194629074.png" srcset="/img/loading.gif" lazyload alt="image-20211016194629074"></p>
-<h3 id="3-对应delta-cycle小节"><a href="#3-对应delta-cycle小节" class="headerlink" title="3.对应delta-cycle小节"></a>3.对应delta-cycle小节</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016195852932.png" srcset="/img/loading.gif" lazyload alt="image-20211016195852932"></p>
-<h3 id="4-clocking：C都可以"><a href="#4-clocking：C都可以" class="headerlink" title="4 .clocking：C都可以"></a>4 .clocking：C都可以</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016220131851.png" srcset="/img/loading.gif" lazyload alt="image-20211016220131851"></p>
-<h3 id="5-仿真开始，run0：A？"><a href="#5-仿真开始，run0：A？" class="headerlink" title="5. 仿真开始，run0：A？"></a>5. 仿真开始，run0：A？</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016222747548.png" srcset="/img/loading.gif" lazyload alt="image-20211016222747548"></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016222828300.png" srcset="/img/loading.gif" lazyload alt="image-20211016222828300"></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016222954064.png" srcset="/img/loading.gif" lazyload alt="image-20211016222954064"></p>
-<h3 id="6-哪些可以在program中定义-AC"><a href="#6-哪些可以在program中定义-AC" class="headerlink" title="6.哪些可以在program中定义 AC"></a>6.哪些可以在program中定义 AC</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016225928352.png" srcset="/img/loading.gif" lazyload alt="image-20211016225928352"></p>
-<h3 id="7"><a href="#7" class="headerlink" title="7."></a>7.</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016231351379.png" srcset="/img/loading.gif" lazyload alt="image-20211016231351379"></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016231402018.png" srcset="/img/loading.gif" lazyload alt="image-20211016231402018"></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016231520344.png" srcset="/img/loading.gif" lazyload alt="image-20211016231520344"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016194629074.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="3-对应delta-cycle小节"><a href="#3-对应delta-cycle小节" class="headerlink" title="3.对应delta-cycle小节"></a>3.对应delta-cycle小节</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016195852932.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="4-clocking：C都可以"><a href="#4-clocking：C都可以" class="headerlink" title="4 .clocking：C都可以"></a>4 .clocking：C都可以</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016220131851.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="5-仿真开始，run0：A？"><a href="#5-仿真开始，run0：A？" class="headerlink" title="5. 仿真开始，run0：A？"></a>5. 仿真开始，run0：A？</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016222747548.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016222828300.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016222954064.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="6-哪些可以在program中定义-AC"><a href="#6-哪些可以在program中定义-AC" class="headerlink" title="6.哪些可以在program中定义 AC"></a>6.哪些可以在program中定义 AC</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016225928352.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="7"><a href="#7" class="headerlink" title="7."></a>7.</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016231351379.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016231402018.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211016231520344.png" srcset="/img/loading.gif" lazyload alt=""></p>
 
             </div>
             <hr>

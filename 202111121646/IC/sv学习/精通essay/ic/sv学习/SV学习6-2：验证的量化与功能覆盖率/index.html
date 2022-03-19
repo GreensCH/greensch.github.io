@@ -73,7 +73,7 @@
 <meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112215640227.png">
 <meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112215930314.png">
 <meta property="article:published_time" content="2021-11-12T08:46:00.000Z">
-<meta property="article:modified_time" content="2022-01-24T13:59:35.180Z">
+<meta property="article:modified_time" content="2022-03-19T11:05:55.635Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="IC">
 <meta property="article:tag" content="sv学习">
@@ -351,21 +351,21 @@
             <h1 style="display: none">SV精通6：验证的量化与功能覆盖率</h1>
             
             <div class="markdown-body">
-              <h1 id="一、覆盖率"><a href="#一、覆盖率" class="headerlink" title="一、覆盖率"></a>一、覆盖率</h1><h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1 概述"></a>1 概述</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112165259519.png" srcset="/img/loading.gif" lazyload alt="image-20211112165259519"></p>
-<h2 id="2-覆盖率反馈回路"><a href="#2-覆盖率反馈回路" class="headerlink" title="2 覆盖率反馈回路"></a>2 覆盖率反馈回路</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112172014070.png" srcset="/img/loading.gif" lazyload alt="image-20211112172014070"></p>
+              <h1 id="一、覆盖率"><a href="#一、覆盖率" class="headerlink" title="一、覆盖率"></a>一、覆盖率</h1><h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1 概述"></a>1 概述</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112165259519.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="2-覆盖率反馈回路"><a href="#2-覆盖率反馈回路" class="headerlink" title="2 覆盖率反馈回路"></a>2 覆盖率反馈回路</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112172014070.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
 <li>随机约束(constrained random tests) 很窄的时候会变成定向测试(directed testcase)</li>
 <li>Many runs , different seeds ： 跑多次使用不同的种子</li>
 <li>Functionall Coverage ： 功能覆盖率</li>
 <li>Identify holes：分析漏洞</li>
 </ul>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112172300816.png" srcset="/img/loading.gif" lazyload alt="image-20211112172300816"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112172300816.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>即一开始可以使用定向测试</p>
-<h3 id="测试题"><a href="#测试题" class="headerlink" title="测试题"></a>测试题</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112172336045.png" srcset="/img/loading.gif" lazyload alt="image-20211112172336045"></p>
+<h3 id="测试题"><a href="#测试题" class="headerlink" title="测试题"></a>测试题</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112172336045.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>答案：AB</p>
-<h2 id="3-漏洞率曲线"><a href="#3-漏洞率曲线" class="headerlink" title="3 漏洞率曲线"></a>3 漏洞率曲线</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112193838775.png" srcset="/img/loading.gif" lazyload alt="image-20211112193838775"></p>
+<h2 id="3-漏洞率曲线"><a href="#3-漏洞率曲线" class="headerlink" title="3 漏洞率曲线"></a>3 漏洞率曲线</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112193838775.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p><strong>漏洞率下降时</strong>，应寻找各种不同的办法去测试可能的边界情况(corner case)</p>
-<h2 id="4-功能覆盖率步骤"><a href="#4-功能覆盖率步骤" class="headerlink" title="4 功能覆盖率步骤"></a>4 功能覆盖率步骤</h2><h1 id="二、-覆盖率类型"><a href="#二、-覆盖率类型" class="headerlink" title="二、 覆盖率类型"></a>二、 覆盖率类型</h1><h2 id="1-代码覆盖率"><a href="#1-代码覆盖率" class="headerlink" title="1 代码覆盖率"></a>1 代码覆盖率</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112172457412-16367090980413.png" srcset="/img/loading.gif" lazyload alt="image-20211112172457412"></p>
+<h2 id="4-功能覆盖率步骤"><a href="#4-功能覆盖率步骤" class="headerlink" title="4 功能覆盖率步骤"></a>4 功能覆盖率步骤</h2><h1 id="二、-覆盖率类型"><a href="#二、-覆盖率类型" class="headerlink" title="二、 覆盖率类型"></a>二、 覆盖率类型</h1><h2 id="1-代码覆盖率"><a href="#1-代码覆盖率" class="headerlink" title="1 代码覆盖率"></a>1 代码覆盖率</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112172457412-16367090980413.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p><strong>工具分析，编译时添加选项，不需要额外代码</strong></p>
 <ul>
 <li>行覆盖率</li>
@@ -374,29 +374,29 @@
 <li>状态机覆盖率</li>
 </ul>
 <p><strong>最终结果用于衡量设计代码</strong>，关注点在设计代码的分析上，而不是测试平台</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112172807856.png" srcset="/img/loading.gif" lazyload alt="image-20211112172807856"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112172807856.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p><strong>代码覆盖率100%是必要不充分条件</strong></p>
-<h3 id="测试题-1"><a href="#测试题-1" class="headerlink" title="测试题"></a>测试题</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112173008178.png" srcset="/img/loading.gif" lazyload alt="image-20211112173008178"></p>
+<h3 id="测试题-1"><a href="#测试题-1" class="headerlink" title="测试题"></a>测试题</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112173008178.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>答案：C</p>
 <p>实际情况常常达不到100%，我们会：1、设置编译器这部分达不到；2、设置100%的阈值</p>
-<h2 id="2-断言覆盖率"><a href="#2-断言覆盖率" class="headerlink" title="2 断言覆盖率"></a>2 断言覆盖率</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112173150029.png" srcset="/img/loading.gif" lazyload alt="image-20211112173150029"></p>
+<h2 id="2-断言覆盖率"><a href="#2-断言覆盖率" class="headerlink" title="2 断言覆盖率"></a>2 断言覆盖率</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112173150029.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>可以使用SV的程序性代码：<code>assert</code></p>
 <p>但使用SVA更简单</p>
 <hr>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112193553513.png" srcset="/img/loading.gif" lazyload alt="image-20211112193553513"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112193553513.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>断言除了用于信号和状态的检查外，还可以用作覆盖率收集</p>
 <p>只有代码覆盖率会自动收集，断言覆盖率需要自己定义</p>
-<h2 id="3-功能覆盖率（重要）"><a href="#3-功能覆盖率（重要）" class="headerlink" title="3 功能覆盖率（重要）"></a>3 功能覆盖率（重要）</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112194059827.png" srcset="/img/loading.gif" lazyload alt="image-20211112194059827"></p>
-<h3 id="功能覆盖率关系图"><a href="#功能覆盖率关系图" class="headerlink" title="功能覆盖率关系图"></a>功能覆盖率关系图</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112194448584.png" srcset="/img/loading.gif" lazyload alt="image-20211112194448584"></p>
+<h2 id="3-功能覆盖率（重要）"><a href="#3-功能覆盖率（重要）" class="headerlink" title="3 功能覆盖率（重要）"></a>3 功能覆盖率（重要）</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112194059827.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="功能覆盖率关系图"><a href="#功能覆盖率关系图" class="headerlink" title="功能覆盖率关系图"></a>功能覆盖率关系图</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112194448584.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>不止仿真，形式验证、加速都可以收集覆盖率</p>
 <p>pass：功能测试有没有通过</p>
-<h3 id="功能覆盖率步骤"><a href="#功能覆盖率步骤" class="headerlink" title="功能覆盖率步骤"></a>功能覆盖率步骤</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112195017497.png" srcset="/img/loading.gif" lazyload alt="image-20211112195017497"></p>
+<h3 id="功能覆盖率步骤"><a href="#功能覆盖率步骤" class="headerlink" title="功能覆盖率步骤"></a>功能覆盖率步骤</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112195017497.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p><strong>合并覆盖率</strong></p>
-<h3 id="测试题-2"><a href="#测试题-2" class="headerlink" title="测试题"></a>测试题</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112195116210.png" srcset="/img/loading.gif" lazyload alt="image-20211112195116210"></p>
+<h3 id="测试题-2"><a href="#测试题-2" class="headerlink" title="测试题"></a>测试题</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112195116210.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>答案：BCD</p>
-<h1 id="三、功能覆盖策略"><a href="#三、功能覆盖策略" class="headerlink" title="三、功能覆盖策略"></a>三、功能覆盖策略</h1><h2 id="1-收集信息而非数据"><a href="#1-收集信息而非数据" class="headerlink" title="1 收集信息而非数据"></a>1 收集信息而非数据</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112195304711.png" srcset="/img/loading.gif" lazyload alt="image-20211112195304711"></p>
+<h1 id="三、功能覆盖策略"><a href="#三、功能覆盖策略" class="headerlink" title="三、功能覆盖策略"></a>三、功能覆盖策略</h1><h2 id="1-收集信息而非数据"><a href="#1-收集信息而非数据" class="headerlink" title="1 收集信息而非数据"></a>1 收集信息而非数据</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112195304711.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>着眼于感兴趣的状态，而不是具体数值</p>
-<h2 id="2-只测量需要的内容"><a href="#2-只测量需要的内容" class="headerlink" title="2 只测量需要的内容"></a>2 只测量需要的内容</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112195645515.png" srcset="/img/loading.gif" lazyload alt="image-20211112195645515"></p>
+<h2 id="2-只测量需要的内容"><a href="#2-只测量需要的内容" class="headerlink" title="2 只测量需要的内容"></a>2 只测量需要的内容</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112195645515.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
 <li><p>什么时候打开覆盖率收集，什么时候关闭</p>
 </li>
@@ -405,14 +405,14 @@
 <li><p>合理的定义覆盖率采样事件</p>
 </li>
 </ul>
-<h2 id="3-验证的完备性：代码覆盖率与功能覆盖率的关系"><a href="#3-验证的完备性：代码覆盖率与功能覆盖率的关系" class="headerlink" title="3 验证的完备性：代码覆盖率与功能覆盖率的关系"></a>3 验证的完备性：代码覆盖率与功能覆盖率的关系</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112195858313.png" srcset="/img/loading.gif" lazyload alt="image-20211112195858313"></p>
+<h2 id="3-验证的完备性：代码覆盖率与功能覆盖率的关系"><a href="#3-验证的完备性：代码覆盖率与功能覆盖率的关系" class="headerlink" title="3 验证的完备性：代码覆盖率与功能覆盖率的关系"></a>3 验证的完备性：代码覆盖率与功能覆盖率的关系</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112195858313.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>目标是同时<strong>驱动</strong>高的代码覆盖率和功能覆盖率</p>
-<h3 id="Functional-Coverage-amp-Code-Coverage-figure"><a href="#Functional-Coverage-amp-Code-Coverage-figure" class="headerlink" title="Functional Coverage &amp; Code Coverage figure"></a>Functional Coverage &amp; Code Coverage figure</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112200010561.png" srcset="/img/loading.gif" lazyload alt="image-20211112200010561"></p>
+<h3 id="Functional-Coverage-amp-Code-Coverage-figure"><a href="#Functional-Coverage-amp-Code-Coverage-figure" class="headerlink" title="Functional Coverage &amp; Code Coverage figure"></a>Functional Coverage &amp; Code Coverage figure</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112200010561.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
 <li>Need more FC points ,including corner cases : 部分代码代表的功能还没有提取，需要定义更多的功能覆盖率</li>
 <li>Is design complete ? : （最常见的）某些感兴趣的状态还是没有被测试到，分析我们的功能覆盖率哪些没有测试到，针对他们去添加修改约束和性能测试</li>
 </ul>
-<h3 id="测试题-3"><a href="#测试题-3" class="headerlink" title="测试题"></a>测试题</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112200059155.png" srcset="/img/loading.gif" lazyload alt="image-20211112200059155"></p>
+<h3 id="测试题-3"><a href="#测试题-3" class="headerlink" title="测试题"></a>测试题</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112200059155.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>答案：CD</p>
 <h1 id="四、覆盖组-关键词covergroup"><a href="#四、覆盖组-关键词covergroup" class="headerlink" title="四、覆盖组(关键词covergroup)"></a>四、覆盖组(关键词covergroup)</h1><h2 id="1-概念"><a href="#1-概念" class="headerlink" title="1 概念"></a>1 概念</h2><ul>
 <li><code>covergroup</code>与类相似，一次定义多次例化</li>
@@ -425,7 +425,7 @@
 <li><code>covergroup</code>必须例化后才能收集数据</li>
 </ul>
 <h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog">CovPort ck = <span class="hljs-keyword">new</span> ();<br>ck<span class="hljs-variable">.start</span>();<span class="hljs-comment">//new之后默认已经启动，只有stop只有才需要重启</span><br>ck<span class="hljs-variable">.stop</span>();<br>ck<span class="hljs-variable">.sample</span>();<span class="hljs-comment">//采样</span><br></code></pre></div></td></tr></table></figure>
-<h2 id="2-在类里定义covergroup"><a href="#2-在类里定义covergroup" class="headerlink" title="2 在类里定义covergroup"></a>2 在类里定义covergroup</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112201312010.png" srcset="/img/loading.gif" lazyload alt="image-20211112201312010"></p>
+<h2 id="2-在类里定义covergroup"><a href="#2-在类里定义covergroup" class="headerlink" title="2 在类里定义covergroup"></a>2 在类里定义covergroup</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112201312010.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h3 id="两种例化方式"><a href="#两种例化方式" class="headerlink" title="两种例化方式"></a>两种例化方式</h3><p><strong>第一种：</strong>实例名和类名一致，但类名还是类名，实例名也是实例名，但没法例化多次</p>
 <figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">covergroup</span> CovPort;<br>	....<br>CovPort = <span class="hljs-keyword">new</span> ();<span class="hljs-comment">//和类的例化不太一样</span><br></code></pre></div></td></tr></table></figure>
 <p><strong>第二种（建议）：</strong>实例名与类名不一致，我们定义类也是用这种，可以例化多次</p>
@@ -433,54 +433,54 @@
 <h3 id="采样"><a href="#采样" class="headerlink" title="采样"></a>采样</h3><p><strong>第一种</strong>采样方式（手动）</p>
 <figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog">cg1<span class="hljs-variable">.sample</span>();<br></code></pre></div></td></tr></table></figure>
 <p><strong>第二种</strong>采样方式：<strong>covergroup的采样触发</strong>等待某些特定的信号（自动）</p>
-<h2 id="3-covergroup的采样触发"><a href="#3-covergroup的采样触发" class="headerlink" title="3 covergroup的采样触发"></a>3 covergroup的采样触发</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112202040146.png" srcset="/img/loading.gif" lazyload alt="image-20211112202040146"></p>
-<h3 id="使用事件触发"><a href="#使用事件触发" class="headerlink" title="使用事件触发"></a>使用事件触发</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112202147138.png" srcset="/img/loading.gif" lazyload alt="image-20211112202147138"></p>
+<h2 id="3-covergroup的采样触发"><a href="#3-covergroup的采样触发" class="headerlink" title="3 covergroup的采样触发"></a>3 covergroup的采样触发</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112202040146.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="使用事件触发"><a href="#使用事件触发" class="headerlink" title="使用事件触发"></a>使用事件触发</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112202147138.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>借助已有事件，比如已有的时钟或event</p>
-<h2 id="测试题-4"><a href="#测试题-4" class="headerlink" title="测试题"></a>测试题</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112202248248.png" srcset="/img/loading.gif" lazyload alt="image-20211112202248248"></p>
+<h2 id="测试题-4"><a href="#测试题-4" class="headerlink" title="测试题"></a>测试题</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112202248248.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>答案：ABC</p>
 <h1 id="五、数据采样"><a href="#五、数据采样" class="headerlink" title="五、数据采样"></a>五、数据采样</h1><h2 id="1-概述：仓bin"><a href="#1-概述：仓bin" class="headerlink" title="1 概述：仓bin"></a>1 概述：仓bin</h2><p>定义coverpoint时，SV会创建很多仓，可以是自己定义的bin，也可以是自动生成的bin，推荐自己定义</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112202342351.png" srcset="/img/loading.gif" lazyload alt="image-20211112202342351"></p>
-<h2 id="2-coverpoint-和-bin"><a href="#2-coverpoint-和-bin" class="headerlink" title="2 coverpoint 和 bin"></a>2 coverpoint 和 bin</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112210126670.png" srcset="/img/loading.gif" lazyload alt="image-20211112210126670"></p>
-<h2 id="3-bin的创建和应用"><a href="#3-bin的创建和应用" class="headerlink" title="3 bin的创建和应用"></a>3 bin的创建和应用</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112210244773.png" srcset="/img/loading.gif" lazyload alt="image-20211112210244773"></p>
-<h2 id="4-命名coverpoint和bin"><a href="#4-命名coverpoint和bin" class="headerlink" title="4 命名coverpoint和bin"></a>4 命名coverpoint和bin</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112210343326.png" srcset="/img/loading.gif" lazyload alt="image-20211112210343326"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112202342351.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="2-coverpoint-和-bin"><a href="#2-coverpoint-和-bin" class="headerlink" title="2 coverpoint 和 bin"></a>2 coverpoint 和 bin</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112210126670.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="3-bin的创建和应用"><a href="#3-bin的创建和应用" class="headerlink" title="3 bin的创建和应用"></a>3 bin的创建和应用</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112210244773.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="4-命名coverpoint和bin"><a href="#4-命名coverpoint和bin" class="headerlink" title="4 命名coverpoint和bin"></a>4 命名coverpoint和bin</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112210343326.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p><strong>misc</strong> = default</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112210432170-16367222726244.png" srcset="/img/loading.gif" lazyload alt="image-20211112210432170"></p>
-<h2 id="5-条件覆盖率：iff关键词给coverpoint添加额外条件"><a href="#5-条件覆盖率：iff关键词给coverpoint添加额外条件" class="headerlink" title="5 条件覆盖率：iff关键词给coverpoint添加额外条件"></a>5 条件覆盖率：iff关键词给coverpoint添加额外条件</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112210817547.png" srcset="/img/loading.gif" lazyload alt="image-20211112210817547"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112210432170-16367222726244.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="5-条件覆盖率：iff关键词给coverpoint添加额外条件"><a href="#5-条件覆盖率：iff关键词给coverpoint添加额外条件" class="headerlink" title="5 条件覆盖率：iff关键词给coverpoint添加额外条件"></a>5 条件覆盖率：iff关键词给coverpoint添加额外条件</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112210817547.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>关注port变量，不单单要触发采样条件<code>ck.sample()</code>，还要<code>(!bus_if.reset)</code>即已经复位</p>
 <p>为什么ck要先关闭：因为要操作复位信号</p>
-<h2 id="6-翻转覆盖率：-gt-符号"><a href="#6-翻转覆盖率：-gt-符号" class="headerlink" title="6 翻转覆盖率：=&gt; 符号"></a>6 翻转覆盖率：=&gt; 符号</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112211158581.png" srcset="/img/loading.gif" lazyload alt="image-20211112211158581"></p>
-<h3 id="测试题-5"><a href="#测试题-5" class="headerlink" title="测试题"></a>测试题</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112211257808.png" srcset="/img/loading.gif" lazyload alt="image-20211112211257808"></p>
+<h2 id="6-翻转覆盖率：-gt-符号"><a href="#6-翻转覆盖率：-gt-符号" class="headerlink" title="6 翻转覆盖率：=&gt; 符号"></a>6 翻转覆盖率：=&gt; 符号</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112211158581.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="测试题-5"><a href="#测试题-5" class="headerlink" title="测试题"></a>测试题</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112211257808.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>答案：ABD</p>
-<h2 id="7-wildcard覆盖率：把X-Z或？当成0，1的通配"><a href="#7-wildcard覆盖率：把X-Z或？当成0，1的通配" class="headerlink" title="7 wildcard覆盖率：把X,Z或？当成0，1的通配"></a>7 wildcard覆盖率：把X,Z或？当成0，1的通配</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112211500653.png" srcset="/img/loading.gif" lazyload alt="image-20211112211500653"></p>
-<h2 id="8-忽略某些bin：关键词ignore-bins"><a href="#8-忽略某些bin：关键词ignore-bins" class="headerlink" title="8 忽略某些bin：关键词ignore_bins"></a>8 忽略某些bin：关键词ignore_bins</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112211609744.png" srcset="/img/loading.gif" lazyload alt="image-20211112211609744"></p>
+<h2 id="7-wildcard覆盖率：把X-Z或？当成0，1的通配"><a href="#7-wildcard覆盖率：把X-Z或？当成0，1的通配" class="headerlink" title="7 wildcard覆盖率：把X,Z或？当成0，1的通配"></a>7 wildcard覆盖率：把X,Z或？当成0，1的通配</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112211500653.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="8-忽略某些bin：关键词ignore-bins"><a href="#8-忽略某些bin：关键词ignore-bins" class="headerlink" title="8 忽略某些bin：关键词ignore_bins"></a>8 忽略某些bin：关键词ignore_bins</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112211609744.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>使用<code>ignore_bins</code>定义bin</p>
-<h2 id="9-非法某些bin：关键词illegal-bins"><a href="#9-非法某些bin：关键词illegal-bins" class="headerlink" title="9 非法某些bin：关键词illegal_bins"></a>9 非法某些bin：关键词illegal_bins</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112211746972.png" srcset="/img/loading.gif" lazyload alt="image-20211112211746972"></p>
-<h2 id="10-交叉覆盖率：关键词cross"><a href="#10-交叉覆盖率：关键词cross" class="headerlink" title="10 交叉覆盖率：关键词cross"></a>10 交叉覆盖率：关键词cross</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112211810842.png" srcset="/img/loading.gif" lazyload alt="image-20211112211810842"></p>
-<h3 id="1-排除部分cross-bin：ignore-bins-binsof-intersect"><a href="#1-排除部分cross-bin：ignore-bins-binsof-intersect" class="headerlink" title="(1) 排除部分cross bin：ignore_bins + binsof + intersect"></a>(1) 排除部分cross bin：ignore_bins + binsof + intersect</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112212537184.png" srcset="/img/loading.gif" lazyload alt="image-20211112212537184"></p>
+<h2 id="9-非法某些bin：关键词illegal-bins"><a href="#9-非法某些bin：关键词illegal-bins" class="headerlink" title="9 非法某些bin：关键词illegal_bins"></a>9 非法某些bin：关键词illegal_bins</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112211746972.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="10-交叉覆盖率：关键词cross"><a href="#10-交叉覆盖率：关键词cross" class="headerlink" title="10 交叉覆盖率：关键词cross"></a>10 交叉覆盖率：关键词cross</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112211810842.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="1-排除部分cross-bin：ignore-bins-binsof-intersect"><a href="#1-排除部分cross-bin：ignore-bins-binsof-intersect" class="headerlink" title="(1) 排除部分cross bin：ignore_bins + binsof + intersect"></a>(1) 排除部分cross bin：ignore_bins + binsof + intersect</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112212537184.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <figure class="highlight stylus"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">binsof</span><span class="hljs-params">(覆盖率组变量A)</span></span> itersect &#123;整形&#125;<br><span class="hljs-comment">//与7有关的“A”组合</span><br><br></code></pre></div></td></tr></table></figure>
 <hr>
 <p><code>ignore_bins md = binsof(port) intersect&#123;0&#125; &amp;&amp; binsof(kind) intersect &#123;[9:11]&#125;</code></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112212947981.png" srcset="/img/loading.gif" lazyload alt="image-20211112212947981"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112212947981.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <hr>
 <p><code>ignore_bins lo = binsof(kind.lo)//lo在前面定义了bin lo = &#123;[8:$]&#125;</code></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112213224109.png" srcset="/img/loading.gif" lazyload alt="image-20211112213224109"></p>
-<h3 id="2-精细的交叉覆盖率指定：交叉后bin由于过于多了，我们更常用指定，只用binsof"><a href="#2-精细的交叉覆盖率指定：交叉后bin由于过于多了，我们更常用指定，只用binsof" class="headerlink" title="(2) 精细的交叉覆盖率指定：交叉后bin由于过于多了，我们更常用指定，只用binsof"></a>(2) 精细的交叉覆盖率指定：交叉后bin由于过于多了，我们更常用指定，只用binsof</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112213515343.png" srcset="/img/loading.gif" lazyload alt="image-20211112213515343"></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112213606529.png" srcset="/img/loading.gif" lazyload alt="image-20211112213606529"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112213224109.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="2-精细的交叉覆盖率指定：交叉后bin由于过于多了，我们更常用指定，只用binsof"><a href="#2-精细的交叉覆盖率指定：交叉后bin由于过于多了，我们更常用指定，只用binsof" class="headerlink" title="(2) 精细的交叉覆盖率指定：交叉后bin由于过于多了，我们更常用指定，只用binsof"></a>(2) 精细的交叉覆盖率指定：交叉后bin由于过于多了，我们更常用指定，只用binsof</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112213515343.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112213606529.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>尽量不做排除法，而是指定法</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112213705741.png" srcset="/img/loading.gif" lazyload alt="image-20211112213705741"></p>
-<h3 id="测试题-6"><a href="#测试题-6" class="headerlink" title="测试题"></a>测试题</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112213730283.png" srcset="/img/loading.gif" lazyload alt="image-20211112213730283"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112213705741.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="测试题-6"><a href="#测试题-6" class="headerlink" title="测试题"></a>测试题</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112213730283.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>答案：ABC</p>
 <p>D错是因为，如果不连续（漏掉）某些bin，SV可能会自动帮你填充如：</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112214020363.png" srcset="/img/loading.gif" lazyload alt="image-20211112214020363"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112214020363.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>456没有关心</p>
-<h4 id="采样到illegal-bins仿真会停止"><a href="#采样到illegal-bins仿真会停止" class="headerlink" title="采样到illegal_bins仿真会停止"></a>采样到illegal_bins仿真会停止</h4><h1 id="六、覆盖选项"><a href="#六、覆盖选项" class="headerlink" title="六、覆盖选项"></a>六、覆盖选项</h1><h2 id="1-单个实例的覆盖率：查看单个覆盖率option-per-instance-1"><a href="#1-单个实例的覆盖率：查看单个覆盖率option-per-instance-1" class="headerlink" title="1 单个实例的覆盖率：查看单个覆盖率option.per_instance = 1"></a>1 单个实例的覆盖率：查看单个覆盖率option.per_instance = 1</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112214219083.png" srcset="/img/loading.gif" lazyload alt="image-20211112214219083"></p>
+<h4 id="采样到illegal-bins仿真会停止"><a href="#采样到illegal-bins仿真会停止" class="headerlink" title="采样到illegal_bins仿真会停止"></a>采样到illegal_bins仿真会停止</h4><h1 id="六、覆盖选项"><a href="#六、覆盖选项" class="headerlink" title="六、覆盖选项"></a>六、覆盖选项</h1><h2 id="1-单个实例的覆盖率：查看单个覆盖率option-per-instance-1"><a href="#1-单个实例的覆盖率：查看单个覆盖率option-per-instance-1" class="headerlink" title="1 单个实例的覆盖率：查看单个覆盖率option.per_instance = 1"></a>1 单个实例的覆盖率：查看单个覆盖率option.per_instance = 1</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112214219083.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h2 id="2-添加注释-option-commet-string"><a href="#2-添加注释-option-commet-string" class="headerlink" title="2 添加注释 option.commet = string*"></a>2 添加注释 option.commet = string*</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112215446401.png" srcset="/img/loading.gif" lazyload alt="："></p>
-<h2 id="3-覆盖次数限定：option-at-least"><a href="#3-覆盖次数限定：option-at-least" class="headerlink" title="3 覆盖次数限定：option.at_least"></a>3 覆盖次数限定：option.at_least</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112215549608.png" srcset="/img/loading.gif" lazyload alt="image-20211112215549608"></p>
-<h2 id="4-覆盖率目标：option-goal"><a href="#4-覆盖率目标：option-goal" class="headerlink" title="4 覆盖率目标：option.goal"></a>4 覆盖率目标：option.goal</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112215611103.png" srcset="/img/loading.gif" lazyload alt="image-20211112215611103"></p>
-<h2 id="5-covergroup方法"><a href="#5-covergroup方法" class="headerlink" title="5 covergroup方法"></a>5 covergroup方法</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112215640227.png" srcset="/img/loading.gif" lazyload alt="image-20211112215640227"></p>
+<h2 id="3-覆盖次数限定：option-at-least"><a href="#3-覆盖次数限定：option-at-least" class="headerlink" title="3 覆盖次数限定：option.at_least"></a>3 覆盖次数限定：option.at_least</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112215549608.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="4-覆盖率目标：option-goal"><a href="#4-覆盖率目标：option-goal" class="headerlink" title="4 覆盖率目标：option.goal"></a>4 覆盖率目标：option.goal</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112215611103.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="5-covergroup方法"><a href="#5-covergroup方法" class="headerlink" title="5 covergroup方法"></a>5 covergroup方法</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112215640227.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog">get_coverage()<span class="hljs-comment">//所有group加权以后的覆盖率</span><br>get_inst_coverage()<span class="hljs-comment">//特定覆盖组实例覆盖率</span><br><span class="hljs-comment">//返回的0-100实数就是百分比</span><br>set_inst_name(<span class="hljs-keyword">string</span>)设置覆盖组名称<br></code></pre></div></td></tr></table></figure>
 <h1 id="七、数据分析"><a href="#七、数据分析" class="headerlink" title="七、数据分析"></a>七、数据分析</h1><h2 id="1-概述-1"><a href="#1-概述-1" class="headerlink" title="1 概述"></a>1 概述</h2><p><strong>获得总体覆盖率</strong>：使用系统函数，或使用<code>get_inst_coverage()</code></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112215930314.png" srcset="/img/loading.gif" lazyload alt="image-20211112215930314"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112215930314.png" srcset="/img/loading.gif" lazyload alt=""></p>
 
             </div>
             <hr>

@@ -1,3 +1,7 @@
 .markdown-body p{
   white-space: pre-wrap;
 }
+
+.markdown-body p > a > img {
+  box-shadow: none;
+}

@@ -41,7 +41,7 @@
 <meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111225406992.png">
 <meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111225444256.png">
 <meta property="article:published_time" content="2021-11-11T13:21:00.000Z">
-<meta property="article:modified_time" content="2022-01-24T13:59:35.179Z">
+<meta property="article:modified_time" content="2022-03-19T11:05:55.635Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="IC">
 <meta property="article:tag" content="sv学习">
@@ -324,7 +324,7 @@
               <p>为什么现在讲：</p>
 <p>实验四、实验五、带着UVM思维考虑</p>
 <p>实验四实验五mcdf阶段，DUT变大了，我们主要讲如何将验证结构extend，对mcdf进行扩展</p>
-<h1 id="一、UVM简介"><a href="#一、UVM简介" class="headerlink" title="一、UVM简介"></a>一、UVM简介</h1><h2 id="1、概述"><a href="#1、概述" class="headerlink" title="1、概述"></a>1、概述</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111212500649.png" srcset="/img/loading.gif" lazyload alt="image-20211111212500649"></p>
+<h1 id="一、UVM简介"><a href="#一、UVM简介" class="headerlink" title="一、UVM简介"></a>一、UVM简介</h1><h2 id="1、概述"><a href="#1、概述" class="headerlink" title="1、概述"></a>1、概述</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111212500649.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>sv标准：2002—&gt;2012—&gt;2017</p>
 <p>2011年：UVM发布(Universal Verification Methodology)，各种M指的是Methodology</p>
 <p>UVM是验证敲门砖</p>
@@ -333,24 +333,24 @@
 <p>静态</p>
 <hr>
 <p><strong>语言趋势</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111213037283.png" srcset="/img/loading.gif" lazyload alt="image-20211111213037283"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111213037283.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <hr>
 <p>UVM吸取了各种M(AVM,OVM,UVM)的优点，且不绑定某一语言</p>
 <p>为什么：<strong>验证方法注重可重用的类</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111213047259.png" srcset="/img/loading.gif" lazyload alt="image-20211111213047259"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111213047259.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p><strong>底下一定要多画结构</strong></p>
 <hr>
 <p><strong>UVM什么数字的都可以验</strong></p>
 <p>他就是库，基于SV提供的一系列方法类库，提供一系列基础类库，UVM提供的类库和基本的验证结构可以很快的构建起来验证平台</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111213507233.png" srcset="/img/loading.gif" lazyload alt="image-20211111213507233"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111213507233.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <hr>
-<h3 id="学习UVM的路线"><a href="#学习UVM的路线" class="headerlink" title="学习UVM的路线"></a>学习UVM的路线</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111215918881.png" srcset="/img/loading.gif" lazyload alt="image-20211111215918881"></p>
+<h3 id="学习UVM的路线"><a href="#学习UVM的路线" class="headerlink" title="学习UVM的路线"></a>学习UVM的路线</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111215918881.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p> mcdf相比mcdt来讲：大家共有channel和arbiter；mcdf多了个寄存器模块和Formatter模块，设计变复杂了</p>
 <p>寄存器功能：配置功能、反应硬件状态，所以说既可写又可读，本身是硬件的一部分</p>
-<h3 id="UVM类库"><a href="#UVM类库" class="headerlink" title="UVM类库"></a>UVM类库</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111220320176.png" srcset="/img/loading.gif" lazyload alt="image-20211111220320176"></p>
+<h3 id="UVM类库"><a href="#UVM类库" class="headerlink" title="UVM类库"></a>UVM类库</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111220320176.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>P260页</p>
 <p><strong>分成了总共十大类</strong>：注意分类逻辑和处理场景</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111220422340.png" srcset="/img/loading.gif" lazyload alt="image-20211111220422340"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111220422340.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h3 id="UVM类"><a href="#UVM类" class="headerlink" title="UVM类"></a>UVM类</h3><p>按照类库地图可以分为以下几类：</p>
 <ul>
 <li>核心基类：为什么克隆啊，自动定义的，自动的做比较，自动的打印</li>
@@ -364,9 +364,9 @@
 <li>线程同步(thread synchronization)类：旗语等等</li>
 <li>书屋接口(transaction interface)类：发送数据包两个mailBox接起来，为什么要有接口呢？</li>
 </ul>
-<h3 id="测试题"><a href="#测试题" class="headerlink" title="测试题"></a>测试题</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111221214108.png" srcset="/img/loading.gif" lazyload alt="image-20211111221214108"></p>
+<h3 id="测试题"><a href="#测试题" class="headerlink" title="测试题"></a>测试题</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111221214108.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>答案：BCD</p>
-<h1 id="二、UVM组件"><a href="#二、UVM组件" class="headerlink" title="二、UVM组件"></a>二、UVM组件</h1><h2 id="1、概述-1"><a href="#1、概述-1" class="headerlink" title="1、概述"></a>1、概述</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111221245763.png" srcset="/img/loading.gif" lazyload alt="image-20211111221245763"></p>
+<h1 id="二、UVM组件"><a href="#二、UVM组件" class="headerlink" title="二、UVM组件"></a>二、UVM组件</h1><h2 id="1、概述-1"><a href="#1、概述-1" class="headerlink" title="1、概述"></a>1、概述</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111221245763.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>MCDF中的组件按功能分为：激励器(stimulator)、监视器(monitor)、检查器(checker)</p>
 <p><code>uvm_component</code>是非常重要的核心类，<strong>环境的组件类</strong></p>
 <h3 id="1-环境组件类"><a href="#1-环境组件类" class="headerlink" title="(1) 环境组件类"></a>(1) 环境组件类</h3><p>方框里面的都继承于<code>uvm_component</code></p>
@@ -380,32 +380,32 @@
 <li>uvm_test</li>
 </ul>
 <p>其中uvm_env和uvm_test的差别会体现在实验三和实验四里面</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111221535268.png" srcset="/img/loading.gif" lazyload alt="image-20211111221535268"></p>
-<h2 id="2、构建MCDF顶层验证环境：构建UVM最终结构图"><a href="#2、构建MCDF顶层验证环境：构建UVM最终结构图" class="headerlink" title="2、构建MCDF顶层验证环境：构建UVM最终结构图"></a>2、构建MCDF顶层验证环境：构建UVM最终结构图</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111221954118.png" srcset="/img/loading.gif" lazyload alt="image-20211111221954118"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111221535268.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="2、构建MCDF顶层验证环境：构建UVM最终结构图"><a href="#2、构建MCDF顶层验证环境：构建UVM最终结构图" class="headerlink" title="2、构建MCDF顶层验证环境：构建UVM最终结构图"></a>2、构建MCDF顶层验证环境：构建UVM最终结构图</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111221954118.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>目前这张图是我们到模块二的时候UVM应该是怎么样的形式</p>
 <hr>
 <p><strong>测试题</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111222034799.png" srcset="/img/loading.gif" lazyload alt="image-20211111222034799"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111222034799.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>答案：ABCD</p>
 <p>sequencer是agent里面的常客，产生激励在上图中看不到，因为此时产生激励不属于UVM的结构，属于动态的产生激励的过程，属于sequence(和sequencer就差了一个字母)，我们后来学</p>
 <hr>
 <h1 id="三、UVM环境"><a href="#三、UVM环境" class="headerlink" title="三、UVM环境"></a>三、UVM环境</h1><h2 id="1、phase机制"><a href="#1、phase机制" class="headerlink" title="1、phase机制"></a>1、phase机制</h2><h3 id="1-概述"><a href="#1-概述" class="headerlink" title="(1) 概述"></a>(1) 概述</h3><p>我们讲完组件，就需要例化了吧，再进行组件之间的连接，最后运行</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111222431847.png" srcset="/img/loading.gif" lazyload alt="image-20211111222431847"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111222431847.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>SV中我们通过new()函数没法解决一个重要问题，就是无法保证例化的先后关系，即在验证层次中没法保证先例化顶层，再例化下一层</p>
 <p>我们必须小心的不断通过new()里面进行嵌套，这个连接也成为了问题，需要确保上层例化了再对底层进行连接</p>
 <p>UVM可以事先进行配置，不用等待例化（即phase机制）</p>
 <p>phase机制名词上解释是阶段机制，就是按照阶段进行</p>
-<h3 id="2-phase机制函数表"><a href="#2-phase机制函数表" class="headerlink" title="(2) phase机制函数表"></a>(2) phase机制函数表</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111224701109.png" srcset="/img/loading.gif" lazyload alt="image-20211111224701109"></p>
+<h3 id="2-phase机制函数表"><a href="#2-phase机制函数表" class="headerlink" title="(2) phase机制函数表"></a>(2) phase机制函数表</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111224701109.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p><strong>在各个组件内部只需要去填充预定义好的方法</strong>，这些方法有的是函数、有的是任务</p>
 <p>phase机制解决了，例化的先后关系，从而只需要在对应组件中定义需要的任务</p>
-<h3 id="3-phase机制流程图"><a href="#3-phase机制流程图" class="headerlink" title="(3) phase机制流程图"></a>(3) phase机制流程图</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111225028176.png" srcset="/img/loading.gif" lazyload alt="image-20211111225028176"></p>
+<h3 id="3-phase机制流程图"><a href="#3-phase机制流程图" class="headerlink" title="(3) phase机制流程图"></a>(3) phase机制流程图</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111225028176.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p><strong>总共九个阶段</strong>：图中少了一个final阶段（其他的是除了黄色快的阶段与函数表一一对应）</p>
 <p>不一定都要在每个组件中实现所有方法，只需要实现对你有帮助的，其他阶段不定义就是空置的</p>
 <p>黄色部分先不讲</p>
-<h2 id="2、创建测试平台：流程图"><a href="#2、创建测试平台：流程图" class="headerlink" title="2、创建测试平台：流程图"></a>2、创建测试平台：流程图</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111225406992.png" srcset="/img/loading.gif" lazyload alt="image-20211111225406992"></p>
+<h2 id="2、创建测试平台：流程图"><a href="#2、创建测试平台：流程图" class="headerlink" title="2、创建测试平台：流程图"></a>2、创建测试平台：流程图</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111225406992.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <hr>
 <p><strong>测试题</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111225444256.png" srcset="/img/loading.gif" lazyload alt="image-20211111225444256"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111225444256.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>答案：ABCD</p>
 <p>函数是不消耗时间的所以B是对的，new函数也不消耗时间</p>
 

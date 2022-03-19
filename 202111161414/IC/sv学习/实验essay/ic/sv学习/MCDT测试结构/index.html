@@ -57,7 +57,7 @@
 <meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116230104837.png">
 <meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116230119510.png">
 <meta property="article:published_time" content="2021-11-16T06:14:00.000Z">
-<meta property="article:modified_time" content="2022-01-24T13:59:34.630Z">
+<meta property="article:modified_time" content="2022-03-19T11:05:55.636Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="实验">
 <meta property="article:tag" content="IC">
@@ -337,7 +337,7 @@
             <div class="markdown-body">
               <h1 id="1-MCDT"><a href="#1-MCDT" class="headerlink" title="1 MCDT"></a>1 MCDT</h1><p>多通道数据传送器，mult-channel data transmitter</p>
 <p>迷你版的MCDF</p>
-<h2 id="1-1-MCDT测试平台结构"><a href="#1-1-MCDT测试平台结构" class="headerlink" title="1.1 MCDT测试平台结构"></a>1.1 MCDT测试平台结构</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116141617844.png" srcset="/img/loading.gif" lazyload alt="image-20211116141617844"></p>
+<h2 id="1-1-MCDT测试平台结构"><a href="#1-1-MCDT测试平台结构" class="headerlink" title="1.1 MCDT测试平台结构"></a>1.1 MCDT测试平台结构</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116141617844.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h2 id="1-2-主要验证组件"><a href="#1-2-主要验证组件" class="headerlink" title="1.2 主要验证组件"></a>1.2 主要验证组件</h2><h3 id="1-2-1-stimulator"><a href="#1-2-1-stimulator" class="headerlink" title="1.2.1 stimulator"></a>1.2.1 stimulator</h3><p>stimulator激励发生器，是验证环境的重要部件，在一些场合中，它也被称为driver(驱动器)、BFM(bus function model , 总线功能模块)、behavioral(行为模型)或者generator(发生器)</p>
 <p>stimulator主要职责是模拟与DUT相邻设计的接口协议，只需要关注于如何模拟接口信号，使其能够以真实的接口协议来发送激励给DUT</p>
 <p>stimulator不应违反协议，但布局属于真实的硬件行为，还可以给出更多丰富的只要协议允许的激励场景</p>
@@ -393,21 +393,21 @@
 <h2 id="2-2-如何实现channel-generator-channel-initiator"><a href="#2-2-如何实现channel-generator-channel-initiator" class="headerlink" title="2.2 如何实现channel_generator,channel_initiator"></a>2.2 如何实现channel_generator,channel_initiator</h2><p>generator：产生数据</p>
 <p>initiator：将这些数据解析并驱动到interface的驱动组件</p>
 <p>transcation:用来定义一个抽象数据的数据包内容</p>
-<h2 id="2-3-channel-transcation"><a href="#2-3-channel-transcation" class="headerlink" title="2.3 channel_transcation"></a>2.3 channel_transcation</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116172647941.png" srcset="/img/loading.gif" lazyload alt="image-20211116172647941"></p>
+<h2 id="2-3-channel-transcation"><a href="#2-3-channel-transcation" class="headerlink" title="2.3 channel_transcation"></a>2.3 channel_transcation</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116172647941.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>数据成员有若干个<code>rand</code>形变量</p>
 <p>并针对数据成员声明了有效的数据约束，用来对单个随机变量或多个随机变量之间加以约束</p>
 <figure class="highlight avrasm"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs avrasm"><span class="hljs-symbol">data:</span>容纳一个数据包所有数据的动态数组data<br><span class="hljs-symbol">ch_id:</span>channel_id表示数据源<br><span class="hljs-symbol">pkg_id:</span>package_id表示数据所在数据包的packageid<br><span class="hljs-symbol">data_nidel:</span>控制数据包内相邻数据间隔周期的<br><span class="hljs-symbol">pkg_nidel:</span>相邻数据包间隔周期<br><span class="hljs-symbol">rsp:</span>用来表示反馈的(非随机)<br><span class="hljs-symbol">obj_id:</span>当前实例id(非随机)<br></code></pre></div></td></tr></table></figure>
 <hr>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116173239063.png" srcset="/img/loading.gif" lazyload alt="image-20211116173239063"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116173239063.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <figure class="highlight avrasm"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs avrasm"><span class="hljs-symbol">new:</span>构造函数<br><span class="hljs-symbol">clone:</span>当前实例克隆，包括两个操作：①创建新的实例②当前示例的数据成员拷贝到新实例对应成员，最后返回句柄<br></code></pre></div></td></tr></table></figure>
-<h2 id="2-4-channel-initiator"><a href="#2-4-channel-initiator" class="headerlink" title="2.4 channel_initiator"></a>2.4 channel_initiator</h2><h3 id="2-4-1-定义"><a href="#2-4-1-定义" class="headerlink" title="2.4.1 定义"></a>2.4.1 定义</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116173441139.png" srcset="/img/loading.gif" lazyload alt="image-20211116173441139"></p>
+<h2 id="2-4-channel-initiator"><a href="#2-4-channel-initiator" class="headerlink" title="2.4 channel_initiator"></a>2.4 channel_initiator</h2><h3 id="2-4-1-定义"><a href="#2-4-1-定义" class="headerlink" title="2.4.1 定义"></a>2.4.1 定义</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116173441139.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>从channel_generator获取，channel_transcation数据，并且将其中的数据驱动到接口interface上</p>
 <p>成员变量包括：</p>
 <figure class="highlight applescript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs applescript"><span class="hljs-built_in">name</span><br>虚接口:channel_interfadce<br>与channel_generator做数据通信的两个mailbox句柄,request_mailbox,response_maibox<br></code></pre></div></td></tr></table></figure>
 <p>成员方法</p>
 <figure class="highlight ceylon"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs ceylon">chnl<span class="hljs-number">_</span>initiator的<span class="hljs-keyword">new</span>函数中，它将参数赋值给了成员变量<br>set<span class="hljs-number">_</span><span class="hljs-keyword">interface</span>函数作用是为了从外部获得接口指针，并赋值于自己的虚接口成员变量，在类似句柄或者虚接口赋值过程中经常会做句柄或虚接口是否为空的判断，以免发生空句柄赋值<br></code></pre></div></td></tr></table></figure>
 <h3 id="2-4-2-任务：run运行任务"><a href="#2-4-2-任务：run运行任务" class="headerlink" title="2.4.2 任务：run运行任务"></a>2.4.2 任务：run运行任务</h3><p>chnl_initiator的run是个task任务</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116182335043.png" srcset="/img/loading.gif" lazyload alt="image-20211116182335043"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116182335043.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>它表示，该组件在验证环境开始时的职责就是调用driver任务，在接口上做数据驱动激励，在driver任务中他会等待系统复位信号释放后，利用forever循环语句不断地从request_mailbox中获取激励数据，并且将其通过chnl_write方法写出到接口上面，待发送完毕之后，还要克隆request数据再将其数据成员response值为1</p>
 <p>并且将反馈数据respose句柄通过resposen_mailbox写回到generator，如此完成了initiator和generator之间的<strong>事务数据握手</strong></p>
 <p>需要注意：Initiator或许和返回数据的两个句柄requestmb,respnosemb并没有在initiator中例化，而是在稍后的generator中例化的</p>
@@ -415,7 +415,7 @@
 <li>chnl_write数据驱动</li>
 <li>chnl_idle数据复位</li>
 </ul>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116183030785.png" srcset="/img/loading.gif" lazyload alt="image-20211116183030785"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116183030785.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>chnl_write ：</p>
 <ul>
 <li>从chnl_transcation对象中抽取动态数据data中的每一个子成员</li>
@@ -427,10 +427,10 @@
 <li>在时钟上升沿，将接口中的valid与data同时置为零</li>
 </ul>
 <h3 id="2-4-4-为什么没有channel-transcation没有体现在结构图中"><a href="#2-4-4-为什么没有channel-transcation没有体现在结构图中" class="headerlink" title="2.4.4  为什么没有channel_transcation没有体现在结构图中"></a>2.4.4  为什么没有channel_transcation没有体现在结构图中</h3><p>为什么没有channel_transcation没有体现在结构图中，是因为它作为chnl_init与chnl_gen之间通信的数据事务，并非验证结构中的成员</p>
-<h2 id="2-5-channel-generator"><a href="#2-5-channel-generator" class="headerlink" title="2.5 channel_generator"></a>2.5 channel_generator</h2><h3 id="2-5-1-定义"><a href="#2-5-1-定义" class="headerlink" title="2.5.1 定义"></a>2.5.1 定义</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116192157072.png" srcset="/img/loading.gif" lazyload alt="image-20211116192157072"></p>
+<h2 id="2-5-channel-generator"><a href="#2-5-channel-generator" class="headerlink" title="2.5 channel_generator"></a>2.5 channel_generator</h2><h3 id="2-5-1-定义"><a href="#2-5-1-定义" class="headerlink" title="2.5.1 定义"></a>2.5.1 定义</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116192157072.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>与trans相似的是都有rand变量与相应约束</p>
 <figure class="highlight haxe"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs haxe"><span class="hljs-keyword">new</span><span class="hljs-type"></span>函数例化两个信箱<br></code></pre></div></td></tr></table></figure>
-<h3 id="2-5-2-任务：run运行任务"><a href="#2-5-2-任务：run运行任务" class="headerlink" title="2.5.2 任务：run运行任务"></a>2.5.2 任务：run运行任务</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116192705880.png" srcset="/img/loading.gif" lazyload alt="image-20211116192705880"></p>
+<h3 id="2-5-2-任务：run运行任务"><a href="#2-5-2-任务：run运行任务" class="headerlink" title="2.5.2 任务：run运行任务"></a>2.5.2 任务：run运行任务</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116192705880.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
 <li>调用了多次创建数据事务，并且发送个chnl_init的任务</li>
 <li>发送完之后，调用用来控制仿真结束的旗语<code>run_stop_flags.put</code>,返回了一把钥匙</li>
@@ -451,47 +451,47 @@
 </ul>
 <p>有时候monitor和stiumlator可以选择相同的trans，做数据解析或写入</p>
 <p>实验中用自定义的结构体monitor_data用于存放检测到的数据，也被chnl_monitor和MCDT_monitor同时使用</p>
-<h2 id="3-2-monitor-data"><a href="#3-2-monitor-data" class="headerlink" title="3.2 monitor data"></a>3.2 monitor data</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116201845632.png" srcset="/img/loading.gif" lazyload alt="image-20211116201845632"></p>
+<h2 id="3-2-monitor-data"><a href="#3-2-monitor-data" class="headerlink" title="3.2 monitor data"></a>3.2 monitor data</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116201845632.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>只定义两个成员，因为对于两个Monitor没有数据包的概念，每个数据之间不存在联系，因此用chnl_trans做监测数据的事务类型是不妥的</p>
 <figure class="highlight haskell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs haskell"><span class="hljs-class"><span class="hljs-keyword">data</span>只是单数据而不是数组，不同于chnl_trans定义的动态数组</span><br><span class="hljs-title">id</span><br></code></pre></div></td></tr></table></figure>
-<h2 id="3-3-channel-monitor"><a href="#3-3-channel-monitor" class="headerlink" title="3.3 channel_monitor"></a>3.3 channel_monitor</h2><h3 id="3-3-1-定义"><a href="#3-3-1-定义" class="headerlink" title="3.3.1 定义"></a>3.3.1 定义</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116201820105.png" srcset="/img/loading.gif" lazyload alt="image-20211116201820105"></p>
+<h2 id="3-3-channel-monitor"><a href="#3-3-channel-monitor" class="headerlink" title="3.3 channel_monitor"></a>3.3 channel_monitor</h2><h3 id="3-3-1-定义"><a href="#3-3-1-定义" class="headerlink" title="3.3.1 定义"></a>3.3.1 定义</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116201820105.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <figure class="highlight haxe"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs haxe">name变量，在<span class="hljs-keyword">new</span><span class="hljs-type"></span>中赋值，用于后期的数据打印的消息中标记每个chnl_monitor名字<br>chnl_intf，同chnl_initiator，由外部传入接口指针<br>mon_mb：用于发送检测到书的mailbox句柄，没有例化，利用句柄，最终写到了checker中的mailbox实例<br></code></pre></div></td></tr></table></figure>
 <h3 id="3-3-2-任务run"><a href="#3-3-2-任务run" class="headerlink" title="3.3.2 任务run"></a>3.3.2 任务run</h3><p>chnl_monitor同initiator与generator，在验证环境运行时执行工作，所以也有任务run</p>
 <p>用于不断地等待输出数据事件</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116202603263.png" srcset="/img/loading.gif" lazyload alt="image-20211116202603263"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116202603263.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>用于判断什么时候的采集数据是有效的：时钟上升沿的同时，valid===1并且ready===1</p>
 <p>注意三个等号，用来判断四值逻辑变量</p>
 <p>chnl_data数据写入到监测数据中，并通过mon_mb写入到checker中的监测数据缓存里面</p>
 <h2 id="3-4-MCDT-Monitor"><a href="#3-4-MCDT-Monitor" class="headerlink" title="3.4 MCDT Monitor"></a>3.4 MCDT Monitor</h2><h3 id="3-4-1-定义"><a href="#3-4-1-定义" class="headerlink" title="3.4.1 定义"></a>3.4.1 定义</h3><p>成员变量和方法与chnl_mon类似，只是传入的指针接口是<strong>mcdt_interface</strong>，因为该接口监控与驱动的数据内容不同于chnl_interface</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116202955592.png" srcset="/img/loading.gif" lazyload alt="image-20211116202955592"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116202955592.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h3 id="3-4-2-任务：mon-trans"><a href="#3-4-2-任务：mon-trans" class="headerlink" title="3.4.2 任务：mon_trans"></a>3.4.2 任务：mon_trans</h3><p>不断地等待有效的输出数据事件</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116203146373.png" srcset="/img/loading.gif" lazyload alt="image-20211116203146373"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116203146373.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>由于MCDT的输出数据同时还包括id信息，所以需要将mcdt_data , mcdt_id都写入到检测数据中</p>
 <h1 id="4-checker"><a href="#4-checker" class="headerlink" title="4 checker"></a>4 checker</h1><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116203423848.png" srcset="/img/loading.gif" lazyload alt="目前实现的结构"></p>
-<h2 id="3-4-checker"><a href="#3-4-checker" class="headerlink" title="3.4 checker"></a>3.4 checker</h2><h3 id="3-4-1-定义-1"><a href="#3-4-1-定义-1" class="headerlink" title="3.4.1 定义"></a>3.4.1 定义</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116203656979.png" srcset="/img/loading.gif" lazyload alt="image-20211116203656979"></p>
+<h2 id="3-4-checker"><a href="#3-4-checker" class="headerlink" title="3.4 checker"></a>3.4 checker</h2><h3 id="3-4-1-定义-1"><a href="#3-4-1-定义-1" class="headerlink" title="3.4.1 定义"></a>3.4.1 定义</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116203656979.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>成员变量包括</p>
 <figure class="highlight apache"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">name</span><br><span class="hljs-attribute">error_count</span>：用于对错误比较技术<br><span class="hljs-attribute">cmp_count</span>：对所有比较技术<br><span class="hljs-attribute">in_mbs</span>[<span class="hljs-number">3</span>]：三个输入端监测数据的mailbox<br><span class="hljs-attribute">out_mb</span>：一个输出端检测数据的mailbox<br></code></pre></div></td></tr></table></figure>
 <figure class="highlight haxe"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs haxe"><span class="hljs-keyword">new</span><span class="hljs-type"></span>中分别对name、error_count、cmp_count做初始化<br>例化了所有的mb实例<br></code></pre></div></td></tr></table></figure>
 <h3 id="3-4-2-任务：run"><a href="#3-4-2-任务：run" class="headerlink" title="3.4.2 任务：run"></a>3.4.2 任务：run</h3><p>运行方法，调用单一的指责方法do_compare()</p>
 <hr>
-<h3 id="3-4-3-任务：do-compare"><a href="#3-4-3-任务：do-compare" class="headerlink" title="3.4.3 任务：do_compare"></a>3.4.3 任务：do_compare</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116204108341.png" srcset="/img/loading.gif" lazyload alt="image-20211116204108341"></p>
+<h3 id="3-4-3-任务：do-compare"><a href="#3-4-3-任务：do-compare" class="headerlink" title="3.4.3 任务：do_compare"></a>3.4.3 任务：do_compare</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116204108341.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>是数据比较的核心</p>
 <figure class="highlight applescript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs applescript">每次从输出端缓存mb中获取一个输出数据<br>凭借该输出数据ID判断从哪一个输入端缓存中获取数据<br>都获取数据之后进行比较<br>比较错误借助$<span class="hljs-keyword">error</span>打印错误信息,error_cnt计数<br>比较成功打印成功信息<br>无论成功失败每次比较给cmp_cnt计数<br></code></pre></div></td></tr></table></figure>
 <h1 id="5-实现顶层环境和测试用例"><a href="#5-实现顶层环境和测试用例" class="headerlink" title="5 实现顶层环境和测试用例"></a>5 实现顶层环境和测试用例</h1><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116210118259.png" srcset="/img/loading.gif" lazyload alt="目前实现结构图"></p>
 <h2 id="5-1-agent"><a href="#5-1-agent" class="headerlink" title="5.1 agent"></a>5.1 agent</h2><p>基本的验证单元，或者被称为<strong>代理</strong>，本身不具备特定职责，只是在内部例化了initiator和monitor，并将它们作为小队组织在一起，这么做是因为无论激励还是监测，在验证环境中都是必不可少的，且每一个接口都对应着一个initiator和monitor</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116211317271.png" srcset="/img/loading.gif" lazyload alt="image-20211116211317271"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116211317271.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>成员变量都在new中得到初始化和例化</p>
 <p>也具备set_interface函数</p>
 <hr>
 <p><strong>任务：</strong>set_interface</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116211721080.png" srcset="/img/loading.gif" lazyload alt="image-20211116211721080"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116211721080.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <figure class="highlight crmsh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs crmsh">除了自身获得虚接口，还会进一步传递给initiator和<span class="hljs-literal">monitor</span><br></code></pre></div></td></tr></table></figure>
 <hr>
 <p><strong>任务：</strong>run</p>
 <p>并不承担其他职责而是负责唤醒initiator和monitor的run任务起到承上启下的作用</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116211908782.png" srcset="/img/loading.gif" lazyload alt="image-20211116211908782"></p>
-<h2 id="5-2-顶层环境mdct-root-test"><a href="#5-2-顶层环境mdct-root-test" class="headerlink" title="5.2 顶层环境mdct_root_test"></a>5.2 顶层环境mdct_root_test</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116212050647.png" srcset="/img/loading.gif" lazyload alt="image-20211116212050647"></p>
-<h3 id="5-2-1-定义"><a href="#5-2-1-定义" class="headerlink" title="5.2.1 定义"></a>5.2.1 定义</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116212312316.png" srcset="/img/loading.gif" lazyload alt="image-20211116212312316"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116211908782.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="5-2-顶层环境mdct-root-test"><a href="#5-2-顶层环境mdct-root-test" class="headerlink" title="5.2 顶层环境mdct_root_test"></a>5.2 顶层环境mdct_root_test</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116212050647.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="5-2-1-定义"><a href="#5-2-1-定义" class="headerlink" title="5.2.1 定义"></a>5.2.1 定义</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116212312316.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>成员对象包括：</p>
 <ul>
 <li>三个channel_generator(chnl_generator gen)</li>
@@ -505,10 +505,10 @@
 <li>控制generator停止产生激励数据的<strong>事件</strong>generator_stop_event(gen_stop_e)</li>
 </ul>
 <figure class="highlight haxe"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs haxe"><span class="hljs-keyword">new</span><span class="hljs-type"></span>对所有组件进行例化，将所有组件数据通信关系进行连接<br></code></pre></div></td></tr></table></figure>
-<h3 id="5-2-2-new（续）"><a href="#5-2-2-new（续）" class="headerlink" title="5.2.2 new（续）"></a>5.2.2 new（续）</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116212633341.png" srcset="/img/loading.gif" lazyload alt="image-20211116212633341"></p>
+<h3 id="5-2-2-new（续）"><a href="#5-2-2-new（续）" class="headerlink" title="5.2.2 new（续）"></a>5.2.2 new（续）</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116212633341.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>在连接组件之前对组件先进行例化</p>
 <p>参照组件之间的通信关系，完成mailbox句柄赋值</p>
-<h3 id="5-2-3-gen-stop-callback-run-stop-callback"><a href="#5-2-3-gen-stop-callback-run-stop-callback" class="headerlink" title="5.2.3 gen_stop_callback , run_stop_callback"></a>5.2.3 gen_stop_callback , run_stop_callback</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116213437000.png" srcset="/img/loading.gif" lazyload alt="image-20211116213437000"></p>
+<h3 id="5-2-3-gen-stop-callback-run-stop-callback"><a href="#5-2-3-gen-stop-callback-run-stop-callback" class="headerlink" title="5.2.3 gen_stop_callback , run_stop_callback"></a>5.2.3 gen_stop_callback , run_stop_callback</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116213437000.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>gen_stop_callback：</p>
 <ul>
 <li><p>mcdt_root_test是父类，没有对gen_stop_callback这个回调函数填充</p>
@@ -524,15 +524,15 @@
 <li>run_stop_callback结合channel_generator发送完数据给旗语run_stop_flag交还钥匙的逻辑共同完成了对结束仿真的时序控制</li>
 </ul>
 <h3 id="5-2-4-run-顶层环境的运行任务"><a href="#5-2-4-run-顶层环境的运行任务" class="headerlink" title="5.2.4 run(顶层环境的运行任务)"></a>5.2.4 run(顶层环境的运行任务)</h3><p>起到调度整体环境组建的作用</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116224255876.png" srcset="/img/loading.gif" lazyload alt="image-20211116224255876"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116224255876.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <figure class="highlight asciidoc"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs asciidoc">调用do<span class="hljs-emphasis">_config任务，该任务决定产生多少个什么样的随机数据事务</span><br><span class="hljs-emphasis">触发各个agent、mcdt_monitor、checker让他们各自开始执行</span><br><span class="hljs-emphasis">通识准备了等候gen_stop_</span>e的事件，并强行停止gen产生激励事物的线程<br></code></pre></div></td></tr></table></figure>
 <p>使用并行线程<code>fork...join_none</code>语句，为的是启动程序而不阻碍各个程序执行</p>
 <p>但本例没有用到这一特性</p>
 <hr>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116225039863.png" srcset="/img/loading.gif" lazyload alt="image-20211116225039863"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116225039863.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>除了generator以外都进入到run的运行任务，但他们并没有走多远，因为他们没有generator生成的trans</p>
 <figure class="highlight lasso"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs lasso">因此最后使用<span class="hljs-string">``</span>fork<span class="hljs-params">...</span><span class="hljs-keyword">join</span><span class="hljs-string">``</span>控制generator开始运行<br>并且产生和发送随机事务给initiator<br>结束后调用run_stop_callback()<br></code></pre></div></td></tr></table></figure>
-<h3 id="5-2-5-set-interface"><a href="#5-2-5-set-interface" class="headerlink" title="5.2.5 set_interface"></a>5.2.5 set_interface</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116225450808.png" srcset="/img/loading.gif" lazyload alt="image-20211116225450808"></p>
+<h3 id="5-2-5-set-interface"><a href="#5-2-5-set-interface" class="headerlink" title="5.2.5 set_interface"></a>5.2.5 set_interface</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116225450808.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>set_interface：同channel_agent一致，主要做虚接口传递</p>
 <p>do_config：</p>
 <ul>
@@ -543,8 +543,8 @@
 <p>至此我们使用顶层盒子mcdt_root_test封装了这些组件</p>
 <p>并通过.run运行任务</p>
 <h2 id="5-4-do-config重定义"><a href="#5-4-do-config重定义" class="headerlink" title="5.4 do_config重定义"></a>5.4 do_config重定义</h2><p>在触发组件运行之前，需确定需要产生什么样的数据激励(重定义do_config函数)</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116230019374.png" srcset="/img/loading.gif" lazyload alt="image-20211116230019374"></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116230104837.png" srcset="/img/loading.gif" lazyload alt="image-20211116230104837"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116230019374.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116230104837.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>通过对三个generator随机化，指定了各个chnl_gen需要产生的数据事务器(trans)的数量、数据之间和数据包之间的空闲周期、每个数据包的数据容量中</p>
 <p>在随机化过程中，通过立即断言判断随机化是否成功。如果失败使用$fatal报告错误信息并停止仿真</p>
 <h2 id="5-5-最后实现结构图"><a href="#5-5-最后实现结构图" class="headerlink" title="5.5 最后实现结构图"></a>5.5 最后实现结构图</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211116230119510.png" srcset="/img/loading.gif" lazyload alt="目前实现结构图"></p>

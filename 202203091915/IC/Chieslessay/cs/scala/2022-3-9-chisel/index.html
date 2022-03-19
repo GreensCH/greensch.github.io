@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/96733090_p3.jpg">
 <meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/96733090_p4.jpg">
 <meta property="article:published_time" content="2022-03-09T11:15:00.000Z">
-<meta property="article:modified_time" content="2022-03-15T14:54:10.611Z">
+<meta property="article:modified_time" content="2022-03-19T11:05:55.636Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="IC">
 <meta property="article:tag" content="学习">
@@ -507,7 +507,7 @@
 <ul>
 <li><p>接收参数为<strong>一个Seq[T]</strong>或者是<strong>多个重复字面量</strong>来构造向量，且常有有<strong>字面值的数据作为参数</strong>，<strong>用于初始化寄存器组、ROM、RAM等，或者用来构造多个模块</strong></p>
 </li>
-<li><p><img src="2022-3-9-chisel/image-20220313172534854.png" srcset="/img/loading.gif" lazyload alt="image-20220313172534854"><a target="_blank" rel="noopener" href="https://www.chisel-lang.org/api/3.3.3/chisel3/VecInit$.html">官网api解释</a></p>
+<li><p><img src="2022-3-9-chisel/image-20220313172534854.png" srcset="/img/loading.gif" lazyload alt=""><a target="_blank" rel="noopener" href="https://www.chisel-lang.org/api/3.3.3/chisel3/VecInit$.html">官网api解释</a></p>
 </li>
 </ul>
 <p><strong>因为Vec[T]也是一种Seq</strong></p>
@@ -1431,7 +1431,7 @@
 <p>注意，重写的toPrintable方法的返回类型固定是Printable，这是因为p插值器的返回类型就是Printable，并且Printable类里定义了一个方法“+”用于将多个字符串拼接起来。在最后一个语句里，p插值器会求值myMessage，这就会调用Message类的toPrintable方法。因此，最终的打印信息如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">Message:<br>     valid  : v<br>     addr   : 0x00001234<br>     length : 10<br>     data   : 0x00000000deadbeef<br></code></pre></div></td></tr></table></figure>
 <h3 id="8-4-2-C风格"><a href="#8-4-2-C风格" class="headerlink" title="8.4.2 C风格"></a>8.4.2 C风格</h3><p>Chisel的printf也支持C的部分格式控制符和转义字符。如下所示：</p>
-<p><img src="2022-3-9-chisel/image-20220313224501135.png" srcset="/img/loading.gif" lazyload alt="image-20220313224501135"></p>
+<p><img src="2022-3-9-chisel/image-20220313224501135.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala"><span class="hljs-keyword">val</span> myUInt = <span class="hljs-number">32.</span><span class="hljs-type">U</span><br>printf(<span class="hljs-string">&quot;myUInt = %d&quot;</span>, myUInt) <span class="hljs-comment">// myUInt = 32</span><br></code></pre></div></td></tr></table></figure>
 <h2 id="8-5-Chisel的对数与对数取整"><a href="#8-5-Chisel的对数与对数取整" class="headerlink" title="8.5 Chisel的对数与对数取整"></a>8.5 Chisel的对数与对数取整</h2><p><strong>对数单例对象的apply方法：</strong>Log2，返回值为该参数的以2为底的幂次</p>
 <ul>

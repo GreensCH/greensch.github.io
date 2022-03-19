@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220312153002976.png">
 <meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220312152943394.png">
 <meta property="article:published_time" content="2022-03-12T09:45:37.000Z">
-<meta property="article:modified_time" content="2022-03-16T14:30:54.713Z">
+<meta property="article:modified_time" content="2022-03-19T11:05:55.587Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="调研">
 <meta name="twitter:card" content="summary_large_image">
@@ -349,7 +349,7 @@
 <h2 id="2-裸机下的嵌入式应用开发"><a href="#2-裸机下的嵌入式应用开发" class="headerlink" title="2 裸机下的嵌入式应用开发"></a>2 裸机下的嵌入式应用开发</h2><h3 id="2-1-开发思路"><a href="#2-1-开发思路" class="headerlink" title="2.1 开发思路"></a>2.1 开发思路</h3><p>软件动态重配置在 Linux 下可以通过 DevCfg 驱动进行(2018.1版本前)，在没有操作系统的情况下，我们也可以<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/95751537"><strong>在 SDK 中通过用户代码调用DevCfg开发</strong></a></p>
 <p>XILINX官方的<a target="_blank" rel="noopener" href="https://blog.csdn.net/vinnie__/article/details/52829874">BSP裸机例程里有xdevcfg的驱动代码</a>，里面有个例程叫做POLL_EXAMPLE，就是实现PS配置PL比特流的，可以将指定的DDR空间里的数据给FPGA加载，如果这段数据是正确的比特流，那么FPGA就可以成功加载。但是这个代码经过实测，在PL已经CONFIG DONE的情况下是不工作的，我们要对其进行修改。</p>
 <h3 id="2-2-有关DONE状态的问题"><a href="#2-2-有关DONE状态的问题" class="headerlink" title="2.2 有关DONE状态的问题"></a>2.2 有关DONE状态的问题</h3><p>刚刚开发思路里提到DONE状态，这里<a target="_blank" rel="noopener" href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841847/Solution+ZynqMP+PL+Programming#SolutionZynqMPPLProgramming-KnownIssuesforPLPrograming">官方文档</a>也给了一定的提示</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220312160044823.png" srcset="/img/loading.gif" lazyload alt="image-20220312160044823"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220312160044823.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <blockquote>
 <p>需要注意的是，有时，依赖 XilFPGA 库的裸机应用程序在获取 DONE 状态时可能会产生错误。更多详细信息请参见回答记录70504- <a target="_blank" rel="noopener" href="https://www.xilinx.com/support/answers/70504.html">https://www.xilinx.com/support/answers/70504.html</a></p>
 </blockquote>
@@ -413,8 +413,8 @@
 <ul>
 <li>petalinux-config中开启fpga manager</li>
 </ul>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220312143654431.png" srcset="/img/loading.gif" lazyload alt="image-20220312143654431"></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220312143821630.png" srcset="/img/loading.gif" lazyload alt="image-20220312143821630"></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220312143654431.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220312143821630.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p><strong>（3）其他</strong></p>
 <p>其他petalinux生成过程中的配置可参考链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/long_fly/article/details/78727813">https://blog.csdn.net/long_fly/article/details/78727813</a></p>
 <h3 id="4-2-bin格式比特流生成"><a href="#4-2-bin格式比特流生成" class="headerlink" title="4.2 bin格式比特流生成"></a>4.2 bin格式比特流生成</h3><p>使用bootgen工具完成对动态加载的比特流文件的转换</p>
