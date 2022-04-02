@@ -23,12 +23,18 @@
 <meta property="og:site_name" content="友人律的博客">
 <meta property="og:description" content="参考文档链接：https:&#x2F;&#x2F;verificationacademy.com&#x2F;verification-methodology-reference&#x2F;uvm&#x2F;docs_1.2&#x2F;html&#x2F; 前言sv实验五到uvm实验四之间所有的验证结构、组件、环境、运行、怎么开始结束，都是映射的，uvm所有的核心已经sv过度到uvm 今天我们学的寄存器结构，sv里面虽然也有但比较简陋，在uvm我们需要用相关语法去合成">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220324115648418.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220324115906221.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220324202709816.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220324214700393.png">
+<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220325154103397.png">
 <meta property="article:published_time" content="2022-02-10T17:26:00.000Z">
-<meta property="article:modified_time" content="2022-02-18T17:54:41.679Z">
+<meta property="article:modified_time" content="2022-03-31T09:14:19.863Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="IC">
 <meta property="article:tag" content="uvm学习">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220324115648418.png">
   
   <title>UVM入门进阶9：寄存器模型概览_集成.md - 友人律的博客</title>
 
@@ -259,7 +265,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      379 字
+      10k 字
     </span>
   
 
@@ -268,7 +274,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1 分钟
+      33 分钟
     </span>
   
 
@@ -315,7 +321,161 @@
 </ul>
 </li>
 </ul>
-<h1 id="1-寄存器模型概览"><a href="#1-寄存器模型概览" class="headerlink" title="1 寄存器模型概览"></a>1 寄存器模型概览</h1>
+<h1 id="1-寄存器模型概览"><a href="#1-寄存器模型概览" class="headerlink" title="1 寄存器模型概览"></a>1 寄存器模型概览</h1><h2 id="1-1-概览"><a href="#1-1-概览" class="headerlink" title="1.1 概览"></a>1.1 概览</h2><h3 id="1）-概览"><a href="#1）-概览" class="headerlink" title="1） 概览"></a>1） 概览</h3><p>对于硬件有了解的读者，都知道<strong>寄存器是模块之间互相交谈的窗口</strong></p>
+<ul>
+<li><strong>寄存器的作用：</strong><ul>
+<li>一方面可以通过读出寄存器的状态，获取硬件当前的状况</li>
+<li>另外一方面也可以通过配置寄存器，使得寄存器工作在一定的模式下</li>
+</ul>
+</li>
+<li>在验证的过程中，<strong>寄存器的验证也排在了验证清单的前列</strong>，因为只有首先保证寄存器的功能正确，才会使得硬件与硬件之间的交谈是“语义一致”的</li>
+<li><strong>如果寄存器配置结果与寄存器配置内容不同：</strong><ul>
+<li><strong>那么硬件无法工作在想要的模式下</strong></li>
+<li><strong>可能无法正确反映硬件的状态</strong></li>
+</ul>
+</li>
+</ul>
+<p><strong>本节内容：</strong>本节我们关于UVM寄存器模型的介绍中，会将MCDF寄存器模块简化，通过硬件的寄存器模型和总线UVC建立一个小的验证环境：</p>
+<ul>
+<li>寄存器有关的<strong>设计流程</strong></li>
+<li><strong>UVM寄存器模型的相关类</strong></li>
+<li>如何将<strong>寄存器模型集成到现有环境</strong>，与总线UVC桥接，与DUT模型绑定</li>
+<li>寄存器<strong>模型的常用方法(预定义sequence更可读)</strong>和<strong>预定义的sequence</strong></li>
+<li>寄存器测试/寄存器覆盖率，和功能覆盖率的实际用例</li>
+</ul>
+<p><strong>寄存器内部实现：</strong></p>
+<blockquote>
+<p>硬件中的各个功能模块可以由处理器来配置功能以及访问状态，而与处理器的对话即是通过寄存器的读写来实现的。</p>
+</blockquote>
+<ul>
+<li>寄存器的<strong>硬件实现是通过触发器</strong>，而<strong>每一个比特位的触发器都对应着寄存器的功能描述</strong>（function specification）。</li>
+<li><strong>一个寄存器一般由32个比特位构成</strong>，将单个寄存器拆分之后<strong>，又可以分为多个域（field）</strong>，不同的域往往代表着某一项独立的功能<ul>
+<li>单个的域可能由多个比特位构成，也可能由单一比特位构成，这取决于该域的功能模式可配置的数量</li>
+<li>而不同的域，对于外部的读写而言，又大致可以分为WO（write-only，只写），RO（read-only，只读）和RW（read and write，读写），除过这些常见的操作属性以外，还有一些特殊行为（quirky）的寄存器，例如读后擦除模式（clean-on-read，RC），只写一次模式（write-one-to-set，W1S）</li>
+</ul>
+</li>
+</ul>
+<p><strong>MCDF的寄存器模块的描述：</strong></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220324115648418.png" srcset="/img/loading.gif" lazyload alt="0x00和0x10寄存器位图，内部不同位宽代表了不同域"></p>
+<ul>
+<li>MCDF的寄存器模块描述，将<strong>0×00功能寄存器</strong>和<strong>0×10状态寄存器</strong>位用图来表示</li>
+<li>通常来讲，一个寄存器有32位宽，寄存器按照地址索引的关系是按<strong>字对齐的（word-align）</strong>，上图中的寄存器有多个域，每个域的属性也可以不相同，reserved域表示的是该域所包含的比特位暂时保留以作日后功能的扩展使用，而对保留域的读写不起任何作用，即无法写入而且读出值也是它的复位值</li>
+<li><strong>寄存器块（register block）</strong>：上面的这些寄存器按照地址排列，即可构成寄存器列表，我们称之为</li>
+<li>实际上，<strong>寄存器块除了包含寄存器，也可以包含存储器</strong>，因为它们的属性都近乎于读写功能，以及表示为同外界通信的接口</li>
+</ul>
+<p><strong>MCDF的寄存器功能模块可由这样一个register block来表示，寄存器快中有多个寄存器有机结合：</strong></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220324115906221.png" srcset="/img/loading.gif" lazyload alt="左软件模型，右硬件实现"></p>
+<ul>
+<li><p>左边的softmodel来自简陋的referencemodel通过UVM寄存器泛式变成正规模型，进行预测</p>
+</li>
+<li><p>map：包含所有信息，例如上面所有寄存器的地址信息</p>
+</li>
+<li>Register Initiatior/Register Agent：用来做驱动（双向的），对MCDT所有的读写都会反过来进行反向预测</li>
+</ul>
+<p>硬件与软件中的寄存器：</p>
+<ul>
+<li><p><strong>寄存器分区，示图中除了包含DUT的寄存器模块（由硬件实现），还有属于验证环境的寄存器模型。：</strong></p>
+<ul>
+<li><strong>一个寄存器可以由多个域构成</strong>，</li>
+<li><p><strong>单个域可以包含多个比特位</strong>；</p>
+</li>
+<li><p>一个功能模块中的<strong>多个寄存器可以组团构成一个寄存器模型（register model）</strong></p>
+</li>
+</ul>
+</li>
+<li>这<strong>两个模块包含的寄存器信息是高度一致的</strong>，属于验证环境的寄存器模型也可以抽象出一个层次化的寄存器列表，该列表所包含的地址、域、属性等信息都与硬件一侧的寄存器内容一致</li>
+<li>对于功能验证而言，可以<strong>将总线访问寄存器的方式抽象为寄存器模型访问的方式</strong><ul>
+<li>这种方式使得寄存器后期的地址修改（例如基地址更改）或者域的添加都不会对已有的激励构成影响，从而提高已有测试序列的<strong>复用性</strong>。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2）寄存器中心化管理方式"><a href="#2）寄存器中心化管理方式" class="headerlink" title="2）寄存器中心化管理方式"></a>2）寄存器中心化管理方式</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220324202709816.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>通过软件建立寄存器模型的方法如何保证与硬件寄存器的内容属性保持一致呢？</p>
+<ul>
+<li>这离不开一份<strong>中心化管理的寄存器描述文件</strong></li>
+<li>很多公司目前在<strong>使用XML格式的寄存器描述文件</strong>，也有一些公司在使用Excel（CSV）或者DOC等格式来保存寄存器的描述</li>
+</ul>
+<p>为什么寄存器描述应该被中心化管理呢？</p>
+<ul>
+<li>因为采用单一源的管理方式可以<strong>尽量降低出现分歧和错误的可能</strong></li>
+</ul>
+<p><strong>寄存器描述文档使用了结构化的文档描述方式</strong>，这也是为什么可以通过XML或者Excel（CSV）等<strong>数据结构化</strong>的方式来实现寄存器的功能描述</p>
+<p>在寄存器中心化中不同工程师的工作（通过数据结构化的存储方式，可以在硬件和软件开发过程中以不后方式来使用寄存器描述文档）：</p>
+<ul>
+<li><strong>系统工程师</strong>会撰写并维护寄存器描述文件，而后归置到中心化存储路径供其他工程师开发使用</li>
+<li><strong>硬件工程师</strong>会利用寄存器描述文件生成寄存器硬件模块（包含各个寄存器的硬件实现和总线访问模块）</li>
+<li><strong>验证工程师</strong>会利用寄存器描述文件来生成UVM寄存器模型，以供验证过程中的激励使用、寄存器测试和功能覆盖率收集</li>
+<li><strong>软件工程师</strong>会利用该文件生成用于软件开发的寄存器配置的头文件（header file），从而提高软件开发的可维护性</li>
+<li>寄存器描述文件也可以用来<strong>生成文档</strong>，实现更好的可读性</li>
+</ul>
+<p>推荐<strong>自动化的生成方式</strong>，原因还包括：</p>
+<ul>
+<li><strong>手动转换会有潜在的错误</strong>，而且寄存器越多出现错误的可能性越大，这样会使得后期调试的难度更大</li>
+<li>一个广义的寄存器生成器（register generator），应该依据统一格式的寄存器描述文件，来生成UVM寄存器模型（为验证），或者硬件寄存器模块（被集成到设计中）</li>
+<li>一个稳定的寄存器不但可以保证从文本信息到寄存器模型的无错误转换，还可以在转换过程中通过语义检查发现寄存器描述文件违规的情况帮助修正寄存器描述文件内容</li>
+<li><strong>如果寄存器描述文件内容有更新，寄存器生成器可以再次生成需要的相关文件格式，这对于流程化作业非常方便</strong></li>
+<li>对于验证所需的寄存器模型而言，一个更有效的做法是可以通过封装已有的寄存器生成器，使得可以<strong>通过指定多个寄存器模块和其对应基地址</strong>，继而生成一个层次化的寄存器模型，从而将系统级的寄存器模型归纳在一起，便于操作管理</li>
+</ul>
+<h2 id="1-2-UVM寄存器"><a href="#1-2-UVM寄存器" class="headerlink" title="1.2 UVM寄存器"></a>1.2 UVM寄存器</h2><p>进入编写代码阶段，学会如何使用这些类构建模型、自动生成模型</p>
+<h3 id="1）uvm-reg相关概念"><a href="#1）uvm-reg相关概念" class="headerlink" title="1）uvm_reg相关概念"></a>1）uvm_reg相关概念</h3><p>不需要理解每一个方法，重点在集成</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220324214700393.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>uvm_reg_field</li>
+<li>uvm_reg对应每一个寄存器，内部包含uvm_reg_field</li>
+<li>uvm_mem包含多个uvm_reg</li>
+<li>uvm_reg_block包含多个uvm_mem,uvm_reg_map,uvm_reg</li>
+</ul>
+<h3 id="2）代码示例"><a href="#2）代码示例" class="headerlink" title="2）代码示例"></a>2）<strong>代码示例</strong></h3><figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-comment">//control寄存器模型示例</span><br><span class="hljs-keyword">class</span> ctrl_reg <span class="hljs-keyword">extends</span> uvm_reg; <br>    <span class="hljs-meta">`uvm_object_utils (ctrl_reg) //注册为uvm_object</span><br>	uvm_reg_field reserved;<br>    <span class="hljs-keyword">rand</span> uvm_reg_field pkt_len;<span class="hljs-comment">//多个域</span><br>    <span class="hljs-keyword">rand</span> uvm_reg_field prio_level;<span class="hljs-comment">//域</span><br>    <span class="hljs-keyword">rand</span> uvm reg_field chnl_en;<span class="hljs-comment">//域</span><br>    <span class="hljs-keyword">function</span> <span class="hljs-keyword">new</span> (<span class="hljs-keyword">string</span> name = <span class="hljs-string">&quot;ctrl_reg&quot;</span>);<br>        <span class="hljs-keyword">super</span><span class="hljs-variable">.new</span> (name, <span class="hljs-number">32</span>, UVM_NO COVERAGE);<br>    <span class="hljs-keyword">endfunction</span> <br>    <span class="hljs-keyword">virtual</span> <span class="hljs-keyword">function</span> build (); <span class="hljs-comment">//区别于component的build_phase</span><br>        <span class="hljs-comment">//create</span><br>        reserved = uvm_reg_field::type_id::create (<span class="hljs-string">&quot;reserved&quot;</span>);<br>        pkt_len = uvm_reg_field::type_id::create (<span class="hljs-string">&quot;pkt_len&quot;</span>);<br>        prio_level = uvm_reg_field::type_id::create (<span class="hljs-string">&quot;prio_level&quot;</span>);<br>        chnl_en = uvm_reg_field::type_id::create (<span class="hljs-string">&quot;chnl_en&quot;</span>); 	<br>        <span class="hljs-comment">//configure 注意，配置是针对每一个field而不是对reg，对reg的配置需要在map里做指定		</span><br>        <span class="hljs-comment">//(this，位数，起点，ReadOnly/ReadWirte...，X,reset值，.....)</span><br>        reserved<span class="hljs-variable">.configure</span> (<span class="hljs-keyword">this</span>, <span class="hljs-number">26</span>, <span class="hljs-number">6</span>, <span class="hljs-string">&quot;RO&quot;</span>, <span class="hljs-number">0</span>, <span class="hljs-number">26&#x27;h0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>) ;<br>        pkt_len<span class="hljs-variable">.configure</span> (<span class="hljs-keyword">this</span>, <span class="hljs-number">3</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&quot;RW&quot;</span>, <span class="hljs-number">0</span>, <span class="hljs-number">3&#x27;h0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>); <br>        prio_level<span class="hljs-variable">.configure</span> (<span class="hljs-keyword">this</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&quot;RW&quot;</span>, <span class="hljs-number">0</span>, <span class="hljs-number">2&#x27;h3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>); <br>        chnl_en<span class="hljs-variable">.configure</span> (<span class="hljs-keyword">this</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-string">&quot;RW&quot;</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1&#x27;h0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>);<br>    <span class="hljs-keyword">endfunction</span> <span class="hljs-keyword">endclass</span><br></code></pre></div></td></tr></table></figure>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-comment">//只读寄存器模型示例</span><br><span class="hljs-keyword">class</span> stat <span class="hljs-keyword">reg</span> <span class="hljs-keyword">extends</span> uvm_reg;<br>	<span class="hljs-meta">`uvm_object_utils (stat_reg)</span><br>	uvm_reg field reserved;<br>    <span class="hljs-keyword">rand</span> uvm_reg_field fifo_avail; <br>    <span class="hljs-keyword">function</span> <span class="hljs-keyword">new</span> (<span class="hljs-keyword">string</span> name = <span class="hljs-string">&quot;stat_reg&quot;</span>); <br>        <span class="hljs-keyword">super</span><span class="hljs-variable">.new</span> (name, <span class="hljs-number">32</span>, UVM NO COVERAGE);<br>    <span class="hljs-keyword">endfunction</span> <br>    <span class="hljs-keyword">virtual</span> <span class="hljs-keyword">function</span> build(); <br>        reserved = uvm <span class="hljs-keyword">reg</span> field::type_id::create (<span class="hljs-string">&quot;reserved&quot;</span>); <br>        fifo avail = uvm <span class="hljs-keyword">reg</span> field::<span class="hljs-keyword">type</span> id::create (<span class="hljs-string">&quot;fifo avail&quot;</span>); <br>        reserved<span class="hljs-variable">.configure</span> (<span class="hljs-keyword">this</span>, <span class="hljs-number">24</span>, <span class="hljs-number">8</span>, <span class="hljs-string">&quot;RO&quot;</span>, <span class="hljs-number">0</span>, <span class="hljs-number">24&#x27;h0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);<br>        fifo_avail<span class="hljs-variable">.configure</span> (<span class="hljs-keyword">this</span>, <span class="hljs-number">8</span>, <span class="hljs-number">0</span>, <span class="hljs-string">&quot;RO&quot;</span>, <span class="hljs-number">0</span>, <span class="hljs-number">8&#x27;h0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>); <br>    <span class="hljs-keyword">endfunction</span> <br><span class="hljs-keyword">endclass</span><br></code></pre></div></td></tr></table></figure>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-comment">//mcdf的reg master寄存器块</span><br><span class="hljs-keyword">class</span> mcdf_rgm <span class="hljs-keyword">extends</span> uvm_reg_block;<br>	<span class="hljs-meta">`uvm_object_utils (mcdf_rgm)</span><br>    <span class="hljs-keyword">rand</span> ctrl_reg chnl0_ctrl_reg;<br>    <span class="hljs-keyword">rand</span> ctrl_reg chnl1_ctrl_reg;<br>    <span class="hljs-keyword">rand</span> ctrl_reg chnl2_ctrl_reg;<br>    <span class="hljs-keyword">rand</span> stat_reg chnl0_stat_reg;<br>    <span class="hljs-keyword">rand</span> stat_reg chnl1_stat_reg;<br>    <span class="hljs-keyword">rand</span> stat_reg chnl2_stat_reg; <br>    uvm_reg_map map;<br>    <span class="hljs-keyword">function</span> <span class="hljs-keyword">new</span> (<span class="hljs-keyword">string</span> name = <span class="hljs-string">&quot;mcdf rgm&quot;</span>);<br>        <span class="hljs-keyword">super</span><span class="hljs-variable">.new</span> (name, UVM NO_COVERAGE) ;<br>    <span class="hljs-keyword">endfunction</span><br>    <span class="hljs-keyword">virtual</span> <span class="hljs-keyword">function</span> build ();<br>        <span class="hljs-comment">//把reg和此regblock关联起来，并调用每个reg的Build进行自动化构建</span><br>        chnl0_ctrl_reg = ctrl_reg::type_id::create (<span class="hljs-string">&quot;chnl0_ctrl reg&quot;</span>); <br>        chnl0_ctrl_reg<span class="hljs-variable">.configure</span> (<span class="hljs-keyword">this</span>); chnl0_ctrl_reg<span class="hljs-variable">.build</span> ();<br>        chnl1_ctrl_reg = ctrl_reg::type_id::create (<span class="hljs-string">&quot;chn11_ctrl_reg&quot;</span>); <br>        chnl1_ctrl_reg<span class="hljs-variable">.configure</span> (<span class="hljs-keyword">this</span>); chnl1_ctrl_reg<span class="hljs-variable">.build</span>();<br>        chnl2_ctrl_reg = ctrl_reg::type_id::create (<span class="hljs-string">&quot;chn12_ctrl_reg&quot;</span>); <br>        chnl2_ctrl_reg<span class="hljs-variable">.configure</span> (<span class="hljs-keyword">this</span>); chnl2_ctrl_reg<span class="hljs-variable">.build</span>();<br>        chnl0_stat_reg = stat_reg::type_id::create (<span class="hljs-string">&quot;chn10_stat_reg&quot;</span>); <br>        chnl0_stat_reg<span class="hljs-variable">.configure</span> (<span class="hljs-keyword">this</span>); chnl0_stat <span class="hljs-keyword">reg</span><span class="hljs-variable">.build</span> ();<br>        chnl1_stat_reg = stat_reg::type_id::create (<span class="hljs-string">&quot;chnl1_stat_reg&quot;</span>); chnl1_stat_reg<span class="hljs-variable">.configure</span> (<span class="hljs-keyword">this</span>); chnl1 stat_reg<span class="hljs-variable">.build</span>();<br>        chnl2 <span class="hljs-number">_</span>stat_reg = stat_reg::type_id::create (<span class="hljs-string">&quot;chn12_stat_reg&quot;</span>); chnl2_stat_reg<span class="hljs-variable">.configure</span> (<span class="hljs-keyword">this</span>); <br>        chnl2_stat_reg<span class="hljs-variable">.build</span>();<br>		<span class="hljs-comment">//map name, offset, number of bytes, endianess </span><br>        map = create_map (<span class="hljs-string">&quot;map&quot;</span>, <span class="hljs-number">&#x27;h0</span>, <span class="hljs-number">4</span>, UVM LITTLE ENDIAN);<br>        map<span class="hljs-variable">.add_reg</span> (chnl0_ctrl_reg, <span class="hljs-number">32&#x27;h00000000</span>, <span class="hljs-string">&quot;RW&quot;</span>);<br>        map<span class="hljs-variable">.add_reg</span> (chnl1_ctrl_reg, <span class="hljs-number">32&#x27;h00000004</span>, <span class="hljs-string">&quot;RW&quot;</span>); <br>        map<span class="hljs-variable">.add_reg</span> (chnl2_ctrl_reg, <span class="hljs-number">32&#x27;h00000008</span>, <span class="hljs-string">&quot;RW&quot;</span>);<br>        map<span class="hljs-variable">.add_reg</span> (chn10_stat_reg, <span class="hljs-number">32&#x27;h00000010</span>, <span class="hljs-string">&quot;RO&quot;</span>);<br>        map<span class="hljs-variable">.add_reg</span> (chn11_stat_reg, <span class="hljs-number">32&#x27;h00000014</span>, <span class="hljs-string">&quot;RO&quot;</span>); <br>        map<span class="hljs-variable">.add_reg</span> (chn12_stat_reg, <span class="hljs-number">32&#x27;h00000018</span>, <span class="hljs-string">&quot;RO&quot;</span>); <br>        lock model ();<br>    <span class="hljs-keyword">endfunction</span> <br><span class="hljs-keyword">endclass</span>: mcdf_rgm<br></code></pre></div></td></tr></table></figure>
+<h3 id="3）基本要点总结"><a href="#3）基本要点总结" class="headerlink" title="3）基本要点总结"></a>3）<strong>基本要点总结</strong></h3><ul>
+<li><strong>在定义单个寄存器时</strong>：<strong>需要将寄存器的各个域整理出来</strong>，在创建之后还应当通过<strong>uvm_reg_field::configure()</strong>函数来进一步配置各自属性</li>
+<li><strong>在定义uvm_reg_block时</strong>：读者需要注意reg_block与uvm_mem、uvm_reg以及uvm_reg_map的<strong>包含关系</strong>。首先uvm_reg和uvm_mem分别对应着硬件中独立的寄存器或者存储，而一个uvm_reg_block可以用来模拟一个功能模块的寄存器模型，<strong>其中可以容纳多个uvm_reg和uvm_mem实例</strong>；其次<strong>map</strong>的作用一方面用来表示寄存器和存储对应的偏移地址，同时由于一个reg_block可以包含多个map，各个map可以分别对应不同总线或者不同地址段。在reg_block中创建了各个uvm_reg之后，需要调用uvm_reg::configure()去配置各个uvm_reg实例的属性<ul>
+<li><strong>uvm_reg_map</strong>也会在uvm_reg_block中例化，在例化之后需要通过uvm_reg_map::add_reg()函数来添加各个uvm_reg对应的偏移地址和访问属性等。只有规定了这些属性，才可以在稍后的前门访问（<strong>frontdoor</strong>）中给出正确的地址</li>
+<li><strong>uvm_reg_block</strong>可以对更大的系统做寄存器建模，这意味着uvm_reg_block之间也可以存在层次关系，上层uvm_reg_block的uvm_reg_map可以添加子一级uvm_reg_block的uvm_reg_map，用来构建更全局的“版图”，继而通过uvm_reg_block与uvm_reg_map之间的层次关系来构建更系统的寄存器模型</li>
+</ul>
+</li>
+<li>为什么这里需要手动调用Build：<ul>
+<li>不同于comp，obj没有phase机制的自动化，必须手动调用build</li>
+</ul>
+</li>
+</ul>
+<h3 id="4）模型使用流程"><a href="#4）模型使用流程" class="headerlink" title="4）模型使用流程"></a>4）<strong>模型使用流程</strong></h3><ul>
+<li>那么当拥有一个寄存器模型之后它接下来的使用步骤是什么呢？实际上对于不同的角色，他们对寄存器模型也有着不同的关注，譬如VIP开发者主要关注实现总线适配器，TB开发者关心如何将总线适配器与寄存器模型连接</li>
+<li>不管对于什么角色，寄存器模型从一开始的寄存器描述文档到最后的功能检查，都需要贯穿寄存器模型的生命周期</li>
+</ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220325154103397.png" srcset="/img/loading.gif" lazyload alt="k"></p>
+<p><strong>对于验证中的不同角色，他们也会参与上述的部分流程</strong></p>
+<ul>
+<li>系统工程师需要提供寄存器描述文件</li>
+<li>模块验证人员需要生成寄存器模型</li>
+<li>VIP开发人员需要提供总线适配器</li>
+<li>TB构建人员（与模块验证人员有时候不是同一个人）需要集成寄存器模型</li>
+<li>模块验证人员还需要完成后续的寄存器模型检查和功能覆盖率收集</li>
+</ul>
+<h1 id="2-寄存器模型集成"><a href="#2-寄存器模型集成" class="headerlink" title="2 寄存器模型集成"></a>2 寄存器模型集成</h1><h2 id="2-1-总线UVC的实现"><a href="#2-1-总线UVC的实现" class="headerlink" title="2.1 总线UVC的实现"></a>2.1 总线UVC的实现</h2><h3 id="1）概述"><a href="#1）概述" class="headerlink" title="1）概述"></a>1）概述</h3><ul>
+<li>MCDF访问寄存器的总线接口时序较为简单。控制寄存器接口首先需要在每一个时钟解析cmd。</li>
+<li>当cmd为写指令时，即需要把数据cmd_data_in写入到cmd_addr对应的寄存器中。</li>
+<li>当cmd为读指令时，即需要从cmd_addr对应的寄存器中读取数据，在下一个周期，cmd_addr对应的寄存器数据被输送至cmd_data_out接口。</li>
+<li>我们给出一段8位地址线，32位数据线的总线UVC实现代码</li>
+</ul>
+<h3 id="2）总线UVC代码示例"><a href="#2）总线UVC代码示例" class="headerlink" title="2）总线UVC代码示例"></a>2）总线UVC代码示例</h3><figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">class</span> mcdf_bus_trans <span class="hljs-keyword">extends</span> uvm_sequence_item;<br>    <span class="hljs-keyword">rand</span> <span class="hljs-keyword">bit</span>[<span class="hljs-number">1</span>:<span class="hljs-number">0</span>]cmd;<br>    <span class="hljs-keyword">rand</span> <span class="hljs-keyword">bit</span>[<span class="hljs-number">7</span>:<span class="hljs-number">0</span>] addr;<br>    <span class="hljs-keyword">rand</span> <span class="hljs-keyword">bit</span>[<span class="hljs-number">31</span>:<span class="hljs-number">0</span>]wdata;<br>    <span class="hljs-keyword">bit</span>[<span class="hljs-number">31</span>:<span class="hljs-number">0</span>]rdata;<br>    <span class="hljs-meta">`uvm_object_utils_begin(mcdf _bus_trans)</span><br>    ...<br>    <span class="hljs-meta">`uvm_object_utils_end</span><br>    ...<br><span class="hljs-keyword">endclass</span><br></code></pre></div></td></tr></table></figure>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-comment">//bus_sqr</span><br><span class="hljs-keyword">class</span> mcdf bus sequencer <span class="hljs-keyword">extends</span> uvm sequencer;<br>    <span class="hljs-keyword">virtual</span> mcdf <span class="hljs-keyword">if</span> vif;<br>    <span class="hljs-meta">`uvm_component_utils(mcdf bus sequencer)</span><br>    ...<br>    <span class="hljs-keyword">function</span> <span class="hljs-keyword">void</span> build phase(uvm phase phase);<br>        <span class="hljs-keyword">if</span>(!uvm <span class="hljs-keyword">config</span> db<span class="hljs-variable">#(virtual mcdf_if)::get(this,&quot;&quot;,&quot;vif&quot;,vif))</span> <span class="hljs-keyword">begin</span><br>        	<span class="hljs-meta">`uvm_error(&quot;GETVIE&quot;,&quot;no virtual interface is assigned&quot;)</span><br>    	<span class="hljs-keyword">end</span><br>	<span class="hljs-keyword">endfunction</span><br><span class="hljs-keyword">endclass</span><br></code></pre></div></td></tr></table></figure>
+<ul>
+<li>sqr是最简单的组件</li>
+</ul>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><br><span class="hljs-comment">//monitor</span><br><span class="hljs-keyword">class</span> mcdf bus monitor <span class="hljs-keyword">extends</span> uvm monitor;<br>    <span class="hljs-keyword">virtual</span> mcdf <span class="hljs-keyword">if</span> vif;<br>    <span class="hljs-comment">//定义了一个analaysis_port:</span><br>    <span class="hljs-comment">//monitor从vitural Interface上检测到bus总线上的行为，并送给scoreboard</span><br>    uvm_analysis_port <span class="hljs-variable">#(mcdf bus trans)</span> ap;<br><br>    <span class="hljs-meta">`uvm_component_utils(mcdf bus monitor)</span><br>    ...<br>    <span class="hljs-keyword">function</span> <span class="hljs-keyword">void</span> build phase(uvm phase phase);<br>        <span class="hljs-keyword">if</span>(!uvm <span class="hljs-keyword">config</span> db<span class="hljs-variable">#(virtual mcdf if)::get(this,&quot;&quot;,&quot;vif&quot;,vif))</span> <span class="hljs-keyword">begin</span><br>    		<span class="hljs-meta">`uvmerror(&quot;GETVIF&quot;,&quot;no virtual interface is assigned&quot;)</span><br>    	<span class="hljs-keyword">end</span><br>    	ap=<span class="hljs-keyword">new</span>(<span class="hljs-string">&quot;ap&quot;</span>,<span class="hljs-keyword">this</span>);<br>    <span class="hljs-keyword">endfunction</span><br>    <span class="hljs-keyword">task</span> run_phase(uvm phase phase);<br>    	<span class="hljs-keyword">forever</span> <span class="hljs-keyword">begin</span><br>	    	mon_trans();<br>    	<span class="hljs-keyword">end</span><br>	<span class="hljs-keyword">endtask</span><br>    <span class="hljs-keyword">task</span> mon_trans();<br>        mcdf_bus_trans t;<br>        @(<span class="hljs-keyword">posedge</span> vif. clk);<span class="hljs-comment">//在时钟上升沿检测是写的指令还是读的指令</span><br>        <span class="hljs-comment">//写的指令</span><br>        <span class="hljs-keyword">if</span>(vif. cmd==WRITE) <span class="hljs-keyword">begin</span><br>            t=<span class="hljs-keyword">new</span>();<br>            t. cmd= WRITE;<br>            t. addr=vif. addr;<br>            t. wdata=vif. wdata;<br>            ap. write(t);<br>        <span class="hljs-keyword">end</span><br>        <span class="hljs-comment">//读的指令</span><br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(vif. cmd==READ) <span class="hljs-keyword">begin</span><br>            t=<span class="hljs-keyword">new</span>();<br>            t. cmd=READ;<br>            t. addr=vif. addr;<br>            <span class="hljs-keyword">fork</span><br>                <span class="hljs-keyword">begin</span><br>                    e(<span class="hljs-keyword">posedge</span> vif. clk);<br>                    #<span class="hljs-number">10</span>ps;<br>                    t<span class="hljs-variable">.rdata</span>=vif<span class="hljs-variable">.rdata</span>;<br>                    ap<span class="hljs-variable">.write</span>(t);<br>                <span class="hljs-keyword">end</span><br>            <span class="hljs-keyword">join_none</span><span class="hljs-comment">//这样可以不错过下一拍</span><br>        <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">endtask</span><br><span class="hljs-keyword">endclass</span>:mcdf_bus_monitor<br></code></pre></div></td></tr></table></figure>
+<ul>
+<li><p>monitor要广播</p>
+</li>
+<li><p>用new创建，而不能用create，因为port不是obj</p>
+</li>
+</ul>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">class</span> mcdf bus driver <span class="hljs-keyword">extends</span> uvm driver;<br>    <span class="hljs-keyword">virtual</span> mcdf_if vif;<br>    <span class="hljs-meta">`uvm_component_utils(mcdf bus driver)</span><br>    <span class="hljs-keyword">function</span> <span class="hljs-keyword">void</span> build phase(uvm phase phase);<br>        <span class="hljs-keyword">if</span>(! uvm <span class="hljs-keyword">config</span> db<span class="hljs-variable">#(virtual mcdf if):: get(this,&quot;&quot;,&quot;vif&quot;, vif))</span><span class="hljs-keyword">begin</span><br>        <span class="hljs-meta">`uvm_error(&quot;GETVIE&quot;,&quot;no virtual interface is assigned&quot;)</span><br>        <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">endfunction</span><br>    <span class="hljs-keyword">task</span> run phase(uvm phase phase);<br>        REQ tmp;<br>        mcdf_bus_trans req, rsp;<br>        reset_listener();<span class="hljs-comment">//听复位</span><br>        <span class="hljs-keyword">forever</span> <span class="hljs-keyword">begin</span><br>            seg_item_port<span class="hljs-variable">.get_next_item</span>(tmp);<span class="hljs-comment">//需要先get</span><br>            <span class="hljs-keyword">void</span>&#x27;(<span class="hljs-built_in">$cast</span>(rea, tmp));<span class="hljs-comment">//父类句柄转子类</span><br>            <span class="hljs-meta">`uvm_info(&quot;DRV&quot;,$sformatf(&quot;got a item \n %s&quot;, req. sprint()), UVM LOW)</span><br>            <span class="hljs-keyword">void</span>&#x27;(<span class="hljs-built_in">$cast</span>(rsp, req. clone()));<span class="hljs-comment">//再进行克隆</span><br>            rsp. set_sequence_id(req. get_sequence_id());<span class="hljs-comment">//传送seqid</span><br>            rsp. set_transaction_id(req. get_transaction_id());<span class="hljs-comment">//传送transid，和seq信息一样</span><br>            drive_bus(rsp);	<br>            seg_item_port. item_done(rsp);<span class="hljs-comment">//与finish item done完成握手</span><br>            <span class="hljs-meta">`uvm_info(&quot;DRV&quot;,$sformatf(&quot;sent a item \n %s&quot;, rsp.sprint()), UVM LOW)</span><br>        <span class="hljs-keyword">end</span><br><span class="hljs-keyword">endtask</span><br><span class="hljs-keyword">task</span> reset listener();<br>forkfork<br><span class="hljs-keyword">forever</span> beginforever <span class="hljs-keyword">begin</span><br>e(<span class="hljs-keyword">negedge</span> vif. rstn) drive idle();<br>endend<br><span class="hljs-keyword">join</span> nonejoin none endtaskendtask <span class="hljs-keyword">task</span> drive bus(mcdf bus trans t);<br><span class="hljs-keyword">case</span>(t. cmd)<br>WRITE: drive write(t);<br>READ: drive read(t);<br>IDLE: drive idle(<span class="hljs-number">1</span>); <span class="hljs-keyword">default</span>: uvm error(<span class="hljs-string">&quot;DRIVE&quot;</span>,<span class="hljs-string">&quot;invalid mcdf command type received!&quot;</span>)<br><span class="hljs-keyword">endcase</span> endtask4 <span class="hljs-keyword">task</span> drive write(mcdf bus_trans t);<br>e(<span class="hljs-keyword">posedge</span> vif. clk);<br>vif. cmd&lt;=t. cmd;<br>vif. addr &lt;=t. addr; xvif. addr &lt;=t. addr;x<br>vif. wdata&lt;=t. wdata; <span class="hljs-keyword">endtask</span>                 <br></code></pre></div></td></tr></table></figure>
+<ul>
+<li></li>
+</ul>
+
             </div>
             <hr>
             <div>

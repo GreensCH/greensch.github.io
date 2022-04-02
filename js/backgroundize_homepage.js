@@ -33,7 +33,7 @@ var image_ready = 1;
 const image_fade_time = 1500;
 const image_switch_time = 20000;
 function randomTimes(_times){
-    var _times_temp = Math.floor(Math.random()*(image_list.length-1)); 
+    var _times_temp = Math.floor(Math.random()*(image_list.length)); 
     if(times!=_times_temp)
         return _times_temp;
     else{

@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)https://www.cnblogs.com/lilto/p/9581143.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="origin-when-crossorigin">
+    <meta name="description" content="图1 建立时间（setup time）是指在触发器的时钟信号上升沿到来以前，数据稳定不变的时间，如果建立时间不够，数据将不能在这个时钟上升沿被打入触发器； 保持时间（hold time）是指在触发器的">
+    <meta property="og:description" content="图1 建立时间（setup time）是指在触发器的时钟信号上升沿到来以前，数据稳定不变的时间，如果建立时间不够，数据将不能在这个时钟上升沿被打入触发器； 保持时间（hold time）是指在触发器的">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>建立时间和保持时间关系详解 - Lilto - 博客园</title>
+    <link id="favicon" rel="shortcut icon" href="https://common.cnblogs.com/favicon.svg" type="image/svg+xml">
+    
+    <style>:not(.cnblogs_code):not(.cnblogs_Highlighter)>pre:not([class*="language-"]):not([highlighted]):not(.hljs):not([class*="brush:"]) {
+        background: rgb(245, 245, 245);
+        padding: 5px;
+        border: 1px solid rgb(204, 204, 204);
+        border-radius: 3px;
+        border-color: transparent;
+        color: rgb(68, 68, 68);
+        font-family: "Courier New", sans-serif;
+    }:not(.cnblogs_code):not(.cnblogs_Highlighter)>pre:not([highlighted]):not([class*="brush:"]) code:not(.hljs) {
+            background: rgb(245, 245, 245) !important;
+            border-color: transparent !important;
+        }</style><link rel="stylesheet" href="./建立时间和保持时间关系详解 - Lilto - 博客园_files/blog-common.min.css">
+    <link id="MainCss" rel="stylesheet" href="./建立时间和保持时间关系详解 - Lilto - 博客园_files/bundle-codinglife.min.css">
+    <link id="highlighter-theme-cnblogs" type="text/css" rel="stylesheet" href="./建立时间和保持时间关系详解 - Lilto - 博客园_files/cnblogs.css">
+    
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="./建立时间和保持时间关系详解 - Lilto - 博客园_files/bundle-codinglife-mobile.min.css">
+    
+    <link type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/lilto/rss">
+    <link type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/lilto/rsd.xml">
+    <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/lilto/wlwmanifest.xml">
+    <script type="text/javascript" async="" src="./建立时间和保持时间关系详解 - Lilto - 博客园_files/analytics.js.下载"></script><script>
+        var currentBlogId = 454997;
+        var currentBlogApp = 'lilto';
+        var cb_enable_mathjax = false;
+        var isLogined = false;
+        var isBlogOwner = false;
+        var skinName = 'CodingLife';
+        var visitorUserId = '';
+        var hasCustomScript = false;
+        try {
+            if (hasCustomScript && document.referrer && document.referrer.indexOf('baidu.com') >= 0) {
+                Object.defineProperty(document, 'referrer', { value: '' });
+                Object.defineProperty(Document.prototype, 'referrer', { get: function(){ return ''; } });
+            }
+        } catch(error) { }
+        window.codeHighlightEngine = 1;
+        window.enableCodeLineNumber = false;
+        window.codeHighlightTheme = 'cnblogs';
+    </script>
+        <script>
+            var currentPostDateAdded = '2018-09-03 21:27';
+        </script>
+    <script src="./建立时间和保持时间关系详解 - Lilto - 博客园_files/jquery-2.2.0.min.js.下载"></script>
+    <script src="./建立时间和保持时间关系详解 - Lilto - 博客园_files/blog-common.min.js.下载"></script><style type="text/css">.medium-zoom-overlay{position:fixed;top:0;right:0;bottom:0;left:0;opacity:0;transition:opacity .3s;will-change:opacity}.medium-zoom--opened .medium-zoom-overlay{cursor:pointer;cursor:zoom-out;opacity:1}.medium-zoom-image{cursor:pointer;cursor:zoom-in;transition:transform .3s cubic-bezier(.2,0,.2,1)!important}.medium-zoom-image--hidden{visibility:hidden}.medium-zoom-image--opened{position:relative;cursor:pointer;cursor:zoom-out;will-change:transform}</style><script id="hljs-script" async="" data-loaded="true" src="./建立时间和保持时间关系详解 - Lilto - 博客园_files/highlight.min.js.下载"></script>
+    
+    
+    
+<meta http-equiv="origin-trial" content="AxujKG9INjsZ8/gUq8+dTruNvk7RjZQ1oFhhgQbcTJKDnZfbzSTE81wvC2Hzaf3TW4avA76LTZEMdiedF1vIbA4AAABueyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0="><meta http-equiv="origin-trial" content="Azuce85ORtSnWe1MZDTv68qpaW3iHyfL9YbLRy0cwcCZwVnePnOmkUJlG8HGikmOwhZU22dElCcfrfX2HhrBPAkAAAB7eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A16nvcdeoOAqrJcmjLRpl1I6f3McDD8EfofAYTt/P/H4/AWwB99nxiPp6kA0fXoiZav908Z8etuL16laFPUdfQsAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="AxBHdr0J44vFBQtZUqX9sjiqf5yWZ/OcHRcRMN3H9TH+t90V/j3ENW6C8+igBZFXMJ7G3Pr8Dd13632aLng42wgAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A88BWHFjcawUfKU3lIejLoryXoyjooBXLgWmGh+hNcqMK44cugvsI5YZbNarYvi3roc1fYbHA1AVbhAtuHZflgEAAAB2eyJvcmlnaW4iOiJodHRwczovL2dvb2dsZS5jb206NDQzIiwiZmVhdHVyZSI6IlRydXN0VG9rZW5zIiwiZXhwaXJ5IjoxNjUyNzc0NDAwLCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A8FHS1NmdCwGqD9DwOicnHHY+y27kdWfxKa0YHSGDfv0CSpDKRHTQdQmZVPDUdaFWUsxdgVxlwAd6o+dhJykPA0AAACWeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjQzMTU1MTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><meta http-equiv="origin-trial" content="A8zdXi6dr1hwXEUjQrYiyYQGlU3557y5QWDnN0Lwgj9ePt66XMEvNkVWOEOWPd7TP9sBQ25X0Q15Lr1Nn4oGFQkAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjQzMTU1MTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><meta http-equiv="origin-trial" content="A4/Htern2udN9w3yJK9QgWQxQFruxOXsXL7cW60DyCl0EZFGCSme/J33Q/WzF7bBkVvhEWDlcBiUyZaim5CpFQwAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjQzMTU1MTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><script src="./建立时间和保持时间关系详解 - Lilto - 博客园_files/pubads_impl_2022032106.js.下载" async=""></script><link rel="preload" href="./建立时间和保持时间关系详解 - Lilto - 博客园_files/f.txt" as="script"><script type="text/javascript" src="./建立时间和保持时间关系详解 - Lilto - 博客园_files/f.txt"></script></head>
+<body class="skin-codinglife has-navbar vsc-initialized" data-new-gr-c-s-check-loaded="14.1054.0" data-gr-ext-installed="">
+    <a name="top"></a>
+    <div id="top_nav" class="navbar forpc">
+        <nav id="nav_main" class="navbar-main">
+            <ul id="nav_left" class="navbar-list navbar-left">
+                <li class="navbar-branding">
+                    <a href="https://www.cnblogs.com/" title="开发者的网上家园" role="banner">
+                            <img src="./建立时间和保持时间关系详解 - Lilto - 博客园_files/logo.svg" alt="博客园Logo">
+                    </a>
+                </li>
+                <li><a href="https://www.cnblogs.com/" onclick="countClicks(&#39;skin-navbar-sitehome&#39;)">首页</a></li>
+                <li><a href="https://news.cnblogs.com/" onclick="countClicks(&#39;nav&#39;, &#39;skin-navbar-news&#39;)">新闻</a></li>
+                <li><a href="https://q.cnblogs.com/" onclick="countClicks(&#39;nav&#39;, &#39;skin-navbar-q&#39;)">博问</a></li>
+                <li><a id="nav_brandzone" href="https://brands.cnblogs.com/huawei" onclick="countClicks(&#39;nav&#39;, &#39;skin-navbar-brands&#39;)">专区</a></li>
+                <li><a href="https://ing.cnblogs.com/" onclick="countClicks(&#39;nav&#39;, &#39;skin-navbar-ing&#39;)">闪存</a></li>
+                <li><a href="https://edu.cnblogs.com/" onclick="countClicks(&#39;nav&#39;, &#39;skin-navbar-edu&#39;)">班级</a></li>
+            </ul>
+            <ul id="nav_right" class="navbar-list navbar-right">
+                <li>
+                    <form id="zzk_search" class="navbar-search" action="https://zzk.cnblogs.com/s" method="get" role="search">
+                        <input name="w" id="zzk_search_input" placeholder="代码改变世界" type="search" tabindex="3">
+                        <button type="submit" id="zzk_search_button">
+                            <img src="./建立时间和保持时间关系详解 - Lilto - 博客园_files/search.svg" alt="搜索">
+                        </button>
+                    </form>
+                </li>
+                <li id="navbar_login_status" class="navbar-list">
+                    <a class="navbar-user-info navbar-blog" href="https://i.cnblogs.com/EditPosts.aspx?opt=1" alt="写随笔" title="写随笔" style="display: none;">
+                        <img id="new_post_icon" class="navbar-icon" src="./建立时间和保持时间关系详解 - Lilto - 博客园_files/newpost.svg" alt="写随笔">
+                    </a>
+                    <a id="navblog-myblog-icon" class="navbar-user-info navbar-blog" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx" alt="我的博客" title="我的博客" style="display: none;">
+                        <img id="myblog_icon" class="navbar-icon" src="./建立时间和保持时间关系详解 - Lilto - 博客园_files/myblog.svg" alt="我的博客">
+                    </a>
+                    <a class="navbar-user-info navbar-message navbar-icon-wrapper" href="https://msg.cnblogs.com/" alt="短消息" title="短消息" style="display: none;">
+                        <img id="msg_icon" class="navbar-icon" src="./建立时间和保持时间关系详解 - Lilto - 博客园_files/message.svg" alt="短消息">
+                        <span id="msg_count" style="display: none"></span>
+                    </a>
+                    <a id="navbar_lite_mode_indicator" data-current-page="blog" style="display: none" href="javascript:void(0)" alt="简洁模式" title="简洁模式启用，您在访问他人博客时会使用简洁款皮肤展示">
+                        <img class="navbar-icon" src="./建立时间和保持时间关系详解 - Lilto - 博客园_files/lite-mode-on.svg" alt="简洁模式">
+                    </a>
+                    <div id="user_info" class="navbar-user-info dropdown" style="display: none;">
+                        <a class="dropdown-button" href="https://home.cnblogs.com/">
+                            <img id="user_icon" class="navbar-avatar" src="./建立时间和保持时间关系详解 - Lilto - 博客园_files/avatar-default.svg" alt="用户头像">
+                        </a>
+                        <div class="dropdown-menu">
+                            <a id="navblog-myblog-text" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx">我的博客</a>
+                            <a href="https://home.cnblogs.com/">我的园子</a>
+                            <a href="https://account.cnblogs.com/settings/account">账号设置</a>
+                            <a href="javascript:void(0)" id="navbar_lite_mode_toggle" title="简洁模式会使用简洁款皮肤显示所有博客">
+    简洁模式 <img id="navbar_lite_mode_on" src="./建立时间和保持时间关系详解 - Lilto - 博客园_files/lite-mode-check.svg" class="hide"><span id="navbar_lite_mode_spinner" class="hide">...</span>
+</a>
+                            <a href="javascript:void(0)" onclick="account.logout();">退出登录</a>
+                        </div>
+                    </div>
+                    <a class="navbar-anonymous" href="https://account.cnblogs.com/signup" style="display: inline;">注册</a>
+                    <a class="navbar-anonymous" href="javascript:void(0);" onclick="account.login()" style="display: inline;">登录</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    
+    <!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+        <a id="lnkBlogLogo" href="https://www.cnblogs.com/lilto/"><img id="blogLogo" src="./建立时间和保持时间关系详解 - Lilto - 博客园_files/logo.gif" alt="返回主页"></a>		
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle HeaderMainTitle" href="https://www.cnblogs.com/lilto/">Lilto</a>
+</h1>
+<h2></h2>
+
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">
+博客园</a>
+</li>
+<li>
+<a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/lilto/">
+首页</a>
+</li>
+<li>
+
+<a id="blog_nav_newpost" class="menu" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">
+新随笔</a>
+</li>
+<li>
+<a id="blog_nav_contact" class="menu" href="https://msg.cnblogs.com/send/Lilto">
+联系</a></li>
+<li>
+<a id="blog_nav_rss" class="menu" href="javascript:void(0)" data-rss="https://www.cnblogs.com/lilto/rss/">
+订阅</a>
+<!--<partial name="./Shared/_XmlLink.cshtml" model="Model" /></li>--></li>
+<li>
+<a id="blog_nav_admin" class="menu" href="https://i.cnblogs.com/">
+管理</a>
+</li>
+</ul>
+
+
+		<div class="blogStats">
+			<span id="stats_post_count">随笔 - 61&nbsp; </span>
+<span id="stats_article_count">文章 - 0&nbsp; </span>
+<span id="stats-comment_count">评论 - 0&nbsp; </span>
+<span id="stats-total-view-count">阅读 - 
+<span title="总阅读数: 120874">
+12万</span></span>
+
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		<div id="post_detail">
+    <!--done-->
+    <div id="topics">
+        <div class="post">
+            <h1 class="postTitle">
+                
+<a id="cb_post_title_url" class="postTitle2 vertical-middle" href="https://www.cnblogs.com/lilto/p/9581143.html">
+    <span role="heading" aria-level="2">建立时间和保持时间关系详解</span>
+    
+
+
+
+</a><button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button>
+
+            </h1>
+            <div class="clear"></div>
+            <div class="postBody">
+                <div id="cnblogs_post_body" class="blogpost-body blogpost-body-html">
+<p><img src="./建立时间和保持时间关系详解 - Lilto - 博客园_files/1475175-20180903213002092-1593801740.png" alt="" class="medium-zoom-image"><img src="./建立时间和保持时间关系详解 - Lilto - 博客园_files/1475175-20180903213002398-274437455.png" alt=""></p>
+<p><span style="color: rgba(0, 0, 0, 1); font-size: 9pt"><span style="font-family: 等线">图</span><span style="font-family: Arial">1 </span></span></p>
+<p>&nbsp;&nbsp; &nbsp;</p>
+<p><span style="color: rgba(0, 0, 0, 1); font-size: 9pt"><span style="font-family: Arial">&nbsp;&nbsp;</span><span style="font-family: 等线">建立时间（</span><span style="font-family: Arial">setup time</span><span style="font-family: 等线">）是指在触发器的时钟信号上升沿到来以前，数据稳定不变的时间，如果建立时间不够，数据将不能在这个时钟上升沿被打入触发器；</span></span></p>
+<p><span style="color: rgba(0, 0, 0, 1); font-size: 9pt"><span style="font-family: Arial">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: 等线">保持时间（</span><span style="font-family: Arial">hold time</span><span style="font-family: 等线">）是指在触发器的时钟信号上升沿到来以后，数据稳定不变的时间，如果保持时间不够，数据同样不能被打入触发器。</span><span style="font-family: Arial">&nbsp; </span></span></p>
+<p><span style="color: rgba(0, 0, 0, 1); font-size: 9pt"><span style="font-family: Arial">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: 等线">如图</span><span style="font-family: Arial">1 </span><span style="font-family: 等线">。数据稳定传输必须满足建立和保持时间的要求，当然在一些情况下，建立时间和保持时间的值可以为零。</span><span style="font-family: Arial"> PLD/FPGA</span><span style="font-family: 等线">开发软件可以自动计算两个相关输入的建立和保持时间。</span></span></p>
+<p><span style="color: rgba(0, 0, 0, 1); font-size: 9pt"><span style="font-family: Arial">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: 等线">个人理解：</span></span></p>
+<p><span style="color: rgba(0, 0, 0, 1); font-size: 9pt"><span style="font-family: Arial">&nbsp;&nbsp;&nbsp;&nbsp;1</span><span style="font-family: 等线">、建立时间（</span><span style="font-family: Arial">setup time</span><span style="font-family: 等线">）触发器在时钟沿到来之前，其数据的输入端的数据必须保持不变的时间；<span style="background-color: rgba(255, 255, 0, 1)">建立时间决定了该触发器之间的组合逻辑的最大延迟</span>。</span></span></p>
+<p><span style="color: rgba(0, 0, 0, 1); font-size: 9pt"><span style="font-family: Arial">&nbsp;&nbsp;&nbsp;&nbsp;2</span><span style="font-family: 等线">、保持时间（</span><span style="font-family: Arial">hold time</span><span style="font-family: 等线">）触发器在时钟沿到来之后，其数据输入端的数据必须保持不变的时间；<span style="background-color: rgba(255, 255, 0, 1)">保持时间决定了该触发器之间的组合逻辑的最小延迟</span>。</span></span></p>
+<p>&nbsp;</p>
+<p><span style="color: rgba(0, 0, 0, 1); font-size: 9pt"><span style="font-family: 等线">关于建立时间保持时间的考虑</span></span></p>
+<p><span style="color: rgba(0, 0, 0, 1); font-size: 9pt"><span style="font-family: 等线">华为题目：时钟周期为</span><span style="font-family: Arial">T</span><span style="font-family: 等线">，触发器</span><span style="font-family: Arial">D1</span><span style="font-family: 等线">的建立时间最大为</span><span style="font-family: Arial">T1max</span><span style="font-family: 等线">，最小为</span><span style="font-family: Arial">T1min</span><span style="font-family: 等线">。组合逻辑电路最大延迟为</span><span style="font-family: Arial">T2max</span><span style="font-family: 等线">，最小为</span><span style="font-family: Arial">T2min</span><span style="font-family: 等线">。问：触发器</span><span style="font-family: Arial">D2</span><span style="font-family: 等线">的建立时间</span><span style="font-family: Arial">T3</span><span style="font-family: 等线">和保持时间</span><span style="font-family: Arial">T4</span><span style="font-family: 等线">应满足什么条件？</span></span></p>
+<p><span style="color: rgba(0, 0, 0, 1); font-size: 9pt"><span style="font-family: 等线">分析：</span></span></p>
+<p><span style="color: rgba(0, 0, 0, 1); font-size: 9pt"><span style="font-family: Arial">Tffpd</span><span style="font-family: 等线">：触发器输出的响应时间，也就是触发器的输出在</span><span style="font-family: Arial">clk</span><span style="font-family: 等线">时钟上升沿到来之后多长的时间内发生变化并且稳定，也可以理解为触发器的输出延时。</span></span></p>
+<p><span style="color: rgba(0, 0, 0, 1); font-size: 9pt"><span style="font-family: Arial">Tcomb</span><span style="font-family: 等线">：触发器的输出经过组合逻辑所需要的时间，也就是题目中的组合逻辑延迟。</span></span></p>
+<p><span style="color: rgba(0, 0, 0, 1); font-size: 9pt"><span style="font-family: Arial">Tsetup</span><span style="font-family: 等线">：建立时间</span></span></p>
+<p><span style="color: rgba(0, 0, 0, 1); font-size: 9pt"><span style="font-family: Arial">Thold</span><span style="font-family: 等线">：保持时间</span></span></p>
+<p><span style="color: rgba(0, 0, 0, 1); font-size: 9pt"><span style="font-family: Arial">Tclk</span><span style="font-family: 等线">：时钟周期</span></span></p>
+<p><span style="color: rgba(0, 0, 0, 1); font-size: 9pt"><span style="font-family: 等线"><span style="background-color: rgba(255, 255, 0, 1)">建立时间容限</span>：相当于保护时间，这里要求建立时间容限大于等于</span><span style="font-family: Arial">0</span><span style="font-family: 等线">。</span></span></p>
+<p><span style="color: rgba(0, 0, 0, 1); font-size: 9pt"><span style="font-family: 等线"><span style="background-color: rgba(255, 255, 0, 1)">保持时间容限</span>：保持时间容限也要求大于等于</span><span style="font-family: Arial">0</span><span style="font-family: 等线">。</span></span></p>
+<p><img src="./建立时间和保持时间关系详解 - Lilto - 博客园_files/1475175-20180903213002673-1799891373.png" alt="" class="medium-zoom-image"></p>
+<p><span style="color: rgba(0, 0, 0, 1); font-size: 9pt"><span style="font-family: 等线">由上图可知，<span style="background-color: rgba(255, 255, 0, 1)">建立时间容限＝</span></span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">Tclk-Tffpd(max)-Tcomb(max)-Tsetup</span><span style="font-family: 等线">，<span style="background-color: rgba(255, 255, 0, 1)">根据建立时间容限</span></span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">≥0</span><span style="font-family: 等线"><span style="background-color: rgba(255, 255, 0, 1)">，</span>也就是</span><span style="font-family: Arial">Tclk-Tffpd(max)-Tcomb(max)-Tsetup≥0</span><span style="font-family: 等线">，可以得到触发器</span><span style="font-family: Arial">D2</span><span style="font-family: 等线">的</span><span style="font-family: Arial">Tsetup≤Tclk-Tffpd(max)-Tcomb(max)</span><span style="font-family: 等线">，由于题目没有考虑</span><span style="font-family: Arial">Tffpd</span><span style="font-family: 等线">，所以我们认为</span><span style="font-family: Arial">Tffpd</span><span style="font-family: 等线">＝</span><span style="font-family: Arial">0</span><span style="font-family: 等线">，于是得到</span><span style="font-family: Arial">Tsetup≤T-T2max</span><span style="font-family: 等线">。</span></span></p>
+<p><img src="./建立时间和保持时间关系详解 - Lilto - 博客园_files/1475175-20180903213002889-383532456.png" alt="" class="medium-zoom-image"></p>
+<p><span style="color: rgba(0, 0, 0, 1); font-size: 9pt"><span style="font-family: 等线">由上图可知，<span style="background-color: rgba(255, 255, 0, 1)">保持时间容限</span></span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">+Thold</span><span style="font-family: 等线; background-color: rgba(255, 255, 0, 1)">＝</span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">Tffpd(min)+Tcomb(min)</span><span style="font-family: 等线">，所以保持时间容限＝</span><span style="font-family: Arial">Tffpd(min)+Tcomb(min)-Thold</span><span style="font-family: 等线">，<span style="background-color: rgba(255, 255, 0, 1)">根据保持时间容限</span></span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">≥0</span><span style="font-family: 等线"><span style="background-color: rgba(255, 255, 0, 1)">，</span>也就是</span><span style="font-family: Arial">Tffpd(min)+Tcomb(min)-Thold≥0</span><span style="font-family: 等线">可以得到触发器</span><span style="font-family: Arial">D2</span><span style="font-family: 等线">的</span><span style="font-family: Arial">Thold≤Tffpd(min)+Tcomb(min)</span><span style="font-family: 等线">，由于题目没有考虑</span><span style="font-family: Arial">Tffpd</span><span style="font-family: 等线">，所以我们认为</span><span style="font-family: Arial">Tffpd</span><span style="font-family: 等线">＝</span><span style="font-family: Arial">0</span><span style="font-family: 等线">，于是得到</span><span style="font-family: Arial">Thold≤T2min</span><span style="font-family: 等线">。<span style="color: rgba(255, 0, 0, 1); background-color: rgba(255, 255, 0, 1)">关于保持时间的理解就是<span style="color: rgba(0, 0, 0, 1)">，在触发器</span></span></span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">D2</span><span style="font-family: 等线; background-color: rgba(255, 255, 0, 1)">的输入信号还处在保持时间的时候，如果触发器</span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">D1</span><span style="font-family: 等线; background-color: rgba(255, 255, 0, 1)">的输出已经通过组合逻辑到达</span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">D2</span><span style="font-family: 等线; background-color: rgba(255, 255, 0, 1)">的输入端的话，将会破坏</span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">D2</span><span style="font-family: 等线; background-color: rgba(255, 255, 0, 1)">本来应该保持的数据</span></span></p>
+<p><span style="color: rgba(255, 0, 0, 1); font-size: 9pt"><span style="font-family: Arial">&nbsp;Tco</span><span style="font-family: 等线">表示</span><span style="font-family: Arial">dff</span><span style="font-family: 等线">从输入到输出延时；</span><span style="font-family: Arial">Tlogic</span><span style="font-family: 等线">表示组合逻辑延时；</span><span style="font-family: Arial">Tsu</span><span style="font-family: 等线">表示</span><span style="font-family: Arial">dff</span><span style="font-family: 等线">的建立时间；</span><span style="font-family: Arial">Thold</span><span style="font-family: 等线">表示</span><span style="font-family: Arial">dff</span><span style="font-family: 等线">的保持时间。</span><span style="font-family: Arial"><br></span><span style="font-family: 等线">无</span><span style="font-family: Arial">skew</span><span style="font-family: 等线">：</span><span style="font-family: Arial"><br>T&gt;Tco+Tlogic+Tsu<br>Thold&lt;Tco+Tlogic<br></span><span style="font-family: 等线">有</span><span style="font-family: Arial">skew</span><span style="font-family: 等线">：</span><span style="font-family: Arial"><br>T&gt;Tco+Tlogic+Tsu-Tskew<br>Thold&lt;Tco+Tlogic-Tskew
+</span></span></p>
+<p>
+&nbsp;</p>
+<h1><span style="color: rgba(51, 51, 51, 1); font-family: 宋体; font-size: 7pt; text-decoration: underline">建立时间与保持时间</span><button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h1>
+<p><a title="时钟" href="http://article.ednchina.com/word/156000.aspx" rel="noopener"><span style="color: rgba(51, 51, 51, 1); font-family: 宋体; font-size: 12pt">时钟</span></a><span style="color: rgba(51, 51, 51, 1)"><span style="font-size: 7pt"><span style="font-family: 宋体">是整个电路最重要、最特殊的信号，系统内大部分器件的动作都是在时钟的跳变沿上进行</span><span style="font-family: Arial">, </span><span style="font-family: 宋体">这就要求时钟信号时延差要非常小</span><span style="font-family: Arial">, </span></span><span style="font-family: 宋体"><span style="font-size: 7pt">否则就可能造成时序逻辑状态出错；因而明确</span><span style="font-size: 12pt">FPGA</span><span style="font-size: 7pt">设计中决定系统时钟的因素，尽量较小时钟的延时对保证设计的稳定性有非常重要的意义。</span></span></span></p>
+<h1><span style="color: rgba(51, 51, 51, 1); text-decoration: underline"><span style="font-family: 宋体; font-size: 7pt">　　</span><span style="font-family: Arial; font-size: 7pt">&nbsp;</span><span style="font-family: 宋体; font-size: 7pt">建立时间与<a title="保持时间" href="http://article.ednchina.com/word/155998.aspx" rel="noopener">保持时间</a></span>
+			</span><button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h1>
+<p><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: 宋体">　　建立时间（</span><span style="font-family: Arial">Tsu</span><span style="font-family: 宋体">：</span><span style="font-family: Arial">set up time</span><span style="font-family: 宋体">）是指在时钟沿到来之前数据从不稳定到稳定所需的时间，如果建立的时间不满足要求那么数据将不能在这个时钟上升沿被稳定的打入触发器；保持时间（</span><span style="font-family: Arial">Th</span><span style="font-family: 宋体">：</span><span style="font-family: Arial">hold time</span><span style="font-family: 宋体">）是指数据稳定后保持的时间，如果保持时间不满足要求那么数据同样也不能被稳定的打入触发器。建立与保持时间的简单示意图如下图</span><span style="font-family: Arial">1</span><span style="font-family: 宋体">所示。</span></span></p>
+<p style="text-align: center"><img src="./建立时间和保持时间关系详解 - Lilto - 博客园_files/1475175-20180903213003081-200236922.jpg" alt="" class="medium-zoom-image"></p>
+<p style="text-align: center"><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: 宋体">图</span><span style="font-family: Arial">1 </span><span style="font-family: 宋体">保持时间与建立时间的示意图</span></span></p>
+<p><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: 宋体">　　在</span><span style="font-family: Arial">FPGA</span><span style="font-family: 宋体">设计的同一个模块中常常是包含组合逻辑与时序逻辑，为了保证在这些逻辑的接口处数据能稳定的被处理，那么对建立时间与保持时间建立清晰的概念非常重要。下面在认识了建立时间与保持时间的概念上思考如下的问题。举一个常见的例子。</span></span></p>
+<p style="text-align: center"><img src="./建立时间和保持时间关系详解 - Lilto - 博客园_files/1475175-20180903213003293-898335995.jpg" alt="" class="medium-zoom-image"></p>
+<p style="text-align: center"><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: 宋体">图</span><span style="font-family: Arial">2 </span><span style="font-family: 宋体">同步设计中的一个基本模型</span></span></p>
+<p><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: 宋体">图</span><span style="font-family: Arial">2</span><span style="font-family: 宋体">为统一采用一个时钟的同步设计中一个基本的模型。图中</span><span style="font-family: Arial">Tco</span><span style="font-family: 宋体">是触发器的数据输出的延时；</span><span style="font-family: Arial">Tdelay</span><span style="font-family: 宋体">是组合逻辑的延时；</span><span style="font-family: Arial">Tsetup</span><span style="font-family: 宋体">是触发器的建立时间；</span><span style="font-family: Arial">Tpd</span><span style="font-family: 宋体">为时钟的延时。<span style="background-color: rgba(255, 255, 0, 1)">如果第一个触发器</span></span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">D1</span><span style="font-family: 宋体; background-color: rgba(255, 255, 0, 1)">建立时间最大为</span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">T1max</span><span style="font-family: 宋体; background-color: rgba(255, 255, 0, 1)">，最小为</span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">T1min</span><span style="font-family: 宋体; background-color: rgba(255, 255, 0, 1)">，组合逻辑的延时最大为</span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">T2max</span><span style="font-family: 宋体; background-color: rgba(255, 255, 0, 1)">，最小为</span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">T2min</span><span style="font-family: 宋体; background-color: rgba(255, 255, 0, 1)">。问第二个触发器</span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">D2</span><span style="font-family: 宋体; background-color: rgba(255, 255, 0, 1)">建立时间</span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">T3</span><span style="font-family: 宋体; background-color: rgba(255, 255, 0, 1)">与保持时间</span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">T4</span><span style="font-family: 宋体; background-color: rgba(255, 255, 0, 1)">应该满足什么条件，或者是知道了</span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">T3</span><span style="font-family: 宋体; background-color: rgba(255, 255, 0, 1)">与</span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">T4</span><span style="font-family: 宋体"><span style="background-color: rgba(255, 255, 0, 1)">那么能容许的最大时钟周期是多少。</span>这个问题是在设计中必须考虑的问题，只有弄清了这个问题才能保证所设计的组合逻辑的延时是否满足了要求。</span></span></p>
+<p><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: 宋体">答案：<span style="background-color: rgba(255, 255, 0, 1)">　</span></span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">T-Tco-T2max&gt;</span><span style="font-family: 宋体; background-color: rgba(255, 255, 0, 1)">＝</span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">T3</span><span style="font-family: 宋体; background-color: rgba(255, 255, 0, 1)">，</span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">Tco</span><span style="font-family: 宋体; background-color: rgba(255, 255, 0, 1)">＋</span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">T2min-Tpd&gt;</span><span style="font-family: 宋体; background-color: rgba(255, 255, 0, 1)">＝</span><span style="font-family: Arial"><span style="background-color: rgba(255, 255, 0, 1)">T4</span>
+			</span></span></p>
+<p><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: 宋体">　　下面通过时序图来分析：设第一个触发器的输入为</span><span style="font-family: Arial">D1</span><span style="font-family: 宋体">，输出为</span><span style="font-family: Arial">Q1,</span><span style="font-family: 宋体">第二个触发器的输入为</span><span style="font-family: Arial">D2</span><span style="font-family: 宋体">，输出为</span><span style="font-family: Arial">Q2</span><span style="font-family: 宋体">；</span></span></p>
+<p><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: 宋体">　　时钟统一在上升沿进行采样，为了便于分析我们讨论两种情况即第一：假设时钟的延时</span><span style="font-family: Arial">Tpd</span><span style="font-family: 宋体">为零，其实这种情况在</span><span style="font-family: Arial">FPGA</span><span style="font-family: 宋体">设计中是常常满足的，由于在</span><span style="font-family: Arial">FPGA </span><span style="font-family: 宋体">设计中一般是采用统一的系统时钟，也就是利用从全局时钟管脚输入的时钟，这样在内部时钟的延时完全可以忽略不计。这种情况下不必考虑保持时间，因为每个数据都是保持一个时钟节拍同时又有线路的延时，也就是都是基于</span><span style="font-family: Arial">CLOCK</span><span style="font-family: 宋体">的延迟远小于数据的延迟基础上，所以保持时间都能满足要求，重点是要关心建立时间，此时如果</span><span style="font-family: Arial">D2</span><span style="font-family: 宋体">的建立时间满足要求那么时序图应该如图</span><span style="font-family: Arial">3</span><span style="font-family: 宋体">所示。</span></span></p>
+<p><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: 宋体">　　从图中可以看出如果：</span></span></p>
+<p><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: 宋体">　　</span><span style="font-family: Arial"><span style="background-color: rgba(255, 255, 0, 1)">T-Tco-Tdelay&gt;T3</span>
+			</span></span></p>
+<p><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: 宋体">　　即：</span><span style="font-family: Arial"> Tdelay&lt; T-Tco-T3
+</span></span></p>
+<p><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: 宋体">　　那么就<span style="background-color: rgba(255, 255, 0, 1)">满足了建立时间的要求</span>，其中</span><span style="font-family: Arial">T</span><span style="font-family: 宋体">为时钟的周期，这种情况下第二个触发器就能在第二个时钟的升沿就能稳定的采到</span><span style="font-family: Arial">D2</span><span style="font-family: 宋体">，时序图如图</span><span style="font-family: Arial">3</span><span style="font-family: 宋体">所示。</span><span style="color: rgba(255, 0, 0, 1)"><span style="font-family: Arial">Tco</span><span style="font-family: 宋体">是触发器的数据输出的延时。</span></span></span></p>
+<p style="text-align: center"><a href="http://pagesadmin.ednchina.com/images/article/4f1ecc50-a213-4e21-8027-0528ec79bb79/1_08094732.j" rel="noopener"><img src="./建立时间和保持时间关系详解 - Lilto - 博客园_files/1475175-20180903213003492-1990325995.jpg" alt="" border="0"></a></p>
+<p style="text-align: center"><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: 宋体">图</span><span style="font-family: Arial">3 </span><span style="font-family: 宋体">符合要求的时序图</span></span></p>
+<p><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: 宋体">　　<span style="background-color: rgba(255, 255, 0, 1)">如果组合逻辑的延时过大使得</span></span></span></p>
+<p><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: 宋体; background-color: rgba(255, 255, 0, 1)">　　</span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">T-Tco-Tdelay&lt;T3
+</span></span></p>
+<p><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: 宋体"><span style="background-color: rgba(255, 255, 0, 1)">　　那么将不满足要求，第二个触发器就在第二个时钟的升沿将采到的是一个不定态</span>，如图</span><span style="font-family: Arial">4</span><span style="font-family: 宋体">所示。那么电路将不能正常的工作。</span></span></p>
+<p style="text-align: center"><a href="http://pagesadmin.ednchina.com/images/article/4f1ecc50-a213-4e21-8027-0528ec79bb79/1_08094824.j" rel="noopener"><img src="./建立时间和保持时间关系详解 - Lilto - 博客园_files/1475175-20180903213003694-264921311.jpg" alt="" border="0"></a></p>
+<p style="text-align: center"><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: 宋体">图</span><span style="font-family: Arial">4 </span><span style="font-family: 宋体">组合逻辑的延时过大时序不满足要求</span></span></p>
+<p><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: 宋体">　<span style="background-color: rgba(255, 0, 0, 1)">结论：</span>　<span style="background-color: rgba(255, 255, 0, 1)">从而可以推出</span></span></span></p>
+<p><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: 宋体; background-color: rgba(255, 255, 0, 1)">　</span><span style="font-family: 宋体; background-color: rgba(255, 255, 0, 1)">　</span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">T-Tco-T2max&gt;</span><span style="font-family: 宋体; background-color: rgba(255, 255, 0, 1)">＝</span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">T3
+</span></span></p>
+<p><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: 宋体; background-color: rgba(255, 255, 0, 1)">　　这也就是要求的</span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">D2</span><span style="font-family: 宋体; background-color: rgba(255, 255, 0, 1)">的建立时间。</span></span></p>
+<p><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: 宋体">　　从上面的时序图中也可以看出，</span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">D2</span><span style="font-family: 宋体; background-color: rgba(255, 255, 0, 1)">的建立时间与保持时间与</span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">D1</span><span style="font-family: 宋体; background-color: rgba(255, 255, 0, 1)">的建立与保持时间是没有关系的，而只和</span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">D2</span><span style="font-family: 宋体; background-color: rgba(255, 255, 0, 1)">前面的组合逻辑和</span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">D1</span><span style="font-family: 宋体"><span style="background-color: rgba(255, 255, 0, 1)">的数据传输延时有关</span>，这也是一个很重要的结论。<span style="background-color: rgba(255, 255, 0, 1)">说明了延时没有叠加效应</span>。</span></span></p>
+<p><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: 宋体">　　第二种情况如果时钟存在延时，这种情况下就要考虑保持时间了，同时也需要考虑建立时间。时钟出现较大的延时多是采用了异步时钟的设计方法，这种方法较难保证数据的同步性，所以实际的设计中很少采用。此时如果建立时间与保持时间都满足要求那么输出的时序如图</span><span style="font-family: Arial">5</span><span style="font-family: 宋体">所示。</span></span></p>
+<p style="text-align: center"><a href="http://pagesadmin.ednchina.com/images/article/4f1ecc50-a213-4e21-8027-0528ec79bb79/1_08094850.j" rel="noopener"><img src="./建立时间和保持时间关系详解 - Lilto - 博客园_files/1475175-20180903213003963-1750001725.jpg" alt="" border="0"></a></p>
+<p style="text-align: center"><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: 宋体">图</span><span style="font-family: Arial">5 </span><span style="font-family: 宋体">时钟存在延时但满足时序</span></span></p>
+<p><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: 宋体">　　从图</span><span style="font-family: Arial">5</span><span style="font-family: 宋体">中可以容易的看出对建立时间放宽了</span><span style="font-family: Arial">Tpd</span><span style="font-family: 宋体">，所以</span><span style="font-family: Arial">D2</span><span style="font-family: 宋体">的建立时间需满足要求：</span></span></p>
+<p><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: 宋体">　　</span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">Tpd</span><span style="font-family: 宋体; background-color: rgba(255, 255, 0, 1)">＋</span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">T-Tco-T2max&gt;</span><span style="font-family: 宋体; background-color: rgba(255, 255, 0, 1)">＝</span><span style="font-family: Arial"><span style="background-color: rgba(255, 255, 0, 1)">T3</span>
+			</span></span></p>
+<p><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: 宋体">　　由于<span style="background-color: rgba(255, 255, 0, 1)">建立时间与保持时间的和是稳定的一个时钟周期</span>，如果时钟有延时，同时数据的延时也较小那么建立时间必然是增大的，保持时间就会随之减小，如果减小到不满足</span><span style="font-family: Arial">D2</span><span style="font-family: 宋体">的保持时间要求时就不能采集到正确的数据，如图</span><span style="font-family: Arial">6</span><span style="font-family: 宋体">所示。</span></span></p>
+<p><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: 宋体">　　这时即</span><span style="font-family: Arial">T</span><span style="font-family: 宋体">－（</span><span style="font-family: Arial">Tpd</span><span style="font-family: 宋体">－</span><span style="font-family: Arial">Tco-T2min</span><span style="font-family: 宋体">）</span><span style="font-family: Arial">&lt;T4,</span><span style="font-family: 宋体">就不满足要求了，<span style="background-color: rgba(255, 255, 0, 1)">所以</span></span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">D2</span><span style="font-family: 宋体"><span style="background-color: rgba(255, 255, 0, 1)">的保持时间应该为</span>：</span></span></p>
+<p><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: 宋体">　　</span><span style="font-family: Arial">T</span><span style="font-family: 宋体">－（</span><span style="font-family: Arial">Tpd+T</span><span style="font-family: 宋体">－</span><span style="font-family: Arial">Tco-T2min</span><span style="font-family: 宋体">）</span><span style="font-family: Arial">&gt;</span><span style="font-family: 宋体">＝</span><span style="font-family: Arial">T4 </span><span style="font-family: 宋体; background-color: rgba(255, 255, 0, 1)">即</span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">Tco</span><span style="font-family: 宋体; background-color: rgba(255, 255, 0, 1)">＋</span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">T2min-Tpd&gt;</span><span style="font-family: 宋体; background-color: rgba(255, 255, 0, 1)">＝</span><span style="font-family: Arial"><span style="background-color: rgba(255, 255, 0, 1)">T4</span>
+			</span></span></p>
+<p><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: 宋体">　　从上式也可以看出如果</span><span style="font-family: Arial">Tpd</span><span style="font-family: 宋体">＝</span><span style="font-family: Arial">0</span><span style="font-family: 宋体">也就是时钟的延时为</span><span style="font-family: Arial">0</span><span style="font-family: 宋体">那么同样是要求</span><span style="font-family: Arial">Tco</span><span style="font-family: 宋体">＋</span><span style="font-family: Arial">T2min&gt;T4</span><span style="font-family: 宋体">，但是在实际的应用中由于</span><span style="font-family: Arial">T2</span><span style="font-family: 宋体">的延时也就是线路的延时远远大于触发器的保持时间即</span><span style="font-family: Arial">T4</span><span style="font-family: 宋体">所以不必要关系保持时间。</span></span></p>
+<p style="text-align: center"><a href="http://pagesadmin.ednchina.com/images/article/4f1ecc50-a213-4e21-8027-0528ec79bb79/1_08094920.j" rel="noopener"><img src="./建立时间和保持时间关系详解 - Lilto - 博客园_files/1475175-20180903213004271-165298140.jpg" alt="" border="0"></a></p>
+<p style="text-align: center"><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: 宋体">图</span><span style="font-family: Arial">6 </span><span style="font-family: 宋体">时钟存在延时且保持时间不满足要求</span></span></p>
+<p><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: 宋体">下面用数字来说明一下加深理解（以下举例暂不考虑</span><span style="font-family: Arial">hold time</span><span style="font-family: 宋体">）：</span></span></p>
+<p><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: 宋体">建立时间</span><span style="font-family: Arial">Tsetup=Tdelay+ Tco- Tpd<br></span><span style="font-family: 宋体">假设</span><span style="font-family: Arial">Tco</span><span style="font-family: 宋体">（触发器固有的建立时间）</span><span style="font-family: Arial">= 2ns&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-family: 宋体">假设</span><span style="font-family: Arial">1</span><span style="font-family: 宋体">，</span><span style="font-family: Arial">Clock Delay =0</span><span style="font-family: 宋体">，</span><span style="font-family: Arial">Data delay="0"</span><span style="font-family: 宋体">，那么数据</span><span style="font-family: Arial">port</span><span style="font-family: 宋体">的新数据必须在时钟</span><span style="font-family: Arial">port</span><span style="font-family: 宋体">的时钟沿到来之前</span><span style="font-family: Arial">2ns</span><span style="font-family: 宋体">赶到数据</span><span style="font-family: Arial">port</span><span style="font-family: 宋体">，才能满足触发器的</span><span style="font-family: Arial">Tco</span><span style="font-family: 宋体">。</span></span></p>
+<p><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-family: 宋体">假设</span><span style="font-family: Arial">2</span><span style="font-family: 宋体">，</span><span style="font-family: Arial">Clock delay="0"</span><span style="font-family: 宋体">，</span><span style="font-family: Arial">data Delay = 3ns</span><span style="font-family: 宋体">，那么数据</span><span style="font-family: Arial">port</span><span style="font-family: 宋体">的新数据必须在时钟</span><span style="font-family: Arial">port</span><span style="font-family: 宋体">的时钟沿到来之前</span><span style="font-family: Arial">5ns</span><span style="font-family: 宋体">就得赶到数据</span><span style="font-family: Arial">port</span><span style="font-family: 宋体">，其中的</span><span style="font-family: Arial">3ns</span><span style="font-family: 宋体">用来使新数据从数据</span><span style="font-family: Arial">port</span><span style="font-family: 宋体">赶到触发器的</span><span style="font-family: Arial">D</span><span style="font-family: 宋体">端</span><span style="font-family: Arial">(</span><span style="font-family: 宋体">由于</span><span style="font-family: Arial">data Delay </span><span style="font-family: 宋体">），剩下的</span><span style="font-family: Arial">2ns</span><span style="font-family: 宋体">用来满足触发器的</span><span style="font-family: Arial">Tco</span><span style="font-family: 宋体">。</span></span></p>
+<p><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: Arial">&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-family: 宋体">假设</span><span style="font-family: Arial">3</span><span style="font-family: 宋体">，</span><span style="font-family: Arial">Clock delay="1ns"</span><span style="font-family: 宋体">，</span><span style="font-family: Arial">data Delay = 3ns</span><span style="font-family: 宋体">，由于时钟</span><span style="font-family: Arial">port</span><span style="font-family: 宋体">的时钟沿推后</span><span style="font-family: Arial">1ns</span><span style="font-family: 宋体">到达触发器的时钟端，那么数据</span><span style="font-family: Arial">port</span><span style="font-family: 宋体">的新数据只需在时钟</span><span style="font-family: Arial">port</span><span style="font-family: 宋体">的时钟沿到来之前</span><span style="font-family: Arial">4ns</span><span style="font-family: 宋体">赶到数据</span><span style="font-family: Arial">port</span><span style="font-family: 宋体">即可。</span></span></p>
+<p><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: Arial">&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-family: 宋体">假设</span><span style="font-family: Arial">4</span><span style="font-family: 宋体">，<span style="background-color: rgba(255, 0, 0, 1)">假设时钟的周期</span></span><span style="font-family: Arial; background-color: rgba(255, 0, 0, 1)">T=4ns</span><span style="font-family: 宋体; background-color: rgba(255, 0, 0, 1)">，即你的系统需要运行在</span><span style="font-family: Arial; background-color: rgba(255, 0, 0, 1)">250M</span><span style="font-family: 宋体"><span style="background-color: rgba(255, 0, 0, 1)">频率上，</span>那么以上的假设中，假设</span><span style="font-family: Arial">2</span><span style="font-family: 宋体">显然是不成立的，也就是说在假设</span><span style="font-family: Arial">2</span><span style="font-family: 宋体">的情况下，你的系统运行频率是低于</span><span style="font-family: Arial">250M</span><span style="font-family: 宋体">的，或者说在</span><span style="font-family: Arial">250M</span><span style="font-family: 宋体">系统里是有</span><span style="font-family: Arial">setup time violation</span><span style="font-family: 宋体">的。在假设</span><span style="font-family: Arial">2</span><span style="font-family: 宋体">的情况下，由于</span><span style="font-family: Arial">Tco</span><span style="font-family: 宋体">及</span><span style="font-family: Arial">Tpd</span><span style="font-family: 宋体">均是</span><span style="font-family: Arial">FPGA</span><span style="font-family: 宋体">的固有特性，要想满足</span><span style="font-family: Arial">4ns</span><span style="font-family: 宋体">的</span><span style="font-family: Arial">T</span><span style="font-family: 宋体">，那么唯一你能做的就是想方设法减小</span><span style="font-family: Arial">Tdelay</span><span style="font-family: 宋体">，也就是数据路径的延时。即所谓的找出关键路径，想办法优化之。</span></span></p>
+<p><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-family: 宋体">总结，在实际的设计中，对于一个给定的</span><span style="font-family: Arial">IC,</span><span style="font-family: 宋体">其实我们很容易看到</span><span style="font-family: Arial">T</span><span style="font-family: 宋体">，</span><span style="font-family: Arial">Tpd</span><span style="font-family: 宋体">，</span><span style="font-family: Arial">Tsetup</span><span style="font-family: 宋体">，</span><span style="font-family: Arial">Th</span><span style="font-family: 宋体">都是固定不变的（在跨时钟域时，</span><span style="font-family: Arial">Tpd</span><span style="font-family: 宋体">会有不同），那么我们需要关心的参数就是</span><span style="font-family: Arial">Tdelay</span><span style="font-family: 宋体">，即数据路径的延时，控制好了这个延时，那我们的设计就不会存在建立时间和保持时间不满足的情况了！</span></span></p>
+<p>&nbsp;
+&nbsp;</p>
+<p>
+&nbsp;</p>
+<p>
+&nbsp;</p>
+<p><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: 宋体">笔试题</span><span style="font-family: Arial">,</span><span style="font-family: 宋体">这样说道：时钟周期为</span><span style="font-family: Arial">T,</span><span style="font-family: 宋体">触发器</span><span style="font-family: Arial">D1</span><span style="font-family: 宋体">的建立时间最大为</span><span style="font-family: Arial">T1max</span><span style="font-family: 宋体">，最小为</span><span style="font-family: Arial">T1min</span><span style="font-family: 宋体">，该触发器的数据输出延时为</span><span style="font-family: Arial">Tco</span><span style="font-family: 宋体">。组合逻辑电路最大延迟为</span><span style="font-family: Arial"> T2max,</span><span style="font-family: 宋体">最小为</span><span style="font-family: Arial">T2min</span><span style="font-family: 宋体">。假设</span><span style="font-family: Arial">D1</span><span style="font-family: 宋体">在前，</span><span style="font-family: Arial">D2</span><span style="font-family: 宋体">去采样</span><span style="font-family: Arial">D1</span><span style="font-family: 宋体">的数据（实际就是对图</span><span style="font-family: Arial">2</span><span style="font-family: 宋体">的文字描述），问，触发器</span><span style="font-family: Arial">D2</span><span style="font-family: 宋体">的建立时间</span><span style="font-family: Arial">T3</span><span style="font-family: 宋体">和保持时间应满足什么条件。这里给出一个简易公式供大家死记一下，</span></span></p>
+<p><span style="color: rgba(255, 0, 0, 1); font-size: 7pt"><span style="font-family: 宋体">以下两个公式确定了</span><span style="font-family: Arial">D2</span><span style="font-family: 宋体">的</span><span style="font-family: Arial">Tsetup</span><span style="font-family: 宋体">和</span><span style="font-family: Arial">Thold</span><span style="font-family: 宋体">：</span></span></p>
+<p><span style="color: rgba(255, 0, 0, 1); font-size: 7pt"><span style="font-family: Arial">1) D1</span><span style="font-family: 宋体">的</span><span style="font-family: Arial">Tco + max</span><span style="font-family: 宋体">数据链路延时</span><span style="font-family: Arial"> + D2</span><span style="font-family: 宋体">的</span><span style="font-family: Arial">Tsetup &lt; T</span><span style="font-family: 宋体">（即</span><span style="font-family: Arial">T3 &lt; T - Tco - T2max</span><span style="font-family: 宋体">）</span></span></p>
+<p><span style="color: rgba(255, 0, 0, 1); font-size: 7pt"><span style="font-family: Arial">2) D1</span><span style="font-family: 宋体">的</span><span style="font-family: Arial">Tco + min</span><span style="font-family: 宋体">数据链路延时</span><span style="font-family: Arial"> &gt; D2</span><span style="font-family: 宋体">的</span><span style="font-family: Arial">Thold</span><span style="font-family: 宋体">（即</span><span style="font-family: Arial">T4&lt;&nbsp; Tco + T2min</span><span style="font-family: 宋体">）</span></span></p>
+<p><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: 宋体">其实上面的式</span><span style="font-family: Arial">2</span><span style="font-family: 宋体">可以从</span><span style="font-family: Arial">T3+T4=T</span><span style="font-family: 宋体">推出，不过要注意把</span><span style="font-family: Arial">1)</span><span style="font-family: 宋体">中的</span><span style="font-family: Arial">T2max</span><span style="font-family: 宋体">改为</span><span style="font-family: Arial">T2min</span><span style="font-family: 宋体">即可。</span></span></p>
+<p><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: 宋体">总之，<span style="color: rgba(255, 0, 0, 1)">建立时间长了，保持时间就短了<span style="color: rgba(51, 51, 51, 1)">。</span></span></span></span></p>
+<p><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: 宋体">实际中，某条数据链路延时是一个定值，只不过要求它落在区间</span><span style="font-family: Arial">{T2min</span><span style="font-family: 宋体">，</span><span style="font-family: Arial">T2max}</span><span style="font-family: 宋体">。这也是</span><span style="font-family: Arial">T2min</span><span style="font-family: 宋体">和</span><span style="font-family: Arial">T2max</span><span style="font-family: 宋体">的实际意义。</span></span></p>
+<p><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: 宋体">从现实设计出发，个人觉得这个题改为考</span><span style="font-family: Arial">T2max</span><span style="font-family: 宋体">和</span><span style="font-family: Arial">T2min</span><span style="font-family: 宋体">更合适，那是不是有更多人犯晕呢？！</span><span style="font-family: Arial">hoho
+</span></span></p>
+<p><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: 宋体">如果是那样的话，大家自己变个形吧</span><span style="font-family: Arial">^_^
+</span></span></p>
+<p>
+&nbsp;</p>
+<p>
+&nbsp;</p>
+<p><span style="color: rgba(68, 68, 68, 1)"><span style="font-family: Verdana; font-size: 6pt; background-color: rgba(255, 255, 255, 1)">&nbsp;</span><span style="color: rgba(51, 51, 51, 1); font-size: 7pt"><span style="font-family: Arial">maxbird</span><span style="font-family: 等线">：</span><span style="font-family: Arial">
+					<span style="background-color: rgba(255, 255, 0, 1)">D2</span></span><span style="font-family: 等线; background-color: rgba(255, 255, 0, 1)">的保持时间就是时钟沿到来之后</span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">,D2</span><span style="font-family: 等线; background-color: rgba(255, 255, 0, 1)">的数据输入端要保持数据不变的时间</span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">,</span><span style="font-family: 等线">这个时间是由</span><span style="font-family: Arial">D1</span><span style="font-family: 等线">和</span><span style="font-family: Arial">D2</span><span style="font-family: 等线">之间的组合逻辑时延决定的。例如</span><span style="font-family: Arial">:</span><span style="font-family: 等线">假设</span><span style="font-family: Arial">D1</span><span style="font-family: 等线">和</span><span style="font-family: Arial">D2</span><span style="font-family: 等线">之间的组合逻辑时延为</span><span style="font-family: Arial">2ns,</span><span style="font-family: 等线">时钟周期为</span><span style="font-family: Arial">10ns,</span><span style="font-family: 等线">这意味着在时钟沿来到后，</span><span style="font-family: Arial">D1</span><span style="font-family: 等线">输出的新数据要过</span><span style="font-family: Arial">2ns</span><span style="font-family: 等线">才会到达</span><span style="font-family: Arial">D2</span><span style="font-family: 等线">的数据输入端，那么在这</span><span style="font-family: Arial">2ns</span><span style="font-family: 等线">内，</span><span style="font-family: Arial">D2</span><span style="font-family: 等线">的数据输入端保持的还是上一次的旧数据，其值不会立即更新，假设</span><span style="font-family: Arial">D2</span><span style="font-family: 等线">的最小保持时间为</span><span style="font-family: Arial">3ns,</span><span style="font-family: 等线">这意味时钟沿到来后，</span><span style="font-family: Arial">D2</span><span style="font-family: 等线">的数据输入端的值在</span><span style="font-family: Arial">3ns</span><span style="font-family: 等线">内不能有变化，回到问题的关键，由于</span><span style="font-family: Arial">D1</span><span style="font-family: 等线">在时钟沿到来后的输出结果，<span style="background-color: rgba(255, 255, 0, 1)">经过</span></span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">2ns</span><span style="font-family: 等线; background-color: rgba(255, 255, 0, 1)">的组合逻辑延时便到达了</span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">D2</span><span style="font-family: 等线; background-color: rgba(255, 255, 0, 1)">的输入端，而</span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">D2</span><span style="font-family: 等线; background-color: rgba(255, 255, 0, 1)">要求在时钟沿到来后的</span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">3ns</span><span style="font-family: 等线; background-color: rgba(255, 255, 0, 1)">内其输入端的值不能改变，这样</span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">D2</span><span style="font-family: 等线; background-color: rgba(255, 255, 0, 1)">的保持时间就得不到满足，所以</span><span style="font-family: Arial; background-color: rgba(255, 255, 0, 1)">D2</span><span style="font-family: 等线; background-color: rgba(255, 255, 0, 1)">的保持时间必须小于等于</span><span style="font-family: Arial"><span style="background-color: rgba(255, 255, 0, 1)">2ns</span><span style="color: rgba(255, 0, 0, 1)">(</span></span><span style="font-family: 等线">因为新数据在</span><span style="color: rgba(255, 0, 0, 1)"><span style="font-family: Arial">2ns</span><span style="font-family: 等线">之后才会过来，所以就给了</span><span style="font-family: Arial">D2</span><span style="font-family: 等线">输入数据</span><span style="font-family: Arial">&lt;=2ns</span><span style="font-family: 等线">的保持时间</span><span style="font-family: Arial">)</span><span style="color: rgba(51, 51, 51, 1)"><span style="font-family: 等线">。至于说</span><span style="font-family: Arial">T2min</span><span style="font-family: 等线">为</span><span style="font-family: Arial">0</span><span style="font-family: 等线">时的情况，其实</span><span style="font-family: Arial">T2min</span><span style="font-family: 等线">是永远不能为</span><span style="font-family: Arial">0</span><span style="font-family: 等线">的，即使是一根导线其时延也是不可能为</span><span style="font-family: Arial">0</span><span style="font-family: 等线">的，这就是为什么移位寄存器的两个触发器之间连的只是一根导线，导线后端触发器的保持时间却还是可以满足的原因，其实移位寄存器中触发器的保持时间可以看成是小于等于其间导线的时延。</span></span></span></span></span></p>
+</div>
+<div class="clear"></div>
+<div id="blog_post_info_block" role="contentinfo"><div id="BlogPostCategory">
+    分类: 
+            <a href="https://www.cnblogs.com/lilto/category/1287865.html" target="_blank">CSAPP学习笔记</a></div>
+
+
+    <div id="blog_post_info">
+<div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(9581143,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+        <a id="green_channel_follow" onclick="follow(&#39;ae9a7c16-0e96-4740-19e5-08d60b235bdd&#39;);" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./建立时间和保持时间关系详解 - Lilto - 博客园_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./建立时间和保持时间关系详解 - Lilto - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="https://home.cnblogs.com/u/lilto/" target="_blank"><img src="./建立时间和保持时间关系详解 - Lilto - 博客园_files/20180827215900.png" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="https://home.cnblogs.com/u/lilto/">Lilto</a><br>
+            <a href="https://home.cnblogs.com/u/lilto/followees/">关注 - 3</a><br>
+            <a href="https://home.cnblogs.com/u/lilto/followers/">粉丝 - 10</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow(&#39;ae9a7c16-0e96-4740-19e5-08d60b235bdd&#39;);return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(9581143,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">4</span>
+    </div>
+    <div class="buryit" onclick="votePost(9581143,&#39;Bury&#39;)">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+
+<script type="text/javascript">
+    currentDiggType = 0;
+</script></div>
+    <div class="clear"></div>
+    <div id="post_next_prev">
+
+    <a href="https://www.cnblogs.com/lilto/p/9548736.html" class="p_n_p_prefix">« </a> 上一篇：    <a href="https://www.cnblogs.com/lilto/p/9548736.html" title="发布于 2018-08-28 15:51">STM32F103_外部RAM用作运存</a>
+    <br>
+    <a href="https://www.cnblogs.com/lilto/p/10804389.html" class="p_n_p_prefix">» </a> 下一篇：    <a href="https://www.cnblogs.com/lilto/p/10804389.html" title="发布于 2019-05-03 09:46">SDRAM调试总结</a>
+
+</div>
+</div>
+            </div>
+            <div class="postDesc">posted @ 
+<span id="post-date">2018-09-03 21:27</span>&nbsp;
+<a href="https://www.cnblogs.com/lilto/">Lilto</a>&nbsp;
+阅读(<span id="post_view_count">52242</span>)&nbsp;
+评论(<span id="post_comment_count">0</span>)&nbsp;
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=9581143" rel="nofollow">编辑</a>&nbsp;
+<a href="javascript:void(0)" onclick="AddToWz(9581143);return false;">收藏</a>&nbsp;
+<a href="javascript:void(0)" onclick="reportManager.report({ currentUserId: &#39;&#39;, targetType: &#39;blogPost&#39;, targetId: &#39;9581143&#39;, targetLink: &#39;https://www.cnblogs.com/lilto/p/9581143.html&#39;, title: &#39;建立时间和保持时间关系详解&#39; })">举报</a></div>
+        </div>
+	    
+	    
+    </div><!--end: topics 文章、评论容器-->
+</div>
+
+<script>
+    var cb_entryId = 9581143, cb_entryCreatedDate = '2018-09-03 21:27', cb_postType = 1;
+    var allowComments = true, cb_blogId = 454997, cb_blogApp = 'lilto', cb_blogUserGuid = 'ae9a7c16-0e96-4740-19e5-08d60b235bdd';
+    mermaidRender.render()
+    markdown_highlight()
+    zoomManager.apply("#cnblogs_post_body img:not(.code_img_closed):not(.code_img_opened)");
+    updatePostStats(
+            [cb_entryId],
+            function(id, count) { $("#post_view_count").text(count) },
+            function(id, count) { $("#post_comment_count").text(count) })
+</script>
+<a id="!comments"></a>
+<div id="blog-comments-placeholder"></div>
+<div id="comment_form" class="commentform">
+    <a name="commentform"></a>
+    <div id="divCommentShow"></div>
+    <div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="https://www.cnblogs.com/lilto/p/9581143.html#" onclick="return RefreshPage();">刷新页面</a><a href="https://www.cnblogs.com/lilto/p/9581143.html#top">返回顶部</a></div>
+    <div id="comment_form_container" style="visibility: visible;"><div class="login_tips">
+    登录后才能查看或发表评论，立即 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return account.login(&#39;!comments&#39;);">登录</a> 或者
+    <a href="https://www.cnblogs.com/">逛逛</a> 博客园首页
+</div>
+</div>
+    <div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+    <div id="cnblogs_ch"><a href="https://cloud.baidu.com/campaign/2022/index.html?track=f685c156ee58624f28cc3a33e1947160036fe70e52355ff7#person" target="_blank" onclick="gtag(&#39;event&#39;, &#39;click&#39;, {&#39;event_category&#39;: &#39;ad&#39;, &#39;event_label&#39;: &#39;T2-百度智能云-开年采购季&#39;})">【推荐】百度智能云2022开年大促0.4折起，企业新用户享高配优惠</a><br><a href="https://developer.huawei.com/consumer/cn/forum/topic/0201833401197920098?fid=18&amp;ha_source=bokeyuan" target="_blank" onclick="gtag(&#39;event&#39;, &#39;click&#39;, {&#39;event_category&#39;: &#39;ad&#39;, &#39;event_label&#39;: &#39;T2-华为专区-移动应用白皮书&#39;})">【推荐】开发者必读：华为 2022 年移动应用趋势洞察白皮书</a><br></div>
+    <div id="opt_under_post"></div>
+    <div id="cnblogs_c1" class="under-post-card">
+            <div id="div-gpt-ad-1592365906576-0" style="width: 300px; height: 250px;" data-google-query-id="CMmLwYvT7_YCFZRbYAod3j0GmA"><div id="google_ads_iframe_/1090369/C1_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/1090369/C1_0" name="google_ads_iframe_/1090369/C1_0" title="3rd party ad content" width="300" height="250" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" role="region" aria-label="Advertisement" tabindex="0" data-google-container-id="1" style="border: 0px; vertical-align: bottom;" data-load-complete="true" src="./建立时间和保持时间关系详解 - Lilto - 博客园_files/saved_resource.html"></iframe></div></div>
+    </div>
+    <div id="under_post_card1"><div class="under-post-card">
+<b>编辑推荐：</b>
+<br>
+
+· <a href="https://www.cnblogs.com/skychen1218/p/16068503.html" target="_blank">记我第一次做线下技术分享的那些事</a>
+    <br>
+· <a href="https://www.cnblogs.com/thisiswhy/p/16066548.html" target="_blank">换个数据结构，一不小心节约了 591 台机器！</a>
+    <br>
+· <a href="https://www.cnblogs.com/tcjiaan/p/16058491.html" target="_blank">[ASP.NET Core] MVC 模型绑定：非规范正文内容的处理</a>
+    <br>
+· <a href="https://www.cnblogs.com/yexiaochai/p/16041013.html" target="_blank">全面认识数据指标体系</a>
+    <br>
+· <a href="https://www.cnblogs.com/weixiao-he/p/16051730.html" target="_blank">项目开发中对成长的一些思考</a>
+    <br>
+</div></div>
+        <div id="cnblogs_c2" class="under-post-card">
+            <a href="https://developer.huawei.com/consumer/cn/forum/topic/0201833401197920098?fid=18&amp;ha_source=bokeyuan" rel="nofollow" target="_blank" onclick="countCreativeClicks(&#39;C2-华为专区-补量-移动应用白皮书&#39;)">
+                <img src="./建立时间和保持时间关系详解 - Lilto - 博客园_files/35695-20220329191439390-706965398.jpg" alt="" onload="countCreativeImpressions(&#39;C2-华为专区-补量-移动应用白皮书&#39;)">
+            </a>
+        </div>
+    <div id="under_post_card2"><div class="itnews under-post-card">
+    <b>最新新闻</b>：
+    <br>
+ ·          <a href="https://news.cnblogs.com/n/717887/" target="_blank">美图发布2021年业绩：总收入16.660亿元，同比增长39.5%</a>
+        <br>
+ ·          <a href="https://news.cnblogs.com/n/717886/" target="_blank">网友投诉知乎乱扣费：多扣几十个月，钱都扣没了银行发短信才知道</a>
+        <br>
+ ·          <a href="https://news.cnblogs.com/n/717885/" target="_blank">特斯拉拆股，马斯克吃饱</a>
+        <br>
+ ·          <a href="https://news.cnblogs.com/n/717884/" target="_blank">理想L9官方剧透：全自研旗舰级智能驾驶系统，4月16日正式发布</a>
+        <br>
+ ·          <a href="https://news.cnblogs.com/n/717883/" target="_blank">晶圆代工厂争相“砸钱”扩产&nbsp;中芯国际预计资本支出50亿美元</a>
+        <br>
+    » <a href="https://news.cnblogs.com/" title="IT 新闻" target="_blank">更多新闻...</a>
+</div></div>
+    <div id="HistoryToday" class="under-post-card" style="display: none;"></div>
+    <script type="text/javascript">
+        var commentManager = new blogCommentManager();
+        commentManager.renderComments(0);
+        fixPostBody();
+
+                window.tocManager.displayDisableTocTips = false;
+                window.tocManager.generateToc();
+            setTimeout(function() { incrementViewCount(cb_entryId); }, 50);        deliverT2();
+        deliverC1C2();
+        loadNewsAndKb();
+LoadPostCategoriesTags(cb_blogId, cb_entryId);        LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+        GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+        loadOptUnderPost();
+        GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+    </script>
+</div>
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+	<div id="sideBar">
+		<div id="sideBarMain">
+			<div id="sidebar_news" class="newsItem"><!--done-->
+<h3 class="catListTitle">公告</h3>
+
+<div id="blog-news">
+    
+    <div id="profile_block">
+        昵称：
+        <a href="https://home.cnblogs.com/u/lilto/">
+            Lilto
+        </a>
+        <br>
+        园龄：
+        <a href="https://home.cnblogs.com/u/lilto/" title="入园时间：2018-08-27">
+            3年7个月
+        </a>
+        <br>
+        粉丝：
+        <a href="https://home.cnblogs.com/u/lilto/followers/">
+            10
+        </a>
+        <br>
+        关注：
+        <a href="https://home.cnblogs.com/u/lilto/followees/">
+            3
+        </a>
+        <div id="p_b_follow">
+<a href="javascript:void(0)" onclick="follow(&#39;ae9a7c16-0e96-4740-19e5-08d60b235bdd&#39;)">+加关注</a></div>
+        <script>getFollowStatus('ae9a7c16-0e96-4740-19e5-08d60b235bdd');</script>
+    </div>
+</div>
+
+</div>
+<div id="sidebar_c3" style="display: block;"><a href="https://c.gridsumdissector.com/r/?gid=gad_545_ewontdtj&amp;ck=1075&amp;adk=10813&amp;autorefresh=__AUTOREFRESH__" target="_blank"><img width="300" height="250" src="./建立时间和保持时间关系详解 - Lilto - 博客园_files/35695-20220216170915075-1346863871.jpg" alt="字节跳动2022校园招聘" onclick="countClicks(&#39;ad&#39;, &#39;C3-字节-雇主春招&#39;);"></a></div>
+			<div id="blog-calendar" style="">
+
+<table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar" border="0">
+    <tbody>
+        <tr>
+            <td colspan="7">
+                <table class="CalTitle" cellspacing="0" border="0">
+                    <tbody>
+                        <tr>
+                            <td class="CalNextPrev">
+                                <a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2022/02/28&#39;); return false;">&lt;</a>
+                            </td>
+                            <td align="center">2022年3月</td>
+                            <td align="right" class="CalNextPrev">
+                                <a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2022/04/30&#39;); return false;">&gt;</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    <tr>
+        <th class="CalDayHeader" align="center" abbr="日" scope="col">日</th>
+        <th class="CalDayHeader" align="center" abbr="一" scope="col">一</th>
+        <th class="CalDayHeader" align="center" abbr="二" scope="col">二</th>
+        <th class="CalDayHeader" align="center" abbr="三" scope="col">三</th>
+        <th class="CalDayHeader" align="center" abbr="四" scope="col">四</th>
+        <th class="CalDayHeader" align="center" abbr="五" scope="col">五</th>
+        <th class="CalDayHeader" align="center" abbr="六" scope="col">六</th>
+    </tr>
+            <tr>
+                            <td class="CalOtherMonthDay" align="center">27</td>
+                            <td class="CalOtherMonthDay" align="center">28</td>
+                        <td class="" align="center">
+                            1
+                        </td>
+                        <td class="" align="center">
+                            2
+                        </td>
+                        <td class="" align="center">
+                            3
+                        </td>
+                        <td class="" align="center">
+                            4
+                        </td>
+                    <td class="CalWeekendDay" align="center">
+                        5
+                    </td>
+            </tr>
+                <tr>
+                        <td class="CalWeekendDay" align="center">
+                            6
+                        </td>
+                            <td class="" align="center">
+                                7
+                            </td>
+                            <td class="" align="center">
+                                8
+                            </td>
+                            <td class="" align="center">
+                                9
+                            </td>
+                            <td class="" align="center">
+                                10
+                            </td>
+                            <td class="" align="center">
+                                11
+                            </td>
+                        <td class="CalWeekendDay" align="center">
+                            12
+                        </td>
+                </tr>
+                <tr>
+                        <td class="CalWeekendDay" align="center">
+                            13
+                        </td>
+                            <td class="" align="center">
+                                14
+                            </td>
+                            <td class="" align="center">
+                                15
+                            </td>
+                            <td class="" align="center">
+                                16
+                            </td>
+                            <td class="" align="center">
+                                17
+                            </td>
+                            <td class="" align="center">
+                                18
+                            </td>
+                        <td class="CalWeekendDay" align="center">
+                            19
+                        </td>
+                </tr>
+                <tr>
+                        <td class="CalWeekendDay" align="center">
+                            20
+                        </td>
+                            <td class="" align="center">
+                                21
+                            </td>
+                            <td class="" align="center">
+                                22
+                            </td>
+                            <td class="" align="center">
+                                23
+                            </td>
+                            <td class="" align="center">
+                                24
+                            </td>
+                            <td class="" align="center">
+                                25
+                            </td>
+                        <td class="CalWeekendDay" align="center">
+                            26
+                        </td>
+                </tr>
+                <tr>
+                        <td class="CalWeekendDay" align="center">
+                            27
+                        </td>
+                            <td class="" align="center">
+                                28
+                            </td>
+                            <td class="" align="center">
+                                29
+                            </td>
+                            <td class="" align="center">
+                                30
+                            </td>
+                            <td class="CalTodayDay" align="center">
+                                31
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                1
+                            </td>
+                        <td class="CalOtherMonthDay" align="center">
+                            2
+                        </td>
+                </tr>
+                <tr>
+                        <td class="CalOtherMonthDay" align="center">
+                            3
+                        </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                4
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                5
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                6
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                7
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                8
+                            </td>
+                        <td class="CalOtherMonthDay" align="center">
+                            9
+                        </td>
+                </tr>
+    </tbody>
+</table></div><script>loadBlogDefaultCalendar();</script>			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><!-- 搜索 -->
+<div id="sidebar_search" class="sidebar-block">
+    <div id="sidebar_search" class="mySearch">
+        <h3 class="catListTitle">搜索</h3>
+        <div id="sidebar_search_box">
+            <div id="widget_my_zzk" class="div_my_zzk">
+                <input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk">
+            </div>
+            <div id="widget_my_google" class="div_my_zzk">
+                <input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 常用链接 -->
+<div id="sidebar_shortcut" class="sidebar-block"><div class="catListLink">
+<h3 class="catListTitle">
+常用链接
+</h3>
+<ul>
+    
+<li><a href="https://www.cnblogs.com/lilto/p/" title="我的博客的随笔列表">我的随笔</a></li>
+<li><a href="https://www.cnblogs.com/lilto/MyComments.html" title="我的发表过的评论列表">我的评论</a></li>
+<li><a href="https://www.cnblogs.com/lilto/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li>
+<li><a href="https://www.cnblogs.com/lilto/RecentComments.html" title="我的博客的评论列表">最新评论</a></li>
+<li><a href="https://www.cnblogs.com/lilto/tag/" title="我的博客的标签列表">我的标签</a></li>
+
+</ul>
+</div>
+
+</div>
+
+<!-- 最新随笔 -->
+
+
+<!-- 我的标签 -->
+<div id="sidebar_toptags" class="sidebar-block"></div>
+
+<!-- 积分与排名 -->
+
+
+<!-- 随笔分类、随笔档案、文章分类、新闻分类、相册、链接 -->
+<div id="sidebar_categories">
+
+    <div id="sidebar_postcategory" class="catListPostCategory sidebar-block">
+        <h3 class="catListTitle">
+            
+随笔分类
+
+
+
+        </h3>
+
+        <ul>
+
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/lilto/category/1287865.html" class="category-item-link" rel="" target="">CSAPP学习笔记(3)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/lilto/category/1287863.html" class="category-item-link" rel="" target="">C语言专题(11)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/lilto/category/1592646.html" class="category-item-link" rel="" target="">IMX6DL学习笔记(4)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/lilto/category/1456680.html" class="category-item-link" rel="" target="">S3C2440学习笔记(29)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/lilto/category/1287864.html" class="category-item-link" rel="" target="">STM32学习笔记(2)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/lilto/category/1592651.html" class="category-item-link" rel="" target="">开发环境(9)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/lilto/category/1592647.html" class="category-item-link" rel="" target="">通信协议(3)</a>
+ 
+                </li>                
+            
+        </ul>
+
+
+    </div>    
+    <div id="sidebar_postarchive" class="catListPostArchive sidebar-block">
+        <h3 class="catListTitle">
+            
+随笔档案
+
+
+
+        </h3>
+
+        <ul>
+
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/lilto/archive/2019/11.html" class="category-item-link" rel="" target="">2019年11月(49)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/lilto/archive/2019/06.html" class="category-item-link" rel="" target="">2019年6月(3)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/lilto/archive/2019/05.html" class="category-item-link" rel="" target="">2019年5月(5)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/lilto/archive/2018/09.html" class="category-item-link" rel="" target="">2018年9月(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/lilto/archive/2018/08.html" class="category-item-link" rel="" target="">2018年8月(3)</a>
+ 
+                </li>                
+            
+        </ul>
+
+
+    </div>    
+</div>
+
+<!-- 最新评论 -->
+<!-- 阅读排行榜 -->
+<div id="sidebar_topviewedposts" class="sidebar-block"><div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock">
+        <ul style="word-break:break-all">
+                    <li>
+                        <a href="https://www.cnblogs.com/lilto/p/9581143.html">
+                            1. 建立时间和保持时间关系详解(52241)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/lilto/p/9548736.html">
+                            2. STM32F103_外部RAM用作运存(15036)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/lilto/p/11876682.html">
+                            3. Centos 8双网卡设置(5066)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/lilto/p/11877355.html">
+                            4. STM32之GD25Q256应用笔记(4536)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/lilto/p/11877847.html">
+                            5. LCD驱动详解(4386)
+                        </a>
+                    </li>
+        </ul>
+    </div>
+</div>
+
+</div>
+
+<!-- 评论排行榜 -->
+<div id="sidebar_topcommentedposts" class="sidebar-block"></div>
+
+<!-- 推荐排行榜 -->
+<div id="sidebar_topdiggedposts" class="sidebar-block">
+<div id="topdigg_posts_wrap">
+    <div class="catListView">
+        <h3 class="catListTitle">推荐排行榜</h3>
+        <div id="TopDiggPostsBlock">
+            <ul style="word-break: break-all">
+                        <li>
+                            <a href="https://www.cnblogs.com/lilto/p/9581143.html">
+                                1. 建立时间和保持时间关系详解(4)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.cnblogs.com/lilto/p/9548736.html">
+                                2. STM32F103_外部RAM用作运存(2)
+                            </a>
+                        </li>
+            </ul>
+        </div>
+    </div>
+</div></div><div id="sidebar_recentcomments" class="sidebar-block"></div>
+
+
+</div>
+                    <script>loadBlogSideColumn();</script>
+			</div>			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		<!--done-->
+Copyright © 2022 Lilto
+<br><span id="poweredby">Powered by .NET 6 on Kubernetes</span>
+
+
+
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+    
+
+    <input type="hidden" id="antiforgery_token" value="CfDJ8AuMt_3FvyxIgNOR82PHE4nJ7zsqK9MKR4XT4I_BrZIGBAB5ABdpO3-Z-4NVnGyn5B-rgy0PRhzbTeRPnUQKSQANUuOALPQ5ocnHxv708L-z9vuKYQNmGdhyrGBjOIBNpSUXnVMCN39qnLJ6SGWeF0k">
+    <script async="" src="./建立时间和保持时间关系详解 - Lilto - 博客园_files/js"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    var kv = getGACustom();
+    if (kv) {
+        gtag('set', kv);
+    }
+    gtag('config', 'UA-476124-1');
+    </script>
+    <script defer="" src="./建立时间和保持时间关系详解 - Lilto - 博客园_files/hm.js.下载"></script><iframe src="./建立时间和保持时间关系详解 - Lilto - 博客园_files/container.html" style="visibility: hidden; display: none;"></iframe>
+
+<iframe src="./建立时间和保持时间关系详解 - Lilto - 博客园_files/aframe.html" width="0" height="0" style="display: none;"></iframe></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
