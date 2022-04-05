@@ -311,36 +311,36 @@
             <h1 style="display: none">SV学习0-1：EDA的使用</h1>
             
             <div class="markdown-body">
-              <h1 id="一、Questasim"><a href="#一、Questasim" class="headerlink" title="一、Questasim"></a>一、Questasim</h1><h2 id="1-hello-world"><a href="#1-hello-world" class="headerlink" title="1 hello world"></a>1 hello world</h2><h3 id="1-编译会把它放到库里面，然后再库里仿真"><a href="#1-编译会把它放到库里面，然后再库里仿真" class="headerlink" title="1.编译会把它放到库里面，然后再库里仿真"></a>1.编译会把它放到库里面，然后再库里仿真</h3><ol>
+              <h1><span id="一-questasim">一、Questasim</span></h1><h2><span id="1-hello-world">1 hello world</span></h2><h3><span id="1编译会把它放到库里面然后再库里仿真">1.编译会把它放到库里面，然后再库里仿真</span></h3><ol>
 <li>上图为编译前，status为？</li>
 </ol>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211029195944381-16355087926651.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211029195944381-16355087926651.png" srcset="/img/loading.gif" lazyload alt></p>
 <ol>
 <li>编译成功后（编译成功后放到库里面，再做仿真）</li>
 </ol>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211029200052177-16355088533832.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211029200052177-16355088533832.png" srcset="/img/loading.gif" lazyload alt></p>
 <ol>
 <li>在库里的work中运行仿真without Optimization</li>
 </ol>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211029201949489-16355099905323.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211029201949489-16355099905323.png" srcset="/img/loading.gif" lazyload alt></p>
 <ol>
 <li>最后运行仿真，其中Now:是指的仿真时间</li>
 </ol>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211029202357250-16355102398214.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="2-为什么是100ns"><a href="#2-为什么是100ns" class="headerlink" title="2. 为什么是100ns?"></a>2. 为什么是100ns?</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211029205535026-16355121365295.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211029202357250-16355102398214.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="2-为什么是100ns">2. 为什么是100ns?</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211029205535026-16355121365295.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>单步步长为100ns</p>
-<h3 id="3-run代表的仿真继续执行-其他run命令"><a href="#3-run代表的仿真继续执行-其他run命令" class="headerlink" title="3. run代表的仿真继续执行_其他run命令"></a>3. run代表的仿真继续执行_其他run命令</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211029205857374-16355123404767.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="3-run代表的仿真继续执行_其他run命令">3. run代表的仿真继续执行_其他run命令</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211029205857374-16355123404767.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>run  时间</li>
 <li>run  -all</li>
 <li>run -continue </li>
 </ul>
 <p>run -all 为啥会有的时候成功有的时候没成功</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211029210236017.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211029210236017.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>如果仿真已经运行完，则run -all没结果<br>如果仿真被暂停或没运行完，run -all才有结果</p>
-<h1 id="二、VCS"><a href="#二、VCS" class="headerlink" title="二、VCS"></a>二、VCS</h1><p>compile,elabration,run,rungui,clean</p>
+<h1><span id="二-vcs">二、VCS</span></h1><p>compile,elabration,run,rungui,clean</p>
 <p>编译文件：</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211123215651722.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211123215651722.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>执行顺序：</p>
 <ol>
 <li><p>make comp</p>

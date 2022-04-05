@@ -339,7 +339,7 @@
 </li>
 </ul>
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
-<h1 id="Scala语言入门"><a href="#Scala语言入门" class="headerlink" title="Scala语言入门"></a>Scala语言入门</h1><p>Scala（发音为/ˈskɑːlə, ˈskeɪlə/）是一门多范式的编程语言，设计初衷是要集成面向对象编程和函数式编程的各种特性。洛桑联邦理工学院的Martin Odersky于2001年基于Funnel的工作开始设计Scala。Java平台的Scala于2003年底/2004年初发布。</p>
+<h1><span id="scala语言入门">Scala语言入门</span></h1><p>Scala（发音为/ˈskɑːlə, ˈskeɪlə/）是一门多范式的编程语言，设计初衷是要集成面向对象编程和函数式编程的各种特性。洛桑联邦理工学院的Martin Odersky于2001年基于Funnel的工作开始设计Scala。Java平台的Scala于2003年底/2004年初发布。</p>
 <p>特点：</p>
 <ul>
 <li>同样运行在JVM上，可以与现存程序同时运行。</li>
@@ -363,7 +363,7 @@
 <li><a target="_blank" rel="noopener" href="https://docs.scala-lang.org/zh-cn/cheatsheets/index.html">Scala官网语法速查</a></li>
 <li><a target="_blank" rel="noopener" href="https://docs.scala-lang.org/zh-cn/tour/tour-of-scala.html">Scala官方文档 Tour Of Scala</a></li>
 </ul>
-<h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><p>Scala需要依赖Java，访问<a target="_blank" rel="noopener" href="https://docs.scala-lang.org/overviews/jdk-compatibility/overview.html">这里</a>查看特定Scala版本依赖的Java版本。这里选择，最新的JDK17配合Scala2.13.6。</p>
+<h2><span id="环境配置">环境配置</span></h2><p>Scala需要依赖Java，访问<a target="_blank" rel="noopener" href="https://docs.scala-lang.org/overviews/jdk-compatibility/overview.html">这里</a>查看特定Scala版本依赖的Java版本。这里选择，最新的JDK17配合Scala2.13.6。</p>
 <p>Windows中下载安装配置环境变量：</p>
 <ul>
 <li>类似于java配置<code>SCALA_HOME</code>为安装目录。</li>
@@ -383,7 +383,7 @@
 <li><code>HelloScala$</code>有一个<code>main</code>实例方法，<code>HelloScala</code>类的静态方法通过这个单例对象转调这个实例方法。完成打印。</li>
 <li>Scala比Java更面向对象。</li>
 </ul>
-<h2 id="IDEA环境配置"><a href="#IDEA环境配置" class="headerlink" title="IDEA环境配置"></a>IDEA环境配置</h2><p>使用IntelliJ IDEA：</p>
+<h2><span id="idea环境配置">IDEA环境配置</span></h2><p>使用IntelliJ IDEA：</p>
 <ul>
 <li>创建Maven项目，JDK版本17。</li>
 <li>安装插件：Scala。一般默认都已经装了。</li>
@@ -408,7 +408,7 @@
 <li>安装包里面已经有了文档，没有的话可以单独下载。</li>
 <li>Scala依赖Java，某些类型就是Java的包装，库中有一部分java源码。</li>
 </ul>
-<h2 id="变量与数据类型"><a href="#变量与数据类型" class="headerlink" title="变量与数据类型"></a>变量与数据类型</h2><p>注释：</p>
+<h2><span id="变量与数据类型">变量与数据类型</span></h2><p>注释：</p>
 <ul>
 <li>和java一样</li>
 <li><code>//</code> 单行</li>
@@ -548,7 +548,7 @@
 <li>定义了一些别名给常用的类，比如<code>List</code>是<code>scala.collection.immutable.List</code>的别名，也可以理解为默认导入？</li>
 <li>其他别名可能是底层平台JVM提供的，比如<code>String</code>是<code>java.lang.String</code>的别名。</li>
 </ul>
-<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><p>运算符：</p>
+<h2><span id="运算符">运算符</span></h2><p>运算符：</p>
 <ul>
 <li>和Java基本相同。</li>
 <li>算术运算：<code>+ - * / %</code> ，<code>+</code>可以用于一元正号，二元加号，还可以用作字符串加法，取模也可用于浮点数。没有自增和自减语法<code>++ --</code>。</li>
@@ -632,7 +632,7 @@
 <li>不要滥用，用到都搞不清谁是运算符谁是操作数就不好了。</li>
 <li>经验尚浅，还需多实践。</li>
 </ul>
-<h2 id="控制流"><a href="#控制流" class="headerlink" title="控制流"></a>控制流</h2><p><code>if-else</code>：<br><figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala"><span class="hljs-keyword">if</span> (condition) &#123;<br>    xxx<br>&#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (condition) &#123;<br>    xxx<br>&#125; <span class="hljs-keyword">else</span> &#123;<br>    xxx<br>&#125;<br></code></pre></div></td></tr></table></figure></p>
+<h2><span id="控制流">控制流</span></h2><p><code>if-else</code>：<br><figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala"><span class="hljs-keyword">if</span> (condition) &#123;<br>    xxx<br>&#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (condition) &#123;<br>    xxx<br>&#125; <span class="hljs-keyword">else</span> &#123;<br>    xxx<br>&#125;<br></code></pre></div></td></tr></table></figure></p>
 <ul>
 <li>scala中特殊一点，<code>if-else</code>语句也有返回值，也就是说也可以作为表达式，定义为执行的最后一个语句的返回值。</li>
 <li>可以强制要求返回<code>Unit</code>类型，此时忽略最后一个表达式的值，得到<code>()</code>。</li>
@@ -681,7 +681,7 @@
 <li>可以使用Scala中的<code>Breaks</code>类中的<code>break</code>方法（只是封装了异常捕获），实现异常抛出和捕获。  <figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala"><span class="hljs-keyword">import</span> scala.util.control.<span class="hljs-type">Breaks</span><br><span class="hljs-type">Breaks</span>.breakable(<br>    <span class="hljs-keyword">for</span> (i &lt;- <span class="hljs-number">0</span> to <span class="hljs-number">10</span>) &#123;<br>        <span class="hljs-keyword">if</span> (i == <span class="hljs-number">3</span>)<br>            <span class="hljs-type">Breaks</span>.<span class="hljs-keyword">break</span>()<br>        println(i)<br>    &#125;<br>)<br></code></pre></div></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h2><p>不同范式对比：</p>
+<h2><span id="函数式编程">函数式编程</span></h2><p>不同范式对比：</p>
 <ul>
 <li>面向过程：按照步骤解决问题。</li>
 <li>面向对象：分解对象、行为、属性，通过对象关系以及行为调用解决问题。耦合低，复用性高，可维护性强。</li>
@@ -810,7 +810,7 @@
 <li>当函数返回值被声明为<code>lazy</code>时，函数的执行将会被推迟，知道我们首次对此取值，该函数才会被执行。这种函数成为惰性函数。<figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = &#123;<br>    <span class="hljs-comment">// just like pass by name</span><br>    <span class="hljs-keyword">lazy</span> <span class="hljs-keyword">val</span> result: <span class="hljs-type">Int</span> = sum(<span class="hljs-number">13</span>, <span class="hljs-number">47</span>)<br>    println(<span class="hljs-string">&quot;before lazy load&quot;</span>)<br>    println(<span class="hljs-string">s&quot;result = <span class="hljs-subst">$&#123;result&#125;</span>&quot;</span>) <span class="hljs-comment">// first call sum(13, 47)</span><br>    println(<span class="hljs-string">s&quot;result = <span class="hljs-subst">$&#123;result&#125;</span>&quot;</span>) <span class="hljs-comment">// result has been evaluated</span><br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">sum</span></span>(a: <span class="hljs-type">Int</span>, b: <span class="hljs-type">Int</span>): <span class="hljs-type">Int</span> = &#123;<br>    println(<span class="hljs-string">&quot;call sum&quot;</span>)<br>    a + b<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
 <li>有点像传名参数，但懒加载只是推迟求值到第一次使用时，而不是单纯替换。</li>
 </ul>
-<h2 id="包管理"><a href="#包管理" class="headerlink" title="包管理"></a>包管理</h2><p>关于Scala面向对象：</p>
+<h2><span id="包管理">包管理</span></h2><p>关于Scala面向对象：</p>
 <ul>
 <li>Scala的面向对象思想源自Java，很多概念是一致的。</li>
 <li>语法和java不同，补充了更多功能。</li>
@@ -850,7 +850,7 @@
 <li>所有scala源文件默认导入：<figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala"><span class="hljs-keyword">import</span> java.lang._<br><span class="hljs-keyword">import</span> scala._<br><span class="hljs-keyword">import</span> scala.<span class="hljs-type">Predef</span>._<br></code></pre></div></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><p>类定义：</p>
+<h2><span id="面向对象">面向对象</span></h2><p>类定义：</p>
 <ul>
 <li>回顾java中，如果是<code>public</code>向外公开的，那么必须和文件名一致，也只能有一个。不写访问修饰符则可以定义多个，包访问权限。</li>
 <li>scala中没有<code>public</code>关键字，默认就是公有，不能加<code>public</code>，一个文件可以写多个类，不要求和文件名一致。<figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala">[descriptor] <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">classname</span> </span>&#123;<br>    <span class="hljs-comment">// body: fields &amp; methods</span><br>    [descriptor] <span class="hljs-keyword">var</span>/<span class="hljs-keyword">val</span> name: <span class="hljs-type">Type</span> = _<br>    [descriptor] method(args: <span class="hljs-type">ArgsType</span>): <span class="hljs-type">RetType</span> = &#123;<br>        <span class="hljs-comment">// method body</span><br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
@@ -993,7 +993,7 @@
 </ul>
 <p>定义类型别名：<code>type SelfDefineType = TargetType</code>。</p>
 <p>密封类： <code>sealed</code>，子类只能定义在同一个文件内。</p>
-<h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><p>Java集合：</p>
+<h2><span id="集合">集合</span></h2><p>Java集合：</p>
 <ul>
 <li>三大类型：列表<code>List</code>、集合<code>Set</code>、映射<code>Map</code>，有多种不同实现。</li>
 </ul>
@@ -1188,7 +1188,7 @@
 <li>具体细节待补。</li>
 <li>依赖<code>scala.collection.parallel.immutable/mutable</code>，2.13版本后不再在标准库中提供，需要单独下载，暂未找到编好的jar的下载地址，从源码构造需要sbt，TODO。</li>
 </ul>
-<h2 id="模式匹配"><a href="#模式匹配" class="headerlink" title="模式匹配"></a>模式匹配</h2><p><code>match-case</code>中的模式匹配：</p>
+<h2><span id="模式匹配">模式匹配</span></h2><p><code>match-case</code>中的模式匹配：</p>
 <ul>
 <li>用于替代传统C/C++/Java的<code>switch-case</code>结构，但补充了更多功能，拥有更强的能力。</li>
 <li>语法：（Java中现在也支持<code>=&gt;</code>的写法了）<figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala">value <span class="hljs-keyword">match</span> &#123;<br>    <span class="hljs-keyword">case</span> caseVal1 =&gt; returnVal1<br>    <span class="hljs-keyword">case</span> caseVal2 =&gt; returnVal2<br>    ...<br>    <span class="hljs-keyword">case</span> _ =&gt; defaultVal<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
@@ -1248,7 +1248,7 @@
 <li>通过一个变量定义方式定义，<code>PartialFunction</code>的泛型类型中，前者是参数类型，后者是返回值类型。函数体中用一个<code>case</code>语句来进行模式匹配。上面例子返回输入的<code>List</code>集合中的第二个元素。</li>
 <li>一般一个偏函数只能处理输入的一部分场景，实际中往往需要定义多个偏函数用以组合使用。</li>
 <li>例子：<figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala"><span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">PartialFunctionTest</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = &#123;<br>        <span class="hljs-keyword">val</span> list: <span class="hljs-type">List</span>[(<span class="hljs-type">String</span>, <span class="hljs-type">Int</span>)] = <span class="hljs-type">List</span>((<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-number">12</span>), (<span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-number">10</span>), (<span class="hljs-string">&quot;c&quot;</span>, <span class="hljs-number">100</span>), (<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-number">5</span>))<br><br>        <span class="hljs-comment">// keep first constant and double second value of the tuple</span><br>        <span class="hljs-comment">// 1. use map</span><br>        <span class="hljs-keyword">val</span> newList = list.map(tuple =&gt; (tuple._1, tuple._2 * <span class="hljs-number">2</span>))<br>        println(newList)<br><br>        <span class="hljs-comment">// 2. pattern matching</span><br>        <span class="hljs-keyword">val</span> newList1 = list.map(<br>            tuple =&gt; &#123;<br>                tuple <span class="hljs-keyword">match</span> &#123;<br>                    <span class="hljs-keyword">case</span> (x, y) =&gt; (x, y * <span class="hljs-number">2</span>)<br>                &#125;<br>            &#125;<br>        )<br>        println(newList1)<br><br>        <span class="hljs-comment">// simplify to partial function</span><br>        <span class="hljs-keyword">val</span> newList2 = list.map &#123;<br>            <span class="hljs-keyword">case</span> (x, y) =&gt; (x, y * <span class="hljs-number">2</span>) <span class="hljs-comment">// this is a partial function</span><br>        &#125;<br>        println(newList2)<br><br>        <span class="hljs-comment">// application of partial function</span><br>        <span class="hljs-comment">// get absolute value, deal with: negative, 0, positive</span><br>        <span class="hljs-keyword">val</span> positiveAbs: <span class="hljs-type">PartialFunction</span>[<span class="hljs-type">Int</span>, <span class="hljs-type">Int</span>] = &#123;<br>            <span class="hljs-keyword">case</span> x <span class="hljs-keyword">if</span> x &gt; <span class="hljs-number">0</span> =&gt; x<br>        &#125;<br>        <span class="hljs-keyword">val</span> negativeAbs: <span class="hljs-type">PartialFunction</span>[<span class="hljs-type">Int</span>, <span class="hljs-type">Int</span>] = &#123;<br>            <span class="hljs-keyword">case</span> x <span class="hljs-keyword">if</span> x &lt; <span class="hljs-number">0</span> =&gt; -x<br>        &#125;<br>        <span class="hljs-keyword">val</span> zeroAbs: <span class="hljs-type">PartialFunction</span>[<span class="hljs-type">Int</span>, <span class="hljs-type">Int</span>] = &#123;<br>            <span class="hljs-keyword">case</span> <span class="hljs-number">0</span> =&gt; <span class="hljs-number">0</span><br>        &#125;<br><br>        <span class="hljs-comment">// combine a function with three partial functions</span><br>        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">abs</span></span>(x: <span class="hljs-type">Int</span>): <span class="hljs-type">Int</span> = (positiveAbs orElse negativeAbs orElse zeroAbs) (x)<br>        println(abs(<span class="hljs-number">-13</span>))<br>        println(abs(<span class="hljs-number">30</span>))<br>        println(abs(<span class="hljs-number">0</span>))<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
-<h2 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h2></li>
+<h2><span id="异常处理">异常处理</span></h2></li>
 </ul>
 <p>scala异常处理整体上的语法和底层处理细节和java非常类似。</p>
 <p>Java异常处理：</p>
@@ -1264,7 +1264,7 @@
 <li>java中用了<code>throws</code>关键字声明此方法可能引发的异常信息，在scala中对应地使用<code>@throws[ExceptionList]</code>注解来声明，用法差不多。<figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala"><span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">Exceptionstest</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = &#123;<br>        <span class="hljs-comment">// test of exceptions</span><br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-keyword">val</span> n = <span class="hljs-number">10</span> / <span class="hljs-number">0</span><br>        &#125; <span class="hljs-keyword">catch</span> &#123;<br>            <span class="hljs-keyword">case</span> e: <span class="hljs-type">ArithmeticException</span> =&gt; &#123;<br>                println(<span class="hljs-string">s&quot;ArithmeticException raised.&quot;</span>)<br>            &#125;<br>            <span class="hljs-keyword">case</span> e: <span class="hljs-type">Exception</span> =&gt; &#123;<br>                println(<span class="hljs-string">&quot;Normal Exceptions raised.&quot;</span>)<br>            &#125;<br>        &#125; <span class="hljs-keyword">finally</span> &#123;<br>            println(<span class="hljs-string">&quot;finally&quot;</span>)<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="隐式转换"><a href="#隐式转换" class="headerlink" title="隐式转换"></a>隐式转换</h2><p>前面说了很多了，编译器做隐式转换的时机：</p>
+<h2><span id="隐式转换">隐式转换</span></h2><p>前面说了很多了，编译器做隐式转换的时机：</p>
 <ul>
 <li>编译器第一次编译失败时，会在当前环境中查找能让代码编译通过的方法，将类型隐式转换，尝试二次编译。</li>
 </ul>
@@ -1317,7 +1317,7 @@
 <li>隐式函数和隐式类可以用于扩充类的功能，常用语比如内建类<code>Int Double String</code>这种。</li>
 <li>隐式参数相当于就是一种更高优先级的默认参数。用于多个函数需要同一个默认参数时，就不用每个函数定义时都写一次默认值了。为了简洁无所不用其极啊真是。</li>
 </ul>
-<h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><p>泛型：</p>
+<h2><span id="泛型">泛型</span></h2><p>泛型：</p>
 <ul>
 <li><code>[TypeList]</code>，定义和使用都是。</li>
 <li>常用于集合类型中用于支持不同元素类型。</li>
@@ -1347,14 +1347,14 @@
 <li>是将泛型和隐式转换结合的产物，使用上下文限定（前者）后，方法内无法使用隐式参数名调用隐式参数，需要通过<code>implicitly[Ordering[A]]</code>获取隐式变量。</li>
 <li>了解即可，可能基本不会用到。</li>
 </ul>
-<h2 id="Style-Guide"><a href="#Style-Guide" class="headerlink" title="Style Guide"></a>Style Guide</h2><p><a target="_blank" rel="noopener" href="https://docs.scala-lang.org/style/index.html">官方的Style Guide</a>中的一些建议：</p>
+<h2><span id="style-guide">Style Guide</span></h2><p><a target="_blank" rel="noopener" href="https://docs.scala-lang.org/style/index.html">官方的Style Guide</a>中的一些建议：</p>
 <ul>
 <li>缩进鼓励为2个，当然我上面都是用的4个。Scala中很多时候嵌套层次会很深，也鼓励这样做，模式匹配、匿名函数、循环、条件等各种嵌套，层次深了之后4空格可能会比较折磨。</li>
 <li>一个表达式一行放不下要换行时，语义上不会产生歧义就行，比如一个运算符放在末尾将其必需的操作数换到下一行。</li>
 <li>多参数函数调用需要换行书写时，将第一个参数放到第二行并缩进2个空格书写，而不是第一个参数放到第一行，然后缩进到对齐（典型java风格）。<figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala"><span class="hljs-comment">// right!</span><br><span class="hljs-keyword">val</span> myLongFieldNameWithNoRealPoint =<br>  foo(<br>    someVeryLongFieldName,<br>    andAnotherVeryLongFieldName,<br>    <span class="hljs-string">&quot;this is a string&quot;</span>,<br>    <span class="hljs-number">3.1415</span>)<br><br><span class="hljs-comment">// wrong!</span><br><span class="hljs-keyword">val</span> myLongFieldNameWithNoRealPoint = foo(someVeryLongFieldName,<br>                                         andAnotherVeryLongFieldName,<br>                                         <span class="hljs-string">&quot;this is a string&quot;</span>,<br>                                         <span class="hljs-number">3.1415</span>)<br></code></pre></div></td></tr></table></figure></li>
 <li>仅介绍第一页的内容，也没有空去看完，以后真写得多了再去看。</li>
 </ul>
-<h2 id="sbt"><a href="#sbt" class="headerlink" title="sbt"></a>sbt</h2><p>上面已经简单介绍了IDEA使用Maven项目编写Scala的配置，但学习scala，官方的构建工具sbt还是必须要了解一下的。</p>
+<h2><span id="sbt">sbt</span></h2><p>上面已经简单介绍了IDEA使用Maven项目编写Scala的配置，但学习scala，官方的构建工具sbt还是必须要了解一下的。</p>
 <p>关于SBT：</p>
 <ul>
 <li>SBT是Scala的构建工具，全称Simple Build Tool，类似于 Maven 或 Gradle。</li>
@@ -1377,7 +1377,7 @@
 <li>解压或者安装。</li>
 <li>配置环境变量<code>SBT_HOME</code>，并添加<code>%SBT_HOME%\bin</code>到path环境变量，安装包的话会自动配置。</li>
 </ul>
-<h3 id="通过案例入门sbt"><a href="#通过案例入门sbt" class="headerlink" title="通过案例入门sbt"></a>通过案例入门sbt</h3><p>创建一个项目hello作为例子：</p>
+<h3><span id="通过案例入门sbt">通过案例入门sbt</span></h3><p>创建一个项目hello作为例子：</p>
 <ul>
 <li>windows上没有的命令按照含义操作即可。<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> mkdir foo-build</span><br><span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">cd</span> foo-build</span><br><span class="hljs-meta">$</span><span class="bash"> touch build.sbt</span><br></code></pre></div></td></tr></table></figure>
 </li>
@@ -1481,7 +1481,7 @@
 <ul>
 <li>会创建一个简单的项目，要求输入项目名时输入<code>hello</code>，会在<code>hello/</code>下创建一个新项目。</li>
 </ul>
-<h3 id="sbt使用"><a href="#sbt使用" class="headerlink" title="sbt使用"></a>sbt使用</h3><p>项目的目录结构：</p>
+<h3><span id="sbt使用">sbt使用</span></h3><p>项目的目录结构：</p>
 <ul>
 <li>base directory是包含项目的目录，这里称为项目根目录。</li>
 <li>sbt使用和Maven一样的源码结构，源文件路径都是基于项目根目录的相对路径。<figure class="highlight stata"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs stata">src/<br>  main/<br>    resources/<br>       &lt;files to <span class="hljs-keyword">include</span> <span class="hljs-keyword">in</span> main jar here&gt;<br>    <span class="hljs-keyword">scala</span>/<br>       &lt;main <span class="hljs-keyword">Scala</span> sources&gt;<br>    <span class="hljs-keyword">scala</span>-2.12/<br>       &lt;main <span class="hljs-keyword">Scala</span> 2.12 specific sources&gt;<br>    java/<br>       &lt;main Java sources&gt;<br>  <span class="hljs-keyword">test</span>/<br>    resources<br>       &lt;files to <span class="hljs-keyword">include</span> <span class="hljs-keyword">in</span> <span class="hljs-keyword">test</span> jar here&gt;<br>    <span class="hljs-keyword">scala</span>/<br>       &lt;<span class="hljs-keyword">test</span> <span class="hljs-keyword">Scala</span> sources&gt;<br>    <span class="hljs-keyword">scala</span>-2.12/<br>       &lt;<span class="hljs-keyword">test</span> <span class="hljs-keyword">Scala</span> 2.12 specific sources&gt;<br>    java/<br>       &lt;<span class="hljs-keyword">test</span> Java sources&gt;<br></code></pre></div></td></tr></table></figure></li>
@@ -1548,7 +1548,7 @@
 </tbody>
 </table>
 </div>
-<h3 id="build-sbt"><a href="#build-sbt" class="headerlink" title="build.sbt"></a>build.sbt</h3><p><code>build.sbt</code>构建定义：</p>
+<h3><span id="buildsbt">build.sbt</span></h3><p><code>build.sbt</code>构建定义：</p>
 <ul>
 <li>指定sbt版本，这样就使用不同版本的sbt构建同一个项目了。如果指定的版本不可用，那么会自动下载。<figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala">sbt.version=<span class="hljs-number">1.5</span><span class="hljs-number">.5</span><br></code></pre></div></td></tr></table></figure></li>
 <li>构建定义（build definition）：</li>
@@ -1620,7 +1620,7 @@
 <li>一是将jar文件直接放在<code>lib/</code>（未管理的依赖）目录下，第二种是添加管理的依赖，通过在<code>.setting(..)</code>调用中对<code>libraryDependencies</code>key做<code>+=</code>操作做到。<figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala"><span class="hljs-keyword">val</span> derby = <span class="hljs-string">&quot;org.apache.derby&quot;</span> %% <span class="hljs-string">&quot;derby&quot;</span> % <span class="hljs-string">&quot;10.4.1.3&quot;</span><br><br><span class="hljs-type">ThisBuild</span> / organization := <span class="hljs-string">&quot;com.example&quot;</span><br><span class="hljs-type">ThisBuild</span> / scalaVersion := <span class="hljs-string">&quot;2.12.14&quot;</span><br><span class="hljs-type">ThisBuild</span> / version      := <span class="hljs-string">&quot;0.1.0-SNAPSHOT&quot;</span><br><br><span class="hljs-keyword">lazy</span> <span class="hljs-keyword">val</span> root = (project in file(<span class="hljs-string">&quot;.&quot;</span>))<br>  .settings(<br>    name := <span class="hljs-string">&quot;Hello&quot;</span>,<br>    libraryDependencies += derby<br>  )<br></code></pre></div></td></tr></table></figure></li>
 <li>包含包的组织、包名、和包的版本。可以定义变量来复用。<code>%</code>运算符被用来从字符串构建一个模块ID。</li>
 </ul>
-<h3 id="多项目构建"><a href="#多项目构建" class="headerlink" title="多项目构建"></a>多项目构建</h3><p>多个项目定义：</p>
+<h3><span id="多项目构建">多项目构建</span></h3><p>多个项目定义：</p>
 <ul>
 <li>在一次构建中编译多个相关联的子项目是很有用的，特别是其间存在依赖，想更改他们所有的时候。</li>
 <li>每个子项目都有自己的目录，构建时都会生成自己的jar文件，</li>
@@ -1709,7 +1709,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="任务图"><a href="#任务图" class="headerlink" title="任务图"></a>任务图</h3><p>任务图：</p>
+<h3><span id="任务图">任务图</span></h3><p>任务图：</p>
 <ul>
 <li>除了将设置视作一个个键值对，更好的比喻其实是以有向无环图（DAG）。边的方向表示<strong>在之前发生</strong>，称之为任务图（Task Graph） 。</li>
 <li>Setting/Task expression就是前面的在<code>.setting(...)</code>中定义了设置或者任务的表达式。</li>
@@ -1756,9 +1756,9 @@
 <li><code>hello.sbt</code>是一个设计来面向依赖编程（dependency-oriented programming）的DSL，或者叫基于流（flow）的编程。就像Makefile。语法就像Scala，但并不等同于Scala，语义上是有区别的。</li>
 <li>基于流的编程的核心是：减少重复过程、并行处理和定制化。</li>
 </ul>
-<h3 id="更多内容"><a href="#更多内容" class="headerlink" title="更多内容"></a>更多内容</h3><p>更多内容就不翻译了，官网上第一章也有中文翻译。需要时再去阅读，现阶段感觉都用不到，真写项目了再看不迟。</p>
-<h2 id="并发编程"><a href="#并发编程" class="headerlink" title="并发编程"></a>并发编程</h2><p>TODO</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>总结：</p>
+<h3><span id="更多内容">更多内容</span></h3><p>更多内容就不翻译了，官网上第一章也有中文翻译。需要时再去阅读，现阶段感觉都用不到，真写项目了再看不迟。</p>
+<h2><span id="并发编程">并发编程</span></h2><p>TODO</p>
+<h2><span id="总结">总结</span></h2><p>总结：</p>
 <ul>
 <li>看起来是一门静态类型语言，提供了很其强大的类型推导，可以一定程度上实现隐式静态类型，但写起来如果高度依赖类型推导的话会和动态类型一样简洁，仅需提供少量必须的类型，只是有点牺牲可读性。</li>
 <li>函数式编程很有趣。</li>

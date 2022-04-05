@@ -342,7 +342,7 @@
 <li><p>构建验证环境的内径</p>
 </li>
 </ul>
-<h1 id="1-UVM结构回顾"><a href="#1-UVM结构回顾" class="headerlink" title="1 UVM结构回顾"></a>1 UVM结构回顾</h1><h2 id="1-1-uvm-top：（系统）"><a href="#1-1-uvm-top：（系统）" class="headerlink" title="1.1 uvm_top：（系统）"></a>1.1 uvm_top：（系统）</h2><figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">const</span> uvm_root uvm_top = uvm_root::get()<br></code></pre></div></td></tr></table></figure>
+<h1><span id="1-uvm结构回顾">1 UVM结构回顾</span></h1><h2><span id="11-uvm_top系统">1.1 uvm_top：（系统）</span></h2><figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">const</span> uvm_root uvm_top = uvm_root::get()<br></code></pre></div></td></tr></table></figure>
 <p>uvm_top(uvm_root)，一个隐形的顶层，并不继承于object/component（因为要创建这些）</p>
 <ul>
 <li>uvm_top 是uvm_root类的<strong>唯一</strong>实例，即是UVM为界的“一” <ul>
@@ -358,7 +358,7 @@
 <li><strong>（主要作用）</strong>uvm_top提供一系列的方法来<strong>控制仿真</strong>，例如：九个phase机制、objection防止仿真退出机制（在run_phase中设置举手（尽量有且只有一个，防止退出避免额外协调，详情查看进阶2）等</li>
 </ul>
 <p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211126150832349.png" srcset="/img/loading.gif" lazyload alt="金字塔结构"></p>
-<h2 id="1-2-uvm-test：-自定义"><a href="#1-2-uvm-test：-自定义" class="headerlink" title="1.2 uvm_test：(自定义)"></a>1.2 uvm_test：(自定义)</h2><ul>
+<h2><span id="12-uvm_test自定义">1.2 uvm_test：(自定义)</span></h2><ul>
 <li><p>“test”类是用户<strong>自定义类</strong>的顶层结构</p>
 </li>
 <li><p><strong>所有的test类都应该继承于uvm_tes3</strong>，否则uvm_top将不识别，“后果很严重”一一无法启动test</p>
@@ -370,10 +370,10 @@
 </ul>
 </li>
 </ul>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211126152704144.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211126152704144.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>为什么不放到env里面：test可以划分出静态与动态部分</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211126153104909.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h2 id="1-3-构建验证环境的主要组件对比"><a href="#1-3-构建验证环境的主要组件对比" class="headerlink" title="1.3 构建验证环境的主要组件对比"></a>1.3 构建验证环境的主要组件对比</h2><p>主要由三类UVM构建模块（基类）共同组成验证环境</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211126153104909.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="13-构建验证环境的主要组件对比">1.3 构建验证环境的主要组件对比</span></h2><p>主要由三类UVM构建模块（基类）共同组成验证环境</p>
 <ul>
 <li>uvm_component<ul>
 <li>继承于uvm_report_object （进一步继承于uvm_object）,提供消息方法</li>
@@ -394,7 +394,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="1-4-uvm-component：是一个虚类不能例化，可以继承"><a href="#1-4-uvm-component：是一个虚类不能例化，可以继承" class="headerlink" title="1.4 uvm_component：是一个虚类不能例化，可以继承"></a>1.4 uvm_component：是一个虚类不能例化，可以继承</h2><h3 id="1-4-1-介绍"><a href="#1-4-1-介绍" class="headerlink" title="1.4.1 介绍"></a>1.4.1 介绍</h3><p>一个虚类(virtual class),所有环境组件均继承于该类。所有继承于该类的子类，我们称之为组件或者环境组件</p>
+<h2><span id="14-uvm_component是一个虚类不能例化可以继承">1.4 uvm_component：是一个虚类不能例化，可以继承</span></h2><h3><span id="141-介绍">1.4.1 介绍</span></h3><p>一个虚类(virtual class),所有环境组件均继承于该类。所有继承于该类的子类，我们称之为组件或者环境组件</p>
 <p>该类提供已下接口或者API：</p>
 <ul>
 <li>结构， 例如get_full_name(), get_parent(), get_num_children()</li>
@@ -405,7 +405,7 @@
 <li>工厂(factory)机制,例如set_inst_override(), set_type_override()</li>
 </ul>
 <p>由于环境中所有的组件都继承于uvm_component，因此也就可以使得UVM提供统一的方式来管理层次结构和组件方法</p>
-<h3 id="1-4-2-构造函数：有关层次的说明"><a href="#1-4-2-构造函数：有关层次的说明" class="headerlink" title="1.4.2 构造函数：有关层次的说明"></a>1.4.2 构造函数：有关层次的说明</h3><p>对于组件的构建函数，固定形式为：</p>
+<h3><span id="142-构造函数有关层次的说明">1.4.2 构造函数：有关层次的说明</span></h3><p>对于组件的构建函数，固定形式为：</p>
 <figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">function</span> <span class="hljs-keyword">new</span>(<span class="hljs-keyword">string</span> name, uvm_component parent);<br></code></pre></div></td></tr></table></figure>
 <ul>
 <li>string name：用来声明当前例化组件的名称，用来自动和它所在的父一级层次组合为组件的整个层次名称，可以 <strong>get_full_name()</strong>方法获取</li>
@@ -413,7 +413,7 @@
 <li>注意与uvm_object的构建函数new(string name)进行区分，由于uvm_object<strong>不参与组件的层次构建</strong>，因此它只有一个形参， 而没有 uvm_component parent</li>
 <li>凡是继承于uvm_component的组件，也应该保持同样的形式参 数列表</li>
 </ul>
-<h1 id="2-MCDF顶层验证方案"><a href="#2-MCDF顶层验证方案" class="headerlink" title="2 MCDF顶层验证方案"></a>2 MCDF顶层验证方案</h1><h2 id="2-1-概述"><a href="#2-1-概述" class="headerlink" title="2.1  概述"></a>2.1  概述</h2><p>在SV模块中，四位verifier需要给MCDF (Multiple Channel Data Formatter)搭建验证环境，进而利用这些模块验证组件在顶层可以完成集成复用</p>
+<h1><span id="2-mcdf顶层验证方案">2 MCDF顶层验证方案</span></h1><h2><span id="21-概述">2.1  概述</span></h2><p>在SV模块中，四位verifier需要给MCDF (Multiple Channel Data Formatter)搭建验证环境，进而利用这些模块验证组件在顶层可以完成集成复用</p>
 <p>MCDF的主要功能是将输入端的三个通道数据，通过数据整形和过滤，最终输出</p>
 <p>将MCD结构分为四个模块：</p>
 <ul>
@@ -422,7 +422,7 @@
 <li>整形器(Formatter)</li>
 <li>控制寄存器(Control Registers)</li>
 </ul>
-<h2 id="2-2-子模块环境搭建方案"><a href="#2-2-子模块环境搭建方案" class="headerlink" title="2.2 子模块环境搭建方案"></a>2.2 子模块环境搭建方案</h2><h3 id="2-2-1-reg-env：对于寄存器的验证环境"><a href="#2-2-1-reg-env：对于寄存器的验证环境" class="headerlink" title="2.2.1 reg_env：对于寄存器的验证环境"></a>2.2.1 reg_env：对于寄存器的验证环境</h3><p>对于寄存器模块的验证环境reg_env,它的组织包括：</p>
+<h2><span id="22-子模块环境搭建方案">2.2 子模块环境搭建方案</span></h2><h3><span id="221-reg_env对于寄存器的验证环境">2.2.1 reg_env：对于寄存器的验证环境</span></h3><p>对于寄存器模块的验证环境reg_env,它的组织包括：</p>
 <ul>
 <li>reg_master_agent,提供寄存器接口驱动信号</li>
 <li>reg_slave_agent,提供寄存器接口反馈信号</li>
@@ -437,9 +437,9 @@
 </ul>
 </li>
 </ul>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211126155046191.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="2-2-2-chnl-env：对channel"><a href="#2-2-2-chnl-env：对channel" class="headerlink" title="2.2.2 chnl_env：对channel"></a>2.2.2 chnl_env：对channel</h3><p>下图是验证一个channel</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211126221535193.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211126155046191.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="222-chnl_env对channel">2.2.2 chnl_env：对channel</span></h3><p>下图是验证一个channel</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211126221535193.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>数据通道从端的验证环境chnLenv的组件包括：</p>
 <ul>
 <li>chnl_master_agent,提供上行的激励数据</li>
@@ -447,7 +447,7 @@
 <li>reg_cfg_agent,提供用来模拟寄存器的配置信号，并且接收内置<br>FIFO的余量信号</li>
 <li>scoreboard,分另ll从chnl_master_agent、chnl_slave_agent和reg_cfg_agent的monitor接受监测激据，并且对channel的流入流出 数据进行比对</li>
 </ul>
-<h3 id="2-3-arb-env"><a href="#2-3-arb-env" class="headerlink" title="2.3 arb_env"></a>2.3 arb_env</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211126222105799.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="23-arb_env">2.3 arb_env</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211126222105799.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>仲裁器的验证环境arb_env的组件包括：</p>
 <ul>
 <li>模拟channel输出接口的arbiter_master_agent的三个实例，用来对 arbiter提供并行数据输入，同时对arbiter反馈的仲裁信号做出响应</li>
@@ -455,7 +455,7 @@
 <li>reg_cfg_agent,提供用来模拟寄存器的配置信号，对三个channel 数据源分别做出不同的优先级配置</li>
 <li>scoreboard,从三个arbiter_master_agent、arbiter_slave_agent 和reg_cfg_agent中的monitor获取监测数据，对arbiter的仲裁机制 做出预测，并且将输入输出数据按照预测的优先级做出比对</li>
 </ul>
-<h3 id="2-2-4-fmt-env"><a href="#2-2-4-fmt-env" class="headerlink" title="2.2.4 fmt_env"></a>2.2.4 fmt_env</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211126222804346.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="224-fmt_env">2.2.4 fmt_env</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211126222804346.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>整形器的验证环境 fmt env 的组件包括：</p>
 <ul>
 <li>fmt_master_agent， 用来模拟arbiter的输出数据</li>
@@ -463,8 +463,8 @@
 <li>reg _cfg _agent ，用来模拟寄存器的配置信号，用来指定输出数据包的长</li>
 <li>scoreboard ，从 fmt <em>master _agent 、 fmt_slave_agent 和 reg_cfg </em> agent 的 monitor 获取数据监测数据，通过数据包长度来预测输出的数据包，与formatter输出的数据包进行比对</li>
 </ul>
-<h2 id="2-3-环境集成方案"><a href="#2-3-环境集成方案" class="headerlink" title="2.3 环境集成方案"></a>2.3 环境集成方案</h2><p>两个方案没有谁好谁坏</p>
-<h3 id="2-3-1-方案1"><a href="#2-3-1-方案1" class="headerlink" title="2.3.1 方案1"></a>2.3.1 方案1</h3><p>基本就是我们SV的环境，除了vitrual sequencer我们后期学</p>
+<h2><span id="23-环境集成方案">2.3 环境集成方案</span></h2><p>两个方案没有谁好谁坏</p>
+<h3><span id="231-方案1">2.3.1 方案1</span></h3><p>基本就是我们SV的环境，除了vitrual sequencer我们后期学</p>
 <p>MCDF顶层验证环境复用了这些模块验证环境的组件：</p>
 <ul>
 <li>reg_master_agent</li>
@@ -474,15 +474,15 @@
 <p>通过这三个激励组件可以有效生成新的激励序列，而将各个agent的 sequencer句柄合并在一处时，virtual sequencer的作用就体现出来了</p>
 <p>我们可以通过这个中心化的序列分发管道，将各个agent的sequence也集中管理</p>
 <p>MCDF的scoreboard提供了一个完整的数据通路覆盖方案，即从各个 agent的monitor数据监测端口将数据收集起来，同时建立MCDF的参 考模型，预测输出数据包，最终进行数据比对</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211126223512492.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h4 id="集成代码"><a href="#集成代码" class="headerlink" title="集成代码"></a>集成代码</h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211126223528514.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p> <img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127095406294.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211126223512492.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="集成代码">集成代码</span></h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211126223528514.png" srcset="/img/loading.gif" lazyload alt></p>
+<p> <img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127095406294.png" srcset="/img/loading.gif" lazyload alt></p>
 <hr>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127095443041.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127095837297.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127095443041.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127095837297.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>sqr作用就是传递trans</p>
 <p>virtual_sequencer拿着各个agent_sequencer句柄，相当于句柄的路由，进行中间的管理作用</p>
-<h3 id="2-3-2-方案2"><a href="#2-3-2-方案2" class="headerlink" title="2.3.2 方案2"></a>2.3.2 方案2</h3><p>较为复杂一点，组件更多，多了cfg</p>
+<h3><span id="232-方案2">2.3.2 方案2</span></h3><p>较为复杂一点，组件更多，多了cfg</p>
 <ul>
 <li><p>可以把例如：agent.slave配置成passive，agent.master配置成active</p>
 </li>
@@ -495,15 +495,15 @@
 </li>
 </ul>
 <p>为什么arbiter也要放进来，因为可以单独检查arbiter</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127100007270.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127100007270.png" srcset="/img/loading.gif" lazyload alt></p>
 <hr>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127102738381.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h4 id="集成代码-1"><a href="#集成代码-1" class="headerlink" title="集成代码"></a>集成代码</h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127103114903.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127103319241.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127102738381.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="集成代码">集成代码</span></h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127103114903.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127103319241.png" srcset="/img/loading.gif" lazyload alt></p>
 <hr>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127103357056.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127103456895.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="2-3-3-方案对比"><a href="#2-3-3-方案对比" class="headerlink" title="2.3.3 方案对比"></a>2.3.3 方案对比</h3><p>方案一与方案二相同的地方在于，顶层都需要新建 virtual sequencer 和 virtual sequence ，用来生成顶层的测试序列</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127103357056.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127103456895.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="233-方案对比">2.3.3 方案对比</span></h3><p>方案一与方案二相同的地方在于，顶层都需要新建 virtual sequencer 和 virtual sequence ，用来生成顶层的测试序列</p>
 <p>而 virtual sequence也不是从零创建的，它本身也是利用原有模块环了有机的组合，最后协调生成了新的测试序列</p>
 <p>从方案二可以看出， mcdf<em>env的子组件不再是uvm </em> agent类，而是各个模块的验证环境 uvm _ env 类</p>
 <p>通过直接复用这些子环境，我们也间接复用了它们内部的 score board。在 build 阶段，我们需要将各个子环境中不需要再产生激励的 agent , 配置为 passive 模式，而默认情况 下这些 agent 均为 active 模式</p>
@@ -517,7 +517,7 @@
 <li>顶层环境在集成模块验证环境时，需要将各个子模块中的agent配置为不同模式（ active或者passive） ,以此适应顶层场景</li>
 <li>不再需要实现新的scoreboard,而是可以复用原有模块验证环境的scoreboard</li>
 </ul>
-<h2 id="2-4-总结"><a href="#2-4-总结" class="headerlink" title="2.4 总结"></a>2.4 总结</h2><p>从上面框图和代码中观察到，UVM带来的环境复用，相比于之前SV验 证环境做到了下面的几个优势：</p>
+<h2><span id="24-总结">2.4 总结</span></h2><p>从上面框图和代码中观察到，UVM带来的环境复用，相比于之前SV验 证环境做到了下面的几个优势：</p>
 <ul>
 <li>各个模块的验证环境是独立封装的，对外不需要保留数据端口，因此便于环境 的进一步集成复用</li>
 <li>UVM自身的phase机制，在顶层协调各个子环境时，无需考虑由于子环境 之间的例化顺序而导致的对象句柄引用悬空的问题</li>
@@ -540,7 +540,7 @@
 <p>phase机制</p>
 <p>子环境而是相对独立，具有sequence</p>
 <p>config_db配置，使得结构和运行模式从树状config对象获取，对顶层环境再不同uvm_test进行集中管理</p>
-<h1 id="3-构建验证环境的内径"><a href="#3-构建验证环境的内径" class="headerlink" title="3 构建验证环境的内径"></a>3 构建验证环境的内径</h1><h2 id="3-1-构建环境四要素"><a href="#3-1-构建环境四要素" class="headerlink" title="3.1 构建环境四要素"></a>3.1 构建环境四要素</h2><p>发送测试序列之前，首先需要创建一个结构化环境。将环境核心要素拆解开，分为四部分：</p>
+<h1><span id="3-构建验证环境的内径">3 构建验证环境的内径</span></h1><h2><span id="31-构建环境四要素">3.1 构建环境四要素</span></h2><p>发送测试序列之前，首先需要创建一个结构化环境。将环境核心要素拆解开，分为四部分：</p>
 <ul>
 <li><p>单元组件的自闭性：完全的封装，不依赖其他组件，可以单独编译<strong>（非常重要）</strong></p>
 </li>
@@ -550,9 +550,9 @@
 <li>顶层配置</li>
 </ul>
 <p>ps：在构建环境时，可从这四点查找是否缺少了某个组件</p>
-<h2 id="3-2-四要素详细介绍"><a href="#3-2-四要素详细介绍" class="headerlink" title="3.2 四要素详细介绍"></a>3.2 四要素详细介绍</h2><h3 id="3-2-1-单元组件的自闭性"><a href="#3-2-1-单元组件的自闭性" class="headerlink" title="3.2.1 单元组件的自闭性"></a>3.2.1 单元组件的自闭性</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127110438497.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2><span id="32-四要素详细介绍">3.2 四要素详细介绍</span></h2><h3><span id="321-单元组件的自闭性">3.2.1 单元组件的自闭性</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127110438497.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>即以后你提供的env一定要独立</p>
-<h3 id="3-2-2-回归创建"><a href="#3-2-2-回归创建" class="headerlink" title="3.2.2 回归创建"></a>3.2.2 回归创建</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127155259291.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="322-回归创建">3.2.2 回归创建</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127155259291.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>SV：上一级的组件例化子一级的组件通过执行new()</p>
 <p>UVM：通过build_phase</p>
 <ul>
@@ -563,23 +563,23 @@
 <li>config：build拿到后固化，即config只config一次</li>
 <li>transaction：动态配置</li>
 </ul>
-<h3 id="3-2-3-通信端口连接"><a href="#3-2-3-通信端口连接" class="headerlink" title="3.2.3 通信端口连接"></a>3.2.3 通信端口连接</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127155944971.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="3-2-4-顶层配置（配置层次可参考本节叙述）"><a href="#3-2-4-顶层配置（配置层次可参考本节叙述）" class="headerlink" title="3.2.4 顶层配置（配置层次可参考本节叙述）"></a>3.2.4 顶层配置（配置层次可参考本节叙述）</h3><p><strong>顶层环境的变量部分</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127160004104.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="323-通信端口连接">3.2.3 通信端口连接</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127155944971.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="324-顶层配置配置层次可参考本节叙述">3.2.4 顶层配置（配置层次可参考本节叙述）</span></h3><p><strong>顶层环境的变量部分</strong></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127160004104.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>使用config_db字符串而不是直接用句柄</p>
 <hr>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127160400298.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h4 id="如下放置到config-db数据库里面"><a href="#如下放置到config-db数据库里面" class="headerlink" title="如下放置到config_db数据库里面"></a>如下放置到config_db数据库里面</h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127160526167.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h4 id="子一级组件创建时拿出来"><a href="#子一级组件创建时拿出来" class="headerlink" title="子一级组件创建时拿出来"></a>子一级组件创建时拿出来</h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127160558859.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127160400298.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="如下放置到config_db数据库里面">如下放置到config_db数据库里面</span></h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127160526167.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="子一级组件创建时拿出来">子一级组件创建时拿出来</span></h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127160558859.png" srcset="/img/loading.gif" lazyload alt></p>
 <hr>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127160728972.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h2 id="3-3-顶层配置结构"><a href="#3-3-顶层配置结构" class="headerlink" title="3.3 顶层配置结构"></a>3.3 顶层配置结构</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127160831321.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127160728972.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="33-顶层配置结构">3.3 顶层配置结构</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127160831321.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>rgm：寄存器模型</li>
 <li>scbd</li>
 <li>topcfg：传递rgm句柄，is_active，变量值等配置信息</li>
 </ul>
-<h2 id="3-4-环境元素分类"><a href="#3-4-环境元素分类" class="headerlink" title="3.4 环境元素分类"></a>3.4 环境元素分类</h2><p>uvm_test作为比uvm_env更高层次，将对test传递配置信息，包括构成环境的组件uvm_component在内环境元素可以分为以下部分：</p>
+<h2><span id="34-环境元素分类">3.4 环境元素分类</span></h2><p>uvm_test作为比uvm_env更高层次，将对test传递配置信息，包括构成环境的组件uvm_component在内环境元素可以分为以下部分：</p>
 <ul>
 <li>成员变量<ul>
 <li>一般变量</li>
@@ -600,19 +600,19 @@
 </ul>
 </li>
 </ul>
-<h2 id="3-5-环境元素详细介绍"><a href="#3-5-环境元素详细介绍" class="headerlink" title="3.5 环境元素详细介绍"></a>3.5 环境元素详细介绍</h2><h3 id="3-5-1-成员变量"><a href="#3-5-1-成员变量" class="headerlink" title="3.5.1 成员变量"></a>3.5.1 成员变量</h3><ul>
+<h2><span id="35-环境元素详细介绍">3.5 环境元素详细介绍</span></h2><h3><span id="351-成员变量">3.5.1 成员变量</span></h3><ul>
 <li>一般变量：内部操作与外部访问</li>
 <li>结构变量：内部子组件</li>
 <li>模式变量：控制组件行为</li>
 </ul>
 <p>对u结构变量和模式变量使用int/enum进行定义</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127163150402.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="3-5-2-子组件"><a href="#3-5-2-子组件" class="headerlink" title="3.5.2 子组件"></a>3.5.2 子组件</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127163308958.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127163150402.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="352-子组件">3.5.2 子组件</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127163308958.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>引用组件就是个句柄，有结构变量决定的组件叫结构组件</p>
 <p>下图展示了谁是固定组件谁是引用组件</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127163340189.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="3-5-3-子对象"><a href="#3-5-3-子对象" class="headerlink" title="3.5.3 子对象"></a>3.5.3 子对象</h3><p>查看<strong>例如</strong>部分</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127163509745.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127163340189.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="353-子对象">3.5.3 子对象</span></h3><p>查看<strong>例如</strong>部分</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211127163509745.png" srcset="/img/loading.gif" lazyload alt></p>
 
             </div>
             <hr>

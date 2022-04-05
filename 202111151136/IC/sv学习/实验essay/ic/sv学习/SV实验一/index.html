@@ -312,19 +312,19 @@
             <h1 style="display: none">HelloWorld | SV实验0 | SV实验1</h1>
             
             <div class="markdown-body">
-              <h1 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h1><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="1-创建工程"><a href="#1-创建工程" class="headerlink" title="1 创建工程"></a>1 创建工程</h3><p>不会新建项目文件夹需要自己mkdir</p>
-<h3 id="2-创建sv文件"><a href="#2-创建sv文件" class="headerlink" title="2 创建sv文件"></a>2 创建sv文件</h3><ul>
+              <h1><span id="hello-world">Hello World</span></h1><h2><span id="步骤">步骤</span></h2><h3><span id="1-创建工程">1 创建工程</span></h3><p>不会新建项目文件夹需要自己mkdir</p>
+<h3><span id="2-创建sv文件">2 创建sv文件</span></h3><ul>
 <li>你想做任何工作，要在module里面才能运行</li>
 <li>initial包括所有过程语句</li>
 </ul>
-<h3 id="3-gvim编辑"><a href="#3-gvim编辑" class="headerlink" title="3 gvim编辑"></a>3 gvim编辑</h3><h3 id="4-Project-gt-compile"><a href="#4-Project-gt-compile" class="headerlink" title="4 Project-&gt;compile"></a>4 Project-&gt;compile</h3><h3 id="5-Library-gt-simulate-without-optimization"><a href="#5-Library-gt-simulate-without-optimization" class="headerlink" title="5 Library-&gt;simulate without optimization"></a>5 Library-&gt;simulate without optimization</h3><p>编译到库里面（前面新建的时候默认work），之后在库里面仿真</p>
+<h3><span id="3-gvim编辑">3 gvim编辑</span></h3><h3><span id="4-project-gtcompile">4 Project-&gt;compile</span></h3><h3><span id="5-library-gtsimulate-without-optimization">5 Library-&gt;simulate without optimization</span></h3><p>编译到库里面（前面新建的时候默认work），之后在库里面仿真</p>
 <p><strong>好像会出错</strong>，因此这里不使用without optimization，直接命令行vsim work.tb</p>
 <figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">vsim work.tb<br></code></pre></div></td></tr></table></figure>
-<h3 id="6-run"><a href="#6-run" class="headerlink" title="6 run"></a>6 run</h3><p>命令行输入run</p>
+<h3><span id="6-run">6 run</span></h3><p>命令行输入run</p>
 <figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">run<br></code></pre></div></td></tr></table></figure>
-<h1 id="SV实验0"><a href="#SV实验0" class="headerlink" title="SV实验0"></a>SV实验0</h1><h2 id="1-目的"><a href="#1-目的" class="headerlink" title="1.目的"></a>1.目的</h2><p>认识什么是设计功能描述文档</p>
+<h1><span id="sv实验0">SV实验0</span></h1><h2><span id="1目的">1.目的</span></h2><p>认识什么是设计功能描述文档</p>
 <p>是设计功能描述文档</p>
-<h2 id="2-设计结构"><a href="#2-设计结构" class="headerlink" title="2.设计结构"></a>2.设计结构</h2><h3 id="2-1-MCDF"><a href="#2-1-MCDF" class="headerlink" title="2.1 MCDF"></a>2.1 MCDF</h3><p>多通道数据整形器MCDF, mult-channel data formatter</p>
+<h2><span id="2设计结构">2.设计结构</span></h2><h3><span id="21-mcdf">2.1 MCDF</span></h3><p>多通道数据整形器MCDF, mult-channel data formatter</p>
 <p>FIFO的margin信号提示内部缓存余量</p>
 <ul>
 <li>Arbiter：仲裁</li>
@@ -337,13 +337,13 @@
 </ul>
 </li>
 </ul>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211011223932224.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="2-2-实验0实现结构"><a href="#2-2-实验0实现结构" class="headerlink" title="2.2 实验0实现结构"></a>2.2 实验0实现结构</h3><p>降低难度要求</p>
-<p><img src="../../../../img/SV实验一/image-20211122214540946.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="2-3-需要准备的源代码"><a href="#2-3-需要准备的源代码" class="headerlink" title="2.3 需要准备的源代码"></a>2.3 需要准备的源代码</h3><p>每次运行一个实验前把mcdt三个<strong>设计</strong>文件（arbiter.v, mcdt.v, slave_fifo.v)，与tb.v文件都放在一个文件夹里面</p>
-<h2 id="3-实验步骤"><a href="#3-实验步骤" class="headerlink" title="3.实验步骤"></a>3.实验步骤</h2><p>有人会问只编译tb那<strong>DUT</strong>怎么办，实际上DUT就在tb里面</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211011223932224.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="22-实验0实现结构">2.2 实验0实现结构</span></h3><p>降低难度要求</p>
+<p><img src="../../../../img/SV实验一/image-20211122214540946.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="23-需要准备的源代码">2.3 需要准备的源代码</span></h3><p>每次运行一个实验前把mcdt三个<strong>设计</strong>文件（arbiter.v, mcdt.v, slave_fifo.v)，与tb.v文件都放在一个文件夹里面</p>
+<h2><span id="3实验步骤">3.实验步骤</span></h2><p>有人会问只编译tb那<strong>DUT</strong>怎么办，实际上DUT就在tb里面</p>
 <p><strong>实验1，实验2是在实验0很简单的基础上一步一步修改</strong></p>
-<h3 id="3-1熟悉questasim"><a href="#3-1熟悉questasim" class="headerlink" title="3.1熟悉questasim"></a>3.1熟悉questasim</h3><ul>
+<h3><span id="31熟悉questasim">3.1熟悉questasim</span></h3><ul>
 <li>前面没重点</li>
 </ul>
 <hr>
@@ -354,14 +354,14 @@
 </ul>
 </li>
 </ul>
-<p><img src="../../../../img/SV实验一/image-20211122220405589.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="../../../../img/SV实验一/image-20211122220405589.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>work里面包含编译后的module</p>
 <p>双击这些module可以运行仿真，但单个module运行没有作用</p>
 <hr>
 <ul>
 <li><strong>transcript</strong>可以输入命令</li>
 </ul>
-<h3 id="3-2编译"><a href="#3-2编译" class="headerlink" title="3.2编译"></a>3.2编译</h3><ul>
+<h3><span id="32编译">3.2编译</span></h3><ul>
 <li>先编译设计<ol>
 <li>编译底层的模块：arbiter和slave_fifo</li>
 <li>编译上层的mcdt</li>
@@ -369,32 +369,32 @@
 </li>
 <li>再编译tb文件</li>
 </ul>
-<h3 id="3-3-simulate"><a href="#3-3-simulate" class="headerlink" title="3.3 simulate"></a>3.3 simulate</h3><p>藩镇建议simulate without optimazition：不逻辑优化的仿真</p>
-<h3 id="3-4-Add-Wave"><a href="#3-4-Add-Wave" class="headerlink" title="3.4 Add Wave"></a>3.4 Add Wave</h3><p>shift从上到下选中，右键Add Wave</p>
-<p><img src="../../../../img/SV实验一/image-20211122230540347.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="33-simulate">3.3 simulate</span></h3><p>藩镇建议simulate without optimazition：不逻辑优化的仿真</p>
+<h3><span id="34-add-wave">3.4 Add Wave</span></h3><p>shift从上到下选中，右键Add Wave</p>
+<p><img src="../../../../img/SV实验一/image-20211122230540347.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>此时右边会出现波形窗口</p>
-<h3 id="3-5-运行1us"><a href="#3-5-运行1us" class="headerlink" title="3.5 运行1us"></a>3.5 运行1us</h3><p><img src="../../../../img/SV实验一/image-20211122230907458.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="3-6-放大波形显示"><a href="#3-6-放大波形显示" class="headerlink" title="3.6 放大波形显示"></a>3.6 放大波形显示</h3><ul>
+<h3><span id="35-运行1us">3.5 运行1us</span></h3><p><img src="../../../../img/SV实验一/image-20211122230907458.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="36-放大波形显示">3.6 放大波形显示</span></h3><ul>
 <li>键盘敲击F：整个波形适应窗口显示</li>
 <li>鼠标滚轮按住拖动：放大区间内波形</li>
 </ul>
-<h3 id="可选-调整sim结构窗口内容"><a href="#可选-调整sim结构窗口内容" class="headerlink" title="(可选)调整sim结构窗口内容"></a>(可选)调整sim结构窗口内容</h3><p>sim结构窗口内容中有：module，task，过程块，语句等等</p>
+<h3><span id="可选调整sim结构窗口内容">(可选)调整sim结构窗口内容</span></h3><p>sim结构窗口内容中有：module，task，过程块，语句等等</p>
 <p>当我们不需要看这么多东西时我们怎么设置</p>
-<p><img src="../../../../img/SV实验一/image-20211122230042510.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><img src="../../../../img/SV实验一/image-20211122230053149.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="../../../../img/SV实验一/image-20211122230042510.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="../../../../img/SV实验一/image-20211122230053149.png" srcset="/img/loading.gif" lazyload alt></p>
 <hr>
 <p>或者</p>
-<h3 id="可选-object"><a href="#可选-object" class="headerlink" title="(可选)object"></a>(可选)object</h3><p>窗口显示信号</p>
-<p><img src="../../../../img/SV实验一/image-20211122230319699.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="可选object">(可选)object</span></h3><p>窗口显示信号</p>
+<p><img src="../../../../img/SV实验一/image-20211122230319699.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>In：输入信号，后缀_i</li>
 <li>Out：输出信号，后缀_o</li>
 <li>Internal：内部信号，后缀_s</li>
 </ul>
-<h3 id="可选-Wave窗口不显示路径"><a href="#可选-Wave窗口不显示路径" class="headerlink" title="(可选)Wave窗口不显示路径"></a>(可选)Wave窗口不显示路径</h3><p><img src="../../../../img/SV实验一/image-20211122230719067.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><img src="../../../../img/SV实验一/image-20211122230724187.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h1 id="三个小实验"><a href="#三个小实验" class="headerlink" title="三个小实验"></a>三个小实验</h1><p>f</p>
-<h1 id="SV实验1"><a href="#SV实验1" class="headerlink" title="SV实验1"></a>SV实验1</h1>
+<h3><span id="可选wave窗口不显示路径">(可选)Wave窗口不显示路径</span></h3><p><img src="../../../../img/SV实验一/image-20211122230719067.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="../../../../img/SV实验一/image-20211122230724187.png" srcset="/img/loading.gif" lazyload alt></p>
+<h1><span id="三个小实验">三个小实验</span></h1><p>f</p>
+<h1><span id="sv实验1">SV实验1</span></h1>
             </div>
             <hr>
             <div>

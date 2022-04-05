@@ -300,7 +300,7 @@
             <h1 style="display: none">Verilog可综合的语法</h1>
             
             <div class="markdown-body">
-              <h3 id="可综合的含义是"><a href="#可综合的含义是" class="headerlink" title="可综合的含义是"></a>可综合的含义是</h3><p>把语言描述变成电路网表，综合软件采用器件库提供的标准单元将RTL级描述转换成门级网表，具体综合过程如下：<br> <span id="more"></span></p>
+              <h3><span id="可综合的含义是">可综合的含义是</span></h3><p>把语言描述变成电路网表，综合软件采用器件库提供的标准单元将RTL级描述转换成门级网表，具体综合过程如下：<br> <span id="more"></span></p>
 <ol>
 <li><p>综合软件读取RTL级代码（可综合的代码），将其转换成门级网表，确保门级的网表的输入输出关系与RTL代码描述的输入输出关系保持一致</p>
 </li>
@@ -311,10 +311,10 @@
 </ol>
 <p><a target="_blank" rel="noopener" href="https://www.eefocus.com/initial_wei/blog/12-10/287444_c623b.html">而乐鑫2022数字IC实习类笔试最后一个多选题也考了关于Verilog可综合的语法，查阅了一下相关资料，这篇文章总结的很全</a></p>
 <p>所有综合工具都支持的结构：<br>always，assign，begin，end，case，wire，tri，aupply0，supply1，reg，integer，default，for，function，and，nand，or，nor，xor，xnor，buf，not，bufif0，bufif1，notif0，notif1，if，inout，input，instantitation，module，negedge，posedge，operators，output，parameter</p>
-<h3 id="所有综合工具都不支持的结构："><a href="#所有综合工具都不支持的结构：" class="headerlink" title="所有综合工具都不支持的结构："></a>所有综合工具都不支持的结构：</h3><p>time，defparam，$finish，fork，join，initial，delays，UDP，wait</p>
-<h3 id="有些工具支持有些工具不支持的结构："><a href="#有些工具支持有些工具不支持的结构：" class="headerlink" title="有些工具支持有些工具不支持的结构："></a>有些工具支持有些工具不支持的结构：</h3><p>casex，casez，wand，triand，wor，trior，real，disable，forever，arrays，memories，repeat，task，while</p>
+<h3><span id="所有综合工具都不支持的结构">所有综合工具都不支持的结构：</span></h3><p>time，defparam，$finish，fork，join，initial，delays，UDP，wait</p>
+<h3><span id="有些工具支持有些工具不支持的结构">有些工具支持有些工具不支持的结构：</span></h3><p>casex，casez，wand，triand，wor，trior，real，disable，forever，arrays，memories，repeat，task，while</p>
 <p>Verilog中提供了四种循环语句，可用于控制语句的执行次数，分别是for、while、repeat、forever</p>
-<h3 id="关于while、repeat、forever："><a href="#关于while、repeat、forever：" class="headerlink" title="关于while、repeat、forever："></a>关于while、repeat、forever：</h3><p>while和repeat可以综合，但是循环次数需要在编译之前就确定，动态改变循环次数是不可综合的，forever是不可综合的，它主要用来产生各种激励</p>
+<h3><span id="关于while-repeat-forever">关于while、repeat、forever：</span></h3><p>while和repeat可以综合，但是循环次数需要在编译之前就确定，动态改变循环次数是不可综合的，forever是不可综合的，它主要用来产生各种激励</p>
 <p>部分参考： <a target="_blank" rel="noopener" href="http://xilinx.eetrend.com/content/2019/100045400.html">http://xilinx.eetrend.com/content/2019/100045400.html</a></p>
 
             </div>

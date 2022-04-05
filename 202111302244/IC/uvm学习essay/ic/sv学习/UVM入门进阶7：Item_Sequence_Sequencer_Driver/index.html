@@ -464,7 +464,7 @@
 <ul>
 <li>（第二年）创建环境，你可以把实验代码照搬过工作中去修改</li>
 </ul>
-<h1 id="1-新手上路"><a href="#1-新手上路" class="headerlink" title="1 新手上路"></a>1 新手上路</h1><h2 id="1-1-前言"><a href="#1-1-前言" class="headerlink" title="1.1 前言"></a>1.1 前言</h2><h3 id="run-phase"><a href="#run-phase" class="headerlink" title="run_phase"></a>run_phase</h3><ul>
+<h1><span id="1-新手上路">1 新手上路</span></h1><h2><span id="11-前言">1.1 前言</span></h2><h3><span id="run_phase">run_phase</span></h3><ul>
 <li><p>到我们的run_phase了</p>
 </li>
 <li><p>driver,monitor,checker,reference_model的run_phase都是些forever，和sv里面的run任务相同，它们不会停下来，sv里面只有generator会停下来</p>
@@ -472,16 +472,16 @@
 <li><p>这节课我们会讲，在run_phase我们的激励怎么一步一步把item通过sqr发送到dri一侧</p>
 </li>
 </ul>
-<h2 id="1-2-四个核心词介绍"><a href="#1-2-四个核心词介绍" class="headerlink" title="1.2 四个核心词介绍"></a>1.2 四个核心词介绍</h2><p><strong>本章主要讲四个核心词的作用、分类以及之间的互动关系</strong></p>
+<h2><span id="12-四个核心词介绍">1.2 四个核心词介绍</span></h2><p><strong>本章主要讲四个核心词的作用、分类以及之间的互动关系</strong></p>
 <ul>
 <li>sequence item</li>
 <li>sequence</li>
 <li>sequencer</li>
 <li>driver</li>
 </ul>
-<h3 id="1-2-1-trans驱动作用"><a href="#1-2-1-trans驱动作用" class="headerlink" title="1.2.1 trans驱动作用"></a>1.2.1 trans驱动作用</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201105614128.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="121-trans驱动作用">1.2.1 trans驱动作用</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201105614128.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>整个事物的驱动力就是transaction的传送</p>
-<h3 id="1-2-2-四者关系打比方"><a href="#1-2-2-四者关系打比方" class="headerlink" title="1.2.2 四者关系打比方"></a>1.2.2 四者关系打比方</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201113557243.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="122-四者关系打比方">1.2.2 四者关系打比方</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201113557243.png" srcset="/img/loading.gif" lazyload alt></p>
 <pre><code class=" mermaid">graph TB
 sequence --&gt; 道路
 sequence_item --&gt; 货车
@@ -489,16 +489,16 @@ sequencer --&gt; 目的地关卡
 driver --&gt; 目的_进行扫描与分解
 </code></pre>
 <p>通路结构图：</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201133536311.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201133536311.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>sqr到driver是通过req与rsp</li>
 </ul>
-<h3 id="1-2-3-sequencer-item"><a href="#1-2-3-sequencer-item" class="headerlink" title="1.2.3 sequencer item"></a>1.2.3 sequencer item</h3><p>sequence item是driver与DUT每一次互动的最小颗粒度</p>
+<h3><span id="123-sequencer-item">1.2.3 sequencer item</span></h3><p>sequence item是driver与DUT每一次互动的最小颗粒度</p>
 <p>sequence item是一个类</p>
 <ul>
 <li>内部可定义成员方法或变量，成员变量应考虑是否需要随机化</li>
 </ul>
-<h3 id="1-2-4-driver：一个例子"><a href="#1-2-4-driver：一个例子" class="headerlink" title="1.2.4 driver：一个例子"></a>1.2.4 driver：一个例子</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201134705399-16383376267321.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="124-driver一个例子">1.2.4 driver：一个例子</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201134705399-16383376267321.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>一个例子</strong>：假设DUT是slave端，driver扮演master访问DUT寄存器</p>
 <ul>
 <li>item定义的数据信息包括：地址、命令码、数据和状态值（访问是否成功，V1V2的MCDF不涉及状态码，UVM实战会完善）</li>
@@ -510,30 +510,30 @@ driver --&gt; 目的_进行扫描与分解
 </ul>
 </li>
 </ul>
-<h3 id="1-2-5-sequence-的层次化"><a href="#1-2-5-sequence-的层次化" class="headerlink" title="1.2.5 sequence 的层次化"></a>1.2.5 sequence 的层次化</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201135832487.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="125-sequence-的层次化">1.2.5 sequence 的层次化</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201135832487.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>sequence内部包括item可以包括sequence，从而sequence一层一层实现层次化</p>
-<h3 id="1-2-6-sequencer"><a href="#1-2-6-sequencer" class="headerlink" title="1.2.6 sequencer"></a>1.2.6 sequencer</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201141140565.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201141204261.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="126-sequencer">1.2.6 sequencer</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201141140565.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201141204261.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>sequencer是sequence与driver之间的桥梁，使用TLM进行通信，通信参数为sequence_item类</li>
 <li>sequencer的相关控制方法都在uvm_sequence里面</li>
 </ul>
-<h3 id="1-2-7-driver"><a href="#1-2-7-driver" class="headerlink" title="1.2.7 driver"></a>1.2.7 driver</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201141253909.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="127-driver">1.2.7 driver</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201141253909.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>driver特点：</p>
 <ul>
 <li>永远喂不饱，forever驱动</li>
 <li>不会修改item值</li>
 </ul>
-<h3 id="1-2-8-sequence的互动"><a href="#1-2-8-sequence的互动" class="headerlink" title="1.2.8 sequence的互动"></a>1.2.8 sequence的互动</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201133503968.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h2 id="1-3-继承关系"><a href="#1-3-继承关系" class="headerlink" title="1.3 继承关系"></a>1.3 继承关系</h2><h3 id="1-3-1-uvm-sequence是obj"><a href="#1-3-1-uvm-sequence是obj" class="headerlink" title="1.3.1 uvm_sequence是obj"></a>1.3.1 uvm_sequence是obj</h3><p>uvm_sequence_item和uvm_sequence都继承于uvm_object，不同于comp只在build_phase里创建和配置，obj可以在任何时候穿几件</p>
+<h3><span id="128-sequence的互动">1.2.8 sequence的互动</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201133503968.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="13-继承关系">1.3 继承关系</span></h2><h3><span id="131-uvm_sequence是obj">1.3.1 uvm_sequence是obj</span></h3><p>uvm_sequence_item和uvm_sequence都继承于uvm_object，不同于comp只在build_phase里创建和配置，obj可以在任何时候穿几件</p>
 <p>uvm_sequence与uvm_comp继承树</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201141531814.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="1-3-2-提示：sequence继承obj而带来的特点"><a href="#1-3-2-提示：sequence继承obj而带来的特点" class="headerlink" title="1.3.2 提示：sequence继承obj而带来的特点"></a>1.3.2 提示：sequence继承obj而带来的特点</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201141627603.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201141531814.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="132-提示sequence继承obj而带来的特点">1.3.2 提示：sequence继承obj而带来的特点</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201141627603.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>（1）你无法预测run阶段什么时候会创建sequence并挂在到sqr上，也无法通过phase机制识别sequence 的运行阶段</p>
 <p>（2）obj独立于build阶段外，所以可以动态挂在</p>
 <p>（3）seq无法在顶层配置的时候按照层次关系直接进行配置</p>
 <p>（4）seq必须挂载到sqr，并依赖于sqr的结构关系来间接获取顶层配置信息</p>
-<h3 id="1-3-3-提示"><a href="#1-3-3-提示" class="headerlink" title="1.3.3 提示"></a>1.3.3 提示</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201170827558.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="133-提示">1.3.3 提示</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201170827558.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>（1）新手：将时序控制的权力给seq，即seq产生item，seq交给driver</p>
 <p>（2）明确职责的情况：seq应该只负责生成item</p>
 <p>（3）item生成和传送并不代表最终的接口时序，决定接口时序的是sqr和dri。进而引申出一个问题，为什么要有sqr在seq和dri之间</p>
@@ -542,7 +542,7 @@ driver --&gt; 目的_进行扫描与分解
 <li>sqr是一个组件，可以通过TLM端口传送item</li>
 <li>sqr有仲裁机制，处理多个并行seq</li>
 </ul>
-<h2 id="1-4-总结：数据传送机制"><a href="#1-4-总结：数据传送机制" class="headerlink" title="1.4 总结：数据传送机制"></a>1.4 总结：数据传送机制</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201172240003.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2><span id="14-总结数据传送机制">1.4 总结：数据传送机制</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201172240003.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>（1）数据传送机制是get模式（关于put和ge模式参考TLM）</p>
 <ul>
 <li>sv里面是generator产生item，stimulator/driver去get</li>
@@ -550,18 +550,18 @@ driver --&gt; 目的_进行扫描与分解
 </ul>
 <p>如图：</p>
 <p>通信模式</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201174511162.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201174511162.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>数据传输方向：</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201174541927.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201174541927.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>（2）为什么是get模式：</p>
 <ul>
 <li>效率较高：seq产生item可以直接到达sqr，穿过sqr到达dri即可结束传输；put还需要收到返回值才可以发起下一次的传输</li>
 <li>seq的仲裁特性：仲裁特性更符合设计思维：<ul>
-<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201174819011.png" srcset="/img/loading.gif" lazyload alt=""></li>
+<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201174819011.png" srcset="/img/loading.gif" lazyload alt></li>
 </ul>
 </li>
 </ul>
-<h1 id="2-Sequence和Item"><a href="#2-Sequence和Item" class="headerlink" title="2 Sequence和Item"></a>2 Sequence和Item</h1><h2 id="2-1-概述（引入）"><a href="#2-1-概述（引入）" class="headerlink" title="2.1 概述（引入）"></a>2.1 概述（引入）</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201175018828.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1><span id="2-sequence和item">2 Sequence和Item</span></h1><h2><span id="21-概述引入">2.1 概述（引入）</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201175018828.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>（3）</p>
 <ul>
 <li><p>seq指的是：uvm_sequence类</p>
@@ -570,7 +570,7 @@ driver --&gt; 目的_进行扫描与分解
 </li>
 </ul>
 <p>（4）环境中至少有一个seq，不能仅仅一个item就可以想当然的发送到sqr</p>
-<h2 id="2-2-sequence-item-介绍"><a href="#2-2-sequence-item-介绍" class="headerlink" title="2.2 sequence item 介绍"></a>2.2 sequence item 介绍</h2><p>item继承于uvm_object，具备obj核心方法：<code>copy()</code>，<code>clone()</code>，<code>compare()</code>，<code>record()</code></p>
+<h2><span id="22-sequence-item-介绍">2.2 sequence item 介绍</span></h2><p>item继承于uvm_object，具备obj核心方法：<code>copy()</code>，<code>clone()</code>，<code>compare()</code>，<code>record()</code></p>
 <p>item内部数据成员可分为以下几类：</p>
 <ul>
 <li>控制类：如总线协议上的读写类型、数据长度、传送模式</li>
@@ -582,18 +582,18 @@ driver --&gt; 目的_进行扫描与分解
 </li>
 <li>调试类：用来标记一些额外信息方便调试，例如该对象的<strong>实例序号</strong>、创建时间、被driver解析的时间始末等</li>
 </ul>
-<h2 id="2-3-item的简单例子"><a href="#2-3-item的简单例子" class="headerlink" title="2.3 item的简单例子"></a>2.3 item的简单例子</h2><p>sqr没有接dri与seq，仅仅看item是怎么回事</p>
-<h3 id="item定义"><a href="#item定义" class="headerlink" title="item定义"></a>item定义</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201225256849.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="test"><a href="#test" class="headerlink" title="test"></a>test</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201225400298.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2><span id="23-item的简单例子">2.3 item的简单例子</span></h2><p>sqr没有接dri与seq，仅仅看item是怎么回事</p>
+<h3><span id="item定义">item定义</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201225256849.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="test">test</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201225400298.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>这里用new创建obj，复习一下create的好处：</p>
 <ul>
 <li>override</li>
 <li>建立层次化关系</li>
 <li>comp不可以new？</li>
 </ul>
-<h3 id="输出结果"><a href="#输出结果" class="headerlink" title="输出结果"></a>输出结果</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201225558954.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="输出结果">输出结果</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201225558954.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>t1没有随机化，t2随机化了</p>
-<h2 id="2-4-item使用特点"><a href="#2-4-item使用特点" class="headerlink" title="2.4 item使用特点"></a>2.4 item使用特点</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201225617852.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2><span id="24-item使用特点">2.4 item使用特点</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201225617852.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>（1）数据成员为rand形</p>
 <p>（2）使用`uvm_field_xxx宏进行数据成员声明，便于域自动化</p>
 <p>（3）seq的body()很重要，和run类似</p>
@@ -601,35 +601,35 @@ driver --&gt; 目的_进行扫描与分解
 <ul>
 <li>item要善用copy()，clone()等数据方法</li>
 </ul>
-<h2 id="2-5-item与seq的关系"><a href="#2-5-item与seq的关系" class="headerlink" title="2.5 item与seq的关系"></a>2.5 item与seq的关系</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201225939333.png" srcset="/img/loading.gif" lazyload alt=""> </p>
+<h2><span id="25-item与seq的关系">2.5 item与seq的关系</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201225939333.png" srcset="/img/loading.gif" lazyload alt> </p>
 <p>（1）seq控制item实例的随机化，因此内部应预留可供外部随机化的变量，通过层级传递进seq进而控制item，控制item的内容有</p>
 <ul>
 <li>item内部随机变量</li>
 <li>item之间的组织和时序控制</li>
 </ul>
-<h2 id="2-6-三类常见的seq定义方式："><a href="#2-6-三类常见的seq定义方式：" class="headerlink" title="2.6 三类常见的seq定义方式："></a>2.6 三类常见的seq定义方式：</h2><ul>
+<h2><span id="26-三类常见的seq定义方式">2.6 三类常见的seq定义方式：</span></h2><ul>
 <li><p>扁平类（flat sequence）：最简单的，只组织最小颗粒度即item</p>
 </li>
 <li><p>层次类（hierarchical sequence）：更高层seq包括底层seq</p>
 </li>
 <li>虚拟类（virtual sequence）：工作后经常用的，控制整个测试场景中不同的seq</li>
 </ul>
-<h2 id="2-7-三类seq定义：Flat-Sequence-介绍"><a href="#2-7-三类seq定义：Flat-Sequence-介绍" class="headerlink" title="2.7 三类seq定义：Flat Sequence 介绍"></a>2.7 三类seq定义：Flat Sequence 介绍</h2><h3 id="2-7-1-介绍"><a href="#2-7-1-介绍" class="headerlink" title="2.7.1 介绍"></a>2.7.1 介绍</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201230645731.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="2-7-2-代码示例一"><a href="#2-7-2-代码示例一" class="headerlink" title="2.7.2 代码示例一"></a>2.7.2 代码示例一</h3><h4 id="seq"><a href="#seq" class="headerlink" title="seq"></a>seq</h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201230925611.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2><span id="27-三类seq定义flat-sequence-介绍">2.7 三类seq定义：Flat Sequence 介绍</span></h2><h3><span id="271-介绍">2.7.1 介绍</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201230645731.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="272-代码示例一">2.7.2 代码示例一</span></h3><h4><span id="seq">seq</span></h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201230925611.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>body就像组件中的run一样，因为obj不参与phase，定义了body你不需要手动运行就和你不需要手动run一样</li>
 <li>数据的随机化：<ul>
-<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201231059436.png" srcset="/img/loading.gif" lazyload alt=""></li>
+<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201231059436.png" srcset="/img/loading.gif" lazyload alt></li>
 </ul>
 </li>
 </ul>
-<h4 id="test-1"><a href="#test-1" class="headerlink" title="test"></a>test</h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201230854209.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4><span id="test">test</span></h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201230854209.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>这里为什么手动执行body()，因为这不是个完整的代码，完整的应该是由挂载到的sqr自动运行</p>
-<h4 id="示例总结"><a href="#示例总结" class="headerlink" title="示例总结"></a>示例总结</h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201231331801.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4><span id="示例总结">示例总结</span></h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201231331801.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>（1）暂时没有用seq宏</p>
 <p>（4）示例一颗粒度较小没有使用item</p>
-<h3 id="2-7-3-代码示例二：加大颗粒度（使用item）"><a href="#2-7-3-代码示例二：加大颗粒度（使用item）" class="headerlink" title="2.7.3 代码示例二：加大颗粒度（使用item）"></a>2.7.3 代码示例二：加大颗粒度（使用item）</h3><h4 id="trans"><a href="#trans" class="headerlink" title="trans"></a>trans</h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201231554790.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h4 id="seq更多的去做一些控制的任务"><a href="#seq更多的去做一些控制的任务" class="headerlink" title="seq更多的去做一些控制的任务"></a>seq更多的去做一些控制的任务</h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201231846970.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="273-代码示例二加大颗粒度使用item">2.7.3 代码示例二：加大颗粒度（使用item）</span></h3><h4><span id="trans">trans</span></h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201231554790.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="seq更多的去做一些控制的任务">seq更多的去做一些控制的任务</span></h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201231846970.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li><p>seq更加简洁</p>
 </li>
@@ -638,23 +638,23 @@ driver --&gt; 目的_进行扫描与分解
 <li><p>只需要例化一个trans实例</p>
 </li>
 </ul>
-<h4 id="test没有什么大的变化"><a href="#test没有什么大的变化" class="headerlink" title="test没有什么大的变化"></a>test没有什么大的变化</h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201232126539.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h4 id="输出结果-1"><a href="#输出结果-1" class="headerlink" title="输出结果"></a>输出结果</h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201232239563.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="2-7-4-如何去定义一个item，粒度多少合适？"><a href="#2-7-4-如何去定义一个item，粒度多少合适？" class="headerlink" title="2.7.4 如何去定义一个item，粒度多少合适？"></a>2.7.4 如何去定义一个item，粒度多少合适？</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201232253752.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4><span id="test没有什么大的变化">test没有什么大的变化</span></h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201232126539.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="输出结果">输出结果</span></h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201232239563.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="274-如何去定义一个item粒度多少合适">2.7.4 如何去定义一个item，粒度多少合适？</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201232253752.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>简单来讲：seq里面包含多个item</p>
-<h2 id="2-8-三类seq定义：Hierarchical-Sequence-介绍"><a href="#2-8-三类seq定义：Hierarchical-Sequence-介绍" class="headerlink" title="2.8 三类seq定义：Hierarchical Sequence 介绍"></a>2.8 三类seq定义：Hierarchical Sequence 介绍</h2><h3 id="2-8-1-介绍"><a href="#2-8-1-介绍" class="headerlink" title="2.8.1 介绍"></a>2.8.1 介绍</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201232405666.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2><span id="28-三类seq定义hierarchical-sequence-介绍">2.8 三类seq定义：Hierarchical Sequence 介绍</span></h2><h3><span id="281-介绍">2.8.1 介绍</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201232405666.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>嵌套seq好处是可以创建更丰富的激励场景</li>
 <li>hierarchical seq可以嵌套：hierarchical seq，flat seq，item</li>
 </ul>
-<h3 id="2-8-2-代码示例：trans与flatseq基于2-7-3"><a href="#2-8-2-代码示例：trans与flatseq基于2-7-3" class="headerlink" title="2.8.2 代码示例：trans与flatseq基于2.7.3"></a>2.8.2 代码示例：trans与flatseq基于2.7.3</h3><h4 id="hier-seq"><a href="#hier-seq" class="headerlink" title="hier_seq"></a>hier_seq</h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201232553633.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="282-代码示例trans与flatseq基于273">2.8.2 代码示例：trans与flatseq基于2.7.3</span></h3><h4><span id="hier_seq">hier_seq</span></h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201232553633.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>宏做了三件事：</p>
 <ul>
 <li>创建了seq和item</li>
 <li>完成了随机化</li>
 <li>传送到sqr上</li>
 </ul>
-<h3 id="2-8-3-示例总结"><a href="#2-8-3-示例总结" class="headerlink" title="2.8.3 示例总结"></a>2.8.3 示例总结</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201232800181.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="283-示例总结">2.8.3 示例总结</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211201232800181.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>（1）示例代码宏的三个作用</p>
 <p>（3）示例中既有串行的激励关系，也有并行的激励关系</p>
 <p>更复杂的场景中可以加入seq/item之间的时序关系：</p>
@@ -662,7 +662,7 @@ driver --&gt; 目的_进行扫描与分解
 <li>事件同步</li>
 <li>一定的延迟关系</li>
 </ul>
-<h1 id="3-Sequencer和Driver"><a href="#3-Sequencer和Driver" class="headerlink" title="3 Sequencer和Driver"></a>3 Sequencer和Driver</h1><h2 id="3-1-概述"><a href="#3-1-概述" class="headerlink" title="3.1 概述"></a>3.1 概述</h2><h3 id="3-1-1-数据传输概述"><a href="#3-1-1-数据传输概述" class="headerlink" title="3.1.1 数据传输概述"></a>3.1.1 数据传输概述</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202164914967.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1><span id="3-sequencer和driver">3 Sequencer和Driver</span></h1><h2><span id="31-概述">3.1 概述</span></h2><h3><span id="311-数据传输概述">3.1.1 数据传输概述</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202164914967.png" srcset="/img/loading.gif" lazyload alt></p>
 <hr>
 <ul>
 <li><p>seq与dri是组件，组件之间的通信依赖于TLM端口</p>
@@ -678,8 +678,8 @@ driver --&gt; 目的_进行扫描与分解
 </ul>
 <hr>
 <p>seq与dri的端口结构图：双向的数据传输</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202164857361.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="3-1-2-端口"><a href="#3-1-2-端口" class="headerlink" title="3.1.2 端口"></a>3.1.2 端口</h3><p><strong>（1）端口：</strong></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202164857361.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="312-端口">3.1.2 端口</span></h3><p><strong>（1）端口：</strong></p>
 <p>UVM<strong>专门提供</strong>便于item传输的<strong>端口</strong>，供seq与driv使用：</p>
 <figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog">uvm seq_item pull_port <span class="hljs-variable">#(type REQ=int, type RSP=REQ)</span><br>uvm_seq_item_pull_export <span class="hljs-variable">#(type REQ=int, type RSP=REQ)</span><br>uvm_seq_item_pull_imp <span class="hljs-variable">#(type REQ=int, type RSP=REQ, type imp=int)</span><br></code></pre></div></td></tr></table></figure>
 <p><strong>（2）端口分类：</strong></p>
@@ -690,14 +690,14 @@ driver --&gt; 目的_进行扫描与分解
 <ul>
 <li>为什么是export实际上是imp？：<ul>
 <li>因为sqr里面有fifo，对外显示的是export但已经是最后一个组件了，对内还需要连接</li>
-<li>如图所示：<img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202165831924.png" srcset="/img/loading.gif" lazyload alt=""></li>
+<li>如图所示：<img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202165831924.png" srcset="/img/loading.gif" lazyload alt></li>
 <li>补充sqr只有rsp的fifo没有req的fifo</li>
 </ul>
 </li>
 </ul>
 <p>回忆三种port</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202165649765.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="3-1-3-端口的连接"><a href="#3-1-3-端口的连接" class="headerlink" title="3.1.3 端口的连接"></a>3.1.3 端口的连接</h3><p>dri与sqr的端口成对组合，一共两对，进行连接：</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202165649765.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="313-端口的连接">3.1.3 端口的连接</span></h3><p>dri与sqr的端口成对组合，一共两对，进行连接：</p>
 <ul>
 <li>第一对：<ul>
 <li><code>uvm_seq_item_pull_port #(REP, RSP) seq_item_port</code></li>
@@ -712,9 +712,9 @@ driver --&gt; 目的_进行扫描与分解
 </ul>
 <p>两组端口都可以实现rsp发送，但方式不一样</p>
 <hr>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202170821975.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202170821975.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>（1）<strong>通常使用第一对就够了</strong>，即：<code>driver::seq_item_port.connect(sequencer::seq_item_export)</code></p>
-<h3 id="3-1-4-第一对端口的方法-需要反复听"><a href="#3-1-4-第一对端口的方法-需要反复听" class="headerlink" title="3.1.4 第一对端口的方法(需要反复听)"></a>3.1.4 第一对端口的方法(需要反复听)</h3><p>在driver一侧，通过seq_item_port调用这一种类型的TLM端口的方法：</p>
+<h3><span id="314-第一对端口的方法需要反复听">3.1.4 第一对端口的方法(需要反复听)</span></h3><p>在driver一侧，通过seq_item_port调用这一种类型的TLM端口的方法：</p>
 <ul>
 <li>task get_next_item(output REQ req_arg)：采取blocking的方式等待从sequence获 取下一个item<ul>
 <li><strong>常用</strong>，blocking即阻塞的方式</li>
@@ -757,15 +757,15 @@ driver --&gt; 目的_进行扫描与分解
 </ul>
 <p>put rsp独立出现</p>
 <hr>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202171759071.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="3-1-5-sqr与dri参数类的REQ与RSP的类型参数"><a href="#3-1-5-sqr与dri参数类的REQ与RSP的类型参数" class="headerlink" title="3.1.5 sqr与dri参数类的REQ与RSP的类型参数"></a>3.1.5 sqr与dri参数类的REQ与RSP的类型参数</h3><h4 id="参数类声明原型："><a href="#参数类声明原型：" class="headerlink" title="参数类声明原型："></a>参数类声明原型：</h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202180517844-16384395186521.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202171759071.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="315-sqr与dri参数类的req与rsp的类型参数">3.1.5 sqr与dri参数类的REQ与RSP的类型参数</span></h3><h4><span id="参数类声明原型">参数类声明原型：</span></h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202180517844-16384395186521.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>参数类内部的类型一致，缺省值为uvm_sequence_item，即自定义的Item的父类类型</p>
 <hr>
-<h4 id="类型转换："><a href="#类型转换：" class="headerlink" title="类型转换："></a>类型转换：</h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202182723182.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4><span id="类型转换">类型转换：</span></h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202182723182.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>（1）如上所说缺省时拿到的是父类类型，需要动态进行类型转换</p>
 <p>（2）类型参数为自定义类时不用在意</p>
 <hr>
-<h4 id="类型保持一致的作用："><a href="#类型保持一致的作用：" class="headerlink" title="类型保持一致的作用："></a>类型保持一致的作用：</h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202182940197.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4><span id="类型保持一致的作用">类型保持一致的作用：</span></h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202182940197.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>把rsp反馈到sqr的四种方法：</p>
 <ul>
 <li>put(rsp)//put rsp</li>
@@ -774,7 +774,7 @@ driver --&gt; 目的_进行扫描与分解
 <li>item_done</li>
 </ul>
 <p>这四种方法最终都会写入到一个fifo里面</p>
-<h2 id="3-2-事务传递实例"><a href="#3-2-事务传递实例" class="headerlink" title="3.2 事务传递实例"></a>3.2 事务传递实例</h2><h3 id="（1）item-trans-和-flat-seq"><a href="#（1）item-trans-和-flat-seq" class="headerlink" title="（1）item(trans) 和 flat_seq"></a>（1）item(trans) 和 flat_seq</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202183241815.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2><span id="32-事务传递实例">3.2 事务传递实例</span></h2><h3><span id="1itemtrans-和-flat_seq">（1）item(trans) 和 flat_seq</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202183241815.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>flat_seq：</p>
 <ul>
 <li>body<ul>
@@ -787,25 +787,25 @@ driver --&gt; 目的_进行扫描与分解
 <ul>
 <li>为什么item也被挂载到sqr上<ul>
 <li>实际上seq与Item都挂载到sqr上</li>
-<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202184105335.png" srcset="/img/loading.gif" lazyload alt=""></li>
+<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202184105335.png" srcset="/img/loading.gif" lazyload alt></li>
 <li><strong>而自己定义的sqr又是uvm_sequence的成员变量</strong></li>
 </ul>
 </li>
 <li>一个完成的传输：<ul>
 <li>seq收到item_done才算结束，这里使用get_response(tmp)</li>
-<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202184636538.png" srcset="/img/loading.gif" lazyload alt=""></li>
+<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202184636538.png" srcset="/img/loading.gif" lazyload alt></li>
 </ul>
 </li>
 </ul>
-<h3 id="（2）sqr：最简单的一个"><a href="#（2）sqr：最简单的一个" class="headerlink" title="（2）sqr：最简单的一个"></a>（2）sqr：最简单的一个</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202184922242.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="2sqr最简单的一个">（2）sqr：最简单的一个</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202184922242.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>继承于uvm_sequencer</p>
 <p><strong>只要进行一个注册就ok，最简单的一个</strong>，更多的握手关系在seq和dri一侧，sqr做路由作用</p>
-<h3 id="（3）driver"><a href="#（3）driver" class="headerlink" title="（3）driver"></a>（3）driver</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202183323782.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="3driver">（3）driver</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202183323782.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li><p>关于REQ是哪来的，你忘了自己是个参数类了吗？这不是参数类的类型参数值吗？</p>
 <ul>
 <li>这里没有进行参数指明，所以直接用默认了，就是没有下图红字部分<ul>
-<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202204354109.png" srcset="/img/loading.gif" lazyload alt=""></li>
+<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202204354109.png" srcset="/img/loading.gif" lazyload alt></li>
 </ul>
 </li>
 </ul>
@@ -829,7 +829,7 @@ driver --&gt; 目的_进行扫描与分解
 <li><p>为什么要手动set？id没有进行域的自动化，克隆的时候不会复制id，克隆只关心数据部分而id不是数据部分</p>
 </li>
 <li><p>传输结构图：</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202185848489.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202185848489.png" srcset="/img/loading.gif" lazyload alt></p>
 </li>
 </ul>
 </li>
@@ -842,7 +842,7 @@ driver --&gt; 目的_进行扫描与分解
 <li><strong>因此get_response一定要成对不然会卡住</strong></li>
 </ul>
 </li>
-<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202190641416.png" srcset="/img/loading.gif" lazyload alt=""></li>
+<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202190641416.png" srcset="/img/loading.gif" lazyload alt></li>
 </ul>
 </li>
 </ul>
@@ -850,7 +850,7 @@ driver --&gt; 目的_进行扫描与分解
 </ul>
 </li>
 </ul>
-<h3 id="（4）env"><a href="#（4）env" class="headerlink" title="（4）env"></a>（4）env</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202183249715.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="4env">（4）env</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202183249715.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li><p>成员区域</p>
 <ul>
@@ -868,7 +868,7 @@ driver --&gt; 目的_进行扫描与分解
 </ul>
 </li>
 </ul>
-<h3 id="（5）test"><a href="#（5）test" class="headerlink" title="（5）test"></a>（5）test</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202183254693.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="5test">（5）test</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202183254693.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>build：</p>
 <ul>
 <li>sqr的创建</li>
@@ -886,12 +886,12 @@ driver --&gt; 目的_进行扫描与分解
 </li>
 <li>结束挂起结束运行</li>
 </ul>
-<h3 id="（6）输出结果"><a href="#（6）输出结果" class="headerlink" title="（6）输出结果"></a>（6）输出结果</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202190839895.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202201323144.png" srcset="/img/loading.gif" lazyload alt="">     </p>
-<h2 id="3-3-【重要】各个模块的动作总结"><a href="#3-3-【重要】各个模块的动作总结" class="headerlink" title="3.3 【重要】各个模块的动作总结"></a>3.3 【重要】各个模块的动作总结</h2><h3 id="flat-seq："><a href="#flat-seq：" class="headerlink" title="flat_seq："></a>flat_seq：</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202203103945.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="6输出结果">（6）输出结果</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202190839895.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202201323144.png" srcset="/img/loading.gif" lazyload alt>     </p>
+<h2><span id="33-重要各个模块的动作总结">3.3 【重要】各个模块的动作总结</span></h2><h3><span id="flat_seq">flat_seq：</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202203103945.png" srcset="/img/loading.gif" lazyload alt></p>
 <figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog">create_item()<br>start_item()<br>randomize()<br>finish_item()<br>*get_response()<br></code></pre></div></td></tr></table></figure>
-<h3 id="driver以及之后的逻辑："><a href="#driver以及之后的逻辑：" class="headerlink" title="driver以及之后的逻辑："></a>driver以及之后的逻辑：</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202204659663.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="高层次端口的连接（env和test）"><a href="#高层次端口的连接（env和test）" class="headerlink" title="高层次端口的连接（env和test）"></a>高层次端口的连接（env和test）</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202205103247.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="driver以及之后的逻辑">driver以及之后的逻辑：</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202204659663.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="高层次端口的连接env和test">高层次端口的连接（env和test）</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202205103247.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>（1）env端口连接，使用一种端口进行成对连接就行</p>
 <p>（2）</p>
 <ul>
@@ -900,14 +900,14 @@ driver --&gt; 目的_进行扫描与分解
 <li><p>挂载seq到sqr使用uvm_sequence::<strong>start</strong>(SEQUENCER)完成</p>
 </li>
 </ul>
-<h2 id="3-4-【重要】通信时序"><a href="#3-4-【重要】通信时序" class="headerlink" title="3.4 【重要】通信时序"></a>3.4 【重要】通信时序</h2><h3 id="3-4-1-通信时序"><a href="#3-4-1-通信时序" class="headerlink" title="3.4.1 通信时序"></a>3.4.1 通信时序</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202210435732.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="3-4-2-seq与sqr的细节补充"><a href="#3-4-2-seq与sqr的细节补充" class="headerlink" title="3.4.2 seq与sqr的细节补充"></a>3.4.2 seq与sqr的细节补充</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202210329060.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2><span id="34-重要通信时序">3.4 【重要】通信时序</span></h2><h3><span id="341-通信时序">3.4.1 通信时序</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202210435732.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="342-seq与sqr的细节补充">3.4.2 seq与sqr的细节补充</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202210329060.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>（1）seq起点是create</p>
 <p>（2）sqr的仲裁机制根据dri的get_next_item来的</p>
 <p>（3）sqr在获取item之前item应该完成随机化</p>
 <hr>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202210714053.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="3-4-3-握手建议、类型问题"><a href="#3-4-3-握手建议、类型问题" class="headerlink" title="3.4.3 握手建议、类型问题"></a>3.4.3 握手建议、类型问题</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202210749419.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202210714053.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="343-握手建议-类型问题">3.4.3 握手建议、类型问题</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202210749419.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li><p>主要讲克隆和ID一部分的内容，可以参考3.2driver的run_phase</p>
 </li>
@@ -915,16 +915,16 @@ driver --&gt; 目的_进行扫描与分解
 </li>
 </ul>
 <hr>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202210904018.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202210904018.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li><p>seq与driver类型完全保持一致</p>
 </li>
 <li><p>如何修改底层的sequence item类型？override</p>
 </li>
 </ul>
-<h1 id="4-Sequencer和Sequence：初步"><a href="#4-Sequencer和Sequence：初步" class="headerlink" title="4 Sequencer和Sequence：初步"></a>4 Sequencer和Sequence：初步</h1><h2 id="4-1-概述"><a href="#4-1-概述" class="headerlink" title="4.1 概述"></a>4.1 概述</h2><h3 id="4-1-1-主要学习内容"><a href="#4-1-1-主要学习内容" class="headerlink" title="4.1.1 主要学习内容"></a>4.1.1 主要学习内容</h3><p>主要讲几种常见的仲裁方式，一般可能用不太到</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202220542862.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="4-1-2-sequence宏概述：区分两种挂载seq到sqr方式"><a href="#4-1-2-sequence宏概述：区分两种挂载seq到sqr方式" class="headerlink" title="4.1.2 sequence宏概述：区分两种挂载seq到sqr方式"></a>4.1.2 sequence宏概述：区分两种挂载seq到sqr方式</h3><ul>
+<h1><span id="4-sequencer和sequence初步">4 Sequencer和Sequence：初步</span></h1><h2><span id="41-概述">4.1 概述</span></h2><h3><span id="411-主要学习内容">4.1.1 主要学习内容</span></h3><p>主要讲几种常见的仲裁方式，一般可能用不太到</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202220542862.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="412-sequence宏概述区分两种挂载seq到sqr方式">4.1.2 sequence宏概述：区分两种挂载seq到sqr方式</span></h3><ul>
 <li>start()<ul>
 <li>在test对top_seq挂载（参考第三章），在top_sep对child_sep和item挂载，在child_sep对item挂载</li>
 </ul>
@@ -934,18 +934,18 @@ driver --&gt; 目的_进行扫描与分解
 </ul>
 </li>
 </ul>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202221445893.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h2 id="4-2-sequence和item发送示例"><a href="#4-2-sequence和item发送示例" class="headerlink" title="4.2 sequence和item发送示例"></a>4.2 sequence和item发送示例</h2><h3 id="bus-trans"><a href="#bus-trans" class="headerlink" title="bus_trans"></a>bus_trans</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202221650621.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="child-seq"><a href="#child-seq" class="headerlink" title="child_seq"></a>child_seq</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202221712682.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="top-seq"><a href="#top-seq" class="headerlink" title="top_seq"></a>top_seq</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202222244292.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202221445893.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="42-sequence和item发送示例">4.2 sequence和item发送示例</span></h2><h3><span id="bus_trans">bus_trans</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202221650621.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="child_seq">child_seq</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202221712682.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="top_seq">top_seq</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202222244292.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>包含child_seq与item</p>
-<h3 id="sqr"><a href="#sqr" class="headerlink" title="sqr"></a>sqr</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202222302835.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="driver"><a href="#driver" class="headerlink" title="driver"></a>driver</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202222337508.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="sqr">sqr</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202222302835.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="driver">driver</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202222337508.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>driver里面get的全是最小颗粒度item，seq在sqr处被拆解</p>
-<h3 id="env"><a href="#env" class="headerlink" title="env"></a>env</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202222453646.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="test与输出结果"><a href="#test与输出结果" class="headerlink" title="test与输出结果"></a>test与输出结果</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202222607612.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h2 id="4-3-示例总结：两种挂载方式"><a href="#4-3-示例总结：两种挂载方式" class="headerlink" title="4.3 示例总结：两种挂载方式"></a>4.3 示例总结：两种挂载方式</h2><p>两种挂载方式，分别把seq和item挂载到sqr上</p>
-<h3 id="4-3-1-把seq挂载到sqr上：这种挂载发生在top-seq上"><a href="#4-3-1-把seq挂载到sqr上：这种挂载发生在top-seq上" class="headerlink" title="4.3.1 把seq挂载到sqr上：这种挂载发生在top_seq上"></a>4.3.1 把seq挂载到sqr上：这种挂载发生在top_seq上</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202222550069.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="env">env</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202222453646.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="test与输出结果">test与输出结果</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202222607612.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="43-示例总结两种挂载方式">4.3 示例总结：两种挂载方式</span></h2><p>两种挂载方式，分别把seq和item挂载到sqr上</p>
+<h3><span id="431-把seq挂载到sqr上这种挂载发生在top_seq上">4.3.1 把seq挂载到sqr上：这种挂载发生在top_seq上</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202222550069.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>top_seq中的uvm_sequence::start()</p>
 <ul>
 <li>start内部参数解释<ul>
@@ -972,17 +972,17 @@ driver --&gt; 目的_进行扫描与分解
 </ul>
 </li>
 </ul>
-<h3 id="4-3-2-把item挂载到sqr上"><a href="#4-3-2-把item挂载到sqr上" class="headerlink" title="4.3.2 把item挂载到sqr上"></a>4.3.2 把item挂载到sqr上</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202223931132.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="432-把item挂载到sqr上">4.3.2 把item挂载到sqr上</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202223931132.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>第二个参数不需要特别关心，往往知道挂载哪个item就够了</p>
-<h3 id="4-3-3-item创建发送过程"><a href="#4-3-3-item创建发送过程" class="headerlink" title="4.3.3 item创建发送过程"></a>4.3.3 item创建发送过程</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202224727373.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="433-item创建发送过程">4.3.3 item创建发送过程</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202224727373.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>pre_do()，mid_do()，post_do()：不建议实现，会变复杂</p>
 <hr>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202225013595.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="4-3-4-seq-item的start-挂载内部逻辑"><a href="#4-3-4-seq-item的start-挂载内部逻辑" class="headerlink" title="4.3.4 seq/item的start()挂载内部逻辑"></a>4.3.4 seq/item的start()挂载内部逻辑</h3><h4 id="sequence挂载到sequencer"><a href="#sequence挂载到sequencer" class="headerlink" title="sequence挂载到sequencer"></a>sequence挂载到sequencer</h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202225207310.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202225013595.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="434-seqitem的start挂载内部逻辑">4.3.4 seq/item的start()挂载内部逻辑</span></h3><h4><span id="sequence挂载到sequencer">sequence挂载到sequencer</span></h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202225207310.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>为什么可以不关心：有时候call_pre_post=1时这些post和pre都不会执行</p>
-<h4 id="item挂载到sequencer"><a href="#item挂载到sequencer" class="headerlink" title="item挂载到sequencer"></a>item挂载到sequencer</h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202225413186.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4><span id="item挂载到sequencer">item挂载到sequencer</span></h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202225413186.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>start_item立即返回，因为只有一个sqr进行仲裁可以立刻返回结果</p>
-<h1 id="5-Sequencer和Sequence：更简单的创建挂载传输方式：宏"><a href="#5-Sequencer和Sequence：更简单的创建挂载传输方式：宏" class="headerlink" title="5 Sequencer和Sequence：更简单的创建挂载传输方式：宏"></a>5 Sequencer和Sequence：更简单的创建挂载传输方式：宏</h1><p>图中宏省略了`</p>
+<h1><span id="5-sequencer和sequence更简单的创建挂载传输方式宏">5 Sequencer和Sequence：更简单的创建挂载传输方式：宏</span></h1><p>图中宏省略了`</p>
 <p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211202225658481.png" srcset="/img/loading.gif" lazyload alt="图中宏省略了`"></p>
 <p><strong>这些宏封装了好多方法函数，x表示包括，空表示不包括</strong></p>
 <p><strong>Item：</strong></p>
@@ -1020,11 +1020,11 @@ driver --&gt; 目的_进行扫描与分解
 </ul>
 </li>
 </ul>
-<h3 id="宏的调用位置"><a href="#宏的调用位置" class="headerlink" title="宏的调用位置"></a>宏的调用位置</h3><ul>
+<h3><span id="宏的调用位置">宏的调用位置</span></h3><ul>
 <li>这些宏调用的都是 sequence方法，因此只有sequence才可以调用这些宏</li>
 </ul>
-<h3 id="宏带来的怠惰"><a href="#宏带来的怠惰" class="headerlink" title="宏带来的怠惰"></a>宏带来的怠惰</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203115317909.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h2 id="5-2-其他的宏"><a href="#5-2-其他的宏" class="headerlink" title="5.2 其他的宏"></a>5.2 其他的宏</h2><ul>
+<h3><span id="宏带来的怠惰">宏带来的怠惰</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203115317909.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="52-其他的宏">5.2 其他的宏</span></h2><ul>
 <li>将优先级作为参数传递的<strong><code>`uvm_do_pri/`uvm_do_on_prio</code></strong>等宏<ul>
 <li>并行发送多个seq时，伴随优先级发送</li>
 <li>形参优先级，默认为100</li>
@@ -1037,7 +1037,7 @@ driver --&gt; 目的_进行扫描与分解
 </li>
 <li>专门针对seq的<strong><code>`uvm_create_seq/`uvm_do_seq/`uvm_do_seq_with</code></strong>等宏</li>
 </ul>
-<h2 id="5-3-序列宏的示例"><a href="#5-3-序列宏的示例" class="headerlink" title="5.3 序列宏的示例"></a>5.3 序列宏的示例</h2><h3 id="child-seq-1"><a href="#child-seq-1" class="headerlink" title="child_seq"></a>child_seq</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203135350051.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2><span id="53-序列宏的示例">5.3 序列宏的示例</span></h2><h3><span id="child_seq">child_seq</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203135350051.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>怎样利用宏发送的：</p>
 <ul>
 <li>`uvm_create(req)：创建item</li>
@@ -1047,22 +1047,22 @@ driver --&gt; 目的_进行扫描与分解
 <ul>
 <li>`uvm_do_with</li>
 </ul>
-<h3 id="top-seq-1"><a href="#top-seq-1" class="headerlink" title="top_seq"></a>top_seq</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203135410573.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="top_seq">top_seq</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203135410573.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>`uvm_do：这里发送了child_seq</li>
 <li>`uvm_do_with：这里发送了item</li>
 </ul>
-<h2 id="5-4-序列宏的建议"><a href="#5-4-序列宏的建议" class="headerlink" title="5.4 序列宏的建议"></a>5.4 序列宏的建议</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203135746376.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2><span id="54-序列宏的建议">5.4 序列宏的建议</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203135746376.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>（1）不管seq在哪个层次，都应在test结束前执行完毕</p>
 <p>（2）可以用fork_join完成seq发送。而不建议用fork_join_any和fork_join_none，可能会导致seq没结束就立即退出，使得后台仍然有一些seq像挂载到sqr上面；进一步如果你针对fork调用disable可能会所锁sqr，因为你来不及释放seq线程权限。</p>
 <ul>
 <li>补充：你在代码中使用fork_join_any和fork_join_none一定要使用同步，如此处假如你使用了fork_join_any和fork_join_none你应该完成即便fork退出seq运行在后台时，仍然能与后台运行的seq进行同步，使得所有seq结束以后才进行后续的操作</li>
 </ul>
 <p>（3）fork_join其中一个seq线程无法结束时，考虑在合适时间点使用disbale</p>
-<h1 id="5-Sequencer和Sequence：仲裁特性"><a href="#5-Sequencer和Sequence：仲裁特性" class="headerlink" title="5 Sequencer和Sequence：仲裁特性"></a>5 Sequencer和Sequence：仲裁特性</h1><h2 id="5-1-Sequencer和Sequence的仲裁特性"><a href="#5-1-Sequencer和Sequence的仲裁特性" class="headerlink" title="5.1 Sequencer和Sequence的仲裁特性"></a>5.1 Sequencer和Sequence的仲裁特性</h2><h3 id="5-1-1-仲裁特性介绍"><a href="#5-1-1-仲裁特性介绍" class="headerlink" title="5.1.1 仲裁特性介绍"></a>5.1.1 仲裁特性介绍</h3><p>仲裁场景结构图：</p>
+<h1><span id="5-sequencer和sequence仲裁特性">5 Sequencer和Sequence：仲裁特性</span></h1><h2><span id="51-sequencer和sequence的仲裁特性">5.1 Sequencer和Sequence的仲裁特性</span></h2><h3><span id="511-仲裁特性介绍">5.1.1 仲裁特性介绍</span></h3><p>仲裁场景结构图：</p>
 <p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203141411994.png" srcset="/img/loading.gif" lazyload alt="仲裁场景结构图"></p>
 <hr>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203141403633.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203141403633.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>（1）<strong>sqr已经内建了仲裁机制，只需要在top_seq设置仲裁的模式就足够</strong></p>
 <p>（2）</p>
 <p>如何设置：uvm_sequencer::set_arbitration(UVM_SEQ_ARB_TYPE val)</p>
@@ -1076,15 +1076,15 @@ driver --&gt; 目的_进行扫描与分解
 <li>UVM_SEQ_ARB_USER：自定义仲裁，很少用</li>
 </ul>
 <hr>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203143759204.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="5-1-2-Sequencer的仲裁示例"><a href="#5-1-2-Sequencer的仲裁示例" class="headerlink" title="5.1.2 Sequencer的仲裁示例"></a>5.1.2 Sequencer的仲裁示例</h3><h4 id="item和child-seq"><a href="#item和child-seq" class="headerlink" title="item和child_seq"></a>item和child_seq</h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203143948761.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h4 id="top-seq和sqr"><a href="#top-seq和sqr" class="headerlink" title="top_seq和sqr"></a>top_seq和sqr</h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203144103956.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203143759204.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="512-sequencer的仲裁示例">5.1.2 Sequencer的仲裁示例</span></h3><h4><span id="item和child_seq">item和child_seq</span></h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203143948761.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="top_seq和sqr">top_seq和sqr</span></h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203144103956.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>top_seq：</p>
 <ul>
 <li>body：<ul>
 <li>设置优先级模式</li>
 <li>fork_join进行调度：<ul>
-<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203145448313.png" srcset="/img/loading.gif" lazyload alt=""></li>
+<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203145448313.png" srcset="/img/loading.gif" lazyload alt></li>
 <li>三个同一时间申请的，seq1和seq2优先级更高</li>
 <li>base是constraint</li>
 <li>此时赋予了优先级之后child_seq中的`uvm_do_with就可以进行挂在了，因为它们等待的就是这个顶层的优先级，使用wait_for_guant等待授权</li>
@@ -1093,10 +1093,10 @@ driver --&gt; 目的_进行扫描与分解
 </ul>
 </li>
 </ul>
-<h4 id="driver-1"><a href="#driver-1" class="headerlink" title="driver"></a>driver</h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203145759397.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4><span id="driver">driver</span></h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203145759397.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>没有太多新意</p>
-<h3 id="env-1"><a href="#env-1" class="headerlink" title="env"></a>env</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203145816089.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="test和输出结果"><a href="#test和输出结果" class="headerlink" title="test和输出结果"></a>test和输出结果</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203145834402.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="env">env</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203145816089.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="test和输出结果">test和输出结果</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203145834402.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>test：</p>
 <ul>
 <li>为什么test里面不用宏：因为用不了只能在seq里面用</li>
@@ -1105,8 +1105,8 @@ driver --&gt; 目的_进行扫描与分解
 <ul>
 <li>发送item没有耗时</li>
 </ul>
-<h4 id="示例分析"><a href="#示例分析" class="headerlink" title="示例分析"></a>示例分析</h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203150048046.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h2 id="5-2-Sequencer的锁定机制介绍"><a href="#5-2-Sequencer的锁定机制介绍" class="headerlink" title="5.2 Sequencer的锁定机制介绍"></a>5.2 Sequencer的锁定机制介绍</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203150933463.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4><span id="示例分析">示例分析</span></h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203150048046.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="52-sequencer的锁定机制介绍">5.2 Sequencer的锁定机制介绍</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203150933463.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>（1）锁定机制</p>
 <p>什么是锁定机制：seq拿到权限后进行锁定，</p>
 <p>什么是锁定：seq拿到一个item后锁定下来，后续item都可以拿到</p>
@@ -1121,7 +1121,7 @@ driver --&gt; 目的_进行扫描与分解
 </ul>
 </li>
 </ul>
-<h3 id="5-2-2-Sequencer的锁定示例"><a href="#5-2-2-Sequencer的锁定示例" class="headerlink" title="5.2.2 Sequencer的锁定示例"></a>5.2.2 Sequencer的锁定示例</h3><h4 id="item、child-seq、lock-seq"><a href="#item、child-seq、lock-seq" class="headerlink" title="item、child_seq、lock_seq"></a>item、child_seq、lock_seq</h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203155333757.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="522-sequencer的锁定示例">5.2.2 Sequencer的锁定示例</span></h3><h4><span id="item-child_seq-lock_seq">item、child_seq、lock_seq</span></h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203155333757.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>child_seq：内部重复发送两次，间隔10ns，参考之前一节的示例</p>
 <p>lock_seq：</p>
 <ul>
@@ -1134,7 +1134,7 @@ driver --&gt; 目的_进行扫描与分解
 </li>
 <li>重复发送三次</li>
 </ul>
-<h3 id="grab-seq"><a href="#grab-seq" class="headerlink" title="grab_seq"></a>grab_seq</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203155557543.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="grab_seq">grab_seq</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203155557543.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>grab_seq：</p>
 <ul>
 <li><p>等了20ns</p>
@@ -1146,15 +1146,15 @@ driver --&gt; 目的_进行扫描与分解
 </li>
 <li>重复发送三次</li>
 </ul>
-<h4 id="top-seq-2"><a href="#top-seq-2" class="headerlink" title="top_seq"></a>top_seq</h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203155814989.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4><span id="top_seq">top_seq</span></h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203155814989.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>seq1,seq2,seq3</p>
 <p>lock_seq：优先级为300</p>
 <p>grab_seq：没有优先级</p>
-<h4 id="输出结果-2"><a href="#输出结果-2" class="headerlink" title="输出结果"></a>输出结果</h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203160141887-16385185030091.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4><span id="输出结果">输出结果</span></h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203160141887-16385185030091.png" srcset="/img/loading.gif" lazyload alt></p>
 <hr>
 <p>注释版：</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203160157368-16385185184612.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h4 id="结果解释"><a href="#结果解释" class="headerlink" title="结果解释"></a>结果解释</h4><p>10ns：</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203160157368-16385185184612.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="结果解释">结果解释</span></h4><p>10ns：</p>
 <ul>
 <li>seq1,seq2优先级500先发送sep3优先级300再发送（发送完等待10纳秒，重新排队伍）</li>
 <li>lock_seq开始要权限</li>
@@ -1183,44 +1183,44 @@ driver --&gt; 目的_进行扫描与分解
 <ul>
 <li>seq1,seq2优先级500先发送sep3优先级300再发送</li>
 </ul>
-<h4 id="结果补充"><a href="#结果补充" class="headerlink" title="结果补充"></a>结果补充</h4><p>seq优先级如果使用默认，不给定，则默认100</p>
+<h4><span id="结果补充">结果补充</span></h4><p>seq优先级如果使用默认，不给定，则默认100</p>
 <p>即直接：</p>
 <ul>
 <li><code>`uvm_do_pri_with(seq)</code></li>
 <li><code>`uvm_do_pri_with(lock)</code></li>
 <li><code>`uvm_do_pri_with(grab)</code></li>
 </ul>
-<h3 id="5-2-3-结论"><a href="#5-2-3-结论" class="headerlink" title="5.2.3 结论"></a>5.2.3 结论</h3><p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B68%EF%BC%9ASequencer%E4%BB%B2%E8%A3%81_Sequence%E5%B1%82%E6%AC%A1%E5%8C%96/image-20211203161407082.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="523-结论">5.2.3 结论</span></h3><p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B68%EF%BC%9ASequencer%E4%BB%B2%E8%A3%81_Sequence%E5%B1%82%E6%AC%A1%E5%8C%96/image-20211203161407082.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>无论是lock或者grab都是在重新仲裁时才能锁住</p>
-<h1 id="6-Sequence的层次化"><a href="#6-Sequence的层次化" class="headerlink" title="6 Sequence的层次化"></a>6 Sequence的层次化</h1><p>对于小白我们可能更关心如何让你的sequence层次化，如何理解别人写的层次化的sequence，以及把它们作为更顶层的sequence如何一层一层的调用</p>
-<h2 id="6-1-概述：水平复用和垂直复用"><a href="#6-1-概述：水平复用和垂直复用" class="headerlink" title="6.1 概述：水平复用和垂直复用"></a>6.1 概述：水平复用和垂直复用</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203162021806.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1><span id="6-sequence的层次化">6 Sequence的层次化</span></h1><p>对于小白我们可能更关心如何让你的sequence层次化，如何理解别人写的层次化的sequence，以及把它们作为更顶层的sequence如何一层一层的调用</p>
+<h2><span id="61-概述水平复用和垂直复用">6.1 概述：水平复用和垂直复用</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203162021806.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>hierarchical sequence：层次序列，seq都挂载在一个sqr上</li>
 <li>virtual sequence：seq可挂载在多个sqr上</li>
 <li>layering sequence</li>
 </ul>
-<h2 id="6-2-Hierarchical-Sequence层次序列"><a href="#6-2-Hierarchical-Sequence层次序列" class="headerlink" title="6.2 Hierarchical Sequence层次序列"></a>6.2 Hierarchical Sequence层次序列</h2><h3 id="6-2-1-Hierarchical-Sequence介绍"><a href="#6-2-1-Hierarchical-Sequence介绍" class="headerlink" title="6.2.1 Hierarchical Sequence介绍"></a>6.2.1 Hierarchical Sequence介绍</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203170532752.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203173213812.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="6-2-2-Hierarchical-Sequence代码示例"><a href="#6-2-2-Hierarchical-Sequence代码示例" class="headerlink" title="6.2.2 Hierarchical Sequence代码示例"></a>6.2.2 Hierarchical Sequence代码示例</h3><p><strong>cmd 和 item</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203215113852.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2><span id="62-hierarchical-sequence层次序列">6.2 Hierarchical Sequence层次序列</span></h2><h3><span id="621-hierarchical-sequence介绍">6.2.1 Hierarchical Sequence介绍</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203170532752.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203173213812.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="622-hierarchical-sequence代码示例">6.2.2 Hierarchical Sequence代码示例</span></h3><p><strong>cmd 和 item</strong></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203215113852.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>clk_rst_seq</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203215132273.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203215132273.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>reg_test_seq</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203215159086.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203215159086.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>top_seq</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203215246475.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203215246475.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>reg_master_sequencer</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203215319193.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203215319193.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>driver</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203215348378.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203215348378.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>agent</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203215406423.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203215406423.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>例化与连接</li>
 </ul>
-<h3 id="6-2-3-示例解析"><a href="#6-2-3-示例解析" class="headerlink" title="6.2.3 示例解析"></a>6.2.3 示例解析</h3><p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B68%EF%BC%9ASequencer%E4%BB%B2%E8%A3%81_Sequence%E5%B1%82%E6%AC%A1%E5%8C%96/image-20211203215450672.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="6-2-4-总结"><a href="#6-2-4-总结" class="headerlink" title="6.2.4 总结"></a>6.2.4 总结</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203215501808-16385397031013.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h2 id="6-3-Virtual-Sequence"><a href="#6-3-Virtual-Sequence" class="headerlink" title="6.3 Virtual Sequence"></a>6.3 Virtual Sequence</h2><h3 id="6-3-1-Virtual-Sequence介绍"><a href="#6-3-1-Virtual-Sequence介绍" class="headerlink" title="6.3.1 Virtual Sequence介绍"></a>6.3.1 Virtual Sequence介绍</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203215818498.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="623-示例解析">6.2.3 示例解析</span></h3><p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B68%EF%BC%9ASequencer%E4%BB%B2%E8%A3%81_Sequence%E5%B1%82%E6%AC%A1%E5%8C%96/image-20211203215450672.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="624-总结">6.2.4 总结</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203215501808-16385397031013.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="63-virtual-sequence">6.3 Virtual Sequence</span></h2><h3><span id="631-virtual-sequence介绍">6.3.1 Virtual Sequence介绍</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203215818498.png" srcset="/img/loading.gif" lazyload alt></p>
 <hr>
 <p>把所有子系统的sqr都放在virtual_sequencer里面</p>
 <ul>
@@ -1229,20 +1229,20 @@ driver --&gt; 目的_进行扫描与分解
 <li>起到一个统筹的作用</li>
 <li>virtual sequencer往往与virtual sequence有联系的</li>
 </ul>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203215944706.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203215944706.png" srcset="/img/loading.gif" lazyload alt></p>
 <hr>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203220636658.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203220636658.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>virtual sequencer就是个简单的路由器，包含句柄而已，没有任何item经过，也不需要与driver连接</p>
-<h3 id="6-3-2-Virtual-Sequence示例"><a href="#6-3-2-Virtual-Sequence示例" class="headerlink" title="6.3.2 Virtual Sequence示例"></a>6.3.2 Virtual Sequence示例</h3><p><strong>vritual sequencer结构图</strong>：</p>
+<h3><span id="632-virtual-sequence示例">6.3.2 Virtual Sequence示例</span></h3><p><strong>vritual sequencer结构图</strong>：</p>
 <p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203220753318.png" srcset="/img/loading.gif" lazyload alt="vritual sequencer结构图"></p>
 <p><strong>【重要】有关挂载</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203222842906.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203222842906.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>mcdf_normal_seq(virtual sequence)要挂载到virutal sequencer</p>
 <p>其他的seq间接的通过virutal sequencer挂载到不同的sqr上面，挂载的目的地不一样所以用uvm_do_on</p>
 <hr>
 <p><strong>virtual sequence</strong></p>
 <p>定义了一个sequence：实际上就是我们的virtual sequence</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203220826070.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203220826070.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>包括了好多seq句柄</p>
 <p>sqr与vsqr区别：</p>
 <ul>
@@ -1269,25 +1269,25 @@ driver --&gt; 目的_进行扫描与分解
 </li>
 </ul>
 <p><strong>子一级的sqr，agent，和virutal sequencer</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203223410467.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203223410467.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>virutal sequencer 包含各个句柄就完事了</p>
 <p><strong>mcdf_env</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203223436428.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203223450033-16385420908084.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203223436428.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203223450033-16385420908084.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>千万不要忘了再connect里进行句柄传递，避免悬空</p>
 <p><strong>test</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203223457604.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="6-3-3-示例解析"><a href="#6-3-3-示例解析" class="headerlink" title="6.3.3 示例解析"></a>6.3.3 示例解析</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203224423125.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="6-3-4-总结"><a href="#6-3-4-总结" class="headerlink" title="6.3.4 总结"></a>6.3.4 总结</h3><p>中心化协调</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203224508271.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="6-3-5-Virutal-Sequencer建议"><a href="#6-3-5-Virutal-Sequencer建议" class="headerlink" title="6.3.5 Virutal Sequencer建议"></a>6.3.5 Virutal Sequencer建议</h3><p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B68%EF%BC%9ASequencer%E4%BB%B2%E8%A3%81_Sequence%E5%B1%82%E6%AC%A1%E5%8C%96/image-20211203224612008.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203223457604.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="633-示例解析">6.3.3 示例解析</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203224423125.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="634-总结">6.3.4 总结</span></h3><p>中心化协调</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203224508271.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="635-virutal-sequencer建议">6.3.5 Virutal Sequencer建议</span></h3><p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B68%EF%BC%9ASequencer%E4%BB%B2%E8%A3%81_Sequence%E5%B1%82%E6%AC%A1%E5%8C%96/image-20211203224612008.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>vseq与普通seq区分</li>
 <li>vsqr同底层负责传输对象的sqr区分</li>
 <li>vseq中使用`uvm_declare_p_sqr来创建p_sequencer变量方便之后索引</li>
 <li>顶层环境中创建vsqr并完成内部各个sqr句柄与底层sqr实例连接</li>
 </ul>
-<h2 id="6-4-Layering-Sequence：层次化"><a href="#6-4-Layering-Sequence：层次化" class="headerlink" title="6.4 Layering Sequence：层次化"></a>6.4 Layering Sequence：层次化</h2><h3 id="6-4-1-Layering-Sequence介绍"><a href="#6-4-1-Layering-Sequence介绍" class="headerlink" title="6.4.1 Layering Sequence介绍"></a>6.4.1 Layering Sequence介绍</h3><p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B68%EF%BC%9ASequencer%E4%BB%B2%E8%A3%81_Sequence%E5%B1%82%E6%AC%A1%E5%8C%96/image-20211203224824934.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2><span id="64-layering-sequence层次化">6.4 Layering Sequence：层次化</span></h2><h3><span id="641-layering-sequence介绍">6.4.1 Layering Sequence介绍</span></h3><p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B68%EF%BC%9ASequencer%E4%BB%B2%E8%A3%81_Sequence%E5%B1%82%E6%AC%A1%E5%8C%96/image-20211203224824934.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li><p>普通协议，构建协议总线时通过：sequencer item包含与约束关系</p>
 </li>
@@ -1307,23 +1307,23 @@ driver --&gt; 目的_进行扫描与分解
 <li>高抽象级的item与低抽象级的item没有直接的继承关系所以需要做一个映射</li>
 <li>高抽象级不包括具体的数据，只有类似命令、长度、idle等信息</li>
 </ul>
-<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B68%EF%BC%9ASequencer%E4%BB%B2%E8%A3%81_Sequence%E5%B1%82%E6%AC%A1%E5%8C%96/image-20211204114418582.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="6-4-2-Layering-Sequence代码示例"><a href="#6-4-2-Layering-Sequence代码示例" class="headerlink" title="6.4.2 Layering Sequence代码示例"></a>6.4.2 Layering Sequence代码示例</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203225616936.png" srcset="/img/loading.gif" lazyload alt="Layering Sequence层次结构图"></p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B68%EF%BC%9ASequencer%E4%BB%B2%E8%A3%81_Sequence%E5%B1%82%E6%AC%A1%E5%8C%96/image-20211204114418582.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="642-layering-sequence代码示例">6.4.2 Layering Sequence代码示例</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211203225616936.png" srcset="/img/loading.gif" lazyload alt="Layering Sequence层次结构图"></p>
 <hr>
 <p><strong>cmd和bus_trans(item)</strong></p>
-<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B68%EF%BC%9ASequencer%E4%BB%B2%E8%A3%81_Sequence%E5%B1%82%E6%AC%A1%E5%8C%96/image-20211204114905038.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B68%EF%BC%9ASequencer%E4%BB%B2%E8%A3%81_Sequence%E5%B1%82%E6%AC%A1%E5%8C%96/image-20211204114905038.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>比较底层</p>
 <p><strong>packet_seq</strong></p>
-<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B68%EF%BC%9ASequencer%E4%BB%B2%E8%A3%81_Sequence%E5%B1%82%E6%AC%A1%E5%8C%96/image-20211204115007333.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B68%EF%BC%9ASequencer%E4%BB%B2%E8%A3%81_Sequence%E5%B1%82%E6%AC%A1%E5%8C%96/image-20211204115007333.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>layer_trans(item)</strong></p>
-<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B68%EF%BC%9ASequencer%E4%BB%B2%E8%A3%81_Sequence%E5%B1%82%E6%AC%A1%E5%8C%96/image-20211204115027913.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B68%EF%BC%9ASequencer%E4%BB%B2%E8%A3%81_Sequence%E5%B1%82%E6%AC%A1%E5%8C%96/image-20211204115027913.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>比较抽象：</p>
 <ul>
 <li>没有任何与数据有关的传输内用，只有cmd，len，idle</li>
 <li>与底层的bus_trans没有任何继承关系所以要做一个映射</li>
 </ul>
 <p><strong>adapter_seq：转化层</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211204115443718.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211204115443718.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>p_sequencer通过`ucm_declare获得，通过p_sqr拿到up_sqr更上层的layersqr句柄</li>
 <li><p>拿到子类句柄void($cast(trans,req))</p>
@@ -1333,33 +1333,33 @@ driver --&gt; 目的_进行扫描与分解
 <li>做一个握手，告诉高层，我已经把高抽象层的trans消化掉了</li>
 </ul>
 <p><strong>top_seq , layering_sqr , phy_sqr</strong></p>
-<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B68%EF%BC%9ASequencer%E4%BB%B2%E8%A3%81_Sequence%E5%B1%82%E6%AC%A1%E5%8C%96/image-20211204121723508.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B68%EF%BC%9ASequencer%E4%BB%B2%E8%A3%81_Sequence%E5%B1%82%E6%AC%A1%E5%8C%96/image-20211204121723508.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>layering_sqr , phy_sqr定义不讲了</p>
 <p>phy_sqr里面有个句柄up_sqr，需要顶层把相关实例传递进来</p>
 <p>top_seq：连续发送了两个layer_trans</p>
 <p><strong>phy_driver</strong></p>
-<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B68%EF%BC%9ASequencer%E4%BB%B2%E8%A3%81_Sequence%E5%B1%82%E6%AC%A1%E5%8C%96/image-20211204121949423-16385915953441.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B68%EF%BC%9ASequencer%E4%BB%B2%E8%A3%81_Sequence%E5%B1%82%E6%AC%A1%E5%8C%96/image-20211204121949423-16385915953441.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>phy_agent</strong></p>
-<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B68%EF%BC%9ASequencer%E4%BB%B2%E8%A3%81_Sequence%E5%B1%82%E6%AC%A1%E5%8C%96/image-20211204122004651.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B68%EF%BC%9ASequencer%E4%BB%B2%E8%A3%81_Sequence%E5%B1%82%E6%AC%A1%E5%8C%96/image-20211204122004651.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>包含phy_drv和phy_sqr的例化与连接</p>
 <p><strong>test，重点在这里，查看连接关系</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211204122057373.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211204122057373.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>例化了layer_sqr与phy_agt<ul>
-<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211204122201923.png" srcset="/img/loading.gif" lazyload alt=""></li>
+<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211204122201923.png" srcset="/img/loading.gif" lazyload alt></li>
 </ul>
 </li>
 <li>sqr句柄的传递，layer_seq/top_seq，adapter_seq，phy_seq的挂载<ul>
 <li>up_sqr句柄的传递<ul>
-<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211204122317592.png" srcset="/img/loading.gif" lazyload alt=""></li>
+<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211204122317592.png" srcset="/img/loading.gif" lazyload alt></li>
 </ul>
 </li>
 <li>adapter_seq的挂载<ul>
-<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211204122352177.png" srcset="/img/loading.gif" lazyload alt=""></li>
+<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211204122352177.png" srcset="/img/loading.gif" lazyload alt></li>
 </ul>
 </li>
 <li>top_seq的挂载<ul>
-<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211204122458395.png" srcset="/img/loading.gif" lazyload alt=""></li>
+<li><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211204122458395.png" srcset="/img/loading.gif" lazyload alt></li>
 </ul>
 </li>
 <li>phy_seq的挂载实际上不是个挂载而是产生的过程，在adapter_seq用uvm_do出来好多pkg_seq，这些pkg_seq时加上就属于phy到drv的seq</li>
@@ -1371,12 +1371,12 @@ driver --&gt; 目的_进行扫描与分解
 </ul>
 </li>
 </ul>
-<h3 id="6-4-3-如何实现sequencer-layer协议转换的方法："><a href="#6-4-3-如何实现sequencer-layer协议转换的方法：" class="headerlink" title="6.4.3 如何实现sequencer layer协议转换的方法："></a>6.4.3 如何实现sequencer layer协议转换的方法：</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211204123212588.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="643-如何实现sequencer-layer协议转换的方法">6.4.3 如何实现sequencer layer协议转换的方法：</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211204123212588.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>（1）layer_trans,bus_trans完全两个不同的抽象级</p>
 <p>（2）需要adapter_seq完成从获取layer_trans再去生成phy_trans和seq，再从physqr发送出去</p>
 <p>（2）fork_join_none</p>
 <p>（4）至于多少个层次取决于</p>
-<h3 id="6-4-4-总结"><a href="#6-4-4-总结" class="headerlink" title="6.4.4 总结"></a>6.4.4 总结</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211204123514922.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="644-总结">6.4.4 总结</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211204123514922.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>（2）只有高抽象级到低抽象级，低到高需要有回路，通过response_item实现，两者的思想实际上一样</p>
 <p>（3）也可以不通过高到低的回路，而是外部通过monitor采集response trans最终实现返回，避开adapter</p>
 

@@ -307,13 +307,13 @@
             <h1 style="display: none">解决hexo空格问题</h1>
             
             <div class="markdown-body">
-              <h1 id="解决hexo空格问题"><a href="#解决hexo空格问题" class="headerlink" title="解决hexo空格问题"></a>解决hexo空格问题</h1><h2 id="问题产生"><a href="#问题产生" class="headerlink" title="问题产生"></a>问题产生</h2><p>​        我一直用的TAB做首行缩进，当我浏览写过的文章时发现渲染的页面和typora渲染的排版很不一样</p>
+              <h1><span id="解决hexo空格问题">解决hexo空格问题</span></h1><h2><span id="问题产生">问题产生</span></h2><p>​        我一直用的TAB做首行缩进，当我浏览写过的文章时发现渲染的页面和typora渲染的排版很不一样</p>
 <p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220311185303084.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220311185344838.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<h2 id="Debug过程（可跳过）"><a href="#Debug过程（可跳过）" class="headerlink" title="Debug过程（可跳过）"></a>Debug过程（可跳过）</h2><h3 id="尝试1"><a href="#尝试1" class="headerlink" title="尝试1"></a>尝试1</h3><p>检查发现html的\表示为``如下图所示</p>
-<p><a target="_blank" rel="noopener" href="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220311184450535.png"><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220311184450535.png" srcset="/img/loading.gif" lazyload alt=""></a></p>
+<h2><span id="debug过程可跳过">Debug过程（可跳过）</span></h2><h3><span id="尝试1">尝试1</span></h3><p>检查发现html的\表示为``如下图所示</p>
+<p><a target="_blank" rel="noopener" href="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220311184450535.png"><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220311184450535.png" srcset="/img/loading.gif" lazyload alt></a></p>
 <p>但是\里面的原数据是有空格的</p>
-<p><a target="_blank" rel="noopener" href="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220311184601808.png"><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220311184601808.png" srcset="/img/loading.gif" lazyload alt=""></a></p>
+<p><a target="_blank" rel="noopener" href="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220311184601808.png"><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220311184601808.png" srcset="/img/loading.gif" lazyload alt></a></p>
 <p>因此应该不是HTML字符实体的原因（<a target="_blank" rel="noopener" href="https://juejin.cn/post/6904905859852156936">HTML字符实体</a>），因此尝试找到css文件把空格配置好</p>
 <ul>
 <li>具体更改如下：</li>
@@ -322,10 +322,10 @@
 <ul>
 <li>具体修改位置和内容如下图所示</li>
 </ul>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220311184953440.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220311184953440.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>！！！但是这样修改了空格会导致整篇文章的空格都出现很大空</strong>，因此换一种思路，是不是其他的属性出问题了</p>
 <p>这个时候考虑到 white-space: pre-wrap文件因此进行修改</p>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>本博客使用了fluid主题，并被主题直接渲染，因此css文件也在主题内</p>
+<h2><span id="解决方法">解决方法</span></h2><p>本博客使用了fluid主题，并被主题直接渲染，因此css文件也在主题内</p>
 <ul>
 <li>在<code>blog/script/injector.js</code>中插入css</li>
 </ul>
@@ -338,8 +338,8 @@
 <ul>
 <li>效果：</li>
 </ul>
-<p><a target="_blank" rel="noopener" href="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220311185434805.png"><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220311185434805.png" srcset="/img/loading.gif" lazyload alt=""></a></p>
-<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p>同时修改了代码块的进度条，rewrite.styl文件里，在table下的overflow:属性改为hidden</p>
+<p><a target="_blank" rel="noopener" href="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220311185434805.png"><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220311185434805.png" srcset="/img/loading.gif" lazyload alt></a></p>
+<h2><span id="补充">补充</span></h2><p>同时修改了代码块的进度条，rewrite.styl文件里，在table下的overflow:属性改为hidden</p>
 
             </div>
             <hr>

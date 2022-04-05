@@ -300,9 +300,9 @@
             <h1 style="display: none">hexo魔改汇总</h1>
             
             <div class="markdown-body">
-              <h1 id="hexo魔改汇总"><a href="#hexo魔改汇总" class="headerlink" title="hexo魔改汇总"></a>hexo魔改汇总</h1><h2 id="1-删除文章插入的图片有阴影"><a href="#1-删除文章插入的图片有阴影" class="headerlink" title="1 删除文章插入的图片有阴影"></a>1 删除文章插入的图片有阴影</h2><p>css文件中加入：</p>
+              <h1><span id="hexo魔改汇总">hexo魔改汇总</span></h1><h2><span id="1-删除文章插入的图片有阴影">1 删除文章插入的图片有阴影</span></h2><p>css文件中加入：</p>
 <figure class="highlight stylus"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs stylus"><span class="hljs-selector-class">.markdown-body</span> <span class="hljs-selector-tag">p</span> &gt; <span class="hljs-selector-tag">a</span> &gt; <span class="hljs-selector-tag">img</span> &#123;<br>  <span class="hljs-attribute">box-shadow</span>: none;<br>&#125;<br></code></pre></div></td></tr></table></figure>
-<h2 id="2-删除Typora插入图片的alt后缀"><a href="#2-删除Typora插入图片的alt后缀" class="headerlink" title="2 删除Typora插入图片的alt后缀"></a>2 删除Typora插入图片的alt后缀</h2><p>使用vs，正则匹配</p>
+<h2><span id="2-删除typora插入图片的alt后缀">2 删除Typora插入图片的alt后缀</span></h2><p>使用vs，正则匹配</p>
 <figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c">\[image-[<span class="hljs-number">0</span><span class="hljs-number">-9</span>]*<br></code></pre></div></td></tr></table></figure>
 <p>替换为<code>[</code>即可</p>
 

@@ -303,7 +303,7 @@
             
             <div class="markdown-body">
               <p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/Eclipse-dltk-itcl_en_fedora_11_con_KDE_4.2.4.png" srcset="/img/loading.gif" lazyload alt="Eclipse-dltk-itcl_en_fedora_11_con_KDE_4.2.4"></p>
-<h1 id="6-流程控制"><a href="#6-流程控制" class="headerlink" title="6 流程控制"></a>6 流程控制</h1><h2 id="6-1-语法重点"><a href="#6-1-语法重点" class="headerlink" title="6.1 语法重点"></a>6.1 语法重点</h2><ul>
+<h1><span id="6-流程控制">6 流程控制</span></h1><h2><span id="61-语法重点">6.1 语法重点</span></h2><ul>
 <li>各种控制语句包括：if,switch,while,for,foreach(在列表和数组中提到),source</li>
 <li>控制语句内部执行的脚本实际上是本语句的一个参数（本质上执行了一条语句）</li>
 <li><p>有关大括号{}和换行符的</p>
@@ -322,7 +322,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="6-2-各种控制语句"><a href="#6-2-各种控制语句" class="headerlink" title="6.2 各种控制语句"></a>6.2 各种控制语句</h2><h3 id="6-2-1-if-语句"><a href="#6-2-1-if-语句" class="headerlink" title="6.2.1 if 语句"></a>6.2.1 if 语句</h3><h4 id="标准if"><a href="#标准if" class="headerlink" title="标准if"></a>标准if</h4><p>标准语句：</p>
+<h2><span id="62-各种控制语句">6.2 各种控制语句</span></h2><h3><span id="621-if-语句">6.2.1 if 语句</span></h3><h4><span id="标准if">标准if</span></h4><p>标准语句：</p>
 <p><code>if&#123;参数一&#125;&#123;参数二&#125;</code>：第一个参数是一个表达式，第二个参数是待执行的TCL脚本</p>
 <figure class="highlight tcl"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs tcl"><span class="hljs-keyword">set</span> x <span class="hljs-number">1</span><br><span class="hljs-keyword">if</span>&#123;<span class="hljs-variable">$x</span>&gt;<span class="hljs-number">0</span>&#125;&#123;<br>	<span class="hljs-keyword">set</span> x -<span class="hljs-variable">$x</span><br>&#125;<br></code></pre></div></td></tr></table></figure>
 <p>错误语句（类C）：</p>
@@ -330,18 +330,18 @@
 <ul>
 <li>错误原因查看上一节有关大括号和双引号内容</li>
 </ul>
-<h4 id="if-else"><a href="#if-else" class="headerlink" title="if-else"></a>if-else</h4><p>标准语句：</p>
+<h4><span id="if-else">if-else</span></h4><p>标准语句：</p>
 <figure class="highlight tcl"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs tcl"><span class="hljs-keyword">if</span>&#123;表达式一&#125;&#123;<br>	脚本一<br>&#125; else &#123;<br>	脚本二<br>&#125;<br>脚本三<br></code></pre></div></td></tr></table></figure>
 <p>错误语句（类C）：</p>
 <figure class="highlight tcl"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs tcl"><span class="hljs-keyword">if</span>&#123;表达式一&#125;<br>&#123;<br>	脚本一<br>&#125; <br>else &#123;<br>	脚本二<br>&#125;<br>脚本三<br></code></pre></div></td></tr></table></figure>
 <ul>
 <li>错误原因查看上一节有关大括号和双引号内容</li>
 </ul>
-<h4 id="if-elseif-else"><a href="#if-elseif-else" class="headerlink" title="if-elseif-else"></a>if-elseif-else</h4><p>标准语句：</p>
+<h4><span id="if-elseif-else">if-elseif-else</span></h4><p>标准语句：</p>
 <figure class="highlight tcl"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs tcl"><span class="hljs-keyword">if</span>&#123;表达式一&#125;&#123;<br>	脚本一<br>&#125; elseif &#123;<br>	脚本二<br>&#125; else &#123;<br>	脚本三<br>&#125;<br>脚本四<br></code></pre></div></td></tr></table></figure>
 <p>有时候switch比if-elseif-else更高效</p>
-<h3 id="6-2-2-switch"><a href="#6-2-2-switch" class="headerlink" title="6.2.2 switch"></a>6.2.2 switch</h3><h4 id="标准语句："><a href="#标准语句：" class="headerlink" title="标准语句："></a>标准语句：</h4><figure class="highlight tcl"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs tcl"><span class="hljs-keyword">if</span>&#123;表达式一&#125;&#123;<br>	脚本一<br>&#125; else &#123;<br>	脚本二<br>&#125;<br>脚本三<br></code></pre></div></td></tr></table></figure>
-<h4 id="匹配模式参数"><a href="#匹配模式参数" class="headerlink" title="匹配模式参数"></a>匹配模式参数</h4><h2 id="2-3-while"><a href="#2-3-while" class="headerlink" title="2.3 while"></a>2.3 while</h2><h2 id="2-4-for"><a href="#2-4-for" class="headerlink" title="2.4 for"></a>2.4 for</h2><h2 id="2-5-source"><a href="#2-5-source" class="headerlink" title="2.5 source"></a>2.5 source</h2><h2 id="3-其他"><a href="#3-其他" class="headerlink" title="3 其他"></a>3 其他</h2><h1 id="7-过程"><a href="#7-过程" class="headerlink" title="7 过程"></a>7 过程</h1><p>Tcl分为：</p>
+<h3><span id="622-switch">6.2.2 switch</span></h3><h4><span id="标准语句">标准语句：</span></h4><figure class="highlight tcl"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs tcl"><span class="hljs-keyword">if</span>&#123;表达式一&#125;&#123;<br>	脚本一<br>&#125; else &#123;<br>	脚本二<br>&#125;<br>脚本三<br></code></pre></div></td></tr></table></figure>
+<h4><span id="匹配模式参数">匹配模式参数</span></h4><h2><span id="23-while">2.3 while</span></h2><h2><span id="24-for">2.4 for</span></h2><h2><span id="25-source">2.5 source</span></h2><h2><span id="3-其他">3 其他</span></h2><h1><span id="7-过程">7 过程</span></h1><p>Tcl分为：</p>
 <ul>
 <li>内建(Build-in)过程（如power()、exp()等）</li>
 <li>用户自定义过程</li>

@@ -327,12 +327,12 @@
             <h1 style="display: none">SV通识5-1：验证方法</h1>
             
             <div class="markdown-body">
-              <h1 id="一、验证的方法"><a href="#一、验证的方法" class="headerlink" title="一、验证的方法"></a>一、验证的方法</h1><h2 id="1、概述"><a href="#1、概述" class="headerlink" title="1、概述"></a>1、概述</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110173623922.png" srcset="/img/loading.gif" lazyload alt=""></p>
+              <h1><span id="一-验证的方法">一、验证的方法</span></h1><h2><span id="1-概述">1、概述</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110173623922.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>SystemC也会讲到</p>
 <p>利用多种工具把覆盖率合并起来</p>
 <p>通过脚本进行整合</p>
-<h3 id="1、动态比较与脚本"><a href="#1、动态比较与脚本" class="headerlink" title="1、动态比较与脚本"></a>1、动态比较与脚本</h3><p><strong>（1） 动态比较（线上比对）</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110185101311.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="1-动态比较与脚本">1、动态比较与脚本</span></h3><p><strong>（1） 动态比较（线上比对）</strong></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110185101311.png" srcset="/img/loading.gif" lazyload alt></p>
 <pre><code class=" mermaid">graph LR
 stim激励 --&gt; DUT
 stim激励 --&gt;moniter
@@ -341,7 +341,7 @@ DUT --&gt; moniter
 moniter --&gt; checker
 </code></pre>
 <p><strong>（2） 线下比对</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110190008403.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110190008403.png" srcset="/img/loading.gif" lazyload alt></p>
 <pre><code class=" mermaid">graph LR
 stim激励 --&gt; DUT
 stim激励 --&gt;moniter
@@ -354,7 +354,7 @@ Cmod算法模型 --&gt; output2文本
 output2文本 --&gt; 脚本处理
 output文本 --&gt; 脚本处理
 </code></pre>
-<h2 id="2、主要方法分类"><a href="#2、主要方法分类" class="headerlink" title="2、主要方法分类"></a>2、主要方法分类</h2><ul>
+<h2><span id="2-主要方法分类">2、主要方法分类</span></h2><ul>
 <li>动态仿真(dynamic simulation)</li>
 <li>静态检查(formail check)：不止包括形式验证，与形式验证有联系有差别</li>
 <li>虚拟模型(virtual prototype)：ESL/SystemC</li>
@@ -363,7 +363,7 @@ output文本 --&gt; 脚本处理
 <li>性能评估(performance evaluation)</li>
 </ul>
 <p>一般这几种方法都会做</p>
-<h1 id="二、具体介绍"><a href="#二、具体介绍" class="headerlink" title="二、具体介绍"></a>二、具体介绍</h1><h2 id="1、动态仿真"><a href="#1、动态仿真" class="headerlink" title="1、动态仿真"></a>1、动态仿真</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110190714272.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1><span id="二-具体介绍">二、具体介绍</span></h1><h2><span id="1-动态仿真">1、动态仿真</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110190714272.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>定向测试</li>
 <li>随机测试：比对：线上比对和线下比对</li>
@@ -371,17 +371,17 @@ output文本 --&gt; 脚本处理
 <li>断言检查</li>
 </ul>
 <p>检查方式：参考模型检查和断言检查</p>
-<h3 id="测试题"><a href="#测试题" class="headerlink" title="测试题"></a>测试题</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110193630426.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h2 id="2、静态检查"><a href="#2、静态检查" class="headerlink" title="2、静态检查"></a>2、静态检查</h2><p><strong>本身不需要仿真，工具选择至关重要</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110193740585.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="测试题">测试题</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110193630426.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="2-静态检查">2、静态检查</span></h2><p><strong>本身不需要仿真，工具选择至关重要</strong></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110193740585.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>语法检查(syntax check)</li>
 <li>语义检查(linting check)</li>
 <li>跨时钟域检查(CDC , Cross-clock Domain Check)：一个设计中有两个以上的时钟信号，从一个时钟区域到另一个区域的同步问题</li>
 <li>形式验证(formoal verification)</li>
 </ul>
-<h3 id="1-语法检查"><a href="#1-语法检查" class="headerlink" title="(1) 语法检查"></a>(1) 语法检查</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110194018595.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="2-语义检查linting-check"><a href="#2-语义检查linting-check" class="headerlink" title="(2) 语义检查linting check"></a>(2) 语义检查linting check</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110194102113.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="1-语法检查">(1) 语法检查</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110194018595.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="2-语义检查linting-check">(2) 语义检查linting check</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110194102113.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li><p>做完语法检查再语义检查</p>
 </li>
@@ -396,8 +396,8 @@ output文本 --&gt; 脚本处理
 </ul>
 </li>
 </ul>
-<h3 id="3-跨时钟域检查"><a href="#3-跨时钟域检查" class="headerlink" title="(3) 跨时钟域检查"></a>(3) 跨时钟域检查</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110194619901.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110194626550.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="3-跨时钟域检查">(3) 跨时钟域检查</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110194619901.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110194626550.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>重点：</strong></p>
 <ul>
 <li>无法通过常规的验证方法分析(即仿真的时候看不出来，门级仿真时的暴漏也是概论问题)</li>
@@ -413,33 +413,33 @@ output文本 --&gt; 脚本处理
 <li>在早期RTL阶段识别出来跨时钟域电路有没有合适的同步处理（即跨时钟域检查CDC），保证所有跨时钟域信号能正确的同步</li>
 <li>相关工具：Spyglass、0-In(Mentor)</li>
 </ul>
-<h3 id="4-形式验证"><a href="#4-形式验证" class="headerlink" title="(4) 形式验证"></a>(4) 形式验证</h3><ul>
+<h3><span id="4-形式验证">(4) 形式验证</span></h3><ul>
 <li>等价检查(EC , Equivalence Check)：LEC属于其中之一，用来保证两个电路的行为是等价的，可以用来检查不同抽象级的电路是否一致，例如RTL级和网表</li>
 <li>属性检查(PC , Property Check)，又称模型检查(MC , Model Check)：电路行为通过验证语言来描述其属性property，随后通过静态方式来证明所有状态空间下都满足该条件，否则举出反例(counter example)来证明设计行为不符合属性描述(property description)</li>
 </ul>
 <p>属性检查用到的方法：SVA(SystemVerilog Assertion)、PSL(Property Specification Language)，不止SVA可以做属性检查PSL也可以。通过一些数学方法，证明在所有状态空间都满足属性的描述，若不满足，使用形式验证工具就会给出反例</p>
 <p>SVA不止可以用在形式验证中做属性检查，也可以用在动态仿真里</p>
-<h3 id="测试题-1"><a href="#测试题-1" class="headerlink" title="测试题"></a>测试题</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110200421837.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="测试题">测试题</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110200421837.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>答案：没说</p>
-<h2 id="3、虚拟模型"><a href="#3、虚拟模型" class="headerlink" title="3、虚拟模型"></a>3、虚拟模型</h2><p>同样的一种对硬件抽象的模型，只不过抽象级更高</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110200648852.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2><span id="3-虚拟模型">3、虚拟模型</span></h2><p>同样的一种对硬件抽象的模型，只不过抽象级更高</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110200648852.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>虚拟模型是由SystemC构建的，软件基于虚拟模型来完成早期软件开发</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110203115942.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="目前软件是怎么做的第一段"><a href="#目前软件是怎么做的第一段" class="headerlink" title="目前软件是怎么做的第一段"></a>目前软件是怎么做的第一段</h3><p>什么时候开发：</p>
-<h4 id="传统（古老方式）："><a href="#传统（古老方式）：" class="headerlink" title="传统（古老方式）："></a>传统（古老方式）：</h4><p>我们的RTL、Gate和TO，硬件走完了，系统比较稳定了，再到到板上测试</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110203115942.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="目前软件是怎么做的第一段">目前软件是怎么做的第一段</span></h3><p>什么时候开发：</p>
+<h4><span id="传统古老方式">传统（古老方式）：</span></h4><p>我们的RTL、Gate和TO，硬件走完了，系统比较稳定了，再到到板上测试</p>
 <pre><code class=" mermaid">graph LR
 software流程
 RTL--&gt;Gate --&gt; TO--&gt;流片--&gt;测试板上运行
 </code></pre>
-<h4 id="现在的方式（没标注流片）："><a href="#现在的方式（没标注流片）：" class="headerlink" title="现在的方式（没标注流片）："></a>现在的方式（没标注流片）：</h4><pre><code class=" mermaid">graph LR
+<h4><span id="现在的方式没标注流片">现在的方式（没标注流片）：</span></h4><pre><code class=" mermaid">graph LR
 software流程
 RTL --系统比较稳定的时候--&gt;上板子fpga原型开发/EMO模拟器上面--&gt; Gate --&gt; TO --&gt; Final
 ESL --&gt; Final
 </code></pre>
-<h3 id="第二段就是Fpga我们的原型开发"><a href="#第二段就是Fpga我们的原型开发" class="headerlink" title="第二段就是Fpga我们的原型开发"></a>第二段就是Fpga我们的原型开发</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110204201542.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="第二段就是fpga我们的原型开发">第二段就是Fpga我们的原型开发</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110204201542.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>开发ESL往往是一些算法的人，一些系统工程师，与designer不同，如果ESL相差不大可以基于ESL开发软件，但流片后仍然需要修改（ESL抽象级过高，如等待状态的时间无法确定）</p>
-<h3 id="接上文第三段"><a href="#接上文第三段" class="headerlink" title="接上文第三段"></a>接上文第三段</h3><p>SystemC是可综合的，构建ESL的模型，可以经过verilog或直接跳过直接生成网表，使得算法直接综合为网表</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110204844698.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="接上文第三段">接上文第三段</span></h3><p>SystemC是可综合的，构建ESL的模型，可以经过verilog或直接跳过直接生成网表，使得算法直接综合为网表</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110204844698.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>为什么我们一般不用这种方式：</p>
 <ul>
 <li><p>软件架构一般很大，硬件架构迭代很慢</p>
@@ -447,19 +447,19 @@ ESL --&gt; Final
 <li><p>ESL对于目前来说无法验证，机器翻译映射出来的内容很难理解</p>
 </li>
 </ul>
-<h3 id="第四段"><a href="#第四段" class="headerlink" title="第四段"></a>第四段</h3><p>子系统落后于进度，测试用例没法做了，碰到这种情况把ESL暂时替代RTL的模型</p>
+<h3><span id="第四段">第四段</span></h3><p>子系统落后于进度，测试用例没法做了，碰到这种情况把ESL暂时替代RTL的模型</p>
 <p>一个SystemC可以非常抽象，可以没有时序没有硬件端口，但有些语法可以让你实现端口和时序</p>
 <p>因此无论如何需要改造的，暂时性嵌入罢了</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110205930657.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110205930657.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>系统工程师需要写ESL模型和功能描述文档，即ESL模型功能代表希望实现的模型，这种模型不仅可以嵌入到SOC上辅助功能验证赶上进度，同时集成到UVM和SV中做RefenceModel，红宝书17章17.2节UV.r的这样一个包</p>
 <p>更早暴漏功能问题，提早完成窗口需求</p>
-<h3 id="虚拟模型流程"><a href="#虚拟模型流程" class="headerlink" title="虚拟模型流程"></a>虚拟模型流程</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110210340141.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="虚拟模型流程">虚拟模型流程</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110210340141.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>RTL—&gt;SystemC模型：不同公司开发流程不一样，有一帮人（虚拟建模组），从RTL中抽取称为SC模型，这种不能做RefenceModel，但可以做硬件模型因为理论上一致，有助于软件开发</p>
 <p>虚拟模型岗位不多</p>
-<h2 id="4、硬件加速"><a href="#4、硬件加速" class="headerlink" title="4、硬件加速"></a>4、硬件加速</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110210738434.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2><span id="4-硬件加速">4、硬件加速</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110210738434.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>仿真速度存在限制</p>
 <p>软件团队把代码瘦身然后交给硬件团队</p>
-<h3 id="主要硬件加速平台"><a href="#主要硬件加速平台" class="headerlink" title="主要硬件加速平台"></a>主要硬件加速平台</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111202935736.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="主要硬件加速平台">主要硬件加速平台</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111202935736.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>FPGA：专门为软件提供，为什么：主要因为速度快是emulatior的几千到上万倍</li>
 <li>专用模拟器(emulatior)：又是是仿真器的上千倍速度；由主流EDA公司提供（可以理解为FPGA+仿真器？）</li>
@@ -472,8 +472,8 @@ ESL --&gt; Final
 <p>仿真器和模拟器都可以设置断点，而FPGA不可以</p>
 <p><strong>EDA提供的模拟器如何实现：</strong>绝大多数模拟器内部都是FPGA，EDA公司只是基于定制的FPGA基础上做了软件开发，明白信号如何查看，且具有仿真器技术；为什么EDA公司做这个：附加值高</p>
 <p>IC公司里模拟器资源宝贵，每个人使用要排队</p>
-<h2 id="5、效能验证"><a href="#5、效能验证" class="headerlink" title="5、效能验证"></a>5、效能验证</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111204524451.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="1-效能验证分类"><a href="#1-效能验证分类" class="headerlink" title="(1) 效能验证分类"></a>(1) 效能验证分类</h3><p>这里我们主要针对硅前设计阶段进行效能验证，涉及的流程可分为两个部分</p>
+<h2><span id="5-效能验证">5、效能验证</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111204524451.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="1-效能验证分类">(1) 效能验证分类</span></h3><p>这里我们主要针对硅前设计阶段进行效能验证，涉及的流程可分为两个部分</p>
 <ul>
 <li><p>功能验证：主要采用PA(Power Aware)( 主要包括由UPF(Unified Power Format) 或者CPF(Comment Power Format) ) 方式，通过与仿真器结合，模拟电源域的开关进行设计检查</p>
 <ul>
@@ -491,7 +491,7 @@ ESL --&gt; Final
 </ul>
 </li>
 </ul>
-<h3 id="2-效应验证-UPF-CPF-：从硬件或软件角度，我们一般会采用到的节能技术"><a href="#2-效应验证-UPF-CPF-：从硬件或软件角度，我们一般会采用到的节能技术" class="headerlink" title="(2) 效应验证(UPF/CPF)：从硬件或软件角度，我们一般会采用到的节能技术"></a>(2) 效应验证(UPF/CPF)：从硬件或软件角度，我们一般会采用到的节能技术</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111205708266.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="2-效应验证upfcpf从硬件或软件角度我们一般会采用到的节能技术">(2) 效应验证(UPF/CPF)：从硬件或软件角度，我们一般会采用到的节能技术</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111205708266.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li><p><strong>多核与聚合结构：</strong>大小核结构</p>
 <ul>
@@ -504,16 +504,16 @@ ESL --&gt; Final
 <li><p><strong>多电压域：</strong>工作频率高电压高，频率低电压低</p>
 </li>
 </ul>
-<h2 id="6、性能验证"><a href="#6、性能验证" class="headerlink" title="6、性能验证"></a>6、性能验证</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111210734687.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2><span id="6-性能验证">6、性能验证</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111210734687.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>性能测试提前，硅前硅后使用相同测试用例，结果相差不大</p>
 <hr>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111211511327.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111211511327.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>还是新颖概念，没有统一标准，更多的是在衡量指标（指标是由架构和系统工程师定的）</p>
 <pre><code class=" mermaid">graph LR
 验证顺序
 功能验证 --&gt; 效能验证 --&gt; 性能验证
 </code></pre>
-<h3 id="测试题-2"><a href="#测试题-2" class="headerlink" title="测试题"></a>测试题</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111211818512.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="测试题">测试题</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211111211818512.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>答案：ABCD</p>
 <hr>
 <p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110230643036.png" srcset="/img/loading.gif" lazyload alt="miku"></p>

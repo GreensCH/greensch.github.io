@@ -302,9 +302,9 @@
             <h1 style="display: none">解决Ubuntu修改环境变量后导致登录循环进不去系统的问题</h1>
             
             <div class="markdown-body">
-              <h1 id="解决Ubuntu修改环境变量后导致登录循环进不去系统的问题"><a href="#解决Ubuntu修改环境变量后导致登录循环进不去系统的问题" class="headerlink" title="解决Ubuntu修改环境变量后导致登录循环进不去系统的问题"></a>解决Ubuntu修改环境变量后导致登录循环进不去系统的问题</h1><h2 id="问题产生"><a href="#问题产生" class="headerlink" title="问题产生"></a>问题产生</h2><p>​        这个问题是我在安装jdk时对环境变量进行了编辑，在里面加了一些jdk所需要用到的环境变量。配置完重启后发现输入正确的密码之后，它又跳回到原来的的登录界面。这是由于<strong>Ubuntu环境变量错误导致无法正常登录</strong>。</p>
+              <h1><span id="解决ubuntu修改环境变量后导致登录循环进不去系统的问题">解决Ubuntu修改环境变量后导致登录循环进不去系统的问题</span></h1><h2><span id="问题产生">问题产生</span></h2><p>​        这个问题是我在安装jdk时对环境变量进行了编辑，在里面加了一些jdk所需要用到的环境变量。配置完重启后发现输入正确的密码之后，它又跳回到原来的的登录界面。这是由于<strong>Ubuntu环境变量错误导致无法正常登录</strong>。</p>
 <p>​        <del>（笑死和我的情况一摸一样）</del>，<strong>以后改完环境变量一定要<code>source xxx</code>跑一下，看看自己的用户有没有问题</strong></p>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>（1）在登陆界面按 ctrl + alt + F2 进入进入命令行模式<br>（2）修改环境变量要编辑/etc/profile，正常情况下使用的命令是：sudo vim /etc/profile<br>但是，由于Ubuntu环境变量错误导致系统找不到sudo 命令，也找不到vim命令，所以只能人工指定它们的绝对路径了。由于sudo 和 vim都是存放在’/usr/bin’目录下的，所以sudo和vim的绝对路径分别是：<code>/usr/bin/sudo</code> ；<code>/usr/bin/vim</code><br>因此要编辑/etc/profile要使用的命令应该写：<code>/usr/bin/sudo /usr/bin/vim /etc/profile</code><br>输入完上述命令后，就可以编辑/etc/profile了，对自己所加的环境变量进行检查，把环境变量修改为正确的，然后再保存退出（如果不知道怎么改的话最简单粗暴的方式就是：把自己之前添加的内容删除掉就可以了）。<br>（3）重启系统<br>正常状态下重启使用命令：<code>sudo reboot</code><br>但是现在系统无法执行此命令，所以要使用命令应该是 ：<code>/usr/bin/sudo /sbin/reboot</code><br>等待系统重启完之后进入到登录页面，再次输入密码就可以成功进入Ubuntu。\</p>
+<h2><span id="解决方法">解决方法</span></h2><p>（1）在登陆界面按 ctrl + alt + F2 进入进入命令行模式<br>（2）修改环境变量要编辑/etc/profile，正常情况下使用的命令是：sudo vim /etc/profile<br>但是，由于Ubuntu环境变量错误导致系统找不到sudo 命令，也找不到vim命令，所以只能人工指定它们的绝对路径了。由于sudo 和 vim都是存放在’/usr/bin’目录下的，所以sudo和vim的绝对路径分别是：<code>/usr/bin/sudo</code> ；<code>/usr/bin/vim</code><br>因此要编辑/etc/profile要使用的命令应该写：<code>/usr/bin/sudo /usr/bin/vim /etc/profile</code><br>输入完上述命令后，就可以编辑/etc/profile了，对自己所加的环境变量进行检查，把环境变量修改为正确的，然后再保存退出（如果不知道怎么改的话最简单粗暴的方式就是：把自己之前添加的内容删除掉就可以了）。<br>（3）重启系统<br>正常状态下重启使用命令：<code>sudo reboot</code><br>但是现在系统无法执行此命令，所以要使用命令应该是 ：<code>/usr/bin/sudo /sbin/reboot</code><br>等待系统重启完之后进入到登录页面，再次输入密码就可以成功进入Ubuntu。\</p>
 
             </div>
             <hr>

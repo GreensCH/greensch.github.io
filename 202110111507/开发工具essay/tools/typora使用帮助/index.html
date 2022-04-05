@@ -303,14 +303,14 @@
             <h1 style="display: none">typora使用帮助</h1>
             
             <div class="markdown-body">
-              <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>不得不感叹typora是真的优美啊，之前一直用有道云记笔记，感觉多端同步挺舒服的，自己也烂的转移，终于到今天打脸了</p>
+              <h1><span id="前言">前言</span></h1><p>不得不感叹typora是真的优美啊，之前一直用有道云记笔记，感觉多端同步挺舒服的，自己也烂的转移，终于到今天打脸了</p>
 <p>下载就64MB，拜学校图书馆网速能跑炸测速网，平均速度68MB/s所赐一秒钟，真就一秒钟下完了</p>
 <p>一打开界面就只有菜单栏和中间一大片的空白canvas，连图标都没有显示。侧边的文件栏也很有直觉可以切换视图，列表视图显示文件夹下所有markdown，树视图就直接文件夹层级了，点开的过度动画很有美感，可以直接打开文件夹，直呼过瘾</p>
 <p>文档编写时markdown的显示与代码融合在一起，不过也可以底边切换成源代码格式，标题在写作模式也可以直接点开，是真的好用！配合以前装的PicGo直接ctrl v完成图片上传，舒服！</p>
 <p>不得不边用便赞叹开发者的匠心，每一处细节都考虑的如此精确</p>
-<h1 id="使用提示"><a href="#使用提示" class="headerlink" title="使用提示"></a>使用提示</h1><h3 id="关于enter与shift-enter"><a href="#关于enter与shift-enter" class="headerlink" title="关于enter与shift+enter"></a>关于enter与shift+enter</h3><p>本质上Shift+Enter和Enter的换行效果就是“换行符”和“段落标记”的区别，前者不分段，后者分段。在HTML中，前者表示为<code>&lt;br&gt;</code>标记，后者表示为<code>&lt;p&gt;</code>标记对应的结束标记<code>&lt;/p&gt;</code></p>
+<h1><span id="使用提示">使用提示</span></h1><h3><span id="关于enter与shiftenter">关于enter与shift+enter</span></h3><p>本质上Shift+Enter和Enter的换行效果就是“换行符”和“段落标记”的区别，前者不分段，后者分段。在HTML中，前者表示为<code>&lt;br&gt;</code>标记，后者表示为<code>&lt;p&gt;</code>标记对应的结束标记<code>&lt;/p&gt;</code></p>
 <p>之所以另起一段的换行效果与“单行换行”有区别，原因是css样式里往往将段落元素<code>&lt;p&gt;</code>的间距加大了，类似于加大了段间距。题主可以试着找一找有没有Typora的css样式模板把段间距改没了的，或者实在不行自己动手改原有的模板</p>
-<h3 id="Typora-PicGo-Core"><a href="#Typora-PicGo-Core" class="headerlink" title="Typora+PicGo-Core"></a>Typora+PicGo-Core</h3><ol>
+<h3><span id="typorapicgo-core">Typora+PicGo-Core</span></h3><ol>
 <li>按下图所示勾选<code>插入图片时</code>的选项，并在<code>上传服务设定</code>选择<code>PicGo-Core(command line)</code>，点击<code>下载或更新</code>按钮下载插件</li>
 </ol>
 <p><img src="https://img-blog.csdnimg.cn/img_convert/f34bc8b782d6127ed0b3d2889b43058e.png" srcset="/img/loading.gif" lazyload alt="图片1"></p>
@@ -325,14 +325,14 @@
 <ol>
 <li>修改typora配置文件</li>
 </ol>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/6828e8cc3a78d6a8293d7124ee847f7e.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/6828e8cc3a78d6a8293d7124ee847f7e.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>gitee仓库如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs &#123;">  &quot;picBed&quot;: &#123;<br>    &quot;current&quot;: &quot;gitee&quot;,<br>    &quot;uploader&quot;: &quot;gitee&quot;,<br>    &quot;gitee&quot;: &#123;<br>      &quot;branch&quot;: &quot;master&quot;,<br>      &quot;customPath&quot;: &quot;yearMonth&quot;,<br>      &quot;customUrl&quot;: &quot;&quot;,<br>      &quot;path&quot;: &quot;仓库下的文件夹&quot;,<br>      &quot;repo&quot;: &quot;用户id/仓库名&quot;,<br>      &quot;token&quot;: &quot;gitee上申请的私人令牌&quot;<br>    &#125;<br>  &#125;,<br>  &quot;picgoPlugins&quot;: &#123;<br>    &quot;picgo-plugin-gitee-uploader&quot;: true<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 <p>阿里云仓库如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs &#123;">  &quot;picBed&quot;: &#123;<br>   &quot;uploader&quot;: &quot;aliyun&quot;,<br>    &quot;aliyun&quot;: &#123;<br>    &quot;accessKeyId&quot;: &quot;&quot;,<br>    &quot;accessKeySecret&quot;: &quot;&quot;,<br>    &quot;bucket&quot;: &quot;&quot;, // 存储空间名<br>    &quot;area&quot;: &quot;&quot;, // 存储区域代号<br>    &quot;path&quot;: &quot;img/&quot;, // 自定义存储路径<br>    &quot;customUrl&quot;: &quot;&quot;, // 自定义域名，注意要加 http://或者 https://<br>    &quot;options&quot;: &quot;&quot; // 针对图片的一些后缀处理参数 PicGo 2.2.0+ PicGo-Core 1.4.0+<br>    &#125;<br>  &#125;,<br>  &quot;picgoPlugins&quot;: &#123;&#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 <p><strong>current</strong>为当前的图床，uploader表示上传用的图床，这里两个都设置为gitee；<br><strong>master</strong>表示主分支，一般用做图床的仓库是个单独的仓库，此处保持master就好；<br><strong>path</strong>为仓库下的文件夹，repo为仓库名，假如如有一个仓库名为a，图片存在这个仓库下的b文件夹，<strong>你的用户id是linux（浏览器地址栏仓库名前的字符串）</strong>，则path为b、repo为linux/a；<br><strong>token</strong>为私人令牌，需要在gitee网站申请，申请的token只出现一次，点击复制按钮将其粘贴到配置文件中即可，一个用户可以有多个token，可以在gitee网站管理自己的token。</p>
 <p><strong>使用的插件都要在<code>picgoPlugins</code>里包含并设置为<code>true</code>，这里只使用了<code>gitee</code>插件</strong></p>
-<h4 id="参考配置博客"><a href="#参考配置博客" class="headerlink" title="参考配置博客"></a>参考配置博客</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/to_free/article/details/114981807">typora+gitee</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/to_free/article/details/108784006">Typora+gitee+notejs+坚果云构建私有云笔记</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39714832/article/details/111257518">Typora+图床详解（小白都能学得会）</a></p>
+<h4><span id="参考配置博客">参考配置博客</span></h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/to_free/article/details/114981807">typora+gitee</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/to_free/article/details/108784006">Typora+gitee+notejs+坚果云构建私有云笔记</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39714832/article/details/111257518">Typora+图床详解（小白都能学得会）</a></p>
 
             </div>
             <hr>

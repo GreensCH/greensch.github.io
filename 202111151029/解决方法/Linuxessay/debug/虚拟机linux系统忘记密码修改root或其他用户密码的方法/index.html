@@ -306,17 +306,17 @@
             <h1 style="display: none">虚拟机linux系统忘记密码修改root或其他用户密码的方法</h1>
             
             <div class="markdown-body">
-              <h1 id="虚拟机linux系统忘记密码修改root或其他用户密码的方法"><a href="#虚拟机linux系统忘记密码修改root或其他用户密码的方法" class="headerlink" title="虚拟机linux系统忘记密码修改root或其他用户密码的方法"></a>虚拟机linux系统忘记密码修改root或其他用户密码的方法</h1><span id="more"></span>
+              <h1><span id="虚拟机linux系统忘记密码修改root或其他用户密码的方法">虚拟机linux系统忘记密码修改root或其他用户密码的方法</span></h1><span id="more"></span>
 <p>本文基于centos7环境进行操作，由于centos的版本是有差异的，继续之前请确定好版本。</p>
-<h2 id="解决方法一（可能存在权限问题）"><a href="#解决方法一（可能存在权限问题）" class="headerlink" title="解决方法一（可能存在权限问题）"></a>解决方法一（可能存在权限问题）</h2><p>(1) 重启系统，在开机过程中，快速按下键盘上的方向键↑和↓。目的是告知引导程序，我们需要在引导页面选择不同的操作，以便让引导程序暂停</p>
+<h2><span id="解决方法一可能存在权限问题">解决方法一（可能存在权限问题）</span></h2><p>(1) 重启系统，在开机过程中，快速按下键盘上的方向键↑和↓。目的是告知引导程序，我们需要在引导页面选择不同的操作，以便让引导程序暂停</p>
 <p>以下是暂停后的界面，可以查看下方的英文可知↑和↓的作用。 </p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211115112334445.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211115112334445.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>(2) 使用↑和↓将选择行设置为第一行（背景高亮即为选中），按下键盘上的e，进入编辑模式</p>
 <p>(3) 将光标一直移动到 <code>LANG=en_US.UTF-8</code>后面，空格，再追加<code>init=/bin/sh</code>。这里特别注意，需要写在UTF-8后，保持在同一行，并注意空格。有些虚拟机由于屏幕太小，会自动添加\换行，这个是正常的</p>
 <figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">init=/bin/sh<br></code></pre></div></td></tr></table></figure>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211115112557239.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211115112557239.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>(4) 按下CTRL+X进行引导启动，成功后进入该界面</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211115112624497.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211115112624497.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>(5) 输入以下命令</p>
 <ul>
 <li>挂载根目录  </li>
@@ -338,7 +338,7 @@
 <li>最后输入以下命令重启系统即可</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">exec</span> /sbin/init <br></code></pre></div></td></tr></table></figure>
-<h2 id="解决方法二（未测试）"><a href="#解决方法二（未测试）" class="headerlink" title="解决方法二（未测试）"></a>解决方法二（未测试）</h2><p>(1)(2)(3)(4) 前四步同方法一</p>
+<h2><span id="解决方法二未测试">解决方法二（未测试）</span></h2><p>(1)(2)(3)(4) 前四步同方法一</p>
 <p>(5) 输入以下命令</p>
 <p>输入以下命令</p>
 <ul>
@@ -361,7 +361,7 @@
 <li>最后输入以下命令重启系统即可</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">exec</span> /sbin/init 或 <span class="hljs-built_in">exec</span> /sbin/reboot<br></code></pre></div></td></tr></table></figure>
-<h3 id="方法一解决权限问题，同时也是方法二更改enforcing为disable"><a href="#方法一解决权限问题，同时也是方法二更改enforcing为disable" class="headerlink" title="方法一解决权限问题，同时也是方法二更改enforcing为disable"></a>方法一解决权限问题，同时也是方法二更改enforcing为disable</h3><ul>
+<h3><span id="方法一解决权限问题同时也是方法二更改enforcing为disable">方法一解决权限问题，同时也是方法二更改enforcing为disable</span></h3><ul>
 <li>查看SElinux状态</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">方法1：<br>[root@localhost ~]<span class="hljs-comment"># /usr/sbin/sestatus -v</span><br>SELinux status:                 enabled<br>SELinuxfs mount:                /selinux<br>Current mode:                   enforcing<br><br>方法2：<br>[root@localhost ~]<span class="hljs-comment"># getenforce</span><br>Enforcing<br></code></pre></div></td></tr></table></figure>
@@ -369,7 +369,7 @@
 <li>关闭SELinux</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">1、临时关闭（不用重启机器）：<br>setenforce 0    <span class="hljs-comment">#设置SELinux 成为permissive模式</span><br><span class="hljs-comment">#setenforce 1    #设置SELinux 成为enforcing模式</span><br><br><br>2、修改配置文件需要重启机器：<br>vi /etc/selinux/config<br>将SELINUX=enforcing改为SELINUX=disabled<br>重启<br></code></pre></div></td></tr></table></figure>
-<h3 id="仅仅求改某个文件的权限？"><a href="#仅仅求改某个文件的权限？" class="headerlink" title="仅仅求改某个文件的权限？"></a>仅仅求改某个文件的权限？</h3><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">chown root:root /usr/bin/passwd<br>chmod u=rwx,go=rx,u+s /usr/bin/passwd<br></code></pre></div></td></tr></table></figure>
+<h3><span id="仅仅求改某个文件的权限">仅仅求改某个文件的权限？</span></h3><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">chown root:root /usr/bin/passwd<br>chmod u=rwx,go=rx,u+s /usr/bin/passwd<br></code></pre></div></td></tr></table></figure>
 
             </div>
             <hr>

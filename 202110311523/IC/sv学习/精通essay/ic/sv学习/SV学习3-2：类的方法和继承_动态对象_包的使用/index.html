@@ -346,14 +346,14 @@
             <h1 style="display: none">SV精通3：类的方法和继承_动态对象_包的使用</h1>
             
             <div class="markdown-body">
-              <h1 id="一、类和对象的概述"><a href="#一、类和对象的概述" class="headerlink" title="一、类和对象的概述"></a>一、类和对象的概述</h1><h2 id="1-类和对象"><a href="#1-类和对象" class="headerlink" title="1. 类和对象"></a>1. 类和对象</h2><ul>
+              <h1><span id="一-类和对象的概述">一、类和对象的概述</span></h1><h2><span id="1-类和对象">1. 类和对象</span></h2><ul>
 <li>property属性</li>
 <li>function功能</li>
 <li>class类</li>
 <li>object对象</li>
 </ul>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031152459545.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h2 id="2-为什么验证需要有OOP"><a href="#2-为什么验证需要有OOP" class="headerlink" title="2.为什么验证需要有OOP"></a>2.为什么验证需要有OOP</h2><ul>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031152459545.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="2为什么验证需要有oop">2.为什么验证需要有OOP</span></h2><ul>
 <li>激励生成器(stimulus generator)：生成激励内容</li>
 <li>驱动器(driver)：将激励以时序形式发送给DUT</li>
 <li>监控器(monitor)：监测信号并记录数据</li>
@@ -361,77 +361,77 @@
 </ul>
 <p>验证环境的不同组件其功能和所需处理的数据内容是不同的</p>
 <p>不同环境中同一类型组件所具备的功能和数据内容类似</p>
-<h2 id="3-第一个激励数据类-transaction失误类"><a href="#3-第一个激励数据类-transaction失误类" class="headerlink" title="3. 第一个激励数据类(transaction失误类)"></a>3. 第一个激励数据类(transaction失误类)</h2><figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">class</span> Transaction;<br>	<span class="hljs-keyword">bit</span> [<span class="hljs-number">31</span>:<span class="hljs-number">0</span>] addr, crc, data[<span class="hljs-number">8</span>];<br>	<span class="hljs-keyword">function</span> <span class="hljs-keyword">void</span> display;<br>		$dispaly(<span class="hljs-string">&quot;Transcation:%h&quot;</span>,addr);<br>    <span class="hljs-keyword">endfunction</span>:display<br>    <span class="hljs-keyword">function</span> <span class="hljs-keyword">void</span> calc_crc;<br>    	crc = addr ^ data<span class="hljs-variable">.xor</span>;<br>    <span class="hljs-keyword">endfunction</span>:calc_clc<br><span class="hljs-keyword">endclass</span>:Transcation<br></code></pre></div></td></tr></table></figure>
-<h3 id="1-类里面变量的定义（重要）"><a href="#1-类里面变量的定义（重要）" class="headerlink" title="(1) 类里面变量的定义（重要）"></a>(1) 类里面变量的定义（重要）</h3><p>应该是软件的变量，缺省类型为<code>var</code>，不能是<code>reg</code>或<code>wire</code>等硬件类型</p>
-<h3 id="2-软件与硬件的媒介：接口"><a href="#2-软件与硬件的媒介：接口" class="headerlink" title="(2) 软件与硬件的媒介：接口"></a>(2) 软件与硬件的媒介：接口</h3><p>virtual interface（接口指针）可以传递到类里面，类通过接口可以获得硬件中的信号</p>
-<h3 id="对象和module的不同"><a href="#对象和module的不同" class="headerlink" title="对象和module的不同"></a>对象和module的不同</h3><ul>
+<h2><span id="3-第一个激励数据类transaction失误类">3. 第一个激励数据类(transaction失误类)</span></h2><figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">class</span> Transaction;<br>	<span class="hljs-keyword">bit</span> [<span class="hljs-number">31</span>:<span class="hljs-number">0</span>] addr, crc, data[<span class="hljs-number">8</span>];<br>	<span class="hljs-keyword">function</span> <span class="hljs-keyword">void</span> display;<br>		$dispaly(<span class="hljs-string">&quot;Transcation:%h&quot;</span>,addr);<br>    <span class="hljs-keyword">endfunction</span>:display<br>    <span class="hljs-keyword">function</span> <span class="hljs-keyword">void</span> calc_crc;<br>    	crc = addr ^ data<span class="hljs-variable">.xor</span>;<br>    <span class="hljs-keyword">endfunction</span>:calc_clc<br><span class="hljs-keyword">endclass</span>:Transcation<br></code></pre></div></td></tr></table></figure>
+<h3><span id="1-类里面变量的定义重要">(1) 类里面变量的定义（重要）</span></h3><p>应该是软件的变量，缺省类型为<code>var</code>，不能是<code>reg</code>或<code>wire</code>等硬件类型</p>
+<h3><span id="2-软件与硬件的媒介接口">(2) 软件与硬件的媒介：接口</span></h3><p>virtual interface（接口指针）可以传递到类里面，类通过接口可以获得硬件中的信号</p>
+<h3><span id="对象和module的不同">对象和module的不同</span></h3><ul>
 <li><p>module里面的变量都是静态的，而对象是动态的生成</p>
 </li>
 <li><p>module里面定义方法只能在<strong>过程快</strong>中调用，class可以通过class嵌套class来调用，但class里面不能出现always和innashao</p>
 </li>
-<li><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031155036528.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<li><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031155036528.png" srcset="/img/loading.gif" lazyload alt></p>
 </li>
 <li></li>
 </ul>
-<h2 id="4-OPP概念要素"><a href="#4-OPP概念要素" class="headerlink" title="4.OPP概念要素"></a>4.OPP概念要素</h2><ul>
+<h2><span id="4opp概念要素">4.OPP概念要素</span></h2><ul>
 <li>Class</li>
 <li>Object</li>
 <li>Handle句柄(指针)，为什么称之为指针？在SV中除了对象外没有类似的操作了，</li>
 <li>Property</li>
 <li>Method</li>
 </ul>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031154901529.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h2 id="5-创建对象-构造函数"><a href="#5-创建对象-构造函数" class="headerlink" title="5. 创建对象+构造函数"></a>5. 创建对象+构造函数</h2><p>构造函数<code>new()</code>是系统预定义函数，不需要指定返回值，函数会隐式地返回例化后的对象指针</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031154901529.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="5-创建对象构造函数">5. 创建对象+构造函数</span></h2><p>构造函数<code>new()</code>是系统预定义函数，不需要指定返回值，函数会隐式地返回例化后的对象指针</p>
 <p>注意构造函数<code>new()</code>是小括号，动态数组<code>new[$]</code>是中括号</p>
 <p>创建对象：开辟了新的内存空间，用来存放新的成员变量和方法</p>
 <p>构造函数可以定义形参缺省值，同C++</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031155932848.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h4 id="谁在前，谁在后？（关于定义初始值，构造函数值冲突时，谁会覆盖的问题）"><a href="#谁在前，谁在后？（关于定义初始值，构造函数值冲突时，谁会覆盖的问题）" class="headerlink" title="谁在前，谁在后？（关于定义初始值，构造函数值冲突时，谁会覆盖的问题）"></a>谁在前，谁在后？（关于定义初始值，构造函数值冲突时，谁会覆盖的问题）</h4><p>答案10</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031160033614.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h2 id="6-声明和例化的区分——句柄的传递"><a href="#6-声明和例化的区分——句柄的传递" class="headerlink" title="6. 声明和例化的区分——句柄的传递"></a>6. 声明和例化的区分——句柄的传递</h2><figure class="highlight apache"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">Transcation</span> t<span class="hljs-number">1</span> ,t<span class="hljs-number">2</span>;//不是例化，只是声明句柄t<span class="hljs-number">1</span>,t<span class="hljs-number">2</span><br><span class="hljs-attribute">t1</span> = new ();//这里才是例化，例化对象将其句柄赋予t<span class="hljs-number">1</span><br></code></pre></div></td></tr></table></figure>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031160521161-16356675228628.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h2 id="7-对象的销毁：SV也有自动回收内存空间的机制"><a href="#7-对象的销毁：SV也有自动回收内存空间的机制" class="headerlink" title="7. 对象的销毁：SV也有自动回收内存空间的机制"></a>7. 对象的销毁：SV也有自动回收内存空间的机制</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031160539755-16356675733889.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031160840083.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031155932848.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="谁在前谁在后关于定义初始值构造函数值冲突时谁会覆盖的问题">谁在前，谁在后？（关于定义初始值，构造函数值冲突时，谁会覆盖的问题）</span></h4><p>答案10</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031160033614.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="6-声明和例化的区分句柄的传递">6. 声明和例化的区分——句柄的传递</span></h2><figure class="highlight apache"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">Transcation</span> t<span class="hljs-number">1</span> ,t<span class="hljs-number">2</span>;//不是例化，只是声明句柄t<span class="hljs-number">1</span>,t<span class="hljs-number">2</span><br><span class="hljs-attribute">t1</span> = new ();//这里才是例化，例化对象将其句柄赋予t<span class="hljs-number">1</span><br></code></pre></div></td></tr></table></figure>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031160521161-16356675228628.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="7-对象的销毁sv也有自动回收内存空间的机制">7. 对象的销毁：SV也有自动回收内存空间的机制</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031160539755-16356675733889.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031160840083.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>选B，在module里面定义的即便是initial里面的都是静态的</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031161055070.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031161055070.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>下图加了个automatic就不存在了，答案是D</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031162639036.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h2 id="8-句柄的使用（空指针很危险）"><a href="#8-句柄的使用（空指针很危险）" class="headerlink" title="8.句柄的使用（空指针很危险）"></a>8.句柄的使用（空指针很危险）</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031162727269.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h2 id="9-静态变量（static进行声明）"><a href="#9-静态变量（static进行声明）" class="headerlink" title="9. 静态变量（static进行声明）"></a>9. 静态变量（static进行声明）</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031162757018.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031162639036.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="8句柄的使用空指针很危险">8.句柄的使用（空指针很危险）</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031162727269.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="9-静态变量static进行声明">9. 静态变量（static进行声明）</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031162757018.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>引用方式有两种</strong></p>
 <figure class="highlight delphi"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs delphi"><span class="hljs-keyword">class</span>::<span class="hljs-keyword">var</span><span class="hljs-comment">//直接类名引用</span><br><span class="hljs-keyword">object</span>.<span class="hljs-keyword">var</span><span class="hljs-comment">//通过例化的对象引用</span><br></code></pre></div></td></tr></table></figure>
-<h2 id="10-静态方法"><a href="#10-静态方法" class="headerlink" title="10. 静态方法"></a>10. 静态方法</h2><p>同C++，无法调用动态成员变量</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031163108643.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h1 id="二、类的成员"><a href="#二、类的成员" class="headerlink" title="二、类的成员"></a>二、类的成员</h1><h2 id="1-概述-默认public，主动声明protected-local"><a href="#1-概述-默认public，主动声明protected-local" class="headerlink" title="1. 概述(默认public，主动声明protected,local)"></a>1. 概述(默认public，主动声明protected,local)</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031163245473.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2><span id="10-静态方法">10. 静态方法</span></h2><p>同C++，无法调用动态成员变量</p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031163108643.png" srcset="/img/loading.gif" lazyload alt></p>
+<h1><span id="二-类的成员">二、类的成员</span></h1><h2><span id="1-概述默认public主动声明protectedlocal">1. 概述(默认public，主动声明protected,local)</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031163245473.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li><p>秉承单一职责原则(SRP , Single Responsibility Principle)</p>
 </li>
 <li><p><code>protected</code>,<code>local</code>进行封装，称为开放封闭原则(OCP , Open Closed Principle)</p>
 </li>
 </ul>
-<h3 id="local-私有成员"><a href="#local-私有成员" class="headerlink" title="local 私有成员"></a>local 私有成员</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031163611076.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031163703340.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="local-私有成员">local 私有成员</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031163611076.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031163703340.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>选D</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031163715150.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="public-protected-local"><a href="#public-protected-local" class="headerlink" title="public,protected,local"></a>public,protected,local</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031163925657.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h2 id="2-类的封装"><a href="#2-类的封装" class="headerlink" title="2. 类的封装"></a>2. 类的封装</h2><h3 id="类与结构体的异同"><a href="#类与结构体的异同" class="headerlink" title="类与结构体的异同"></a>类与结构体的异同</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031164238926.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="类与模块的异同"><a href="#类与模块的异同" class="headerlink" title="类与模块的异同"></a>类与模块的异同</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031164321237.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031163715150.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="publicprotectedlocal">public,protected,local</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031163925657.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="2-类的封装">2. 类的封装</span></h2><h3><span id="类与结构体的异同">类与结构体的异同</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031164238926.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="类与模块的异同">类与模块的异同</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031164321237.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>答案A</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031164516245.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h2 id="3-类的定义位置，嵌套类，this，类的编译顺序"><a href="#3-类的定义位置，嵌套类，this，类的编译顺序" class="headerlink" title="3. 类的定义位置，嵌套类，this，类的编译顺序"></a>3. 类的定义位置，嵌套类，this，类的编译顺序</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031164644625.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h1 id="三、类的继承"><a href="#三、类的继承" class="headerlink" title="三、类的继承"></a>三、类的继承</h1><h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031164924500.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031164516245.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="3-类的定义位置嵌套类this类的编译顺序">3. 类的定义位置，嵌套类，this，类的编译顺序</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031164644625.png" srcset="/img/loading.gif" lazyload alt></p>
+<h1><span id="三-类的继承">三、类的继承</span></h1><h2><span id="1-概述">1. 概述</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031164924500.png" srcset="/img/loading.gif" lazyload alt></p>
 <figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">cat</span></span>;<br>	<span class="hljs-keyword">protected</span> data;<br>	function f1();<br>		;<span class="hljs-comment">//statements</span><br>	endfunction;<br>endclass<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">black_cat</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">cat</span></span>;<br>	function <span class="hljs-keyword">new</span>();<br>	<br>	endfunction<br>endclass<br></code></pre></div></td></tr></table></figure>
-<h2 id="2-验证环境中的案例1"><a href="#2-验证环境中的案例1" class="headerlink" title="2. 验证环境中的案例1"></a>2. 验证环境中的案例1</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031171609238.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031171616311.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2><span id="2-验证环境中的案例1">2. 验证环境中的案例1</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031171609238.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031171616311.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>要把数据发送到DUT，我们需要有以下基本元素和数据处理方法，我们将它们封装到Transaction类中</strong></p>
 <figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">class</span> Transcation;<br>	<span class="hljs-keyword">rand</span> <span class="hljs-keyword">bit</span> [<span class="hljs-number">31</span>:<span class="hljs-number">0</span>] src , dst , data[<span class="hljs-number">8</span>]; <span class="hljs-comment">//随机成员变量</span><br>	<span class="hljs-keyword">bit</span> [<span class="hljs-number">31</span>:<span class="hljs-number">0</span>] crc;<span class="hljs-comment">//二次处理后的成员数据</span><br>	<span class="hljs-keyword">virtual</span> <span class="hljs-keyword">function</span> <span class="hljs-keyword">void</span> calc_crc();<br>		crc = src ^ dst ^ data<span class="hljs-variable">.xor</span>;<br>	<span class="hljs-keyword">endfunction</span><br>	<span class="hljs-keyword">virtual</span> <span class="hljs-keyword">function</span> <span class="hljs-keyword">void</span> display(<span class="hljs-keyword">input</span> <span class="hljs-keyword">string</span> prefix=<span class="hljs-string">&quot;&quot;</span>);<br>		$dispaly(<span class="hljs-string">&quot;%sTr:src=%h,dst-%h,crc=%h&quot;</span>,prefix,src,dst,crc);<br>	<span class="hljs-keyword">endfunction</span><br><span class="hljs-keyword">endclass</span><br></code></pre></div></td></tr></table></figure>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031172140615.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031172214276.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031172140615.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031172214276.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>BadTr</strong>:使用super索引父类中的同名函数，默认情况下两个类的同名函数没有关系</p>
 <figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">class</span> BadTr <span class="hljs-keyword">extends</span> Transcation;<br>	<span class="hljs-keyword">rand</span> <span class="hljs-keyword">bit</span> bad_crc; <br>	<span class="hljs-keyword">virtual</span> <span class="hljs-keyword">function</span> <span class="hljs-keyword">void</span> calc_crc();<br>		<span class="hljs-keyword">super</span><span class="hljs-variable">.calc_crc</span>();<span class="hljs-comment">//compute good CRC</span><br>		<span class="hljs-keyword">if</span>(bad_crc)<br>			crc=~crc;<br>	<span class="hljs-keyword">endfunction</span><br>	<span class="hljs-keyword">virtual</span> <span class="hljs-keyword">function</span> <span class="hljs-keyword">void</span> display(<span class="hljs-keyword">input</span> <span class="hljs-keyword">string</span> prefix=<span class="hljs-string">&quot;&quot;</span>);<br>        dispaly(<span class="hljs-string">&quot;%sBadTr:bad_crc=%b&quot;</span>,prefix,bad_crc);<br>		<span class="hljs-keyword">super</span><span class="hljs-variable">.display</span>();<br>	<span class="hljs-keyword">endfunction</span><br><span class="hljs-keyword">endclass</span><br></code></pre></div></td></tr></table></figure>
-<h2 id="3-验证环境中的案例2：子类在定义new函数时应该首先调用父类的new函数"><a href="#3-验证环境中的案例2：子类在定义new函数时应该首先调用父类的new函数" class="headerlink" title="3. 验证环境中的案例2：子类在定义new函数时应该首先调用父类的new函数"></a>3. 验证环境中的案例2：子类在定义new函数时应该首先调用父类的new函数</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031172855646.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031173019135.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031173037085.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2><span id="3-验证环境中的案例2子类在定义new函数时应该首先调用父类的new函数">3. 验证环境中的案例2：子类在定义new函数时应该首先调用父类的new函数</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031172855646.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031173019135.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211031173037085.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>特别注意：子类在定义new函数时应该首先调用父类的new函数</strong></p>
 <ul>
 <li><p>子类实例在初始化时首先会调用父类的构造函数</p>
@@ -440,35 +440,35 @@
 </li>
 <li>在成员变量默认赋值后，才会进入用户定义中的new函数中</li>
 </ul>
-<h2 id="4-成员覆盖：子类和父类同名变量和方法"><a href="#4-成员覆盖：子类和父类同名变量和方法" class="headerlink" title="4.成员覆盖：子类和父类同名变量和方法"></a>4.成员覆盖：子类和父类同名变量和方法</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211102152001680.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2><span id="4成员覆盖子类和父类同名变量和方法">4.成员覆盖：子类和父类同名变量和方法</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211102152001680.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>按照句柄类型来确定作用域：即各管各的，定义同名后，直接调用是子类的，super.是父类的</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211102152214429.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211102152214429.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>t是父类句柄，只能指向父类对象内的成员</p>
-<h3 id="成员索引顺序"><a href="#成员索引顺序" class="headerlink" title="成员索引顺序"></a>成员索引顺序</h3><p>调用子类成员时，现在子类里面搜，子类里面没有相应成员则去父类里面搜</p>
+<h3><span id="成员索引顺序">成员索引顺序</span></h3><p>调用子类成员时，现在子类里面搜，子类里面没有相应成员则去父类里面搜</p>
 <p>允许同名成员出现，不会覆盖，只是调用最先找到的成员（即子类内成员）</p>
 <p>子类对象赋值给父类句柄时，父类无法访问子类成员变量，只能访问父类内对象</p>
-<h1 id="四、句柄的使用"><a href="#四、句柄的使用" class="headerlink" title="四、句柄的使用"></a>四、句柄的使用</h1><h2 id="1-句柄的传递"><a href="#1-句柄的传递" class="headerlink" title="1. 句柄的传递"></a>1. 句柄的传递</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211102153533672.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1><span id="四-句柄的使用">四、句柄的使用</span></h1><h2><span id="1-句柄的传递">1. 句柄的传递</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211102153533672.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>形参中的类，总是句柄，而不是例化的对象</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211102153622156.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="重要例题"><a href="#重要例题" class="headerlink" title="重要例题"></a>重要例题</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211102154016268.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211102153622156.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="重要例题">重要例题</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211102154016268.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>$display(t.addr)最后会报错</p>
 <p>分析如上：<br>function (形参)，形参<strong>默认方向是input</strong>，声明完句柄后句柄的值为null，在function中完成例化，但并未被传递出去（没有返回出去）</p>
-<h2 id="2-句柄的动态修改"><a href="#2-句柄的动态修改" class="headerlink" title="2. 句柄的动态修改"></a>2. 句柄的动态修改</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211102154327828.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2><span id="2-句柄的动态修改">2. 句柄的动态修改</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211102154327828.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>笑死，不就是八吗，路桑是不是弱智啊</p>
-<h1 id="五、包的使用"><a href="#五、包的使用" class="headerlink" title="五、包的使用"></a>五、包的使用</h1><h2 id="1-包的意义，相关的类可以组织在同一命名空间中"><a href="#1-包的意义，相关的类可以组织在同一命名空间中" class="headerlink" title="1. 包的意义，相关的类可以组织在同一命名空间中"></a>1. 包的意义，相关的类可以组织在同一命名空间中</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211102154752523.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1><span id="五-包的使用">五、包的使用</span></h1><h2><span id="1-包的意义相关的类可以组织在同一命名空间中">1. 包的意义，相关的类可以组织在同一命名空间中</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211102154752523.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>多个module、Interface和program之间共享数据的方法</p>
 <p><strong>命名空间实际上就是个package</strong></p>
-<h2 id="2-包的定义"><a href="#2-包的定义" class="headerlink" title="2. 包的定义"></a>2. 包的定义</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211102155152726.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2><span id="2-包的定义">2. 包的定义</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211102155152726.png" srcset="/img/loading.gif" lazyload alt></p>
 <figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">package</span> reg_pkg;<br>	<span class="hljs-meta">`<span class="hljs-meta-keyword">include</span> &quot;xxx_1.sv&quot;</span><br>	<span class="hljs-meta">`<span class="hljs-meta-keyword">include</span> &quot;xxx_2.sv&quot;</span><br>	...<br><span class="hljs-keyword">endpackage</span><br></code></pre></div></td></tr></table></figure>
-<h3 id="包-域，不用担心重名冲突"><a href="#包-域，不用担心重名冲突" class="headerlink" title="包+域，不用担心重名冲突"></a>包+域，不用担心重名冲突</h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211102155412032.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="包域不用担心重名冲突">包+域，不用担心重名冲突</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211102155412032.png" srcset="/img/loading.gif" lazyload alt></p>
 <figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">module</span> mcdf_tb;<br>	regs_pkg::monitor mon1 = <span class="hljs-keyword">new</span>();<br>	arb_pkg::monitor mon2 = <span class="hljs-keyword">new</span>();<br><span class="hljs-keyword">endmodule</span><br></code></pre></div></td></tr></table></figure>
-<h2 id="3-包与库的区分，包-package-库-library"><a href="#3-包与库的区分，包-package-库-library" class="headerlink" title="3. 包与库的区分，包(package)库(library)"></a>3. 包与库的区分，包(package)库(library)</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211102155543142.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211102160948179.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2><span id="3-包与库的区分包package库library">3. 包与库的区分，包(package)库(library)</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211102155543142.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211102160948179.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>package编译到library里面</p>
-<h2 id="4-包的命名规则"><a href="#4-包的命名规则" class="headerlink" title="4.包的命名规则"></a>4.包的命名规则</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211102161023204.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211102161034379.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2><span id="4包的命名规则">4.包的命名规则</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211102161023204.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211102161034379.png" srcset="/img/loading.gif" lazyload alt></p>
 <figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-keyword">module</span> mcdf)tb;<br>	<span class="hljs-keyword">import</span> regs_pkg::*;<span class="hljs-comment">//类似于 using namespace xx;</span><br>	<span class="hljs-keyword">import</span> arb_pkg::*;<br>    regs_mon mon1 = <span class="hljs-built_in"><span class="hljs-keyword">new</span></span>();<br>    arb_mon mon2 = <span class="hljs-built_in"><span class="hljs-keyword">new</span></span>();<br>endmodule<br></code></pre></div></td></tr></table></figure>
-<h2 id="5-包的使用：包不用例化，包就是个容器"><a href="#5-包的使用：包不用例化，包就是个容器" class="headerlink" title="5.包的使用：包不用例化，包就是个容器"></a>5.包的使用：包不用例化，包就是个容器</h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211102161534955.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2><span id="5包的使用包不用例化包就是个容器">5.包的使用：包不用例化，包就是个容器</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211102161534955.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li><p>包就像一个library一样，只不过比Library低一个层级，你把定义好的东西放到包里面</p>
 </li>
@@ -478,7 +478,7 @@
 </li>
 <li>一个完整的磨矿验证环境<strong>组件类</strong>，应该由一个对应的模块包来封装</li>
 </ul>
-<h2 id="软件的东西一定要放到包里面"><a href="#软件的东西一定要放到包里面" class="headerlink" title="软件的东西一定要放到包里面"></a>软件的东西一定要放到包里面</h2>
+<h2><span id="软件的东西一定要放到包里面">软件的东西一定要放到包里面</span></h2>
             </div>
             <hr>
             <div>

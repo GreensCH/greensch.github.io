@@ -303,10 +303,10 @@
             <h1 style="display: none">随便记一点：初识aurora接口</h1>
             
             <div class="markdown-body">
-              <p><img src="https://img-blog.csdnimg.cn/20190509145732524.png" srcset="/img/loading.gif" lazyload alt=""></p>
+              <p><img src="https://img-blog.csdnimg.cn/20190509145732524.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><em>sof_n：数据传输开始标志，低电平有效；
 </em>eof_n：数据传输结束标志，低电平有效；<br>*rdy_n：传输数据有效标志，低电平有效；</p>
-<h2 id="Status-and-Control-Ports"><a href="#Status-and-Control-Ports" class="headerlink" title="Status and Control Ports"></a>Status and Control Ports</h2><ul>
+<h2><span id="status-and-control-ports">Status and Control Ports</span></h2><ul>
 <li><p>reset/tx_ststem_reset/rx_system_reset</p>
 </li>
 <li><p>gt_reset：r. The gt_reset port should be asserted when the module is first powered up in hardware.</p>
@@ -319,14 +319,14 @@
 </li>
 </ul>
 <p>Only available in RX-only simplex dataflow mode and sideband as back channel core configuration.</p>
-<h2 id="Status-and-Control-Ports-Cont’d"><a href="#Status-and-Control-Ports-Cont’d" class="headerlink" title="Status and Control Ports  (Cont’d)"></a>Status and Control Ports  <strong>(Cont’d)</strong></h2><p>暂空，和上节表对应</p>
-<h2 id="Full-Duplex-Status-and-Control-Ports"><a href="#Full-Duplex-Status-and-Control-Ports" class="headerlink" title="Full-Duplex Status and Control Ports"></a><strong>Full-Duplex Status and Control Ports</strong></h2><p>Cont’d是续的意思，这里是续表</p>
+<h2><span id="status-and-control-ports-contd">Status and Control Ports  <strong>(Cont’d)</strong></span></h2><p>暂空，和上节表对应</p>
+<h2><span id="full-duplex-status-and-control-ports"><strong>Full-Duplex Status and Control Ports</strong></span></h2><p>Cont’d是续的意思，这里是续表</p>
 <p>lane_up总线指示通道中的哪些车道已完成车道初始化过程。该信号可用于帮助调试多通道信道中的设备问题</p>
 <p>channel_up只有在核心完成整个初始化过程后才会断言</p>
 <p>在断言channel_up之前无法接收数据。只能使用用户界面上的m_axi_rx_tvalid信号来限定传入的数据。</p>
 <p>channel_up可以倒置，用于重置驱动全双工通道TX侧的模块，因为直到channel_up之后才能发生传输</p>
 <p>如果在数据接收前需要重置用户应用程序模块，则可以倒置并使用其中一个lane_up信号。在断言所有lane_up信号后才能接收数据</p>
-<h2 id="Simplex-Cores"><a href="#Simplex-Cores" class="headerlink" title="Simplex Cores"></a><strong>Simplex Cores</strong></h2><h2 id="This-interface-includes-the-serial-I-O-ports-of-the-transceivers-and-the-control-and-status"><a href="#This-interface-includes-the-serial-I-O-ports-of-the-transceivers-and-the-control-and-status" class="headerlink" title="This interface includes the serial I/O ports of the transceivers, and the control and status"></a>This interface includes the serial I/O ports of the transceivers, and the control and status</h2>
+<h2><span id="simplex-cores"><strong>Simplex Cores</strong></span></h2><h2><span id="this-interface-includes-the-serial-io-ports-of-the-transceivers-and-the-control-and-status">This interface includes the serial I/O ports of the transceivers, and the control and status</span></h2>
             </div>
             <hr>
             <div>

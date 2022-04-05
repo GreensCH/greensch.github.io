@@ -300,26 +300,26 @@
             
             <div class="markdown-body">
               <p>…<br> <span id="more"></span></p>
-<h2 id="1-hexo-目录分层"><a href="#1-hexo-目录分层" class="headerlink" title="1 hexo 目录分层"></a>1 hexo 目录分层</h2><ul>
+<h2><span id="1-hexo-目录分层">1 hexo 目录分层</span></h2><ul>
 <li>source :管理文件</li>
 <li>about页面修改: \myblog\source\about\index.md<br>相关提示：<code>以下仅为页面顶部的基本信息，更多内容请在 ./pages/about.md 中编辑，支持 markdown 和 HTML</code></li>
 </ul>
-<h2 id="2-配置文件修改"><a href="#2-配置文件修改" class="headerlink" title="2 配置文件修改"></a>2 配置文件修改</h2><h3 id="有主题的情况下优先在主题的config文件里修改"><a href="#有主题的情况下优先在主题的config文件里修改" class="headerlink" title="有主题的情况下优先在主题的config文件里修改"></a>有主题的情况下优先在主题的config文件里修改</h3><p>本博客应用xx主题，修改目录为<br><strong>.\myblog\themes\fluid_config.yml</strong></p>
+<h2><span id="2-配置文件修改">2 配置文件修改</span></h2><h3><span id="有主题的情况下优先在主题的config文件里修改">有主题的情况下优先在主题的config文件里修改</span></h3><p>本博客应用xx主题，修改目录为<br><strong>.\myblog\themes\fluid_config.yml</strong></p>
 <p>修改完要clean才能正确渲染</p>
-<h3 id="header-category-setting"><a href="#header-category-setting" class="headerlink" title="header category setting"></a>header category setting</h3><p><strong>.\myblog\themes\fluid_config.yml</strong></p>
-<h2 id="3-hexo常用命令"><a href="#3-hexo常用命令" class="headerlink" title="3 hexo常用命令"></a>3 hexo常用命令</h2><h3 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h3><ul>
+<h3><span id="header-category-setting">header category setting</span></h3><p><strong>.\myblog\themes\fluid_config.yml</strong></p>
+<h2><span id="3-hexo常用命令">3 hexo常用命令</span></h2><h3><span id="基础">基础</span></h3><ul>
 <li>创建 hexo new “title”</li>
 <li>某个目录下创建的基础命令为：<figure class="highlight vala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs vala">hexo <span class="hljs-keyword">new</span> --path ./essay/IC/<span class="hljs-number">02</span> <span class="hljs-string">&quot;02&quot;</span> <br><span class="hljs-meta"># 在\myblog\source\_posts\essay\IC下创建了一篇博客</span><br><span class="hljs-meta"># 同时会自动创建同名文件夹) </span><br></code></pre></div></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="4-header-与-category-的关系"><a href="#4-header-与-category-的关系" class="headerlink" title="4 header 与 category 的关系"></a>4 header 与 category 的关系</h2><p>.md文件下的，例如：</p>
+<h2><span id="4-header-与-category-的关系">4 header 与 category 的关系</span></h2><p>.md文件下的，例如：</p>
 <figure class="highlight subunit"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs subunit">title: 第一篇文章<br>date: 2020<span class="hljs-string">-03</span><span class="hljs-string">-07</span> 01:43:47<br><span class="hljs-keyword">tags:</span> 实用手册<br>categories: [实用手册]<br></code></pre></div></td></tr></table></figure>
 <p>中的<code>categories: [实用手册]</code>对应生成于网站的/categories/下，在文章页用<code>categories: [A,B,C]</code>会<strong>生成</strong>并对应到该目录层级下</p>
 <p>要想显示在页头，对应修改（已应用主题，有的主题会有页头索引，有的没有，所以此次修改的是个目录）</p>
 <p>myblog\themes\fluid_config.yml</p>
 <p>下的menu与header，例如</p>
 <figure class="highlight dts"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs dts"><span class="hljs-symbol">navbar:</span><br><span class="hljs-symbol">  blog_title:</span>  <span class="hljs-meta"># 导航栏左侧的标题，为空则按 hexo config.title 显示</span><br><span class="hljs-symbol">  menu:</span>  <span class="hljs-meta"># 可自行增减，若想减去某个入口，可以将值留空，显示文本关联 languages</span><br><span class="hljs-symbol">    home:</span> /<br><span class="hljs-symbol">    archive:</span> <span class="hljs-meta-keyword">/archives/</span><br><span class="hljs-symbol">    category:</span> <span class="hljs-meta-keyword">/categories/</span><br><span class="hljs-symbol">    tag:</span> <span class="hljs-meta-keyword">/tags/</span><br>    实用手册: <span class="hljs-meta-keyword">/categories/</span>实用手册<br>    项目与设计: <span class="hljs-meta-keyword">/categories/</span>program/<br><span class="hljs-symbol">    CS:</span> <span class="hljs-meta-keyword">/categories/</span>CS/<br><span class="hljs-symbol">    IC:</span> <span class="hljs-meta-keyword">/categories/</span>IC/<br><span class="hljs-symbol">    about:</span> <span class="hljs-meta-keyword">/about/</span><br>    <span class="hljs-meta">#links: /links/  # 友链页，把前面#去掉即可展示</span><br></code></pre></div></td></tr></table></figure>
-<h2 id="5-其他"><a href="#5-其他" class="headerlink" title="5 其他"></a>5 其他</h2><ul>
+<h2><span id="5-其他">5 其他</span></h2><ul>
 <li>[TOC]目录用不了，注意</li>
 </ul>
 

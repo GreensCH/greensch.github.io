@@ -330,54 +330,54 @@
 <li>同步通信元件</li>
 </ul>
 <p>TLM2.0与UVM入门进阶5的双向通信都作为了解</p>
-<h1 id="1-TLM2-0通信（了解）"><a href="#1-TLM2-0通信（了解）" class="headerlink" title="1 TLM2.0通信（了解）"></a>1 TLM2.0通信（了解）</h1><h2 id="1-1-概述"><a href="#1-1-概述" class="headerlink" title="1.1 概述"></a>1.1 概述</h2><h3 id="1-1-1-由TLM1-0到TLM2-0"><a href="#1-1-1-由TLM1-0到TLM2-0" class="headerlink" title="1.1.1 由TLM1.0到TLM2.0"></a>1.1.1 由TLM1.0到TLM2.0</h3><ul>
+<h1><span id="1-tlm20通信了解">1 TLM2.0通信（了解）</span></h1><h2><span id="11-概述">1.1 概述</span></h2><h3><span id="111-由tlm10到tlm20">1.1.1 由TLM1.0到TLM2.0</span></h3><ul>
 <li>TLM1.0用UVM各个组件之间连接</li>
 <li>TLM2.0用于与SystemC进行连接</li>
 </ul>
 <p>目前TLM开源包也是基于TLM2.0，且TLM2.0早于UVM成立的标准</p>
-<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129204050389.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="1-1-2-对比、主要内容"><a href="#1-1-2-对比、主要内容" class="headerlink" title="1.1.2 对比、主要内容"></a>1.1.2 对比、主要内容</h3><p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129204417791.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129204050389.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="112-对比-主要内容">1.1.2 对比、主要内容</span></h3><p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129204417791.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>什么时候用到</strong>TLM2.0，uvm与systemc做继承，把systemc作为reference model的时候</p>
 <ul>
 <li>因为systemc是纯设计模型，没有时间概念 </li>
 </ul>
 <p>纯验证环境中不需要TLM2.0</p>
-<h2 id="1-2-接口实现"><a href="#1-2-接口实现" class="headerlink" title="1.2 接口实现"></a>1.2 接口实现</h2><p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129205403805.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2><span id="12-接口实现">1.2 接口实现</span></h2><p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129205403805.png" srcset="/img/loading.gif" lazyload alt></p>
 <hr>
-<h3 id="1-2-1-传输方法"><a href="#1-2-1-传输方法" class="headerlink" title="1.2.1 传输方法"></a>1.2.1 传输方法</h3><p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129205432385.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3><span id="121-传输方法">1.2.1 传输方法</span></h3><p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129205432385.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>两种方法：</p>
 <ul>
 <li>_fw：forward拿过来一个req</li>
 <li>_bw：backward拿过来一个rsp</li>
 </ul>
-<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129205521092.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="1-2-2-传输端口：端口类socket"><a href="#1-2-2-传输端口：端口类socket" class="headerlink" title="1.2.2 传输端口：端口类socket"></a>1.2.2 传输端口：端口类socket</h3><p>socket由port,export和imp组合而成</p>
-<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129205557115.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129205653551.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="1-2-3-端口类socket继承于uvm-port-base"><a href="#1-2-3-端口类socket继承于uvm-port-base" class="headerlink" title="1.2.3 端口类socket继承于uvm_port_base"></a>1.2.3 端口类socket继承于uvm_port_base</h3><p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129205707575.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h2 id="1-3-传输数据"><a href="#1-3-传输数据" class="headerlink" title="1.3 传输数据"></a>1.3 传输数据</h2><h3 id="1-3-1-传输数据类型uvm-tlm-generic-payload"><a href="#1-3-1-传输数据类型uvm-tlm-generic-payload" class="headerlink" title="1.3.1 传输数据类型uvm_tlm_generic_payload"></a>1.3.1 传输数据类型uvm_tlm_generic_payload</h3><p>严格使用uvm_tlm_generic_payload类进行数据传输</p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129205521092.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="122-传输端口端口类socket">1.2.2 传输端口：端口类socket</span></h3><p>socket由port,export和imp组合而成</p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129205557115.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129205653551.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="123-端口类socket继承于uvm_port_base">1.2.3 端口类socket继承于uvm_port_base</span></h3><p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129205707575.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="13-传输数据">1.3 传输数据</span></h2><h3><span id="131-传输数据类型uvm_tlm_generic_payload">1.3.1 传输数据类型uvm_tlm_generic_payload</span></h3><p>严格使用uvm_tlm_generic_payload类进行数据传输</p>
 <p>这样才能与systemc无缝连接</p>
-<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129205747604-16381906688471.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129205825619.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="1-3-2-uvm-tlm-generic-payload内部变量"><a href="#1-3-2-uvm-tlm-generic-payload内部变量" class="headerlink" title="1.3.2 uvm_tlm_generic_payload内部变量"></a>1.3.2 uvm_tlm_generic_payload内部变量</h3><p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129205855177.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129205938411.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="1-3-3-其他数据类型：两种解决方法"><a href="#1-3-3-其他数据类型：两种解决方法" class="headerlink" title="1.3.3 其他数据类型：两种解决方法"></a>1.3.3 其他数据类型：两种解决方法</h3><p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129210001509.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129210352251.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h2 id="1-4-时间标记"><a href="#1-4-时间标记" class="headerlink" title="1.4 时间标记"></a>1.4 时间标记</h2><h3 id="1-4-1-uvm-tlm-tim"><a href="#1-4-1-uvm-tlm-tim" class="headerlink" title="1.4.1 uvm_tlm_tim"></a>1.4.1 uvm_tlm_tim</h3><p>原则上systemc可以自己创建一些时钟，当我们很少这样做，因为会大幅度降低仿真效率</p>
-<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129210411249.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129210541718.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h2 id="1-5-通信代码示例"><a href="#1-5-通信代码示例" class="headerlink" title="1.5 通信代码示例"></a>1.5 通信代码示例</h2><p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129210558006.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129210851775.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129205747604-16381906688471.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129205825619.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="132-uvm_tlm_generic_payload内部变量">1.3.2 uvm_tlm_generic_payload内部变量</span></h3><p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129205855177.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129205938411.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="133-其他数据类型两种解决方法">1.3.3 其他数据类型：两种解决方法</span></h3><p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129210001509.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129210352251.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="14-时间标记">1.4 时间标记</span></h2><h3><span id="141-uvm_tlm_tim">1.4.1 uvm_tlm_tim</span></h3><p>原则上systemc可以自己创建一些时钟，当我们很少这样做，因为会大幅度降低仿真效率</p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129210411249.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129210541718.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="15-通信代码示例">1.5 通信代码示例</span></h2><p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129210558006.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129210851775.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>数据类型固定所以不需要再指定数据传输类型</li>
 <li>自始至终rsq与rsp都是一个对象</li>
 </ul>
 <p>顶层代码：</p>
-<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129211419275.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h2 id="1-6-通信代码示例（有标注版）"><a href="#1-6-通信代码示例（有标注版）" class="headerlink" title="1.6 通信代码示例（有标注版）"></a>1.6 通信代码示例（有标注版）</h2><p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129210811424.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129211211453.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129211507182.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h1 id="2-同步通信元件"><a href="#2-同步通信元件" class="headerlink" title="2 同步通信元件"></a>2 同步通信元件</h1>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129211419275.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="16-通信代码示例有标注版">1.6 通信代码示例（有标注版）</span></h2><p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129210811424.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129211211453.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B65%EF%BC%9ATLM%E9%80%9A%E4%BF%A1_%E5%8D%95%E5%90%91%E5%8F%8C%E5%90%91%E5%A4%9A%E5%90%91_%E9%80%9A%E4%BF%A1%E7%AE%A1%E9%81%93/image-20211129211507182.png" srcset="/img/loading.gif" lazyload alt></p>
+<h1><span id="2-同步通信元件">2 同步通信元件</span></h1>
             </div>
             <hr>
             <div>
