@@ -1,0 +1,766 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/con1.png">
+  <link rel="icon" href="/img/con1.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="“无论最终结果将人类历史导向何处，我们决定选择希望”">
+  <meta name="author" content="友人律 | Guilin Chang">
+  <meta name="keywords" content="三差学生、不学无术">
+  <meta name="description" content="代码风格——入门A. 入门内容总结于：https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1uq4y1q7DJ signal Use lower case for signal name, for example tx_fifo_rd √ Tx_Fifo_Rd ×   low activve reset rst_ √ rst ×   全局信号应该被清晰地命名包括源信息的名称，例如一个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="verilog代码风格——入门">
+<meta property="og:url" content="http://yoursite.com/202204071748/IC/%E7%90%86%E8%AE%BA/%E5%85%B6%E4%BB%96essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:site_name" content="友人律的博客">
+<meta property="og:description" content="代码风格——入门A. 入门内容总结于：https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1uq4y1q7DJ signal Use lower case for signal name, for example tx_fifo_rd √ Tx_Fifo_Rd ×   low activve reset rst_ √ rst ×   全局信号应该被清晰地命名包括源信息的名称，例如一个">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/202204071748/IC/%E7%90%86%E8%AE%BA/%E5%85%B6%E4%BB%96essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220407212538787.png">
+<meta property="og:image" content="http://yoursite.com/202204071748/IC/%E7%90%86%E8%AE%BA/%E5%85%B6%E4%BB%96essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220407212637965.png">
+<meta property="og:image" content="http://yoursite.com/202204071748/IC/%E7%90%86%E8%AE%BA/%E5%85%B6%E4%BB%96essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220407212709704.png">
+<meta property="og:image" content="http://yoursite.com/202204071748/IC/%E7%90%86%E8%AE%BA/%E5%85%B6%E4%BB%96essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220407212940646.png">
+<meta property="og:image" content="http://yoursite.com/202204071748/IC/%E7%90%86%E8%AE%BA/%E5%85%B6%E4%BB%96essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220407213046298.png">
+<meta property="og:image" content="http://yoursite.com/202204071748/IC/%E7%90%86%E8%AE%BA/%E5%85%B6%E4%BB%96essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220407213218505.png">
+<meta property="og:image" content="http://yoursite.com/202204071748/IC/%E7%90%86%E8%AE%BA/%E5%85%B6%E4%BB%96essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220407213246338.png">
+<meta property="og:image" content="http://yoursite.com/202204071748/IC/%E7%90%86%E8%AE%BA/%E5%85%B6%E4%BB%96essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220407213337457.png">
+<meta property="og:image" content="http://yoursite.com/202204071748/IC/%E7%90%86%E8%AE%BA/%E5%85%B6%E4%BB%96essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220407213405593.png">
+<meta property="og:image" content="http://yoursite.com/202204071748/IC/%E7%90%86%E8%AE%BA/%E5%85%B6%E4%BB%96essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220407213430931.png">
+<meta property="og:image" content="http://yoursite.com/202204071748/IC/%E7%90%86%E8%AE%BA/%E5%85%B6%E4%BB%96essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220407213627879.png">
+<meta property="og:image" content="http://yoursite.com/202204071748/IC/%E7%90%86%E8%AE%BA/%E5%85%B6%E4%BB%96essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220407213716610.png">
+<meta property="og:image" content="http://yoursite.com/202204071748/IC/%E7%90%86%E8%AE%BA/%E5%85%B6%E4%BB%96essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220407213734615.png">
+<meta property="og:image" content="http://yoursite.com/202204071748/IC/%E7%90%86%E8%AE%BA/%E5%85%B6%E4%BB%96essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220407213804997.png">
+<meta property="og:image" content="http://yoursite.com/202204071748/IC/%E7%90%86%E8%AE%BA/%E5%85%B6%E4%BB%96essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220407213837959.png">
+<meta property="og:image" content="http://yoursite.com/202204071748/IC/%E7%90%86%E8%AE%BA/%E5%85%B6%E4%BB%96essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220407213905673.png">
+<meta property="article:published_time" content="2022-04-07T09:48:37.552Z">
+<meta property="article:modified_time" content="2022-04-07T13:40:40.660Z">
+<meta property="article:author" content="友人律 | Guilin Chang">
+<meta property="article:tag" content="学习">
+<meta property="article:tag" content="verilog">
+<meta property="article:tag" content="基础">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://yoursite.com/202204071748/IC/%E7%90%86%E8%AE%BA/%E5%85%B6%E4%BB%96essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220407212538787.png">
+  
+  <title>verilog代码风格——入门 - 友人律的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/stackoverflow-dark.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"eca4a4d34dadf0d4e282cc6ef2dc3de6","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body><!-- hexo injector body_begin start -->
+<link defer rel="stylesheet" href="/css/article_para.css" />
+<div id="web_bg"></div><!-- hexo injector body_begin end -->
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>友人律的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E9%80%9A%E7%9F%A5/">
+                <i class="iconfont icon-link-fill"></i>
+                通知
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1/">
+                <i class="iconfont icon-link-fill"></i>
+                项目与设计
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">
+                <i class="iconfont icon-link-fill"></i>
+                开发工具
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/CS/">
+                <i class="iconfont icon-link-fill"></i>
+                CS
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/IC/">
+                <i class="iconfont icon-link-fill"></i>
+                IC
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/%E8%83%8C%E6%99%AF%E5%9B%BE/65703458_p0.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="verilog代码风格——入门">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-04-07 17:48" pubdate>
+        2022年4月7日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.1k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      3 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">verilog代码风格——入门</h1>
+            
+            <div class="markdown-body">
+              <h1><span id="代码风格入门">代码风格——入门</span></h1><h2><span id="a-入门内容">A. 入门内容</span></h2><p>总结于：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1uq4y1q7DJ">https://www.bilibili.com/video/BV1uq4y1q7DJ</a></p>
+<h3><span id="signal">signal</span></h3><ul>
+<li>Use lower case for signal name, for example<ul>
+<li>tx_fifo_rd √</li>
+<li>Tx_Fifo_Rd ×</li>
+</ul>
+</li>
+<li>low activve reset<ul>
+<li>rst_ √</li>
+<li>rst ×</li>
+</ul>
+</li>
+<li>全局信号应该被清晰地命名包括源信息的名称，例如一个由dma指向mem的requset_read信号可以命名为：<ul>
+<li>dma_mem_req_rd √</li>
+<li>mem_req_rd ×</li>
+</ul>
+</li>
+</ul>
+<h3><span id="clock">clock</span></h3><ul>
+<li>所有不同模块的时钟信号应该<strong>直接</strong>来自同一个clk generation block</li>
+<li>使用posedge clk而不是negedge clk</li>
+<li>一个模块中只应该有一个clk（即同步处理）<ul>
+<li>如果涉及到异步(其他输入时钟)，请在另外的前面的模块中同步好，不要在一个里面用好几个clk，如果用了好几个clk在后端做时序的时候做时钟树不太友好</li>
+</ul>
+</li>
+</ul>
+<p><strong>模块分类</strong></p>
+<ul>
+<li>put custom/semi=custom layout circuit into seqparate module. For ex.<ul>
+<li>rom ram register+file …</li>
+</ul>
+</li>
+<li>Put synthesis sensitive circuit which need to be finePut synthesis sensitive circuit which need to be fine tuned into separate modules. </li>
+<li>Put non-synthesizable circuit which need to bePut non-synthesizable circuit which need to be manually edited into separate modules. For ex. pad, PLL, clk driver, delay_cell, spare_gate. For ex.<ul>
+<li>pad, PLL, clk driver, delay_cell, spare_gate</li>
+</ul>
+</li>
+<li>可以通过文件夹把这些类型分开</li>
+</ul>
+<p><strong>Use separate modules for control logic and data path logic</strong></p>
+<ul>
+<li>一开始模块划分时，高内聚，低耦合，模块之间的连接少一点，多一点模块内的连接</li>
+</ul>
+<p><img src="%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220407212538787.png" srcset="/img/loading.gif" lazyload alt="image-20220407212538787"></p>
+<p><strong>模块例化</strong></p>
+<ul>
+<li>没啥要强调的</li>
+</ul>
+<p><img src="%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220407212637965.png" srcset="/img/loading.gif" lazyload alt="image-20220407212637965"></p>
+<p><strong>端口映射</strong></p>
+<ul>
+<li>尽量名字取一样</li>
+</ul>
+<p><img src="%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220407212709704.png" srcset="/img/loading.gif" lazyload alt="image-20220407212709704"></p>
+<p><strong>内部测试信号要引出来</strong></p>
+<ul>
+<li>引出来，不然Netlist标号后找不到</li>
+</ul>
+<p><img src="%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220407212940646.png" srcset="/img/loading.gif" lazyload alt="image-20220407212940646"></p>
+<p><strong>顶层模块直连就好</strong></p>
+<ul>
+<li>顶层模块直联就好，不要写逻辑</li>
+</ul>
+<p><img src="%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220407213046298.png" srcset="/img/loading.gif" lazyload alt="图中这种在TOP中加入逻辑方法不推荐"></p>
+<p><strong>Delay</strong></p>
+<ul>
+<li>赋值时候插入delay模拟延迟</li>
+</ul>
+<p><img src="%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220407213218505.png" srcset="/img/loading.gif" lazyload alt="image-20220407213218505"></p>
+<p><strong>If Statement</strong></p>
+<p><img src="%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220407213246338.png" srcset="/img/loading.gif" lazyload alt="image-20220407213246338"></p>
+<p><strong>Critical path first关键路径优先</strong></p>
+<p><img src="%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220407213337457.png" srcset="/img/loading.gif" lazyload alt="image-20220407213337457"></p>
+<p><strong>模块复用/资源共享</strong></p>
+<p><img src="%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220407213405593.png" srcset="/img/loading.gif" lazyload alt="使用两个加法器"></p>
+<p><img src="%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220407213430931.png" srcset="/img/loading.gif" lazyload alt="只使用一个加法器，资源复用"></p>
+<p><strong>补齐else</strong></p>
+<p><img src="%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220407213627879.png" srcset="/img/loading.gif" lazyload alt="image-20220407213627879"></p>
+<p><strong>推荐一个always写一个reg</strong></p>
+<p><img src="%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220407213716610.png" srcset="/img/loading.gif" lazyload alt="image-20220407213716610"></p>
+<p><strong>不能用于综合的语句</strong></p>
+<p><img src="%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220407213734615.png" srcset="/img/loading.gif" lazyload alt="image-20220407213734615"></p>
+<p><strong>不能用于综合的运算符</strong></p>
+<p><img src="%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220407213804997.png" srcset="/img/loading.gif" lazyload alt="image-20220407213804997"></p>
+<ul>
+<li>设计里面两个==就好了</li>
+</ul>
+<p><strong>不能用于综合的基本单元</strong></p>
+<p><img src="%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220407213837959.png" srcset="/img/loading.gif" lazyload alt="image-20220407213837959"></p>
+<p><strong>其他不能用于综合</strong></p>
+<p><img src="%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220407213905673.png" srcset="/img/loading.gif" lazyload alt="image-20220407213905673"></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/">IC</a>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/%E7%90%86%E8%AE%BA/">理论</a>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/%E7%90%86%E8%AE%BA/%E5%85%B6%E4%BB%96/">其他</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                      <a class="hover-with-bg" href="/tags/verilog/">verilog</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/202204071856/%E5%B8%B8%E7%94%A8essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">git常用命令</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/202204052149/IC/STAessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/1/">
+                        <span class="hidden-mobile">test</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'preferred-color-scheme';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'GreensCH/commitutterances');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <span> | </span> <a href="https://weibo.com/u/7453939976" target="_blank" rel="nofollow noopener"> Green Weibo</a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?eca4a4d34dadf0d4e282cc6ef2dc3de6";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<!-- hexo injector body_end start --><script src="/js/backgroundize.js"></script>
+  <link defer rel="stylesheet" href="/css/backgroundize.css" />
+  
+  <div id="aplayer" style="width:300px"></div>
+  <link defer rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css" />
+  <script src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js"></script>
+  <script defer src="/js/aplayer.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"superSample":1,"position":"left","width":250,"height":500,"vOffset":-18},"mobile":{"show":false},"dialog":{"enable":false,"hitokoto":true,"width":10,"height":10,"vOffset":-100},"log":false});</script></body>
+</html>

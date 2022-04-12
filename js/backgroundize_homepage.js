@@ -1,4 +1,5 @@
 var image_list = [
+    // "http://localhost:4000/img/背景图/65703458_p0.jpg"
     "https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/背景页.jpg",
     "https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20220310112417.png",
     "https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20220310112708.png",
@@ -41,6 +42,34 @@ function randomTimes(_times){
     }
         
 }
+setInterval(function () {
+    if(image_ready){
+        times = randomTimes(times)
+        changeBg(times);
+        console.log(times);
+    }
+}, image_switch_time);
+
+function changeBg(times)
+{
+    image_ready=0;
+    $(viewBg).fadeOut(image_fade_time,function(){
+        $(viewBg).css("background-image", url_image_list[times]);
+        $(viewBg).fadeIn(image_fade_time,function(){image_ready=1})
+    });
+}
+
+const bannerContainer = $("#banner");
+const viewBg = $("#web_bg");
+const bannerMask = $("#banner .mask");
+const bg = $(bannerContainer).css("background-image");
+$(viewBg).css("background-image", url_image_list[times]);//'url()'
+$(bannerContainer).css("background-image", "url()");
+const color = $(bannerMask).css("background-color");
+$(bannerMask).css("background-color", `rgba(0,0,0,0)`);
+$(viewBg).css("background-color", color);
+
+
 //以下代码是顺序切换图片的代码
 // setInterval(function () {
 //     if(image_ready){

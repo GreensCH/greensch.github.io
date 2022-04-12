@@ -1,0 +1,675 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/con1.png">
+  <link rel="icon" href="/img/con1.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="“无论最终结果将人类历史导向何处，我们决定选择希望”">
+  <meta name="author" content="友人律 | Guilin Chang">
+  <meta name="keywords" content="三差学生、不学无术">
+  <meta name="description" content="IC打工人最常用的20个Linux命令正文1、ls（list files）：显示指定工作目录下的内容。常用参数：-a：显示所有的文件和目录，包括隐藏文件-l：除文件名称外，文件型态、权限、拥有者、文件大小、修改日期等（常用）-r：将文件根据建立时间先后的顺序列出-R：连同子目录的内容一起列出（递归列出），即该目录下的所有文件都会显示 2、cd（change directory）：切换工作目录，可用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IC打工人最常用的20个Linux命令">
+<meta property="og:url" content="http://yoursite.com/202204072142/%E5%B8%B8%E7%94%A8essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/IC%E6%89%93%E5%B7%A5%E4%BA%BA%E6%9C%80%E5%B8%B8%E7%94%A8%E7%9A%8420%E4%B8%AALinux%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:site_name" content="友人律的博客">
+<meta property="og:description" content="IC打工人最常用的20个Linux命令正文1、ls（list files）：显示指定工作目录下的内容。常用参数：-a：显示所有的文件和目录，包括隐藏文件-l：除文件名称外，文件型态、权限、拥有者、文件大小、修改日期等（常用）-r：将文件根据建立时间先后的顺序列出-R：连同子目录的内容一起列出（递归列出），即该目录下的所有文件都会显示 2、cd（change directory）：切换工作目录，可用">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-04-07T13:42:47.186Z">
+<meta property="article:modified_time" content="2022-04-07T13:49:24.350Z">
+<meta property="article:author" content="友人律 | Guilin Chang">
+<meta property="article:tag" content="shell">
+<meta property="article:tag" content="常用">
+<meta property="article:tag" content="命令">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>IC打工人最常用的20个Linux命令 - 友人律的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/stackoverflow-dark.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"eca4a4d34dadf0d4e282cc6ef2dc3de6","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body><!-- hexo injector body_begin start -->
+<link defer rel="stylesheet" href="/css/article_para.css" />
+<div id="web_bg"></div><!-- hexo injector body_begin end -->
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>友人律的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E9%80%9A%E7%9F%A5/">
+                <i class="iconfont icon-link-fill"></i>
+                通知
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1/">
+                <i class="iconfont icon-link-fill"></i>
+                项目与设计
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">
+                <i class="iconfont icon-link-fill"></i>
+                开发工具
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/CS/">
+                <i class="iconfont icon-link-fill"></i>
+                CS
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/IC/">
+                <i class="iconfont icon-link-fill"></i>
+                IC
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/%E8%83%8C%E6%99%AF%E5%9B%BE/65703458_p0.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="IC打工人最常用的20个Linux命令">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-04-07 21:42" pubdate>
+        2022年4月7日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.6k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      5 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">IC打工人最常用的20个Linux命令</h1>
+            
+            <div class="markdown-body">
+              <h1><span id="ic打工人最常用的20个linux命令">IC打工人最常用的20个Linux命令</span></h1><h2><span id="正文">正文</span></h2><p>1、<strong>ls</strong>（list files）：显示指定工作目录下的内容。<br>常用参数：<br>-a：显示所有的文件和目录，包括隐藏文件<br>-l：除文件名称外，文件型态、权限、拥有者、文件大小、修改日期等（常用）<br>-r：将文件根据建立时间先后的顺序列出<br>-R：连同子目录的内容一起列出（递归列出），即该目录下的所有文件都会显示</p>
+<p>2、cd（change directory）：切换工作目录，可用相对路径，也可用绝对路径。<br>常用参数：<br>cd /usr/bin<br>cd ~<br>cd ./path（./可以省略不写）<br>cd ../path<br>“~”表示为 home 目录 的意思， “.”表示目前所在的目录， “..”表示目前目录位置的上一层目录。</p>
+<p>3、<strong>pwd</strong>（print work directory）：显示当前工作目录，获取当前所在目录的绝对路径名称。</p>
+<p>4、<strong>rm</strong>（remove）：删除文件或目录。<br>常用参数：<br>-i：删除前询问确认是否删除<br>-r：递归删除，目录下的文件也全部删除<br>-f：force，忽略警告、不存在的文件，强制删除<br><strong>rm -rf</strong> 一定要小心使用！！！删除容易找回难啊！血泪教训！ </p>
+<p>5、<strong>mv</strong>（move file）：用于文件或目录的改名和移动存放位置。<br>常用参数：<br>-f：文件同名，不会询问，直接覆盖旧文件。<br>-i：目录或文件同名，则会先询问是否覆盖旧文件，输入 y 表示直接覆盖，输入 n 表示取消该操作。<br>-b：目标文件或目录存在时，在执行覆盖前，会为其创建一个备份。<br>-u：当源文件比目标文件新或者目标文件不存在时，才执行移动操作。</p>
+<p>6、<strong>mkdir</strong>（make directory）：创建目录。</p>
+<p>7、<strong>cp</strong>（copy file）：复制文件或目录。<br>常用参数：<br>-r：递归复制，用于目录的复制<br>-f：覆盖已经存在的目标文件并且不提示<br>-a：将文件的特性一起复制 </p>
+<p>8、<strong>which</strong>：查看某个系统命令是否存在，以及执行的到底是哪一个位置的命令。</p>
+<p> 9、<strong>find</strong>：在指定的目录下查找文件。功能非常强大，参数比较多，<strong>重点掌握</strong>。<br>常用命令：<br><strong>find ./ -name “*.v”</strong>：当前目录及其子目录下所有后缀为.v的文件列出来</p>
+<p>10、<strong>grep</strong>：用于查找文件里符合条件的字符串。搜索关键词，查找定义文件，查找error，<strong>重点掌握</strong>。<br>常用命令<br><strong>grep -ri “error”</strong>：r当前目录查找error，i忽略大小写<br>grep -v 反向查找，打印出不符合条件行的内容</p>
+<p>11、<strong>chmod</strong>（change mode）：控制用户对文件权限。一种是字母和操作符表达式的文字设定法；另一种是数字设定法。</p>
+<p>12、<strong>tar</strong>（tape archive ）：备份压缩解压文件。<br>常用参数：<br>-c：建立压缩档案<br>-x：解压<br>-t：查看内容<br>-r：向压缩归档文件末尾追加文件<br>-u：更新原压缩包中的文件<br>-f：使用档案名字 </p>
+<p>13、<strong>du</strong>（disk usage）：显示文件或目录的大小。<br>常用参数：<br>-s：仅显示总数<br>-h：以K,M,G为单位</p>
+<p>14、<strong>ln</strong>（link files）：为某一个文件在另外一个位置建立一个同步的链接，分硬链接和软链接。硬链接的意思是一个档案可以有多个名称，而软链接的方式则是产生一个特殊的档案，该档案的内容是指向另一个档案的位置，<strong>重点掌握</strong>。</p>
+<p>15、<strong>wc</strong>：计算文件的Byte数、字数、或是列数。<br>常用参数：<br>-c：显示Bytes数<br>-l：显示行数<br>-w：显示字数</p>
+<p>16、<strong>ps</strong>（process status）：显示当前进程的状态。<br>常用参数：<br>-A：列出所有的进程<br>-w：显示加宽可以显示较多的资讯<br>-au：显示较详细的资讯<br>-aux：显示所有包含其他使用者的行程 </p>
+<p>17、<strong>top</strong>：显示实时的process动态。 </p>
+<p>18、<strong>kill</strong>：杀死执行中的进程。<br>常用参数：<br>1 ：重新加载进程。<br>9 ：杀死一个进程。<br>15：正常停止一个进程。</p>
+<p>19、<strong>vim</strong>：打开文本编辑器。vim、gvim需要熟练，以后就靠它俩恰饭了。</p>
+<p>20、管道符“<strong>|</strong>”：管道符左边命令的输出就会作为管道符右边命令的输入，<strong>重点掌握</strong>。</p>
+<h2><span id="补充">补充</span></h2><p>1、bg：查看后台运行的进程，常配合kill</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%B8%B8%E7%94%A8/">常用</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/shell/">shell</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%B8%B8%E7%94%A8/">常用</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%91%BD%E4%BB%A4/">命令</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/202204081044/IC/AMBAessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/AMBA2.0%E5%AD%A6%E4%B9%A0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">AMBA2.0学习</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/202204071856/%E5%B8%B8%E7%94%A8essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+                        <span class="hidden-mobile">git常用命令</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'preferred-color-scheme';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'GreensCH/commitutterances');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <span> | </span> <a href="https://weibo.com/u/7453939976" target="_blank" rel="nofollow noopener"> Green Weibo</a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?eca4a4d34dadf0d4e282cc6ef2dc3de6";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<!-- hexo injector body_end start --><script src="/js/backgroundize.js"></script>
+  <link defer rel="stylesheet" href="/css/backgroundize.css" />
+  
+  <div id="aplayer" style="width:300px"></div>
+  <link defer rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css" />
+  <script src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js"></script>
+  <script defer src="/js/aplayer.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"superSample":1,"position":"left","width":250,"height":500,"vOffset":-18},"mobile":{"show":false},"dialog":{"enable":false,"hitokoto":true,"width":10,"height":10,"vOffset":-100},"log":false});</script></body>
+</html>
