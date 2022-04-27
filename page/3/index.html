@@ -251,6 +251,324 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/202202110126/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B69%EF%BC%9A%E5%AF%84%E5%AD%98%E5%99%A8%E6%A8%A1%E5%9E%8B%E6%A6%82%E8%A7%88_%E9%9B%86%E6%88%90/" target="_self">
+          <img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121154056091.png" srcset="/img/loading.gif" lazyload alt="UVM入门进阶9：寄存器模型概览_集成.md">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/202202110126/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B69%EF%BC%9A%E5%AF%84%E5%AD%98%E5%99%A8%E6%A8%A1%E5%9E%8B%E6%A6%82%E8%A7%88_%E9%9B%86%E6%88%90/" target="_self">
+          UVM入门进阶9：寄存器模型概览_集成.md
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/202202110126/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B69%EF%BC%9A%E5%AF%84%E5%AD%98%E5%99%A8%E6%A8%A1%E5%9E%8B%E6%A6%82%E8%A7%88_%E9%9B%86%E6%88%90/" target="_self">
+          
+          
+            
+          
+          参考文档链接：https://verificationacademy.com/verification-methodology-reference/uvm/docs_1.2/html/
+前言sv实验五到uvm实验四之间所有的验证结构、组件、环境、运行、怎么开始结束，都是映射的，uvm所有的核心已经sv过度到uvm
+今天我们学的寄存器结构，sv里面虽然也有但比较简陋，在uvm我们需要用相关语法去合成
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-11 01:26" pubdate>
+              2022-02-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/IC/">IC</a>
+            
+              <a href="/categories/IC/uvm%E5%AD%A6%E4%B9%A0/">uvm学习</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/IC/">IC</a>
+            
+              <a href="/tags/uvm%E5%AD%A6%E4%B9%A0/">uvm学习</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/202202110115/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B68%EF%BC%9ASequencer%E4%BB%B2%E8%A3%81_Sequence%E5%B1%82%E6%AC%A1%E5%8C%96/" target="_self">
+          <img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121154056091.png" srcset="/img/loading.gif" lazyload alt="UVM入门进阶8：Sequencer仲裁_Sequence层次化">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/202202110115/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B68%EF%BC%9ASequencer%E4%BB%B2%E8%A3%81_Sequence%E5%B1%82%E6%AC%A1%E5%8C%96/" target="_self">
+          UVM入门进阶8：Sequencer仲裁_Sequence层次化
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/202202110115/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B68%EF%BC%9ASequencer%E4%BB%B2%E8%A3%81_Sequence%E5%B1%82%E6%AC%A1%E5%8C%96/" target="_self">
+          
+          
+            
+          
+          参考文档链接：https://verificationacademy.com/verification-methodology-reference/uvm/docs_1.2/html/
+本节内容为上一节《UVM入门进阶7：Item_Sequence_Sequencer_Driver》的后半部节选，因为UVM7内容过多因此创建本小节。本节主要学习Sequencer和Sequence的关系
+4 Seq
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-11 01:15" pubdate>
+              2022-02-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/IC/">IC</a>
+            
+              <a href="/categories/IC/uvm%E5%AD%A6%E4%B9%A0/">uvm学习</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/IC/">IC</a>
+            
+              <a href="/tags/uvm%E5%AD%A6%E4%B9%A0/">uvm学习</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/202202110058/IC/TCL%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/TCL%E5%85%A5%E9%97%A8/" target="_self">
+          <img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/Eclipse-dltk-itcl_en_fedora_11_con_KDE_4.2.4.png" srcset="/img/loading.gif" lazyload alt="TCL入门">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/202202110058/IC/TCL%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/TCL%E5%85%A5%E9%97%A8/" target="_self">
+          TCL入门
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/202202110058/IC/TCL%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/TCL%E5%85%A5%E9%97%A8/" target="_self">
+          
+          
+            
+          
+          
+6 流程控制6.1 语法重点
+各种控制语句包括：if,switch,while,for,foreach(在列表和数组中提到),source
+控制语句内部执行的脚本实际上是本语句的一个参数（本质上执行了一条语句）
+有关大括号{}和换行符的
+
+Tcl解释器认为换行符是前一个命令的分隔符，除非换行符在花括号或者双引号之内（参考if语句的参数二）
+
+
+
+1123
+
+有关大括号{}和双引号的
+表达式真假：
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-11 00:58" pubdate>
+              2022-02-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/IC/">IC</a>
+            
+              <a href="/categories/IC/TCL%E5%AD%A6%E4%B9%A0/">TCL学习</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%85%A5%E9%97%A8/">入门</a>
+            
+              <a href="/tags/TCL/">TCL</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/202202100117/CS/Linuxessay/cs/linux/Linux%E5%9F%BA%E7%A1%80%E5%86%85%E5%AE%B9%EF%BC%88%E4%B8%80%EF%BC%89/" target="_self">
+          <img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/背景页.jpg" srcset="/img/loading.gif" lazyload alt="Linux基础内容（一）">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/202202100117/CS/Linuxessay/cs/linux/Linux%E5%9F%BA%E7%A1%80%E5%86%85%E5%AE%B9%EF%BC%88%E4%B8%80%EF%BC%89/" target="_self">
+          Linux基础内容（一）
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/202202100117/CS/Linuxessay/cs/linux/Linux%E5%9F%BA%E7%A1%80%E5%86%85%E5%AE%B9%EF%BC%88%E4%B8%80%EF%BC%89/" target="_self">
+          
+          
+            
+          
+          Linux基础内容（一）
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-10 01:17" pubdate>
+              2022-02-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/CS/">CS</a>
+            
+              <a href="/categories/CS/Linux/">Linux</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Linux/">Linux</a>
+            
+              <a href="/tags/%E6%A6%82%E8%AE%BA/">概论</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/202201111602/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/hexoessay/tools/hexo%E6%A1%86%E6%9E%B6%E4%B8%8B%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%A4%9A%E4%B8%BB%E6%9C%BA%E5%86%99%E4%BD%9C%E6%96%B9%E6%A1%88/" target="_self">
+          <img src="https://pica.zhimg.com/v2-41e1b825c51055f39c22b95777bc620b_1440w.jpg" srcset="/img/loading.gif" lazyload alt="hexo框架下的博客多主机写作方案">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/202201111602/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/hexoessay/tools/hexo%E6%A1%86%E6%9E%B6%E4%B8%8B%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%A4%9A%E4%B8%BB%E6%9C%BA%E5%86%99%E4%BD%9C%E6%96%B9%E6%A1%88/" target="_self">
+          hexo框架下的博客多主机写作方案
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/202201111602/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/hexoessay/tools/hexo%E6%A1%86%E6%9E%B6%E4%B8%8B%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%A4%9A%E4%B8%BB%E6%9C%BA%E5%86%99%E4%BD%9C%E6%96%B9%E6%A1%88/" target="_self">
+          
+          
+            
+          
+          hexo框架下的博客多主机写作方案参考链接：https://blog.csdn.net/sinat_37781304/article/details/82729029
+1 安装GitGit是目前世界上最先进的分布式版本控制系统，可以有效、高速的处理从很小到非常大的项目版本管理。也就是用来管理你的hexo博客文章，上传到GitHub的工具。Git非常强大，我觉得建议每个人都去了解一下。廖雪峰老师的G
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-01-11 16:02" pubdate>
+              2022-01-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a>
+            
+              <a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/hexo/">hexo</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">解决方法</a>
+            
+              <a href="/tags/hexo/">hexo</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/202201051602/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7essay/tools/%E7%BA%A2%E8%AD%A63%E5%BF%AB%E6%8D%B7%E9%94%AE/" target="_self">
           <img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/d18654713466afded863b9cff6f0ec094dc6f6fd.jpg" srcset="/img/loading.gif" lazyload alt="(个人用)游戏快捷键">
         </a>
@@ -560,346 +878,6 @@ TLM2.0
             <i class="iconfont icon-date"></i>
             <time datetime="2021-11-27 16:41" pubdate>
               2021-11-27
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/IC/">IC</a>
-            
-              <a href="/categories/IC/uvm%E5%AD%A6%E4%B9%A0/">uvm学习</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/IC/">IC</a>
-            
-              <a href="/tags/uvm%E5%AD%A6%E4%B9%A0/">uvm学习</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/202111242221/IC/sv%E5%AD%A6%E4%B9%A0/%E5%AE%9E%E9%AA%8Cessay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E7%BB%83%E4%B9%A0%E9%80%89%E4%BF%AE/" target="_self">
-          <img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110230643036.png" srcset="/img/loading.gif" lazyload alt="SV练习选修">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/202111242221/IC/sv%E5%AD%A6%E4%B9%A0/%E5%AE%9E%E9%AA%8Cessay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E7%BB%83%E4%B9%A0%E9%80%89%E4%BF%AE/" target="_self">
-          SV练习选修
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/202111242221/IC/sv%E5%AD%A6%E4%B9%A0/%E5%AE%9E%E9%AA%8Cessay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E7%BB%83%E4%B9%A0%E9%80%89%E4%BF%AE/" target="_self">
-          
-          
-            
-          
-          1 练习内容sv练习来自V1课程，因为V1在语法点上讲的比V2细致
-
-lec1：类型练习
-data_type.sv
-interface_type.sv
-string_type.sv
-sv_for_design：sv中的设计
-always、always_comb、unique case
-
-
-
-lec2：
-array_type.sv：数组
-class_encapsulation.sv：类的封装
-cla
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-11-24 22:21" pubdate>
-              2021-11-24
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/IC/">IC</a>
-            
-              <a href="/categories/IC/sv%E5%AD%A6%E4%B9%A0/">sv学习</a>
-            
-              <a href="/categories/IC/sv%E5%AD%A6%E4%B9%A0/%E5%AE%9E%E9%AA%8C/">实验</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%AE%9E%E9%AA%8C/">实验</a>
-            
-              <a href="/tags/IC/">IC</a>
-            
-              <a href="/tags/sv%E5%AD%A6%E4%B9%A0/">sv学习</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/202111241036/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B63%EF%BC%9A%E7%BB%84%E4%BB%B6%E5%AE%B6%E6%97%8F/" target="_self">
-          <img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121154056091.png" srcset="/img/loading.gif" lazyload alt="UVM入门和进阶3：组件家族（如何例化部分较为重要）">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/202111241036/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B63%EF%BC%9A%E7%BB%84%E4%BB%B6%E5%AE%B6%E6%97%8F/" target="_self">
-          UVM入门和进阶3：组件家族（如何例化部分较为重要）
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/202111241036/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B63%EF%BC%9A%E7%BB%84%E4%BB%B6%E5%AE%B6%E6%97%8F/" target="_self">
-          
-          
-            
-          
-          参考文档链接：https://verificationacademy.com/verification-methodology-reference/uvm/docs_1.2/html/
-注意，本文内大部分组件介绍分为两节：第一节主要介绍该组件，第二节介绍该组件的定义示例
-0 组件家族0.0 回顾上节课内容
-UVM实验一到实验二的代码会突然增加，实验二会看到如何把SV中的组件过度到UVM的组件的，过
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-11-24 10:36" pubdate>
-              2021-11-24
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/IC/">IC</a>
-            
-              <a href="/categories/IC/uvm%E5%AD%A6%E4%B9%A0/">uvm学习</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/IC/">IC</a>
-            
-              <a href="/tags/uvm%E5%AD%A6%E4%B9%A0/">uvm学习</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/202111241036/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B64%EF%BC%9A%E7%BB%93%E6%9E%84_%E9%A1%B6%E5%B1%82%E6%96%B9%E6%A1%88_%E7%8E%AF%E5%A2%83%E5%85%83%E7%B4%A0/" target="_self">
-          <img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121154056091.png" srcset="/img/loading.gif" lazyload alt="UVM入门和进阶4：结构_顶层方案_环境元素">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/202111241036/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B64%EF%BC%9A%E7%BB%93%E6%9E%84_%E9%A1%B6%E5%B1%82%E6%96%B9%E6%A1%88_%E7%8E%AF%E5%A2%83%E5%85%83%E7%B4%A0/" target="_self">
-          UVM入门和进阶4：结构_顶层方案_环境元素
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/202111241036/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B64%EF%BC%9A%E7%BB%93%E6%9E%84_%E9%A1%B6%E5%B1%82%E6%96%B9%E6%A1%88_%E7%8E%AF%E5%A2%83%E5%85%83%E7%B4%A0/" target="_self">
-          
-          
-            
-          
-          参考文档链接：https://verificationacademy.com/verification-methodology-reference/uvm/docs_1.2/html/
-本节目录：
-
-UVM结构回顾
-
-MCDF顶层验证方案
-
-构建验证环境的内径
-
-
-1 UVM结构回顾1.1 uvm_top：（系统）1const uvm_root uvm_top = uvm_root::get()
-
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-11-24 10:36" pubdate>
-              2021-11-24
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/IC/">IC</a>
-            
-              <a href="/categories/IC/uvm%E5%AD%A6%E4%B9%A0/">uvm学习</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/IC/">IC</a>
-            
-              <a href="/tags/uvm%E5%AD%A6%E4%B9%A0/">uvm学习</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/202111212135/IC/uvm%E5%AD%A6%E4%B9%A0/%E5%AE%9E%E9%AA%8Cessay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E5%AE%9E%E9%AA%8C0/" target="_self">
-          <img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121154056091.png" srcset="/img/loading.gif" lazyload alt="UVM入门实验0">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/202111212135/IC/uvm%E5%AD%A6%E4%B9%A0/%E5%AE%9E%E9%AA%8Cessay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E5%AE%9E%E9%AA%8C0/" target="_self">
-          UVM入门实验0
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/202111212135/IC/uvm%E5%AD%A6%E4%B9%A0/%E5%AE%9E%E9%AA%8Cessay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E5%AE%9E%E9%AA%8C0/" target="_self">
-          
-          
-            
-          
-          
-参考文档链接：https://verificationacademy.com/verification-methodology-reference/uvm/docs_1.2/html/
-
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-11-21 21:35" pubdate>
-              2021-11-21
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/IC/">IC</a>
-            
-              <a href="/categories/IC/uvm%E5%AD%A6%E4%B9%A0/">uvm学习</a>
-            
-              <a href="/categories/IC/uvm%E5%AD%A6%E4%B9%A0/%E5%AE%9E%E9%AA%8C/">实验</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%AE%9E%E9%AA%8C/">实验</a>
-            
-              <a href="/tags/uvm%E5%AD%A6%E4%B9%A0/">uvm学习</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/202111181835/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E5%92%8C%E8%BF%9B%E9%98%B62%EF%BC%9A%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%B1%BB_%E9%98%B6%E6%AE%B5_%E9%85%8D%E7%BD%AE_%E6%B6%88%E6%81%AF%E6%9C%BA%E5%88%B6/" target="_self">
-          <img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121154056091.png" srcset="/img/loading.gif" lazyload alt="UVM入门和进阶2：核心基类_阶段_配置_消息机制">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/202111181835/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E5%92%8C%E8%BF%9B%E9%98%B62%EF%BC%9A%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%B1%BB_%E9%98%B6%E6%AE%B5_%E9%85%8D%E7%BD%AE_%E6%B6%88%E6%81%AF%E6%9C%BA%E5%88%B6/" target="_self">
-          UVM入门和进阶2：核心基类_阶段_配置_消息机制
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/202111181835/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E5%92%8C%E8%BF%9B%E9%98%B62%EF%BC%9A%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%B1%BB_%E9%98%B6%E6%AE%B5_%E9%85%8D%E7%BD%AE_%E6%B6%88%E6%81%AF%E6%9C%BA%E5%88%B6/" target="_self">
-          
-          
-            
-          
-          参考文档链接：https://verificationacademy.com/verification-methodology-reference/uvm/docs_1.2/html/
-1 核心基类(uvm_object)1.1 核心基类指的就是uvm_object
-
-uvm_void只是一个虚类(virtual class)，等待将来继承于他的子类去开垦
-有两类uvm_object、uvm_po
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-11-18 18:35" pubdate>
-              2021-11-18
             </time>
           </div>
         
