@@ -1,28 +1,3 @@
-var image_list = [
-    // "http://localhost:4000/img/背景图/65703458_p0.jpg"
-    "https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/背景页.jpg",
-    "https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20220310112417.png",
-    "https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20220310112708.png",
-    "https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20220310112826.png",
-    "https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20220310112900.png",
-    "https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20220310113317.png",
-    "https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20220312211727.png",
-    "https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20220312211609.png",
-    "https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20220312211522.png",
-    "https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20220312211357.png",
-    "https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20220312211342.png",
-    "https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20220312211206.png",
-    "https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/63883229_p0.jpg",
-    "https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/94525092_p0.jpg",
-    //"https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20220310112049.png",
-    //"https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20220310112213.png",
-    //"https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20220310112332.png",
-    "https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/96733090_p2.jpg",
-    "https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/96733090_p3.jpg",
-    "https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/96733090_p4.jpg",
-    "https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/96247202_p0.jpg",
-    "https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/96717167_p0.jpg"
-];
 var url_image_list = [];
 image_list.forEach((item,index,image_list)=>{
     url_image_list.push(' url(' + item +') ')

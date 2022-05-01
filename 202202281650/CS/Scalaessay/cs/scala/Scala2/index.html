@@ -23,17 +23,12 @@
 <meta property="og:site_name" content="友人律的博客">
 <meta property="og:description" content="Table of Contents  generated with DocToc  Scala语言入门 环境配置 IDEA环境配置 变量与数据类型 运算符 控制流 函数式编程 包管理 面向对象 集合 模式匹配 异常处理 隐式转换 泛型 Style Guide sbt 通过案例入门sbt sbt使用 build.sbt 多项目构建 任务图 更多内容   并发编程 总结     Scala语言入门">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/202202281650/CS/Scalaessay/cs/scala/Scala2/Images/Scala_implicit_datatype_cast.jpg">
-<meta property="og:image" content="http://yoursite.com/202202281650/CS/Scalaessay/cs/scala/Scala2/Images/Scala_immutable_collections_tree.jpg">
-<meta property="og:image" content="http://yoursite.com/202202281650/CS/Scalaessay/cs/scala/Scala2/Images/Scala_mutable_collections_tree.jpg">
-<meta property="og:image" content="http://yoursite.com/202202281650/CS/Scalaessay/cs/scala/Scala2/Images/Scala_sbt_dsl_setting_expression.png">
 <meta property="article:published_time" content="2022-02-28T08:50:00.000Z">
-<meta property="article:modified_time" content="2022-03-07T04:34:35.523Z">
+<meta property="article:modified_time" content="2022-05-01T13:21:52.219Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="学习">
 <meta property="article:tag" content="CS">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://yoursite.com/202202281650/CS/Scalaessay/cs/scala/Scala2/Images/Scala_implicit_datatype_cast.jpg">
   
   <title>Scala学习材料 - 友人律的博客</title>
 
@@ -238,7 +233,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/背景页.jpg') no-repeat center center;
+         style="background: url('/img/banner_img/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -514,7 +509,7 @@
 <li>高精度赋值到低精度，直接报错。</li>
 <li>除了图中的隐式类型转换，都需要强制类型转换。</li>
 <li><code>Byte Short Char</code>计算时会直接提升为<code>Int</code>。</li>
-<li><code>Boolean</code>不能参与整数浮点运算，不能隐式转换为整数。<br><img src="Images/Scala_implicit_datatype_cast.jpg" srcset="/img/loading.gif" lazyload alt="Scala中的数据类型转换"></li>
+<li><code>Boolean</code>不能参与整数浮点运算，不能隐式转换为整数。<br><a href="Images/Scala_implicit_datatype_cast.jpg">Scala中的数据类型转换</a></li>
 </ul>
 <p>强制类型转换：</p>
 <ul>
@@ -1013,7 +1008,7 @@
 </ul>
 <p>不可变集合：</p>
 <ul>
-<li><code>scala.collection.immutable</code>包中不可变集合关系一览：<br><img src="Images/Scala_immutable_collections_tree.jpg" srcset="/img/loading.gif" lazyload alt="Scala_mutable_collections_tree"></li>
+<li><code>scala.collection.immutable</code>包中不可变集合关系一览：<br><a href="Images/Scala_immutable_collections_tree.jpg">Scala_mutable_collections_tree</a></li>
 <li>不可变集合没有太多好说的，集合和映射的哈希表和二叉树实现是肯定都有的，序列中分为随机访问序列（数组实现）和线性序列（链表实现），基本数据结构都有了。</li>
 <li><code>Range</code>是范围，常用来遍历，有语法糖支持<code>1 to 10 by 2</code> <code>10 until 1 by -1</code>其实就是隐式转换加上方法调用。</li>
 <li>scala中的<code>String</code>就是<code>java.lang.String</code>，和集合无直接关系，所以是虚箭头，是通过<code>Perdef</code>中的低优先级隐式转换来做到的。经过隐式转换为一个包装类型后就可以当做集合了。</li>
@@ -1023,7 +1018,7 @@
 </ul>
 <p>可变集合：</p>
 <ul>
-<li><code>scala.collection.mutable</code>包中可变集合关系一览：<br><img src="Images/Scala_mutable_collections_tree.jpg" srcset="/img/loading.gif" lazyload alt="Scala_mutable_collections_tree"></li>
+<li><code>scala.collection.mutable</code>包中可变集合关系一览：<br><a href="Images/Scala_mutable_collections_tree.jpg">Scala_mutable_collections_tree</a></li>
 <li>序列中多了<code>Buffer</code>，整体结构差不多。</li>
 </ul>
 <p>不可变和可变：</p>
@@ -1556,7 +1551,7 @@
 <li>在<code>build.sbt</code>中可以定义一个在当前目录中的子项目：<figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala"><span class="hljs-keyword">lazy</span> <span class="hljs-keyword">val</span> root = (project in file(<span class="hljs-string">&quot;.&quot;</span>))<br>  .settings(<br>    name := <span class="hljs-string">&quot;Hello&quot;</span>,<br>    scalaVersion := <span class="hljs-string">&quot;2.12.7&quot;</span><br>  )<br></code></pre></div></td></tr></table></figure></li>
 <li>项目的名称在<code>.setting</code>方法中用一个键值对定义，key是<code>name</code>，值是一个字符串表示项目名称。</li>
 <li><code>build.sbt</code>定义所有的子项目，包含一些的键值对称为<code>setting</code>表达式，使用一门build.sbt DSL（本质上其实就是Scala）来定义项目。<figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala"><span class="hljs-type">ThisBuild</span> / organization := <span class="hljs-string">&quot;com.example&quot;</span><br><span class="hljs-type">ThisBuild</span> / scalaVersion := <span class="hljs-string">&quot;2.12.14&quot;</span><br><span class="hljs-type">ThisBuild</span> / version      := <span class="hljs-string">&quot;0.1.0-SNAPSHOT&quot;</span><br><br><span class="hljs-keyword">lazy</span> <span class="hljs-keyword">val</span> root = (project in file(<span class="hljs-string">&quot;.&quot;</span>))<br>  .settings(<br>    name := <span class="hljs-string">&quot;hello&quot;</span><br>  )<br></code></pre></div></td></tr></table></figure></li>
-<li>看一看这门DSL的定义：<br><img src="Images/Scala_sbt_dsl_setting_expression.png" srcset="/img/loading.gif" lazyload alt="setting expression"></li>
+<li>看一看这门DSL的定义：<br><a href="Images/Scala_sbt_dsl_setting_expression.png">setting expression</a></li>
 <li>每一个都叫做一个setting expression，其中的一些又被叫做task expression。</li>
 <li>一个setting expression包含三部分：<ol>
 <li>左边是key。</li>

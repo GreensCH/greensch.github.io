@@ -1,0 +1,1030 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/con1.png">
+  <link rel="icon" href="/img/con1.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="“无论最终结果将人类历史导向何处，我们决定选择希望”">
+  <meta name="author" content="友人律 | Guilin Chang">
+  <meta name="keywords" content="三差学生、不学无术">
+  <meta name="description" content="PA1-3 RTFSC配置系统kconfig执行menuconfig后的事件：  生成nemu&#x2F;tools&#x2F;kconfig&#x2F;build&#x2F;mconf  检查nemu&#x2F;tools&#x2F;kconfig&#x2F;build&#x2F;mconf程序是否存在, 若不存在, 则编译并生成mconf   生成nemu&#x2F;tools&#x2F;kconfig&#x2F;build&#x2F;conf  检查nemu&#x2F;tools&#x2F;kconfig&#x2F;build&#x2F;conf程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ysyx">
+<meta property="og:url" content="http://yoursite.com/202205011902/IC/%E7%90%86%E8%AE%BA/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%20pa1.2/index.html">
+<meta property="og:site_name" content="友人律的博客">
+<meta property="og:description" content="PA1-3 RTFSC配置系统kconfig执行menuconfig后的事件：  生成nemu&#x2F;tools&#x2F;kconfig&#x2F;build&#x2F;mconf  检查nemu&#x2F;tools&#x2F;kconfig&#x2F;build&#x2F;mconf程序是否存在, 若不存在, 则编译并生成mconf   生成nemu&#x2F;tools&#x2F;kconfig&#x2F;build&#x2F;conf  检查nemu&#x2F;tools&#x2F;kconfig&#x2F;build&#x2F;conf程">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011902064.png">
+<meta property="article:published_time" content="2022-05-01T11:02:21.525Z">
+<meta property="article:modified_time" content="2022-05-01T13:08:41.826Z">
+<meta property="article:author" content="友人律 | Guilin Chang">
+<meta property="article:tag" content="IC">
+<meta property="article:tag" content="数字电路">
+<meta property="article:tag" content="源码">
+<meta property="article:tag" content="code">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011902064.png">
+  
+  <title>ysyx - 友人律的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/stackoverflow-dark.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"eca4a4d34dadf0d4e282cc6ef2dc3de6","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body><!-- hexo injector body_begin start -->
+<link defer rel="stylesheet" href="/css/article_para.css" />
+<div id="web_bg"></div><!-- hexo injector body_begin end -->
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>友人律的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E9%80%9A%E7%9F%A5/">
+                <i class="iconfont icon-link-fill"></i>
+                通知
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1/">
+                <i class="iconfont icon-link-fill"></i>
+                项目与设计
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">
+                <i class="iconfont icon-link-fill"></i>
+                开发工具
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/CS/">
+                <i class="iconfont icon-link-fill"></i>
+                CS
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/IC/">
+                <i class="iconfont icon-link-fill"></i>
+                IC
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/banner_img/anime/96637310_p0.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="ysyx">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-05-01 19:02" pubdate>
+        2022年5月1日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      8.7k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      27 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">ysyx</h1>
+            
+            <div class="markdown-body">
+              <h2><span id="pa1-3-rtfsc">PA1-3 RTFSC</span></h2><h3><span id="配置系统kconfig">配置系统kconfig</span></h3><p>执行menuconfig后的事件：</p>
+<ul>
+<li><p>生成<code>nemu/tools/kconfig/build/mconf</code></p>
+<blockquote>
+<p>检查<code>nemu/tools/kconfig/build/mconf</code>程序是否存在, 若不存在, 则编译并生成<code>mconf</code></p>
+</blockquote>
+</li>
+<li><p>生成<code>nemu/tools/kconfig/build/conf</code></p>
+<blockquote>
+<p>检查<code>nemu/tools/kconfig/build/conf</code>程序是否存在, 若不存在, 则编译并生成<code>conf</code></p>
+</blockquote>
+</li>
+<li><p>运行命令<code>mconf nemu/Kconfig</code>，生成界面</p>
+<blockquote>
+<p>运行命令<code>mconf nemu/Kconfig</code>, 此时<code>mconf</code>将会解析nemu/Kconfig`中的描述, 以菜单树的形式展示各种配置选项, 供开发者进行选择</p>
+</blockquote>
+</li>
+</ul>
+<p>退出菜单后：</p>
+<ul>
+<li><p>config写入<code>nemu/.config</code></p>
+<blockquote>
+<p>退出菜单时, <code>mconf</code>会把开发者选择的结果记录到<code>nemu/.config</code>文件中 </p>
+</blockquote>
+</li>
+<li><p>运行命令<code>conf --syncconfig nemu/Kconfig</code>，结合Kconfig（配置系统文件）和.config（自定义配置信息文件）文件</p>
+<blockquote>
+<p>运行命令<code>conf --syncconfig nemu/Kconfig</code>, 此时<code>conf</code>将会解析<code>nemu/Kconfig</code>中的描述, 并读取选择结果<code>nemu/.config</code>, 结合两者来生成如下四个:</p>
+</blockquote>
+<ul>
+<li>宏定义<code>nemu/include/generated/autoconf.h</code></li>
+<li>Makefile中的变量定义<code>nemu/include/config/auto.conf</code></li>
+<li>Kconfig相关的makefile依赖规则文件<code>nemu/include/config/auto.conf.cmd</code></li>
+<li>目录树<code>nemu/include/config/</code>，配和另一个工具<code>nemu/tools/fixdep</code>来使用</li>
+</ul>
+</li>
+</ul>
+<p>所以, 目前我们只需要关心配置系统生成的如下文件:</p>
+<ul>
+<li><code>nemu/include/generated/autoconf.h</code>, 阅读C代码时使用</li>
+<li><code>nemu/include/config/auto.conf</code>, 阅读Makefile时使用</li>
+</ul>
+<p>于是你就可以根据上述输出结果、Makefile，反推<code>$(CFLAGS)</code>的值是如何形成的.</p>
+<blockquote>
+<p>因为编译每个文件的命令都很类似, 当你理解了一个源文件的编译之后, 你就能类推到其它源文件的编译过程了. 同理, 你也可以按照上述方法理解最后的链接命令.</p>
+</blockquote>
+<h4><span id="项目构建和makefile">项目构建和Makefile</span></h4><p>NEMU的Makefile具备功能：</p>
+<ul>
+<li><p>与配置系统kconfig进行关联</p>
+<ul>
+<li><code>include nemu/include/config/auto.conf</code></li>
+</ul>
+</li>
+<li><p>包含所有filelist</p>
+<ul>
+<li>文件列表(filelist)，决定参与编译的源文件，存在于<code>nemu/src</code>及其子目录下的名为<code>filelist.mk</code>的文件，根据menuco nfig进行维护四个变量<ul>
+<li>四个变量作用：<ul>
+<li>过滤文件</li>
+<li>关联menuconfig中的bool选项</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>编译和链接</p>
+<ul>
+<li>```makefile<br>$(OBJ_DIR)/%.o: %.c<br>  @echo + CC $&lt;<br>  @mkdir -p $(dir $@)<br>  @$(CC) $(CFLAGS) -c -o $@ $&lt;<br>  $(call call_fixdep, $(@:.o=.d), $@)<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk"><br>+ ```text<br>  $(CC) -&gt; gcc<br>  <span class="hljs-variable">$@</span> -&gt; <span class="hljs-regexp">/home/u</span>ser<span class="hljs-regexp">/ics2022/</span>nemu<span class="hljs-regexp">/build/</span>obj-riscv32-nemu-interpreter<span class="hljs-regexp">/src/u</span>tils/timer.o<br>  $&lt; -&gt; src<span class="hljs-regexp">/utils/</span>timer.c<br>  $(CFLAGS) -&gt; 剩下的内容<br></code></pre></div></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h3><span id="第一个客户程序初始化monitor">第一个客户程序：初始化Monitor</span></h3><p><strong>NEMU是一个用来执行客户程序的程序</strong></p>
+<p><strong>使用monitor把程序读入客户机</strong></p>
+<blockquote>
+<p>客户程序一开始并不存在于客户计算机中. 我们需要将客户程序读入到客户计算机中</p>
+</blockquote>
+<ul>
+<li>首先会调用<code>init_monitor()</code>函数(在<code>nemu/src/monitor/monitor.c</code>中定义)</li>
+<li>接下来monitor会调用<code>init_isa()</code>函数(在<code>nemu/src/isa/$ISA/init.c</code>中定义), 来进行一些ISA相关的初始化工作.</li>
+</ul>
+<h4><span id="init_monitor">init_monitor</span></h4><p><strong>kconfig宏生成</strong></p>
+<blockquote>
+<p>我们已经在上文提到过, kconfig会根据配置选项的结果在 <code>nemu/include/generated/autoconf.h</code>中定义一些形如<code>CONFIG_xxx</code>的宏, 我们可以在C代码中通过条件编译的功能对这些宏进行测试, 来判断是否编译某些代码. 例如, 当<code>CONFIG_DEVICE</code>这个宏没有定义时, 设备相关的代码就无需进行编译.</p>
+</blockquote>
+<p><strong>条件编译</strong></p>
+<blockquote>
+<p>为了编写更紧凑的代码, 我们在<code>nemu/include/macro.h</code>中定义了一些专门用来对宏进行测试的宏. 例如<code>IFDEF(CONFIG_DEVICE, init_device());</code>表示, 如果定义了<code>CONFIG_DEVICE</code>, 才会调用<code>init_device()</code>函数; 而<code>MUXDEF(CONFIG_TRACE, &quot;ON&quot;, &quot;OFF&quot;)</code>则表示, 如果定义了<code>CONFIG_TRACE</code>, 则预处理结果为<code>&quot;ON&quot;</code>(<code>&quot;OFF&quot;</code>在预处理后会消失), 否则预处理结果为<code>&quot;OFF&quot;</code>.</p>
+<p>这些宏的功能非常神奇, 你知道这些宏是如何工作的吗?</p>
+</blockquote>
+<p><strong>其他初始化函数</strong></p>
+<p> <code>parse_args()</code>, <code>init_rand()</code>, <code>init_log()</code>和<code>init_mem()</code>并没有什么深奥的内容, 直接RTFSC就行.</p>
+<p><strong>初始化参数</strong></p>
+<p>其中<code>pase_args()</code>调用了<code>getopt_long()</code>函数</p>
+<ul>
+<li><code>int getopt_long(int argc, char * const argv[],const char *optstring, const struct option *longopts,int *flag);</code></li>
+<li>getopt被用来解析命令行选项参数</li>
+</ul>
+<h4><span id="init_isa">init_isa</span></h4><p><strong>作用：</strong></p>
+<ul>
+<li>1、内置的客户程序读入到内存中<ul>
+<li>内置客户程序：放在<code>nemu/src/isa/$ISA/init.c</code>中内置客户程序的行为非常简单, 它只包含少数几条指令, 甚至算不上在做一些有意义的事情.</li>
+<li>内存：NEMU默认为客户计算机提供128MB的物理内存(见<code>nemu/src/memory/paddr.c</code>中定义的<code>pmem</code>)<ul>
+<li>在C语言中我们就很自然地使用一个<code>uint8_t</code>类型的数组来对内存进行模拟.</li>
+</ul>
+</li>
+<li>程序读入内存的位置：让monitor直接把客户程序读入到一个固定的内存位置<code>RESET_VECTOR</code>. <code>RESET_VECTOR</code>的值在<code>nemu/include/memory/paddr.h</code>中定义</li>
+</ul>
+</li>
+<li>2、初始化寄存器, 这是通过<code>restart()</code>函数来实现的. <ul>
+<li>寄存器是什么？在CPU中, 寄存器是一个结构化特征较强的存储部件, 在C语言中我们就很自然地使用相应的结构体来描述CPU的寄存器结构. <strong>不同ISA的寄存器结构也各不相同,</strong> </li>
+<li>nemu寄存器在哪？为此我们把寄存器结构体<code>CPU_state</code>的定义放在<code>nemu/src/isa/$ISA/include/isa-def.h</code>中, 并在<code>nemu/src/cpu/cpu-exec.c</code>中定义一个全局变量<code>cpu</code>. <strong>初始化寄存器的一个重要工作就是设置<code>cpu.pc</code>的初值, 我们需要将它设置成刚才加载客户程序的内存位置,</strong> 这样就可以让CPU从我们约定的内存位置开始执行客户程序了. <strong>对于mips32和riscv32, 它们的0号寄存器总是存放<code>0</code>, 因此我们也需要对其进行初始化</strong></li>
+<li>Monitor读入客户程序并对寄存器进行初始化后, 这时内存的布局如下</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight gherkin"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs gherkin">pmem:<br><br>CONFIG_MBASE      RESET_VECTOR<br>      |<span class="hljs-string">                 </span>|<br>      v                 v<br>      -----------------------------------------------<br>      |<span class="hljs-string">                 </span>|<span class="hljs-string">                  </span>|<br>      |<span class="hljs-string">                 </span>|<span class="hljs-string">    guest prog    </span>|<br>      |<span class="hljs-string">                 </span>|<span class="hljs-string">                  </span>|<br>      -----------------------------------------------<br>                        ^<br>                        |<span class="hljs-string"></span><br><span class="hljs-string">                       pc</span><br></code></pre></div></td></tr></table></figure>
+<ul>
+<li>3、NEMU返回到<code>init_monitor()</code>函数中, 继续调用<code>load_img()</code><ul>
+<li>(在<code>nemu/src/monitor/monitor.c</code>中定义). 这个函数会将一个有意义的客户程序从<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Disk_image">镜像文件</a>读入到内存, 覆盖刚才的内置客户程序. 这个镜像文件是运行NEMU的一个可选参数, 在运行NEMU的命令中指定. 如果运行NEMU的时候没有给出这个参数, NEMU将会运行内置客户程序</li>
+</ul>
+</li>
+<li>4、monitor剩余的初始化工作我们会在后续实验内容中介绍, 目前你无需关心它们的细节, 最后monitor会调用<code>welcome()</code>函数输出欢迎信息. <strong>现在你可以在<code>nemu/</code>目录下编译并运行NEMU了:<code>`make run</code></strong></li>
+</ul>
+<p><strong>补充知识（一）内存</strong></p>
+<ul>
+<li><p>nemu中的BIOS</p>
+<blockquote>
+<p>BIOS是固化在ROM/Flash中的, 它们都是非易失性的存储介质, BIOS中的内容不会因为断电而丢失.因此在真实的计算机系统中, 计算机启动后首先会把控制权交给BIOS, BIOS经过一系列初始化工作之后, 再从磁盘中将有意义的程序读入内存中执行. </p>
+<p><strong>对这个过程的模拟需要了解很多超出本课程范围的细节, 我们在PA中做了简化</strong>: 采取约定的方式让CPU直接从约定的内存位置开始执行.</p>
+</blockquote>
+</li>
+<li><p><em>\</em>查看操作系统的启动过程*</p>
+<blockquote>
+<p>键入<code>sudo dmesg</code>, 就可以输出操作系统的启动日志, 操作系统的行为一览无余.</p>
+<p>在PA的中后期, 你将会在NEMU上运行一个小型操作系统Nanos-lite. 虽然和GNU/Linux相比, Nanos-lite可以说是沧海一粟, 但你将会完全明白操作系统启动过程中的一些关键步骤, 操作系统的大门也将会为你敞开.</p>
+</blockquote>
+</li>
+</ul>
+<p><strong>补充知识（二）初始化寄存器</strong></p>
+<ul>
+<li>物理内存的起始地址与地址映射（不同XSA起始地址不同）<ul>
+<li>x86的物理内存是从0开始编址的, </li>
+<li>mips32和riscv32的物理地址均从<code>0x80000000</code>开始<ul>
+<li>对于mips32和riscv32, 其<code>CONFIG_MBASE</code>将会被定义成<code>0x80000000</code></li>
+<li>将来CPU访问内存时, 我们会将CPU将要访问的内存地址映射到<code>pmem</code>中的相应偏移位置, 这是通过<code>nemu/src/memory/paddr.c</code>中的<code>guest_to_host()</code>函数实现的<ul>
+<li>例如如果mips32的CPU打算访问内存地址<code>0x80000000</code>, 我们会让它最终访问<code>pmem[0]</code>, 从而可以正确访问客户程序的第一条指令. 这种机制有一个专门的名字, 叫<strong>地址映射</strong>, 在后续的PA中我们还会再遇到它.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3><span id="第一个客户程序运行">第一个客户程序：运行</span></h3><p><strong>flow in main函数：</strong></p>
+<ul>
+<li><p>init_monitor</p>
+</li>
+<li><p><strong>进入简易调试器</strong>：调用<code>engine_start()</code>函数 (在<code>nemu/src/engine/interpreter/init.c</code>中定义). 代码会进入简易调试器(Simple Debugger)的主循环<code>sdb_mainloop()</code> (在<code>nemu/src/monitor/sdb/sdb.c</code>中定义), 并输出NEMU的命令提示符:<code>(nemu)</code></p>
+</li>
+<li><p><strong>NEMU执行主循环cpu_exec：</strong>在命令提示符后键入<code>c</code>后, NEMU开始进入指令执行的<strong>主循环<code>cpu_exec()</code></strong> (在<code>nemu/src/cpu/cpu-exec.c</code>中定义). <code>cpu_exec()</code>又会调用<code>execute()</code>, 后者模拟了CPU的工作方式: 不断执行指令. 具体地, 代码将在一个for循环中不断调用<code>exec_once()</code>函数, 这个函数的功能就是我们在上一小节中介绍的内容: 让CPU执行当前PC指向的一条指令, 然后更新PC.</p>
+</li>
+<li><p><strong>主循环：</strong>由于刚才我们运行NEMU的时候并<strong>未给出客户程序的镜像文件</strong>, 此时NEMU将会运行上文提到的<strong>内置客户程序</strong>. NEMU将不断执行指令, 直到遇到以下情况之一, 才会退出指令执行的循环：</p>
+<ul>
+<li><p>达到要求的循环次数.</p>
+</li>
+<li><p>客户程序执行了<code>nemu_trap</code>指令，这条指令之后, NEMU将会根据这个结束状态参数来设置NEMU的结束状态, 并根据不同的状态输出不同的结束信息, 主要包括：</p>
+<blockquote>
+<p><code>nemu_trap</code>指令是一条虚构的特殊指令, 它是为了在NEMU中让客户程序指示执行的结束而加入的, NEMU在ISA手册中选择了一些用于调试的指令, 并将<code>nemu_trap</code>的特殊含义赋予它们. 例如在riscv32的手册中, NEMU选择了<code>ebreak</code>指令来充当<code>nemu_trap</code>. 为了表示客户程序是否成功结束, <code>nemu_trap</code>指令还会接收一个表示结束状态的参数. 当客户程序执行了</p>
+</blockquote>
+<ul>
+<li><code>HIT GOOD TRAP</code> - 客户程序正确地结束执行</li>
+<li><code>HIT BAD TRAP</code> - 客户程序错误地结束执行</li>
+<li><code>ABORT</code> - 客户程序意外终止, 并未结束执行</li>
+</ul>
+</li>
+<li><p>衍生问题1：主循环进行了多久？</p>
+</li>
+<li><p><em>\</em>衍生问题2*：潜在的威胁（二周目）</p>
+</li>
+</ul>
+</li>
+<li><p><strong>客户程序的运行：</strong>执行continue命令后，你看到NEMU输出类似以下的内容时(不同ISA的pc输出值会有所不同):<code>nemu: HIT GOOD TRAP at pc = 0x8000000c</code>，说明客户程序已经成功地结束运行. </p>
+<ul>
+<li><p><strong>这段字串来自于NEMU</strong>而不是客户端程序：NEMU会在<code>cpu_exec()</code>函数的最后打印执行的指令数目和花费的时间, 并计算出指令执行的频率. </p>
+<blockquote>
+<p>但由于内置客户程序太小, 执行很快就结束了, 目前无法计算出有意义的频率, 将来运行一些复杂的程序时, 此处输出的频率可以用于粗略地衡量NEMU的性能</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong>退出<code>cpu_exec()</code>之后</strong>, NEMU将返回到<code>sdb_mainloop()</code>, 等待用户输入命令. 但为了再次运行程序, 你需要键入<code>q</code>退出NEMU, 然后重新运行.</li>
+</ul>
+<p><strong>补充知识：</strong></p>
+<ul>
+<li><strong>简易调试器</strong>是(Simple Debugger)monitor的核心功能, 我们可以在命令提示符中输入命令, 对客户计算机的运行状态进行监控和调试. 框架代码已经实现了几个简单的命令, <strong>它们的功能和GDB是很类似的.</strong></li>
+<li><strong>主循环执行了多久？</strong>在<code>cmd_c()</code>函数中, 调用<code>cpu_exec()</code>的时候传入了参数<code>-1</code>, 你知道这是什么意思吗?<ul>
+<li>*潜在威胁：”调用<code>cpu_exec()</code>的时候传入了参数<code>-1</code>“, 这一做法属于未定义行为吗? 请查阅C99手册确认你的想法.</li>
+</ul>
+</li>
+<li><strong>执行指令的代码：</strong>不同的ISA有着不同的指令格式和含义, 因此执行指令的代码自然是ISA相关的. 这部分代码位于<code>nemu/src/isa/$ISA/inst.c</code>. 关于指令执行的详细说明需要涉及很多细节, 目前你无需关心, 我们将会在PA2中进行说明</li>
+<li><strong>内存如何模拟？</strong><br>内存通过在<code>nemu/src/memory/paddr.c</code>中定义的大数组<code>pmem</code>来模拟. 在客户程序运行的过程中, 总是使用<code>vaddr_read()</code>和<code>vaddr_write()</code> (在<code>nemu/src/memory/vaddr.c</code>中定义)来访问模拟的内存. vaddr, paddr分别代表虚拟地址和物理地址. 这些概念在将来才会用到, 目前不必深究, 但从现在开始保持接口的一致性可以在将来避免一些不必要的麻烦.</li>
+<li><em>\</em>客户程序的结束？<em>（ 谁来指示程序的结束?）：<br>在程序设计课上老师告诉你, 当程序执行到<code>main()</code>函数返回处的时候, 程序就退出了, 你对此深信不疑. 但你是否怀疑过, <em>*凭什么程序执行到<code>main()</code>函数的返回处就结束了</em></em>? 如果有人告诉你, 程序设计课上老师的说法是错的, 你有办法来证明/反驳吗? 如果你对此感兴趣, 请在互联网上搜索相关内容.</li>
+<li><em>\</em>有关linux（有始有终）<em> (建议二周目思考)：<em>*对于GNU/Linux</em></em>上的一个程序, 怎么样才算开始? 怎么样才算是结束? 对于在NEMU中运行的程序, 问题的答案又是什么呢?与此相关的问题还有: NEMU中为什么要有<code>nemu_trap</code>? 为什么要有monitor?</li>
+</ul>
+<p><strong>调试中的三个宏命令</strong></p>
+<ul>
+<li>三个对调试有用的宏(在<code>nemu/include/debug.h</code>中定义)<ul>
+<li><code>Log()</code>是<code>printf()</code>的升级版, 专门用来输出调试信息, 同时还会输出使用<code>Log()</code>所在的源文件, 行号和函数. 当输出的调试信息过多的时候, 可以很方便地定位到代码中的相关位置</li>
+<li><code>Assert()</code>是<code>assert()</code>的升级版, 当测试条件为假时, 在assertion fail之前可以输出一些信息</li>
+<li><code>panic()</code>用于输出信息并结束程序, 相当于无条件的assertion fail</li>
+</ul>
+</li>
+</ul>
+<p><strong>在NEMU中添加GDB</strong></p>
+<p>menuconfig已经为大家准备好相应选项了, 你只需要打开它:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs text">Build Options<br>  [*] Enable debug information<br></code></pre></div></td></tr></table></figure>
+<p>然后清除编译结果并重新编译即可. 尝试阅读相关代码, 理解开启上述menuconfig选项后会导致编译NEMU时的选项产生什么变化.</p>
+<p><strong>总结：</strong></p>
+<h3><span id="就是这么简单">就是这么简单</span></h3><p>事实上, TRM的实现已经都蕴含在上述的介绍中了.</p>
+<ul>
+<li>存储器是个在<code>nemu/src/memory/paddr.c</code>中定义的大数组</li>
+<li>PC和通用寄存器都在<code>nemu/src/isa/$ISA/include/isa-def.h</code>中的结构体中定义</li>
+<li>加法器在… 嗯, 这部分框架代码有点复杂, 不过它并不影响我们对TRM的理解, 我们还是在PA2里面再介绍它吧</li>
+<li>TRM的工作方式通过<code>cpu_exec()</code>和<code>exec_once()</code>体现</li>
+</ul>
+<h2><span id="pa1-4-简易调试器">PA1-4 简易调试器</span></h2><p><strong>什么是SDB：</strong>简易调试器(Simple Debugger, sdb)是NEMU中一项非常重要的基础设施. 我们知道NEMU是一个用来执行其它客户程序的程序, 这意味着, NEMU可以随时了解客户程序执行的所有信息. 然而这些信息对外面的调试器(例如GDB)来说, 是不容易获取的. 例如在通过GDB调试NEMU的时候, 你将很难在NEMU中运行的客户程序中设置断点, 但对于NEMU来说, 这是一件不太困难的事情</p>
+<p><strong>实现位置：</strong>我们需要在monitor中实现一个具有如下功能的简易调试器 (相关部分的代码在<code>nemu/src/monitor/sdb/</code>目录下),</p>
+<p><strong>SDB基础命令：</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>格式</th>
+<th>使用举例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>帮助(1)</td>
+<td><code>help</code></td>
+<td><code>help</code></td>
+<td>打印命令的帮助信息</td>
+</tr>
+<tr>
+<td>继续运行(1)</td>
+<td><code>c</code></td>
+<td><code>c</code></td>
+<td>继续运行被暂停的程序</td>
+</tr>
+<tr>
+<td>退出(1)</td>
+<td><code>q</code></td>
+<td><code>q</code></td>
+<td>退出NEMU</td>
+</tr>
+<tr>
+<td>单步执行</td>
+<td><code>si [N]</code></td>
+<td><code>si 10</code></td>
+<td>让程序单步执行<code>N</code>条指令后暂停执行, 当<code>N</code>没有给出时, 缺省为<code>1</code></td>
+</tr>
+<tr>
+<td>打印程序状态</td>
+<td><code>info SUBCMD</code></td>
+<td><code>info r</code> <code>info w</code></td>
+<td>打印寄存器状态 打印监视点信息</td>
+</tr>
+<tr>
+<td>扫描内存(2)</td>
+<td><code>x N EXPR</code></td>
+<td><code>x 10 $esp</code></td>
+<td>求出表达式<code>EXPR</code>的值, 将结果作为起始内存 地址, 以十六进制形式输出连续的<code>N</code>个4字节</td>
+</tr>
+<tr>
+<td>表达式求值</td>
+<td><code>p EXPR</code></td>
+<td><code>p $eax + 1</code></td>
+<td>求出表达式<code>EXPR</code>的值, <code>EXPR</code>支持的 运算请见<a target="_blank" rel="noopener" href="https://ysyx.oscc.cc/docs/ics-pa/1.6.html">调试中的表达式求值</a>小节</td>
+</tr>
+<tr>
+<td>设置监视点</td>
+<td><code>w EXPR</code></td>
+<td><code>w *0x2000</code></td>
+<td>当表达式<code>EXPR</code>的值发生变化时, 暂停程序执行</td>
+</tr>
+<tr>
+<td>删除监视点</td>
+<td><code>d N</code></td>
+<td><code>d 2</code></td>
+<td>删除序号为<code>N</code>的监视点</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>备注:</strong></p>
+<ul>
+<li>(1) 命令已实现</li>
+<li>(2) 与GDB相比, 我们在这里做了简化, 更改了命令的格式</li>
+</ul>
+<p><strong>补充问题：</strong></p>
+<ul>
+<li>如何避免突如其来的Bug<ul>
+<li>背景：你需要在将来的PA中使用这些功能来帮助你进行NEMU的调试. 如果你的实现是有问题的则会造成debug时间的大幅的增加</li>
+<li>如何解决：如果你想避免类似的悲惨结局, 你需要在实现一个功能之后对它进行充分的测试. 随着时间的推移, 发现同一个bug所需要的代价会越来越大.</li>
+</ul>
+</li>
+<li>如何克服对代码写错的恐慌<ul>
+<li>在开发过程中, 有90%的时间系统都是运行不起来的, 是有bug的, 需要调试.</li>
+<li>所以, 接受现实吧: 代码出错是很正常的</li>
+<li>重要的是, 我们需要使用正确的方法和工具来帮助我们测试和调试, 最终让程序运行起来. 一个例子是版本控制工具<code>git</code>, 它可以跟踪代码的变化, <strong>从而发现bug是何时引入的, 而且能够在必要的时候回退到上一个程序可以运行的版本</strong></li>
+<li><strong>只有掌握正确的方法和工具, 才能真正驱散心中对bug的恐惧</strong></li>
+</ul>
+</li>
+</ul>
+<p><strong>解析命令</strong></p>
+<ol>
+<li>与用户交互的（获取字符串）方法：</li>
+<li>解析命令参数（解析字符串）的方法</li>
+<li>如何测试字符串处理函数</li>
+<li>需要实现的功能：<ol>
+<li>单步执行</li>
+<li>打印寄存器</li>
+<li>扫描内存</li>
+</ol>
+</li>
+</ol>
+<p><strong>需要实现的功能</strong></p>
+<ol>
+<li><strong>单步执行</strong></li>
+</ol>
+<p>单步执行的功能十分简单, 而且框架代码中已经给出了模拟CPU执行方式的函数, 你只要使用相应的参数去调用它就可以了. 如果你仍然不知道要怎么做, RTFSC</p>
+<blockquote>
+<p>怕不是直接exec(-1)</p>
+</blockquote>
+<ol>
+<li><strong>打印寄存器</strong></li>
+</ol>
+<p>打印寄存器就更简单了. 不过既然寄存器的结构是ISA相关的, 我们希望能为简易调试器屏蔽ISA的差异. 框架代码已经为大家准备了如下的API:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs text">// nemu/src/isa/$ISA/reg.c<br>void isa_reg_display(void);<br></code></pre></div></td></tr></table></figure>
+<p>执行<code>info r</code>之后, 就调用<code>isa_reg_display()</code>, 在里面直接通过<code>printf()</code>输出所有寄存器的值即可. 如果你从来没有使用过<code>printf()</code>, 请RTFM或者STFW. 如果你不知道要输出什么, 你可以参考GDB中的输出.</p>
+<ol>
+<li><strong>扫描内存</strong></li>
+</ol>
+<p>扫描内存的实现也不难, 对命令进行解析之后, 先求出表达式的值. 但你还没有实现表达式求值的功能, 现在可以先实现一个简单的版本: 规定表达式<code>EXPR</code>中只能是一个十六进制数, 例如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs text">x 10 0x80000000<br></code></pre></div></td></tr></table></figure>
+<p>这样的简化可以让你暂时不必纠缠于表达式求值的细节. 解析出待扫描内存的起始地址之后, 就可以使用循环将指定长度的内存数据通过十六进制打印出来. 如果你不知道要怎么输出, 同样的, 你可以参考GDB中的输出. 问题是, 我们要如何访问客户计算机的内存数据呢? (答案早就说了喂)</p>
+<p>实现了扫描内存的功能之后, 你可以打印<code>0x80000000</code>或者<code>0x100000</code>附近的内存, 你应该会看到程序的代码, 和内置客户程序的内容进行对比, 检查你的实现是否正确</p>
+<ol>
+<li><strong>其他注意事项</strong></li>
+</ol>
+<ul>
+<li><p>我们对输出的格式不作硬性规定, 就当做是熟悉GNU/Linux编程的一次练习吧.</p>
+</li>
+<li><p>NEMU默认会把单步执行的指令打印出来(这里面埋了一些坑, 你需要RTFSC看看指令是在哪里被打印的), 这样你就可以验证单步执行的效果了.</p>
+</li>
+<li><blockquote>
+<p>不知道如何下手? 嗯, 看来你需要再阅读一遍<a target="_blank" rel="noopener" href="https://ysyx.oscc.cc/docs/ics-pa/1.3.html">RTFSC小节</a>的内容了. 如果你已经忘记了某些注意事项, 重新去阅读一遍也是应该的.</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011902064.png" srcset="/img/loading.gif" lazyload alt="96637310_p0"></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/">IC</a>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/%E7%90%86%E8%AE%BA/">理论</a>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/%E7%90%86%E8%AE%BA/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">基础知识</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/IC/">IC</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/">数字电路</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%BA%90%E7%A0%81/">源码</a>
+                    
+                      <a class="hover-with-bg" href="/tags/code/">code</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/202205011902/IC/%E7%90%86%E8%AE%BA/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/YSYX%20Report/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">YSYX Report</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/202204281445/CS/Linux/tool/C-Cessay/cs/linux/GDB%E5%85%A5%E9%97%A8/">
+                        <span class="hidden-mobile">GDB 入门</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'preferred-color-scheme';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'GreensCH/commitutterances');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <span> | </span> <a href="https://weibo.com/u/7453939976" target="_blank" rel="nofollow noopener"> Green Weibo</a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?eca4a4d34dadf0d4e282cc6ef2dc3de6";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<!-- hexo injector body_end start --><script src="/js/backgroundize.js"></script>
+  <link defer rel="stylesheet" href="/css/backgroundize.css" />
+  
+  <div id="aplayer" style="width:300px"></div>
+  <link defer rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css" />
+  <script src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js"></script>
+  <script defer src="/js/aplayer.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"superSample":1,"position":"left","width":250,"height":500,"vOffset":-18},"mobile":{"show":false},"dialog":{"enable":false,"hitokoto":true,"width":10,"height":10,"vOffset":-100},"log":false});</script></body>
+</html>

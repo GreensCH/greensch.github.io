@@ -23,18 +23,18 @@
 <meta property="og:site_name" content="友人律的博客">
 <meta property="og:description" content="虚拟机linux系统忘记密码修改root或其他用户密码的方法">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211115112334445.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211115112557239.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211115112624497.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205011942385.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205011942390.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205011942391.png">
 <meta property="article:published_time" content="2021-11-15T02:29:00.000Z">
-<meta property="article:modified_time" content="2022-03-19T11:05:55.636Z">
+<meta property="article:modified_time" content="2022-05-01T13:24:21.643Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="解决方法">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="Centos">
 <meta property="article:tag" content="账户">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211115112334445.png">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205011942385.png">
   
   <title>虚拟机linux系统忘记密码修改root或其他用户密码的方法 - 友人律的博客</title>
 
@@ -239,7 +239,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/背景页.jpg') no-repeat center center;
+         style="background: url('/img/banner_img/anime/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -310,13 +310,13 @@
 <p>本文基于centos7环境进行操作，由于centos的版本是有差异的，继续之前请确定好版本。</p>
 <h2><span id="解决方法一可能存在权限问题">解决方法一（可能存在权限问题）</span></h2><p>(1) 重启系统，在开机过程中，快速按下键盘上的方向键↑和↓。目的是告知引导程序，我们需要在引导页面选择不同的操作，以便让引导程序暂停</p>
 <p>以下是暂停后的界面，可以查看下方的英文可知↑和↓的作用。 </p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211115112334445.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205011942385.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>(2) 使用↑和↓将选择行设置为第一行（背景高亮即为选中），按下键盘上的e，进入编辑模式</p>
 <p>(3) 将光标一直移动到 <code>LANG=en_US.UTF-8</code>后面，空格，再追加<code>init=/bin/sh</code>。这里特别注意，需要写在UTF-8后，保持在同一行，并注意空格。有些虚拟机由于屏幕太小，会自动添加\换行，这个是正常的</p>
 <figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">init=/bin/sh<br></code></pre></div></td></tr></table></figure>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211115112557239.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205011942390.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>(4) 按下CTRL+X进行引导启动，成功后进入该界面</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211115112624497.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205011942391.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>(5) 输入以下命令</p>
 <ul>
 <li>挂载根目录  </li>
@@ -412,7 +412,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/202111151136/IC/sv%E5%AD%A6%E4%B9%A0/%E5%AE%9E%E9%AA%8Cessay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C%E4%B8%80_new/">
+                      <a href="/202111151136/IC/sv%E5%AD%A6%E4%B9%A0/%E5%AE%9E%E9%AA%8Cessay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C%E4%B8%80/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">HelloWorld | SV实验0 | SV实验1</span>
                         <span class="visible-mobile">上一篇</span>

@@ -23,18 +23,18 @@
 <meta property="og:site_name" content="友人律的博客">
 <meta property="og:description" content="参考文档链接：https:&#x2F;&#x2F;verificationacademy.com&#x2F;verification-methodology-reference&#x2F;uvm&#x2F;docs_1.2&#x2F;html&#x2F; 前言sv实验五到uvm实验四之间所有的验证结构、组件、环境、运行、怎么开始结束，都是映射的，uvm所有的核心已经sv过度到uvm 今天我们学的寄存器结构，sv里面虽然也有但比较简陋，在uvm我们需要用相关语法去合成">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220324115648418.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220324115906221.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220324202709816.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220324214700393.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220325154103397.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011900998.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011900999.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011900000.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011900001.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011900002.png">
 <meta property="article:published_time" content="2022-02-10T17:26:00.000Z">
-<meta property="article:modified_time" content="2022-03-31T09:14:19.863Z">
+<meta property="article:modified_time" content="2022-05-01T13:11:00.686Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="IC">
 <meta property="article:tag" content="uvm学习">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220324115648418.png">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011900998.png">
   
   <title>UVM入门进阶9：寄存器模型概览_集成.md - 友人律的博客</title>
 
@@ -239,7 +239,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/背景页.jpg') no-repeat center center;
+         style="background: url('/img/banner_img/anime/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -356,7 +356,7 @@
 </li>
 </ul>
 <p><strong>MCDF的寄存器模块的描述：</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220324115648418.png" srcset="/img/loading.gif" lazyload alt="0x00和0x10寄存器位图，内部不同位宽代表了不同域"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011900998.png" srcset="/img/loading.gif" lazyload alt="0x00和0x10寄存器位图，内部不同位宽代表了不同域"></p>
 <ul>
 <li>MCDF的寄存器模块描述，将<strong>0×00功能寄存器</strong>和<strong>0×10状态寄存器</strong>位用图来表示</li>
 <li>通常来讲，一个寄存器有32位宽，寄存器按照地址索引的关系是按<strong>字对齐的（word-align）</strong>，上图中的寄存器有多个域，每个域的属性也可以不相同，reserved域表示的是该域所包含的比特位暂时保留以作日后功能的扩展使用，而对保留域的读写不起任何作用，即无法写入而且读出值也是它的复位值</li>
@@ -364,7 +364,7 @@
 <li>实际上，<strong>寄存器块除了包含寄存器，也可以包含存储器</strong>，因为它们的属性都近乎于读写功能，以及表示为同外界通信的接口</li>
 </ul>
 <p><strong>MCDF的寄存器功能模块可由这样一个register block来表示，寄存器快中有多个寄存器有机结合：</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220324115906221.png" srcset="/img/loading.gif" lazyload alt="左软件模型，右硬件实现"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011900999.png" srcset="/img/loading.gif" lazyload alt="左软件模型，右硬件实现"></p>
 <ul>
 <li><p>左边的softmodel来自简陋的referencemodel通过UVM寄存器泛式变成正规模型，进行预测</p>
 </li>
@@ -389,7 +389,7 @@
 </ul>
 </li>
 </ul>
-<h3><span id="2寄存器中心化管理方式">2）寄存器中心化管理方式</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220324202709816.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="2寄存器中心化管理方式">2）寄存器中心化管理方式</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011900000.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>通过软件建立寄存器模型的方法如何保证与硬件寄存器的内容属性保持一致呢？</p>
 <ul>
 <li>这离不开一份<strong>中心化管理的寄存器描述文件</strong></li>
@@ -418,7 +418,7 @@
 </ul>
 <h2><span id="12-uvm寄存器">1.2 UVM寄存器</span></h2><p>进入编写代码阶段，学会如何使用这些类构建模型、自动生成模型</p>
 <h3><span id="1uvm_reg相关概念">1）uvm_reg相关概念</span></h3><p>不需要理解每一个方法，重点在集成</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220324214700393.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011900001.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>uvm_reg_field</li>
 <li>uvm_reg对应每一个寄存器，内部包含uvm_reg_field</li>
@@ -444,7 +444,7 @@
 <li>那么当拥有一个寄存器模型之后它接下来的使用步骤是什么呢？实际上对于不同的角色，他们对寄存器模型也有着不同的关注，譬如VIP开发者主要关注实现总线适配器，TB开发者关心如何将总线适配器与寄存器模型连接</li>
 <li>不管对于什么角色，寄存器模型从一开始的寄存器描述文档到最后的功能检查，都需要贯穿寄存器模型的生命周期</li>
 </ul>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220325154103397.png" srcset="/img/loading.gif" lazyload alt="k"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011900002.png" srcset="/img/loading.gif" lazyload alt="k"></p>
 <p><strong>对于验证中的不同角色，他们也会参与上述的部分流程</strong></p>
 <ul>
 <li>系统工程师需要提供寄存器描述文件</li>

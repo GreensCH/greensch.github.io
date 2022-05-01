@@ -23,82 +23,82 @@
 <meta property="og:site_name" content="友人律的博客">
 <meta property="og:description" content="参考文档链接：https:&#x2F;&#x2F;verificationacademy.com&#x2F;verification-methodology-reference&#x2F;uvm&#x2F;docs_1.2&#x2F;html&#x2F; 1 核心基类(uvm_object)1.1 核心基类指的就是uvm_object  uvm_void只是一个虚类(virtual class)，等待将来继承于他的子类去开垦 有两类uvm_object、uvm_po">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211119165852944.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211119170014086.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211119175234308.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211119175354669.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211119200932044.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211119201123177.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211119201732071.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211119201852449.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211119202328296.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211119202538653.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211119203055568.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211120103356118.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211120105837242.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211120110305745.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211120110429625.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211120110557313.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211120111454285.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211120113914694.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211120151732202.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211120151900842.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211120152031282.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211120152358177.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211120152756985.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211120111057485.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121104044563.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121105434100.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121105541924.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121133437198.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121133528289.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121133758460.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121133908469.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121134135788.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121134507421.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121142237253.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121142724706.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121144411570.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121145217232.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121150059484.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121150748646.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121151047519.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121151418897.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121151343183.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121151552696.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121151711248.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121151809157-16374790902901.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121151834681.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121153004400.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121154614767.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121155052295.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121164443607.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121171501531.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121171442924.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121171600469.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121171945087.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121172019437.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121172401435.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121172535029.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121173653346.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121174228374.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121174345564.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121175458444.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121175515039.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121180007597.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121180526774.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121180714439.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121180827395.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121181339630.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121180842859.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121181735130.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844656.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844658.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844659.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844660.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844661.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844662.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844663.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844664.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844665.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844667.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844668.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844669.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844670.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844671.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844672.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844673.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844674.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844675.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844676.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844677.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844678.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844679.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844680.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844681.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844682.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844683.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844684.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844685.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844686.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844687.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844688.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844689.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844690.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844691.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844692.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844693.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844694.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844695.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844696.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844697.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844698.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844699.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844700.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844701.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844702.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844703.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844704.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844705.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844706.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844708.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844709.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844710.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844711.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844712.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844713.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844714.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844715.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844716.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844717.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844718.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844719.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844720.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844721.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844722.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844723.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844724.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844725.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844726.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844727.png">
 <meta property="article:published_time" content="2021-11-18T10:35:00.000Z">
-<meta property="article:modified_time" content="2022-03-19T11:05:55.635Z">
+<meta property="article:modified_time" content="2022-05-01T13:11:00.686Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="IC">
 <meta property="article:tag" content="uvm学习">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211119165852944.png">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844656.png">
   
   <title>UVM入门和进阶2：核心基类_阶段_配置_消息机制 - 友人律的博客</title>
 
@@ -303,7 +303,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/背景页.jpg') no-repeat center center;
+         style="background: url('/img/banner_img/anime/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -371,25 +371,25 @@
             
             <div class="markdown-body">
               <p>参考文档链接：<a target="_blank" rel="noopener" href="https://verificationacademy.com/verification-methodology-reference/uvm/docs_1.2/html/">https://verificationacademy.com/verification-methodology-reference/uvm/docs_1.2/html/</a></p>
-<h1><span id="1-核心基类uvm_object">1 核心基类(uvm_object)</span></h1><h2><span id="11-核心基类指的就是uvm_object">1.1 <strong>核心基类指的就是uvm_object</strong></span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211119165852944.png" srcset="/img/loading.gif" lazyload alt></p>
+<h1><span id="1-核心基类uvm_object">1 核心基类(uvm_object)</span></h1><h2><span id="11-核心基类指的就是uvm_object">1.1 <strong>核心基类指的就是uvm_object</strong></span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844656.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li><code>uvm_void</code>只是一个虚类(virtual class)，等待将来继承于他的子类去开垦</li>
 <li>有两类<code>uvm_object</code>、<code>uvm_port_base</code>类继承于<code>uvm_void</code></li>
 <li>uvm世界里面十大类八大类继承于<code>uvm_object</code></li>
 <li><code>除了</code>uvm_port_base<if>``类以外uvm里面的类都可以溯源到uvm_object类</if></li>
 </ul>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211119170014086.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844658.png" srcset="/img/loading.gif" lazyload alt></p>
 <h2><span id="12-uvm_object">1.2 uvm_object</span></h2><p><strong>uvm_object核心方法</strong>：不用自己实现，uvm自动去实现</p>
 <figure class="highlight abnf"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs abnf">copy<span class="hljs-comment">;</span><br>clone<span class="hljs-comment">;</span><br>compare<span class="hljs-comment">;</span><br>print<br>pack/unpack<br></code></pre></div></td></tr></table></figure>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211119175234308.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844659.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>uvm里面把sv的句柄拷贝和对象拷贝区分成了copy与clone，且同样需要src，dst object</p>
 <h2><span id="13-主要机制域的自动化field-automation">1.3 主要机制：域的自动化(field automation)</span></h2><p><strong>域：</strong>UVM里任何的成员变量都可以称之为域(field)，在sv里面称之为属性property</p>
 <p><strong>域的自动化：</strong>使得在注册时，声明之后可能会用到的对象拷贝、克隆、打印等操作的成员变量</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211119175354669.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844660.png" srcset="/img/loading.gif" lazyload alt></p>
 <h3><span id="132-代码">1.3.2 代码</span></h3><p><strong>代码原文</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211119200932044.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844661.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>上文代码解释</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211119201123177.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844662.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>第一点：开始域自动化声明和结束声明</p>
 <figure class="highlight isbl"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs isbl">`<span class="hljs-function"><span class="hljs-title">uvm_object_utils_begin</span>(<span class="hljs-variable">box</span>)</span><br>`<span class="hljs-function"><span class="hljs-title">uvm_object_utils_end</span>(<span class="hljs-variable">box</span>)</span><br></code></pre></div></td></tr></table></figure>
 <hr>
@@ -400,15 +400,15 @@
 <p>补充点：域自动化数据操作宏参数<code>UVM_ALL_ON</code>：是与之前数据变量对应的，数据操作的一个宏</p>
 <p>数据操作宏参考表P276页 表10.3</p>
 <p>对于小白来讲默认采取<code>UVM_ALL_ON</code>或<code>UVM_ALL_DEFAULT</code>就可以将所有数据操作(copy,compare,print,record,pack)都打开</p>
-<h3><span id="133-代码续">1.3.3 代码续</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211119201732071.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="133-代码续">1.3.3 代码续</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844663.png" srcset="/img/loading.gif" lazyload alt></p>
 <hr>
 <p><strong>调用未定义的copy函数</strong></p>
 <figure class="highlight abnf"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs abnf">b2.copy(b1)<span class="hljs-comment">;</span><br></code></pre></div></td></tr></table></figure>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211119201852449.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844664.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>b1的成员变量都拷贝到b2</p>
 <p>SV的copy是自己实现的，uvm不需要</p>
-<h3><span id="133-总结">1.3.3 总结</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211119202328296.png" srcset="/img/loading.gif" lazyload alt></p>
-<h2><span id="14-核心方法之一拷贝copy-默认deepcopycopydo_copy">1.4 核心方法之一：拷贝(copy)        默认deepcopy=copy()+do_copy()</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211119202538653.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="133-总结">1.3.3 总结</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844665.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="14-核心方法之一拷贝copy-默认deepcopycopydo_copy">1.4 核心方法之一：拷贝(copy)        默认deepcopy=copy()+do_copy()</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844667.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>SV里面的copy先做对象的创建再做数据的copy —-&gt; UVM里面的clone</li>
 <li>SV里面的数据copy拷贝 —&gt; UVM里面的copy拷贝即对象已经创建好就进行数据的拷贝</li>
@@ -421,9 +421,9 @@ SV里面的copy先做对象的创建再做数据的copy ---&gt; UVM里面的clon
 SV里面的数据copy拷贝 --&gt; UVM里面的copy拷贝即对象已经创建好就进行数据的拷贝
 </code></pre>
 <h3><span id="142-代码">1.4.2 代码</span></h3><p><strong>定义ball类，在box类中对ball进行例化</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211119203055568.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844668.png" srcset="/img/loading.gif" lazyload alt></p>
 <hr>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211120103356118.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844669.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>box类中的成员变量完全拷贝过去了</li>
 <li>内部成员ball类b的成员变量没有完全拷贝<ul>
@@ -435,17 +435,17 @@ SV里面的数据copy拷贝 --&gt; UVM里面的copy拷贝即对象已经创建�
 </ul>
 </li>
 </ul>
-<h2><span id="15-核心方法之一比较compare">1.5 核心方法之一：比较(compare)</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211120105837242.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="15-核心方法之一比较compare">1.5 核心方法之一：比较(compare)</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844670.png" srcset="/img/loading.gif" lazyload alt></p>
 <figure class="highlight ada"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs ada"><span class="hljs-keyword">function</span> <span class="hljs-title">bit</span> compare (uvm_object rhs, uvm_comparer comparer=null);<br></code></pre></div></td></tr></table></figure>
-<h3><span id="152-例子">1.5.2 例子</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211120110305745.png" srcset="/img/loading.gif" lazyload alt></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211120110429625.png" srcset="/img/loading.gif" lazyload alt></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211120110557313.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="152-例子">1.5.2 例子</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844671.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844672.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844673.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>第三点当比较器为空uvm_comparer=null则会使用<strong>全局的默认比较器：uvm_default_comparer（详细参考1.6）</strong>，最大的错误次数为1，只要失败一次就返回</li>
 </ul>
-<h2><span id="17-打印print直接打印spring返回字符串do_print回调">1.7 打印：print()直接打印，spring()返回字符串，do_print()回调</span></h2><h3><span id="171">1.7.1</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211120111454285.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="17-打印print直接打印spring返回字符串do_print回调">1.7 打印：print()直接打印，spring()返回字符串，do_print()回调</span></h2><h3><span id="171">1.7.1</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844674.png" srcset="/img/loading.gif" lazyload alt></p>
 <h3><span id="172-例子">1.7.2 例子</span></h3><p>声明了一个uvm_table_printer句柄local_printer<br>并使用   ；p’p’p’p’p’p’p’p’p’p’p’p’p’p’p’p’p’p’p</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211120113914694.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844675.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>第一次print，没对打印机printer指定，uvm使用默认uvm_default_printer打印</li>
 <li>第二次print，指定uvm_default_printer=uvm_default_line_printer，uvm使用uvm_default_line_printer打印</li>
@@ -454,26 +454,26 @@ SV里面的数据copy拷贝 --&gt; UVM里面的copy拷贝即对象已经创建�
 </ul>
 <hr>
 <p>输出结果</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211120151732202.png" srcset="/img/loading.gif" lazyload alt></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211120151900842.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844676.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844677.png" srcset="/img/loading.gif" lazyload alt></p>
 <h2><span id="18-打包和解包packampunpack">1.8 打包和解包(pack&amp;unpack)</span></h2><h3><span id="181">1.8.1</span></h3><p><strong>一般在纯粹的UVM环境里是用不到的</strong>，一般用不到</p>
 <p><strong>把域(标量)打包成一个比特流动态数组</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211120152031282.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844678.png" srcset="/img/loading.gif" lazyload alt></p>
 <figure class="highlight pgsql"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs pgsql"><span class="hljs-keyword">function</span> <span class="hljs-type">int</span> pack (<span class="hljs-keyword">ref</span> <span class="hljs-type">bit</span> bitstream[], <span class="hljs-keyword">input</span> uvm_packer packer=<span class="hljs-keyword">null</span>);<br><span class="hljs-keyword">function</span> <span class="hljs-type">int</span> unpack (<span class="hljs-keyword">ref</span> <span class="hljs-type">bit</span> bitstream[], <span class="hljs-keyword">input</span> uvm_packer packer=<span class="hljs-keyword">null</span>);<br></code></pre></div></td></tr></table></figure>
 <hr>
 <p>如下：volume-32位、color-32位、box-24位 —-&gt;最终打包成32+32+24=88位比特流的数组</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211120152358177.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844679.png" srcset="/img/loading.gif" lazyload alt></p>
 <h3><span id="182-为什么这么做">1.8.2 为什么这么做</span></h3><p>仿真器与FPGA(或其他模型)连接</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211120152756985.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844680.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>sim UVM仿真器与FPGA(或其他模型)连接通信，到具体的物理接口上，数据以bitstream形式，通过PCIE/USB/JTAG/UART等协议传输</p>
 <p>UVM的pack&amp;unpack是simUVM(软件侧)对数据打包的方法</p>
 <p>对应FPGA或SystemC模型或不同语言也是通过相关硬件模块实现</p>
-<h2><span id="16-全局对象">1.6 全局对象</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211120111057485.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="16-全局对象">1.6 全局对象</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844681.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>uvm_top</strong>为全局的顶层，与其他全局对象处于并列位置</p>
 <p>如果不想用默认比较器uvm_default_comparer可以创建一个<code>uvm_comparer</code>对象</p>
 <p>（补充：uvm_factory不要去修改）</p>
 <h2><span id="19-使用到的方法总结">1.9 使用到的方法总结</span></h2><figure class="highlight actionscript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs actionscript"><span class="hljs-keyword">class</span>.sprint<br>`uvm_info<br></code></pre></div></td></tr></table></figure>
-<h1><span id="2-phase机制">2 phase机制</span></h1><h2><span id="21-概述">2.1 概述</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121104044563.png" srcset="/img/loading.gif" lazyload alt></p>
+<h1><span id="2-phase机制">2 phase机制</span></h1><h2><span id="21-概述">2.1 概述</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844682.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>解决的问题：</p>
 <ul>
 <li>例化先后关系</li>
@@ -482,13 +482,13 @@ SV里面的数据copy拷贝 --&gt; UVM里面的copy拷贝即对象已经创建�
 </ul>
 <h2><span id="22-执行机制">2.2 执行机制</span></h2><h3><span id="221">2.2.1</span></h3><p><strong>一共有九个phase，对应九个方法，只有uvm_component具备</strong>，即如果你的类型是个组件的话一定会有phase机制</p>
 <p><strong>主要用到build, connect, run, report</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121105434100.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844683.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>执行顺序自顶向下，从build到final</li>
 <li>只有run是任务，其他的是函数，函数意味着要立即返回</li>
 </ul>
 <h3><span id="222-uvm_phase形参-例子-工厂创建对象的实例">2.2.2 uvm_phase形参、例子、工厂创建对象的实例</span></h3><p><strong>uvm_phase形参用于传入当前phase</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121105541924.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844684.png" srcset="/img/loading.gif" lazyload alt></p>
 <hr>
 <p><strong>执行方法名：</strong></p>
 <figure class="highlight reasonml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs reasonml"><span class="hljs-keyword">function</span> void <span class="hljs-constructor">T_phase(<span class="hljs-params">uvm_phase</span> <span class="hljs-params">phase</span>)</span>;<br></code></pre></div></td></tr></table></figure>
@@ -499,10 +499,10 @@ SV里面的数据copy拷贝 --&gt; UVM里面的copy拷贝即对象已经创建�
 <p>this指的是c1或c2的parent，这里是创建这些对象的外部类，对应的topcomp</p>
 <hr>
 <p><strong>该例子例化的类结构图</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121133437198.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844685.png" srcset="/img/loading.gif" lazyload alt></p>
 <h4><span id="2222-执行结果">2.2.2.2 执行结果</span></h4><p>从结果看，<strong>执行顺序：自顶向下</strong>（先创建顶层实例，在创建底层实例）</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121133528289.png" srcset="/img/loading.gif" lazyload alt></p>
-<h2><span id="23-九个主要phaserun_phase的功能">2.3 九个主要phase：run_phase的功能</span></h2><h3><span id="231">2.3.1</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121133758460.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844686.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="23-九个主要phaserun_phase的功能">2.3 九个主要phase：run_phase的功能</span></h2><h3><span id="231">2.3.1</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844687.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>上电</li>
 <li>复位</li>
@@ -510,7 +510,7 @@ SV里面的数据copy拷贝 --&gt; UVM里面的copy拷贝即对象已经创建�
 <li>发送主要测试内容</li>
 <li>等待DUT完成测试</li>
 </ul>
-<h3><span id="232-进一步细分run_phase为12个分支phase">2.3.2 进一步细分run_phase为12个分支phase</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121133908469.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="232-进一步细分run_phase为12个分支phase">2.3.2 进一步细分run_phase为12个分支phase</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844688.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>pre_reset_phase</li>
 <li>reset_phase</li>
@@ -524,14 +524,14 @@ SV里面的数据copy拷贝 --&gt; UVM里面的copy拷贝即对象已经创建�
 <li>shutdown_phase</li>
 <li>post_shutdown_phase</li>
 </ul>
-<h3><span id="233-run_phase与12分支phase关系">2.3.3 run_phase与12分支phase关系</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121134135788.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="233-run_phase与12分支phase关系">2.3.3 run_phase与12分支phase关系</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844689.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>建议不要使用12个分支phase</strong></p>
 <p>当环境中同时存在run_phase与分支phase时：</p>
 <p>run_phase和定义的分支会同时运行为两个线程，且两个线程都结束时才进入下一个phase</p>
-<h2><span id="24-uvm编译和运行顺序">2.4 UVM编译和运行顺序</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121134507421.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="24-uvm编译和运行顺序">2.4 UVM编译和运行顺序</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844690.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>run是task所以可以消耗时间</p>
 <h2><span id="25-uvm仿真开始run_test">2.5 UVM仿真开始：run_test()</span></h2><h3><span id="251">2.5.1</span></h3><p>类比SV中仿真开始</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121142237253.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844691.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li><p>方法一：<strong>run_test(“xxxx-test”)</strong></p>
 </li>
@@ -540,7 +540,7 @@ SV里面的数据copy拷贝 --&gt; UVM里面的copy拷贝即对象已经创建�
 </ul>
 <h3><span id="252-uvm世界的诞生run_test">2.5.2 UVM世界的诞生：run_test()</span></h3><p>run_test()从uvm_root创建了一个UVM世界，是唯一的顶层</p>
 <p>run_test(string test_name=””);源码如下：</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121142724706.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844692.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li><p>先拿到一个coreservice_t</p>
 </li>
@@ -550,7 +550,7 @@ SV里面的数据copy拷贝 --&gt; UVM里面的copy拷贝即对象已经创建�
 </ul>
 <p>即run_test(str)调用顶层，顶层top创建test，test再创建下面的哥哥结构</p>
 <h3><span id="253-uvm_top承担的责任">2.5.3 uvm_top承担的责任</span></h3><p>uvm_top承担的责任非常重要，但无需我们去实现</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121144411570.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844693.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>uvm_top是uvm_root类的全局唯一一个实例</li>
 <li>uvm_top是uvm里面例化的任何一个实例的顶层<ul>
@@ -560,29 +560,29 @@ SV里面的数据copy拷贝 --&gt; UVM里面的copy拷贝即对象已经创建�
 <li>uvm_top控制各个phase的执行顺序</li>
 <li>uvm_top完成使用层次名索引的功能；配置部分都在uvm_top里面</li>
 </ul>
-<h3><span id="254-uvm_top调用run_testuvm_top做了什么">2.5.4 uvm_top调用run_test，uvm_top做了什么</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121145217232.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="254-uvm_top调用run_testuvm_top做了什么">2.5.4 uvm_top调用run_test，uvm_top做了什么</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844694.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>objection机制是用来控制仿真退出的</li>
 <li>创建uvm_test_top是为了调用各个组件的phase方法，进行安排</li>
 </ul>
 <h2><span id="26-uvm仿真结束我们的组件需要至少有一个能够挂起run_phase">2.6 UVM仿真结束：我们的组件需要至少有一个能够挂起run_phase</span></h2><h3><span id="261">2.6.1</span></h3><p><strong>控制（实现阻碍仿真退出）仿真退出只有一种方式，就是objection机制</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121150059484.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844695.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>uvm_objection机制实际上就是个计数器，在SV中是semapho旗语</p>
-<h3><span id="262-uvm_objection用来实现反停止的方法">2.6.2 uvm_objection用来实现反停止的方法</span></h3><h3><span id="261raise挂起-drop落下">2.6.1raise挂起、drop落下</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121150748646.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="262-uvm_objection用来实现反停止的方法">2.6.2 uvm_objection用来实现反停止的方法</span></h3><h3><span id="261raise挂起-drop落下">2.6.1raise挂起、drop落下</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844696.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>我们一般在run的阶段会把仿真挂起，对各<strong>个组件来说至少有一个需要把objection挂起防止uvm退出</strong>，如下：</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121151047519.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844697.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>如果uvm在run_phase时没有任何组件挂起，则会直接跳到report阶段</p>
-<h3><span id="2622-例子代码">2.6.2.2 例子代码</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121151418897.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="2622-例子代码">2.6.2.2 例子代码</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844698.png" srcset="/img/loading.gif" lazyload alt></p>
 <figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">phase.raise_objection(this);<span class="hljs-regexp">//</span>this指的是把当前组件挂起phase.drop_objection(this);<span class="hljs-regexp">//</span>this指的是把当前组件落下<br></code></pre></div></td></tr></table></figure>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121151343183.png" srcset="/img/loading.gif" lazyload alt></p>
-<h4><span id="2623-例子代码2你需要把你的挂起代码放在run_phase的第一行执行">2.6.2.3 例子代码2：你需要把你的挂起代码放在run_phase()的第一行执行</span></h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121151552696.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844699.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="2623-例子代码2你需要把你的挂起代码放在run_phase的第一行执行">2.6.2.3 例子代码2：你需要把你的挂起代码放在run_phase()的第一行执行</span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844700.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>错误的，直接全部跳过了</p>
 <p>你需要把你的挂起代码放在run_phase()的第一行执行</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121151711248.png" srcset="/img/loading.gif" lazyload alt></p>
-<h3><span id="264-你可以在component-test-sequence中进行挂起操作">2.6.4 你可以在component、test、sequence中进行挂起操作</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121151809157-16374790902901.png" srcset="/img/loading.gif" lazyload alt></p>
-<h1><span id="3-config机制">3 config机制</span></h1><h2><span id="31-概述">3.1 概述</span></h2><h3><span id="311">3.1.1</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121151834681.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844701.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="264-你可以在component-test-sequence中进行挂起操作">2.6.4 你可以在component、test、sequence中进行挂起操作</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844702.png" srcset="/img/loading.gif" lazyload alt></p>
+<h1><span id="3-config机制">3 config机制</span></h1><h2><span id="31-概述">3.1 概述</span></h2><h3><span id="311">3.1.1</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844703.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>config不同参数来选择：组件类型、组件实例数目、组件之间的连接、组件的运行模式；或是修改更细节的内容</p>
-<h3><span id="312-uvm_config_db配置类">3.1.2 uvm_config_db配置类</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121153004400.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="312-uvm_config_db配置类">3.1.2 uvm_config_db配置类</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844704.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>可以把一个变量从任何一个层次传递到其他层次，甚至底层组件没有创建也可以传递</p>
 <p>可传递内容：</p>
 <ul>
@@ -601,7 +601,7 @@ SV里面的数据copy拷贝 --&gt; UVM里面的copy拷贝即对象已经创建�
 <li><p>(后面是错误的笔记)先set再创建，就会生成相应设置后的类</p>
 </li>
 </ul>
-<h2><span id="33-interface传递">3.3 interface传递</span></h2><h3><span id="331">3.3.1</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121154614767.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="33-interface传递">3.3 interface传递</span></h2><h3><span id="331">3.3.1</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844705.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>SV中使用层次化的interface所以完成传递，即调用每一层的set_interface进行层层传递，非常不好</p>
 <ul>
 <li>一定要对interface与vitural interface区分开，传递的过程中应该是virtual interface即传递指针</li>
@@ -613,16 +613,16 @@ SV里面的数据copy拷贝 --&gt; UVM里面的copy拷贝即对象已经创建�
 <li><p>在test1的initial中进行set，且set一定要发生在run_test()之前确保了可以成功传递</p>
 </li>
 </ul>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121155052295.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844706.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>注意<code>virtual interface</code>，在软件中都得使用virtual interface</p>
 <hr>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121164443607.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844708.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>get(this,””,”vif”,vif)前三个参数完成的层次为“root.test.c1.vif”。其中第二个参数代表的时实例名，由于这里还没有进行例化所以用空字符串代替</p>
-<h3><span id="333-例子代码续">3.3.3 例子代码续</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121171501531.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="333-例子代码续">3.3.3 例子代码续</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844709.png" srcset="/img/loading.gif" lazyload alt></p>
 <hr>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121171442924.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844710.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>uvm_config_db里面就是一些关系数组，做了中间的变量存放，通过set,get改变值：</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121171600469.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844711.png" srcset="/img/loading.gif" lazyload alt></p>
 <h2><span id="34-变量设置">3.4 变量设置</span></h2><h3><span id="341-342-例子代码">3.4.1 , 3.4.2 例子代码</span></h3><p>下面例子</p>
 <ul>
 <li><p>在build_phase里get vif</p>
@@ -630,22 +630,22 @@ SV里面的数据copy拷贝 --&gt; UVM里面的copy拷贝即对象已经创建�
 <li><p>在test1的initial中进行set，再进行create</p>
 </li>
 </ul>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121171945087.png" srcset="/img/loading.gif" lazyload alt></p>
-<h3><span id="343-例子代码续">3.4.3 例子代码续</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121172019437.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844712.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="343-例子代码续">3.4.3 例子代码续</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844713.png" srcset="/img/loading.gif" lazyload alt></p>
 <h2><span id="35-object传递">3.5 object传递</span></h2><h3><span id="351">3.5.1</span></h3><p>当变量比较多的时候，一个一个写不方便</p>
 <p>可以把这些变量封装到uvm_object类里面，类例化，传递该对象句柄</p>
 <ul>
 <li>先set再create</li>
 </ul>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121172401435.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844714.png" srcset="/img/loading.gif" lazyload alt></p>
 <h3><span id="352-例子代码">3.5.2 例子代码</span></h3><ul>
 <li>可以父类uvm_oject传递：此时注意get时父类句柄转换为子类</li>
 <li>可以直接以继承过来的子类进行传递</li>
 <li>set , get 严格类型一致</li>
 </ul>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121172535029.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844715.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>注意代码<code>void`($cast(cfg, tmp))</code>把父类句柄转成子类句柄，从而访问子类句柄里的成员变量</p>
-<h3><span id="352-例子代码续">3.5.2 例子代码续</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121173653346.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="352-例子代码续">3.5.2 例子代码续</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844716.png" srcset="/img/loading.gif" lazyload alt></p>
 <h3><span id="类型要完全一致底层get是父类句柄uvm_objection顶层set也得是该父类句柄">类型要完全一致：底层get是父类句柄(uvm_objection)顶层set也得是该父类句柄</span></h3><h2><span id="36-总结与建议">3.6 总结与建议</span></h2><h3><span id="361-总结">3.6.1 总结</span></h3><ul>
 <li><p><strong>set,get成对出现</strong></p>
 </li>
@@ -653,8 +653,8 @@ SV里面的数据copy拷贝 --&gt; UVM里面的copy拷贝即对象已经创建�
 </li>
 <li>路径中的*星号表通配符，意思是任意路径</li>
 </ul>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121174228374.png" srcset="/img/loading.gif" lazyload alt></p>
-<h3><span id="361-建议">3.6.1 建议</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121174345564.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844717.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="361-建议">3.6.1 建议</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844718.png" srcset="/img/loading.gif" lazyload alt></p>
 <h1><span id="4-消息管理">4 消息管理</span></h1><h2><span id="41-概述">4.1 概述</span></h2><p>一个好的验证系统应具有消息管理特性：</p>
 <ul>
 <li>一种标准化的方式打印</li>
@@ -682,7 +682,7 @@ SV里面的数据copy拷贝 --&gt; UVM里面的copy拷贝即对象已经创建�
 <li><p>line：消息发生时该程序的行号（留空就行，一般系统自动添加）</p>
 </li>
 </ul>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121175458444.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844719.png" srcset="/img/loading.gif" lazyload alt></p>
 <h3><span id="422-verbosity冗余度uvm_none">4.2.2 verbosity冗余度：UVM_NONE</span></h3><p>冗余度：代表消息重要不重要，与我们的直观认识相反</p>
 <ul>
 <li>UVM_NONE：最重要，没有任何bur/filter可以过滤</li>
@@ -692,8 +692,8 @@ SV里面的数据copy拷贝 --&gt; UVM里面的copy拷贝即对象已经创建�
 <li>UVM_FULL：更容易被过滤</li>
 <li>UVM_DEBUG：更容易被过滤</li>
 </ul>
-<h2><span id="43-消息处理">4.3 消息处理</span></h2><h3><span id="441-处理方式">4.4.1 处理方式</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121175515039.png" srcset="/img/loading.gif" lazyload alt></p>
-<h3><span id="442-消息宏">4.4.2 消息宏</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121180007597.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="43-消息处理">4.3 消息处理</span></h2><h3><span id="441-处理方式">4.4.1 处理方式</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844720.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="442-消息宏">4.4.2 消息宏</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844721.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>谁提供的这些消息？：uvm_report_object</p>
 <ul>
 <li>我们可以用组件的方法进行调用</li>
@@ -702,14 +702,14 @@ SV里面的数据copy拷贝 --&gt; UVM里面的copy拷贝即对象已经创建�
 <figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-meta">`uvm_info(ID, MESSAGE, VERBOSITY)</span><br><span class="hljs-meta">`uvm_warning(ID, MESSAGE)</span><br><span class="hljs-meta">`uvm_error(ID, MESSAGE)</span><br><span class="hljs-meta">`uvm_fatal(ID, MESSAGE)</span><br></code></pre></div></td></tr></table></figure>
 <p>对于w,e,f不用传verbosity，他们默认是UVM_LOW，较高等级了</p>
 <h2><span id="44-消息机制">4.4 消息机制</span></h2><p><strong>消息处理是uvm_report_handler类完成的</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121180526774.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844722.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li><code>set_max_quit_count</code>对ERROR消息计数停止上限</li>
 </ul>
 <h2><span id="45-消息处理中的回调函数">4.5 消息处理中的回调函数</span></h2><p><strong>回调函数有如下固定形式，在任何地方实现都可以</strong></p>
 <p>一般来说一定要定义<strong>report_hook</strong>，其他看细分要求</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121180714439.png" srcset="/img/loading.gif" lazyload alt></p>
-<h3><span id="452-例子代码">4.5.2 例子代码</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121180827395.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844723.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="452-例子代码">4.5.2 例子代码</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844724.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li><strong>build_phase</strong><ul>
 <li>set_report_severity_action(UVM_ERROR, UVM_DISPLAY | UVM_CALL_HOOK);//只有error会打印调用回调函数</li>
@@ -720,13 +720,13 @@ SV里面的数据copy拷贝 --&gt; UVM里面的copy拷贝即对象已经创建�
 </ul>
 </li>
 </ul>
-<h3><span id="453-回调函数返回值">4.5.3 <strong>回调函数返回值：</strong></span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121181339630.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="453-回调函数返回值">4.5.3 <strong>回调函数返回值：</strong></span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844725.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>report_hook返回值为1时，继续执行分类report_error_hook否则不再继续调用</p>
 <p>一般来说一定要定义<strong>report_hook</strong></p>
-<h3><span id="453-例子代码续">4.5.3 例子代码续</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121180842859.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="453-例子代码续">4.5.3 例子代码续</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844726.png" srcset="/img/loading.gif" lazyload alt></p>
 <h3><span id="454-隐藏在后台的uvm_report_handler与uvm_report_server">4.5.4 隐藏在后台的uvm_report_handler与uvm_report_server</span></h3><p>对每一个组件都有report_handler实例，它们把消息申请到<strong>全局</strong>的实例report_server</p>
 <p>report_server和factory一样的，放在coserver下面</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211121181735130.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011844727.png" srcset="/img/loading.gif" lazyload alt></p>
 
             </div>
             <hr>

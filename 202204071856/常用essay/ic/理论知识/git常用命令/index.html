@@ -23,16 +23,16 @@
 <meta property="og:site_name" content="友人律的博客">
 <meta property="og:description" content="A. 入门内容git config 在git中，使用git config 命令来配置 git 的配置文件，git配置级别主要有3类：  仓库级别 local 本地 Git 仓库级别配置文件，作用于当前仓库。【优先级最高】 用户级别 global，全局配置文件，作用于所有用户。【优先级次之】 系统级别 system，作用于系统所有用户和所有库。【优先级最低】  git config -l查看所有的">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220427190457326.png">
-<meta property="og:image" content="http://yoursite.com/202204071856/%E5%B8%B8%E7%94%A8essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/image-20220407195525231.png">
-<meta property="article:published_time" content="2022-04-07T10:56:27.926Z">
-<meta property="article:modified_time" content="2022-04-27T12:00:50.769Z">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011901567.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011901568.png">
+<meta property="article:published_time" content="2022-04-07T10:56:00.000Z">
+<meta property="article:modified_time" content="2022-05-01T14:10:11.994Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="常用">
 <meta property="article:tag" content="命令">
 <meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220427190457326.png">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011901567.png">
   
   <title>git常用命令 - 友人律的博客</title>
 
@@ -237,7 +237,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/背景页.jpg') no-repeat center center;
+         style="background: url('/img/banner_img/anime/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -263,7 +263,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.1k 字
+      2.7k 字
     </span>
   
 
@@ -272,7 +272,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      7 分钟
+      8 分钟
     </span>
   
 
@@ -304,7 +304,7 @@
             <h1 style="display: none">git常用命令</h1>
             
             <div class="markdown-body">
-              <p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220427190457326.png" srcset="/img/loading.gif" lazyload alt></p>
+              <p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011901567.png" srcset="/img/loading.gif" lazyload alt></p>
 <h2><span id="a-入门内容">A. 入门内容</span></h2><p><strong>git config</strong></p>
 <p>在git中，使用git config 命令来配置 git 的配置文件，git配置级别主要有3类：</p>
 <ul>
@@ -328,10 +328,23 @@
 <p>git remote -v 查看远程仓库地址<br>git remote set-url origin <url> 修改远程仓库地址<br>git remote rm origin 删除远程仓库地址<br>git remote add origin [url] 添加远程仓库地址</url></p>
 <p><strong>git merge</strong></p>
 <p>git merge 合并代码<br>git merge —no-commit 防止合并失败不自动提交<br>git merge —no-ff 不使用fast-forward方式合并，创建一个 merge 的 commit 信息。</p>
-<h2><span id="b博客与解决方案汇总">B.博客与解决方案汇总</span></h2><h2><span id="c远程仓库相关">C.远程仓库相关</span></h2><p>git remote -v 查看远程仓库<br>git push —all origin 推送所有分支到远程仓库<br>git push每次都要输入密码，应该是没有设置为ssh，参考下图<br><img src="git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/image-20220407195525231.png" srcset="/img/loading.gif" lazyload alt="image-20220407195525231"></p>
+<p><strong>git count-objects</strong></p>
+<p>git count-objects  -v -H 查看仓库大小（以MB为单位）<br>git count-objects  -v 查看仓库大小（以字节为单位）</p>
+<p>git filter-branch：<a target="_blank" rel="noopener" href="https://www.php.cn/manual/view/34955.html">https://www.php.cn/manual/view/34955.html</a></p>
+<h2><span id="b博客与解决方案汇总">B.博客与解决方案汇总</span></h2><h3><span id="彻底删除不用的大文件">彻底删除不用的大文件</span></h3><ul>
+<li>验证过好用的指令：<a target="_blank" rel="noopener" href="https://blog.csdn.net/FRIGIDWINTER/article/details/115945662">https://blog.csdn.net/FRIGIDWINTER/article/details/115945662</a></li>
+<li>全流程：<a target="_blank" rel="noopener" href="https://blog.csdn.net/chenhuolv9091/article/details/100840415">https://blog.csdn.net/chenhuolv9091/article/details/100840415</a></li>
+<li>push tags：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42360778/article/details/112631694">https://blog.csdn.net/weixin_42360778/article/details/112631694</a></li>
+<li>查看仓库大小的命令：<a target="_blank" rel="noopener" href="https://blog.csdn.net/taoyafan/article/details/86716280">https://blog.csdn.net/taoyafan/article/details/86716280</a></li>
+<li>findBigFile.sh：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_29145157/article/details/112631695">https://blog.csdn.net/weixin_29145157/article/details/112631695</a></li>
+</ul>
+<h4><span id="gitignore">gitignore</span></h4><ul>
+<li>用法总结：<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_10272167/2697118">https://blog.51cto.com/u_10272167/2697118</a></li>
+</ul>
+<h2><span id="c远程仓库相关">C.远程仓库相关</span></h2><p>git remote -v 查看远程仓库<br>git push —all origin 推送所有分支到远程仓库<br>git push每次都要输入密码，应该是没有设置为ssh，参考下图<br><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011901568.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>git远程仓库修改与删除：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_29232943/article/details/104637674">https://blog.csdn.net/qq_29232943/article/details/104637674</a></p>
 <p>draw_bed_token：</p>
-<figure class="highlight"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs">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<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight gcode"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs gcode">ghp_<span class="hljs-number">2</span>a<span class="hljs-number">650</span>vF<span class="hljs-number">9</span>rx<span class="hljs-number">0</span>d<span class="hljs-symbol">nkqQjcdbVmxwlR7</span>A<span class="hljs-number">7</span>l<span class="hljs-number">1</span>HX<span class="hljs-number">6</span>zC<br></code></pre></div></td></tr></table></figure>
 
             </div>
             <hr>

@@ -23,21 +23,21 @@
 <meta property="og:site_name" content="友人律的博客">
 <meta property="og:description" content="推荐阅读官方文档：https:&#x2F;&#x2F;www.chisel-lang.org&#x2F;chisel3&#x2F;docs&#x2F;introduction.html 官方速记手册：chisel_cheatsheet.pdf 官方github：https:&#x2F;&#x2F;github.com&#x2F;chipsalliance&#x2F;chisel3 Chisel3.5 API：https:&#x2F;&#x2F;www.chisel-lang.org&#x2F;api&#x2F;latest&#x2F;">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0MjkxNTA1,size_16,color_FFFFFF,t_70.png">
-<meta property="og:image" content="http://yoursite.com/202203091915/IC/Chieslessay/cs/scala/2022-3-9-chisel/2022-3-9-chisel/image-20220313172534854.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20190220235621546.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0MjkxNTA1,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20210626203058606.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NTA3NzQ4,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="http://yoursite.com/202203091915/IC/Chieslessay/cs/scala/2022-3-9-chisel/2022-3-9-chisel/image-20220313224501135.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/96733090_p2.jpg">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/96733090_p3.jpg">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/96733090_p4.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012007844.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012007859.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012008844.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012008332.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012008979.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012005855.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012005856.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012005857.jpg">
 <meta property="article:published_time" content="2022-03-09T11:15:00.000Z">
-<meta property="article:modified_time" content="2022-03-19T11:05:55.636Z">
+<meta property="article:modified_time" content="2022-05-01T13:20:00.864Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="IC">
 <meta property="article:tag" content="学习">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0MjkxNTA1,size_16,color_FFFFFF,t_70.png">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012007844.png">
   
   <title>Chisel（一）：初步 - 友人律的博客</title>
 
@@ -242,7 +242,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/96733090_p4.jpg') no-repeat center center;
+         style="background: url('/img/banner_img/anime/96733090_p4.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -386,7 +386,7 @@
 <p>Scala中数据类型在Chisel用于参数和内建控制结构</p>
 <p>Chisel自己的数据类型用于构建硬件电路还是得用</p>
 <p>Chisel定义的数据类型如下图所示，其中<strong>绿色方块是class</strong>，<strong>红色是object</strong>，<strong>蓝色是trait</strong>，<strong>箭头指向的是超类和混入的特质</strong>： </p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0MjkxNTA1,size_16,color_FFFFFF,t_70.png" srcset="/img/loading.gif" lazyload alt="Chisel的数据类型关系图"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012007844.png" srcset="/img/loading.gif" lazyload alt="Chisel的数据类型关系图"></p>
 <ul>
 <li><p><strong>Data类：所有数据类型都继承自抽象基类Data</strong>，它混入了两个特质HasId和NamedComponent。如果读者查看Chisel3的源代码，就会看到很多参数传递时都用下界表明了是Data的子类。<u>在实际硬件构成里，并不会用到Data</u>，读者也不用关心它的具体实现细节。更多的，应该关注Data类的两大子类：聚合类Aggregate和元素类Element。</p>
 </li>
@@ -507,7 +507,7 @@
 <ul>
 <li><p>接收参数为<strong>一个Seq[T]</strong>或者是<strong>多个重复字面量</strong>来构造向量，且常有有<strong>字面值的数据作为参数</strong>，<strong>用于初始化寄存器组、ROM、RAM等，或者用来构造多个模块</strong></p>
 </li>
-<li><p><img src="2022-3-9-chisel/image-20220313172534854.png" srcset="/img/loading.gif" lazyload alt><a target="_blank" rel="noopener" href="https://www.chisel-lang.org/api/3.3.3/chisel3/VecInit$.html">官网api解释</a></p>
+<li><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012007859.png" srcset="/img/loading.gif" lazyload alt><a target="_blank" rel="noopener" href="https://www.chisel-lang.org/api/3.3.3/chisel3/VecInit$.html">官网api解释</a></p>
 </li>
 </ul>
 <p><strong>因为Vec[T]也是一种Seq</strong></p>
@@ -918,7 +918,7 @@
 <p>​    要综合出实际的SRAM，读者最好了解自己的综合器是如何推断的，按照综合器的推断规则来编写模块的端口定义、时钟域划分、读写使能的行为等等，否则就可能综合出寄存器阵列而不是SRAM。以Vivado 2018.3为例，下面的单端口SRAM代码经过综合后会映射到FPGA上实际的BRAM资源，而不是寄存器：</p>
 <figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala"><span class="hljs-comment">// ram.scala</span><br><span class="hljs-keyword">package</span> test<br><br><span class="hljs-keyword">import</span> chisel3._<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SinglePortRAM</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Module</span> </span>&#123;<br>  <span class="hljs-keyword">val</span> io = <span class="hljs-type">IO</span>(<span class="hljs-keyword">new</span> <span class="hljs-type">Bundle</span> &#123;<br>    <span class="hljs-keyword">val</span> addr = <span class="hljs-type">Input</span>(<span class="hljs-type">UInt</span>(<span class="hljs-number">10.</span><span class="hljs-type">W</span>))<br>    <span class="hljs-keyword">val</span> dataIn = <span class="hljs-type">Input</span>(<span class="hljs-type">UInt</span>(<span class="hljs-number">32.</span><span class="hljs-type">W</span>))<br>    <span class="hljs-keyword">val</span> en = <span class="hljs-type">Input</span>(<span class="hljs-type">Bool</span>())<br>    <span class="hljs-keyword">val</span> we = <span class="hljs-type">Input</span>(<span class="hljs-type">Bool</span>())<br>    <span class="hljs-keyword">val</span> dataOut = <span class="hljs-type">Output</span>(<span class="hljs-type">UInt</span>(<span class="hljs-number">32.</span><span class="hljs-type">W</span>))  <br>  &#125;)<br>  <span class="hljs-keyword">val</span> syncRAM = <span class="hljs-type">SyncReadMem</span>(<span class="hljs-number">1024</span>, <span class="hljs-type">UInt</span>(<span class="hljs-number">32.</span><span class="hljs-type">W</span>))<br>  <br>  when(io.en) &#123;<br>      when(io.we) &#123;<br>          syncRAM.write(io.addr, io.dataIn)<span class="hljs-comment">//写RAM</span><br>          io.dataOut := <span class="hljs-type">DontCare</span><span class="hljs-comment">//输出悬空</span><br>      &#125; .otherwise &#123;<br>          io.dataOut := syncRAM.read(io.addr)<span class="hljs-comment">//读RAM到输出</span><br>      &#125;<br>  &#125; .otherwise &#123;<br>       io.dataOut := <span class="hljs-type">DontCare</span><span class="hljs-comment">//输出悬空</span><br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 <p>​    下面是Vivado综合后的部分截图，可以看到确实变成了实际的BRAM：</p>
-<p><img src="https://img-blog.csdnimg.cn/20190220235621546.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0MjkxNTA1,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="Vivado综合出来的单端口BRAM"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012008844.png" srcset="/img/loading.gif" lazyload alt="Vivado综合出来的单端口BRAM"></p>
 <p><strong>双端BRAM的Verilog-&gt;Chisel-&gt;Verilog后无法识别出SRAM：</strong></p>
 <p>​    Vivado的BRAM最多支持真·双端口，按照对应的Verilog模板逆向编写Chisel，然后用编译器把Chisel转换成Verilog。但此时编译器生成的Verilog代码并不能被Vivado的综合器识别出来。</p>
 <p>​    <strong>原因在于</strong>SyncReadMem生成的Verilog代码是<strong>用一级寄存器保存输入的读地址，然后用读地址寄存器去异步读取RAM的数据</strong>，而Vivado的综合器识别不出这种模式的RAM。读者必须<strong>手动修改成用一级寄存器保存异步读取的数据而不是读地址，然后把读数据寄存器的内容用assign语句赋值给读数据端口</strong>，这样才能被识别成真·双端口BRAM。尚不清楚其它综合器是否有这个问题。经过咨询SiFive的工作人员，对方答复因为当前转换的代码把延迟放在地址一侧，所以流水线的节拍设计也是根据这个来的。考虑到贸然修改SyncReadMem的行为，可能会潜在地影响其它用户对流水线的设计，故而没有修改计划。如果确实需要自定义的、对综合器友好的Verilog代码，可以使用黑盒功能替代，或者给Firrtl编译器传入参数，改用自定义脚本来编译Chisel。</p>
@@ -1094,7 +1094,7 @@
 <blockquote>
 <p><strong>现在已经推了chiseltest包，可以用其进行测试，写peekpoke更简洁而且数据类型也更严谨了。之后，会再研究一下！！！下面先简单看下使用chiseltest和使用iotesters在代码风格上的不同：</strong></p>
 </blockquote>
-<p><img src="https://img-blog.csdnimg.cn/20210626203058606.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NTA3NzQ4,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012008332.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p><strong>可以看出，这些方法已经变成了每个IO的属性！！！</strong></p>
 <h3><span id="532-使用chisel3iotesters">5.3.2 使用chisel3.iotesters</span></h3><p>要编写一个简单的testbench，首先也是定义一个类，<strong>这个类的主构造方法接收一个参数，参数类型就是待测模块的类名</strong>。因为模块也是一个类，从Scala的角度来看，一个类就是定义了一种类型。</p>
 <p>其次，这个类继承自<code>chisel3.iotesters.PeekPokeTester</code>类，并且把接收的待测模块也传递给此超类。最后，测试类内部有四种方法可用：</p>
@@ -1431,7 +1431,7 @@
 <p>注意，重写的toPrintable方法的返回类型固定是Printable，这是因为p插值器的返回类型就是Printable，并且Printable类里定义了一个方法“+”用于将多个字符串拼接起来。在最后一个语句里，p插值器会求值myMessage，这就会调用Message类的toPrintable方法。因此，最终的打印信息如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">Message:<br>     valid  : v<br>     addr   : 0x00001234<br>     length : 10<br>     data   : 0x00000000deadbeef<br></code></pre></div></td></tr></table></figure>
 <h3><span id="842-c风格">8.4.2 C风格</span></h3><p>Chisel的printf也支持C的部分格式控制符和转义字符。如下所示：</p>
-<p><img src="2022-3-9-chisel/image-20220313224501135.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012008979.png" srcset="/img/loading.gif" lazyload alt></p>
 <figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala"><span class="hljs-keyword">val</span> myUInt = <span class="hljs-number">32.</span><span class="hljs-type">U</span><br>printf(<span class="hljs-string">&quot;myUInt = %d&quot;</span>, myUInt) <span class="hljs-comment">// myUInt = 32</span><br></code></pre></div></td></tr></table></figure>
 <h2><span id="85-chisel的对数与对数取整">8.5 Chisel的对数与对数取整</span></h2><p><strong>对数单例对象的apply方法：</strong>Log2，返回值为该参数的以2为底的幂次</p>
 <ul>
@@ -1711,9 +1711,9 @@
 <p>如果当前作用域有隐式的参数类对象，那么用“val xxx = p(XXX)”参数化的字段就能根据隐式对象求得具体的值。改变隐式对象的内容，就能动态地定义像位宽这样的关键字段。这样裁剪设计时，只需要修改自定义参数类的偏函数，而不需要每个地方都去更改。</p>
 <h1><span id="11-后记">11 后记</span></h1><p>终于学完了，教程写的太难看了，累死我了，以后有用的文档都会挂在文章开头，有缘再见</p>
 <hr>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/96733090_p2.jpg" srcset="/img/loading.gif" lazyload alt></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/96733090_p3.jpg" srcset="/img/loading.gif" lazyload alt="96733090_p3"></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/96733090_p4.jpg" srcset="/img/loading.gif" lazyload alt="96733090_p4"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012005855.jpg" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012005856.jpg" srcset="/img/loading.gif" lazyload alt="96733090_p3"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012005857.jpg" srcset="/img/loading.gif" lazyload alt="96733090_p4"></p>
 
             </div>
             <hr>

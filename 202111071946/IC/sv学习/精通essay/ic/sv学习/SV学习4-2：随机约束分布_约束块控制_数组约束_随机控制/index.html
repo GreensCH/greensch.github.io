@@ -23,55 +23,55 @@
 <meta property="og:site_name" content="友人律的博客">
 <meta property="og:description" content="一、随机约束和分布1、为什么要有随机  2、我们要随机什么 测试题 AC 3、声明随机变量的类 1std::randomize();&#x2F;&#x2F;随机化变量，返回值0成功1失败 rand、randc以及constranint同随机变量一起在类中声明 一般随机都会伴随着约束 举例 1assert(p.randomize());一般用这种写法进行随机化 4、什么是约束   测试题 AB C不对的原因是位宽对不上">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211107194951207.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211107213400187.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211107213528100.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211107213622944.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211107220825182.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211107220949467.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211107222030463.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211107222043352.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211107222056315.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211107222236599.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211107222507828.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211107222547302.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211107222830531.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211107222948156.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211107223027629.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211107223222650.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110152432117.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110152538507.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110152844072.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110153056081.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110153157520.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110153224798.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110153907765.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110154802930.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110155807524.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110160424516.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110160520930.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110161515221.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110162030080.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110162040215.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110162134117.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110162943509.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110165836345.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110165907602.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110170350783.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110170428370.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110170436764.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110171819881.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110172410044.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110172755254.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110172828044.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835746.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835748.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835749.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835750.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835751.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835752.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835753.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835754.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835755.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835756.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835757.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835758.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835759.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835760.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835761.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835762.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835763.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835764.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835765.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835766.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835767.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835768.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835769.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835770.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835771.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835772.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835773.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835774.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835775.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835776.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835777.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835778.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835779.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835780.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835781.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835782.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835783.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835784.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835785.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835786.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835787.png">
 <meta property="article:published_time" content="2021-11-07T11:46:00.000Z">
-<meta property="article:modified_time" content="2022-03-19T11:05:55.635Z">
+<meta property="article:modified_time" content="2022-05-01T13:12:22.320Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="IC">
 <meta property="article:tag" content="sv学习">
 <meta property="article:tag" content="精通">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211107194951207.png">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835746.png">
   
   <title>SV精通4：随机约束分布_约束块控制_数组约束_随机控制 - 友人律的博客</title>
 
@@ -276,7 +276,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/背景页.jpg') no-repeat center center;
+         style="background: url('/img/banner_img/anime/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -343,63 +343,63 @@
             <h1 style="display: none">SV精通4：随机约束分布_约束块控制_数组约束_随机控制</h1>
             
             <div class="markdown-body">
-              <h1><span id="一-随机约束和分布">一、随机约束和分布</span></h1><h2><span id="1-为什么要有随机">1、为什么要有随机</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211107194951207.png" srcset="/img/loading.gif" lazyload alt></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211107213400187.png" srcset="/img/loading.gif" lazyload alt></p>
-<h2><span id="2-我们要随机什么">2、我们要随机什么</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211107213528100.png" srcset="/img/loading.gif" lazyload alt></p>
-<h3><span id="测试题">测试题</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211107213622944.png" srcset="/img/loading.gif" lazyload alt></p>
+              <h1><span id="一-随机约束和分布">一、随机约束和分布</span></h1><h2><span id="1-为什么要有随机">1、为什么要有随机</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835746.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835748.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="2-我们要随机什么">2、我们要随机什么</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835749.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="测试题">测试题</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835750.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>AC</p>
-<h2><span id="3-声明随机变量的类">3、声明随机变量的类</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211107220825182.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="3-声明随机变量的类">3、声明随机变量的类</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835751.png" srcset="/img/loading.gif" lazyload alt></p>
 <figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp">std::<span class="hljs-built_in">randomize</span>();<span class="hljs-comment">//随机化变量，返回值0成功1失败</span><br></code></pre></div></td></tr></table></figure>
 <p>rand、randc以及constranint同随机变量一起在类中声明</p>
 <p><strong>一般随机都会伴随着约束</strong></p>
-<h3><span id="举例">举例</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211107220949467.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="举例">举例</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835752.png" srcset="/img/loading.gif" lazyload alt></p>
 <figure class="highlight isbl"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs isbl"><span class="hljs-function"><span class="hljs-title"><span class="hljs-built_in">assert</span></span>(<span class="hljs-variable">p.randomize</span>());一般用这种写法进行随机化</span><br></code></pre></div></td></tr></table></figure>
-<h2><span id="4-什么是约束">4、什么是约束</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211107222030463.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="4-什么是约束">4、什么是约束</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835753.png" srcset="/img/loading.gif" lazyload alt></p>
 <hr>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211107222043352.png" srcset="/img/loading.gif" lazyload alt></p>
-<h3><span id="测试题">测试题</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211107222056315.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835754.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="测试题">测试题</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835755.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>AB</p>
 <p>C不对的原因是位宽对不上</p>
-<h3><span id="什么是约束续约束不能产生冲突">什么是约束（续）：约束不能产生冲突</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211107222236599.png" srcset="/img/loading.gif" lazyload alt></p>
-<h2><span id="5-权重的分布dist">5、权重的分布：dist</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211107222507828.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="什么是约束续约束不能产生冲突">什么是约束（续）：约束不能产生冲突</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835756.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="5-权重的分布dist">5、权重的分布：dist</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835757.png" srcset="/img/loading.gif" lazyload alt></p>
 <figure class="highlight elixir"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs elixir"><span class="hljs-symbol">:/</span>或<span class="hljs-symbol">:</span>=<br></code></pre></div></td></tr></table></figure>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211107222547302.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835758.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><code>:=</code>意味着常量相加</p>
 <p><code>:/</code>意味着比例平分</p>
-<h2><span id="六-集合成员和inside运算符">六、集合成员和inside运算符</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211107222830531.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="六-集合成员和inside运算符">六、集合成员和inside运算符</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835759.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><code>inside</code>规定区间</p>
 <p><code>$</code>表示最大值或最小值</p>
-<h2><span id="7-条件约束">7、条件约束</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211107222948156.png" srcset="/img/loading.gif" lazyload alt></p>
-<h2><span id="8-双向约束">8、双向约束</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211107223027629.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="7-条件约束">7、条件约束</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835760.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="8-双向约束">8、双向约束</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835761.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>约束是声明语句，是并行的</strong></p>
 <p>不同约束之间会产生冲突，如子类继承父类的约束(约束也可以继承)</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211107223222650.png" srcset="/img/loading.gif" lazyload alt></p>
-<h1><span id="二-约束块控制">二、约束块控制</span></h1><h2><span id="1-打开或关闭约束">1、打开或关闭约束</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110152432117.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835762.png" srcset="/img/loading.gif" lazyload alt></p>
+<h1><span id="二-约束块控制">二、约束块控制</span></h1><h2><span id="1-打开或关闭约束">1、打开或关闭约束</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835763.png" srcset="/img/loading.gif" lazyload alt></p>
 <figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog">constraint_mode()<span class="hljs-comment">//打开或关闭约束</span><br></code></pre></div></td></tr></table></figure>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110152538507.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835764.png" srcset="/img/loading.gif" lazyload alt></p>
 <figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog">p<span class="hljs-variable">.constrain_mode</span>(<span class="hljs-number">0</span>)<span class="hljs-comment">//关闭p内全部约束</span><br>p<span class="hljs-variable">.c_short</span><span class="hljs-variable">.constrain_mode</span>(<span class="hljs-number">1</span>)<span class="hljs-comment">//打开c_short约束</span><br></code></pre></div></td></tr></table></figure>
 <p>与条件约束的不同，条件约束是在一个约束内进行判断，约束控制可以控制多个约束</p>
-<h3><span id="测试题">测试题</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110152844072.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="测试题">测试题</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835765.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>D</p>
-<h2><span id="2-内嵌约束">2、内嵌约束</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110153056081.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="2-内嵌约束">2、内嵌约束</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835766.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>使用<code>randomize() with</code>来增加临时约束，<strong>参考下图绿色部分</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110153157520.png" srcset="/img/loading.gif" lazyload alt></p>
-<h3><span id="重要测试题soft软约束">(重要)测试题：soft软约束<img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110153224798.png" srcset="/img/loading.gif" lazyload alt></span></h3><p>soft红色标注部分，没有soft选B，有soft选C</p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835767.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="重要测试题soft软约束">(重要)测试题：soft软约束<img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835768.png" srcset="/img/loading.gif" lazyload alt></span></h3><p>soft红色标注部分，没有soft选B，有soft选C</p>
 <p>软约束<code>soft</code>，约束有冲突时soft声明的约束不起作用</p>
 <h1><span id="三-随机函数">三、随机函数</span></h1><h3><span id="1-无论是rand还是constraint能出现的范围就是类">1、无论是rand还是constraint能出现的范围就是类</span></h3><p><strong>我们更希望把随机变量用<code>rand</code>或<code>randc</code>修饰，把他们封装到类里面</strong>：类是变量的自洽体，可以把相关的变量放在类里，变量之间的约束关系也可以方便的放在类里面</p>
 <p><strong>无论是rand还是constraint能出现的范围就是类</strong></p>
-<h3><span id="2-randomize预定义函数的解释以及pre_randomize和post_randomize可自定义">2、randomize()预定义函数的解释，以及pre_randomize()和post_randomize()可自定义</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110153907765.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="2-randomize预定义函数的解释以及pre_randomize和post_randomize可自定义">2、randomize()预定义函数的解释，以及pre_randomize()和post_randomize()可自定义</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835769.png" srcset="/img/loading.gif" lazyload alt></p>
 <figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog">pre_randomzie();<br>post_randomzie();<br></code></pre></div></td></tr></table></figure>
 <p>randomize() 回调函数</p>
-<h3><span id="3-系统函数随机数函数">3、系统函数：随机数函数</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110154802930.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="3-系统函数随机数函数">3、系统函数：随机数函数</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835770.png" srcset="/img/loading.gif" lazyload alt></p>
 <figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-built_in">$random</span>()<br>$urandom()<br>$urandom_range()<br></code></pre></div></td></tr></table></figure>
-<h2><span id="4-随机化个别变量">4、 随机化个别变量</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110155807524.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="4-随机化个别变量">4、 随机化个别变量</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835771.png" srcset="/img/loading.gif" lazyload alt></p>
 <figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog">randomize(变量名)<span class="hljs-comment">//只会随机化指定变量名，不会随机化其他</span><br></code></pre></div></td></tr></table></figure>
 <p><strong>你不管随机化哪些指定变量，所有作用的约束依然有效</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110160424516.png" srcset="/img/loading.gif" lazyload alt></p>
-<h3><span id="测试题">测试题</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110160520930.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835772.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="测试题">测试题</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835773.png" srcset="/img/loading.gif" lazyload alt></p>
 <h3><span id="所有的约束条件都必须满足否则约束失败">所有的约束条件都必须满足，否则约束失败</span></h3><p>答案选C<br>A不对的原因是因为med&lt;hi不满足<br>low=报错 是因为randomize无法产生非rand的low的值，med,hi保持一开始的0</p>
-<h1><span id="四-数组约束">四、数组约束</span></h1><h2><span id="1-数组的大小">1、数组的大小</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110161515221.png" srcset="/img/loading.gif" lazyload alt></p>
+<h1><span id="四-数组约束">四、数组约束</span></h1><h2><span id="1-数组的大小">1、数组的大小</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835774.png" srcset="/img/loading.gif" lazyload alt></p>
 <figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">rand</span> <span class="hljs-keyword">logic</span> [<span class="hljs-number">31</span>:<span class="hljs-number">0</span>] d[];<br><span class="hljs-keyword">constraint</span> d_size&#123;d<span class="hljs-variable">.size</span>() <span class="hljs-keyword">inside</span> &#123;[<span class="hljs-number">1</span>:<span class="hljs-number">10</span>]&#125; &#125;<br></code></pre></div></td></tr></table></figure>
 <p>随机化内容：</p>
 <ul>
@@ -409,33 +409,33 @@
 <p>随机化时应：对数组的大小给定范围，防止生成大体积或空数组(不限制动态数组范围，则数组无意义）</p>
 <p>可以使用约束的方法：<code>sum()</code>,<code>product()</code>,<code>and()</code>,<code>or()</code>,<code>xor()</code></p>
 <h3><span id="2-约束数组中的元素">2、约束数组中的元素</span></h3><p><code>`foreach</code>更方便，使用它进行约束</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110162030080.png" srcset="/img/loading.gif" lazyload alt></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110162040215.png" srcset="/img/loading.gif" lazyload alt></p>
-<h2><span id="3-产生唯一元素值的数组与randc">3、产生唯一元素值的数组与randc</span></h2><h3><span id="1-不是使用randc而是嵌套循环">(1) 不是使用randc，而是嵌套循环</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110162134117.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835775.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835776.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="3-产生唯一元素值的数组与randc">3、产生唯一元素值的数组与randc</span></h2><h3><span id="1-不是使用randc而是嵌套循环">(1) 不是使用randc，而是嵌套循环</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835777.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>randc不能使数组内每一个元素都不同，而是每一次randomize后随机数都不同</strong></p>
-<h3><span id="2-利用randc变量来辅助生成randc类比扑克牌">(2) 利用randc变量来辅助生成：randc类比扑克牌</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110162943509.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="2-利用randc变量来辅助生成randc类比扑克牌">(2) 利用randc变量来辅助生成：randc类比扑克牌</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835778.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>randomize之前，自动先调用pre_randomize()</p>
 <h3><span id="3-sv新标准解决数组问题关键词unique">(3) SV新标准解决数组问题，关键词：unique</span></h3><p>unique限定一个数组，使其独一无二</p>
-<h3><span id="例题">例题</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110165836345.png" srcset="/img/loading.gif" lazyload alt></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110165907602.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="例题">例题</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835779.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835780.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>经常出错，答案是D</p>
 <p>原因不是因为动态数组没有new，关键是动态数组有限定语<code>rand</code>，rand添加后指示<code>randomize</code>会帮助你例化填充这个元素</p>
 <p>foreach这个约束不存在，不合理，需要增加if(i&lt;=da.size()-2()</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110170350783.png" srcset="/img/loading.gif" lazyload alt></p>
-<h2><span id="4-随机化句柄数组">4、随机化句柄数组</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110170428370.png" srcset="/img/loading.gif" lazyload alt></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110170436764.png" srcset="/img/loading.gif" lazyload alt></p>
-<h3><span id="测试题">测试题</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110171819881.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835781.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="4-随机化句柄数组">4、随机化句柄数组</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835782.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835783.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="测试题">测试题</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835784.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>答案：B</p>
 <p>RandStuff类里面没有被rand修饰的变量，因此作为句柄被上级对象随机的过程中无法对内部的变量值随机</p>
 <p>为什么MAX_SIZE个例化，因为保证randomize所有句柄都指向一个对象都是合法的</p>
-<h1><span id="五-随机控制">五、随机控制</span></h1><h2><span id="1-随机序列关键词randsequenceatomic">1、随机序列：关键词，randsequence,atomic</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110172410044.png" srcset="/img/loading.gif" lazyload alt></p>
+<h1><span id="五-随机控制">五、随机控制</span></h1><h2><span id="1-随机序列关键词randsequenceatomic">1、随机序列：关键词，randsequence,atomic</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835785.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>没有用UVM之前，用这个产生激励</strong>，因此可做了解</p>
 <p><code>randsequence(stream)</code></p>
 <p><code>stream</code>是一个入口，可能会分别进入到，cfg_read,mem_read,io_read分支中，且进入的权重和可能性不一样</p>
 <p>类比case语句</p>
-<h2><span id="2-随机控制randcase">2、随机控制：randcase</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110172755254.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="2-随机控制randcase">2、随机控制：randcase</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835786.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><code>randcase</code>：一个随机决策树</p>
-<h2><span id="3-总结">3、总结</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110172828044.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="3-总结">3、总结</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011835787.png" srcset="/img/loading.gif" lazyload alt></p>
 
             </div>
             <hr>

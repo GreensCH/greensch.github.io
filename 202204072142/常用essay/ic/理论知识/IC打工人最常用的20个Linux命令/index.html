@@ -23,18 +23,18 @@
 <meta property="og:site_name" content="友人律的博客">
 <meta property="og:description" content="IC打工人最常用的20个Linux命令正文 ls（list files）：显示指定工作目录下的内容。常用参数：—help | more分屏显示，按Q退出-a：显示所有的文件和目录，包括隐藏文件-l：除文件名称外，文件型态、权限、拥有者、文件大小、修改日期等（常用）-r：将文件根据建立时间先后的顺序列出-R：recursive连同子目录的内容一起列出（递归列出），即该目录下的所有文件都会显示-t：显">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220419232330968.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220418214420398.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220419232750921.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220419232539888.png">
-<meta property="article:published_time" content="2022-04-07T13:42:47.186Z">
-<meta property="article:modified_time" content="2022-04-27T11:03:28.572Z">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011901536.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011901537.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011901538.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011901539.png">
+<meta property="article:published_time" content="2022-04-07T13:42:00.000Z">
+<meta property="article:modified_time" content="2022-05-01T14:09:04.577Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
-<meta property="article:tag" content="shell">
 <meta property="article:tag" content="常用">
 <meta property="article:tag" content="命令">
+<meta property="article:tag" content="shell">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220419232330968.png">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011901536.png">
   
   <title>IC打工人最常用的20个Linux命令 - 友人律的博客</title>
 
@@ -239,7 +239,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/97618836_p0.jpg') no-repeat center center;
+         style="background: url('/img/banner_img/anime/97618836_p0.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -309,7 +309,7 @@
               <h1><span id="ic打工人最常用的20个linux命令">IC打工人最常用的20个Linux命令</span></h1><h2><span id="正文">正文</span></h2><ol>
 <li><strong>ls</strong>（list files）：显示指定工作目录下的内容。<br>常用参数：<br>—help | more分屏显示，按Q退出<br>-a：显示所有的文件和目录，包括隐藏文件<br>-l：除文件名称外，文件型态、权限、拥有者、文件大小、修改日期等（常用）<br>-r：将文件根据建立时间先后的顺序列出<br>-R：recursive连同子目录的内容一起列出（递归列出），即该目录下的所有文件都会显示<br>-t：显示修改时间<br>-s：显示文件大小<br>常用例子：<br><code>ls -Rta</code></li>
 </ol>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220419232330968.png" srcset="/img/loading.gif" lazyload alt="image-20220419232330968"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011901536.png" srcset="/img/loading.gif" lazyload alt></p>
 <ol>
 <li><p>cd（change directory）：切换工作目录，可用相对路径，也可用绝对路径。<br>常用参数：<br>cd /usr/bin<br>cd ~<br>cd ./path（./可以省略不写）<br>cd ../path<br>“~”表示为 home 目录 的意思， “.”表示目前所在的目录， “..”表示目前目录位置的上一层目录。</p>
 </li>
@@ -325,11 +325,11 @@
 </li>
 <li><p><strong>which</strong>：查看某个系统命令是否存在，以及执行的到底是哪一个位置的命令。</p>
 </li>
-<li><p><strong>find</strong>：在指定的目录下查找文件名称。功能非常强大，参数比较多，<strong>重点掌握</strong>。<br>find [目录列表] [匹配标准]<br>常用命令：<br><strong>find ./ -name “*.v”</strong>：当前目录及其子目录下所有后缀为.v的文件列出来<br>!-name：名字不等于<br>-print：在目录里打印出来<br>-size：大小为xxxc（c代表char）<br><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220418214420398.png" srcset="/img/loading.gif" lazyload alt="image-20220418214420398"></p>
+<li><p><strong>find</strong>：在指定的目录下查找文件名称。功能非常强大，参数比较多，<strong>重点掌握</strong>。<br>find [目录列表] [匹配标准]<br>常用命令：<br><strong>find ./ -name “*.v”</strong>：当前目录及其子目录下所有后缀为.v的文件列出来<br>!-name：名字不等于<br>-print：在目录里打印出来<br>-size：大小为xxxc（c代表char）<br><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011901537.png" srcset="/img/loading.gif" lazyload alt></p>
 </li>
 <li><p><strong>grep</strong>：用于查找文件内容，即文件里符合条件的字符串。搜索关键词，查找定义文件，查找error，<strong>重点掌握</strong><br>grep &lt;选项&gt; [匹配字符串] [文件列表]<br>常用命令：<br><strong>grep -ri “error”</strong>：r当前目录查找error，i忽略大小写<br>-v ：反向查找，打印出不符合条件行的内容<br>-r：递归查找<br>-i：不区分大小写</p>
 </li>
-<li><p><strong>chmod</strong>（change mode）：控制用户对文件权限。一种是字母和操作符表达式的文字设定法；另一种是数字设定法。<br><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220419232750921.png" srcset="/img/loading.gif" lazyload alt="image-20220419232750921"></p>
+<li><p><strong>chmod</strong>（change mode）：控制用户对文件权限。一种是字母和操作符表达式的文字设定法；另一种是数字设定法。<br><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011901538.png" srcset="/img/loading.gif" lazyload alt></p>
 </li>
 </ol>
 <ol>
@@ -381,7 +381,7 @@
 <li>ctrlt+z（组合键）：将当前的命令挂起，放到后台运行<br>fg：恢复挂起的命令，放到前台运行<br>ctrl+c（组合键）：终止当前的命令</li>
 <li>whoami：查看用户自己当前使用的帐号名。<br>who：查看当前有哪些用户登录到系统中。<br>w：查看有哪些用户登录在线，同时显示用户当前的工作</li>
 <li>In&lt;选项&gt;[目标[链接名]In&lt;选项&gt;[目标[目录]<br>作用：给系统中已有的某个文件指定另外一个可用于访问它的名称。<br>软连接：<code>In -s source des</code></li>
-<li><p>cat<br><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20220419232539888.png" srcset="/img/loading.gif" lazyload alt="image-20220419232539888"></p>
+<li><p>cat<br><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011901539.png" srcset="/img/loading.gif" lazyload alt></p>
 </li>
 <li><p>man<br>linux 中 man 1 man2 man3 ……man N的区别：</p>
 </li>
@@ -421,11 +421,11 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/shell/">shell</a>
-                    
                       <a class="hover-with-bg" href="/tags/%E5%B8%B8%E7%94%A8/">常用</a>
                     
                       <a class="hover-with-bg" href="/tags/%E5%91%BD%E4%BB%A4/">命令</a>
+                    
+                      <a class="hover-with-bg" href="/tags/shell/">shell</a>
                     
                   </div>
                 

@@ -23,22 +23,22 @@
 <meta property="og:site_name" content="友人律的博客">
 <meta property="og:description" content="方案背景microblaze上跑linux的方案，包括如何启动和固化">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210912195221.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210912221635.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210913101354.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210913101955.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210913105356.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012030876.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012030169.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012030977.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012030992.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012031568.png">
 <meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210913105918.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210913112526.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210913110611.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210912221254.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210913111726.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012031204.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012031180.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012031364.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012031474.png">
 <meta property="article:published_time" content="2021-09-13T03:45:37.000Z">
-<meta property="article:modified_time" content="2022-03-12T10:50:48.526Z">
+<meta property="article:modified_time" content="2022-05-01T13:36:02.875Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="调研">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210912195221.png">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012030876.png">
   
   <title>microblaze运行linux方案探索 - 友人律的博客</title>
 
@@ -243,7 +243,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/背景页.jpg') no-repeat center center;
+         style="background: url('/img/banner_img/anime/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -311,16 +311,16 @@
             
             <div class="markdown-body">
               <h2><span id="方案背景">方案背景</span></h2><p>microblaze上跑linux的方案，包括如何启动和固化<br> <span id="more"></span></p>
-<h2><span id="解决方案1">解决方案(1)</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210912195221.png" srcset="/img/loading.gif" lazyload></p>
+<h2><span id="解决方案1">解决方案(1)</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012030876.png" srcset="/img/loading.gif" lazyload alt></p>
 <h3><span id="1-相关技术">1 相关技术</span></h3><h4><span id="11-microblaze运行linux可行性">1.1 microblaze运行linux可行性</span></h4><ol>
 <li>主要开发文档<br><a target="_blank" rel="noopener" href="https://china.xilinx.com/content/dam/xilinx/support/documentation/sw_manuals/xilinx2019_1/c_ug1144-petalinux-tools-reference-guide.pdf">ug1144</a></li>
 </ol>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210912221635.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012030169.png" srcset="/img/loading.gif" lazyload alt></p>
 <ol>
 <li>microblaze官方wiki</li>
 </ol>
 <p>介绍mmu,处理器结构,microblaze with linux</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210913101354.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012030977.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><a target="_blank" rel="noopener" href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842560/MicroBlaze">原文链接</a></p>
 <ol>
 <li>4种启动方案与一种实现案例(博客)</li>
@@ -330,7 +330,7 @@
 <ol>
 <li>mircoblaze的vivado搭建官方指南</li>
 </ol>
-<p><a target="_blank" rel="noopener" href="https://www.xilinx.com/support/documentation-navigation/design-hubs/dh0020-microblaze-hub.html">相关文档大全</a><br><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210913101955.png" srcset="/img/loading.gif" lazyload></p>
+<p><a target="_blank" rel="noopener" href="https://www.xilinx.com/support/documentation-navigation/design-hubs/dh0020-microblaze-hub.html">相关文档大全</a><br><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012030992.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>《ug940》</p>
 <h4><span id="12固化bitstream文件">1.2固化bitstream文件?</span></h4><p>1.传统方法对Bitstream进行flash固化</p>
 <p>需要说明的是，下载完比特流后，如果开发板断电，程序会丢失。如果想要程序断电不丢失的话，需要将程序固化至开发板中，这个需要在嵌入式 SDK 软件中完成， ZYNQ 芯片无法单独固化比特流文件(PL的配置文件)。这是由于 ZYNQ 非易失性存储器的引脚(如 SD 卡、QSPI Flash)是 ZYNQ PS 部分的专用引脚， 这些非易失性存储器由 PS 的 ARM 处理器进行驱动，需要将bit流文件和elf文件（软件程序的下载文件） 合成一个 BOOT.BIN，才能进行固化， 因此需要学习 ZYNQ 嵌入式 SDK 的开发流程。</p>
@@ -341,16 +341,17 @@
 <!--[参考文章：](#MicroBlaze处理器的PetaLinux操作系统移植)-->
 <!--PetaLinux有4种启动方案：XMD下载启动、TFTP网络下载启动、Flash启动和SysACE CF卡启动。其中，XMD和TFTP网络下载启动方案，在每次系统上电后都必须重新下载，适用于系统调试；Flash启动方案在系统上电后自动从Flash中读取配置文件，但Flash烧写速度较慢，更改系统配置较为不便。因此，本系统选用SysACECF卡启动方案。-->
 <!--在petalinux创建ps端linux系统时的hdf中包括microblaze软核及其周边外设-->
-<h3><span id="2-相关设计参考">2 相关设计参考</span></h3><h4><span id="21-启动使用flash完成操作系统启动">2.1 启动(使用flash完成操作系统启动)</span></h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weiaipan1314/article/details/110679080">参考启动流程：</a><br><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210913105356.png" srcset="/img/loading.gif" lazyload></p>
+<h3><span id="2-相关设计参考">2 相关设计参考</span></h3><h4><span id="21-启动使用flash完成操作系统启动">2.1 启动(使用flash完成操作系统启动)</span></h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weiaipan1314/article/details/110679080">参考启动流程：</a><br><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012031568.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><a target="_blank" rel="noopener" href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842560/MicroBlaze">参考文章MicroBlaze 上的嵌入式软件堆栈概述：</a><br>MicroBlaze 的软件堆栈不像Xilinx的其他嵌入式设备那样从加固的BootROM开始。相反，初始引导代码必须包含在FPGA比特流中，通常通过初始化映射到MicroBlaze引导向量的一小块 BlockRAM来实现。对于某些系统，整个应用程序可能会驻留在这个BlockRAM 中。对于更复杂的系统（例如Linux），可以在BlockRAM中初始化第一阶段引导加载程序。Xilinx 提供了一个称为 FS-Boot的第一阶段引导加载程序，它在启动时执行并负责将第二阶段引导加载程序（通常是U-Boot，但可能是最终应用程序）从非易失性存储器复制到 MicroBlaze可以从中执行的存储器中，通常为DDR。FS-Boot 至少需要 8KB 的 BlockRAM。 </p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210913105918.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210913105918.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>有关创建 FS-Boot 并将其合并到比特流中的更多信息，请参阅PetaLinux 工具指南。 </p>
-<p><a target="_blank" rel="noopener" href="https://china.xilinx.com/content/dam/xilinx/support/documentation/sw_manuals/xilinx2019_1/c_ug1144-petalinux-tools-reference-guide.pdf">microblaze启动手册说明—《ug11440》:</a><br><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210913112526.png" srcset="/img/loading.gif" lazyload></p>
+<p><a target="_blank" rel="noopener" href="https://china.xilinx.com/content/dam/xilinx/support/documentation/sw_manuals/xilinx2019_1/c_ug1144-petalinux-tools-reference-guide.pdf">microblaze启动手册说明—《ug11440》:</a><br><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012031204.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><a target="_blank" rel="noopener" href="https://china.xilinx.com/content/dam/xilinx/support/documentation/sw_manuals/xilinx2019_1/c_ug1144-petalinux-tools-reference-guide.pdf">flash做uboot—《ug1144》:</a></p>
-<h2><span id><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210913110611.png" srcset="/img/loading.gif" lazyload></span></h2><p><a target="_blank" rel="noopener" href="https://www.xilinx.com/support/answers/50991.html">zynq支持的flash容量</a></p>
-<h4><span id="22-bd设计结构参考">2.2 BD设计结构参考</span></h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210912221254.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012031180.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><a target="_blank" rel="noopener" href="https://www.xilinx.com/support/answers/50991.html">zynq支持的flash容量</a></p>
+<h4><span id="22-bd设计结构参考">2.2 BD设计结构参考</span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012031364.png" srcset="/img/loading.gif" lazyload alt></p>
 <h4><span id="23-设计方案猜想">2.3 设计方案猜想</span></h4><p>通过petalinux配置位于flash启动镜像并封装，使用jtag完成镜像启动？</p>
-<h3><span id="3-其他注意点">3 其他注意点</span></h3><h4><span id="31-ug1144p17">3.1 ug1144,P17</span></h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210913111726.png" srcset="/img/loading.gif" lazyload></p>
+<h3><span id="3-其他注意点">3 其他注意点</span></h3><h4><span id="31-ug1144p17">3.1 ug1144,P17</span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012031474.png" srcset="/img/loading.gif" lazyload alt></p>
 <!--正点原子zynq5pynq开发指南P99-->
 <h2><span id="解决方案2还未研究">解决方案(2)—还未研究</span></h2><h3><span id="相关技术">相关技术</span></h3><h4><span id="1-uclinux">1 uclinux</span></h4><p>运行uclinux嵌入式系统uclinux表示micro-control linux</p>
 <p><a target="_blank" rel="noopener" href="http://www.doc88.com/p-1505465960626.html">在Microblaze处理器上进行uclinux移植</a><br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/66072428">除了uclinux，在单片机上可以移植哪些版本的linux</a></p>

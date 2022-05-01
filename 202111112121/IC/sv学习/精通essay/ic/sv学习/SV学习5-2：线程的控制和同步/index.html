@@ -23,76 +23,76 @@
 <meta property="og:site_name" content="友人律的博客">
 <meta property="og:description" content="一、线程的使用1 程序和模块 硬件之间有很多过程快，它们之间的通信可以理解为不同逻辑&#x2F;时序块之间的通信或者同步，是通过信号变化来完成的 verilog通过always,initial过程语句块和信号连接建立进程间通信 将module看作独立的过程快，它们之间的同步通过  信号的变化(event触发) 等待特定事件(时钟周期) 时间(固定延时)完成  module示意图 不同模块可以看作不同进程">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112113901134.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112114323500.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112115621758.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112115724226.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112115825884.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112120037482.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112120538650.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112124235862.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112124359432.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112124750443.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112124830167.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112124915926.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112124956438-16366925968321.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112125112200.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112125139712.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112125421840.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112125517978.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112132512284.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112132611826.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112132651261.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112133030715.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112163246395.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112133200873.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112133804979.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112133852009.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112162540357.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112141011384.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112161825960.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112141711216.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112141828286.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112141911727.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112162011904.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112162647861.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112143230138.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112143627456.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112144750770.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112144846154.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112144925767.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112145005924.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112145046709.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112145739949.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112150028598.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112150157938.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112150442051.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112150506986-16367007075342.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112155326431.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112160103076.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112160108460.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112160027584.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112160133669.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112160219361.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112160322083.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112160515785.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112160642148.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112160735856.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112160808988.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112160902694.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112160949039.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112161021129.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112161050057.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112161101075.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112161126705.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837378.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837379.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837380.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837381.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837382.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837383.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837384.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837385.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837386.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837387.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837388.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837389.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837390.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837391.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837392.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837393.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837394.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837395.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837396.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837397.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837398.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837399.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837400.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837401.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837402.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837403.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837404.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837405.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837406.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837407.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837408.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837409.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837410.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837411.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837412.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837413.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837414.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837415.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837416.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837417.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837418.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837419.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837420.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837421.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837422.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837423.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837424.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837425.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837426.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837427.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837428.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837429.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837430.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837431.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837432.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837433.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837434.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837435.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837436.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837437.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837438.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837439.png">
 <meta property="article:published_time" content="2021-11-11T13:21:00.000Z">
-<meta property="article:modified_time" content="2022-03-19T11:05:55.635Z">
+<meta property="article:modified_time" content="2022-05-01T13:12:22.321Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="IC">
 <meta property="article:tag" content="sv学习">
 <meta property="article:tag" content="精通">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112113901134.png">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837378.png">
   
   <title>SV精通5：线程的控制和同步 - 友人律的博客</title>
 
@@ -297,7 +297,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211110230643036.png') no-repeat center center;
+         style="background: url('/img/banner_img/anime/image-20211110230643036.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -364,7 +364,7 @@
             <h1 style="display: none">SV精通5：线程的控制和同步</h1>
             
             <div class="markdown-body">
-              <h1><span id="一-线程的使用">一、线程的使用</span></h1><h2><span id="1-程序和模块">1 程序和模块</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112113901134.png" srcset="/img/loading.gif" lazyload alt></p>
+              <h1><span id="一-线程的使用">一、线程的使用</span></h1><h2><span id="1-程序和模块">1 程序和模块</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837378.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><em>硬件之间有很多过程快，它们之间的通信可以理解为不同逻辑/时序块之间的通信或者同步，是通过信号变化来完成的</em></p>
 <p>verilog通过always,initial过程语句块和<strong>信号</strong>连接建立进程间通信</p>
 <p>将module看作独立的过程快，它们之间的同步通过</p>
@@ -373,21 +373,21 @@
 <li>等待特定事件(时钟周期)</li>
 <li>时间(固定延时)完成</li>
 </ul>
-<h3><span id="module示意图">module示意图</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112114323500.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="module示意图">module示意图</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837379.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>不同模块可以看作不同进程</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112115621758.png" srcset="/img/loading.gif" lazyload alt></p>
-<h3><span id="测试题">测试题</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112115724226.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837380.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="测试题">测试题</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837381.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>答案：AB</p>
-<h2><span id="2-什么是线程">2 什么是线程</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112115825884.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="2-什么是线程">2 什么是线程</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837382.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>线程可以结束，也可以选择不结束</p>
 <hr>
-<h3><span id="测试题降低仿真时的内存负载">测试题：降低仿真时的内存负载</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112120037482.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="测试题降低仿真时的内存负载">测试题：降低仿真时的内存负载</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837383.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>答案：ABCD</p>
 <hr>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112120538650.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837384.png" srcset="/img/loading.gif" lazyload alt></p>
 <figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">fork</span>..<span class="hljs-variable">.join</span><span class="hljs-comment">//里面的语句都是并行的</span><br><span class="hljs-keyword">fork</span>..<span class="hljs-variable">.join_any</span><br><span class="hljs-keyword">fork</span>..<span class="hljs-variable">.join_none</span><br></code></pre></div></td></tr></table></figure>
-<h2><span id="3-线程概念澄清">3 线程概念澄清</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112124235862.png" srcset="/img/loading.gif" lazyload alt></p>
-<h1><span id="二-线程的控制">二、线程的控制</span></h1><h2><span id="1-fork并行线程语句块">1 fork并行线程语句块</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112124359432.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="3-线程概念澄清">3 线程概念澄清</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837385.png" srcset="/img/loading.gif" lazyload alt></p>
+<h1><span id="二-线程的控制">二、线程的控制</span></h1><h2><span id="1-fork并行线程语句块">1 fork并行线程语句块</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837386.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>对比图</p>
 <ul>
 <li><p>join等待所有子线程运行结束后进行后面的主线程</p>
@@ -397,35 +397,35 @@
 <li><p>join_none开辟子线程后直接进行之后的主线程</p>
 </li>
 </ul>
-<h2><span id="2-forkjoin">2 fork…join</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112124750443.png" srcset="/img/loading.gif" lazyload alt></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112124830167.png" srcset="/img/loading.gif" lazyload alt></p>
-<h2><span id="3-join_any">3 join_any</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112124915926.png" srcset="/img/loading.gif" lazyload alt></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112124956438-16366925968321.png" srcset="/img/loading.gif" lazyload alt></p>
-<h2><span id="4-forkjoin_none">4 fork…join_none</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112125112200.png" srcset="/img/loading.gif" lazyload alt>4</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112125139712.png" srcset="/img/loading.gif" lazyload alt></p>
-<h2><span id="5-等待所有衍生线程wait-fork">5 等待所有衍生线程：wait fork</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112125421840.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="2-forkjoin">2 fork…join</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837387.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837388.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="3-join_any">3 join_any</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837389.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837390.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="4-forkjoin_none">4 fork…join_none</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837391.png" srcset="/img/loading.gif" lazyload alt>4</p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837392.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="5-等待所有衍生线程wait-fork">5 等待所有衍生线程：wait fork</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837393.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><code>wait fork</code></p>
-<h2><span id="6-停止单个线程-停止多个线程disable">6 停止单个线程、停止多个线程：disable</span></h2><h3><span id="停止单个线程">停止单个线程</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112125517978.png" srcset="/img/loading.gif" lazyload alt></p>
-<h3><span id="停止多个线程">停止多个线程</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112132512284.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="6-停止单个线程-停止多个线程disable">6 停止单个线程、停止多个线程：disable</span></h2><h3><span id="停止单个线程">停止单个线程</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837394.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="停止多个线程">停止多个线程</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837395.png" srcset="/img/loading.gif" lazyload alt></p>
 <figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">disable</span> <span class="hljs-keyword">fork</span>;<span class="hljs-comment">//停止所有衍生子线程</span><br></code></pre></div></td></tr></table></figure>
-<h3><span id="停止多次被调用的任务">停止多次被调用的任务</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112132611826.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="停止多次被调用的任务">停止多次被调用的任务</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837396.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>disable会停止所有<strong>同名</strong>线程</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112132651261.png" srcset="/img/loading.gif" lazyload alt></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112133030715.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837397.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837398.png" srcset="/img/loading.gif" lazyload alt></p>
 <h2><span id="7-僵尸线程">7 僵尸线程</span></h2><p>join_none , join_any 的线程，父线程很快结束后，子线程仍在运行，子线程不会被回收，称这些子线程为僵尸线程</p>
 <ul>
 <li>因此需要给fork起名字，给他手动disable关掉</li>
 <li>父线程触发event使得外部程序disable子线程</li>
 </ul>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112163246395.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837399.png" srcset="/img/loading.gif" lazyload alt></p>
 <h1><span id="三-线程间通信">三、线程间通信</span></h1><h2><span id="1-概述">1 概述</span></h2><p>SV一共就三种线程通信方法，三个要素只有event不需要用new，但仍然可以看作一个对象因为同样需要调用方法</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112133200873.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837400.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>线程之间通过mailbox搅浑数据，SV称之为IPC(Interprocess Communication)</p>
 <h2><span id="2-event事件">2 event事件</span></h2><h3><span id="1-概述">(1) 概述</span></h3><p>verilog中一个线程总是要等待一个带@操作符的时间。这个操作符是边沿敏感的，所以它总是阻塞着、等待的时间变化</p>
 <p>SV中抽象出来，称为<code>event</code>，其他线程可以通过<code>-&gt;</code>操作符<strong>触发</strong>事件，结束对线程的阻塞（constraint里面也学过箭头）</p>
 <p>三个要素只有event不需要用new，但仍然可以看作一个对象因为同样需要调用方法</p>
-<h3><span id="2-在event的边沿阻塞">(2) 在event的边沿阻塞</span></h3><h4><span id="直接-e">直接 <code>@ e ;</code></span></h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112133804979.png" srcset="/img/loading.gif" lazyload alt></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112133852009.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="2-在event的边沿阻塞">(2) 在event的边沿阻塞</span></h3><h4><span id="直接-e">直接 <code>@ e ;</code></span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837401.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837402.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>@ event 的时候事件时，因为事件只在当前时间步长保持，所以会丢失event</p>
 <p>delta cycle使得同一时间内没法确认是t1先执行还是t2先执行，这样的化肯定有一个线程等不到事件</p>
 <p>triggered是一个类似留言的功能，即询问事件是否<strong>被</strong>触发过</p>
@@ -434,15 +434,15 @@
 <li>event 触发在 wait triggered之前则不会等待到</li>
 <li>event 触发在 wait triggered 时或之后才会等待到</li>
 </ul>
-<h4><span id="例子">例子</span></h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112162540357.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="例子">例子</span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837403.png" srcset="/img/loading.gif" lazyload alt></p>
 <h5><span id="进一步分析">进一步分析</span></h5><figure class="highlight gherkin"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs gherkin">事件的触发状态只会在当前时间步长保持，一但仿真开始向前运行，就会失去这个状态。也就是说，在仿真时间20的这个时间步长中（可以把它想象成1ns或1ps），事件是处于触发状态的，到21仿真时间后触发状态消失。在上面的代码中，两个阻塞等待<span class="hljs-meta">@和.triggered都是和事件触发同时发生的，出现了竞争条件，结果是虽然触发和等待发生在同一个仿真时间，但是还有执行顺序，根据代码顺序，先执行事件的触发，由于</span><span class="hljs-meta">@事件控制是边沿敏感的，等到执行</span><span class="hljs-meta">@语句时，事件的触发的“上升沿”已经消失，所以</span><span class="hljs-meta">@并没有被触发，而</span><span class="hljs-meta">@和.triggered的不同就在于此，</span><span class="hljs-meta">@是边沿敏感，后者是电平敏感，所以在整个20仿真时间步长中，wait语句都能被触发。</span><br>触发和等待在同一时间开始的话就不要用<span class="hljs-meta">@改用.triggered，当然如果触发进程在等待进程（的仿真时间）之前发生，那这两种等待都不会收到trigger。</span><br>其实将Thread2initial块移动到Thread1 initial块之前，也能让<span class="hljs-meta">@阻塞等待被触发，这就是因为</span><span class="hljs-meta">@的执行顺序在触发事件之前</span><br></code></pre></div></td></tr></table></figure>
-<h4><span id="修改为-waitetriggered">修改为 <code>wait(e.triggered)</code></span></h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112141011384.png" srcset="/img/loading.gif" lazyload alt></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112161825960.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="修改为-waitetriggered">修改为 <code>wait(e.triggered)</code></span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837404.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837405.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>triggered引起阻塞（@e 是电平敏感，当event被触发则该语句一直运行）</p>
-<h3><span id="3-通知的需求">(3) 通知的需求</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112141711216.png" srcset="/img/loading.gif" lazyload alt></p>
-<h3><span id="把-bit-变成-event">把 bit 变成 event</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112141828286.png" srcset="/img/loading.gif" lazyload alt></p>
-<h4><span id="扩展多次触发">扩展：多次触发</span></h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112141911727.png" srcset="/img/loading.gif" lazyload alt></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112162011904.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="3-通知的需求">(3) 通知的需求</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837406.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="把-bit-变成-event">把 bit 变成 event</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837407.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="扩展多次触发">扩展：多次触发</span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837408.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837409.png" srcset="/img/loading.gif" lazyload alt></p>
 <h3><span id="4-wait-triggered-和-wait-triggered-比较总结">(4) @ ，wait triggered() 和 wait triggered 比较总结</span></h3><ul>
 <li><p>wait trigger()方法只能等待一次</p>
 </li>
@@ -456,34 +456,34 @@
 </ul>
 <h3><span id="5-wait_order与事件合并">(5) wait_order与事件合并</span></h3><p>参考博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43249032/article/details/84035517">https://blog.csdn.net/weixin_43249032/article/details/84035517</a></p>
 <hr>
-<h3><span id="测试题">测试题</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112162647861.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="测试题">测试题</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837410.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>答案：CD</p>
 <p>多次触发</p>
 <h2><span id="3-semaphore旗语">3 semaphore旗语</span></h2><h3><span id="1-概述">(1) 概述</span></h3><p><strong>实现对统一资源的访问和控制</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112143230138.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837411.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>new()：创建实例，参数指定创建钥匙数，无参数表示没有</li>
 <li>get()：获取一把或多把钥匙</li>
 <li>put()：返回一把或多把钥匙，没有参数默认一把</li>
 <li>try_get()：非阻塞的获取钥匙，1表示由足够多钥匙0表示钥匙不够</li>
 </ul>
-<h3><span id="2-例子总线访问实现只有一个设备进行访问">(2) 例子：总线访问，实现只有一个设备进行访问</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112143627456.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="2-例子总线访问实现只有一个设备进行访问">(2) 例子：总线访问，实现只有一个设备进行访问</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837412.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>sequencer都是对总想进行访问的</p>
 <p>可以理解为stimulator</p>
 <p><strong>用完钥匙一定要归还</strong>，如果不归还，get会阻塞产生死锁</p>
-<h3><span id="3-资源共享需求">(3) 资源共享需求</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112144750770.png" srcset="/img/loading.gif" lazyload alt></p>
-<h4><span id="例子">例子</span></h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112144846154.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="3-资源共享需求">(3) 资源共享需求</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837413.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="例子">例子</span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837414.png" srcset="/img/loading.gif" lazyload alt></p>
 <hr>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112144925767.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837415.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>先到先得的原则</strong></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112145005924.png" srcset="/img/loading.gif" lazyload alt></p>
-<h4><span id="测试题">测试题</span></h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112145046709.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837416.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="测试题">测试题</span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837417.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>答案：ABCD</p>
-<h4><span id="进阶semaphora过于自由使用时需要限制">进阶：semaphora过于自由，使用时需要限制</span></h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112145739949.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="进阶semaphora过于自由使用时需要限制">进阶：semaphora过于自由，使用时需要限制</span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837418.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>carkeep：车管家</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112150028598.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837419.png" srcset="/img/loading.gif" lazyload alt></p>
 <h2><span id="4-mailbox信箱子">4 mailbox信箱子</span></h2><h3><span id="1-概述">(1) 概述</span></h3><p><strong>主要是放置数据进行缓存</strong>，线程同步用event，信息传递用mailbox</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112150157938.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837420.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>new：例化，可选参数size不一样了时存储的最大容量，0是无限大</li>
 <li>put()：放入数据</li>
@@ -491,30 +491,30 @@
 <li>peek()：只拷贝，不删除</li>
 <li>try_put , try_get , try_peek</li>
 </ul>
-<h3><span id="2-在进程间使用信箱通信">(2) 在进程间使用信箱通信</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112150442051.png" srcset="/img/loading.gif" lazyload alt></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112150506986-16367007075342.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="2-在进程间使用信箱通信">(2) 在进程间使用信箱通信</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837421.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837422.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>细节在于为何mailbox是1，可以保证每次不需要传递过多数据，顺序不会变化</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112155326431.png" srcset="/img/loading.gif" lazyload alt></p>
-<h3><span id="3-数据通信的需求实际情况">(3) 数据通信的需求：实际情况</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112160103076.png" srcset="/img/loading.gif" lazyload alt></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112160108460.png" srcset="/img/loading.gif" lazyload alt></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112160027584.png" srcset="/img/loading.gif" lazyload alt></p>
-<h3><span id="测试题">测试题</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112160133669.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837423.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="3-数据通信的需求实际情况">(3) 数据通信的需求：实际情况</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837424.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837425.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837426.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="测试题">测试题</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837427.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>答案：ABCD</p>
 <h3><span id="4-数据通信的需求续">(4) 数据通信的需求（续）</span></h3><p>对于mailbox的用法，同FIFO类似</p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112160219361.png" srcset="/img/loading.gif" lazyload alt></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112160322083.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837428.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837429.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><code>把mailbox替换成队列</code></p>
-<h4><span id="mailbox与quence的区别重要">mailbox与quence的区别（重要）</span></h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112160515785.png" srcset="/img/loading.gif" lazyload alt></p>
-<h4><span id="测试题">测试题</span></h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112160642148.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="mailbox与quence的区别重要">mailbox与quence的区别（重要）</span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837430.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="测试题">测试题</span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837431.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>答案：BC</p>
-<h3><span id="5-mailbox-其他特性">(5) mailbox 其他特性</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112160735856.png" srcset="/img/loading.gif" lazyload alt></p>
-<h3><span id="6-进程同步的需求">(6) 进程同步的需求</span></h3><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112160808988.png" srcset="/img/loading.gif" lazyload alt></p>
-<h4><span id="event同步">event同步</span></h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112160902694.png" srcset="/img/loading.gif" lazyload alt></p>
-<h4><span id="semaphora同步">semaphora同步</span></h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112160949039.png" srcset="/img/loading.gif" lazyload alt></p>
-<h4><span id="mailbox同步">mailbox同步</span></h4><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112161021129.png" srcset="/img/loading.gif" lazyload alt></p>
-<h2><span id="5-总结">5 总结</span></h2><p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112161050057.png" srcset="/img/loading.gif" lazyload alt></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112161101075.png" srcset="/img/loading.gif" lazyload alt></p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/image-20211112161126705.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="5-mailbox-其他特性">(5) mailbox 其他特性</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837432.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="6-进程同步的需求">(6) 进程同步的需求</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837433.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="event同步">event同步</span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837434.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="semaphora同步">semaphora同步</span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837435.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="mailbox同步">mailbox同步</span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837436.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="5-总结">5 总结</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837437.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837438.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011837439.png" srcset="/img/loading.gif" lazyload alt></p>
 
             </div>
             <hr>
@@ -557,9 +557,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/202111121646/IC/sv%E5%AD%A6%E4%B9%A0/%E7%B2%BE%E9%80%9Aessay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AD%A6%E4%B9%A06-2%EF%BC%9A%E9%AA%8C%E8%AF%81%E7%9A%84%E9%87%8F%E5%8C%96%E4%B8%8E%E5%8A%9F%E8%83%BD%E8%A6%86%E7%9B%96%E7%8E%87/">
+                      <a href="/202111112121/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AD%A6%E4%B9%A05-3%EF%BC%9AUVM%E7%AE%80%E4%BB%8B/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">SV精通6：验证的量化与功能覆盖率</span>
+                        <span class="hidden-mobile">SV通识5-2：UVM简介</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -567,8 +567,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/202111112121/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AD%A6%E4%B9%A05-3%EF%BC%9AUVM%E7%AE%80%E4%BB%8B/">
-                        <span class="hidden-mobile">SV通识5-2：UVM简介</span>
+                      <a href="/202111101732/IC/sv%E5%AD%A6%E4%B9%A0/%E9%80%9A%E8%AF%86essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AD%A6%E4%B9%A05-1%EF%BC%9A%E9%AA%8C%E8%AF%81%E6%96%B9%E6%B3%95/">
+                        <span class="hidden-mobile">SV通识5-1：验证方法</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

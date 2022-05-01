@@ -1,0 +1,25 @@
+var image_list = [
+    // "http://localhost:4000/img/背景图/65703458_p0.jpg"
+    "/img/banner_img/anime/背景页.jpg",
+    "/img/banner_img/anime/20220310112417.png",
+    "/img/banner_img/anime/20220310112708.png",
+    "/img/banner_img/anime/20220310112826.png",
+    "/img/banner_img/anime/20220310112900.png",
+    "/img/banner_img/anime/20220310113317.png",
+    "/img/banner_img/anime/20220312211727.png",
+    "/img/banner_img/anime/20220312211609.png",
+    "/img/banner_img/anime/20220312211522.png",
+    "/img/banner_img/anime/20220312211357.png",
+    "/img/banner_img/anime/20220312211342.png",
+    "/img/banner_img/anime/20220312211206.png",
+    "/img/banner_img/anime/63883229_p0.jpg",
+    "/img/banner_img/anime/94525092_p0.jpg",
+    //"/img/banner_img/anime/20220310112049.png",
+    //"/img/banner_img/anime/20220310112213.png",
+    //"/img/banner_img/anime/20220310112332.png",
+    "/img/banner_img/anime/96733090_p2.jpg",
+    "/img/banner_img/anime/96733090_p3.jpg",
+    "/img/banner_img/anime/96733090_p4.jpg",
+    "/img/banner_img/anime/96247202_p0.jpg",
+    "/img/banner_img/anime/96717167_p0.jpg"
+];

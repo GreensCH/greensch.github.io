@@ -16,15 +16,15 @@
   <meta name="description" content="“无论最终结果将人类历史导向何处，我们决定选择希望”">
   <meta name="author" content="友人律 | Guilin Chang">
   <meta name="keywords" content="三差学生、不学无术">
-  <meta name="description" content="hexo魔改汇总1 删除文章插入的图片有阴影css文件中加入： 123.markdown-body p &gt; a &gt; img &amp;#123;  box-shadow: none;&amp;#125; 2 删除Typora插入图片的alt后缀使用vs，正则匹配 1\[image-[0-9]* 替换为[即可">
+  <meta name="description" content="hexo魔改汇总1 删除文章插入的图片有阴影css文件中加入： 123.markdown-body p &gt; a &gt; img &amp;#123;  box-shadow: none;&amp;#125; 2 删除Typora插入图片的alt后缀使用vs，正则匹配 1\[[0-9]* 替换为[即可">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo魔改汇总">
 <meta property="og:url" content="http://yoursite.com/202203191912/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/hexoessay/tools/hexo%E9%AD%94%E6%94%B9%E6%B1%87%E6%80%BB/index.html">
 <meta property="og:site_name" content="友人律的博客">
-<meta property="og:description" content="hexo魔改汇总1 删除文章插入的图片有阴影css文件中加入： 123.markdown-body p &gt; a &gt; img &amp;#123;  box-shadow: none;&amp;#125; 2 删除Typora插入图片的alt后缀使用vs，正则匹配 1\[image-[0-9]* 替换为[即可">
+<meta property="og:description" content="hexo魔改汇总1 删除文章插入的图片有阴影css文件中加入： 123.markdown-body p &gt; a &gt; img &amp;#123;  box-shadow: none;&amp;#125; 2 删除Typora插入图片的alt后缀使用vs，正则匹配 1\[[0-9]* 替换为[即可">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-03-19T11:12:14.947Z">
-<meta property="article:modified_time" content="2022-03-19T11:24:25.926Z">
+<meta property="article:published_time" content="2022-03-19T11:12:00.000Z">
+<meta property="article:modified_time" content="2022-05-01T14:04:26.218Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="解决方法">
 <meta property="article:tag" content="hexo">
@@ -233,7 +233,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/背景页.jpg') no-repeat center center;
+         style="background: url('/img/banner_img/anime/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -259,7 +259,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      137 字
+      131 字
     </span>
   
 
@@ -303,7 +303,7 @@
               <h1><span id="hexo魔改汇总">hexo魔改汇总</span></h1><h2><span id="1-删除文章插入的图片有阴影">1 删除文章插入的图片有阴影</span></h2><p>css文件中加入：</p>
 <figure class="highlight stylus"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs stylus"><span class="hljs-selector-class">.markdown-body</span> <span class="hljs-selector-tag">p</span> &gt; <span class="hljs-selector-tag">a</span> &gt; <span class="hljs-selector-tag">img</span> &#123;<br>  <span class="hljs-attribute">box-shadow</span>: none;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 <h2><span id="2-删除typora插入图片的alt后缀">2 删除Typora插入图片的alt后缀</span></h2><p>使用vs，正则匹配</p>
-<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c">\[image-[<span class="hljs-number">0</span><span class="hljs-number">-9</span>]*<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c">\[[<span class="hljs-number">0</span><span class="hljs-number">-9</span>]*<br></code></pre></div></td></tr></table></figure>
 <p>替换为<code>[</code>即可</p>
 
             </div>
