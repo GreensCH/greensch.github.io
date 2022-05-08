@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011901538.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011901539.png">
 <meta property="article:published_time" content="2022-04-07T13:42:00.000Z">
-<meta property="article:modified_time" content="2022-05-01T14:09:04.577Z">
+<meta property="article:modified_time" content="2022-05-08T14:22:55.834Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="常用">
 <meta property="article:tag" content="命令">
@@ -265,7 +265,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.8k 字
+      4.3k 字
     </span>
   
 
@@ -274,7 +274,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      9 分钟
+      13 分钟
     </span>
   
 
@@ -404,6 +404,47 @@
 </ul>
 </li>
 </ol>
+<h2><span id="其他解决方案">其他解决方案</span></h2><h3><span id="find-指令的使用">find 指令的使用</span></h3><ol>
+<li>找到大于10M的文件基础版：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">find . -type f -size +10M<br></code></pre></div></td></tr></table></figure>
+<p>这个指令会显示当前文件夹. 下面的所有大于10M的文件。但是不会具体显示这些文件的大小</p>
+<ol>
+<li>找到大于10M的文件进阶版：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">find . -<span class="hljs-built_in">type</span> f -size +10M -<span class="hljs-built_in">exec</span> du -h &#123;&#125; \;<br></code></pre></div></td></tr></table></figure>
+<p>这个指令会显示当前文件夹. 下面的所有大于10M的文件。且会具体显示这些文件的大小。（备注，du -h 就是显示文件（夹）大小的指令）</p>
+<ol>
+<li>寻找文件夹</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">find . -<span class="hljs-built_in">type</span> d -name FL<br></code></pre></div></td></tr></table></figure>
+<p>主要就是这个 -type 参数。</p>
+<h3><span id="统计代码行数find-grep-wc">统计代码行数(find + grep + wc)</span></h3><p>第一个例子是统计一个目录中(包含子目录)中的代码行数. 如果想知道当前目录下究竟有多少行的代码, 就可以在命令行中键入如下命令:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs text">find . | grep &#x27;\.c$\|\.h$&#x27; | xargs wc -l<br></code></pre></div></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>用<code>man find</code>查看<code>find</code>操作的功能, 可以看到<code>find</code>是搜索目录中的文件. Linux中一个点<code>.</code>始终表示Shell当前所在的目录, 因此<code>find .</code>实际能够列出当前目录下的所有文件. 如果在文件很多的地方键入<code>find .</code>, 将会看到过多的文件, 此时可以按<code>CTRL + c</code>退出.</li>
+<li>用<code>man</code>查看<code>grep</code>的功能——“print lines matching a pattern”. <code>grep</code>实现了输入的过滤, 我们的<code>grep</code>有一个参数, 它能够匹配以<code>.c</code>或<code>.h</code>结束的文件. 正则表达式是处理字符串非常强大的工具之一, 每一个程序员都应该掌握其相关的知识. 有兴趣的同学可以首先阅读一个<a target="_blank" rel="noopener" href="http://linux.vbird.org/linux_basic/0330regularex.php">基础的教程open in new window</a>, 然后看一个有趣的小例子: <a target="_blank" rel="noopener" href="http://coolshell.cn/articles/2704.html">如何用正则表达式判定素数open in new window</a>. 正则表达式还可以用来编写一个30行的java表达式求值程序(传统方法几乎不可能), 聪明的你能想到是怎么完成的吗? 上述的<code>grep</code>命令能够提取所有<code>.c</code>和<code>.h</code>结尾的文件.</li>
+<li>标准输入输出：刚才的<code>find</code>和<code>grep</code>命令, 都从标准输入中读取数据, 并输出到标准输出. 关于什么是标准输入输出, 请参考<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Standard_streams">这里open in new window</a>. 连接起这两个命令的关键就是管道符号<code>|</code>. 这一符号的左右都是Shell命令, <code>A | B</code>的含义是创建两个进程<code>A</code>和<code>B</code>, 并将<code>A</code>进程的标准输出连接到<code>B</code>进程的标准输入. 这样, 将<code>find</code>和<code>grep</code>连接起来就能够筛选出当前目录(<code>.</code>)下所有以<code>.c</code>或<code>.h</code>结尾的文件.</li>
+</ul>
+</blockquote>
+<ul>
+<li>我们最后的任务是统计这些文件所占用的总行数, 此时可以用<code>man</code>查看<code>wc</code>命令. <code>wc</code>命令的<code>-l</code>选项能够计算代码的行数. <code>xargs</code>命令十分特殊, 它能够将标准输入转换为参数, 传送给第一个参数所指定的程序. 所以, 代码中的<code>xargs wc -l</code>就等价于执行<code>wc -l aaa.c bbb.c include/ccc.h ...</code>, 最终完成代码行数统计.</li>
+<li>（方法二）统计代码行数</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shel">wc -l `find . -name &quot;*.h&quot;;find . -name &quot;*.cpp&quot;`<br></code></pre></div></td></tr></table></figure>
+<ul>
+<li>统计文件个数：一前以后，用途不同了。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shel">find . -name &quot;*.h&quot; | wc -l<br></code></pre></div></td></tr></table></figure>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/buffalo/p/4515904.html">linux 中显示文本行数及非空文本行数</a></p>
+<ul>
+<li>思路是先用grep过滤掉空行：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">find . \( -name &quot;*.h&quot; -o -name &quot;*.c&quot; \) | xargs cat | grep -v ^$ | wc -l<br><span class="hljs-meta">#</span><span class="bash"> 一种结合的方法</span><br>find . | grep &#x27;\.c$\|\.h$&#x27;   | xargs cat | grep -v ^$ | wc -l <br><span class="hljs-meta">#</span><span class="bash">下面这种方式s，你可以找一下原因</span><br>find . | grep &#x27;\.c$\|\.h$&#x27;   | xargs cat | grep -v ^$ | xargs wc -l <br></code></pre></div></td></tr></table></figure>
+</li>
+</ul>
 
             </div>
             <hr>

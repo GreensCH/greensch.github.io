@@ -28,13 +28,13 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012030977.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012030992.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012031568.png">
-<meta property="og:image" content="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210913105918.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/common/20210913105918.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012031204.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012031180.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012031364.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012031474.png">
 <meta property="article:published_time" content="2021-09-13T03:45:37.000Z">
-<meta property="article:modified_time" content="2022-05-01T13:36:02.875Z">
+<meta property="article:modified_time" content="2022-05-01T14:33:13.160Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="调研">
 <meta name="twitter:card" content="summary_large_image">
@@ -343,7 +343,7 @@
 <!--在petalinux创建ps端linux系统时的hdf中包括microblaze软核及其周边外设-->
 <h3><span id="2-相关设计参考">2 相关设计参考</span></h3><h4><span id="21-启动使用flash完成操作系统启动">2.1 启动(使用flash完成操作系统启动)</span></h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weiaipan1314/article/details/110679080">参考启动流程：</a><br><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012031568.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><a target="_blank" rel="noopener" href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842560/MicroBlaze">参考文章MicroBlaze 上的嵌入式软件堆栈概述：</a><br>MicroBlaze 的软件堆栈不像Xilinx的其他嵌入式设备那样从加固的BootROM开始。相反，初始引导代码必须包含在FPGA比特流中，通常通过初始化映射到MicroBlaze引导向量的一小块 BlockRAM来实现。对于某些系统，整个应用程序可能会驻留在这个BlockRAM 中。对于更复杂的系统（例如Linux），可以在BlockRAM中初始化第一阶段引导加载程序。Xilinx 提供了一个称为 FS-Boot的第一阶段引导加载程序，它在启动时执行并负责将第二阶段引导加载程序（通常是U-Boot，但可能是最终应用程序）从非易失性存储器复制到 MicroBlaze可以从中执行的存储器中，通常为DDR。FS-Boot 至少需要 8KB 的 BlockRAM。 </p>
-<p><img src="https://markdownpic-1301418409.cos.ap-nanjing.myqcloud.com/img/markdown_1/20210913105918.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/common/20210913105918.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>有关创建 FS-Boot 并将其合并到比特流中的更多信息，请参阅PetaLinux 工具指南。 </p>
 <p><a target="_blank" rel="noopener" href="https://china.xilinx.com/content/dam/xilinx/support/documentation/sw_manuals/xilinx2019_1/c_ug1144-petalinux-tools-reference-guide.pdf">microblaze启动手册说明—《ug11440》:</a><br><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205012031204.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><a target="_blank" rel="noopener" href="https://china.xilinx.com/content/dam/xilinx/support/documentation/sw_manuals/xilinx2019_1/c_ug1144-petalinux-tools-reference-guide.pdf">flash做uboot—《ug1144》:</a></p>

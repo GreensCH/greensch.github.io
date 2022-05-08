@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011901086.jpg">
 <meta property="article:published_time" content="2022-04-22T08:59:19.000Z">
-<meta property="article:modified_time" content="2022-05-01T13:08:41.827Z">
+<meta property="article:modified_time" content="2022-05-01T15:17:44.610Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="IC">
 <meta property="article:tag" content="学习">
@@ -263,7 +263,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      664 字
+      1.8k 字
     </span>
   
 
@@ -272,7 +272,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2 分钟
+      6 分钟
     </span>
   
 
@@ -326,7 +326,9 @@
 <li>时序分析使用的PT( PrimeTime)</li>
 </ul>
 <p>其他EDA工具也有很多，如布线布局使用的ICC(IC Compiler)，做物理验证的Herclues等<br>这里主要介绍下前面提到的VCS，DC，PT这三者</p>
-<h2><span id="1-vcsverilog-compiled-simulator">1 VCS(Verilog Compiled Simulator)</span></h2><p>VCS是编译型Verilog模拟器，它完全支持OVI标准的Verilog HDL语言、PLI和SDF。VCS具有目前行业中最高的模拟性能，其出色的内存<br>管理能力足以支持千万门级的ASIC设计，而其模拟精度也完全满足深亚微米ASIC Sign-Off的要求。VCS结合了节拍式算法和事件驱动，适用于从行为级、RTL到Sign-Ofi等各个阶段。<br>、VCS民经将CoverMeter中所有的覆盖率测试功能<br>法，具有高性能、大规模和高精度的特点.<br>集成，并提供VeraLite、 CyoleC等智能验证方法。VCS和Scirocco也支持混合语言仿真。VCS和Scirocco都集成了Virsim图形用户界面,它<br>提供了对模拟结果的交互和后处理分析。</p>
+<h2><span id="1-vcsverilog-compiled-simulator">1 VCS(Verilog Compiled Simulator)</span></h2><p>VCS是编译型Verilog模拟器，它完全⽀持OVI标准的Verilog HDL语言、PLI和SDF。 VCS具有目前行业中最高的模拟性能，其出色的内存管理能力足以支持千万门级的ASIC设计，而其模拟精度也完全满足深亚微米ASIC Sign-Off的要求。VCS结合了节拍式算法和事件驱动算法，具有高性能、⼤规模和高精度的特点，适⽤于从行为级、RTL到Sign-Off等各个阶段。VCS已经将CoverMeter中所有的覆盖率测试功能集成，并提供VeraLite、CycleC等智能验证方法。VCS和Scirocco也⽀持混合语言仿真。VCS和Scirocco都集成了Virsim图形用户界面，它提供了对模拟结果的交互和后处理分析。</p>
+<h2><span id="2-dc">2 DC</span></h2><p>Design Compiler为Synopsys公司逻辑合成⼯具。DC得到全球60多个半导体⼚商、380多个⼯艺库的支持。据最新Dataquest的统计，Synopsys的逻辑综合工具占据91%的市场份额。DC是十多年来工业界标准的逻辑综合工具，也是Synopsys最核心的产品。它使IC设计者在最短的时间内最佳的利用硅片完成设计。它根据设计描述和约束条件并针对特定的工艺库自动综合出⼀个优化的门级电路。它可以接受多种输⼊格式，如硬件描述语言、原理图和网表等，并产生多种性能报告，在缩短设计时间的同时提⾼设计性能。Synopsys发布的最新版Design Compiler综合解决方案——Design Compiler。新版本扩展了拓扑技术，以加速采用先进低功耗和测试技术的设计收敛，帮助设计人员提高生产效率和IC性能。拓扑技术可帮助设计人员正确评估芯片在综合过程中的功耗，在设计早期解决所有功耗问题。此外，还支持Design Compiler中新的测试压缩技术，在实现⾼质量测试的同时，减少测试时间和测试数据量超过100倍，并减少后续物理实现阶段由于测试电路带来的可能的布线拥塞。新的Design Compiler采用了多项创新综合技术，如自适应retiming和功耗驱动门控时钟，性能较以前版本平均提⾼8%，⾯积减少4%，功耗降低5%。此外，Synopsys Formality等效检测解决⽅案得到了增强，能够独立、彻底地验证这些技术，因此设计者⽆需舍去验证就可以实现更高的性能。</p>
+<h2><span id="3-pt">3 PT</span></h2><p>PrimeTime是针对复杂、百万门芯片进行全芯片、门级静态时序分析的工具。PrimeTime可以集成于逻辑综合和物理综合的流程，让设计者分析并解决复杂的时序问题，并提高时序收敛的速度。PrimeTime是众多半导体厂商认可的、业界标准的静态时序分析工具。Galaxy™ 设计平台中的时序验证核心工具—PrimeTime®的最新版本凭借其静态时序分析能力和对数百万门设计进行认可的能力，成为新的时序工具标准。从用户使用情况显示，最新发布的PrimeTime的运行速度比之前版本平均提高了2到7倍，从而提升了设计者的设计能力，并实现快速的时序认可。PrimeTime强大的性能得益于在生成报告和基于标准延迟文件（SDF）的时序分析方面的算法的改进。PrimeTime提供全芯片级的静态时序分析，同时整合了延迟计算和先进的建模功能，以实现有效而又精确的时序认可。PrimeTime SI是全芯片门级信号完整性分析工具。PrimeTime SI建立在成功流片验证过的PrimeTime平台之上的，提供精确的串扰延迟分析，IR drop(电压降落)分析和静态时序分析。PrimeTime SI业界领先的超快运⾏时间和处理容量让数百万门的复杂设计⼀次流片成功，让设计者取得极快的进⼊市场时间</p>
 <hr>
 <p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011901086.jpg" srcset="/img/loading.gif" lazyload alt="97756295_p0"></p>
 
