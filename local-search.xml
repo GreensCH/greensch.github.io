@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>hexo插件汇总</title>
+    <link href="/202205091339/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/hexoessay/tools/hexo%E9%AD%94%E6%94%B9%E6%B1%87%E6%80%BB%20(copy)/"/>
+    <url>/202205091339/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/hexoessay/tools/hexo%E9%AD%94%E6%94%B9%E6%B1%87%E6%80%BB%20(copy)/</url>
+    
+    <content type="html"><![CDATA[<h1><span id="hexo插件汇总">hexo插件汇总</span></h1><h2><span id="1-github热图日历">1 github热图日历</span></h2><h3><span id="参考内容">参考内容</span></h3><ul><li><p><a href="https://zfe.space/post/hexo-githubcalendar.html">教程：hexo-githubcalendar 插件 1.0</a></p></li><li><p><a href="https://github.com/Zfour/hexo-github-calendar">插件博客</a></p></li></ul><h3><span id="正常步骤">正常步骤</span></h3><p><strong>1. 执行 npm 安装操作 </strong></p><figure class="highlight applescript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs applescript">POWERSHELL<br>复制成功npm i hexo-githubcalendar <span class="hljs-comment">--save</span><br><br><span class="hljs-comment"># 或者</span><br><br>cnpm i hexo-githubcalendar <span class="hljs-comment">--save</span><br></code></pre></div></td></tr></table></figure><p>注意，一定要加 <code>--save</code>，不然本地预览的时候可能不会显示！！！</p><p><strong>2. 新增网站根目录_config 配置项 (不是主题的)：</strong></p><p>参考<a href="https://github.com/Zfour/hexo-github-calendar/issues">https://github.com/Zfour/hexo-github-calendar/issues</a> 找到不同主题的配置（下方为Fluid主题）</p><figure class="highlight yaml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs yaml"><span class="hljs-comment"># Fluid</span><br><span class="hljs-attr">githubcalendar:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">priority:</span> <span class="hljs-number">0</span><br>  <span class="hljs-attr">enable_page:</span> <span class="hljs-string">/</span><br>  <span class="hljs-attr">user:</span> <span class="hljs-string">tsuiwade</span><br>  <span class="hljs-attr">layout:</span><br>    <span class="hljs-attr">type:</span> <span class="hljs-string">class</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">container</span><br>    <span class="hljs-attr">index:</span> <span class="hljs-number">1</span><br>  <span class="hljs-attr">githubcalendar_html:</span> <span class="hljs-string">&#x27;&lt;div id=&quot;github-calendar&quot; style=&quot;width:100%;height:auto;padding:10px;margin-bottom:20px&quot;&gt;&lt;div id=&quot;github_loading&quot; style=&quot;width:10%;height:100%;margin:0 auto;display: block&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot;  viewBox=&quot;0 0 50 50&quot; style=&quot;enable-background:new 0 0 50 50&quot; xml:space=&quot;preserve&quot;&gt;&lt;path fill=&quot;#d0d0d0&quot; d=&quot;M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z&quot; transform=&quot;rotate(275.098 25 25)&quot;&gt;&lt;animateTransform attributeType=&quot;xml&quot; attributeName=&quot;transform&quot; type=&quot;rotate&quot; from=&quot;0 25 25&quot; to=&quot;360 25 25&quot; dur=&quot;0.6s&quot; repeatCount=&quot;indefinite&quot;&gt;&lt;/animateTransform&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/div&gt;&lt;div id=&quot;github_container&quot;&gt;&lt;/div&gt;&lt;/div&gt;&#x27;</span><br>  <span class="hljs-attr">pc_minheight:</span> <span class="hljs-string">200px</span><br>  <span class="hljs-attr">mobile_minheight:</span> <span class="hljs-string">0px</span><br>  <span class="hljs-attr">color:</span> <span class="hljs-string">&quot;[&#x27;#ebedf0&#x27;, &#x27;#f1f8ff&#x27;, &#x27;#dbedff&#x27;, &#x27;#c8e1ff&#x27;, &#x27;#79b8ff&#x27;, &#x27;#2188ff&#x27;, &#x27;#0366d6&#x27;, &#x27;#005cc5&#x27;, &#x27;#044289&#x27;, &#x27;#032f62&#x27;, &#x27;#05264c&#x27;]&quot;</span><br>  <span class="hljs-attr">api:</span> <span class="hljs-string">https://python-github-calendar-api.vercel.app/api</span><br>  <span class="hljs-comment"># api: https://python-gitee-calendar-api.vercel.app/api</span><br>  <span class="hljs-attr">calendar_js:</span> <span class="hljs-string">https://cdn.jsdelivr.net/gh/Zfour/hexo-github-calendar@1.21/hexo_githubcalendar.js</span><br>  <span class="hljs-attr">plus_style:</span> <span class="hljs-string">&quot;#github_container &gt; .position-relative &gt; .border&#123;border:0!important&#125;#github-calendar&#123;position: relative;margin-top: -2rem;background-color: var(--board-bg-color);transition: background-color 0.2s ease-in-out;border-radius: 0.5rem;z-index: 3;-webkit-box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);&#125;&quot;</span><br></code></pre></div></td></tr></table></figure><h2><span id>#</span></h2><h3><span id="我的步骤">我的步骤</span></h3><p><strong>我做的修改：</strong></p><ul><li>fluid主题的插件使用</li><li>搬运插件到自己的网站中并插入</li><li>修改插件位置</li><li>兼容背景透明设置</li></ul><p>正常用法是使用插件博客中的api，我觉得不靠谱就从<a href="https://github.com/Zfour/hexo-github-calendar">插件博客</a>搬运下来用hexo的infector手动插入到页面中</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>开发工具</category>
+      
+      <category>hexo</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>解决方法</tag>
+      
+      <tag>hexo</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>GDB 入门</title>
     <link href="/202204281445/CS/Linux/tool/C-Cessay/cs/linux/GDB%E5%85%A5%E9%97%A8/"/>
     <url>/202204281445/CS/Linux/tool/C-Cessay/cs/linux/GDB%E5%85%A5%E9%97%A8/</url>
