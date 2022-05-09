@@ -16,15 +16,15 @@
   <meta name="description" content="“无论最终结果将人类历史导向何处，我们决定选择希望”">
   <meta name="author" content="友人律 | Guilin Chang">
   <meta name="keywords" content="三差学生、不学无术">
-  <meta name="description" content="hexo魔改汇总1 删除文章插入的图片有阴影css文件中加入： 123.markdown-body p &gt; a &gt; img &amp;#123;  box-shadow: none;&amp;#125; 2 删除Typora插入图片的alt后缀使用vs，正则匹配 1\[[0-9]* 替换为[即可 3 生成image_list.js123456789101112131415161718192021222">
+  <meta name="description" content="hexo魔改汇总0 官方文档 hexo 初始化：https:&#x2F;&#x2F;hexo.io&#x2F;zh-cn&#x2F;api&#x2F;#%E5%88%9D%E5%A7%8B%E5%8C%96 渲染：https:&#x2F;&#x2F;hexo.io&#x2F;zh-cn&#x2F;api&#x2F;rendering 局部变量：https:&#x2F;&#x2F;hexo.io&#x2F;zh-cn&#x2F;api&#x2F;locals 注入器：https:&#x2F;&#x2F;hexo.io&#x2F;zh-cn&#x2F;api&#x2F;injector.html">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo魔改汇总">
 <meta property="og:url" content="http://yoursite.com/202203191912/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/hexoessay/tools/hexo%E9%AD%94%E6%94%B9%E6%B1%87%E6%80%BB/index.html">
 <meta property="og:site_name" content="友人律的博客">
-<meta property="og:description" content="hexo魔改汇总1 删除文章插入的图片有阴影css文件中加入： 123.markdown-body p &gt; a &gt; img &amp;#123;  box-shadow: none;&amp;#125; 2 删除Typora插入图片的alt后缀使用vs，正则匹配 1\[[0-9]* 替换为[即可 3 生成image_list.js123456789101112131415161718192021222">
+<meta property="og:description" content="hexo魔改汇总0 官方文档 hexo 初始化：https:&#x2F;&#x2F;hexo.io&#x2F;zh-cn&#x2F;api&#x2F;#%E5%88%9D%E5%A7%8B%E5%8C%96 渲染：https:&#x2F;&#x2F;hexo.io&#x2F;zh-cn&#x2F;api&#x2F;rendering 局部变量：https:&#x2F;&#x2F;hexo.io&#x2F;zh-cn&#x2F;api&#x2F;locals 注入器：https:&#x2F;&#x2F;hexo.io&#x2F;zh-cn&#x2F;api&#x2F;injector.html">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-19T11:12:00.000Z">
-<meta property="article:modified_time" content="2022-05-09T05:39:23.234Z">
+<meta property="article:modified_time" content="2022-05-09T06:30:14.840Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="解决方法">
 <meta property="article:tag" content="hexo">
@@ -259,7 +259,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.4k 字
+      1.6k 字
     </span>
   
 
@@ -300,7 +300,17 @@
             <h1 style="display: none">hexo魔改汇总</h1>
             
             <div class="markdown-body">
-              <h1><span id="hexo魔改汇总">hexo魔改汇总</span></h1><h2><span id="1-删除文章插入的图片有阴影">1 删除文章插入的图片有阴影</span></h2><p>css文件中加入：</p>
+              <h1><span id="hexo魔改汇总">hexo魔改汇总</span></h1><h2><span id="0-官方文档">0 官方文档</span></h2><ul>
+<li><strong>hexo</strong><ul>
+<li>初始化：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/api/#%E5%88%9D%E5%A7%8B%E5%8C%96">https://hexo.io/zh-cn/api/#%E5%88%9D%E5%A7%8B%E5%8C%96</a></li>
+<li>渲染：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/api/rendering">https://hexo.io/zh-cn/api/rendering</a></li>
+<li>局部变量：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/api/locals">https://hexo.io/zh-cn/api/locals</a></li>
+<li>注入器：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/api/injector.html">https://hexo.io/zh-cn/api/injector.html</a></li>
+</ul>
+</li>
+<li></li>
+</ul>
+<h2><span id="1-删除文章插入的图片有阴影">1 删除文章插入的图片有阴影</span></h2><p>css文件中加入：</p>
 <figure class="highlight stylus"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs stylus"><span class="hljs-selector-class">.markdown-body</span> <span class="hljs-selector-tag">p</span> &gt; <span class="hljs-selector-tag">a</span> &gt; <span class="hljs-selector-tag">img</span> &#123;<br>  <span class="hljs-attribute">box-shadow</span>: none;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 <h2><span id="2-删除typora插入图片的alt后缀">2 删除Typora插入图片的alt后缀</span></h2><p>使用vs，正则匹配</p>
 <figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c">\[[<span class="hljs-number">0</span><span class="hljs-number">-9</span>]*<br></code></pre></div></td></tr></table></figure>
