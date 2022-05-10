@@ -45,6 +45,57 @@ $(bannerMask).css("background-color", `rgba(0,0,0,0)`);
 $(viewBg).css("background-color", color);
 
 
+$('live2d-widget-container').click(function(){
+    console.log("clickmiku!");
+});
+
+// !(function() {
+//     var scroll_switch = -1;
+//     const body = $("body");
+//     const live2d = document.getElementById("live2d-widget");
+    // live2d.click(function () {
+    //     console.log("click");
+    //     if(scroll_switch == 1)
+    //         body.css("overflow-y","auto");
+    //     else
+    //         body.css("overflow-y","hidden");
+    //     scroll_switch = -1*scroll_switch;
+    // });
+//   })();
+
+
+
+// var scroll_switch = -1;
+// var body = $("body");
+// var live2d = document.getElementById("live2d-widget");
+// live2d.onclick = function(){
+//     alert("click");
+//     if(scroll_switch == 1)
+//         body.css("overflow-y","auto");
+//     else
+//         body.css("overflow-y","hidden");
+//     scroll_switch = -1*scroll_switch;
+// };
+
+
+
+$(function() {
+    var scroll_switch = -1;
+    const body = $("body");
+    const live2d = $('div#live2d-widget');
+    alert(live2d);
+    live2d.click(function () {
+        alert(this.className);
+        if(scroll_switch == 1)
+            body.css("overflow-y","auto");
+        else
+            body.css("overflow-y","hidden");
+        scroll_switch = -1*scroll_switch;
+    });
+})();
+
+// var live2d = $('div#live2d-widget');
+// $("body").css("overflow-y","hidden");
 //以下代码是顺序切换图片的代码
 // setInterval(function () {
 //     if(image_ready){
