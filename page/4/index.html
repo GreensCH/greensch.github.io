@@ -405,29 +405,37 @@ cla
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/202111241036/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B63%EF%BC%9A%E7%BB%84%E4%BB%B6%E5%AE%B6%E6%97%8F/" target="_self">
-          <img src="/img/index_img/uvm.png" srcset="/img/loading.gif" lazyload alt="UVM入门和进阶3：组件家族（如何例化部分较为重要）">
+        <a href="/202111241036/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B64%EF%BC%9A%E7%BB%93%E6%9E%84_%E9%A1%B6%E5%B1%82%E6%96%B9%E6%A1%88_%E7%8E%AF%E5%A2%83%E5%85%83%E7%B4%A0/" target="_self">
+          <img src="/img/index_img/uvm.png" srcset="/img/loading.gif" lazyload alt="UVM入门和进阶4：结构_顶层方案_环境元素">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/202111241036/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B63%EF%BC%9A%E7%BB%84%E4%BB%B6%E5%AE%B6%E6%97%8F/" target="_self">
-          UVM入门和进阶3：组件家族（如何例化部分较为重要）
+        <a href="/202111241036/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B64%EF%BC%9A%E7%BB%93%E6%9E%84_%E9%A1%B6%E5%B1%82%E6%96%B9%E6%A1%88_%E7%8E%AF%E5%A2%83%E5%85%83%E7%B4%A0/" target="_self">
+          UVM入门和进阶4：结构_顶层方案_环境元素
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/202111241036/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B63%EF%BC%9A%E7%BB%84%E4%BB%B6%E5%AE%B6%E6%97%8F/" target="_self">
+        <a href="/202111241036/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B64%EF%BC%9A%E7%BB%93%E6%9E%84_%E9%A1%B6%E5%B1%82%E6%96%B9%E6%A1%88_%E7%8E%AF%E5%A2%83%E5%85%83%E7%B4%A0/" target="_self">
           
           
             
           
           参考文档链接：https://verificationacademy.com/verification-methodology-reference/uvm/docs_1.2/html/
-注意，本文内大部分组件介绍分为两节：第一节主要介绍该组件，第二节介绍该组件的定义示例
-0 组件家族0.0 回顾上节课内容
-UVM实验一到实验二的代码会突然增加，实验二会看到如何把SV中的组件过度到UVM的组件的，过
+本节目录：
+
+UVM结构回顾
+
+MCDF顶层验证方案
+
+构建验证环境的内径
+
+
+1 UVM结构回顾1.1 uvm_top：（系统）1const uvm_root uvm_top = uvm_root::get()
+
         </a>
       </p>
 
@@ -468,37 +476,29 @@ UVM实验一到实验二的代码会突然增加，实验二会看到如何把SV
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/202111241036/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B64%EF%BC%9A%E7%BB%93%E6%9E%84_%E9%A1%B6%E5%B1%82%E6%96%B9%E6%A1%88_%E7%8E%AF%E5%A2%83%E5%85%83%E7%B4%A0/" target="_self">
-          <img src="/img/index_img/uvm.png" srcset="/img/loading.gif" lazyload alt="UVM入门和进阶4：结构_顶层方案_环境元素">
+        <a href="/202111241036/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B63%EF%BC%9A%E7%BB%84%E4%BB%B6%E5%AE%B6%E6%97%8F/" target="_self">
+          <img src="/img/index_img/uvm.png" srcset="/img/loading.gif" lazyload alt="UVM入门和进阶3：组件家族（如何例化部分较为重要）">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/202111241036/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B64%EF%BC%9A%E7%BB%93%E6%9E%84_%E9%A1%B6%E5%B1%82%E6%96%B9%E6%A1%88_%E7%8E%AF%E5%A2%83%E5%85%83%E7%B4%A0/" target="_self">
-          UVM入门和进阶4：结构_顶层方案_环境元素
+        <a href="/202111241036/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B63%EF%BC%9A%E7%BB%84%E4%BB%B6%E5%AE%B6%E6%97%8F/" target="_self">
+          UVM入门和进阶3：组件家族（如何例化部分较为重要）
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/202111241036/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B64%EF%BC%9A%E7%BB%93%E6%9E%84_%E9%A1%B6%E5%B1%82%E6%96%B9%E6%A1%88_%E7%8E%AF%E5%A2%83%E5%85%83%E7%B4%A0/" target="_self">
+        <a href="/202111241036/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B63%EF%BC%9A%E7%BB%84%E4%BB%B6%E5%AE%B6%E6%97%8F/" target="_self">
           
           
             
           
           参考文档链接：https://verificationacademy.com/verification-methodology-reference/uvm/docs_1.2/html/
-本节目录：
-
-UVM结构回顾
-
-MCDF顶层验证方案
-
-构建验证环境的内径
-
-
-1 UVM结构回顾1.1 uvm_top：（系统）1const uvm_root uvm_top = uvm_root::get()
-
+注意，本文内大部分组件介绍分为两节：第一节主要介绍该组件，第二节介绍该组件的定义示例
+0 组件家族0.0 回顾上节课内容
+UVM实验一到实验二的代码会突然增加，实验二会看到如何把SV中的组件过度到UVM的组件的，过
         </a>
       </p>
 
@@ -1141,5 +1141,5 @@ initial包括所有过程语句
         }
     </script>
     <style>#github_container{min-height:200px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
-    <style>#github_container > .position-relative > .border{border:0!important}#github-calendar{position: relative;margin-top: -2rem;background-color: var(--board-bg-color);transition: background-color 0.2s ease-in-out;border-radius: 0.5rem;z-index: 3;-webkit-box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);}</style><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"superSample":1,"position":"left","width":150,"height":400,"vOffset":-18},"mobile":{"show":true,"scale":0.1},"dialog":{"enable":false,"hitokoto":true,"width":10,"height":10,"vOffset":-100},"log":false});</script></body>
+    <style>#github_container > .position-relative > .border{border:0!important}#github-calendar{position: relative;margin-top: -2rem;background-color: var(--board-bg-color);transition: background-color 0.2s ease-in-out;border-radius: 0.5rem;z-index: 3;-webkit-box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);}</style><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"superSample":1,"position":"left","width":150,"height":400,"vOffset":-18},"mobile":{"show":true,"scale":0.25},"dialog":{"enable":false,"hitokoto":true,"width":10,"height":10,"vOffset":-100},"log":false});</script></body>
 </html>
