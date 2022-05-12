@@ -7,7 +7,7 @@ image_list.forEach((item,index,image_list)=>{
 var times = randomTimes(-1);
 var image_ready = 1;
 const image_fade_time = 1500;
-const image_switch_time = 20000;
+const image_switch_time = 30000;
 function randomTimes(_times){
     var _times_temp = Math.floor(Math.random()*(image_list.length)); 
     if(times!=_times_temp)
@@ -30,7 +30,7 @@ function changeBg(times)
     image_ready=0;
     $(viewBg).fadeOut(image_fade_time,function(){
         $(viewBg).css("background-image", url_image_list[times]);
-        $(viewBg).fadeIn(image_fade_time,function(){image_ready=1})
+        $(viewBg).fadeIn(4000,function(){image_ready=1})
     });
 }
 
