@@ -12,6 +12,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="“无论最终结果将人类历史导向何处，我们决定选择希望”">
   <meta name="author" content="友人律 | Guilin Chang">
@@ -35,7 +37,7 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205011936368.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205011936369.jpg">
 <meta property="article:published_time" content="2022-02-25T17:17:00.000Z">
-<meta property="article:modified_time" content="2022-05-01T13:18:24.259Z">
+<meta property="article:modified_time" content="2022-05-20T11:51:04.106Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="学习">
 <meta property="article:tag" content="CS">
@@ -643,9 +645,8 @@
 </ul>
 <figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala">scala&gt; <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Students</span>(<span class="hljs-params">val name: <span class="hljs-type">String</span>, var score: <span class="hljs-type">Int</span></span>) </span>&#123;undefined <span class="hljs-comment">//此处用val和var分别修饰了name和score</span><br>         |    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">exam</span></span>(s: <span class="hljs-type">Int</span>) = score = s<br>         |    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">toString</span> </span>= name + <span class="hljs-string">&quot;&#x27;s score is &quot;</span> + score + <span class="hljs-string">&quot;.&quot;</span><br>         |  &#125;<br>defined <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Students</span></span><br><br>scala&gt; <span class="hljs-keyword">val</span> stu = <span class="hljs-keyword">new</span> <span class="hljs-type">Students</span>(<span class="hljs-string">&quot;Tim&quot;</span>, <span class="hljs-number">90</span>)<br>stu: <span class="hljs-type">Students</span> = <span class="hljs-type">Tim</span><span class="hljs-symbol">&#x27;s</span> score is <span class="hljs-number">90.</span><br><br>scala&gt; stu.exam(<span class="hljs-number">100</span>)<br><br>scala&gt; stu.score<br>res0: <span class="hljs-type">Int</span> = <span class="hljs-number">100</span><br></code></pre></div></td></tr></table></figure>
 <h2><span id="56-单例对象与伴生对象静态变量">5.6 单例对象与伴生对象（静态变量）</span></h2><blockquote>
-<div class="hljs code-wrapper"><pre><code> 在Scala里，除了用new可以构造一个对象，也可以用“object”开头定义一个对象。它类似于类的定义，只不过不能像类那样有参数，也没有构造方法。因此，不能用new来实例化一个object的定义，因为它已经是一个对象了。
-</code></pre></div><p>​    <strong>单例对象定义</strong>：用“object”开头定义一个对象对象和用new实例化出来的对象没有什么区别，只不过new实例的对象是以类为蓝本构建的，并且数量没限制，而<strong>object定义的对象只能有这一个</strong>，故而得名<strong>“单例对象”</strong>。</p>
-<p>​    </p>
+<p> ​    在Scala里，除了用new可以构造一个对象，也可以用“object”开头定义一个对象。它类似于类的定义，只不过不能像类那样有参数，也没有构造方法。因此，不能用new来实例化一个object的定义，因为它已经是一个对象了。</p>
+<p>​    <strong>单例对象定义</strong>：用“object”开头定义一个对象对象和用new实例化出来的对象没有什么区别，只不过new实例的对象是以类为蓝本构建的，并且数量没限制，而<strong>object定义的对象只能有这一个</strong>，故而得名<strong>“单例对象”</strong>。</p>
 </blockquote>
 <ul>
 <li><p>class：定义一个类</p>
