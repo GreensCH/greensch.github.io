@@ -12,8 +12,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-  
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="“无论最终结果将人类历史导向何处，我们决定选择希望”">
   <meta name="author" content="友人律 | Guilin Chang">
@@ -21,62 +19,62 @@
   <meta name="description" content="一、类和对象的概述1. 类和对象 property属性 function功能 class类 object对象   2.为什么验证需要有OOP 激励生成器(stimulus generator)：生成激励内容 驱动器(driver)：将激励以时序形式发送给DUT 监控器(monitor)：监测信号并记录数据 比较器(checker)：比较数据  验证环境的不同组件其功能和所需处理的数据内容是不同的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SV精通3：类的方法和继承_动态对象_包的使用">
-<meta property="og:url" content="http://blog.yourenlv.top/202110311523/IC/sv%E5%AD%A6%E4%B9%A0/%E7%B2%BE%E9%80%9Aessay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AD%A6%E4%B9%A03-2%EF%BC%9A%E7%B1%BB%E7%9A%84%E6%96%B9%E6%B3%95%E5%92%8C%E7%BB%A7%E6%89%BF_%E5%8A%A8%E6%80%81%E5%AF%B9%E8%B1%A1_%E5%8C%85%E7%9A%84%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:url" content="https://blog.yourenlv.top/202110311523/IC/sv%E5%AD%A6%E4%B9%A0/%E7%B2%BE%E9%80%9Aessay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AD%A6%E4%B9%A03-2%EF%BC%9A%E7%B1%BB%E7%9A%84%E6%96%B9%E6%B3%95%E5%92%8C%E7%BB%A7%E6%89%BF_%E5%8A%A8%E6%80%81%E5%AF%B9%E8%B1%A1_%E5%8C%85%E7%9A%84%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="友人律的博客">
 <meta property="og:description" content="一、类和对象的概述1. 类和对象 property属性 function功能 class类 object对象   2.为什么验证需要有OOP 激励生成器(stimulus generator)：生成激励内容 驱动器(driver)：将激励以时序形式发送给DUT 监控器(monitor)：监测信号并记录数据 比较器(checker)：比较数据  验证环境的不同组件其功能和所需处理的数据内容是不同的">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832488.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832489.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832490.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832491.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832492.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832493.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832494.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832495.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832496.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832497.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832498.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832499.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832500.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832501.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832502.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832503.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832504.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832505.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832506.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832507.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832508.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832509.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832510.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832511.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832512.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832513.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832514.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832515.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832516.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832517.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832518.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832519.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832520.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832521.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832522.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832523.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832524.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832525.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832526.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832527.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832528.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832529.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832530.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832531.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832488.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832489.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832490.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832491.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832492.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832493.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832494.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832495.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832496.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832497.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832498.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832499.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832500.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832501.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832502.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832503.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832504.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832505.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832506.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832507.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832508.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832509.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832510.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832511.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832512.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832513.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832514.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832515.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832516.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832517.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832518.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832519.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832520.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832521.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832522.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832523.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832524.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832525.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832526.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832527.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832528.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832529.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832530.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832531.png">
 <meta property="article:published_time" content="2021-10-31T07:23:00.000Z">
-<meta property="article:modified_time" content="2022-05-01T13:12:22.320Z">
+<meta property="article:modified_time" content="2022-05-24T10:35:18.369Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="IC">
 <meta property="article:tag" content="sv学习">
 <meta property="article:tag" content="精通">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832488.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832488.png">
   
   <title>SV精通3：类的方法和继承_动态对象_包的使用 - 友人律的博客</title>
 
@@ -354,7 +352,7 @@
 <li>class类</li>
 <li>object对象</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832488.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832488.png" srcset="/img/loading.gif" lazyload alt></p>
 <h2><span id="2为什么验证需要有oop">2.为什么验证需要有OOP</span></h2><ul>
 <li>激励生成器(stimulus generator)：生成激励内容</li>
 <li>驱动器(driver)：将激励以时序形式发送给DUT</li>
@@ -371,7 +369,7 @@
 </li>
 <li><p>module里面定义方法只能在<strong>过程快</strong>中调用，class可以通过class嵌套class来调用，但class里面不能出现always和innashao</p>
 </li>
-<li><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832489.png" srcset="/img/loading.gif" lazyload alt></p>
+<li><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832489.png" srcset="/img/loading.gif" lazyload alt></p>
 </li>
 <li></li>
 </ul>
@@ -382,58 +380,58 @@
 <li>Property</li>
 <li>Method</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832490.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832490.png" srcset="/img/loading.gif" lazyload alt></p>
 <h2><span id="5-创建对象构造函数">5. 创建对象+构造函数</span></h2><p>构造函数<code>new()</code>是系统预定义函数，不需要指定返回值，函数会隐式地返回例化后的对象指针</p>
 <p>注意构造函数<code>new()</code>是小括号，动态数组<code>new[$]</code>是中括号</p>
 <p>创建对象：开辟了新的内存空间，用来存放新的成员变量和方法</p>
 <p>构造函数可以定义形参缺省值，同C++</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832491.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832491.png" srcset="/img/loading.gif" lazyload alt></p>
 <h4><span id="谁在前谁在后关于定义初始值构造函数值冲突时谁会覆盖的问题">谁在前，谁在后？（关于定义初始值，构造函数值冲突时，谁会覆盖的问题）</span></h4><p>答案10</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832492.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832492.png" srcset="/img/loading.gif" lazyload alt></p>
 <h2><span id="6-声明和例化的区分句柄的传递">6. 声明和例化的区分——句柄的传递</span></h2><figure class="highlight apache"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">Transcation</span> t<span class="hljs-number">1</span> ,t<span class="hljs-number">2</span>;//不是例化，只是声明句柄t<span class="hljs-number">1</span>,t<span class="hljs-number">2</span><br><span class="hljs-attribute">t1</span> = new ();//这里才是例化，例化对象将其句柄赋予t<span class="hljs-number">1</span><br></code></pre></div></td></tr></table></figure>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832493.png" srcset="/img/loading.gif" lazyload alt></p>
-<h2><span id="7-对象的销毁sv也有自动回收内存空间的机制">7. 对象的销毁：SV也有自动回收内存空间的机制</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832494.png" srcset="/img/loading.gif" lazyload alt></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832495.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832493.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="7-对象的销毁sv也有自动回收内存空间的机制">7. 对象的销毁：SV也有自动回收内存空间的机制</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832494.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832495.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>选B，在module里面定义的即便是initial里面的都是静态的</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832496.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832496.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>下图加了个automatic就不存在了，答案是D</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832497.png" srcset="/img/loading.gif" lazyload alt></p>
-<h2><span id="8句柄的使用空指针很危险">8.句柄的使用（空指针很危险）</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832498.png" srcset="/img/loading.gif" lazyload alt></p>
-<h2><span id="9-静态变量static进行声明">9. 静态变量（static进行声明）</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832499.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832497.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="8句柄的使用空指针很危险">8.句柄的使用（空指针很危险）</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832498.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="9-静态变量static进行声明">9. 静态变量（static进行声明）</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832499.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>引用方式有两种</strong></p>
 <figure class="highlight delphi"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs delphi"><span class="hljs-keyword">class</span>::<span class="hljs-keyword">var</span><span class="hljs-comment">//直接类名引用</span><br><span class="hljs-keyword">object</span>.<span class="hljs-keyword">var</span><span class="hljs-comment">//通过例化的对象引用</span><br></code></pre></div></td></tr></table></figure>
 <h2><span id="10-静态方法">10. 静态方法</span></h2><p>同C++，无法调用动态成员变量</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832500.png" srcset="/img/loading.gif" lazyload alt></p>
-<h1><span id="二-类的成员">二、类的成员</span></h1><h2><span id="1-概述默认public主动声明protectedlocal">1. 概述(默认public，主动声明protected,local)</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832501.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832500.png" srcset="/img/loading.gif" lazyload alt></p>
+<h1><span id="二-类的成员">二、类的成员</span></h1><h2><span id="1-概述默认public主动声明protectedlocal">1. 概述(默认public，主动声明protected,local)</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832501.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li><p>秉承单一职责原则(SRP , Single Responsibility Principle)</p>
 </li>
 <li><p><code>protected</code>,<code>local</code>进行封装，称为开放封闭原则(OCP , Open Closed Principle)</p>
 </li>
 </ul>
-<h3><span id="local-私有成员">local 私有成员</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832502.png" srcset="/img/loading.gif" lazyload alt></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832503.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="local-私有成员">local 私有成员</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832502.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832503.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>选D</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832504.png" srcset="/img/loading.gif" lazyload alt></p>
-<h3><span id="publicprotectedlocal">public,protected,local</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832505.png" srcset="/img/loading.gif" lazyload alt></p>
-<h2><span id="2-类的封装">2. 类的封装</span></h2><h3><span id="类与结构体的异同">类与结构体的异同</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832506.png" srcset="/img/loading.gif" lazyload alt></p>
-<h3><span id="类与模块的异同">类与模块的异同</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832507.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832504.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="publicprotectedlocal">public,protected,local</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832505.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="2-类的封装">2. 类的封装</span></h2><h3><span id="类与结构体的异同">类与结构体的异同</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832506.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="类与模块的异同">类与模块的异同</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832507.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>答案A</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832508.png" srcset="/img/loading.gif" lazyload alt></p>
-<h2><span id="3-类的定义位置嵌套类this类的编译顺序">3. 类的定义位置，嵌套类，this，类的编译顺序</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832509.png" srcset="/img/loading.gif" lazyload alt></p>
-<h1><span id="三-类的继承">三、类的继承</span></h1><h2><span id="1-概述">1. 概述</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832510.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832508.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="3-类的定义位置嵌套类this类的编译顺序">3. 类的定义位置，嵌套类，this，类的编译顺序</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832509.png" srcset="/img/loading.gif" lazyload alt></p>
+<h1><span id="三-类的继承">三、类的继承</span></h1><h2><span id="1-概述">1. 概述</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832510.png" srcset="/img/loading.gif" lazyload alt></p>
 <figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">cat</span></span>;<br>	<span class="hljs-keyword">protected</span> data;<br>	function f1();<br>		;<span class="hljs-comment">//statements</span><br>	endfunction;<br>endclass<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">black_cat</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">cat</span></span>;<br>	function <span class="hljs-keyword">new</span>();<br>	<br>	endfunction<br>endclass<br></code></pre></div></td></tr></table></figure>
-<h2><span id="2-验证环境中的案例1">2. 验证环境中的案例1</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832511.png" srcset="/img/loading.gif" lazyload alt></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832512.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="2-验证环境中的案例1">2. 验证环境中的案例1</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832511.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832512.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>要把数据发送到DUT，我们需要有以下基本元素和数据处理方法，我们将它们封装到Transaction类中</strong></p>
 <figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">class</span> Transcation;<br>	<span class="hljs-keyword">rand</span> <span class="hljs-keyword">bit</span> [<span class="hljs-number">31</span>:<span class="hljs-number">0</span>] src , dst , data[<span class="hljs-number">8</span>]; <span class="hljs-comment">//随机成员变量</span><br>	<span class="hljs-keyword">bit</span> [<span class="hljs-number">31</span>:<span class="hljs-number">0</span>] crc;<span class="hljs-comment">//二次处理后的成员数据</span><br>	<span class="hljs-keyword">virtual</span> <span class="hljs-keyword">function</span> <span class="hljs-keyword">void</span> calc_crc();<br>		crc = src ^ dst ^ data<span class="hljs-variable">.xor</span>;<br>	<span class="hljs-keyword">endfunction</span><br>	<span class="hljs-keyword">virtual</span> <span class="hljs-keyword">function</span> <span class="hljs-keyword">void</span> display(<span class="hljs-keyword">input</span> <span class="hljs-keyword">string</span> prefix=<span class="hljs-string">&quot;&quot;</span>);<br>		$dispaly(<span class="hljs-string">&quot;%sTr:src=%h,dst-%h,crc=%h&quot;</span>,prefix,src,dst,crc);<br>	<span class="hljs-keyword">endfunction</span><br><span class="hljs-keyword">endclass</span><br></code></pre></div></td></tr></table></figure>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832513.png" srcset="/img/loading.gif" lazyload alt></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832514.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832513.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832514.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>BadTr</strong>:使用super索引父类中的同名函数，默认情况下两个类的同名函数没有关系</p>
 <figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">class</span> BadTr <span class="hljs-keyword">extends</span> Transcation;<br>	<span class="hljs-keyword">rand</span> <span class="hljs-keyword">bit</span> bad_crc; <br>	<span class="hljs-keyword">virtual</span> <span class="hljs-keyword">function</span> <span class="hljs-keyword">void</span> calc_crc();<br>		<span class="hljs-keyword">super</span><span class="hljs-variable">.calc_crc</span>();<span class="hljs-comment">//compute good CRC</span><br>		<span class="hljs-keyword">if</span>(bad_crc)<br>			crc=~crc;<br>	<span class="hljs-keyword">endfunction</span><br>	<span class="hljs-keyword">virtual</span> <span class="hljs-keyword">function</span> <span class="hljs-keyword">void</span> display(<span class="hljs-keyword">input</span> <span class="hljs-keyword">string</span> prefix=<span class="hljs-string">&quot;&quot;</span>);<br>        dispaly(<span class="hljs-string">&quot;%sBadTr:bad_crc=%b&quot;</span>,prefix,bad_crc);<br>		<span class="hljs-keyword">super</span><span class="hljs-variable">.display</span>();<br>	<span class="hljs-keyword">endfunction</span><br><span class="hljs-keyword">endclass</span><br></code></pre></div></td></tr></table></figure>
-<h2><span id="3-验证环境中的案例2子类在定义new函数时应该首先调用父类的new函数">3. 验证环境中的案例2：子类在定义new函数时应该首先调用父类的new函数</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832515.png" srcset="/img/loading.gif" lazyload alt></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832516.png" srcset="/img/loading.gif" lazyload alt></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832517.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="3-验证环境中的案例2子类在定义new函数时应该首先调用父类的new函数">3. 验证环境中的案例2：子类在定义new函数时应该首先调用父类的new函数</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832515.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832516.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832517.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>特别注意：子类在定义new函数时应该首先调用父类的new函数</strong></p>
 <ul>
 <li><p>子类实例在初始化时首先会调用父类的构造函数</p>
@@ -442,35 +440,35 @@
 </li>
 <li>在成员变量默认赋值后，才会进入用户定义中的new函数中</li>
 </ul>
-<h2><span id="4成员覆盖子类和父类同名变量和方法">4.成员覆盖：子类和父类同名变量和方法</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832518.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="4成员覆盖子类和父类同名变量和方法">4.成员覆盖：子类和父类同名变量和方法</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832518.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>按照句柄类型来确定作用域：即各管各的，定义同名后，直接调用是子类的，super.是父类的</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832519.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832519.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>t是父类句柄，只能指向父类对象内的成员</p>
 <h3><span id="成员索引顺序">成员索引顺序</span></h3><p>调用子类成员时，现在子类里面搜，子类里面没有相应成员则去父类里面搜</p>
 <p>允许同名成员出现，不会覆盖，只是调用最先找到的成员（即子类内成员）</p>
 <p>子类对象赋值给父类句柄时，父类无法访问子类成员变量，只能访问父类内对象</p>
-<h1><span id="四-句柄的使用">四、句柄的使用</span></h1><h2><span id="1-句柄的传递">1. 句柄的传递</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832520.png" srcset="/img/loading.gif" lazyload alt></p>
+<h1><span id="四-句柄的使用">四、句柄的使用</span></h1><h2><span id="1-句柄的传递">1. 句柄的传递</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832520.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>形参中的类，总是句柄，而不是例化的对象</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832521.png" srcset="/img/loading.gif" lazyload alt></p>
-<h3><span id="重要例题">重要例题</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832522.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832521.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="重要例题">重要例题</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832522.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>$display(t.addr)最后会报错</p>
 <p>分析如上：<br>function (形参)，形参<strong>默认方向是input</strong>，声明完句柄后句柄的值为null，在function中完成例化，但并未被传递出去（没有返回出去）</p>
-<h2><span id="2-句柄的动态修改">2. 句柄的动态修改</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832523.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="2-句柄的动态修改">2. 句柄的动态修改</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832523.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>笑死，不就是八吗，路桑是不是弱智啊</p>
-<h1><span id="五-包的使用">五、包的使用</span></h1><h2><span id="1-包的意义相关的类可以组织在同一命名空间中">1. 包的意义，相关的类可以组织在同一命名空间中</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832524.png" srcset="/img/loading.gif" lazyload alt></p>
+<h1><span id="五-包的使用">五、包的使用</span></h1><h2><span id="1-包的意义相关的类可以组织在同一命名空间中">1. 包的意义，相关的类可以组织在同一命名空间中</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832524.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>多个module、Interface和program之间共享数据的方法</p>
 <p><strong>命名空间实际上就是个package</strong></p>
-<h2><span id="2-包的定义">2. 包的定义</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832525.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="2-包的定义">2. 包的定义</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832525.png" srcset="/img/loading.gif" lazyload alt></p>
 <figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">package</span> reg_pkg;<br>	<span class="hljs-meta">`<span class="hljs-meta-keyword">include</span> &quot;xxx_1.sv&quot;</span><br>	<span class="hljs-meta">`<span class="hljs-meta-keyword">include</span> &quot;xxx_2.sv&quot;</span><br>	...<br><span class="hljs-keyword">endpackage</span><br></code></pre></div></td></tr></table></figure>
-<h3><span id="包域不用担心重名冲突">包+域，不用担心重名冲突</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832526.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="包域不用担心重名冲突">包+域，不用担心重名冲突</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832526.png" srcset="/img/loading.gif" lazyload alt></p>
 <figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">module</span> mcdf_tb;<br>	regs_pkg::monitor mon1 = <span class="hljs-keyword">new</span>();<br>	arb_pkg::monitor mon2 = <span class="hljs-keyword">new</span>();<br><span class="hljs-keyword">endmodule</span><br></code></pre></div></td></tr></table></figure>
-<h2><span id="3-包与库的区分包package库library">3. 包与库的区分，包(package)库(library)</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832527.png" srcset="/img/loading.gif" lazyload alt></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832528.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="3-包与库的区分包package库library">3. 包与库的区分，包(package)库(library)</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832527.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832528.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>package编译到library里面</p>
-<h2><span id="4包的命名规则">4.包的命名规则</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832529.png" srcset="/img/loading.gif" lazyload alt></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832530.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="4包的命名规则">4.包的命名规则</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832529.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832530.png" srcset="/img/loading.gif" lazyload alt></p>
 <figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-keyword">module</span> mcdf)tb;<br>	<span class="hljs-keyword">import</span> regs_pkg::*;<span class="hljs-comment">//类似于 using namespace xx;</span><br>	<span class="hljs-keyword">import</span> arb_pkg::*;<br>    regs_mon mon1 = <span class="hljs-built_in"><span class="hljs-keyword">new</span></span>();<br>    arb_mon mon2 = <span class="hljs-built_in"><span class="hljs-keyword">new</span></span>();<br>endmodule<br></code></pre></div></td></tr></table></figure>
-<h2><span id="5包的使用包不用例化包就是个容器">5.包的使用：包不用例化，包就是个容器</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011832531.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="5包的使用包不用例化包就是个容器">5.包的使用：包不用例化，包就是个容器</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011832531.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li><p>包就像一个library一样，只不过比Library低一个层级，你把定义好的东西放到包里面</p>
 </li>

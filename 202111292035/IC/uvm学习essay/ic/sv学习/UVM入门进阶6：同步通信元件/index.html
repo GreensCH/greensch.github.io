@@ -12,8 +12,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-  
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="“无论最终结果将人类历史导向何处，我们决定选择希望”">
   <meta name="author" content="友人律 | Guilin Chang">
@@ -21,42 +19,42 @@
   <meta name="description" content="参考文档链接：https:&#x2F;&#x2F;verificationacademy.com&#x2F;verification-methodology-reference&#x2F;uvm&#x2F;docs_1.2&#x2F;html&#x2F; 本节目录：  同步通信元件 第一组类：uvm_event、uvm_event_pool、uvm_event_callback 第二组类：uvm_barrier, uvm_barrier_pool  1 同步通信元件">
 <meta property="og:type" content="article">
 <meta property="og:title" content="UVM入门进阶6：同步通信元件（解决组件同步与进程同步）">
-<meta property="og:url" content="http://blog.yourenlv.top/202111292035/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B66%EF%BC%9A%E5%90%8C%E6%AD%A5%E9%80%9A%E4%BF%A1%E5%85%83%E4%BB%B6/index.html">
+<meta property="og:url" content="https://blog.yourenlv.top/202111292035/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B66%EF%BC%9A%E5%90%8C%E6%AD%A5%E9%80%9A%E4%BF%A1%E5%85%83%E4%BB%B6/index.html">
 <meta property="og:site_name" content="友人律的博客">
 <meta property="og:description" content="参考文档链接：https:&#x2F;&#x2F;verificationacademy.com&#x2F;verification-methodology-reference&#x2F;uvm&#x2F;docs_1.2&#x2F;html&#x2F; 本节目录：  同步通信元件 第一组类：uvm_event、uvm_event_pool、uvm_event_callback 第二组类：uvm_barrier, uvm_barrier_pool  1 同步通信元件">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851178.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851179.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851180.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851181.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851182.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851183.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851184.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851187.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851188.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851189.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851190.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851191.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851192.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851193.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851194.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851195.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851196.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851197.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851198.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851199.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851200.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851201.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851202.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851203.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851204.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851178.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851179.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851180.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851181.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851182.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851183.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851184.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851187.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851188.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851189.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851190.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851191.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851192.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851193.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851194.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851195.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851196.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851197.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851198.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851199.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851200.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851201.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851202.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851203.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851204.png">
 <meta property="article:published_time" content="2021-11-29T12:35:00.000Z">
-<meta property="article:modified_time" content="2022-05-01T13:11:00.684Z">
+<meta property="article:modified_time" content="2022-05-24T10:35:18.369Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="IC">
 <meta property="article:tag" content="uvm学习">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851178.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851178.png">
   
   <title>UVM入门进阶6：同步通信元件（解决组件同步与进程同步） - 友人律的博客</title>
 
@@ -337,7 +335,7 @@
 </ul>
 <h1><span id="1-同步通信元件">1 同步通信元件</span></h1><p>SV的同步通信元件：event, semaphore, mailbox</p>
 <p>UVM的线程同步，不局限于同一对象中，而针对不同组件之间的同步问题</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851178.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851178.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>同步类</strong>(保证了封闭性)：</p>
 <ul>
 <li>uvm_event, uvm_event_pool和uvm_event_callback</li>
@@ -349,10 +347,10 @@
 <ul>
 <li>什么是句柄的形式？</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851179.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851179.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>c2拿到了c1中例化的event1句柄</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851180.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851180.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>两组类指的是这两组：</p>
 <p>第一组：uvm_event, uvm_event_pool和uvm_event_callback</p>
 <p>第二组：uvm_barrier, uvm_barrier_pool</p>
@@ -370,14 +368,14 @@
 <li>seq与dri之间的同步</li>
 <li>seq之间的同步</li>
 </ul>
-<h2><span id="21-对比与注意">2.1 对比与注意</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851181.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="21-对比与注意">2.1 对比与注意</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851181.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>有post/pre trigger回调</li>
 <li>trigger时能传入数据</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851182.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851182.png" srcset="/img/loading.gif" lazyload alt></p>
 <h2><span id="22-uvm_event介绍">2.2 uvm_event介绍</span></h2><p>不同组件共享一个名称相同的uvm_event，这个uvm_event创建、存放、例化、管理在uvm_pool这一个资源池中，uvm_pool是继承于uvm_object_string_pool#(T)一个参数类</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851183.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851183.png" srcset="/img/loading.gif" lazyload alt></p>
 <hr>
 <p>关于uvm_object_string_pool #(T)：</p>
 <p>T pool [stirng] —&gt;uvm_event pool [“event_name”]</p>
@@ -420,7 +418,7 @@
 <li>wait_trigger边沿触发：同SV中的@</li>
 <li>wait_ptrigger电平触发</li>
 </ul>
-<h2><span id="24-示例代码">2.4 示例代码</span></h2><h4><span id="1transactionampuvm_callback">（1）transaction&amp;uvm_callback</span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851184.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="24-示例代码">2.4 示例代码</span></h2><h4><span id="1transactionampuvm_callback">（1）transaction&amp;uvm_callback</span></h4><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851184.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li><p>定义了一个transaction类型edata</p>
 </li>
@@ -432,14 +430,14 @@
 </ul>
 </li>
 </ul>
-<h4><span id="2comp1对event1由全局pool进行的例化">（2）comp1对event1由全局pool进行的例化</span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851187.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="2comp1对event1由全局pool进行的例化">（2）comp1对event1由全局pool进行的例化</span></h4><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851187.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>通过全局Pool进行例化</p>
 <p><code>e1=uvm_event_pool::get_gobal(&quot;e1&quot;);</code></p>
 <ul>
 <li>event pool里面有e1：直接拿到一个句柄</li>
 <li>event pool里面没有e1：帮助创建一个名字是e1的句柄</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851188.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851188.png" srcset="/img/loading.gif" lazyload alt></p>
 <hr>
 <p>task run_phase()中的要点：</p>
 <ul>
@@ -450,15 +448,15 @@
 </ul>
 </li>
 </ul>
-<h4><span id="3comp2ampenv">（3）comp2&amp;env</span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851189.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="3comp2ampenv">（3）comp2&amp;env</span></h4><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851189.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><code>e1.wait_triiger_data(tmp)</code>：等待被触发同时等待一个数据过来</p>
 <ul>
 <li>tmp默认obj类型</li>
 </ul>
 <p>void`($cast(d, tmp))：tmp进行父类转子类的转化</p>
 <p><code>e1.wait_triiger()</code>：直接等待被触发</p>
-<h3><span id="4总结">（4）总结</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851190.png" srcset="/img/loading.gif" lazyload alt></p>
-<h2><span id="25-应用场景总结">2.5 应用场景总结</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851191.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="4总结">（4）总结</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851190.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="25-应用场景总结">2.5 应用场景总结</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851191.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>uvm_event的使用场景</li>
 <li>uvm_event的使用场景</li>
@@ -475,29 +473,29 @@
 <li>uvm_barrier</li>
 <li>uvm_barrier_pool </li>
 </ul>
-<h2><span id="31-进程同步与uvm_barrierampuvm_barrier_pool">3.1 进程同步与uvm_barrier&amp;uvm_barrier_pool</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851192.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="31-进程同步与uvm_barrierampuvm_barrier_pool">3.1 进程同步与uvm_barrier&amp;uvm_barrier_pool</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851192.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>P1：SV中多线程的同步</p>
 <p>P2：UVM的组件独立，SV方法收到作用域限制</p>
 <p>P3：uvm_barrier解决多个组件同步协调，uvm_barrier_pool全局管理uvm_barrier</p>
 <p>P4：继承关系同uvm_event_pool</p>
-<h2><span id="32-uvm_barrier_poolampuvm_event_pool继承于uvm_object_string_pool">3.2 uvm_barrier_pool&amp;uvm_event_pool继承于uvm_object_string_pool</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851193.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="32-uvm_barrier_poolampuvm_event_pool继承于uvm_object_string_pool">3.2 uvm_barrier_pool&amp;uvm_event_pool继承于uvm_object_string_pool</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851193.png" srcset="/img/loading.gif" lazyload alt></p>
 <h2><span id="33-阈值">3.3 阈值</span></h2><p>可设置阈值threshold</p>
 <p>等待线程<strong>不少于</strong>阈值时触发全体线程中的等待</p>
 <h3><span id="34-部分总结">3.4 部分总结</span></h3><ul>
 <li>wait_for()进行等待</li>
 <li>set_threshold()设置触发阈值</li>
 </ul>
-<h2><span id="35-代码示例">3.5 代码示例</span></h2><h3><span id="1comp1ampcomp2及其获得b句柄">（1）comp1&amp;comp2及其获得b句柄</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851194.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="35-代码示例">3.5 代码示例</span></h2><h3><span id="1comp1ampcomp2及其获得b句柄">（1）comp1&amp;comp2及其获得b句柄</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851194.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>b.wait_for()</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851195.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851195.png" srcset="/img/loading.gif" lazyload alt></p>
 <h3><span id="2env">（2）env</span></h3><p>env1做了一个裁判员</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851196.png" srcset="/img/loading.gif" lazyload alt></p>
-<h3><span id="3结果与总结">（3）结果与总结</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851197.png" srcset="/img/loading.gif" lazyload alt></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851198.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851196.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="3结果与总结">（3）结果与总结</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851197.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851198.png" srcset="/img/loading.gif" lazyload alt></p>
 <h2><span id="4-正式进入uvm_callback">4 正式进入uvm_callback</span></h2><p>之前都是稍微提到组件或obj的回调方法，以及uvm_event_callback，今天我们正式分析uvm_callback机制</p>
-<h3><span id="41-回调的作用">4.1 回调的作用</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851199.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="41-回调的作用">4.1 回调的作用</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851199.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>第一段，<strong>回调的好处</strong></p>
 <ul>
 <li>另一种同步方式</li>
@@ -527,8 +525,8 @@
 <li><code>uvm_callback_iter</code></li>
 <li><code>uvm_callbacks #(T, CB)</code></li>
 </ul>
-<h2><span id="43-代码示例">4.3 代码示例</span></h2><h3><span id="1trans数据类以及callback定义">（1）trans数据类以及callback定义</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851200.png" srcset="/img/loading.gif" lazyload alt></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851201.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="43-代码示例">4.3 代码示例</span></h2><h3><span id="1trans数据类以及callback定义">（1）trans数据类以及callback定义</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851200.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851201.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>trans数据类<ul>
 <li>obj注册</li>
@@ -545,7 +543,7 @@
 </li>
 </ul>
 <p><strong>你可以在callback里面定义任何你想定义的函数名称</strong>：这里我们定义了do_trans函数</p>
-<h3><span id="2comp1定义">（2）comp1定义</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851202.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="2comp1定义">（2）comp1定义</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851202.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>定义comp1<ul>
 <li>注册(关联)comp1与cb1两个类的关系，方便之后检查(其实也可以不写，类型不同时无法提醒警告，参考4.4节)<ul>
@@ -562,7 +560,7 @@
 </ul>
 </li>
 </ul>
-<h3><span id="3env与输出结果">（3）env与输出结果</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851203.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="3env与输出结果">（3）env与输出结果</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851203.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>构造函数<ul>
 <li>例化comp1,cb1,cb2</li>
@@ -592,7 +590,7 @@
 <p>②绑定以及插入callback</p>
 <p>③添加callback</p>
 <h2><span id="44-总结结对子">4.4 总结：结对子</span></h2><p>UVMcallback与SVcallback没区别，建议使用UVMcallback，更为标准化</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011851204.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011851204.png" srcset="/img/loading.gif" lazyload alt></p>
 <h3><span id="部分函数总结">部分函数总结</span></h3><ul>
 <li>组件创建时注册：<code>uvm_register_cb(组件类名, callback类名)</code></li>
 <li><p>组件对应位置插入：<code>uvm_do_callback(组件类名, callback类名, callback内回调方法名(回调传入数据参数))</code></p>

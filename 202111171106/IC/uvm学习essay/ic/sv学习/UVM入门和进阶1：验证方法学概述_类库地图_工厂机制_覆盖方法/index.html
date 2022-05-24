@@ -12,8 +12,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-  
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="“无论最终结果将人类历史导向何处，我们决定选择希望”">
   <meta name="author" content="友人律 | Guilin Chang">
@@ -21,68 +19,68 @@
   <meta name="description" content="参考文档链接：https:&#x2F;&#x2F;verificationacademy.com&#x2F;verification-methodology-reference&#x2F;uvm&#x2F;docs_1.2&#x2F;html&#x2F; 1 验证方法学概述1.1 我们所处的验证时代 原有HDL受限于静态例化，同时随即约束短板验证技术应该更为灵活化    Verilog1.0-&gt;Verilog2.0———&gt;SystemVerilog3.0">
 <meta property="og:type" content="article">
 <meta property="og:title" content="UVM入门和进阶1：验证方法学概述_类库地图_工厂机制_覆盖方法">
-<meta property="og:url" content="http://blog.yourenlv.top/202111171106/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E5%92%8C%E8%BF%9B%E9%98%B61%EF%BC%9A%E9%AA%8C%E8%AF%81%E6%96%B9%E6%B3%95%E5%AD%A6%E6%A6%82%E8%BF%B0_%E7%B1%BB%E5%BA%93%E5%9C%B0%E5%9B%BE_%E5%B7%A5%E5%8E%82%E6%9C%BA%E5%88%B6_%E8%A6%86%E7%9B%96%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:url" content="https://blog.yourenlv.top/202111171106/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E5%92%8C%E8%BF%9B%E9%98%B61%EF%BC%9A%E9%AA%8C%E8%AF%81%E6%96%B9%E6%B3%95%E5%AD%A6%E6%A6%82%E8%BF%B0_%E7%B1%BB%E5%BA%93%E5%9C%B0%E5%9B%BE_%E5%B7%A5%E5%8E%82%E6%9C%BA%E5%88%B6_%E8%A6%86%E7%9B%96%E6%96%B9%E6%B3%95/index.html">
 <meta property="og:site_name" content="友人律的博客">
 <meta property="og:description" content="参考文档链接：https:&#x2F;&#x2F;verificationacademy.com&#x2F;verification-methodology-reference&#x2F;uvm&#x2F;docs_1.2&#x2F;html&#x2F; 1 验证方法学概述1.1 我们所处的验证时代 原有HDL受限于静态例化，同时随即约束短板验证技术应该更为灵活化    Verilog1.0-&gt;Verilog2.0———&gt;SystemVerilog3.0">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842111.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842112.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842113.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842114.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842115.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842116.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842117.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842118.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842119.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842120.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842121.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842122.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842120.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842123.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842124.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842125.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842126.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842127.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842128.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842129.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842130.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842131.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842132.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842133.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842134.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842135.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842136.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842137.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842138.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842139.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842140.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842141.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842142.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842143.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842144.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842145.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842146.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842147.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842148.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842149.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842150.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842151.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842152.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842153.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842154.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842155.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842156.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842157.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842158.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842159.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842160.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842111.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842112.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842113.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842114.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842115.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842116.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842117.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842118.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842119.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842120.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842121.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842122.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842120.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842123.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842124.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842125.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842126.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842127.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842128.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842129.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842130.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842131.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842132.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842133.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842134.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842135.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842136.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842137.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842138.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842139.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842140.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842141.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842142.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842143.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842144.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842145.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842146.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842147.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842148.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842149.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842150.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842151.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842152.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842153.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842154.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842155.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842156.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842157.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842158.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842159.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842160.png">
 <meta property="article:published_time" content="2021-11-17T03:06:00.000Z">
-<meta property="article:modified_time" content="2022-05-01T13:11:00.672Z">
+<meta property="article:modified_time" content="2022-05-24T10:35:18.369Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="IC">
 <meta property="article:tag" content="uvm学习">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842111.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842111.png">
   
   <title>UVM入门和进阶1：验证方法学概述_类库地图_工厂机制_覆盖方法 - 友人律的博客</title>
 
@@ -355,29 +353,29 @@
             
             <div class="markdown-body">
               <p>参考文档链接：<a target="_blank" rel="noopener" href="https://verificationacademy.com/verification-methodology-reference/uvm/docs_1.2/html/">https://verificationacademy.com/verification-methodology-reference/uvm/docs_1.2/html/</a></p>
-<h1><span id="1-验证方法学概述">1 验证方法学概述</span></h1><h2><span id="11-我们所处的验证时代">1.1 我们所处的验证时代</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842111.png" srcset="/img/loading.gif" lazyload alt></p>
+<h1><span id="1-验证方法学概述">1 验证方法学概述</span></h1><h2><span id="11-我们所处的验证时代">1.1 我们所处的验证时代</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842111.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>原有HDL受限于静态例化，同时随即约束短板<br>验证技术应该更为灵活化</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842112.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842112.png" srcset="/img/loading.gif" lazyload alt></p>
 <p> Verilog1.0-&gt;Verilog2.0———&gt;SystemVerilog3.0(基于verilog发展的所以一上来就是3.0)</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842113.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842113.png" srcset="/img/loading.gif" lazyload alt></p>
 <h2><span id="12-uvm的优势">1.2 UVM的优势</span></h2><p>Universal(通用)</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842114.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842114.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>精力集中到：设计验证计划，减轻创建测试环境</p>
-<h3><span id="13uvm的发展历程与演变">1.3UVM的发展历程与演变</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842115.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="13uvm的发展历程与演变">1.3UVM的发展历程与演变</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842115.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>UVM 1.0就是基于OVM</li>
 <li>UVM1.1 UVM1.2</li>
 <li>UVM1.2重大里程碑，被纳为标准</li>
 </ul>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842116.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842116.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>注意哪些是新方法，哪些是旧方法(一些旧方法已注销)</p>
-<h2><span id="14-学习路线共五周">1.4 学习路线(共五周)</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842117.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="14-学习路线共五周">1.4 学习路线(共五周)</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842117.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>同v2SV一样，参考如何构建环境进行学习</p>
 <p>五周学习不会超过50个类，非常核心的也就二十到三十个类之间大概十分之一，剩下的谁在用（UVM自动调用）</p>
-<h1><span id="2-类库地图">2 类库地图</span></h1><h2><span id="21-概述">2.1 概述</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842118.png" srcset="/img/loading.gif" lazyload alt></p>
+<h1><span id="2-类库地图">2 类库地图</span></h1><h2><span id="21-概述">2.1 概述</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842118.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li><p>SV通过句柄一层一层的实现访问，UVM有替代</p>
 </li>
@@ -386,13 +384,13 @@
 <li><p>标准化减轻了构建验证环境的负担</p>
 </li>
 </ul>
-<h3><span id="sv与uvm对验证环境的共同需求">SV与UVM对验证环境的共同需求</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842119.png" srcset="/img/loading.gif" lazyload alt></p>
-<h2><span id="22-uvm世界10大核心类">2.2 UVM世界(10大核心类)</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842120.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="sv与uvm对验证环境的共同需求">SV与UVM对验证环境的共同需求</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842119.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="22-uvm世界10大核心类">2.2 UVM世界(10大核心类)</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842120.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>对象的生成是动态的，需要UVM帮助去创建，如②提供对底层组建的创建与访问</p>
 <p>环境中层次之间的创建，链接，层次间组建的控制方法</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842121.png" srcset="/img/loading.gif" lazyload alt></p>
-<h2><span id="23-uvm世界讲解">2.3 UVM世界讲解</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842122.png" srcset="/img/loading.gif" lazyload alt></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842120.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842121.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="23-uvm世界讲解">2.3 UVM世界讲解</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842122.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842120.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>核心基类：</p>
 <p>​    ① uvm_void与<strong>uvm_object(非常核心)</strong>：会提空基本的方法，比如：拷贝、创建、打印</p>
 <p>​    ② 工厂类：注册、创建、覆盖我们的一些类型</p>
@@ -404,9 +402,9 @@
 <p>​    ⑧ 寄存器模型类(第五周学)</p>
 <p>​    ⑨ 线程同步类：与SVevent对比</p>
 <p>​    ⑩ 事务接口类(稍微特殊) ：<br>有一些port后缀，代表端口，端口用来做通信的<br>这些端口是验证组件之间要通信的话他们之间往往需要端口，即⑩类与⑤类有关系，在组件之间例化，通过端口连接<br>⑩类还比较特殊再不继承于object而直接继承void</p>
-<h3><span id="组件类-管道类-接口类的关系">组件类、管道类、接口类的关系</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842123.png" srcset="/img/loading.gif" lazyload alt></p>
-<h1><span id="3-工厂机制">3 工厂机制</span></h1><h2><span id="31-概述工厂机制是uvm的魅力所在也是一种典型的设计模式design-pattern">3.1 概述：工厂机制是UVM的魅力所在，也是一种典型的设计模式(design pattern)</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842124.png" srcset="/img/loading.gif" lazyload alt></p>
-<h2><span id="32-工厂的意义">3.2 工厂的意义</span></h2><h3><span id="321-替换-注册-配置">3.2.1 替换、注册、配置</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842125.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="组件类-管道类-接口类的关系">组件类、管道类、接口类的关系</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842123.png" srcset="/img/loading.gif" lazyload alt></p>
+<h1><span id="3-工厂机制">3 工厂机制</span></h1><h2><span id="31-概述工厂机制是uvm的魅力所在也是一种典型的设计模式design-pattern">3.1 概述：工厂机制是UVM的魅力所在，也是一种典型的设计模式(design pattern)</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842124.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="32-工厂的意义">3.2 工厂的意义</span></h2><h3><span id="321-替换-注册-配置">3.2.1 替换、注册、配置</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842125.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li><p>工厂为了：替换实例或注册过的类，为配置和覆盖(override)带来灵活性</p>
 </li>
@@ -420,11 +418,11 @@
 </ul>
 <h3><span id="322-注册">3.2.2 注册</span></h3></li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842126.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842126.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>依赖于工厂创建对象</p>
 <p>创建对象之前工厂需要模具/蓝图（类进行注册）：SV的new与注册的区别在哪，因为有一个覆盖的好处</p>
 <h2><span id="33-uvm_component与uvm_object">3.3 uvm_component与uvm_object</span></h2><p><strong>工厂我们一共就注册两大类型：uvm_component与uvm_object</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842127.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842127.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li><p>验证不动产</p>
 <ul>
@@ -439,12 +437,12 @@
 </ul>
 </li>
 </ul>
-<h3><span id="332-uvm_component-object的例化">3.3.2 uvm_{component, object}的例化</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842128.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="332-uvm_component-object的例化">3.3.2 uvm_{component, object}的例化</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842128.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>工厂提供的方式</strong>：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-comment">//创建uvm_component对象</span><br>comp_type::type_id::<span class="hljs-built_in">create</span>(string name, uvm_component parent);<br><span class="hljs-comment">//创建uvm_object对象</span><br>object_type::type_id::<span class="hljs-built_in">create</span>(string name);<br></code></pre></div></td></tr></table></figure>
 <p><strong>type_id</strong>是你注册到工厂里面的类型</p>
 <figure class="highlight arduino"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs arduino">comp_type::type_id::<span class="hljs-built_in">create</span>(val1,val2);<br><span class="hljs-comment">//type_id是你注册到工厂里面的类型</span><br><span class="hljs-comment">//create调用方法</span><br></code></pre></div></td></tr></table></figure>
-<h4><span id="creat与new">creat与new</span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842129.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="creat与new">creat与new</span></h4><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842129.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>使用new或者create都能完成例化</strong>，但在UVM中我们用create，他是工厂提供的创建实例方式</p>
 <h3><span id="334-工程提供的便利创建分两步1注册registration-2创建create">3.3.4 工程提供的便利——创建分两步：①注册(registration)、②创建(create)</span></h3><h4><span id="注册两个宏">注册两个宏</span></h4><p>`uvm_component_utils(comp_name);</p>
 <p>`uvm_object_utils(obj_name);</p>
@@ -453,23 +451,23 @@
 <li>注册：宏</li>
 <li>构建：new</li>
 </ul>
-<h4><span id="第一个例子继承于component类">第一个例子(继承于component类)</span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842130.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="第一个例子继承于component类">第一个例子(继承于component类)</span></h4><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842130.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>泛式：形式不变，内容变</p>
 <p><strong>第一步：注册环节</strong>，第一个泛式</p>
 <figure class="highlight reasonml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs reasonml">`uvm<span class="hljs-constructor">_component_utils(<span class="hljs-params">comp1</span>)</span>;<span class="hljs-comment">//使用宏。固定的泛式，把当前的comp1类型注册到工厂里</span><br></code></pre></div></td></tr></table></figure>
 <p><strong>第二步：new函数</strong>，new函数参数是第二个泛式，参数不能添加新的参数也不能减少原有的参数</p>
 <figure class="highlight csharp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs csharp"><span class="hljs-function">function <span class="hljs-keyword">new</span>(<span class="hljs-params"><span class="hljs-built_in">string</span> name=<span class="hljs-string">&quot;comp1&quot;</span>, uvm_component parent=<span class="hljs-literal">null</span></span>)</span>;<span class="hljs-comment">//parent是说例化当前实例的组件</span><br></code></pre></div></td></tr></table></figure>
 <p>各个phase函数第二周学</p>
-<h4><span id="第二个例子继承于uvm_object类">第二个例子(继承于uvm_object类)</span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842131.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="第二个例子继承于uvm_object类">第二个例子(继承于uvm_object类)</span></h4><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842131.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>泛式：形式不变，内容变</p>
 <p><strong>第一步：注册环节</strong>，第一个泛式</p>
 <figure class="highlight reasonml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs reasonml">`uvm<span class="hljs-constructor">_object_utils(<span class="hljs-params">obj1</span>)</span>;<span class="hljs-comment">//使用宏。固定的泛式，把当前的obj1类型注册到工厂里</span><br></code></pre></div></td></tr></table></figure>
 <p><strong>第二步：new函数</strong>，new函数参数是第二个泛式</p>
 <figure class="highlight csharp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs csharp"><span class="hljs-function">function <span class="hljs-keyword">new</span>(<span class="hljs-params"><span class="hljs-built_in">string</span> name=<span class="hljs-string">&quot;obj1&quot;</span></span>)</span>;<span class="hljs-comment">//</span><br></code></pre></div></td></tr></table></figure>
 <p>各个phase函数第二周学</p>
-<h3><span id="335-工厂提供的便利">3.3.5 工厂提供的便利</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842132.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="335-工厂提供的便利">3.3.5 工厂提供的便利</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842132.png" srcset="/img/loading.gif" lazyload alt></p>
 <h2><span id="34-工厂机制工厂类">3.4 工厂机制：工厂类</span></h2><p>不一定会出现在你的代码里面，但帮你规划了你的类</p>
-<h3><span id="341-uvm_coreservice_t类">3.4.1 uvm_coreservice_t类</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842133.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="341-uvm_coreservice_t类">3.4.1 uvm_coreservice_t类</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842133.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li><p>uvm_factory成员类：<strong>唯一并全局</strong>，负责注册、覆盖、例化</p>
 </li>
@@ -481,21 +479,21 @@
 </ul>
 <p><strong>uvm_coreservice_t,uvm_factory并不是uvm_component或uvm_object</strong>，没有例化在UVM环境结构中</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842134.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842134.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>目前学习的实例uvm_default_factory是已经存在的，不需要自己做例化</p>
-<h3><span id="342-注册宏uvm下划线component-object下划线utils">3.4.2 注册宏`uvm下划线{component, object}下划线utils</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842135.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="342-注册宏uvm下划线component-object下划线utils">3.4.2 注册宏`uvm下划线{component, object}下划线utils</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842135.png" srcset="/img/loading.gif" lazyload alt></p>
 <hr>
 <p>注册机制与create，以下自学：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842136.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842136.png" srcset="/img/loading.gif" lazyload alt></p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842137.png" srcset="/img/loading.gif" lazyload alt></p>
-<h3><span id="343-注册后的对象创建component或者object">3.4.3 注册后的对象创建(component或者object)</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842138.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842137.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="343-注册后的对象创建component或者object">3.4.3 注册后的对象创建(component或者object)</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842138.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>注意有无parent关系到是否可以看到UVM结构</strong></p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842139.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842139.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>创建后放置到类型库中</p>
 <p>创建时，创建的类型如果没有被覆盖，则直接使用该类型的基础类型</p>
-<h3><span id="356-componetnobject与工厂有关的方法三类创建方法">3.5.6 componetn/object与工厂有关的方法（三类创建方法）</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842140.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="356-componetnobject与工厂有关的方法三类创建方法">3.5.6 componetn/object与工厂有关的方法（三类创建方法）</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842140.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>用<strong>object/component组件(uvm_component)去创建</strong>对象的方法：</p>
 <ul>
 <li>create()</li>
@@ -508,7 +506,7 @@
 <hr>
 <p>一旦创建，会把当前类型的图纸，放入到类型库里面</p>
 <p>如果没有覆盖类型，则用工厂去创建</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842141.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842141.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>用<strong>工厂去创建</strong>也有很多方法：</p>
 <ul>
 <li><p><strong>使用typeid::创建</strong></p>
@@ -519,23 +517,23 @@
 <li><strong>create_object_by_name()</strong></li>
 <li><strong>create_object_by_type()</strong></li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842142.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842142.png" srcset="/img/loading.gif" lazyload alt></p>
 <hr>
 <p>我们<strong>只需要使用这些就可以了</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842143.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842143.png" srcset="/img/loading.gif" lazyload alt></p>
 <h1><span id="4-覆盖方法">4 覆盖方法</span></h1><h2><span id="41-工厂提供的便利覆盖override">4.1 工厂提供的便利——覆盖(override)</span></h2><h3><span id="411">4.1.1</span></h3><p><strong>从原来所属类型创建一个新的替换类型</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842144.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842144.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>无需修改原始代码，保持了原始代码封装性</li>
 <li><strong>新的替换类型必须与原有类型兼容</strong></li>
 </ul>
 <h3><span id="412-举例说明">4.1.2 举例说明</span></h3><p>你想要修改一个成型验证平台，你想修改driver</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842145.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842145.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>如果你修改driver很容易影响到别人，因此不能轻易修改代码</p>
 <p>如果driver是VIP，内部代码不开放的</p>
 <hr>
 <p><strong>使用新的类型driver2替换driver</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842146.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842146.png" srcset="/img/loading.gif" lazyload alt></p>
 <h3><span id="413-覆盖实现的要求">4.1.3 覆盖实现的要求</span></h3><ul>
 <li>原有类型与新类型都需要注册</li>
 <li>使用create()也就是工厂创建对象</li>
@@ -545,7 +543,7 @@
 <ul>
 <li>覆盖发生时，可以使用类型覆盖或实例覆盖</li>
 </ul>
-<p><strong><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842147.png" srcset="/img/loading.gif" lazyload alt></strong></p>
+<p><strong><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842147.png" srcset="/img/loading.gif" lazyload alt></strong></p>
 <h3><span id="42-相关函数">4.2 相关函数</span></h3><h3><span id="421-set_type_override替换类型">4.2.1 set_type_override()//替换类型</span></h3><ul>
 <li>函数原型</li>
 </ul>
@@ -559,7 +557,7 @@
 </ul>
 <figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog">orig_type::type_id::set_type_override(new_type::get_type())<br><span class="hljs-comment">//orig_type:原始类型</span><br><span class="hljs-comment">//type_id:类型id</span><br></code></pre></div></td></tr></table></figure>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842148.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842148.png" srcset="/img/loading.gif" lazyload alt></p>
 <h3><span id="422-set_inst_override替换实例">4.2.2 set_inst_override()//替换实例</span></h3><ul>
 <li>函数原型</li>
 </ul>
@@ -577,24 +575,24 @@
 </ul>
 <figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">string inst_path = <span class="hljs-string">&quot;root.test.env.checker&quot;</span><span class="hljs-regexp">//</span>法一直接写<br><span class="hljs-regexp">//</span>法二通过句柄直接拿到路径，去掉双引号<br><br></code></pre></div></td></tr></table></figure>
 <p><strong>句柄所代表的结构层级</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842149.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842149.png" srcset="/img/loading.gif" lazyload alt></p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842150.png" srcset="/img/loading.gif" lazyload alt></p>
-<h2><span id="43-如何使用覆盖相关的函数">4.3 如何使用覆盖相关的函数</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842151.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842150.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="43-如何使用覆盖相关的函数">4.3 如何使用覆盖相关的函数</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842151.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>不止一个类提供与覆盖有关的函数，然而名称与参数列表可能各不相同：</p>
 <figure class="highlight sqf"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sqf">uvm_component::set_&#123;<span class="hljs-built_in">type</span>, inst&#125;<span class="hljs-variable">_override</span>&#123;<span class="hljs-variable">_by_type</span>&#125;<br>uvm_component_registry::set_&#123;<span class="hljs-built_in">type</span>, inst&#125;<span class="hljs-variable">_override</span><br>uvm_object_registry::<span class="hljs-built_in">set</span>&#123;<span class="hljs-built_in">type</span>, inst&#125;<span class="hljs-variable">_override</span><br>uvm_factory::<span class="hljs-built_in">set</span>&#123;<span class="hljs-built_in">type</span>, inst&#125;<span class="hljs-variable">_override</span><br></code></pre></div></td></tr></table></figure>
 <p>但我们推荐的就是使用typeid来调用<code>set_&#123;type, inst&#125;_override</code></p>
 <figure class="highlight arduino"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs arduino">orig_type::type_id<br></code></pre></div></td></tr></table></figure>
 <h2><span id="44-覆盖实例">4.4 覆盖实例</span></h2><p><strong>定义例子comp1类</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842152.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842152.png" srcset="/img/loading.gif" lazyload alt></p>
 <figure class="highlight elixir"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs elixir"><span class="hljs-keyword">import</span> uvm_pkg::*; <span class="hljs-regexp">//</span>想要使用uvm类型必须<span class="hljs-keyword">import</span>这个，questa已经自动编译了这个pkg,vcs则需要实现编译一下<br>`<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;uvm_macros,svh&quot;</span><br></code></pre></div></td></tr></table></figure>
 <hr>
 <p><strong>定义例子2comp2类</strong></p>
 <p>后面将1使用comp2替代comp1</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842153.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842153.png" srcset="/img/loading.gif" lazyload alt></p>
 <hr>
 <p><strong>进行覆盖</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842154.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842154.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>c1通过new实例化的没有受到影响，没有经过工厂</li>
 <li>c2通过工厂create实例化的，因此成为了替换后的类型</li>
@@ -602,12 +600,12 @@
 <hr>
 <p><strong>如果没有</strong><code>comp1::type_id::set_type_override(comp2::get_type());</code><strong>进行覆盖</strong></p>
 <p>则c1,c2指向的都是comp1类型对象</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842155.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842155.png" srcset="/img/loading.gif" lazyload alt></p>
 <h2><span id="45-解释为什么comp2要继承comp1">4.5 解释为什么comp2要继承comp1</span></h2><p>例化时：</p>
 <ol>
 <li>去找comp1的查找表</li>
 </ol>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842156.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842156.png" srcset="/img/loading.gif" lazyload alt></p>
 <ol>
 <li>发现覆盖类型不为空，把comp1的类型替换为comp2的类型 </li>
 </ol>
@@ -617,8 +615,8 @@
 <hr>
 <p><strong>定义成员函数(除了new)能不能不用virtual</strong>：不能</p>
 <p><strong>例化时comp2仍然是父类comp1的句柄</strong>，调用方法则会调用父类的方法</p>
-<h2><span id="46-确保正确覆盖的代码要求">4.6 确保正确覆盖的代码要求</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842157.png" srcset="/img/loading.gif" lazyload alt></p>
-<h2><span id="47-parent-wins">4.7 parent wins</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842158.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="46-确保正确覆盖的代码要求">4.6 确保正确覆盖的代码要求</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842157.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="47-parent-wins">4.7 parent wins</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842158.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>覆盖发生在例化之前，即</li>
 </ul>
@@ -626,8 +624,8 @@
 <ul>
 <li>多次对同一对象override：谁的层次高听谁的(顶层test起作用了)，<strong>即在配置过程中，谁层次高听谁的</strong></li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842159.png" srcset="/img/loading.gif" lazyload alt></p>
-<h2><span id="48-总结factory三要素注册-创建和覆盖">4.8 总结：factory三要素：注册、创建和覆盖</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011842160.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842159.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="48-总结factory三要素注册-创建和覆盖">4.8 总结：factory三要素：注册、创建和覆盖</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011842160.png" srcset="/img/loading.gif" lazyload alt></p>
 
             </div>
             <hr>

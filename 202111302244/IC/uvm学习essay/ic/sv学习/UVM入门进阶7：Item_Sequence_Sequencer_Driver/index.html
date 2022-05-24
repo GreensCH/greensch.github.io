@@ -12,8 +12,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-  
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="“无论最终结果将人类历史导向何处，我们决定选择希望”">
   <meta name="author" content="友人律 | Guilin Chang">
@@ -21,162 +19,162 @@
   <meta name="description" content="参考文档链接：https:&#x2F;&#x2F;verificationacademy.com&#x2F;verification-methodology-reference&#x2F;uvm&#x2F;docs_1.2&#x2F;html&#x2F; 本节目录：  Item， Sequence， Sequencer， Driver介绍 Item， Sequence， Sequencer， Driver两两之间的关系与常见操作 如何构建一个测试序列(sequenc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="UVM入门进阶7：Item_Sequence_Sequencer_Driver">
-<meta property="og:url" content="http://blog.yourenlv.top/202111302244/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B67%EF%BC%9AItem_Sequence_Sequencer_Driver/index.html">
+<meta property="og:url" content="https://blog.yourenlv.top/202111302244/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B67%EF%BC%9AItem_Sequence_Sequencer_Driver/index.html">
 <meta property="og:site_name" content="友人律的博客">
 <meta property="og:description" content="参考文档链接：https:&#x2F;&#x2F;verificationacademy.com&#x2F;verification-methodology-reference&#x2F;uvm&#x2F;docs_1.2&#x2F;html&#x2F; 本节目录：  Item， Sequence， Sequencer， Driver介绍 Item， Sequence， Sequencer， Driver两两之间的关系与常见操作 如何构建一个测试序列(sequenc">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853226.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853227.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853228.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853229.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853230.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853231.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853232.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853233.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853234.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853235.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853236.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853237.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853238.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853239.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853240.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853241.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853242.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853243.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853244.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853245.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853246.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853247.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853248.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853249.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853250.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853251.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853252.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853253.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853254.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853255.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853256.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853257.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853258.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853259.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853260.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853261.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853262.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853263.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853264.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853265.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853266.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853267.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853268.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853269.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853270.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853271.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853272.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853273.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853274.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853275.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853276.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853277.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853278.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853279.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853280.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853281.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853282.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853283.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853284.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853285.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853286.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853287.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853288.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853289.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853290.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853291.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853292.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853293.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853294.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853295.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853296.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853297.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853298.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853299.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853300.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853301.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853302.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853303.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853304.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853305.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853306.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853307.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853308.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853309.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853310.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853311.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853312.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853313.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853314.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853315.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853316.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853317.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853318.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853319.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853320.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853321.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853322.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853323.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853324.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853325.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853326.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853327.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853328.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853329.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853330.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853331.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853332.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853333.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853334.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853335.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853336.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853337.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853338.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853339.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853340.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853341.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853342.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853343.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853344.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853345.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853346.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853347.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853348.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853349.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853350.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853351.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853352.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853353.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853354.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853355.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853353.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853356.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853357.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853358.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853359.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853360.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853361.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853362.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853363.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853364.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853365.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853366.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853367.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853368.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853369.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853226.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853227.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853228.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853229.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853230.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853231.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853232.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853233.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853234.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853235.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853236.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853237.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853238.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853239.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853240.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853241.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853242.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853243.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853244.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853245.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853246.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853247.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853248.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853249.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853250.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853251.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853252.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853253.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853254.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853255.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853256.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853257.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853258.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853259.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853260.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853261.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853262.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853263.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853264.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853265.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853266.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853267.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853268.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853269.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853270.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853271.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853272.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853273.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853274.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853275.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853276.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853277.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853278.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853279.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853280.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853281.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853282.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853283.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853284.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853285.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853286.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853287.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853288.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853289.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853290.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853291.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853292.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853293.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853294.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853295.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853296.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853297.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853298.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853299.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853300.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853301.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853302.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853303.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853304.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853305.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853306.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853307.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853308.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853309.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853310.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853311.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853312.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853313.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853314.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853315.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853316.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853317.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853318.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853319.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853320.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853321.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853322.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853323.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853324.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853325.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853326.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853327.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853328.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853329.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853330.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853331.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853332.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853333.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853334.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853335.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853336.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853337.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853338.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853339.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853340.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853341.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853342.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853343.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853344.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853345.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853346.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853347.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853348.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853349.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853350.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853351.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853352.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853353.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853354.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853355.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853353.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853356.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853357.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853358.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853359.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853360.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853361.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853362.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853363.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853364.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853365.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853366.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853367.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853368.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853369.png">
 <meta property="article:published_time" content="2021-11-30T14:44:00.000Z">
-<meta property="article:modified_time" content="2022-05-01T13:11:00.684Z">
+<meta property="article:modified_time" content="2022-05-24T10:35:18.369Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="IC">
 <meta property="article:tag" content="uvm学习">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853226.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853226.png">
   
   <title>UVM入门进阶7：Item_Sequence_Sequencer_Driver - 友人律的博客</title>
 
@@ -481,9 +479,9 @@
 <li>sequencer</li>
 <li>driver</li>
 </ul>
-<h3><span id="121-trans驱动作用">1.2.1 trans驱动作用</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853226.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="121-trans驱动作用">1.2.1 trans驱动作用</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853226.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>整个事物的驱动力就是transaction的传送</p>
-<h3><span id="122-四者关系打比方">1.2.2 四者关系打比方</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853227.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="122-四者关系打比方">1.2.2 四者关系打比方</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853227.png" srcset="/img/loading.gif" lazyload alt></p>
 <pre><code class=" mermaid">graph TB
 sequence --&gt; 道路
 sequence_item --&gt; 货车
@@ -491,7 +489,7 @@ sequencer --&gt; 目的地关卡
 driver --&gt; 目的_进行扫描与分解
 </code></pre>
 <p>通路结构图：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853228.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853228.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>sqr到driver是通过req与rsp</li>
 </ul>
@@ -500,7 +498,7 @@ driver --&gt; 目的_进行扫描与分解
 <ul>
 <li>内部可定义成员方法或变量，成员变量应考虑是否需要随机化</li>
 </ul>
-<h3><span id="124-driver一个例子">1.2.4 driver：一个例子</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853229.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="124-driver一个例子">1.2.4 driver：一个例子</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853229.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>一个例子</strong>：假设DUT是slave端，driver扮演master访问DUT寄存器</p>
 <ul>
 <li>item定义的数据信息包括：地址、命令码、数据和状态值（访问是否成功，V1V2的MCDF不涉及状态码，UVM实战会完善）</li>
@@ -512,30 +510,30 @@ driver --&gt; 目的_进行扫描与分解
 </ul>
 </li>
 </ul>
-<h3><span id="125-sequence-的层次化">1.2.5 sequence 的层次化</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853230.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="125-sequence-的层次化">1.2.5 sequence 的层次化</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853230.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>sequence内部包括item可以包括sequence，从而sequence一层一层实现层次化</p>
-<h3><span id="126-sequencer">1.2.6 sequencer</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853231.png" srcset="/img/loading.gif" lazyload alt></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853232.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="126-sequencer">1.2.6 sequencer</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853231.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853232.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>sequencer是sequence与driver之间的桥梁，使用TLM进行通信，通信参数为sequence_item类</li>
 <li>sequencer的相关控制方法都在uvm_sequence里面</li>
 </ul>
-<h3><span id="127-driver">1.2.7 driver</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853233.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="127-driver">1.2.7 driver</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853233.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>driver特点：</p>
 <ul>
 <li>永远喂不饱，forever驱动</li>
 <li>不会修改item值</li>
 </ul>
-<h3><span id="128-sequence的互动">1.2.8 sequence的互动</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853234.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="128-sequence的互动">1.2.8 sequence的互动</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853234.png" srcset="/img/loading.gif" lazyload alt></p>
 <h2><span id="13-继承关系">1.3 继承关系</span></h2><h3><span id="131-uvm_sequence是obj">1.3.1 uvm_sequence是obj</span></h3><p>uvm_sequence_item和uvm_sequence都继承于uvm_object，不同于comp只在build_phase里创建和配置，obj可以在任何时候穿几件</p>
 <p>uvm_sequence与uvm_comp继承树</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853235.png" srcset="/img/loading.gif" lazyload alt></p>
-<h3><span id="132-提示sequence继承obj而带来的特点">1.3.2 提示：sequence继承obj而带来的特点</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853236.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853235.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="132-提示sequence继承obj而带来的特点">1.3.2 提示：sequence继承obj而带来的特点</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853236.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>（1）你无法预测run阶段什么时候会创建sequence并挂在到sqr上，也无法通过phase机制识别sequence 的运行阶段</p>
 <p>（2）obj独立于build阶段外，所以可以动态挂在</p>
 <p>（3）seq无法在顶层配置的时候按照层次关系直接进行配置</p>
 <p>（4）seq必须挂载到sqr，并依赖于sqr的结构关系来间接获取顶层配置信息</p>
-<h3><span id="133-提示">1.3.3 提示</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853237.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="133-提示">1.3.3 提示</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853237.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>（1）新手：将时序控制的权力给seq，即seq产生item，seq交给driver</p>
 <p>（2）明确职责的情况：seq应该只负责生成item</p>
 <p>（3）item生成和传送并不代表最终的接口时序，决定接口时序的是sqr和dri。进而引申出一个问题，为什么要有sqr在seq和dri之间</p>
@@ -544,7 +542,7 @@ driver --&gt; 目的_进行扫描与分解
 <li>sqr是一个组件，可以通过TLM端口传送item</li>
 <li>sqr有仲裁机制，处理多个并行seq</li>
 </ul>
-<h2><span id="14-总结数据传送机制">1.4 总结：数据传送机制</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853238.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="14-总结数据传送机制">1.4 总结：数据传送机制</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853238.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>（1）数据传送机制是get模式（关于put和ge模式参考TLM）</p>
 <ul>
 <li>sv里面是generator产生item，stimulator/driver去get</li>
@@ -552,18 +550,18 @@ driver --&gt; 目的_进行扫描与分解
 </ul>
 <p>如图：</p>
 <p>通信模式</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853239.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853239.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>数据传输方向：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853240.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853240.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>（2）为什么是get模式：</p>
 <ul>
 <li>效率较高：seq产生item可以直接到达sqr，穿过sqr到达dri即可结束传输；put还需要收到返回值才可以发起下一次的传输</li>
 <li>seq的仲裁特性：仲裁特性更符合设计思维：<ul>
-<li><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853241.png" srcset="/img/loading.gif" lazyload alt></li>
+<li><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853241.png" srcset="/img/loading.gif" lazyload alt></li>
 </ul>
 </li>
 </ul>
-<h1><span id="2-sequence和item">2 Sequence和Item</span></h1><h2><span id="21-概述引入">2.1 概述（引入）</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853242.png" srcset="/img/loading.gif" lazyload alt></p>
+<h1><span id="2-sequence和item">2 Sequence和Item</span></h1><h2><span id="21-概述引入">2.1 概述（引入）</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853242.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>（3）</p>
 <ul>
 <li><p>seq指的是：uvm_sequence类</p>
@@ -585,17 +583,17 @@ driver --&gt; 目的_进行扫描与分解
 <li>调试类：用来标记一些额外信息方便调试，例如该对象的<strong>实例序号</strong>、创建时间、被driver解析的时间始末等</li>
 </ul>
 <h2><span id="23-item的简单例子">2.3 item的简单例子</span></h2><p>sqr没有接dri与seq，仅仅看item是怎么回事</p>
-<h3><span id="item定义">item定义</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853243.png" srcset="/img/loading.gif" lazyload alt></p>
-<h3><span id="test">test</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853244.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="item定义">item定义</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853243.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="test">test</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853244.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>这里用new创建obj，复习一下create的好处：</p>
 <ul>
 <li>override</li>
 <li>建立层次化关系</li>
 <li>comp不可以new？</li>
 </ul>
-<h3><span id="输出结果">输出结果</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853245.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="输出结果">输出结果</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853245.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>t1没有随机化，t2随机化了</p>
-<h2><span id="24-item使用特点">2.4 item使用特点</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853246.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="24-item使用特点">2.4 item使用特点</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853246.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>（1）数据成员为rand形</p>
 <p>（2）使用`uvm_field_xxx宏进行数据成员声明，便于域自动化</p>
 <p>（3）seq的body()很重要，和run类似</p>
@@ -603,7 +601,7 @@ driver --&gt; 目的_进行扫描与分解
 <ul>
 <li>item要善用copy()，clone()等数据方法</li>
 </ul>
-<h2><span id="25-item与seq的关系">2.5 item与seq的关系</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853247.png" srcset="/img/loading.gif" lazyload alt> </p>
+<h2><span id="25-item与seq的关系">2.5 item与seq的关系</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853247.png" srcset="/img/loading.gif" lazyload alt> </p>
 <p>（1）seq控制item实例的随机化，因此内部应预留可供外部随机化的变量，通过层级传递进seq进而控制item，控制item的内容有</p>
 <ul>
 <li>item内部随机变量</li>
@@ -616,22 +614,22 @@ driver --&gt; 目的_进行扫描与分解
 </li>
 <li>虚拟类（virtual sequence）：工作后经常用的，控制整个测试场景中不同的seq</li>
 </ul>
-<h2><span id="27-三类seq定义flat-sequence-介绍">2.7 三类seq定义：Flat Sequence 介绍</span></h2><h3><span id="271-介绍">2.7.1 介绍</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853248.png" srcset="/img/loading.gif" lazyload alt></p>
-<h3><span id="272-代码示例一">2.7.2 代码示例一</span></h3><h4><span id="seq">seq</span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853249.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="27-三类seq定义flat-sequence-介绍">2.7 三类seq定义：Flat Sequence 介绍</span></h2><h3><span id="271-介绍">2.7.1 介绍</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853248.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="272-代码示例一">2.7.2 代码示例一</span></h3><h4><span id="seq">seq</span></h4><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853249.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>body就像组件中的run一样，因为obj不参与phase，定义了body你不需要手动运行就和你不需要手动run一样</li>
 <li>数据的随机化：<ul>
-<li><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853250.png" srcset="/img/loading.gif" lazyload alt></li>
+<li><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853250.png" srcset="/img/loading.gif" lazyload alt></li>
 </ul>
 </li>
 </ul>
-<h4><span id="test">test</span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853251.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="test">test</span></h4><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853251.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>这里为什么手动执行body()，因为这不是个完整的代码，完整的应该是由挂载到的sqr自动运行</p>
-<h4><span id="示例总结">示例总结</span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853252.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="示例总结">示例总结</span></h4><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853252.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>（1）暂时没有用seq宏</p>
 <p>（4）示例一颗粒度较小没有使用item</p>
-<h3><span id="273-代码示例二加大颗粒度使用item">2.7.3 代码示例二：加大颗粒度（使用item）</span></h3><h4><span id="trans">trans</span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853253.png" srcset="/img/loading.gif" lazyload alt></p>
-<h4><span id="seq更多的去做一些控制的任务">seq更多的去做一些控制的任务</span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853254.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="273-代码示例二加大颗粒度使用item">2.7.3 代码示例二：加大颗粒度（使用item）</span></h3><h4><span id="trans">trans</span></h4><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853253.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="seq更多的去做一些控制的任务">seq更多的去做一些控制的任务</span></h4><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853254.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li><p>seq更加简洁</p>
 </li>
@@ -640,23 +638,23 @@ driver --&gt; 目的_进行扫描与分解
 <li><p>只需要例化一个trans实例</p>
 </li>
 </ul>
-<h4><span id="test没有什么大的变化">test没有什么大的变化</span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853255.png" srcset="/img/loading.gif" lazyload alt></p>
-<h4><span id="输出结果">输出结果</span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853256.png" srcset="/img/loading.gif" lazyload alt></p>
-<h3><span id="274-如何去定义一个item粒度多少合适">2.7.4 如何去定义一个item，粒度多少合适？</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853257.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="test没有什么大的变化">test没有什么大的变化</span></h4><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853255.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="输出结果">输出结果</span></h4><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853256.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="274-如何去定义一个item粒度多少合适">2.7.4 如何去定义一个item，粒度多少合适？</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853257.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>简单来讲：seq里面包含多个item</p>
-<h2><span id="28-三类seq定义hierarchical-sequence-介绍">2.8 三类seq定义：Hierarchical Sequence 介绍</span></h2><h3><span id="281-介绍">2.8.1 介绍</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853258.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="28-三类seq定义hierarchical-sequence-介绍">2.8 三类seq定义：Hierarchical Sequence 介绍</span></h2><h3><span id="281-介绍">2.8.1 介绍</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853258.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>嵌套seq好处是可以创建更丰富的激励场景</li>
 <li>hierarchical seq可以嵌套：hierarchical seq，flat seq，item</li>
 </ul>
-<h3><span id="282-代码示例trans与flatseq基于273">2.8.2 代码示例：trans与flatseq基于2.7.3</span></h3><h4><span id="hier_seq">hier_seq</span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853259.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="282-代码示例trans与flatseq基于273">2.8.2 代码示例：trans与flatseq基于2.7.3</span></h3><h4><span id="hier_seq">hier_seq</span></h4><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853259.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>宏做了三件事：</p>
 <ul>
 <li>创建了seq和item</li>
 <li>完成了随机化</li>
 <li>传送到sqr上</li>
 </ul>
-<h3><span id="283-示例总结">2.8.3 示例总结</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853260.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="283-示例总结">2.8.3 示例总结</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853260.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>（1）示例代码宏的三个作用</p>
 <p>（3）示例中既有串行的激励关系，也有并行的激励关系</p>
 <p>更复杂的场景中可以加入seq/item之间的时序关系：</p>
@@ -664,7 +662,7 @@ driver --&gt; 目的_进行扫描与分解
 <li>事件同步</li>
 <li>一定的延迟关系</li>
 </ul>
-<h1><span id="3-sequencer和driver">3 Sequencer和Driver</span></h1><h2><span id="31-概述">3.1 概述</span></h2><h3><span id="311-数据传输概述">3.1.1 数据传输概述</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853261.png" srcset="/img/loading.gif" lazyload alt></p>
+<h1><span id="3-sequencer和driver">3 Sequencer和Driver</span></h1><h2><span id="31-概述">3.1 概述</span></h2><h3><span id="311-数据传输概述">3.1.1 数据传输概述</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853261.png" srcset="/img/loading.gif" lazyload alt></p>
 <hr>
 <ul>
 <li><p>seq与dri是组件，组件之间的通信依赖于TLM端口</p>
@@ -680,7 +678,7 @@ driver --&gt; 目的_进行扫描与分解
 </ul>
 <hr>
 <p>seq与dri的端口结构图：双向的数据传输</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853262.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853262.png" srcset="/img/loading.gif" lazyload alt></p>
 <h3><span id="312-端口">3.1.2 端口</span></h3><p><strong>（1）端口：</strong></p>
 <p>UVM<strong>专门提供</strong>便于item传输的<strong>端口</strong>，供seq与driv使用：</p>
 <figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog">uvm seq_item pull_port <span class="hljs-variable">#(type REQ=int, type RSP=REQ)</span><br>uvm_seq_item_pull_export <span class="hljs-variable">#(type REQ=int, type RSP=REQ)</span><br>uvm_seq_item_pull_imp <span class="hljs-variable">#(type REQ=int, type RSP=REQ, type imp=int)</span><br></code></pre></div></td></tr></table></figure>
@@ -692,13 +690,13 @@ driver --&gt; 目的_进行扫描与分解
 <ul>
 <li>为什么是export实际上是imp？：<ul>
 <li>因为sqr里面有fifo，对外显示的是export但已经是最后一个组件了，对内还需要连接</li>
-<li>如图所示：<img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853263.png" srcset="/img/loading.gif" lazyload alt></li>
+<li>如图所示：<img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853263.png" srcset="/img/loading.gif" lazyload alt></li>
 <li>补充sqr只有rsp的fifo没有req的fifo</li>
 </ul>
 </li>
 </ul>
 <p>回忆三种port</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853264.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853264.png" srcset="/img/loading.gif" lazyload alt></p>
 <h3><span id="313-端口的连接">3.1.3 端口的连接</span></h3><p>dri与sqr的端口成对组合，一共两对，进行连接：</p>
 <ul>
 <li>第一对：<ul>
@@ -714,7 +712,7 @@ driver --&gt; 目的_进行扫描与分解
 </ul>
 <p>两组端口都可以实现rsp发送，但方式不一样</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853265.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853265.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>（1）<strong>通常使用第一对就够了</strong>，即：<code>driver::seq_item_port.connect(sequencer::seq_item_export)</code></p>
 <h3><span id="314-第一对端口的方法需要反复听">3.1.4 第一对端口的方法(需要反复听)</span></h3><p>在driver一侧，通过seq_item_port调用这一种类型的TLM端口的方法：</p>
 <ul>
@@ -759,15 +757,15 @@ driver --&gt; 目的_进行扫描与分解
 </ul>
 <p>put rsp独立出现</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853266.png" srcset="/img/loading.gif" lazyload alt></p>
-<h3><span id="315-sqr与dri参数类的req与rsp的类型参数">3.1.5 sqr与dri参数类的REQ与RSP的类型参数</span></h3><h4><span id="参数类声明原型">参数类声明原型：</span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853267.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853266.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="315-sqr与dri参数类的req与rsp的类型参数">3.1.5 sqr与dri参数类的REQ与RSP的类型参数</span></h3><h4><span id="参数类声明原型">参数类声明原型：</span></h4><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853267.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>参数类内部的类型一致，缺省值为uvm_sequence_item，即自定义的Item的父类类型</p>
 <hr>
-<h4><span id="类型转换">类型转换：</span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853268.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="类型转换">类型转换：</span></h4><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853268.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>（1）如上所说缺省时拿到的是父类类型，需要动态进行类型转换</p>
 <p>（2）类型参数为自定义类时不用在意</p>
 <hr>
-<h4><span id="类型保持一致的作用">类型保持一致的作用：</span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853269.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="类型保持一致的作用">类型保持一致的作用：</span></h4><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853269.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>把rsp反馈到sqr的四种方法：</p>
 <ul>
 <li>put(rsp)//put rsp</li>
@@ -776,7 +774,7 @@ driver --&gt; 目的_进行扫描与分解
 <li>item_done</li>
 </ul>
 <p>这四种方法最终都会写入到一个fifo里面</p>
-<h2><span id="32-事务传递实例">3.2 事务传递实例</span></h2><h3><span id="1itemtrans-和-flat_seq">（1）item(trans) 和 flat_seq</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853270.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="32-事务传递实例">3.2 事务传递实例</span></h2><h3><span id="1itemtrans-和-flat_seq">（1）item(trans) 和 flat_seq</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853270.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>flat_seq：</p>
 <ul>
 <li>body<ul>
@@ -789,25 +787,25 @@ driver --&gt; 目的_进行扫描与分解
 <ul>
 <li>为什么item也被挂载到sqr上<ul>
 <li>实际上seq与Item都挂载到sqr上</li>
-<li><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853271.png" srcset="/img/loading.gif" lazyload alt></li>
+<li><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853271.png" srcset="/img/loading.gif" lazyload alt></li>
 <li><strong>而自己定义的sqr又是uvm_sequence的成员变量</strong></li>
 </ul>
 </li>
 <li>一个完成的传输：<ul>
 <li>seq收到item_done才算结束，这里使用get_response(tmp)</li>
-<li><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853272.png" srcset="/img/loading.gif" lazyload alt></li>
+<li><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853272.png" srcset="/img/loading.gif" lazyload alt></li>
 </ul>
 </li>
 </ul>
-<h3><span id="2sqr最简单的一个">（2）sqr：最简单的一个</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853273.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="2sqr最简单的一个">（2）sqr：最简单的一个</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853273.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>继承于uvm_sequencer</p>
 <p><strong>只要进行一个注册就ok，最简单的一个</strong>，更多的握手关系在seq和dri一侧，sqr做路由作用</p>
-<h3><span id="3driver">（3）driver</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853274.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="3driver">（3）driver</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853274.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li><p>关于REQ是哪来的，你忘了自己是个参数类了吗？这不是参数类的类型参数值吗？</p>
 <ul>
 <li>这里没有进行参数指明，所以直接用默认了，就是没有下图红字部分<ul>
-<li><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853275.png" srcset="/img/loading.gif" lazyload alt></li>
+<li><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853275.png" srcset="/img/loading.gif" lazyload alt></li>
 </ul>
 </li>
 </ul>
@@ -831,7 +829,7 @@ driver --&gt; 目的_进行扫描与分解
 <li><p>为什么要手动set？id没有进行域的自动化，克隆的时候不会复制id，克隆只关心数据部分而id不是数据部分</p>
 </li>
 <li><p>传输结构图：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853276.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853276.png" srcset="/img/loading.gif" lazyload alt></p>
 </li>
 </ul>
 </li>
@@ -844,7 +842,7 @@ driver --&gt; 目的_进行扫描与分解
 <li><strong>因此get_response一定要成对不然会卡住</strong></li>
 </ul>
 </li>
-<li><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853277.png" srcset="/img/loading.gif" lazyload alt></li>
+<li><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853277.png" srcset="/img/loading.gif" lazyload alt></li>
 </ul>
 </li>
 </ul>
@@ -852,7 +850,7 @@ driver --&gt; 目的_进行扫描与分解
 </ul>
 </li>
 </ul>
-<h3><span id="4env">（4）env</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853278.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="4env">（4）env</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853278.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li><p>成员区域</p>
 <ul>
@@ -870,7 +868,7 @@ driver --&gt; 目的_进行扫描与分解
 </ul>
 </li>
 </ul>
-<h3><span id="5test">（5）test</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853279.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="5test">（5）test</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853279.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>build：</p>
 <ul>
 <li>sqr的创建</li>
@@ -888,12 +886,12 @@ driver --&gt; 目的_进行扫描与分解
 </li>
 <li>结束挂起结束运行</li>
 </ul>
-<h3><span id="6输出结果">（6）输出结果</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853280.png" srcset="/img/loading.gif" lazyload alt></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853281.png" srcset="/img/loading.gif" lazyload alt>     </p>
-<h2><span id="33-重要各个模块的动作总结">3.3 【重要】各个模块的动作总结</span></h2><h3><span id="flat_seq">flat_seq：</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853282.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="6输出结果">（6）输出结果</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853280.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853281.png" srcset="/img/loading.gif" lazyload alt>     </p>
+<h2><span id="33-重要各个模块的动作总结">3.3 【重要】各个模块的动作总结</span></h2><h3><span id="flat_seq">flat_seq：</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853282.png" srcset="/img/loading.gif" lazyload alt></p>
 <figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog">create_item()<br>start_item()<br>randomize()<br>finish_item()<br>*get_response()<br></code></pre></div></td></tr></table></figure>
-<h3><span id="driver以及之后的逻辑">driver以及之后的逻辑：</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853283.png" srcset="/img/loading.gif" lazyload alt></p>
-<h3><span id="高层次端口的连接env和test">高层次端口的连接（env和test）</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853284.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="driver以及之后的逻辑">driver以及之后的逻辑：</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853283.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="高层次端口的连接env和test">高层次端口的连接（env和test）</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853284.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>（1）env端口连接，使用一种端口进行成对连接就行</p>
 <p>（2）</p>
 <ul>
@@ -902,14 +900,14 @@ driver --&gt; 目的_进行扫描与分解
 <li><p>挂载seq到sqr使用uvm_sequence::<strong>start</strong>(SEQUENCER)完成</p>
 </li>
 </ul>
-<h2><span id="34-重要通信时序">3.4 【重要】通信时序</span></h2><h3><span id="341-通信时序">3.4.1 通信时序</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853285.png" srcset="/img/loading.gif" lazyload alt></p>
-<h3><span id="342-seq与sqr的细节补充">3.4.2 seq与sqr的细节补充</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853286.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="34-重要通信时序">3.4 【重要】通信时序</span></h2><h3><span id="341-通信时序">3.4.1 通信时序</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853285.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="342-seq与sqr的细节补充">3.4.2 seq与sqr的细节补充</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853286.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>（1）seq起点是create</p>
 <p>（2）sqr的仲裁机制根据dri的get_next_item来的</p>
 <p>（3）sqr在获取item之前item应该完成随机化</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853287.png" srcset="/img/loading.gif" lazyload alt></p>
-<h3><span id="343-握手建议-类型问题">3.4.3 握手建议、类型问题</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853288.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853287.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="343-握手建议-类型问题">3.4.3 握手建议、类型问题</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853288.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li><p>主要讲克隆和ID一部分的内容，可以参考3.2driver的run_phase</p>
 </li>
@@ -917,7 +915,7 @@ driver --&gt; 目的_进行扫描与分解
 </li>
 </ul>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853289.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853289.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li><p>seq与driver类型完全保持一致</p>
 </li>
@@ -925,7 +923,7 @@ driver --&gt; 目的_进行扫描与分解
 </li>
 </ul>
 <h1><span id="4-sequencer和sequence初步">4 Sequencer和Sequence：初步</span></h1><h2><span id="41-概述">4.1 概述</span></h2><h3><span id="411-主要学习内容">4.1.1 主要学习内容</span></h3><p>主要讲几种常见的仲裁方式，一般可能用不太到</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853290.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853290.png" srcset="/img/loading.gif" lazyload alt></p>
 <h3><span id="412-sequence宏概述区分两种挂载seq到sqr方式">4.1.2 sequence宏概述：区分两种挂载seq到sqr方式</span></h3><ul>
 <li>start()<ul>
 <li>在test对top_seq挂载（参考第三章），在top_sep对child_sep和item挂载，在child_sep对item挂载</li>
@@ -936,18 +934,18 @@ driver --&gt; 目的_进行扫描与分解
 </ul>
 </li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853291.png" srcset="/img/loading.gif" lazyload alt></p>
-<h2><span id="42-sequence和item发送示例">4.2 sequence和item发送示例</span></h2><h3><span id="bus_trans">bus_trans</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853292.png" srcset="/img/loading.gif" lazyload alt></p>
-<h3><span id="child_seq">child_seq</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853293.png" srcset="/img/loading.gif" lazyload alt></p>
-<h3><span id="top_seq">top_seq</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853294.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853291.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="42-sequence和item发送示例">4.2 sequence和item发送示例</span></h2><h3><span id="bus_trans">bus_trans</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853292.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="child_seq">child_seq</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853293.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="top_seq">top_seq</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853294.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>包含child_seq与item</p>
-<h3><span id="sqr">sqr</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853295.png" srcset="/img/loading.gif" lazyload alt></p>
-<h3><span id="driver">driver</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853296.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="sqr">sqr</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853295.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="driver">driver</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853296.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>driver里面get的全是最小颗粒度item，seq在sqr处被拆解</p>
-<h3><span id="env">env</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853297.png" srcset="/img/loading.gif" lazyload alt></p>
-<h3><span id="test与输出结果">test与输出结果</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853298.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="env">env</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853297.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="test与输出结果">test与输出结果</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853298.png" srcset="/img/loading.gif" lazyload alt></p>
 <h2><span id="43-示例总结两种挂载方式">4.3 示例总结：两种挂载方式</span></h2><p>两种挂载方式，分别把seq和item挂载到sqr上</p>
-<h3><span id="431-把seq挂载到sqr上这种挂载发生在top_seq上">4.3.1 把seq挂载到sqr上：这种挂载发生在top_seq上</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853299.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="431-把seq挂载到sqr上这种挂载发生在top_seq上">4.3.1 把seq挂载到sqr上：这种挂载发生在top_seq上</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853299.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>top_seq中的uvm_sequence::start()</p>
 <ul>
 <li>start内部参数解释<ul>
@@ -974,18 +972,18 @@ driver --&gt; 目的_进行扫描与分解
 </ul>
 </li>
 </ul>
-<h3><span id="432-把item挂载到sqr上">4.3.2 把item挂载到sqr上</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853300.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="432-把item挂载到sqr上">4.3.2 把item挂载到sqr上</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853300.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>第二个参数不需要特别关心，往往知道挂载哪个item就够了</p>
-<h3><span id="433-item创建发送过程">4.3.3 item创建发送过程</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853301.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="433-item创建发送过程">4.3.3 item创建发送过程</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853301.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>pre_do()，mid_do()，post_do()：不建议实现，会变复杂</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853302.png" srcset="/img/loading.gif" lazyload alt></p>
-<h3><span id="434-seqitem的start挂载内部逻辑">4.3.4 seq/item的start()挂载内部逻辑</span></h3><h4><span id="sequence挂载到sequencer">sequence挂载到sequencer</span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853303.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853302.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="434-seqitem的start挂载内部逻辑">4.3.4 seq/item的start()挂载内部逻辑</span></h3><h4><span id="sequence挂载到sequencer">sequence挂载到sequencer</span></h4><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853303.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>为什么可以不关心：有时候call_pre_post=1时这些post和pre都不会执行</p>
-<h4><span id="item挂载到sequencer">item挂载到sequencer</span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853304.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="item挂载到sequencer">item挂载到sequencer</span></h4><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853304.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>start_item立即返回，因为只有一个sqr进行仲裁可以立刻返回结果</p>
 <h1><span id="5-sequencer和sequence更简单的创建挂载传输方式宏">5 Sequencer和Sequence：更简单的创建挂载传输方式：宏</span></h1><p>图中宏省略了`</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853305.png" srcset="/img/loading.gif" lazyload alt="图中宏省略了`"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853305.png" srcset="/img/loading.gif" lazyload alt="图中宏省略了`"></p>
 <p><strong>这些宏封装了好多方法函数，x表示包括，空表示不包括</strong></p>
 <p><strong>Item：</strong></p>
 <ul>
@@ -1025,7 +1023,7 @@ driver --&gt; 目的_进行扫描与分解
 <h3><span id="宏的调用位置">宏的调用位置</span></h3><ul>
 <li>这些宏调用的都是 sequence方法，因此只有sequence才可以调用这些宏</li>
 </ul>
-<h3><span id="宏带来的怠惰">宏带来的怠惰</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853306.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="宏带来的怠惰">宏带来的怠惰</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853306.png" srcset="/img/loading.gif" lazyload alt></p>
 <h2><span id="52-其他的宏">5.2 其他的宏</span></h2><ul>
 <li>将优先级作为参数传递的<strong><code>`uvm_do_pri/`uvm_do_on_prio</code></strong>等宏<ul>
 <li>并行发送多个seq时，伴随优先级发送</li>
@@ -1039,7 +1037,7 @@ driver --&gt; 目的_进行扫描与分解
 </li>
 <li>专门针对seq的<strong><code>`uvm_create_seq/`uvm_do_seq/`uvm_do_seq_with</code></strong>等宏</li>
 </ul>
-<h2><span id="53-序列宏的示例">5.3 序列宏的示例</span></h2><h3><span id="child_seq">child_seq</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853307.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="53-序列宏的示例">5.3 序列宏的示例</span></h2><h3><span id="child_seq">child_seq</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853307.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>怎样利用宏发送的：</p>
 <ul>
 <li>`uvm_create(req)：创建item</li>
@@ -1049,12 +1047,12 @@ driver --&gt; 目的_进行扫描与分解
 <ul>
 <li>`uvm_do_with</li>
 </ul>
-<h3><span id="top_seq">top_seq</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853308.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="top_seq">top_seq</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853308.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>`uvm_do：这里发送了child_seq</li>
 <li>`uvm_do_with：这里发送了item</li>
 </ul>
-<h2><span id="54-序列宏的建议">5.4 序列宏的建议</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853309.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="54-序列宏的建议">5.4 序列宏的建议</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853309.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>（1）不管seq在哪个层次，都应在test结束前执行完毕</p>
 <p>（2）可以用fork_join完成seq发送。而不建议用fork_join_any和fork_join_none，可能会导致seq没结束就立即退出，使得后台仍然有一些seq像挂载到sqr上面；进一步如果你针对fork调用disable可能会所锁sqr，因为你来不及释放seq线程权限。</p>
 <ul>
@@ -1062,9 +1060,9 @@ driver --&gt; 目的_进行扫描与分解
 </ul>
 <p>（3）fork_join其中一个seq线程无法结束时，考虑在合适时间点使用disbale</p>
 <h1><span id="5-sequencer和sequence仲裁特性">5 Sequencer和Sequence：仲裁特性</span></h1><h2><span id="51-sequencer和sequence的仲裁特性">5.1 Sequencer和Sequence的仲裁特性</span></h2><h3><span id="511-仲裁特性介绍">5.1.1 仲裁特性介绍</span></h3><p>仲裁场景结构图：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853310.png" srcset="/img/loading.gif" lazyload alt="仲裁场景结构图"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853310.png" srcset="/img/loading.gif" lazyload alt="仲裁场景结构图"></p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853311.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853311.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>（1）<strong>sqr已经内建了仲裁机制，只需要在top_seq设置仲裁的模式就足够</strong></p>
 <p>（2）</p>
 <p>如何设置：uvm_sequencer::set_arbitration(UVM_SEQ_ARB_TYPE val)</p>
@@ -1078,15 +1076,15 @@ driver --&gt; 目的_进行扫描与分解
 <li>UVM_SEQ_ARB_USER：自定义仲裁，很少用</li>
 </ul>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853312.png" srcset="/img/loading.gif" lazyload alt></p>
-<h3><span id="512-sequencer的仲裁示例">5.1.2 Sequencer的仲裁示例</span></h3><h4><span id="item和child_seq">item和child_seq</span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853313.png" srcset="/img/loading.gif" lazyload alt></p>
-<h4><span id="top_seq和sqr">top_seq和sqr</span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853314.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853312.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="512-sequencer的仲裁示例">5.1.2 Sequencer的仲裁示例</span></h3><h4><span id="item和child_seq">item和child_seq</span></h4><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853313.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="top_seq和sqr">top_seq和sqr</span></h4><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853314.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>top_seq：</p>
 <ul>
 <li>body：<ul>
 <li>设置优先级模式</li>
 <li>fork_join进行调度：<ul>
-<li><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853315.png" srcset="/img/loading.gif" lazyload alt></li>
+<li><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853315.png" srcset="/img/loading.gif" lazyload alt></li>
 <li>三个同一时间申请的，seq1和seq2优先级更高</li>
 <li>base是constraint</li>
 <li>此时赋予了优先级之后child_seq中的`uvm_do_with就可以进行挂在了，因为它们等待的就是这个顶层的优先级，使用wait_for_guant等待授权</li>
@@ -1095,10 +1093,10 @@ driver --&gt; 目的_进行扫描与分解
 </ul>
 </li>
 </ul>
-<h4><span id="driver">driver</span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853316.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="driver">driver</span></h4><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853316.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>没有太多新意</p>
-<h3><span id="env">env</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853317.png" srcset="/img/loading.gif" lazyload alt></p>
-<h3><span id="test和输出结果">test和输出结果</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853318.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="env">env</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853317.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="test和输出结果">test和输出结果</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853318.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>test：</p>
 <ul>
 <li>为什么test里面不用宏：因为用不了只能在seq里面用</li>
@@ -1107,8 +1105,8 @@ driver --&gt; 目的_进行扫描与分解
 <ul>
 <li>发送item没有耗时</li>
 </ul>
-<h4><span id="示例分析">示例分析</span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853319.png" srcset="/img/loading.gif" lazyload alt></p>
-<h2><span id="52-sequencer的锁定机制介绍">5.2 Sequencer的锁定机制介绍</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853320.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="示例分析">示例分析</span></h4><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853319.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="52-sequencer的锁定机制介绍">5.2 Sequencer的锁定机制介绍</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853320.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>（1）锁定机制</p>
 <p>什么是锁定机制：seq拿到权限后进行锁定，</p>
 <p>什么是锁定：seq拿到一个item后锁定下来，后续item都可以拿到</p>
@@ -1123,7 +1121,7 @@ driver --&gt; 目的_进行扫描与分解
 </ul>
 </li>
 </ul>
-<h3><span id="522-sequencer的锁定示例">5.2.2 Sequencer的锁定示例</span></h3><h4><span id="item-child_seq-lock_seq">item、child_seq、lock_seq</span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853321.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="522-sequencer的锁定示例">5.2.2 Sequencer的锁定示例</span></h3><h4><span id="item-child_seq-lock_seq">item、child_seq、lock_seq</span></h4><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853321.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>child_seq：内部重复发送两次，间隔10ns，参考之前一节的示例</p>
 <p>lock_seq：</p>
 <ul>
@@ -1136,7 +1134,7 @@ driver --&gt; 目的_进行扫描与分解
 </li>
 <li>重复发送三次</li>
 </ul>
-<h3><span id="grab_seq">grab_seq</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853322.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="grab_seq">grab_seq</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853322.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>grab_seq：</p>
 <ul>
 <li><p>等了20ns</p>
@@ -1148,14 +1146,14 @@ driver --&gt; 目的_进行扫描与分解
 </li>
 <li>重复发送三次</li>
 </ul>
-<h4><span id="top_seq">top_seq</span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853323.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="top_seq">top_seq</span></h4><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853323.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>seq1,seq2,seq3</p>
 <p>lock_seq：优先级为300</p>
 <p>grab_seq：没有优先级</p>
-<h4><span id="输出结果">输出结果</span></h4><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853324.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="输出结果">输出结果</span></h4><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853324.png" srcset="/img/loading.gif" lazyload alt></p>
 <hr>
 <p>注释版：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853325.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853325.png" srcset="/img/loading.gif" lazyload alt></p>
 <h4><span id="结果解释">结果解释</span></h4><p>10ns：</p>
 <ul>
 <li>seq1,seq2优先级500先发送sep3优先级300再发送（发送完等待10纳秒，重新排队伍）</li>
@@ -1192,37 +1190,37 @@ driver --&gt; 目的_进行扫描与分解
 <li><code>`uvm_do_pri_with(lock)</code></li>
 <li><code>`uvm_do_pri_with(grab)</code></li>
 </ul>
-<h3><span id="523-结论">5.2.3 结论</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853326.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="523-结论">5.2.3 结论</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853326.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>无论是lock或者grab都是在重新仲裁时才能锁住</p>
 <h1><span id="6-sequence的层次化">6 Sequence的层次化</span></h1><p>对于小白我们可能更关心如何让你的sequence层次化，如何理解别人写的层次化的sequence，以及把它们作为更顶层的sequence如何一层一层的调用</p>
-<h2><span id="61-概述水平复用和垂直复用">6.1 概述：水平复用和垂直复用</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853327.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="61-概述水平复用和垂直复用">6.1 概述：水平复用和垂直复用</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853327.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>hierarchical sequence：层次序列，seq都挂载在一个sqr上</li>
 <li>virtual sequence：seq可挂载在多个sqr上</li>
 <li>layering sequence</li>
 </ul>
-<h2><span id="62-hierarchical-sequence层次序列">6.2 Hierarchical Sequence层次序列</span></h2><h3><span id="621-hierarchical-sequence介绍">6.2.1 Hierarchical Sequence介绍</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853328.png" srcset="/img/loading.gif" lazyload alt></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853329.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="62-hierarchical-sequence层次序列">6.2 Hierarchical Sequence层次序列</span></h2><h3><span id="621-hierarchical-sequence介绍">6.2.1 Hierarchical Sequence介绍</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853328.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853329.png" srcset="/img/loading.gif" lazyload alt></p>
 <h3><span id="622-hierarchical-sequence代码示例">6.2.2 Hierarchical Sequence代码示例</span></h3><p><strong>cmd 和 item</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853330.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853330.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>clk_rst_seq</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853331.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853331.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>reg_test_seq</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853332.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853332.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>top_seq</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853333.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853333.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>reg_master_sequencer</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853334.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853334.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>driver</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853335.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853335.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>agent</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853336.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853336.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>例化与连接</li>
 </ul>
-<h3><span id="623-示例解析">6.2.3 示例解析</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853337.png" srcset="/img/loading.gif" lazyload alt></p>
-<h3><span id="624-总结">6.2.4 总结</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853338.png" srcset="/img/loading.gif" lazyload alt></p>
-<h2><span id="63-virtual-sequence">6.3 Virtual Sequence</span></h2><h3><span id="631-virtual-sequence介绍">6.3.1 Virtual Sequence介绍</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853339.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="623-示例解析">6.2.3 示例解析</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853337.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="624-总结">6.2.4 总结</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853338.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="63-virtual-sequence">6.3 Virtual Sequence</span></h2><h3><span id="631-virtual-sequence介绍">6.3.1 Virtual Sequence介绍</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853339.png" srcset="/img/loading.gif" lazyload alt></p>
 <hr>
 <p>把所有子系统的sqr都放在virtual_sequencer里面</p>
 <ul>
@@ -1231,20 +1229,20 @@ driver --&gt; 目的_进行扫描与分解
 <li>起到一个统筹的作用</li>
 <li>virtual sequencer往往与virtual sequence有联系的</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853340.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853340.png" srcset="/img/loading.gif" lazyload alt></p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853341.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853341.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>virtual sequencer就是个简单的路由器，包含句柄而已，没有任何item经过，也不需要与driver连接</p>
 <h3><span id="632-virtual-sequence示例">6.3.2 Virtual Sequence示例</span></h3><p><strong>vritual sequencer结构图</strong>：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853342.png" srcset="/img/loading.gif" lazyload alt="vritual sequencer结构图"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853342.png" srcset="/img/loading.gif" lazyload alt="vritual sequencer结构图"></p>
 <p><strong>【重要】有关挂载</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853343.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853343.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>mcdf_normal_seq(virtual sequence)要挂载到virutal sequencer</p>
 <p>其他的seq间接的通过virutal sequencer挂载到不同的sqr上面，挂载的目的地不一样所以用uvm_do_on</p>
 <hr>
 <p><strong>virtual sequence</strong></p>
 <p>定义了一个sequence：实际上就是我们的virtual sequence</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853344.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853344.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>包括了好多seq句柄</p>
 <p>sqr与vsqr区别：</p>
 <ul>
@@ -1271,25 +1269,25 @@ driver --&gt; 目的_进行扫描与分解
 </li>
 </ul>
 <p><strong>子一级的sqr，agent，和virutal sequencer</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853345.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853345.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>virutal sequencer 包含各个句柄就完事了</p>
 <p><strong>mcdf_env</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853346.png" srcset="/img/loading.gif" lazyload alt></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853347.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853346.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853347.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>千万不要忘了再connect里进行句柄传递，避免悬空</p>
 <p><strong>test</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853348.png" srcset="/img/loading.gif" lazyload alt></p>
-<h3><span id="633-示例解析">6.3.3 示例解析</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853349.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853348.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="633-示例解析">6.3.3 示例解析</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853349.png" srcset="/img/loading.gif" lazyload alt></p>
 <h3><span id="634-总结">6.3.4 总结</span></h3><p>中心化协调</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853350.png" srcset="/img/loading.gif" lazyload alt></p>
-<h3><span id="635-virutal-sequencer建议">6.3.5 Virutal Sequencer建议</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853351.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853350.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="635-virutal-sequencer建议">6.3.5 Virutal Sequencer建议</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853351.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>vseq与普通seq区分</li>
 <li>vsqr同底层负责传输对象的sqr区分</li>
 <li>vseq中使用`uvm_declare_p_sqr来创建p_sequencer变量方便之后索引</li>
 <li>顶层环境中创建vsqr并完成内部各个sqr句柄与底层sqr实例连接</li>
 </ul>
-<h2><span id="64-layering-sequence层次化">6.4 Layering Sequence：层次化</span></h2><h3><span id="641-layering-sequence介绍">6.4.1 Layering Sequence介绍</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853352.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="64-layering-sequence层次化">6.4 Layering Sequence：层次化</span></h2><h3><span id="641-layering-sequence介绍">6.4.1 Layering Sequence介绍</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853352.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li><p>普通协议，构建协议总线时通过：sequencer item包含与约束关系</p>
 </li>
@@ -1299,33 +1297,33 @@ driver --&gt; 目的_进行扫描与分解
 <p><strong>由高抽象级到低抽象级（传输层&gt;&gt;链路层&gt;&gt;物理层）</strong>的构建，我们称为<strong>Layering Sequence</strong></p>
 <p>接下来学习，一定考虑三个层次：高抽象级的item，低抽象级的item，中间做转化的sequence</p>
 <p>Layering Sequence层次结构图：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853353.png" srcset="/img/loading.gif" lazyload alt="Layering Sequence层次结构图"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853353.png" srcset="/img/loading.gif" lazyload alt="Layering Sequence层次结构图"></p>
 <hr>
 <p>寄存器模型下的item传递结构图与layering sequence具体作用内容：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853354.png" srcset="/img/loading.gif" lazyload alt="寄存器模型下的item传递结构图"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853354.png" srcset="/img/loading.gif" lazyload alt="寄存器模型下的item传递结构图"></p>
 <ul>
 <li>对寄存器的reg.write()和reg.read()指令，通过寄存器模型的Adaption Layer转化层次，进而转化为总线的一个item。即把reg_item转为bug_item</li>
 <li>得出layering sequence包括三者：高抽象级的item，低抽象级的item，中间做转化的sequence</li>
 <li>高抽象级的item与低抽象级的item没有直接的继承关系所以需要做一个映射</li>
 <li>高抽象级不包括具体的数据，只有类似命令、长度、idle等信息</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853355.png" srcset="/img/loading.gif" lazyload alt></p>
-<h3><span id="642-layering-sequence代码示例">6.4.2 Layering Sequence代码示例</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853353.png" srcset="/img/loading.gif" lazyload alt="Layering Sequence层次结构图"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853355.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="642-layering-sequence代码示例">6.4.2 Layering Sequence代码示例</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853353.png" srcset="/img/loading.gif" lazyload alt="Layering Sequence层次结构图"></p>
 <hr>
 <p><strong>cmd和bus_trans(item)</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853356.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853356.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>比较底层</p>
 <p><strong>packet_seq</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853357.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853357.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>layer_trans(item)</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853358.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853358.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>比较抽象：</p>
 <ul>
 <li>没有任何与数据有关的传输内用，只有cmd，len，idle</li>
 <li>与底层的bus_trans没有任何继承关系所以要做一个映射</li>
 </ul>
 <p><strong>adapter_seq：转化层</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853359.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853359.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>p_sequencer通过`ucm_declare获得，通过p_sqr拿到up_sqr更上层的layersqr句柄</li>
 <li><p>拿到子类句柄void($cast(trans,req))</p>
@@ -1335,33 +1333,33 @@ driver --&gt; 目的_进行扫描与分解
 <li>做一个握手，告诉高层，我已经把高抽象层的trans消化掉了</li>
 </ul>
 <p><strong>top_seq , layering_sqr , phy_sqr</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853360.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853360.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>layering_sqr , phy_sqr定义不讲了</p>
 <p>phy_sqr里面有个句柄up_sqr，需要顶层把相关实例传递进来</p>
 <p>top_seq：连续发送了两个layer_trans</p>
 <p><strong>phy_driver</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853361.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853361.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>phy_agent</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853362.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853362.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>包含phy_drv和phy_sqr的例化与连接</p>
 <p><strong>test，重点在这里，查看连接关系</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853363.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853363.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>例化了layer_sqr与phy_agt<ul>
-<li><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853364.png" srcset="/img/loading.gif" lazyload alt></li>
+<li><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853364.png" srcset="/img/loading.gif" lazyload alt></li>
 </ul>
 </li>
 <li>sqr句柄的传递，layer_seq/top_seq，adapter_seq，phy_seq的挂载<ul>
 <li>up_sqr句柄的传递<ul>
-<li><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853365.png" srcset="/img/loading.gif" lazyload alt></li>
+<li><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853365.png" srcset="/img/loading.gif" lazyload alt></li>
 </ul>
 </li>
 <li>adapter_seq的挂载<ul>
-<li><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853366.png" srcset="/img/loading.gif" lazyload alt></li>
+<li><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853366.png" srcset="/img/loading.gif" lazyload alt></li>
 </ul>
 </li>
 <li>top_seq的挂载<ul>
-<li><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853367.png" srcset="/img/loading.gif" lazyload alt></li>
+<li><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853367.png" srcset="/img/loading.gif" lazyload alt></li>
 </ul>
 </li>
 <li>phy_seq的挂载实际上不是个挂载而是产生的过程，在adapter_seq用uvm_do出来好多pkg_seq，这些pkg_seq时加上就属于phy到drv的seq</li>
@@ -1373,12 +1371,12 @@ driver --&gt; 目的_进行扫描与分解
 </ul>
 </li>
 </ul>
-<h3><span id="643-如何实现sequencer-layer协议转换的方法">6.4.3 如何实现sequencer layer协议转换的方法：</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853368.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="643-如何实现sequencer-layer协议转换的方法">6.4.3 如何实现sequencer layer协议转换的方法：</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853368.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>（1）layer_trans,bus_trans完全两个不同的抽象级</p>
 <p>（2）需要adapter_seq完成从获取layer_trans再去生成phy_trans和seq，再从physqr发送出去</p>
 <p>（2）fork_join_none</p>
 <p>（4）至于多少个层次取决于</p>
-<h3><span id="644-总结">6.4.4 总结</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011853369.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="644-总结">6.4.4 总结</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011853369.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>（2）只有高抽象级到低抽象级，低到高需要有回路，通过response_item实现，两者的思想实际上一样</p>
 <p>（3）也可以不通过高到低的回路，而是外部通过monitor采集response trans最终实现返回，避开adapter</p>
 

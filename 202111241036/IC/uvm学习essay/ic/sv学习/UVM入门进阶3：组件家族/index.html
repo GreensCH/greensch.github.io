@@ -12,8 +12,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-  
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="“无论最终结果将人类历史导向何处，我们决定选择希望”">
   <meta name="author" content="友人律 | Guilin Chang">
@@ -21,54 +19,54 @@
   <meta name="description" content="参考文档链接：https:&#x2F;&#x2F;verificationacademy.com&#x2F;verification-methodology-reference&#x2F;uvm&#x2F;docs_1.2&#x2F;html&#x2F; 注意，本文内大部分组件介绍分为两节：第一节主要介绍该组件，第二节介绍该组件的定义示例 0 组件家族0.0 回顾上节课内容 UVM实验一到实验二的代码会突然增加，实验二会看到如何把SV中的组件过度到UVM的组件的，过">
 <meta property="og:type" content="article">
 <meta property="og:title" content="UVM入门和进阶3：组件家族（如何例化部分较为重要）">
-<meta property="og:url" content="http://blog.yourenlv.top/202111241036/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B63%EF%BC%9A%E7%BB%84%E4%BB%B6%E5%AE%B6%E6%97%8F/index.html">
+<meta property="og:url" content="https://blog.yourenlv.top/202111241036/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%85%A5%E9%97%A8%E8%BF%9B%E9%98%B63%EF%BC%9A%E7%BB%84%E4%BB%B6%E5%AE%B6%E6%97%8F/index.html">
 <meta property="og:site_name" content="友人律的博客">
 <meta property="og:description" content="参考文档链接：https:&#x2F;&#x2F;verificationacademy.com&#x2F;verification-methodology-reference&#x2F;uvm&#x2F;docs_1.2&#x2F;html&#x2F; 注意，本文内大部分组件介绍分为两节：第一节主要介绍该组件，第二节介绍该组件的定义示例 0 组件家族0.0 回顾上节课内容 UVM实验一到实验二的代码会突然增加，实验二会看到如何把SV中的组件过度到UVM的组件的，过">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846006.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846007.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846008.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846009.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846010.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846011.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846012.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846013.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846014.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846015.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846016.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846017.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846018.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846019.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846020.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846021.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846022.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846023.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846024.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846025.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846026.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846027.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846028.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846029.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846030.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846031.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846032.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846033.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846034.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846035.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846036.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846037.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846038.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846039.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846040.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846041.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846042.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846006.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846007.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846008.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846009.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846010.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846011.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846012.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846013.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846014.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846015.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846016.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846017.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846018.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846019.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846020.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846021.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846022.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846023.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846024.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846025.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846026.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846027.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846028.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846029.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846030.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846031.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846032.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846033.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846034.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846035.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846036.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846037.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846038.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846039.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846040.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846041.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846042.png">
 <meta property="article:published_time" content="2021-11-24T02:36:00.000Z">
-<meta property="article:modified_time" content="2022-05-01T13:11:00.684Z">
+<meta property="article:modified_time" content="2022-05-24T10:35:18.369Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="IC">
 <meta property="article:tag" content="uvm学习">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846006.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846006.png">
   
   <title>UVM入门和进阶3：组件家族（如何例化部分较为重要） - 友人律的博客</title>
 
@@ -342,18 +340,18 @@
             <div class="markdown-body">
               <p>参考文档链接：<a target="_blank" rel="noopener" href="https://verificationacademy.com/verification-methodology-reference/uvm/docs_1.2/html/">https://verificationacademy.com/verification-methodology-reference/uvm/docs_1.2/html/</a></p>
 <p><strong>注意，本文内大部分组件介绍分为两节：</strong>第一节主要介绍该组件，第二节介绍该组件的定义示例</p>
-<h1><span id="0-组件家族">0 组件家族</span></h1><h2><span id="00-回顾">0.0 回顾</span></h2><h3><span id="上节课内容">上节课内容</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846006.png" srcset="/img/loading.gif" lazyload alt></p>
+<h1><span id="0-组件家族">0 组件家族</span></h1><h2><span id="00-回顾">0.0 回顾</span></h2><h3><span id="上节课内容">上节课内容</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846006.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>UVM实验一到实验二的代码会突然增加，实验二会看到如何把SV中的组件过度到UVM的组件的，过度比较简单的组件</p>
 <h3><span id="sv验证环境回顾">SV验证环境回顾</span></h3><p>SV实验四、实验五的时候</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846007.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846007.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>没有体现出各个agent的generator，</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846008.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846008.png" srcset="/img/loading.gif" lazyload alt></p>
 <h2><span id="01-概述">0.1 概述</span></h2><p><strong>前言</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846009.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846009.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>为什么要把generator拆分成sequence(产生)和sequencer(发送)，入门进阶4会见讲</p>
 <hr>
 <p><strong>三个核心组件：</strong>stimulator、monitor、checker</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846010.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846010.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>uvm_agent, uvm_env, uvm_test：构成整个环境的层次结构</li>
 <li>uvm_driver, uvm_random_stimulus, uvm_sequencer_base, uvm_sequencer：发送激励</li>
@@ -363,21 +361,21 @@
 </ul>
 <hr>
 <p><strong>组件都有phase机制</strong>，九大phase共同完成环境的构建，并由uvm_root顶层控制（在后台运行，core_servicer）</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846011.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846011.png" srcset="/img/loading.gif" lazyload alt></p>
 <h1><span id="1-uvm_driver">1 uvm_driver</span></h1><ul>
 <li>学习思路：基于component又添加了什么成员方法</li>
 <li>更具体的学习在第四周，这里简单了解</li>
 </ul>
 <h2><span id="11-概述">1.1 概述</span></h2><h3><span id="大体功能">大体功能</span></h3><p>uvm_driver与sv_driver类似的都要获取trans，sv的stimulator是从generator获取trans，uvm_driver从sequencer获取</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846012.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846012.png" srcset="/img/loading.gif" lazyload alt></p>
 <h3><span id="类声明形式">类声明形式</span></h3><figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">uvm_driver</span> <span class="hljs-title">#</span>(<span class="hljs-params">type <span class="hljs-type">REQ</span>=uvm_sequence_item, type <span class="hljs-type">RSP</span>=<span class="hljs-type">REQ</span></span>) <span class="hljs-keyword">extends</span> <span class="hljs-title">uvm_component</span></span>;<br><span class="hljs-comment">//REQ参数：默认情况下为uvm_sequence_item</span><br><span class="hljs-comment">//RSP参数和REQ在默认情况下一样</span><br></code></pre></div></td></tr></table></figure>
 <p>你不能直接使用uvm_driver，所有的dirver你必须自己去定义，然后继承于uvm_driver</p>
 <h3><span id="与component比较">与component比较</span></h3><p>uvm_driver在uvm_component基础上<strong>没有扩展新的函数</strong>，而有一些新的通信端口和变量：</p>
 <figure class="highlight leaf"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs leaf">uvm_seq_item_pull_port <span class="hljs-function"><span class="hljs-keyword">#</span><span class="hljs-params">(<span class="hljs-variable">REQ</span>, <span class="hljs-variable">RSP</span>)</span></span> seq_item_port;//通信端口1<br>uvm_analysis_port <span class="hljs-function"><span class="hljs-keyword">#</span><span class="hljs-params">(<span class="hljs-variable">RSP</span>)</span></span> rsq_port;//通信端口2<br>REQ req;//变量1<br>RSP rsp;//变量2<br></code></pre></div></td></tr></table></figure>
 <h3><span id="端口的连接第四周">端口的连接（第四周）</span></h3><p>driver类与sequencer类之间的通信时未来获取新的事务对象，这一操作时通过pull方式（即端口的连接）实现的</p>
 <figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk"><span class="hljs-regexp">//</span>两种端口连接的方法<br>driver.seq_item_port.connect(sequencer.seq_item_export);<span class="hljs-regexp">//</span>req,rsp双向都可以（rsp的方式第四周讲）<br>driver.rsp_port.connect(sequencer.rsp_export);<span class="hljs-regexp">//</span>返回rsp<br></code></pre></div></td></tr></table></figure>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846013.png" srcset="/img/loading.gif" lazyload alt></p>
-<h2><span id="12-示例代码如何定义一个driver">1.2 示例代码：如何定义一个driver</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846014.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846013.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="12-示例代码如何定义一个driver">1.2 示例代码：如何定义一个driver</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846014.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>经典步骤</strong>：</p>
 <ol>
 <li>extends</li>
@@ -390,14 +388,14 @@
 <p>我们不一定全部写九大phase，只有在哦们真正要用的时候定义</p>
 <figure class="highlight reasonml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs reasonml">extern task run<span class="hljs-constructor">_phase(<span class="hljs-params">uvm_phase</span> <span class="hljs-params">phase</span>)</span>;<span class="hljs-comment">//参考c++，在外部通过dut_driver::run_phase定义</span><br></code></pre></div></td></tr></table></figure>
 <p>extern补充：.sv和.svh</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846015.png" srcset="/img/loading.gif" lazyload alt></p>
-<h1><span id="2-uvm_monitor">2 uvm_monitor</span></h1><h2><span id="21概述">2.1概述</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846016.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846015.png" srcset="/img/loading.gif" lazyload alt></p>
+<h1><span id="2-uvm_monitor">2 uvm_monitor</span></h1><h2><span id="21概述">2.1概述</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846016.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>我们定义的monitor完全继承于uvm_monitor，但也要老老实实的继承uvm_monitor</p>
 <p><strong>PASSIVE模式：</strong>我不做任何主动修改内部设计的信号，不和激励一样。即要求我们的monitor永远只做监测</p>
-<h2><span id="22-示例代码">2.2 示例代码</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846017.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="22-示例代码">2.2 示例代码</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846017.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>虚接口</strong></p>
 <figure class="highlight arduino"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs arduino"><span class="hljs-keyword">virtual</span> serial_if.monitor mi;<span class="hljs-comment">//使用vi中的一个modport</span><br></code></pre></div></td></tr></table></figure>
-<h3><span id="run_phase">run_phase</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846018.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="run_phase">run_phase</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846018.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>执行步骤</strong></p>
 <ul>
 <li><p>我们要监测一个tr</p>
@@ -411,29 +409,29 @@
 <li>for之后检查协议</li>
 <li>最后put</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846019.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846019.png" srcset="/img/loading.gif" lazyload alt></p>
 <h1><span id="3-uvm_sequencer">3 uvm_sequencer</span></h1><h2><span id="31-概述">3.1 概述</span></h2><p><strong>my_sequencer所有组件功能都在父类uvm_sequencer，定义起来最简单</strong></p>
 <p>sequencer就像一个管道一样，本身不产生激励，激励从sequence来的，然后激励传递给了driver</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846020.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846020.png" srcset="/img/loading.gif" lazyload alt></p>
 <hr>
 <p>为什么不讲uvm_sequencer_base, uvm_sequencer_param_base<req,rsp> ,uvm_report_object类：</req,rsp></p>
 <ul>
 <li>因为它们都是中间类，中间类添加了单一职责，但它们在uvm继承上不是终点，不是直接面向用户的</li>
 <li>如uvm_report_object在uvm_object基础上添加了report机制，而component又在uvm_report_object基础上添加了phase机制和override机制</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846021.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846021.png" srcset="/img/loading.gif" lazyload alt></p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846022.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846022.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>第四周讲，sequencer没有那么简单，有路由器的作用</p>
 <p>路由器：我们有很多很多sequence1…n，都传送到sequencer，再交给drv；因此需要sequencer有arbiter仲裁作用；同时接收信号传送回哪个sequence</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846023.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846023.png" srcset="/img/loading.gif" lazyload alt></p>
 <hr>
 <p>为什么sequence是obj，sequencer是component：</p>
 <ul>
 <li>sequence是动态产生的用完可以丢掉</li>
 </ul>
 <h2><span id="32-示例代码sequencer是我们所有组件定义起来最最简单的">3.2 示例代码：sequencer是我们所有组件定义起来最最简单的</span></h2><p>my_sequencer所有组件功能都在父类uvm_sequencer</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846024.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846024.png" srcset="/img/loading.gif" lazyload alt></p>
 <h2><span id="4-uvm_agent重要参考">4 uvm_agent（重要参考）</span></h2><h2><span id="41-概述">4.1 概述</span></h2><p>简介与功能：agent就是一个标准的验证环境<strong>基本单位</strong>，包括了monitor，driver和sequencer</p>
 <p>额外成员：见5.2</p>
 <p>内部：具体实现了三个组建的例化(build)与连接(connect)</p>
@@ -449,7 +447,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846025.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846025.png" srcset="/img/loading.gif" lazyload alt></p>
 <h3><span id="412-master与slave的概念">4.1.2 master与slave的概念</span></h3><ul>
 <li><p>master agent：</p>
 <ul>
@@ -465,8 +463,8 @@
 </ul>
 </li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846026.png" srcset="/img/loading.gif" lazyload alt></p>
-<h2><span id="42-示例代码">4.2 示例代码</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846027.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846026.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="42-示例代码">4.2 示例代码</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846027.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>成员</strong></p>
 <ul>
 <li>sequencer</li>
@@ -488,12 +486,12 @@
 </ul>
 </li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846028.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846028.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>connect_phase</strong></p>
 <ul>
 <li>driver和sequencer之间做连接</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846029.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846029.png" srcset="/img/loading.gif" lazyload alt></p>
 <h1><span id="5-uvm_scoreboard">5 uvm_scoreboard</span></h1><h2><span id="51-概述">5.1 概述</span></h2><p>功能：进行数据比较和报告，与SV checker类似；会接受来自多个monitor的监测数据，继而进行对比和报告</p>
 <ul>
 <li>scoreboard内部是否需要例化一些reference model?<ul>
@@ -502,54 +500,54 @@
 </li>
 </ul>
 <p>额外成员：没有添加额外的成员变量和方法，与monitor类似，直接自定义一个类继承就行，特殊情况需要例化一些reference model</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846030.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846030.png" srcset="/img/loading.gif" lazyload alt></p>
 <h3><span id="512-自带的数据比较方法">5.1.2 自带的数据比较方法</span></h3><p>SV中推荐自己实现数据比较方法，uvm自带两个数据比较方法但了解即可实际工程中很少去用，因为他们的工作非常有限大部分需要自己实现</p>
 <figure class="highlight leaf"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs leaf">uvm_in_order_comparator <span class="hljs-function"><span class="hljs-keyword">#</span><span class="hljs-params">(<span class="hljs-variable">type</span> <span class="hljs-variable">T</span>)</span></span>//一个组件，往往放在sb<br>uvm_algorithm_comparator <span class="hljs-function"><span class="hljs-keyword">#</span><span class="hljs-params">(<span class="hljs-variable">type</span> <span class="hljs-variable">BEFORE</span>, <span class="hljs-variable">type</span> <span class="hljs-variable">AFTER</span>, <span class="hljs-variable">type</span> <span class="hljs-variable">TRANSFORMER</span>)</span></span><br></code></pre></div></td></tr></table></figure>
 <ul>
 <li>uvm_in_order_comparator（数据类型，完整性，顺序一样的时候比较）</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846031.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846031.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>输入输出数据自动作比较</p>
 <p>不推荐的原因是：你往往在数据比较的时候还有其他的逻辑</p>
 <ul>
 <li>uvm_algorithm_comparator（不同类型比较）</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846032.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846032.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>before，after两种类型</p>
 <p>TRANSFORMER为bef转换成after的转换类</p>
 <p>不适合MDCF比较</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846033.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846033.png" srcset="/img/loading.gif" lazyload alt></p>
 <h2><span id="52-示例代码如何定义一个sbtypedef在create时的作用重要">5.2 示例代码：如何定义一个sb|typedef在create时的作用(重要)</span></h2><ul>
 <li>在sb中通常会声明TLM端口供monitor传输数据（下周讲端口连接），这些端口(in_export,out_export)最终和monitor相连</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846034.png" srcset="/img/loading.gif" lazyload alt></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846035.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846034.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846035.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>创建一个comparator</strong></p>
 <figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-comment">//写法1:使用typedef后的类型进行create</span><br>tyepdef uvm_in_order_comparator <span class="hljs-variable">#(bus_xact)</span> comp_t;<br>comp_t m_comp;<br>...<br><span class="hljs-keyword">function</span> build_phase();<br>	...<br>    m_comp = comp_t::type_id::create(<span class="hljs-string">&quot;m_comp&quot;</span>,<span class="hljs-keyword">this</span>);<br>    ...<br><span class="hljs-keyword">endfunction</span><br></code></pre></div></td></tr></table></figure>
 <figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-comment">//写法2:带参数的声明，与带参数的create</span><br>uvm_in_order_comparator <span class="hljs-variable">#(bus_xact)</span> m_comp;<br>...<br><span class="hljs-keyword">function</span> build_phase();<br>	...<br>    m_comp = uvm_in_order_comparator <span class="hljs-variable">#(bus_xact)::type_id::create(&quot;m_comp&quot;,this)</span>;<br>    ...<br><span class="hljs-keyword">endfunction</span><br></code></pre></div></td></tr></table></figure>
 <p><strong>端口接入comparator</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846036.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846036.png" srcset="/img/loading.gif" lazyload alt></p>
 <h1><span id="6-uvm_env">6 uvm_env</span></h1><h2><span id="61-概述">6.1 概述</span></h2><p>uvm_env<strong>一种结构化的容器</strong></p>
 <p>简介：与SVenv没有区别，就是做一个层次，从环境层次层次，uvm_env可能包含多个uvm_agent或其他component</p>
 <p>不同的组件<strong>共同</strong>构成一个完整的验证环境，并且这个黄健在将来服用中可以作为子环境被进一步集成到更高的环境中。如下图的验证结构中，就定义了一个高层的环境，它里包含sub_env、agent、scoreboard</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846037.png" srcset="/img/loading.gif" lazyload alt="一种验证结构"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846038.png" srcset="/img/loading.gif" lazyload alt="sub_env可以作为复用"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846037.png" srcset="/img/loading.gif" lazyload alt="一种验证结构"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846038.png" srcset="/img/loading.gif" lazyload alt="sub_env可以作为复用"></p>
 <p>解释：</p>
 <ul>
 <li>sub_env原来验证M1模块，现在M1被集成到M2大的模块中。此时sub_env可以通过被封装在top_env继续对M1进行验证，同时接口也对应相连；对M2的其他部分，它们再与top_env中新添加的agent相连</li>
 <li>对于sb：top_env的scoreboard是M2的，而M1对应的sb在原来的sub_env里面</li>
 <li>对于顶层：只能由一个env</li>
 </ul>
-<h3><span id="612-uvm_env的角色以及与agent对比">6.1.2 uvm_env的角色，以及与agent对比</span></h3><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846039.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="612-uvm_env的角色以及与agent对比">6.1.2 uvm_env的角色，以及与agent对比</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846039.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>env可以嵌套而，agent一定不要去嵌套agent</p>
-<h2><span id="62-示例代码">6.2 示例代码</span></h2><p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846040.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2><span id="62-示例代码">6.2 示例代码</span></h2><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846040.png" srcset="/img/loading.gif" lazyload alt></p>
 <h1><span id="7-uvm_test">7 uvm_test</span></h1><h2><span id="71-概论">7.1 概论</span></h2><p>与SV test几乎没有差别</p>
 <p>sv中test：sv测试以test为单位进行。test规定了测试场景，即规定了发送什么样的激励</p>
 <p>uvm的test：也规定了发送什么样的激励，只不过激励是sequence产生的</p>
 <p>uvm的结构：例化唯一的env顶层，并决定结构和连接关系</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846041.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846041.png" srcset="/img/loading.gif" lazyload alt></p>
 <h2><span id="72-示例代码">7.2 示例代码</span></h2><p>这里两个env只是做演示，工程里面应该把env1,env2与a1封装到一个top_env中</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011846042.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011846042.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>之后就是sv实验5的组件过度到uvm实验2，两个实验验证结构一致</p>
 <p>验证结构到uvm实验3才会进行变化</p>
 

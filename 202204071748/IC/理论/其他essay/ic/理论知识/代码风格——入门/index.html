@@ -12,8 +12,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-  
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="“无论最终结果将人类历史导向何处，我们决定选择希望”">
   <meta name="author" content="友人律 | Guilin Chang">
@@ -21,35 +19,35 @@
   <meta name="description" content="代码风格——入门A. 入门内容总结于：https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1uq4y1q7DJ signal Use lower case for signal name, for example tx_fifo_rd √ Tx_Fifo_Rd ×   low activve reset rst_ √ rst ×   全局信号应该被清晰地命名包括源信息的名称，例如一个">
 <meta property="og:type" content="article">
 <meta property="og:title" content="verilog代码风格——入门">
-<meta property="og:url" content="http://blog.yourenlv.top/202204071748/IC/%E7%90%86%E8%AE%BA/%E5%85%B6%E4%BB%96essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:url" content="https://blog.yourenlv.top/202204071748/IC/%E7%90%86%E8%AE%BA/%E5%85%B6%E4%BB%96essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/index.html">
 <meta property="og:site_name" content="友人律的博客">
 <meta property="og:description" content="代码风格——入门A. 入门内容总结于：https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1uq4y1q7DJ signal Use lower case for signal name, for example tx_fifo_rd √ Tx_Fifo_Rd ×   low activve reset rst_ √ rst ×   全局信号应该被清晰地命名包括源信息的名称，例如一个">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011902347.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011902348.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011902358.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011902359.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011902360.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011902361.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011902362.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011902363.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011902364.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011902365.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011902366.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011902367.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011902368.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011902369.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011902370.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011902371.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011902372.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011902347.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011902348.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011902358.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011902359.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011902360.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011902361.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011902362.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011902363.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011902364.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011902365.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011902366.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011902367.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011902368.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011902369.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011902370.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011902371.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011902372.png">
 <meta property="article:published_time" content="2022-04-07T09:48:00.000Z">
-<meta property="article:modified_time" content="2022-05-01T14:07:29.442Z">
+<meta property="article:modified_time" content="2022-05-24T10:35:18.345Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="学习">
 <meta property="article:tag" content="verilog">
 <meta property="article:tag" content="基础">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011902347.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011902347.png">
   
   <title>verilog代码风格——入门 - 友人律的博客</title>
 
@@ -364,56 +362,56 @@
 <ul>
 <li>一开始模块划分时，高内聚，低耦合，模块之间的连接少一点，多一点模块内的连接</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011902347.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011902347.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>模块例化</strong></p>
 <ul>
 <li>没啥要强调的</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011902348.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011902348.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>端口映射</strong></p>
 <ul>
 <li>尽量名字取一样</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011902358.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011902358.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>内部测试信号要引出来</strong></p>
 <ul>
 <li>引出来，不然Netlist标号后找不到</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011902359.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011902359.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>顶层模块直连就好</strong></p>
 <ul>
 <li>顶层模块直联就好，不要写逻辑</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011902360.png" srcset="/img/loading.gif" lazyload alt="图中这种在TOP中加入逻辑方法不推荐"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011902360.png" srcset="/img/loading.gif" lazyload alt="图中这种在TOP中加入逻辑方法不推荐"></p>
 <p><strong>Delay</strong></p>
 <ul>
 <li>赋值时候插入delay模拟延迟</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011902361.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011902361.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>If Statement</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011902362.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011902362.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>Critical path first关键路径优先</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011902363.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011902363.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>模块复用/资源共享</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011902364.png" srcset="/img/loading.gif" lazyload alt="使用两个加法器"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011902365.png" srcset="/img/loading.gif" lazyload alt="只使用一个加法器，资源复用"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011902364.png" srcset="/img/loading.gif" lazyload alt="使用两个加法器"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011902365.png" srcset="/img/loading.gif" lazyload alt="只使用一个加法器，资源复用"></p>
 <p><strong>补齐else</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011902366.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011902366.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>推荐一个always写一个reg</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011902367.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011902367.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>不能用于综合的语句</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011902368.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011902368.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>不能用于综合的运算符</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011902369.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011902369.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>设计里面两个==就好了</li>
 </ul>
 <p><strong>不能用于综合的基本单元</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011902370.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011902370.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>其他不能用于综合</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011902371.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011902371.png" srcset="/img/loading.gif" lazyload alt></p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/img/202205011902372.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/img/202205011902372.png" srcset="/img/loading.gif" lazyload alt></p>
 
             </div>
             <hr>

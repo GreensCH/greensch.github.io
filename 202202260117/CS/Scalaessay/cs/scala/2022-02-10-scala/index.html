@@ -12,8 +12,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-  
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="“无论最终结果将人类历史导向何处，我们决定选择希望”">
   <meta name="author" content="友人律 | Guilin Chang">
@@ -21,28 +19,28 @@
   <meta name="description" content="1 概论1.1 导论Scala来源于scalable（可扩展的）这个单词，它的可扩展性非常强   Scala基于JVM，和Java完全兼容，同样具有跨平台、可移植性好、方便的垃圾回收等特性  Scala比Java更加面向对象 Scala是一门函数式编程语言(java1.8引入的中的lamuda表达式就是函数编程的重要概念，实际上就是借鉴Scala) 同样运行在JVM上，可以与现存程序同时运行 可直">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Scala（一）：基础篇">
-<meta property="og:url" content="http://blog.yourenlv.top/202202260117/CS/Scalaessay/cs/scala/2022-02-10-scala/index.html">
+<meta property="og:url" content="https://blog.yourenlv.top/202202260117/CS/Scalaessay/cs/scala/2022-02-10-scala/index.html">
 <meta property="og:site_name" content="友人律的博客">
 <meta property="og:description" content="1 概论1.1 导论Scala来源于scalable（可扩展的）这个单词，它的可扩展性非常强   Scala基于JVM，和Java完全兼容，同样具有跨平台、可移植性好、方便的垃圾回收等特性  Scala比Java更加面向对象 Scala是一门函数式编程语言(java1.8引入的中的lamuda表达式就是函数编程的重要概念，实际上就是借鉴Scala) 同样运行在JVM上，可以与现存程序同时运行 可直">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205011936359.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205011936360.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205011936361.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205011936362.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205011936363.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205011936364.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205011936365.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205011936366.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205011936367.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205011936368.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205011936369.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/cs/202205011936359.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/cs/202205011936360.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/cs/202205011936361.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/cs/202205011936362.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/cs/202205011936363.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/cs/202205011936364.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/cs/202205011936365.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/cs/202205011936366.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/cs/202205011936367.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/cs/202205011936368.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/cs/202205011936369.jpg">
 <meta property="article:published_time" content="2022-02-25T17:17:00.000Z">
-<meta property="article:modified_time" content="2022-05-20T11:51:04.106Z">
+<meta property="article:modified_time" content="2022-05-24T10:35:18.365Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="学习">
 <meta property="article:tag" content="CS">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205011936359.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/cs/202205011936359.png">
   
   <title>Scala（一）：基础篇 - 友人律的博客</title>
 
@@ -361,18 +359,18 @@
 <li>交互式执行环境（cmd直接输入scala）：</li>
 </ul>
 <figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala">scala<br></code></pre></div></td></tr></table></figure>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205011936359.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/cs/202205011936359.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>定义常量</li>
 </ul>
 <figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala">scala&gt; <span class="hljs-keyword">val</span> a = <span class="hljs-number">10</span><br></code></pre></div></td></tr></table></figure>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205011936360.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/cs/202205011936360.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>print</li>
 </ul>
 <p>对比Java的<code>system.out.println(&quot;&quot;);</code>确实简洁不少</p>
 <figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala">scala&gt; println(<span class="hljs-string">&quot;hello,world!&quot;</span>)<br></code></pre></div></td></tr></table></figure>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205011936361.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/cs/202205011936361.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>推出交互式执行环境</li>
 </ul>
@@ -391,7 +389,7 @@
 </ul>
 <p><strong>编译生成字节码文件</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">&gt; scalac HelloScala.scala<br></code></pre></div></td></tr></table></figure>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205011936362.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/cs/202205011936362.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>为什么有HelloScala$.class和HelloScala.class两个文件？</p>
 <blockquote>
 <p> 底层机制：</p>
@@ -411,9 +409,9 @@
 </blockquote>
 <p><strong>运行</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">&gt; scala HelloScala<br></code></pre></div></td></tr></table></figure>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205011936363.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/cs/202205011936363.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>反编译</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205011936364.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/cs/202205011936364.png" srcset="/img/loading.gif" lazyload alt></p>
 <hr>
 <p><del>暂时不管项目配置，还是单文件编译执行为主，项目开发肯定要以包的形式组织可以使用IntelliJ IDEA开发，使用maven或者sbt进行项目配置</del></p>
 <p>使用VSCode编辑器，安装插件Scala Syntax (official)和Scala (Mentals)</p>
@@ -451,7 +449,7 @@
 <hr>
 <p><strong>基本类型</strong></p>
 <p>​    Scala标准库定义了一些基本类型，如下表所示。除了“<strong>String”</strong>类型是属于<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=java&amp;spm=1001.2101.3001.7020">java</a>.lang包之外，其余都在Scala的包里。</p>
-<h2><span id><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205011936365.png" srcset="/img/loading.gif" lazyload alt></span></h2><p><strong>定义变量</strong></p>
+<h2><span id><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/cs/202205011936365.png" srcset="/img/loading.gif" lazyload alt></span></h2><p><strong>定义变量</strong></p>
 <p>​    事实上，在定义变量时，应该指明变量的类型，只不过Scala的编译器具有自动推断类型的功能，可以根据赋给变量的对象的类型，来自动推断出变量的类型。</p>
 <p>​    如果要显式声明变量的类型，或者无法推断时，则只需在变量名后面加上一个冒号“ : ”，然后在等号与冒号之间写出类型名即可。例如：</p>
 <figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala">scala&gt; <span class="hljs-keyword">val</span> x: <span class="hljs-type">Int</span> = <span class="hljs-number">123</span><br>x: <span class="hljs-type">Int</span> = <span class="hljs-number">123</span><br><br>scala&gt; <span class="hljs-keyword">val</span> y: <span class="hljs-type">String</span> = <span class="hljs-string">&quot;123&quot;</span><br>y: <span class="hljs-type">String</span> = <span class="hljs-number">123</span><br><br>scala&gt; <span class="hljs-keyword">val</span> z: <span class="hljs-type">Double</span> = <span class="hljs-number">1.2</span><br>z: <span class="hljs-type">Double</span> = <span class="hljs-number">1.2</span><br></code></pre></div></td></tr></table></figure>
@@ -463,7 +461,7 @@
 <p>​    <strong>浮点数</strong>的字面量<strong>都是十进制</strong>的，类型<strong>默认是Double</strong>类型。可以增加一个字母<strong>“e”</strong>或<strong>“E”</strong>，再添加一个整数作为指数，这样就构成10的n次幂。最末尾可以写一个<strong>“f”</strong>或者<strong>“F”</strong>，表示Float类型；也可以写一个<strong>“d</strong>”或者<strong>“D”</strong>，表示Double类型。</p>
 <blockquote>
 <p>注意，Double类型的字面量不能赋给Float类型的变量。虽然Float允许扩展成Double类型，但是会发生精度损失</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205011936366.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/cs/202205011936366.png" srcset="/img/loading.gif" lazyload alt></p>
 </blockquote>
 <figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala">scala&gt; <span class="hljs-keyword">val</span> a = <span class="hljs-number">1.2E3</span><br>a: <span class="hljs-type">Double</span> = <span class="hljs-number">1200.0</span><br><br>scala&gt; <span class="hljs-keyword">val</span> b = <span class="hljs-number">-3.2</span>f<br>b: <span class="hljs-type">Float</span> = <span class="hljs-number">-3.2</span><br><br>scala&gt; <span class="hljs-keyword">val</span> c: <span class="hljs-type">Float</span> = <span class="hljs-number">-3.2</span><br>&lt;console&gt;:<span class="hljs-number">11</span>: error: <span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-title">mismatch</span></span>;<br> found   : <span class="hljs-type">Double</span>(<span class="hljs-number">-3.2</span>)<br> required: <span class="hljs-type">Float</span><br>       <span class="hljs-keyword">val</span> c: <span class="hljs-type">Float</span> = <span class="hljs-number">-3.2</span><br>                      ^<br><br>scala&gt; <span class="hljs-keyword">val</span> d: <span class="hljs-type">Double</span> = <span class="hljs-number">-3.2</span>F<br>d: <span class="hljs-type">Double</span> = <span class="hljs-number">-3.200000047683716</span><br></code></pre></div></td></tr></table></figure>
 <p><strong>字符字面量</strong></p>
@@ -756,7 +754,7 @@
 <p>​    后缀操作符也对应一个无参方法，但是要注意方法名<strong>如果构成前缀操作符的条件，那么既可以写成前缀操作符</strong>，也可以把完整的方法名写成后缀操作符。例如：</p>
 <figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala">scala&gt; <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyInt3</span>(<span class="hljs-params">val x: <span class="hljs-type">Int</span></span>) </span>&#123;<br>         |    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">display</span></span>() = println(<span class="hljs-string">&quot;The value is &quot;</span> + x + <span class="hljs-string">&quot;.&quot;</span>)<br>         |  &#125;<br>defined <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyInt3</span></span><br><br>scala&gt; <span class="hljs-keyword">val</span> mi3 = <span class="hljs-keyword">new</span> <span class="hljs-type">MyInt3</span>(<span class="hljs-number">10</span>)<br>mi3: <span class="hljs-type">MyInt3</span> = <span class="hljs-type">MyInt3</span>@<span class="hljs-number">2670435</span><br><br>scala&gt; <span class="hljs-keyword">import</span> scala.language.postfixOps<br><span class="hljs-keyword">import</span> scala.language.postfixOps<br><br>scala&gt; mi3 display <span class="hljs-comment">//操作数mi3  操作符display</span><br><span class="hljs-type">The</span> value is <span class="hljs-number">10.</span><br></code></pre></div></td></tr></table></figure>
 <h2><span id="63-操作符的优先级和结核性">6.3 操作符的优先级和结核性</span></h2><p><strong>（1）优先级</strong></p>
-<p>​    在数学运算中，乘、除法的优先级要高于加、减法，这是算术操作符的优先级。Scala也保留了这种特性，并有一套判断操作符优先级的规则：通过操作符的首个字符来判断。因为操作符都是方法，所以也就是通过方法名的首个字符来比较优先级，注意前缀操作符的方法名要去掉关键字。当然，圆括号内的优先级是最高的，圆括号可以改变操作符的结合顺序。<br><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205011936367.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>​    在数学运算中，乘、除法的优先级要高于加、减法，这是算术操作符的优先级。Scala也保留了这种特性，并有一套判断操作符优先级的规则：通过操作符的首个字符来判断。因为操作符都是方法，所以也就是通过方法名的首个字符来比较优先级，注意前缀操作符的方法名要去掉关键字。当然，圆括号内的优先级是最高的，圆括号可以改变操作符的结合顺序。<br><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/cs/202205011936367.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>​    上图给出了各种字符的优先级顺序。例如，常规算术运算法则在计算表达式“1 + 2 <em> 3”时，会先算乘法，后算加法。类似地，如果有一个表达式“1 +++ 2 **</em> 3”，那么结合顺序就是“1 +++ (2 <em>*</em> 3)”。</p>
 <blockquote>
 <p>​    这个规则有一个例外（就是比较，+=一系列的，不用看）：如果操作符以等号结尾，并且不是“&gt;=”、“&lt;=”、“==”或“!=”四个比较操作符之一，那么就认为是赋值操作符，优先级最低。例如，表达式“sum *= 1 + 2”会先算“1 + 2”，再把得出的3和sum相乘并赋给sum。也就是说，“*=”的优先级并不会因为以乘号开头就比加号高，而是被当作了一种赋值操作。</p>
@@ -954,7 +952,7 @@
 <h2><span id="76-没有多重继承">7.6 没有多重继承</span></h2><p>​    <strong>Scala没有多重继承</strong>，也就是说，在“extends”后面只能有一个类，这与大多数oop语言不同。多重继承其实是一个很让人头疼的问题，使用起来很复杂，也很容易出错。在笔者学习C++的时候，看到了C++为了使用多重继承而不得不做出的大量语法规则修改，和单个继承混在一起时常把人搞晕。<strong>Scala舍弃多重继承的做法，对于程序员而言是莫大的帮助</strong>，不用在编写代码时考虑冗长的代码设计。尤其是对超类方法的调用，当存在多个超类时，为了避免歧义而不得不仔细设计方法的行为。</p>
 <p>​    虽然多重继承不好用，但是它实现的功能在某些时候又不可或缺。为此，Scala<strong>专门设计了“特质”来实现相同的功能</strong>，并且特质的规则更简单、更明了。特质将在后一章介绍。</p>
 <h2><span id="77-scala类的层次结构">7.7 Scala类的层次结构</span></h2><p>​    Scala所有的类——不管是标准库里已有的类还是自定义的类<strong>都存在层次关系</strong>。这种关系如下图所示，其中<strong>实线箭头</strong>表示属于指向的<strong>类的子类</strong>，<strong>虚线箭头</strong>表示可以<strong>隐式转换</strong>成指向的类：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205011936368.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/cs/202205011936368.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>最顶部的类是抽象类Any</strong>，<strong>它是所有类的超类</strong>，Any类定义了几个成员方法，如下表所示：</p>
 <center><b>Any类的成员方法</b></center>
 
@@ -1625,7 +1623,7 @@
 <h2><span id="118-章节总结">11.8 章节总结</span></h2><p>​    本章介绍了Scala的内建控制结构，尤其是for表达式，在Chisel里面也是经常用到。<strong>对于重复逻辑、连线等，使用for表达式就很方便。尽管Verilog也有for语法，但是使用较为麻烦，而且不能像Chisel一样支持泛型。</strong></p>
 <p>​    除此之外，Chisel也有自定义的控制结构，这些内容会在后续章节讲解。</p>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205011936369.jpg" srcset="/img/loading.gif" lazyload alt="pixivid：96247202"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/cs/202205011936369.jpg" srcset="/img/loading.gif" lazyload alt="pixivid：96247202"></p>
 
             </div>
             <hr>

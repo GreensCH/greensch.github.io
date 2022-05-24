@@ -12,8 +12,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-  
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="“无论最终结果将人类历史导向何处，我们决定选择希望”">
   <meta name="author" content="友人律 | Guilin Chang">
@@ -21,18 +19,18 @@
   <meta name="description" content="12 模式匹配​        前一章提到过，Scala的内建控制结构里有一个match表达式，用于模式匹配或偏函数。 ​    模式匹配是Scala中一个强大的高级功能，模式匹配在Chisel中被用于硬件的参数化配置，可以快速地裁剪、配置不同规模的硬件电路。所以，尽管模式匹配不是很容易就能掌握并熟练运用，但是学会它将会对软、硬件编程都大有帮助。 ​        本章介绍了功能强大的模式匹配，尽">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Scala（二）：进阶篇">
-<meta property="og:url" content="http://blog.yourenlv.top/202203041717/CS/Scalaessay/cs/scala/2022-3-4-scala/index.html">
+<meta property="og:url" content="https://blog.yourenlv.top/202203041717/CS/Scalaessay/cs/scala/2022-3-4-scala/index.html">
 <meta property="og:site_name" content="友人律的博客">
 <meta property="og:description" content="12 模式匹配​        前一章提到过，Scala的内建控制结构里有一个match表达式，用于模式匹配或偏函数。 ​    模式匹配是Scala中一个强大的高级功能，模式匹配在Chisel中被用于硬件的参数化配置，可以快速地裁剪、配置不同规模的硬件电路。所以，尽管模式匹配不是很容易就能掌握并熟练运用，但是学会它将会对软、硬件编程都大有帮助。 ​        本章介绍了功能强大的模式匹配，尽">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205011937491.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/cs/202205011937491.jpg">
 <meta property="article:published_time" content="2022-03-04T09:17:00.000Z">
-<meta property="article:modified_time" content="2022-05-01T13:18:24.259Z">
+<meta property="article:modified_time" content="2022-05-24T10:35:18.369Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="学习">
 <meta property="article:tag" content="CS">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205011937491.jpg">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/cs/202205011937491.jpg">
   
   <title>Scala（二）：进阶篇 - 友人律的博客</title>
 
@@ -947,7 +945,7 @@
 <p><strong>条件②：</strong></p>
 <figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala">scala&gt; <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span>(<span class="hljs-params">implicit val x: <span class="hljs-type">Int</span></span>)</span><br><span class="hljs-comment">//defined class A</span><br><br>scala&gt; <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Sup</span> </span>&#123;undefined<br><span class="hljs-comment">//         |    implicit val z = 10</span><br><span class="hljs-comment">//         |  &#125;</span><br><span class="hljs-comment">//defined class Sup</span><br><br>scala&gt; <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Sub</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Sup</span> </span>&#123;undefined<br> <span class="hljs-comment">//        |    implicit val zz = 100</span><br> <span class="hljs-comment">//        |  &#125;</span><br><span class="hljs-comment">//defined class Sub</span><br><br>scala&gt; <span class="hljs-keyword">val</span> a = <span class="hljs-keyword">new</span> <span class="hljs-type">Sup</span><br><span class="hljs-comment">//a: Sup = Sup@789dd6bf</span><br><br>scala&gt; <span class="hljs-keyword">val</span> b = <span class="hljs-keyword">new</span> <span class="hljs-type">Sub</span><br><span class="hljs-comment">//b: Sub = Sub@772cf46b</span><br><br>scala&gt; <span class="hljs-keyword">import</span> a._<br><span class="hljs-comment">//import a._</span><br><br>scala&gt; <span class="hljs-keyword">import</span> b._<br><span class="hljs-comment">//import b._</span><br><br>scala&gt; <span class="hljs-keyword">val</span> c = <span class="hljs-keyword">new</span> <span class="hljs-type">A</span>()<br><span class="hljs-comment">//c: A = A@352bea0e</span><br><br>scala&gt; c.x<br><span class="hljs-comment">//res0: Int = 100</span><br></code></pre></div></td></tr></table></figure>
 <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/greensch/blog-drawbed/cs/202205011937491.jpg" srcset="/img/loading.gif" lazyload alt="背景图pixivid：96717167"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/cs/202205011937491.jpg" srcset="/img/loading.gif" lazyload alt="背景图pixivid：96717167"></p>
 
             </div>
             <hr>
