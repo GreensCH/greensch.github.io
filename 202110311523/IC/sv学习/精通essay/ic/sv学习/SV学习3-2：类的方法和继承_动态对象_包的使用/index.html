@@ -12,6 +12,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="“无论最终结果将人类历史导向何处，我们决定选择希望”">
   <meta name="author" content="友人律 | Guilin Chang">
@@ -19,7 +21,7 @@
   <meta name="description" content="一、类和对象的概述1. 类和对象 property属性 function功能 class类 object对象   2.为什么验证需要有OOP 激励生成器(stimulus generator)：生成激励内容 驱动器(driver)：将激励以时序形式发送给DUT 监控器(monitor)：监测信号并记录数据 比较器(checker)：比较数据  验证环境的不同组件其功能和所需处理的数据内容是不同的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SV精通3：类的方法和继承_动态对象_包的使用">
-<meta property="og:url" content="http://blog.yourenlv.top/202110311523/IC/sv%E5%AD%A6%E4%B9%A0/%E7%B2%BE%E9%80%9Aessay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AD%A6%E4%B9%A03-2%EF%BC%9A%E7%B1%BB%E7%9A%84%E6%96%B9%E6%B3%95%E5%92%8C%E7%BB%A7%E6%89%BF_%E5%8A%A8%E6%80%81%E5%AF%B9%E8%B1%A1_%E5%8C%85%E7%9A%84%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:url" content="http://yoursite.com/202110311523/IC/sv%E5%AD%A6%E4%B9%A0/%E7%B2%BE%E9%80%9Aessay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AD%A6%E4%B9%A03-2%EF%BC%9A%E7%B1%BB%E7%9A%84%E6%96%B9%E6%B3%95%E5%92%8C%E7%BB%A7%E6%89%BF_%E5%8A%A8%E6%80%81%E5%AF%B9%E8%B1%A1_%E5%8C%85%E7%9A%84%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="友人律的博客">
 <meta property="og:description" content="一、类和对象的概述1. 类和对象 property属性 function功能 class类 object对象   2.为什么验证需要有OOP 激励生成器(stimulus generator)：生成激励内容 驱动器(driver)：将激励以时序形式发送给DUT 监控器(monitor)：监测信号并记录数据 比较器(checker)：比较数据  验证环境的不同组件其功能和所需处理的数据内容是不同的">
 <meta property="og:locale" content="zh_CN">
@@ -113,7 +115,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"blog.yourenlv.top","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"eca4a4d34dadf0d4e282cc6ef2dc3de6","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"eca4a4d34dadf0d4e282cc6ef2dc3de6","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>

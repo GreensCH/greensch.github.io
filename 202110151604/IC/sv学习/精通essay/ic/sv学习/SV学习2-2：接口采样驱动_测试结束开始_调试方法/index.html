@@ -12,6 +12,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="“无论最终结果将人类历史导向何处，我们决定选择希望”">
   <meta name="author" content="友人律 | Guilin Chang">
@@ -19,7 +21,7 @@
   <meta name="description" content="绪论主要内容：  接口 采样和数据驱动 测试的开始和结束 调试方法  注意重点采样：输入 驱动：输出 一般的采样是直接采样 而采样可以对于Interface采样，在clocking下采样 采样和驱动都可以通过并行的initial块进行监控具体可参考第二章第二节的几个例子：initital forever 学习的定义和系统函数 interface clocking program run 0 &#x2F;&#x2F;命">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SV精通2：接口采样驱动_测试结束开始_调试方法1">
-<meta property="og:url" content="http://blog.yourenlv.top/202110151604/IC/sv%E5%AD%A6%E4%B9%A0/%E7%B2%BE%E9%80%9Aessay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AD%A6%E4%B9%A02-2%EF%BC%9A%E6%8E%A5%E5%8F%A3%E9%87%87%E6%A0%B7%E9%A9%B1%E5%8A%A8_%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9D%9F%E5%BC%80%E5%A7%8B_%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:url" content="http://yoursite.com/202110151604/IC/sv%E5%AD%A6%E4%B9%A0/%E7%B2%BE%E9%80%9Aessay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AD%A6%E4%B9%A02-2%EF%BC%9A%E6%8E%A5%E5%8F%A3%E9%87%87%E6%A0%B7%E9%A9%B1%E5%8A%A8_%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9D%9F%E5%BC%80%E5%A7%8B_%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95/index.html">
 <meta property="og:site_name" content="友人律的博客">
 <meta property="og:description" content="绪论主要内容：  接口 采样和数据驱动 测试的开始和结束 调试方法  注意重点采样：输入 驱动：输出 一般的采样是直接采样 而采样可以对于Interface采样，在clocking下采样 采样和驱动都可以通过并行的initial块进行监控具体可参考第二章第二节的几个例子：initital forever 学习的定义和系统函数 interface clocking program run 0 &#x2F;&#x2F;命">
 <meta property="og:locale" content="zh_CN">
@@ -129,7 +131,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"blog.yourenlv.top","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"eca4a4d34dadf0d4e282cc6ef2dc3de6","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"eca4a4d34dadf0d4e282cc6ef2dc3de6","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>

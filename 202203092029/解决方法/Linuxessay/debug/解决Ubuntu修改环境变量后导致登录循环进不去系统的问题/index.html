@@ -12,6 +12,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="“无论最终结果将人类历史导向何处，我们决定选择希望”">
   <meta name="author" content="友人律 | Guilin Chang">
@@ -19,7 +21,7 @@
   <meta name="description" content="解决Ubuntu修改环境变量后导致登录循环进不去系统的问题问题产生​        这个问题是我在安装jdk时对环境变量进行了编辑，在里面加了一些jdk所需要用到的环境变量。配置完重启后发现输入正确的密码之后，它又跳回到原来的的登录界面。这是由于Ubuntu环境变量错误导致无法正常登录。 ​        （笑死和我的情况一摸一样），以后改完环境变量一定要source xxx跑一下，看看自己的用户">
 <meta property="og:type" content="article">
 <meta property="og:title" content="解决Ubuntu修改环境变量后导致登录循环进不去系统的问题">
-<meta property="og:url" content="http://blog.yourenlv.top/202203092029/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/Linuxessay/debug/%E8%A7%A3%E5%86%B3Ubuntu%E4%BF%AE%E6%94%B9%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E5%90%8E%E5%AF%BC%E8%87%B4%E7%99%BB%E5%BD%95%E5%BE%AA%E7%8E%AF%E8%BF%9B%E4%B8%8D%E5%8E%BB%E7%B3%BB%E7%BB%9F%E7%9A%84%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:url" content="http://yoursite.com/202203092029/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/Linuxessay/debug/%E8%A7%A3%E5%86%B3Ubuntu%E4%BF%AE%E6%94%B9%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E5%90%8E%E5%AF%BC%E8%87%B4%E7%99%BB%E5%BD%95%E5%BE%AA%E7%8E%AF%E8%BF%9B%E4%B8%8D%E5%8E%BB%E7%B3%BB%E7%BB%9F%E7%9A%84%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="友人律的博客">
 <meta property="og:description" content="解决Ubuntu修改环境变量后导致登录循环进不去系统的问题问题产生​        这个问题是我在安装jdk时对环境变量进行了编辑，在里面加了一些jdk所需要用到的环境变量。配置完重启后发现输入正确的密码之后，它又跳回到原来的的登录界面。这是由于Ubuntu环境变量错误导致无法正常登录。 ​        （笑死和我的情况一摸一样），以后改完环境变量一定要source xxx跑一下，看看自己的用户">
 <meta property="og:locale" content="zh_CN">
@@ -28,8 +30,8 @@
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="解决方法">
 <meta property="article:tag" content="Linux">
-<meta property="article:tag" content="Ubuntu">
 <meta property="article:tag" content="账户">
+<meta property="article:tag" content="Ubuntu">
 <meta name="twitter:card" content="summary_large_image">
   
   <title>解决Ubuntu修改环境变量后导致登录循环进不去系统的问题 - 友人律的博客</title>
@@ -69,7 +71,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"blog.yourenlv.top","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"eca4a4d34dadf0d4e282cc6ef2dc3de6","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"eca4a4d34dadf0d4e282cc6ef2dc3de6","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -328,9 +330,9 @@
                     
                       <a class="hover-with-bg" href="/tags/Linux/">Linux</a>
                     
-                      <a class="hover-with-bg" href="/tags/Ubuntu/">Ubuntu</a>
-                    
                       <a class="hover-with-bg" href="/tags/%E8%B4%A6%E6%88%B7/">账户</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Ubuntu/">Ubuntu</a>
                     
                   </div>
                 
