@@ -4,6 +4,41 @@
   
   
   <entry>
+    <title>TMUX入门</title>
+    <link href="/202206061748/%E5%B8%B8%E7%94%A8/linuxessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/tmux%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <url>/202206061748/%E5%B8%B8%E7%94%A8/linuxessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/tmux%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    
+    <content type="html"><![CDATA[<ul><li><a href="https://github.com/tmux/tmux/wiki">https://github.com/tmux/tmux/wiki</a></li><li><a href="https://ostechnix.com/tmux-command-examples-to-manage-multiple-terminal-sessions/">https://ostechnix.com/tmux-command-examples-to-manage-multiple-terminal-sessions/</a></li><li>较清晰的介绍：<a href="https://www.ruanyifeng.com/blog/2019/10/tmux.ht">https://www.ruanyifeng.com/blog/2019/10/tmux.ht</a></li><li>tmux基本操作：<a href="https://blog.csdn.net/sui_152/article/details/121650341">https://blog.csdn.net/sui_152/article/details/121650341</a></li><li>有一些参考链接：<a href="https://blog.csdn.net/Aibiabcheng/article/details/122482786">https://blog.csdn.net/Aibiabcheng/article/details/122482786</a><ul><li><a href="https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/">A Quick and Easy Guide to tmux</a></li><li><a href="https://danielmiessler.com/study/tmux/">Tactical tmux: The 10 Most Important Commands</a></li><li><a href="https://linuxize.com/post/getting-started-with-tmux/">Getting started with Tmux</a></li></ul></li></ul><h2><span id="tmux">TMUX</span></h2><p>Terminal Multiplexer</p><p>终端复用软件，类似GNU screen，但比screen更出色。tmux来自于OpenBSD，采用BSD授权</p><p>使用它最直观的好处就：</p><ul><li>通过一个终端登录远程主机并运行tmux后，在其中可以开启多个控制台而无需再“浪费”多余的终端来连接这台远程主机</li><li>还有一个好处就是当终端关闭后该shell里面运行的任务进程也会随之中断，通过使用tmux就能很容易的解决这个问题。</li></ul><h2><span id="使用场景">使用场景：</span></h2><ol><li>关闭终端,再次打开时原终端里面的任务进程依然不会中断 ;</li><li>处于异地的两人可以对同一会话进行操作，一方的操作另一方可以实时看到 ;</li><li>可以在单个屏幕的灵活布局下开出很多终端，然后就能协作地使用它们 ;</li></ol><h2><span id="操作">操作</span></h2><h3><span id="0-基础">0 基础</span></h3><ol><li>单独运行tmux命令，即开启一个tmux会话 ; </li><li>不能在tmux会话里面再新建会话，会报错：”sessions should be nested with care, unset $TMUX to force”</li><li>快捷键前缀唤醒词：<code>^B</code>（ctrl + b）</li></ol><h3><span id="1-会话管理">1 会话管理</span></h3><p><strong>1）新建会话</strong></p><figure class="highlight pgsql"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs pgsql">tmux <span class="hljs-built_in">new</span>  -s  &lt;<span class="hljs-keyword">session</span>-<span class="hljs-type">name</span>&gt;<br></code></pre></div></td></tr></table></figure><p>也可以直接<code>tmu new</code>，但不推荐</p><p><strong>2）查看已经创建的会话：ls</strong></p><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">tmux ls<br><span class="hljs-comment"># or</span><br>tmux list-session<br></code></pre></div></td></tr></table></figure><p><strong>3）进入一个已知会话</strong></p><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 使用会话编号</span><br>tmux attach -t 0    # 0 是会话名称<br><span class="hljs-meta">#</span><span class="bash">or</span><br>tmux a -t 0<br><span class="hljs-meta">#</span><span class="bash"> 使用会话名称</span><br>tmux attach -t &lt;session-name&gt;<br></code></pre></div></td></tr></table></figure><p><strong>4）暂离当前会话：detach</strong></p><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">tmux detach<br></code></pre></div></td></tr></table></figure><p>或快捷键：<code>^B + d</code></p><p><strong>5）切换会话：switch</strong></p><figure class="highlight vala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs vala"><span class="hljs-meta"># 使用会话编号</span><br>tmux <span class="hljs-keyword">switch</span> -t <span class="hljs-number">0</span><br><span class="hljs-meta"># 使用会话名称</span><br>tmux <span class="hljs-keyword">switch</span> -t &lt;session-name&gt;<br></code></pre></div></td></tr></table></figure><p><strong>6）重命名会话：rename-session</strong></p><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">tmux rename-session -t 0 &lt;new-name&gt;<br></code></pre></div></td></tr></table></figure><p>上面命令将0号会话重命名</p><p><strong>5）关闭会话：kill-session</strong></p><p>在会话外/内</p><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">tmux  kill-session  -t  SESSION-NAME/SESSION-NUM<br></code></pre></div></td></tr></table></figure><p><strong>6）其他快捷键</strong></p><ul><li><strong>切换会话：</strong><code>^B + s</code></li></ul><h3><span id="2-窗口windows操作">2 窗口(windows)操作</span></h3><p><strong>1）新建窗口</strong></p><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> tmux new-window</span><br><span class="hljs-meta">#</span><span class="bash"> 新建一个指定名称的窗口</span><br><span class="hljs-meta">$</span><span class="bash"> tmux new-window -n &lt;window-name&gt;</span><br></code></pre></div></td></tr></table></figure><p><strong>2）切换窗口</strong></p><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 切换到指定编号的窗口</span><br><span class="hljs-meta">$</span><span class="bash"> tmux select-window -t &lt;window-number&gt;</span><br><span class="hljs-meta">#</span><span class="bash"> 切换到指定名称的窗口</span><br><span class="hljs-meta">$</span><span class="bash"> tmux select-window -t &lt;window-name&gt;</span><br></code></pre></div></td></tr></table></figure><p><strong>3）重命名窗口</strong></p><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> tmux rename-window &lt;new-name&gt;</span><br></code></pre></div></td></tr></table></figure><p><strong>4）其他快捷键</strong></p><ul><li><strong>创建窗口</strong>：<code>^B + c</code></li><li><strong>切换到上一个窗口（按照状态栏上的顺序）：</strong><code>^B + p</code></li><li><strong>切换到下一个窗口：</strong><code>^B + n</code></li><li><strong>切换到指定窗口：</strong><code>^B + &lt;number&gt;</code></li><li><strong>窗口重命名：</strong><code>Ctrl+b ,</code></li><li><strong>查看所有窗口:</strong><code>Ctrl+b w</code></li></ul><h3><span id="4-分屏与窗格pane">4 分屏与窗格(pane)</span></h3><p><strong>基础快捷键</strong></p><ul><li><strong>水平分屏：</strong><code>^B + %</code></li><li><strong>垂直分屏：</strong><code>^B + &quot;</code></li><li><strong>切换窗口：</strong><code>^B + 上下左右</code></li><li><strong>调整窗口大小：</strong><code>^B按住 + 上下左右</code></li><li><strong>切换光标：</strong><code>^B + o</code></li><li><strong>光标不变切换窗口</strong>：<code>^B按住 + o</code></li><li><strong>关闭当前窗格：</strong><code>^B + x</code><br>或快捷键：<code>^D</code><br>或命令：<code>exit</code></li></ul><h3><span id="3-快捷键总结">3 快捷键总结</span></h3><ul><li><strong>帮助：</strong><code>^B + ?</code></li></ul><ul><li><strong>分离当前会话：</strong><code>^B + d</code>：</li><li><strong>列出所有会话：</strong><code>^B + s</code>：</li><li><strong>重命名当前会话：</strong><code>^B + $</code></li></ul><ul><li><strong>创建窗口</strong>：<code>^B + c</code></li><li><strong>切换到上一个窗口（按照状态栏上的顺序）：</strong><code>^B + p</code></li><li><strong>切换到下一个窗口：</strong><code>^B + n</code></li><li><strong>切换到指定窗口：</strong><code>^B + &lt;number&gt;</code></li><li><strong>窗口重命名：</strong><code>Ctrl+b ,</code></li><li><strong>从列表中选择窗口:</strong><code>Ctrl+b w</code></li></ul><ul><li><strong>水平分屏：</strong><code>^B + %</code></li><li><strong>垂直分屏：</strong><code>^B + &quot;</code></li><li><strong>切换窗口：</strong><code>^B + 上下左右</code></li><li><strong>调整窗口大小：</strong><code>^B按住 + 上下左右</code></li><li><strong>切换光标：</strong><code>^B + o</code></li><li><strong>光标不变切换窗口</strong>：<code>^B按住 + o</code></li><li><strong>关闭当前窗格：</strong><code>^B + x</code></li><li><strong>当前窗格全屏：</strong><code>Ctrl+b z</code></li><li><strong>关闭所有分屏后的窗口，即合并为一个窗口</strong>：<code>Ctrl+b !</code></li><li>当前窗格与上一个窗格交换位置：<code>Ctrl+b &#123;</code></li><li>当前窗格与下一个窗格交换位置：<code>Ctrl+b &#125;</code></li><li>所有窗格向前移动一个位置，第一个窗格变成最后一个窗格：<code>Ctrl+b Ctrl+o</code></li><li>所有窗格向后移动一个位置，最后一个窗格变成第一个窗格：<code>Ctrl+b Alt+o</code></li></ul><ul><li><strong>窗格显示时间</strong>：<code>^B + t</code></li><li><strong>显示窗格编号：</strong><code>^B + q</code></li><li><strong>命令行模式：</strong><code>^B + :</code></li></ul><h3><span id="4-其他用法精炼">4 其他用法精炼</span></h3><p><strong>1）窗格显示时间</strong>：<code>^B + t</code></p><p><strong>2）列出所有快捷键：</strong><code>tmux list-keys</code></p><p><strong>3）列出所有命令与参数：</strong><code>tmux list-command</code></p><p><strong>4）列出当前所有 Tmux 会话的信息信息：</strong><code>tmux info</code></p><p><strong>5）重新加载当前的 Tmux 配置：</strong><code>tmux source-file ~/.tmux.conf</code></p><p><strong>6）显示窗格编号：</strong><code>^B + q</code></p><p>7）<strong>命令行模式（类似vim命令行）：</strong><code>^B + :</code></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>常用</category>
+      
+      <category>linux</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>常用</tag>
+      
+      <tag>命令</tag>
+      
+      <tag>linux</tag>
+      
+      <tag>shell</tag>
+      
+      <tag>tmux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>单周期处理器设计</title>
     <link href="/202205211806/IC/%E7%90%86%E8%AE%BA/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E5%8D%95%E5%91%A8%E6%9C%9F%E5%A4%84%E7%90%86%E5%99%A8%E8%AE%BE%E8%AE%A1/"/>
     <url>/202205211806/IC/%E7%90%86%E8%AE%BA/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E5%8D%95%E5%91%A8%E6%9C%9F%E5%A4%84%E7%90%86%E5%99%A8%E8%AE%BE%E8%AE%A1/</url>
@@ -170,15 +205,17 @@
   
   <entry>
     <title>Makefile常用代码</title>
-    <link href="/202204251658/%E5%B8%B8%E7%94%A8essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/Makefile%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81/"/>
-    <url>/202204251658/%E5%B8%B8%E7%94%A8essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/Makefile%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81/</url>
+    <link href="/202204251658/%E5%B8%B8%E7%94%A8/linuxessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/Makefile%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81/"/>
+    <url>/202204251658/%E5%B8%B8%E7%94%A8/linuxessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/Makefile%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81/</url>
     
-    <content type="html"><![CDATA[<h1><span id="makefile常用代码">Makefile常用代码</span></h1><h2><span id="1-命令行参数">1 命令行参数</span></h2><p><code>make -nB</code>, 它会让<code>make</code>程序以”只输出命令但不执行”的方式强制构建目标</p><h2><span id="2-makefile脚本">2 Makefile脚本</span></h2><ul><li><p>$@ $^ %&lt; 使用</p><ul><li>$@ 目标文件</li><li>$% 仅当目标是函数库文件中，表示规则中的<strong>目标成员名</strong>。例如，如果一个目标是“foo.a(bar.o)”，那么，“$%”就是“bar.o”，“$@”就是“foo.a”。如果目标不是函数库文件（Unix下是[.a]，Windows下是[.lib]），那么，其值为空。就是“bar.o”</li><li>$^ 所有的依赖文件</li><li>$+ 这个变量很像“$^”，也是所有依赖目标的集合。只是它不去除重复的依赖目标。</li><li>$&lt; 第一个依赖文件</li><li>$? 表示比目标还要新的依赖文件列表</li><li><p>$* 这个变量表示目标模式中“%”及其之前的部分。如果目标是“dir/a.foo.b”，并且目标的模式是“a.%.b”，那么，“$*”的值就是“dir/a.foo”。这个变量对于构造有关联的文件名是比较有较。如果目标中没有模式的定义，那么“$*”也就不能被推导出，但是，如果目标文件的后缀是make所识别的，那么“$*”就是除了后缀的那一部分。例如：如果目标是“foo.c”，因为“.c”是make所能识别的后缀名，所以，“$*”的值就是“foo”。这个特性是GNU make的，很有可能不兼容于其它版本的make，所以，你应该尽量避免使用“$*”，除非是在隐含规则或是静态模式中。如果目标中的后缀是make所不能识别的，那么“$*”就是空值。</p></li><li><p>示例：</p><ul><li>gcc -o $@ $^</li><li>gcc -c $&lt;</li></ul></li><li>参考文章<ul><li><a href="https://blog.csdn.net/dlf1769/article/details/78997967">https://blog.csdn.net/dlf1769/article/details/78997967</a></li><li><a href="https://blog.csdn.net/wangzhaotongalex/article/details/73321766">https://blog.csdn.net/wangzhaotongalex/article/details/73321766</a></li></ul></li></ul></li></ul>]]></content>
+    <content type="html"><![CDATA[<h1><span id="makefile常用代码">Makefile常用代码</span></h1><h2><span id="1-命令行参数">1 命令行参数</span></h2><ul><li><code>make -nB</code>, 它会让<code>make</code>程序以”只输出命令但不执行”的方式强制构建目标</li><li><code>make -C &lt;path&gt;</code>：切换到path路径执行make</li><li><code>make -j&lt;n&gt;</code>：并行n个线程执行make命令</li></ul><h2><span id="2-makefile脚本">2 Makefile脚本</span></h2><ul><li><p>$(MAKE)：Makefile自带的环境变量，其值为<code>make</code></p></li><li><p>$@ $^ %&lt; 使用</p><ul><li>$@ 目标文件</li><li>$% 仅当目标是函数库文件中，表示规则中的<strong>目标成员名</strong>。例如，如果一个目标是“foo.a(bar.o)”，那么，“$%”就是“bar.o”，“$@”就是“foo.a”。如果目标不是函数库文件（Unix下是[.a]，Windows下是[.lib]），那么，其值为空。就是“bar.o”</li><li>$^ 所有的依赖文件</li><li>$+ 这个变量很像“$^”，也是所有依赖目标的集合。只是它不去除重复的依赖目标。</li><li>$&lt; 第一个依赖文件</li><li>$? 表示比目标还要新的依赖文件列表</li><li><p>$* 这个变量表示目标模式中“%”及其之前的部分。如果目标是“dir/a.foo.b”，并且目标的模式是“a.%.b”，那么，“$*”的值就是“dir/a.foo”。这个变量对于构造有关联的文件名是比较有较。如果目标中没有模式的定义，那么“$*”也就不能被推导出，但是，如果目标文件的后缀是make所识别的，那么“$*”就是除了后缀的那一部分。例如：如果目标是“foo.c”，因为“.c”是make所能识别的后缀名，所以，“$*”的值就是“foo”。这个特性是GNU make的，很有可能不兼容于其它版本的make，所以，你应该尽量避免使用“$*”，除非是在隐含规则或是静态模式中。如果目标中的后缀是make所不能识别的，那么“$*”就是空值。</p></li><li><p>示例：</p><ul><li>gcc -o $@ $^</li><li>gcc -c $&lt;</li></ul></li><li>参考文章<ul><li><a href="https://blog.csdn.net/dlf1769/article/details/78997967">https://blog.csdn.net/dlf1769/article/details/78997967</a></li><li><a href="https://blog.csdn.net/wangzhaotongalex/article/details/73321766">https://blog.csdn.net/wangzhaotongalex/article/details/73321766</a></li></ul></li></ul></li></ul>]]></content>
     
     
     <categories>
       
       <category>常用</category>
+      
+      <category>linux</category>
       
     </categories>
     
@@ -188,6 +225,8 @@
       <tag>常用</tag>
       
       <tag>命令</tag>
+      
+      <tag>linux</tag>
       
       <tag>Makefile</tag>
       
@@ -345,6 +384,8 @@
       <tag>常用</tag>
       
       <tag>命令</tag>
+      
+      <tag>linux</tag>
       
       <tag>shell</tag>
       
