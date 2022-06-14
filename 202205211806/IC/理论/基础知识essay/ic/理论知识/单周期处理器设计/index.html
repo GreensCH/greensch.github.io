@@ -18,15 +18,15 @@
   <meta name="description" content="“无论最终结果将人类历史导向何处，我们决定选择希望”">
   <meta name="author" content="友人律 | Guilin Chang">
   <meta name="keywords" content="三差学生、不学无术">
-  <meta name="description" content="参考资料 跟我一步一步实现简单的五级流水MIPS：https:&#x2F;&#x2F;github.com&#x2F;hitwh-nscscc&#x2F;simple-5stage-pipeline-MIPS-imple Build Your PC：https:&#x2F;&#x2F;zanpu.spencerwoo.com">
+  <meta name="description" content="参考资料 跟我一步一步实现简单的五级流水MIPS：https:&#x2F;&#x2F;github.com&#x2F;hitwh-nscscc&#x2F;simple-5stage-pipeline-MIPS-imple Build Your PC：https:&#x2F;&#x2F;zanpu.spencerwoo.com  专业名词第一章 Microarchitecture 微架构 Superscalar 超标量 IPC(Instructions Pe">
 <meta property="og:type" content="article">
 <meta property="og:title" content="单周期处理器设计">
 <meta property="og:url" content="http://yoursite.com/202205211806/IC/%E7%90%86%E8%AE%BA/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E5%8D%95%E5%91%A8%E6%9C%9F%E5%A4%84%E7%90%86%E5%99%A8%E8%AE%BE%E8%AE%A1/index.html">
 <meta property="og:site_name" content="友人律的博客">
-<meta property="og:description" content="参考资料 跟我一步一步实现简单的五级流水MIPS：https:&#x2F;&#x2F;github.com&#x2F;hitwh-nscscc&#x2F;simple-5stage-pipeline-MIPS-imple Build Your PC：https:&#x2F;&#x2F;zanpu.spencerwoo.com">
+<meta property="og:description" content="参考资料 跟我一步一步实现简单的五级流水MIPS：https:&#x2F;&#x2F;github.com&#x2F;hitwh-nscscc&#x2F;simple-5stage-pipeline-MIPS-imple Build Your PC：https:&#x2F;&#x2F;zanpu.spencerwoo.com  专业名词第一章 Microarchitecture 微架构 Superscalar 超标量 IPC(Instructions Pe">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-05-21T10:06:37.475Z">
-<meta property="article:modified_time" content="2022-05-21T10:08:38.514Z">
+<meta property="article:modified_time" content="2022-06-10T08:52:52.896Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="IC">
 <meta property="article:tag" content="数字电路">
@@ -263,7 +263,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      129 字
+      1.2k 字
     </span>
   
 
@@ -272,7 +272,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1 分钟
+      4 分钟
     </span>
   
 
@@ -307,6 +307,81 @@
               <h2><span id="参考资料">参考资料</span></h2><ul>
 <li>跟我一步一步实现简单的五级流水MIPS：<a target="_blank" rel="noopener" href="https://github.com/hitwh-nscscc/simple-5stage-pipeline-MIPS-imple">https://github.com/hitwh-nscscc/simple-5stage-pipeline-MIPS-imple</a></li>
 <li>Build Your PC：<a target="_blank" rel="noopener" href="https://zanpu.spencerwoo.com">https://zanpu.spencerwoo.com</a></li>
+</ul>
+<h2><span id="专业名词">专业名词</span></h2><h3><span id="第一章">第一章</span></h3><ul>
+<li>Microarchitecture 微架构</li>
+<li>Superscalar 超标量</li>
+<li>IPC(Instructions Per Cycle) 一个周期可执行的指令<ul>
+<li>普通流水线≤1</li>
+<li>superscalar＞1</li>
+</ul>
+</li>
+<li>CPI(Cycles Per Instruction) 每条指令所需要的周期数，</li>
+<li>CPI = 1/IPC</li>
+<li>mis-prediction 预测失败</li>
+<li>penalty 惩罚</li>
+<li>n-way superscalar 每个周期从I-Cache取n条指令</li>
+<li>VLIW(Very Long Instructin Word) 超长指令字</li>
+<li>tradeoff 折中</li>
+<li>issue quenue 发射队列</li>
+<li>select 仲裁</li>
+<li>Unpipelined</li>
+<li>N stage Pipeline</li>
+<li>RAW(Read After Write) , true dependence 写后读</li>
+<li>WAR(Write After Read) , anti-dependence 读后写</li>
+<li>WAW(Write After Write), output- dependence 邂逅写</li>
+<li>control dependence 控制相关性</li>
+<li>bypass 旁路</li>
+<li>in-order 顺序</li>
+<li>out-of-order 乱序</li>
+<li>超标量处理器的stages<ol>
+<li>Frontend = Fetch + Decode</li>
+<li>Issue 发射，将指令送入到对应的功能单元<ul>
+<li>IQ(Issue Quence)发射队列</li>
+<li>Function Unit</li>
+<li>ScoreBoard用来记录流水线中每个指令的执行情况</li>
+</ul>
+</li>
+<li>WriteBack<ol>
+<li>Register Renaming 寄存器重命名</li>
+<li>ARF(Architecture Register File) 逻辑寄存器</li>
+<li>PRF(Physical Register File) 物理寄存器 也叫 Future File因为分支预测和意外等原因，不一定会写回的寄存器</li>
+</ol>
+</li>
+<li>Commit 一条指令被允许更改处理器的状态<ul>
+<li>Architecture state(例如D-Cache)</li>
+<li>ROB 重排序缓冲</li>
+<li>PRF搬运到ARF</li>
+<li>retire 指令退休，一旦指令退休就无法回到之前状态</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>ScoreBoard</p>
+<ul>
+<li>Pending：表示指令结果还么有协会到逻辑寄存器</li>
+<li>F：一条指令在那个FU执行</li>
+<li>Result Position：一条指令到达FU的哪个阶段</li>
+</ul>
+</li>
+<li><p>Store Buffer (SB)</p>
+</li>
+<li>阶段总结<ul>
+<li>Fetch</li>
+<li>Decode</li>
+<li>Register Renaming</li>
+<li>Dispath分发</li>
+<li>Issue发射</li>
+<li>Register File Read读寄存器</li>
+<li>Execute 执行</li>
+<li>Write back 写回</li>
+<li>Commit 提交</li>
+</ul>
+</li>
+</ul>
+<h3><span id="第二章-cache">第二章 Cache</span></h3><ul>
+<li>temporal locality 时间相关性</li>
+<li>spatial locality 空间相关性</li>
 </ul>
 
             </div>

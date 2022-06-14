@@ -37,10 +37,11 @@
 <meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220513180638446.png">
 <meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220513192148583.png">
 <meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220513113048612.png">
+<meta property="og:image" content="http://yoursite.com/202205121523/IC/%E7%90%86%E8%AE%BA/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/RISCV/RISCV/image-20220608160139020.png">
 <meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220511203959665.png">
 <meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220511203756282.png">
 <meta property="article:published_time" content="2022-05-12T07:23:16.587Z">
-<meta property="article:modified_time" content="2022-05-25T04:07:24.554Z">
+<meta property="article:modified_time" content="2022-06-08T08:02:46.074Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="IC">
 <meta property="article:tag" content="数字电路">
@@ -336,6 +337,7 @@
 <li>FENCE提到了一部分：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_33767813/article/details/93521646">https://blog.csdn.net/weixin_33767813/article/details/93521646</a></li>
 <li>FENCE与FENCE.I：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/139797515">https://zhuanlan.zhihu.com/p/139797515</a></li>
 <li>RV32M&amp;RV64M扩展指令集 ：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/mikewolf2002/p/9872287.html">https://www.cnblogs.com/mikewolf2002/p/9872287.html</a></li>
+<li>算数溢出与指令详解(riscv-flxmcu)：<a target="_blank" rel="noopener" href="http://www.philisense.com/Risc/Risc-v-flxMCU.pdf">http://www.philisense.com/Risc/Risc-v-flxMCU.pdf</a></li>
 </ol>
 <h2><span id="rv32i">RV32I</span></h2><p><strong>0）特权结构与可选扩展</strong></p>
 <p><strong>特权结构：</strong></p>
@@ -813,6 +815,9 @@ instruction bits used to construct their value. Sign extension always uses inst[
 </ul>
 <p>3）Zmmul扩展</p>
 <p>Zmmul扩展实现了M扩展的乘法子集。它添加了第8.1节中定义的所有指令，即：MUL、MULH、MULHU、MULHSU和（仅适用于RV64）MULW。编码与相应M扩展指令的编码相同。</p>
+<p><strong>3）溢出</strong></p>
+<p>除以零和除法溢出的语义如下图所示。除以零，结果商的所有位被置为 1， 也即是说，对于无符号除法来说，商是 2XLEN-1，对于有符号除法来说，商是-1。除以零，结果的余数等于被除数。有符号除法溢出仅当用最小的负整数， -2XLEN-1，除以-1 时，才会出现。有符号除法溢出的商等于被除数，余数等于零。无符号除法不会产生溢出</p>
+<p><img src="RISCV/image-20220608160139020.png" srcset="/img/loading.gif" lazyload alt="image-20220608160139020"></p>
 <h2><span id="rv64i">RV64I</span></h2><p>RV64I将整数寄存器和支持的用户地址空间扩大到64位 (图2.1中的XLEN = 64)</p>
 <ul>
 <li>RV32I 带有指令布局，操作码，格式类型和名称的操作码映射。（此图基于[Waterman and Asanovi’c 2017]的表 19.2</li>
