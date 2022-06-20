@@ -30,7 +30,7 @@
 <meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011901538.png">
 <meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011901539.png">
 <meta property="article:published_time" content="2022-04-07T13:42:00.000Z">
-<meta property="article:modified_time" content="2022-06-06T09:29:59.969Z">
+<meta property="article:modified_time" content="2022-06-18T14:59:52.325Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="常用">
 <meta property="article:tag" content="命令">
@@ -268,7 +268,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      4.3k 字
+      4.5k 字
     </span>
   
 
@@ -361,20 +361,13 @@
 </li>
 </ol>
 <h2><span id="补充">补充</span></h2><ol>
-<li><p>bg：查看后台运行的进程，常配合kill</p>
-</li>
-<li><p>lscpu：查看cpu详细信息</p>
-</li>
-<li><p>time &lt;命令&gt;</p>
-</li>
-<li><p><strong>wc：</strong>统计指定文件中的字节数、字数、行数<br>-c：统计字节数<br>-l：统计字数<br>-w：统计行数</p>
-</li>
-<li><p>sort&lt;选项&gt;[文件列表]：排序命令</p>
-</li>
-<li><p>diff&lt;参数&gt;[源文件] [目标文件]：比较文件内容不同<br>-b忽略空格造成的不同<br>-q只报告什么地方不同，不报告具体的不同信息<br>-i忽略大小写的变化<br>-r在比较目录时比较所有的子目录<br>-s两个文件相同时才报告<br>-v在标准输出上输出版本信息并退出</p>
-</li>
-<li><p>which/whereis<br>whereis查找命令所在目录<br>which输出命令的全路径到屏幕上</p>
-</li>
+<li>bg：查看后台运行的进程，常配合kill</li>
+<li>lscpu：查看cpu详细信息</li>
+<li>time &lt;命令&gt;</li>
+<li><strong>wc：</strong>统计指定文件中的字节数、字数、行数<br>-c：统计字节数<br>-l：统计字数<br>-w：统计行数</li>
+<li>sort&lt;选项&gt;[文件列表]：排序命令</li>
+<li>diff&lt;参数&gt;[源文件] [目标文件]：比较文件内容不同<br>-b忽略空格造成的不同<br>-q只报告什么地方不同，不报告具体的不同信息<br>-i忽略大小写的变化<br>-r在比较目录时比较所有的子目录<br>-s两个文件相同时才报告<br>-v在标准输出上输出版本信息并退出</li>
+<li>which/whereis<br>whereis查找命令所在目录<br>which输出命令的全路径到屏幕上</li>
 <li>history 可查看先前的指令。</li>
 <li>！$可用来执行最近的一条指令。</li>
 <li>！his 可用来补齐先前用过的指令。</li>
@@ -384,10 +377,15 @@
 <li>ctrlt+z（组合键）：将当前的命令挂起，放到后台运行<br>fg：恢复挂起的命令，放到前台运行<br>ctrl+c（组合键）：终止当前的命令</li>
 <li>whoami：查看用户自己当前使用的帐号名。<br>who：查看当前有哪些用户登录到系统中。<br>w：查看有哪些用户登录在线，同时显示用户当前的工作</li>
 <li>In&lt;选项&gt;[目标[链接名]In&lt;选项&gt;[目标[目录]<br>作用：给系统中已有的某个文件指定另外一个可用于访问它的名称。<br>软连接：<code>In -s source des</code></li>
-<li><p>cat<br><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011901539.png" srcset="/img/loading.gif" lazyload alt></p>
-</li>
-<li><p>man<br>linux 中 man 1 man2 man3 ……man N的区别：</p>
-</li>
+<li>cat</li>
+</ol>
+<ul>
+<li><code>cat /proc/cpuinfo</code> ：查看cpu信息</li>
+<li><code>cat &gt; FILENAME</code>：快速创建一个文件，内容可以直接通过中断输入，以EOF或<code>^D</code>作为结束标志</li>
+</ul>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011901539.png" srcset="/img/loading.gif" lazyload alt></p>
+<ol>
+<li>man<br>linux 中 man 1 man2 man3 ……man N的区别：</li>
 </ol>
 <ul>
 <li>Standard commands （标准命令）</li>
@@ -449,6 +447,8 @@
 <figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">find . \( -name &quot;*.h&quot; -o -name &quot;*.c&quot; \) | xargs cat | grep -v ^$ | wc -l<br><span class="hljs-meta">#</span><span class="bash"> 一种结合的方法</span><br>find . | grep &#x27;\.c$\|\.h$&#x27;   | xargs cat | grep -v ^$ | wc -l <br><span class="hljs-meta">#</span><span class="bash">下面这种方式s，你可以找一下原因</span><br>find . | grep &#x27;\.c$\|\.h$&#x27;   | xargs cat | grep -v ^$ | xargs wc -l <br></code></pre></div></td></tr></table></figure>
 </li>
 </ul>
+<h3><span id="chmod">chmod</span></h3><figure class="highlight apache"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">chmod</span> -R <span class="hljs-number">777</span> &lt;FILENAME&gt;<br><span class="hljs-attribute">chmod</span> -R <span class="hljs-number">777</span> *<br></code></pre></div></td></tr></table></figure>
+<p>有关777的含义与权限，可参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/lh2008xp/article/details/121408309">https://blog.csdn.net/lh2008xp/article/details/121408309</a></p>
 
             </div>
             <hr>
