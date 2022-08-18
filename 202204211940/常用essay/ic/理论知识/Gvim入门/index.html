@@ -18,15 +18,15 @@
   <meta name="description" content="“无论最终结果将人类历史导向何处，我们决定选择希望”">
   <meta name="author" content="友人律 | Guilin Chang">
   <meta name="keywords" content="三差学生、不学无术">
-  <meta name="description" content="0 参考文档官方文档：http:&#x2F;&#x2F;vimcdoc.sourceforge.net&#x2F;  较为好用：user_manual-2.3.0.pdf  1 常见用法命令模式&#x2F;基础操作 移动 G移动到文件末尾 gg移动到文件首 num+g移动到第num行  c-f向前翻页，c-b向后翻页 w跳转到下一个单词头部，b跳转到上一个单词头部 0&#x2F;^跳转到行首，$跳转到行末   ctrl+v块操作-&gt;shift+i">
+  <meta name="description" content="0 参考文档官方文档：http:&#x2F;&#x2F;vimcdoc.sourceforge.net&#x2F;  较为好用：user_manual-2.3.0.pdf  1 常见用法命令模式&#x2F;基础操作 移动  G移动到文件末尾  gg移动到文件首  num+g移动到第num行   c-f向前翻页，c-b向后翻页  w跳转到下一个单词头部，b跳转到上一个单词头部  0&#x2F;^跳转到行首，$跳转到行末  :行号跳转到第n行  j&#x2F;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Gvim入门">
 <meta property="og:url" content="http://yoursite.com/202204211940/%E5%B8%B8%E7%94%A8essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/Gvim%E5%85%A5%E9%97%A8/index.html">
 <meta property="og:site_name" content="友人律的博客">
-<meta property="og:description" content="0 参考文档官方文档：http:&#x2F;&#x2F;vimcdoc.sourceforge.net&#x2F;  较为好用：user_manual-2.3.0.pdf  1 常见用法命令模式&#x2F;基础操作 移动 G移动到文件末尾 gg移动到文件首 num+g移动到第num行  c-f向前翻页，c-b向后翻页 w跳转到下一个单词头部，b跳转到上一个单词头部 0&#x2F;^跳转到行首，$跳转到行末   ctrl+v块操作-&gt;shift+i">
+<meta property="og:description" content="0 参考文档官方文档：http:&#x2F;&#x2F;vimcdoc.sourceforge.net&#x2F;  较为好用：user_manual-2.3.0.pdf  1 常见用法命令模式&#x2F;基础操作 移动  G移动到文件末尾  gg移动到文件首  num+g移动到第num行   c-f向前翻页，c-b向后翻页  w跳转到下一个单词头部，b跳转到上一个单词头部  0&#x2F;^跳转到行首，$跳转到行末  :行号跳转到第n行  j&#x2F;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-04-21T11:40:00.000Z">
-<meta property="article:modified_time" content="2022-05-01T14:09:38.765Z">
+<meta property="article:modified_time" content="2022-08-04T06:24:01.553Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="常用">
 <meta property="article:tag" content="命令">
@@ -262,7 +262,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.6k 字
+      1.8k 字
     </span>
   
 
@@ -307,52 +307,107 @@
 <ul>
 <li>较为好用：user_manual-2.3.0.pdf</li>
 </ul>
-<h2><span id="1-常见用法">1 常见用法</span></h2><h3><span id="命令模式基础操作">命令模式/基础操作</span></h3><ol>
-<li>移动<ul>
-<li>G移动到文件末尾</li>
-<li>gg移动到文件首</li>
-<li>num+g移动到第num行 </li>
-<li>c-f向前翻页，c-b向后翻页</li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/lianshaohua/article/details/108536512">w跳转到下一个单词头部，b跳转到上一个单词头部</a></li>
-<li>0/^跳转到行首，$跳转到行末</li>
-</ul>
-</li>
-<li>ctrl+v块操作->shift+i输入文字->esc （shift i意思是大写I，意思是在选中前的地方插入）</li>
-<li>v和c-v的区别<ul>
-<li>v可以完全删除</li>
-<li>c-v删除后还留着空行</li>
-</ul>
-</li>
-<li>删除与插入<ul>
-<li>cl删除并插入</li>
-<li>cc删除行并插入</li>
-<li>c$删除到行末并插入</li>
-</ul>
-</li>
-<li>查找<ul>
-<li>shift+*：往前查找当前的word，前提是光标移动到要查找的word</li>
-<li>shift+#：往后查找当前的word，前提是光标移动到要查找的word</li>
-</ul>
-</li>
-<li>ctrl+r回退 u撤销</li>
-<li>大小写<ul>
-<li>U选中的小写全换为大写</li>
-<li>u选中的大写全换为小写</li>
-</ul>
-</li>
-<li>r替换</li>
-<li>gf跳转到文件</li>
-<li>ctrl+o回去文件</li>
-<li>gvimdiff file1 file2比较两和文件相同    </li>
-<li>窗口操作系列</li>
-</ol>
+<h2><span id="1-常见用法">1 常见用法</span></h2><h3><span id="命令模式基础操作">命令模式/基础操作</span></h3><ul>
+<li><p>移动</p>
 <ul>
-<li>ctrl+w w光标切换窗口</li>
-<li>ctrl+w hjkl光标切换窗口（带位置）</li>
-<li>ctrl+W HJKL窗口位置切换（带位置）</li>
-<li>:q/wall 关闭/写入所有窗口<h4><span id="底行模式">底行模式</span></h4></li>
+<li><p>G移动到文件末尾</p>
+</li>
+<li><p>gg移动到文件首</p>
+</li>
+<li><p>num+g移动到第num行 </p>
+</li>
+<li><p>c-f向前翻页，c-b向后翻页</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lianshaohua/article/details/108536512">w跳转到下一个单词头部，b跳转到上一个单词头部</a></p>
+</li>
+<li><p>0/^跳转到行首，$跳转到行末</p>
+</li>
+<li><p><code>:行号</code>跳转到第n行</p>
+</li>
+<li><p><code>j/k行号</code>跳转相对n行行号</p>
+</li>
+<li><p>w下个单词首部，e下个单词尾部</p>
+</li>
+<li><p>b上个单词首部</p>
+</li>
 </ul>
-<ol>
+</li>
+<li><p>ctrl+v块操作->shift+i输入文字->esc （shift i意思是大写I，意思是在选中前的地方插入）</p>
+</li>
+<li><p>v和c-v的区别</p>
+<ul>
+<li><p>v可以完全删除</p>
+</li>
+<li><p>c-v删除后还留着空行</p>
+</li>
+</ul>
+</li>
+<li><p>删除与插入</p>
+<ul>
+<li><p>cl删除并插入</p>
+</li>
+<li><p>cc删除行并插入</p>
+</li>
+<li><p>c$删除到行末并插入</p>
+</li>
+<li><p>cw删除一个单词</p>
+</li>
+</ul>
+</li>
+<li><p>查找</p>
+<ul>
+<li><p>shift+*：往前查找当前的word，前提是光标移动到要查找的word</p>
+</li>
+<li><p>shift+#：往后查找当前的word，前提是光标移动到要查找的word</p>
+</li>
+</ul>
+</li>
+<li><p>ctrl+r回退 u撤销</p>
+</li>
+<li><p>大小写</p>
+<ul>
+<li><p>U选中的小写全换为大写</p>
+</li>
+<li><p>u选中的大写全换为小写</p>
+</li>
+</ul>
+</li>
+<li><p><strong>c替换</strong>(删除并进入编辑模式)</p>
+<ul>
+<li>cw替换一个单词</li>
+<li><code>ci</code>{或<code>ci&#125;</code>，删除相邻大括号内部文字，并进入编辑模式（小括号中括号也一样）</li>
+</ul>
+</li>
+<li><p>r替换</p>
+</li>
+<li><p>gf跳转到文件</p>
+</li>
+<li><p>ctrl+o回去文件</p>
+</li>
+<li><p>gvimdiff file1 file2比较两和文件相同    </p>
+</li>
+<li><p>窗口操作系列</p>
+<ul>
+<li><p>ctrl+w w光标切换窗口</p>
+</li>
+<li><p>ctrl+w hjkl光标切换窗口（带位置）</p>
+</li>
+<li><p>ctrl+W HJKL窗口位置切换（带位置）</p>
+</li>
+<li><p>:q/wall 关闭/写入所有窗口</p>
+</li>
+</ul>
+</li>
+<li><p>shift</p>
+<ul>
+<li><p>shift + o 新增上一行(o下一行)</p>
+</li>
+<li><p>shift + i 当前行首插入</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4><span id="底行模式">底行模式</span></h4><ol>
 <li>:X文件加密</li>
 <li>:set key=或者:X为空，文件解密</li>
 <li>:sp (文件名)，横着新开一个页内窗口打开文件</li>
@@ -372,10 +427,14 @@
 <li>:/g全部执行</li>
 <li>:行可以选中后输入:，也可以直接:num1,num2，%是选中全部行</li>
 </ol>
-<h3><span id="常用格式化指令">常用格式化指令</span></h3><ol>
-<li>:g/^$/d删除所有空行</li>
-</ol>
-<h2><span id="2-vimrc">2 vimrc</span></h2><h2><span id="3-插件">3 插件</span></h2><ol>
+<h3><span id="常用格式化指令">常用格式化指令</span></h3><p>/搜索的意思</p>
+<ul>
+<li><code>:%s/旧/新/g</code>全局替换</li>
+<li><code>:g/^$/d</code>删除所有空行</li>
+</ul>
+<h2><span id="2-vimrc">2 vimrc</span></h2><p>1.如何找到vimrc(在系统终端内键入)：</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">vim --version<br></code></pre></div></td></tr></table></figure>
+<h2><span id="3-插件">3 插件</span></h2><ol>
 <li><p><strong>Nerdtree文件浏览F2开/关</strong></p>
 </li>
 <li><p><strong>Ale异步语法检测需搭配verilator</strong></p>
@@ -498,8 +557,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/202204081044/IC/%E6%80%BB%E7%BA%BF/AXIessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/AXI4%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0/">
-                        <span class="hidden-mobile">AXI4.0 初步学习</span>
+                      <a href="/202204081044/IC/%E6%80%BB%E7%BA%BF/AXIessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/AXI%E4%B8%8EAMBA%E8%B5%84%E6%96%99%E6%B1%87%E6%80%BB/">
+                        <span class="hidden-mobile">AXI与AMBA资料汇总</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

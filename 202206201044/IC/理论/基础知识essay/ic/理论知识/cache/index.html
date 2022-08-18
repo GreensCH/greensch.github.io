@@ -18,26 +18,42 @@
   <meta name="description" content="“无论最终结果将人类历史导向何处，我们决定选择希望”">
   <meta name="author" content="友人律 | Guilin Chang">
   <meta name="keywords" content="三差学生、不学无术">
-  <meta name="description" content="Cache的组织形式（VIVT、VIPT、PIPT） 推荐！Cache 组织形式（VIVT、VIPT、PIPT）：https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_41596356&#x2F;article&#x2F;details&#x2F;122302652 推荐！Cache的基本原理（直接映射、组相联、全相联）https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_41596356&#x2F;article&#x2F;details&#x2F;122360">
+  <meta name="description" content="工作任务 6&#x2F;27 阅读 IHI0022H 7&#x2F;07  测试AXI过程中，发现了一个 致命问题： branch&#x2F;jal&#x2F;jalr时，若之前一个指令cache miss，则IDU生成jump时，curr_state为预测错误指令的issue状态，此时ready&#x3D;0，导致pcu无法接收到jump的信号 解决办法：在pcu中对jump进行缓存    7.16 7.24增加mmio   修改内容： emu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="cpu cache">
+<meta property="og:title" content="ysyx 工作进度与终点">
 <meta property="og:url" content="http://yoursite.com/202206201044/IC/%E7%90%86%E8%AE%BA/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/cache/index.html">
 <meta property="og:site_name" content="友人律的博客">
-<meta property="og:description" content="Cache的组织形式（VIVT、VIPT、PIPT） 推荐！Cache 组织形式（VIVT、VIPT、PIPT）：https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_41596356&#x2F;article&#x2F;details&#x2F;122302652 推荐！Cache的基本原理（直接映射、组相联、全相联）https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_41596356&#x2F;article&#x2F;details&#x2F;122360">
+<meta property="og:description" content="工作任务 6&#x2F;27 阅读 IHI0022H 7&#x2F;07  测试AXI过程中，发现了一个 致命问题： branch&#x2F;jal&#x2F;jalr时，若之前一个指令cache miss，则IDU生成jump时，curr_state为预测错误指令的issue状态，此时ready&#x3D;0，导致pcu无法接收到jump的信号 解决办法：在pcu中对jump进行缓存    7.16 7.24增加mmio   修改内容： emu">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/202206201044/IC/%E7%90%86%E8%AE%BA/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/cache/cache/image-20220707033726386.png">
+<meta property="og:image" content="http://yoursite.com/202206201044/IC/%E7%90%86%E8%AE%BA/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/cache/cache/image-20220707033147122.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/cache/image-20220725000159106.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/cache/image-20220725000238464.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/cache/image-20220725000056422.png">
 <meta property="og:image" content="http://yoursite.com/202206201044/IC/%E7%90%86%E8%AE%BA/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/cache/cache/image-20220621012511421.png">
 <meta property="og:image" content="http://yoursite.com/202206201044/IC/%E7%90%86%E8%AE%BA/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/cache/cache/image-20220621013025353.png">
+<meta property="og:image" content="http://yoursite.com/202206201044/IC/%E7%90%86%E8%AE%BA/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/cache/cache/image-20220625155921960.png">
+<meta property="og:image" content="http://yoursite.com/202206201044/IC/%E7%90%86%E8%AE%BA/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/cache/cache/image-20220625160237236.png">
+<meta property="og:image" content="http://yoursite.com/202206201044/IC/%E7%90%86%E8%AE%BA/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/cache/cache/image-20220625163654154.png">
+<meta property="og:image" content="http://yoursite.com/202206201044/IC/%E7%90%86%E8%AE%BA/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/cache/cache/image-20220625163621094.png">
+<meta property="og:image" content="http://yoursite.com/202206201044/IC/%E7%90%86%E8%AE%BA/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/cache/cache/image-20220625160859681.png">
+<meta property="og:image" content="http://yoursite.com/202206201044/IC/%E7%90%86%E8%AE%BA/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/cache/cache/image-20220625163125628.png">
+<meta property="og:image" content="http://yoursite.com/202206201044/IC/%E7%90%86%E8%AE%BA/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/cache/cache/image-20220625202656432.png">
+<meta property="og:image" content="https://svg.wavedrom.com/github/freechipsproject/www.chisel-lang.org/master/docs/src/main/resources/json/smem_rw.json">
+<meta property="og:image" content="http://yoursite.com/202206201044/IC/%E7%90%86%E8%AE%BA/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/cache/cache/image-20220626210036949.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/cache/original_49583eb2b6e7357a705af18c7557af2a.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/cache/image-20220729172326525.png">
 <meta property="article:published_time" content="2022-06-20T02:44:00.000Z">
-<meta property="article:modified_time" content="2022-06-20T17:30:25.443Z">
+<meta property="article:modified_time" content="2022-07-30T07:15:14.324Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="IC">
 <meta property="article:tag" content="数字电路">
 <meta property="article:tag" content="源码">
 <meta property="article:tag" content="code">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://yoursite.com/202206201044/IC/%E7%90%86%E8%AE%BA/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/cache/cache/image-20220621012511421.png">
+<meta name="twitter:image" content="http://yoursite.com/202206201044/IC/%E7%90%86%E8%AE%BA/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/cache/cache/image-20220707033726386.png">
   
-  <title>cpu cache - 友人律的博客</title>
+  <title>ysyx 工作进度与终点 - 友人律的博客</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -245,7 +261,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="cpu cache">
+            <span class="h2" id="subtitle" title="ysyx 工作进度与终点">
               
             </span>
 
@@ -266,7 +282,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      348 字
+      5.1k 字
     </span>
   
 
@@ -275,7 +291,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1 分钟
+      16 分钟
     </span>
   
 
@@ -304,10 +320,43 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">cpu cache</h1>
+            <h1 style="display: none">ysyx 工作进度与终点</h1>
             
             <div class="markdown-body">
-              <h2><span id="cache的组织形式vivt-vipt-pipt">Cache的组织形式（VIVT、VIPT、PIPT）</span></h2><ul>
+              <h2><span id="工作任务">工作任务</span></h2><ul>
+<li>6/27 阅读 IHI0022H</li>
+<li>7/07</li>
+</ul>
+<p>测试AXI过程中，发现了一个 致命问题：</p>
+<p>branch/jal/jalr时，若之前一个指令cache miss，则IDU生成jump时，curr_state为预测错误指令的issue状态，此时ready=0，导致pcu无法接收到jump的信号</p>
+<p>解决办法：在pcu中对jump进行缓存</p>
+<p><img src="cache/image-20220707033726386.png" srcset="/img/loading.gif" lazyload alt="image-20220707033726386"></p>
+<p><img src="cache/image-20220707033147122.png" srcset="/img/loading.gif" lazyload alt="image-20220707033147122"></p>
+<ul>
+<li>7.16</li>
+<li>7.24增加mmio</li>
+</ul>
+<blockquote>
+<p>修改内容：</p>
+<p>emulator：</p>
+<ul>
+<li>修改am与soc-simulator中的uart地址（为什么SERIAL_PORT + 4, 因为soc-simulator目前的write_buff是+4的，有bug）</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/cache/image-20220725000159106.png" srcset="/img/loading.gif" lazyload alt="image-20220725000159106"></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/cache/image-20220725000238464.png" srcset="/img/loading.gif" lazyload alt="image-20220725000238464"></p>
+<ul>
+<li>修改difftest</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/cache/image-20220725000056422.png" srcset="/img/loading.gif" lazyload alt="image-20220725000056422"></p>
+<ul>
+<li>npc中增加difftest适配（test_is_device）</li>
+<li>线程相关，不然卡死：(CONFIG_MMIO_THREAD)</li>
+</ul>
+<p>测试：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs routeros">make <span class="hljs-attribute">ARCH</span>=riscv64-npc <span class="hljs-attribute">ALL</span>=test run<br></code></pre></div></td></tr></table></figure>
+</blockquote>
+<h2><span id="控制信号">控制信号</span></h2><h3><span id="bru产生分支预测错误的信号jump">bru产生分支预测错误的信号(jump)</span></h3><p>这个信号需要上级的所有寄存器除了pc寄存器输入为dnpc其他的寄存器flush，也就是断言jump时reg的prev.in为0</p>
+<h2><span id="cache">Cache</span></h2><h3><span id="cache的组织形式vivt-vipt-pipt">Cache的组织形式（VIVT、VIPT、PIPT）</span></h3><ul>
 <li>推荐！Cache 组织形式（VIVT、VIPT、PIPT）：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41596356/article/details/122302652">https://blog.csdn.net/qq_41596356/article/details/122302652</a></li>
 <li>推荐！Cache的基本原理（直接映射、组相联、全相联）<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41596356/article/details/122360914">https://blog.csdn.net/qq_41596356/article/details/122360914</a></li>
 <li>Cache的相关知识：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_47799526/article/details/111186953">https://blog.csdn.net/m0_47799526/article/details/111186953</a></li>
@@ -316,6 +365,390 @@
 <p><img src="cache/image-20220621012511421.png" srcset="/img/loading.gif" lazyload alt="image-20220621012511421"></p>
 <p><img src="cache/image-20220621013025353.png" srcset="/img/loading.gif" lazyload alt="image-20220621013025353"></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39871788/article/details/119541873">https://blog.csdn.net/weixin_39871788/article/details/119541873</a></p>
+<h3><span id="设计指标">设计指标</span></h3><p>2way</p>
+<p>data array = 4KB</p>
+<p>ram规格：128B * 64</p>
+<p>sv39</p>
+<h3><span id="对齐访问">对齐访问</span></h3><p>指令：</p>
+<p>1.2 指令长度编码<br>基本 RISC-V ISA 具有 32 位固定长度指令，并且必须在 32 位边界对齐。然而，标准 RISC-V编码模式被设计成支持变长指令的扩展，在这个扩展中，每条指令长度可以是 16 位指令包裹（parcel）长度的整数倍，并且这些指令包裹必须在 16 位边界对齐。第 14 章中描述的标准压缩 ISA 扩展，通过提供压缩的 16 位指令，减少了代码大小，并放松了对齐要求，允许所有指令（16 位和 32 位）对齐到任意 16 位边界，以提高代码密度。</p>
+<blockquote>
+<p>手册第二章</p>
+<p><img src="cache/image-20220625155921960.png" srcset="/img/loading.gif" lazyload alt="image-20220625155921960"></p>
+</blockquote>
+<p><img src="cache/image-20220625160237236.png" srcset="/img/loading.gif" lazyload alt="image-20220625160237236"></p>
+<p>取值不对齐异常：</p>
+<p>在基本ISA中，有四种核心指令格式（R/I/S/U），如图 2.2所示。所有的指令都是固定32位长度的，并且在存储器中必须在4字节边界对齐。当发生一个条件分支或者无条件转移而且目标地址不是对齐到4字节时，将会产生一个指令地址不对齐的异常。如果条件分支没有发生（not taken），那么将不会产生一个取指不对齐异常</p>
+<p><img src="cache/image-20220625163654154.png" srcset="/img/loading.gif" lazyload alt="image-20220625163654154"></p>
+<p><img src="cache/image-20220625163621094.png" srcset="/img/loading.gif" lazyload alt="image-20220625163621094"></p>
+<p>访存：</p>
+<p>为了获得最高的性能，所有load和store指令的有效地址，应该与该指令对应的数据类型相对齐（也就是说，32位访问应该在4字节边界对齐，16位访问应该在2字节边界对齐）。基本ISA支持非对齐的访问，但是根据实现的不同，这可能会运行得非常慢。更进一步的，对齐的load和store访问执行时，可以确保是原子性的，而非对齐的load和store可能不能原子性的完成，因此需要额外的同步来确保原子性（<strong>译者注：具体实现非对齐访问时，可能一次访问会被分解为两次存储器访问，这就不是不可分割的原子性操作，有潜在的危险</strong>）</p>
+<blockquote>
+<p><img src="cache/image-20220625160859681.png" srcset="/img/loading.gif" lazyload alt="image-20220625160859681"></p>
+</blockquote>
+<p>riscv需要支持非对齐，以便兼容老程序</p>
+<p><img src="cache/image-20220625163125628.png" srcset="/img/loading.gif" lazyload alt="image-20220625163125628"></p>
+<h3><span id="cache-一致性">cache 一致性</span></h3><p><img src="cache/image-20220625202656432.png" srcset="/img/loading.gif" lazyload alt="image-20220625202656432"></p>
+<p>产生原因：</p>
+<p>loader执行时将flash中的指令数据拷贝到memory中（调用save指令进行），因此DCache中存在这些save指令缓存的指令，当程序跳转到memory中的指令中执行时，某些指令很可能还在DCache中</p>
+<h3><span id="tlb">TLB</span></h3><p>操作系统实验我这么熟悉，主要还是CPU硬件上要做好异常处理以及MMU（对于软件定义页表的MIPS就是个TLB），于是我便与之前参加NSCSCC比赛的同学组了个队。然后便在他们之前参加比赛的CPU上开展了后续的工作，完成了TLB的设计以及CP0中所需功能的加入与调试</p>
+<h3><span id="sramdata-array">SRAM（Data Array）</span></h3><p><img src="https://svg.wavedrom.com/github/freechipsproject/www.chisel-lang.org/master/docs/src/main/resources/json/smem_rw.json" srcset="/img/loading.gif" lazyload alt="read/write ports example waveform"></p>
+<p><img src="cache/image-20220626210036949.png" srcset="/img/loading.gif" lazyload alt="image-20220626210036949"></p>
+<ul>
+<li>官方的单口</li>
+</ul>
+<figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala"><span class="hljs-keyword">import</span> chisel3._<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RWSmem</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Module</span> </span>&#123;<br>  <span class="hljs-keyword">val</span> width: <span class="hljs-type">Int</span> = <span class="hljs-number">32</span><br>  <span class="hljs-keyword">val</span> io = <span class="hljs-type">IO</span>(<span class="hljs-keyword">new</span> <span class="hljs-type">Bundle</span> &#123;<br>    <span class="hljs-keyword">val</span> enable = <span class="hljs-type">Input</span>(<span class="hljs-type">Bool</span>())<br>    <span class="hljs-keyword">val</span> write = <span class="hljs-type">Input</span>(<span class="hljs-type">Bool</span>())<br>    <span class="hljs-keyword">val</span> addr = <span class="hljs-type">Input</span>(<span class="hljs-type">UInt</span>(<span class="hljs-number">10.</span><span class="hljs-type">W</span>))<br>    <span class="hljs-keyword">val</span> dataIn = <span class="hljs-type">Input</span>(<span class="hljs-type">UInt</span>(width.<span class="hljs-type">W</span>))<br>    <span class="hljs-keyword">val</span> dataOut = <span class="hljs-type">Output</span>(<span class="hljs-type">UInt</span>(width.<span class="hljs-type">W</span>))<br>  &#125;)<br><br>  <span class="hljs-keyword">val</span> mem = <span class="hljs-type">SyncReadMem</span>(<span class="hljs-number">1024</span>, <span class="hljs-type">UInt</span>(width.<span class="hljs-type">W</span>))<br>  io.dataOut := <span class="hljs-type">DontCare</span><br>  when(io.enable) &#123;<br>    <span class="hljs-keyword">val</span> rdwrPort = mem(io.addr)<br>    when (io.write) &#123; rdwrPort := io.dataIn &#125;<br>      .otherwise    &#123; io.dataOut := rdwrPort &#125;<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<ul>
+<li>教程的单口</li>
+</ul>
+<figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala"><br><span class="hljs-comment">// ram.scala</span><br><span class="hljs-keyword">package</span> test<br> <br><span class="hljs-keyword">import</span> chisel3._<br> <br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SinglePortRAM</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Module</span> </span>&#123;<br>  <span class="hljs-keyword">val</span> io = <span class="hljs-type">IO</span>(<span class="hljs-keyword">new</span> <span class="hljs-type">Bundle</span> &#123;<br>    <span class="hljs-keyword">val</span> addr = <span class="hljs-type">Input</span>(<span class="hljs-type">UInt</span>(<span class="hljs-number">10.</span><span class="hljs-type">W</span>))<br>    <span class="hljs-keyword">val</span> dataIn = <span class="hljs-type">Input</span>(<span class="hljs-type">UInt</span>(<span class="hljs-number">32.</span><span class="hljs-type">W</span>))<br>    <span class="hljs-keyword">val</span> en = <span class="hljs-type">Input</span>(<span class="hljs-type">Bool</span>())<br>    <span class="hljs-keyword">val</span> we = <span class="hljs-type">Input</span>(<span class="hljs-type">Bool</span>())<br>    <span class="hljs-keyword">val</span> dataOut = <span class="hljs-type">Output</span>(<span class="hljs-type">UInt</span>(<span class="hljs-number">32.</span><span class="hljs-type">W</span>))  <br>  &#125;)<br> <br>  <span class="hljs-keyword">val</span> syncRAM = <span class="hljs-type">SyncReadMem</span>(<span class="hljs-number">1024</span>, <span class="hljs-type">UInt</span>(<span class="hljs-number">32.</span><span class="hljs-type">W</span>))<br> <br>  when(io.en) &#123;<br>    when(io.we) &#123;<br>      syncRAM.write(io.addr, io.dataIn)<br>      io.dataOut := <span class="hljs-type">DontCare</span><br>    &#125; .otherwise &#123;<br>      io.dataOut := syncRAM.read(io.addr)<br>    &#125;<br>  &#125; .otherwise &#123;<br>    io.dataOut := <span class="hljs-type">DontCare</span><br>  &#125;<br></code></pre></div></td></tr></table></figure>
+<ul>
+<li>如何实现双口？</li>
+</ul>
+<p>Vivado的BRAM最多支持真·双端口，按照对应的Verilog模板逆向编写Chisel，然后用编译器把Chisel转换成Verilog。但此时编译器生成的Verilog代码并不能被Vivado的综合器识别出来。原因在于SyncReadMem生成的Verilog代码是用一级寄存器保存输入的读地址，然后用读地址寄存器去异步读取RAM的数据，而Vivado的综合器识别不出这种模式的RAM。读者必须手动修改成用一级寄存器保存异步读取的数据而不是读地址，然后把读数据寄存器的内容用assign语句赋值给读数据端口，这样才能被识别成真·双端口BRAM。尚不清楚其它综合器是否有这个问题。经过咨询SiFive的工作人员，对方答复因为当前转换的代码把延迟放在地址一侧，所以流水线的节拍设计也是根据这个来的。考虑到贸然修改SyncReadMem的行为，可能会潜在地影响其它用户对流水线的设计，故而没有修改计划。如果确实需要自定义的、对综合器友好的Verilog代码，可以使用黑盒功能替代，或者给Firrtl编译器传入参数，改用自定义脚本来编译Chisel。</p>
+<h2><span id="soc指标">soc指标</span></h2><h3><span id="master">Master</span></h3><h4><span id="1global">1）global</span></h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方向</th>
+<th>名称</th>
+<th>位宽（留空则为1位）</th>
+<th>功能描述</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>input</td>
+<td>clock</td>
+<td></td>
+<td>时钟信号</td>
+<td></td>
+</tr>
+<tr>
+<td>input</td>
+<td>reset</td>
+<td></td>
+<td>复位信号</td>
+<td>高电平有效</td>
+</tr>
+<tr>
+<td>input</td>
+<td>io_interrupt</td>
+<td></td>
+<td>外部中断信号</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4><span id="2-aw">2） AW</span></h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方向</th>
+<th>名称</th>
+<th>位宽（留空则为1位）</th>
+<th>功能描述</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>input</td>
+<td>io_master_awready</td>
+<td></td>
+<td>AXI4写地址通道，master</td>
+<td></td>
+</tr>
+<tr>
+<td>output</td>
+<td>io_master_awvalid</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>output</td>
+<td>io_master_awaddr</td>
+<td>[31:0]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>output</td>
+<td>io_master_awid</td>
+<td>[3:0]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>output</td>
+<td>io_master_awlen</td>
+<td>[7:0]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>output</td>
+<td>io_master_awsize</td>
+<td>[2:0]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>output</td>
+<td>io_master_awburst</td>
+<td>[1:0]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4><span id="3w">3）W</span></h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方向</th>
+<th>名称</th>
+<th>位宽（留空则为1位）</th>
+<th>功能描述</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>input</td>
+<td>io_master_wready</td>
+<td></td>
+<td>AXI4写数据通道，master</td>
+<td></td>
+</tr>
+<tr>
+<td>output</td>
+<td>io_master_wvalid</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>output</td>
+<td>io_master_wdata</td>
+<td>[63:0]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>output</td>
+<td>io_master_wstrb</td>
+<td>[7:0]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>output</td>
+<td>io_master_wlast</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4><span id="4b">4）B</span></h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方向</th>
+<th>名称</th>
+<th>位宽（留空则为1位）</th>
+<th>功能描述</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>input</td>
+<td>io_master_arready</td>
+<td></td>
+<td>AXI4读地址通道，master</td>
+<td></td>
+</tr>
+<tr>
+<td>———</td>
+<td>————————-</td>
+<td>———</td>
+<td>———————————</td>
+<td>——</td>
+</tr>
+<tr>
+<td>output</td>
+<td>io_master_arvalid</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>output</td>
+<td>io_master_araddr</td>
+<td>[31:0]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>output</td>
+<td>io_master_arid</td>
+<td>[3:0]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>output</td>
+<td>io_master_arlen</td>
+<td>[7:0]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>output</td>
+<td>io_master_arsize</td>
+<td>[2:0]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>output</td>
+<td>io_master_arburst</td>
+<td>[1:0]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4><span id="5ar">5）AR</span></h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方向</th>
+<th>名称</th>
+<th>位宽（留空则为1位）</th>
+<th>功能描述</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>input</td>
+<td>io_master_arready</td>
+<td></td>
+<td>AXI4读地址通道，master</td>
+<td></td>
+</tr>
+<tr>
+<td>output</td>
+<td>io_master_arvalid</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>output</td>
+<td>io_master_araddr</td>
+<td>[31:0]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>output</td>
+<td>io_master_arid</td>
+<td>[3:0]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>output</td>
+<td>io_master_arlen</td>
+<td>[7:0]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>output</td>
+<td>io_master_arsize</td>
+<td>[2:0]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>output</td>
+<td>io_master_arburst</td>
+<td>[1:0]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4><span id="6r">6）R</span></h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方向</th>
+<th>名称</th>
+<th>位宽（留空则为1位）</th>
+<th>功能描述</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>output</td>
+<td>io_master_rready</td>
+<td></td>
+<td>AXI4读数据通道，master</td>
+<td></td>
+</tr>
+<tr>
+<td>input</td>
+<td>io_master_rvalid</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>input</td>
+<td>io_master_rresp</td>
+<td>[1:0]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>input</td>
+<td>io_master_rdata</td>
+<td>[63:0]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>input</td>
+<td>io_master_rlast</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>input</td>
+<td>io_master_rid</td>
+<td>[3:0]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2><span id="除法优化">除法优化</span></h2><figure class="highlight"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs">刘一鸣<br>三期100mhz <br>陈泱宇<br>76ns你是直接写的/吗？ <br>陈泱宇<br>直接写/的话差不多是这样 <br>陈泱宇<br>写个试商法就能100MHz了 <br>丁亚伟<br>谢谢！ <br></code></pre></div></td></tr></table></figure>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/cache/original_49583eb2b6e7357a705af18c7557af2a.png" srcset="/img/loading.gif" lazyload alt="img"><br>国科大-秦永盛<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/tianxieeryang/article/details/86687065">https://blog.csdn.net/tianxieeryang/article/details/86687065</a><br>国科大-秦永盛<br>这里有个dowhile0的解释</p>
+<h2><span id="flush-amp-counter">Flush &amp; Counter</span></h2><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/cache/image-20220729172326525.png" srcset="/img/loading.gif" lazyload alt="image-20220729172326525"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scal">val t_en = RegInit(false.B)<br>val (t1, t2) = Counter(t_en, 23)<br>when(curr_state === sLOOKUP)&#123;t_en:= true.B&#125;<br>dontTouch(t1)<br>dontTouch(t2)<br></code></pre></div></td></tr></table></figure>
+<h3><span id="sfence">sfence</span></h3><p>PA3提到的：<a target="_blank" rel="noopener" href="https://ysyx.oscc.cc/docs/ics-pa/3.1.html#%E6%9D%A5%E8%87%AA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%96%B0%E9%9C%80%E6%B1%82">链接</a></p>
+<p>以支持现代操作系统的RISC-V处理器为例, 它们存在M, S, U三个特权模式, 分别代表机器模式, 监管者模式和用户模式. M模式特权级最高, U模式特权级最低, 低特权级能访问的资源, 高特权级也能访问. 那CPU是怎么判断一个进程是否执行了无权限操作呢? 答案很简单, 只要在硬件上维护一个用于标识当前特权模式的寄存器(属于计算机状态的一部分), 然后在访问那些高特权级才能访问的资源时, 对当前特权模式进行检查. 例如RISC-V中有一条特权指令<code>sfence.vma</code>, 手册要求只有当处理器当前的特权模式不低于S模式才能执行, 因此我们可以在硬件上添加一些简单的逻辑来实现特权模式的检查:</p>
+<figure class="highlight ini"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs ini"><span class="hljs-attr">is_sfence_vma_ok</span> = (priv_mode == M_MODE) || (priv_mode == S_MODE)<span class="hljs-comment">;</span><br></code></pre></div></td></tr></table></figure>
+<p> <strong>特权模式的检查只不过时一些门电路而已. 如果检查不通过, 此次操作将会被判定为非法操作, CPU将会抛出异常信号, 并跳转到一个和操作系统约定好的内存位置, 交由操作系统进行后续</strong></p>
 
             </div>
             <hr>
@@ -359,6 +792,12 @@
                 <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/202207011659/IC/%E7%90%86%E8%AE%BA/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E7%8A%B6%E6%80%81%E6%9C%BA%E5%9F%BA%E7%A1%80/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">验证实战</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

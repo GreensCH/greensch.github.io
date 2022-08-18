@@ -27,8 +27,10 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yoursite.com/202206171658/%E5%B8%B8%E7%94%A8/linux/wslessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/WSL2%E5%AE%89%E8%A3%85vivado/WSL2%E5%AE%89%E8%A3%85vivado/image-20220617120917502.png">
 <meta property="og:image" content="http://yoursite.com/202206171658/%E5%B8%B8%E7%94%A8/linux/wslessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/WSL2%E5%AE%89%E8%A3%85vivado/WSL2%E5%AE%89%E8%A3%85vivado/image-20220618021042312.png">
+<meta property="og:image" content="http://yoursite.com/202206171658/%E5%B8%B8%E7%94%A8/linux/wslessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/WSL2%E5%AE%89%E8%A3%85vivado/WSL2%E5%AE%89%E8%A3%85vivado/img-16557886304512.webp">
+<meta property="og:image" content="http://yoursite.com/202206171658/%E5%B8%B8%E7%94%A8/linux/wslessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/WSL2%E5%AE%89%E8%A3%85vivado/WSL2%E5%AE%89%E8%A3%85vivado/img.webp">
 <meta property="article:published_time" content="2022-06-17T08:58:00.000Z">
-<meta property="article:modified_time" content="2022-06-18T08:25:07.525Z">
+<meta property="article:modified_time" content="2022-08-18T07:34:22.700Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="常用">
 <meta property="article:tag" content="命令">
@@ -267,7 +269,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      5.6k 字
+      7k 字
     </span>
   
 
@@ -276,7 +278,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      17 分钟
+      22 分钟
     </span>
   
 
@@ -433,6 +435,17 @@
 <figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> ~/.profile<br></code></pre></div></td></tr></table></figure>
 <p><strong>注意！：此时输入法的框位置不随光标移动，你需要找一下</strong></p>
 <p><strong>7）下载与安装vivado</strong></p>
+<p><strong>*注：如果你Ubuntu20.04安装Vivado19.2出现安装过程卡在generating installed device list一步的解决方法</strong></p>
+<ul>
+<li>ncurses库未安装<ul>
+<li>sudo apt install libncurses5</li>
+</ul>
+</li>
+<li>参考链接<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_48041198/article/details/107869204">https://blog.csdn.net/weixin_48041198/article/details/107869204</a></li>
+</ul>
+</li>
+</ul>
 <p><a target="_blank" rel="noopener" href="https://china.xilinx.com/support/download/index.html/content/xilinx/zh/downloadNav/vivado-design-tools/archive.html">https://china.xilinx.com/support/download/index.html/content/xilinx/zh/downloadNav/vivado-design-tools/archive.html</a></p>
 <h3><span id="其他问题">其他问题</span></h3><h4><span id="vivado启动错误">vivado启动错误</span></h4><p><img src="WSL2%E5%AE%89%E8%A3%85vivado/image-20220618021042312.png" srcset="/img/loading.gif" lazyload alt="image-20220618021042312"></p>
 <p><strong>解决方案：</strong></p>
@@ -452,6 +465,36 @@
 <p>具体步骤：创建<code>/etc/wsl.conf</code>，复制以下代码到文件中（高级设置中源码，这里直接拿过来，方便直接复制）</p>
 <figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">sudo vim /etc/wsl.conf<br></code></pre></div></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># Automatically mount Windows drive when the distribution is launched</span><br>[automount]<br><br><span class="hljs-comment"># Set to true will automount fixed drives (C:/ or D:/) with DrvFs under the root directory set above. Set to false means drives won&#x27;t be mounted automatically, but need to be mounted manually or with fstab.</span><br>enabled = <span class="hljs-literal">true</span><br><br><span class="hljs-comment"># Sets the directory where fixed drives will be automatically mounted. This example changes the mount location, so your C-drive would be /c, rather than the default /mnt/c. </span><br>root = /<br><br><span class="hljs-comment"># DrvFs-specific options can be specified.  </span><br>options = <span class="hljs-string">&quot;metadata,uid=1003,gid=1003,umask=077,fmask=11,case=off&quot;</span><br><br><span class="hljs-comment"># Sets the `/etc/fstab` file to be processed when a WSL distribution is launched.</span><br>mountFsTab = <span class="hljs-literal">true</span><br><br><span class="hljs-comment"># Network host settings that enable the DNS server used by WSL 2. This example changes the hostname, sets generateHosts to false, preventing WSL from the default behavior of auto-generating /etc/hosts, and sets generateResolvConf to false, preventing WSL from auto-generating /etc/resolv.conf, so that you can create your own (ie. nameserver 1.1.1.1).</span><br>[network]<br>hostname = DemoHost<br>generateHosts = <span class="hljs-literal">false</span><br>generateResolvConf = <span class="hljs-literal">false</span><br><br><span class="hljs-comment"># Set whether WSL supports interop process like launching Windows apps and adding path variables. Setting these to false will block the launch of Windows processes and block adding $PATH environment variables.</span><br>[interop]<br>enabled = <span class="hljs-literal">false</span><br>appendWindowsPath = <span class="hljs-literal">false</span><br><br><span class="hljs-comment"># Set the user when launching a distribution with WSL.</span><br>[user]<br>default = DemoUser<br><br><span class="hljs-comment"># Set a command to run when a new WSL instance launches. This example starts the Docker container service.</span><br>[boot]<br><span class="hljs-built_in">command</span> = service docker start<br><br><span class="hljs-comment"># 我自己加的，便于直接跳转到~</span><br><span class="hljs-built_in">cd</span> ~<br></code></pre></div></td></tr></table></figure>
+<h4><span id="清理wsl2的磁盘占用">清理WSL2的磁盘占用</span></h4><p>原文链接：<a target="_blank" rel="noopener" href="https://www.likecs.com/show-205179734.html">https://www.likecs.com/show-205179734.html</a></p>
+<p>因为 WSL2 使用了虚拟磁盘，意味着它可能只有 15GB 的数据，但是虚拟磁盘占用了 100GB 的空间。如果你往 WSL2 中放了大量的数据，然后就删掉，会发现WSL2的磁盘占用没有降下来，这就是虚拟磁盘造成的。</p>
+<p>我找了一些方法来去压缩 WSL2 的虚拟磁盘，发现了一个对我有效的方法，希望它对你来说也同样适用。</p>
+<p><strong>准备工作</strong></p>
+<p>在压缩虚拟磁盘前，需要将 WSL2 先关闭。</p>
+<p>可以先使用命令行来检查它的状态：</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">wsl.exe --list --verbose<br></code></pre></div></td></tr></table></figure>
+<p>如果没有关闭（状态是 <code>Running</code> ），再用命令行去关闭它：</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">wsl.exe --terminate <br></code></pre></div></td></tr></table></figure>
+<p>虽然这个方法对我来说有效，但你的环境可能跟我不同，这样做可能会导致你的数据发生损坏，<u>建议你先备份一下WSL2的数据</u></p>
+<p><strong>使用 <code>diskpart</code> 来压缩WSL2的虚拟磁盘</strong></p>
+<p>我发现可以使用 <code>diskpart</code> 工具来压缩WSL2的虚拟磁盘，它会根据WSL2中数据的大小来重新申请磁盘空间。</p>
+<p>在命令行启动 <code>diskpart</code> 工具：</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">diskpart<br></code></pre></div></td></tr></table></figure>
+<p>它会自己打开一个新的窗口</p>
+<p><img src="WSL2%E5%AE%89%E8%A3%85vivado/img-16557886304512.webp" srcset="/img/loading.gif" lazyload alt="diskpart"></p>
+<p>接下来需要确定虚拟磁盘文件的位置</p>
+<p>WSL2的虚拟磁盘文件在<code>C:\Users\&#123;user&#125;\AppData\Local\Packages\</code>下面，不同的WSL2发行版对应的名称不同，例如 <strong>Pengwin</strong> 是 <code>WhitewaterFoundryLtd.Co</code>，<strong>Ubuntu</strong> 是 <code>CanonicalGroupLimited</code>，<strong>Debian</strong> 是<br><code>TheDebianProject</code> 。找到了你的 WSL2 的文件夹，就能在它下面找到 <code>LocalState\ext4.vhdx</code> 这个磁盘文件。</p>
+<p>例如，我的磁盘文件是 <code>C:\Users\ontheroad\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu20.04onWindows_79rhkp1fndgsc\LocalState\ext4.vhdx</code>。</p>
+<p>用 <code>diskpart</code> 选择这个文件：</p>
+<figure class="highlight mel"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mel"><span class="hljs-keyword">select</span> vdisk <span class="hljs-keyword">file</span>=<span class="hljs-string">&quot;&#123;vhdx文件名&#125;&quot;</span><br></code></pre></div></td></tr></table></figure>
+<p>再执行压缩命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">compact vdisk<br></code></pre></div></td></tr></table></figure>
+<p>压缩过程需要几分钟</p>
+<p><img src="WSL2%E5%AE%89%E8%A3%85vivado/img.webp" srcset="/img/loading.gif" lazyload alt="压缩磁盘文件"></p>
+<p>压缩完成后可以关掉 <code>diskpart</code> 窗口，整个过程也完成了。可以再看看文件管理器中的磁盘使用，应该减少了很多</p>
+<h4><span id="利用wsl-exportimport备份还原linux子系统">利用wsl export/import备份还原linux子系统</span></h4><p><a target="_blank" rel="noopener" href="http://www.xfy-learning.com/2020/05/30/WSL%E5%A4%87%E4%BB%BD%E4%B8%8E%E8%BF%98%E5%8E%9F/">http://www.xfy-learning.com/2020/05/30/WSL%E5%A4%87%E4%BB%BD%E4%B8%8E%E8%BF%98%E5%8E%9F/</a></p>
+<hr>
+<p>命令总结：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs powershell">wsl -<span class="hljs-literal">-shutdown</span><br>diskpart<br><span class="hljs-comment"># open window Diskpart</span><br><span class="hljs-built_in">select</span> vdisk file=<span class="hljs-string">&quot;C:\WSL-Distros\…\ext4.vhdx&quot;</span><br>attach vdisk readonly<br>compact vdisk<br>detach vdisk<br><span class="hljs-keyword">exit</span><br></code></pre></div></td></tr></table></figure>
 
             </div>
             <hr>

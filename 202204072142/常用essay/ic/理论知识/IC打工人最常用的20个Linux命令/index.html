@@ -29,8 +29,13 @@
 <meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011901537.png">
 <meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011901538.png">
 <meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011901539.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/c255efc595ee41c15ca5bce08d88912ca4ca9bd5-166056827141548.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/906dbbcadce89048f27e6744130e5f20427192d5-166056829203052.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220815212004889-16605696058741.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220815211827567.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220815211849200.png">
 <meta property="article:published_time" content="2022-04-07T13:42:00.000Z">
-<meta property="article:modified_time" content="2022-06-18T14:59:52.325Z">
+<meta property="article:modified_time" content="2022-08-18T07:54:50.775Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="常用">
 <meta property="article:tag" content="命令">
@@ -268,7 +273,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      4.5k 字
+      5k 字
     </span>
   
 
@@ -277,7 +282,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      14 分钟
+      15 分钟
     </span>
   
 
@@ -314,26 +319,16 @@
 </ol>
 <p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011901536.png" srcset="/img/loading.gif" lazyload alt></p>
 <ol>
-<li><p>cd（change directory）：切换工作目录，可用相对路径，也可用绝对路径。<br>常用参数：<br>cd /usr/bin<br>cd ~<br>cd ./path（./可以省略不写）<br>cd ../path<br>“~”表示为 home 目录 的意思， “.”表示目前所在的目录， “..”表示目前目录位置的上一层目录。</p>
-</li>
-<li><p><strong>pwd</strong>（print work directory）：显示当前工作目录，获取当前所在目录的绝对路径名称。</p>
-</li>
-<li><p><strong>rm</strong>（remove）：删除文件或目录。<br>常用参数：<br>-i：删除前询问确认是否删除<br>-v：详细：显示删除文件速度<br>-r：递归删除，目录下的文件也全部删除<br>-f：force，忽略警告、不存在的文件，强制删除<br><strong>rm -rf</strong> 一定要小心使用！！！删除容易找回难啊！血泪教训！ </p>
-</li>
-<li><p><strong>mv</strong>（move file）：用于文件或目录的改名和移动存放位置。<br>常用参数：<br>-f：文件同名，不会询问，直接覆盖旧文件。<br>-i：目录或文件同名，则会先询问是否覆盖旧文件，输入 y 表示直接覆盖，输入 n 表示取消该操作。<br>-b：目标文件或目录存在时，在执行覆盖前，会为其创建一个备份。<br>-u：当源文件比目标文件新或者目标文件不存在时，才执行移动操作。</p>
-</li>
-<li><p><strong>mkdir</strong>（make directory）：创建目录。</p>
-</li>
-<li><p><strong>cp</strong>（copy file）：复制文件或目录。<br>常用参数：<br>-r：递归复制，用于目录的复制<br>-f：覆盖已经存在的目标文件并且不提示<br>-a：将文件的特性一起复制 </p>
-</li>
-<li><p><strong>which</strong>：查看某个系统命令是否存在，以及执行的到底是哪一个位置的命令。</p>
-</li>
-<li><p><strong>find</strong>：在指定的目录下查找文件名称。功能非常强大，参数比较多，<strong>重点掌握</strong>。<br>find [目录列表] [匹配标准]<br>常用命令：<br><strong>find ./ -name “*.v”</strong>：当前目录及其子目录下所有后缀为.v的文件列出来<br>!-name：名字不等于<br>-print：在目录里打印出来<br>-size：大小为xxxc（c代表char）<br><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011901537.png" srcset="/img/loading.gif" lazyload alt></p>
-</li>
-<li><p><strong>grep</strong>：用于查找文件内容，即文件里符合条件的字符串。搜索关键词，查找定义文件，查找error，<strong>重点掌握</strong><br>grep &lt;选项&gt; [匹配字符串] [文件列表]<br>常用命令：<br><strong>grep -ri “error”</strong>：r当前目录查找error，i忽略大小写<br>-v ：反向查找，打印出不符合条件行的内容<br>-r：递归查找<br>-i：不区分大小写</p>
-</li>
-<li><p><strong>chmod</strong>（change mode）：控制用户对文件权限。一种是字母和操作符表达式的文字设定法；另一种是数字设定法。<br><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011901538.png" srcset="/img/loading.gif" lazyload alt></p>
-</li>
+<li>cd（change directory）：切换工作目录，可用相对路径，也可用绝对路径。<br>常用参数：<br>cd /usr/bin<br>cd ~<br>cd ./path（./可以省略不写）<br>cd ../path<br>“~”表示为 home 目录 的意思， “.”表示目前所在的目录， “..”表示目前目录位置的上一层目录。</li>
+<li><strong>pwd</strong>（print work directory）：显示当前工作目录，获取当前所在目录的绝对路径名称。</li>
+<li><strong>rm</strong>（remove）：删除文件或目录。<br>常用参数：<br>-i：删除前询问确认是否删除<br>-v：详细：显示删除文件速度<br>-r：递归删除，目录下的文件也全部删除<br>-f：force，忽略警告、不存在的文件，强制删除<br><strong>rm -rf</strong> 一定要小心使用！！！删除容易找回难啊！血泪教训！ </li>
+<li><strong>mv</strong>（move file）：用于文件或目录的改名和移动存放位置。<br>常用参数：<br>-f：文件同名，不会询问，直接覆盖旧文件。<br>-i：目录或文件同名，则会先询问是否覆盖旧文件，输入 y 表示直接覆盖，输入 n 表示取消该操作。<br>-b：目标文件或目录存在时，在执行覆盖前，会为其创建一个备份。<br>-u：当源文件比目标文件新或者目标文件不存在时，才执行移动操作。</li>
+<li><strong>mkdir</strong>（make directory）：创建目录<br>-p 递归创建</li>
+<li><strong>cp</strong>（copy file）：复制文件或目录。<br>常用参数：<br>-r：递归复制，用于目录的复制<br>-f：覆盖已经存在的目标文件并且不提示<br>-a：将文件的特性一起复制 </li>
+<li><strong>which</strong>：查看某个系统命令是否存在，以及执行的到底是哪一个位置的命令。</li>
+<li><strong>find</strong>：在指定的目录下查找文件名称。功能非常强大，参数比较多，<strong>重点掌握</strong>。<br>find [目录列表] [匹配标准]<br>常用命令：<br><strong>find ./ -name “*.v”</strong>：当前目录及其子目录下所有后缀为.v的文件列出来<br>!-name：名字不等于<br>-print：在目录里打印出来<br>-size：大小为xxxc（c代表char）<br><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011901537.png" srcset="/img/loading.gif" lazyload alt></li>
+<li><strong>grep</strong>：用于查找文件内容，即文件里符合条件的字符串。搜索关键词，查找定义文件，查找error，<strong>重点掌握</strong><br>grep &lt;选项&gt; [匹配字符串] [文件列表]<br>常用命令：<br><strong>grep -ri “error”</strong>：r当前目录查找error，i忽略大小写<br>-v ：反向查找，打印出不符合条件行的内容<br>-r：递归查找<br>-i：不区分大小写</li>
+<li><strong>chmod</strong>（change mode）：控制用户对文件权限。一种是字母和操作符表达式的文字设定法；另一种是数字设定法。<br><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011901538.png" srcset="/img/loading.gif" lazyload alt></li>
 </ol>
 <ol>
 <li><p><strong>tar</strong>（tape archive ）：备份压缩解压文件。www.cnblogs.com/lhm166/articles/6604852.html<br>常用实例：<br>tar -cvf &lt;目标待压缩文件&gt; &lt;源文件&gt;<br>tar -cf all.tar *.jpg #将所有.jpg文件打包成为一个名为all.tar的包文件<br>常用参数：<br>-c：建立压缩档案<br>-x：解压<br>-t：查看内容<br>-r：向压缩归档文件末尾追加文件<br>-u：更新原压缩包中的文件<br>-f：使用档案名字 </p>
@@ -404,8 +399,12 @@
 <li>ctrl+h显示隐藏文件</li>
 </ul>
 </li>
-<li><code>&lt; 命令 &gt; &amp;</code>：后台运行该命令</li>
+<li><p><code>&lt; 命令 &gt; &amp;</code>：后台运行该命令</p>
+</li>
+<li><p>查看ubuntu版本与名称</p>
+</li>
 </ol>
+<figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css">lsb_release -<span class="hljs-selector-tag">a</span><br></code></pre></div></td></tr></table></figure>
 <h2><span id="其他解决方案">其他解决方案</span></h2><h3><span id="find-指令的使用">find 指令的使用</span></h3><ol>
 <li>找到大于10M的文件基础版：</li>
 </ol>
@@ -420,7 +419,14 @@
 <li>寻找文件夹</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">find . -<span class="hljs-built_in">type</span> d -name FL<br></code></pre></div></td></tr></table></figure>
-<p>主要就是这个 -type 参数。</p>
+<p>主要就是这个 -type 参数</p>
+<ol>
+<li>生成filelist.f</li>
+</ol>
+<figure class="highlight routeros"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs routeros"><span class="hljs-builtin-name">find</span> -name <span class="hljs-string">&quot;*.v&quot;</span> &gt; filelist.f<br></code></pre></div></td></tr></table></figure>
+<p>会将当前目录下及子目录中所有.v的文件及路径写到文件filelist.f中</p>
+<figure class="highlight dos"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs dos"><span class="hljs-built_in">find</span> <span class="hljs-built_in">dir</span> -name “*.v” &gt; filelist.f<br></code></pre></div></td></tr></table></figure>
+<p>会将dir中的所有.v的文件都写到filelist.f中</p>
 <h3><span id="统计代码行数find-grep-wc">统计代码行数(find + grep + wc)</span></h3><p>第一个例子是统计一个目录中(包含子目录)中的代码行数. 如果想知道当前目录下究竟有多少行的代码, 就可以在命令行中键入如下命令:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs text">find . | grep &#x27;\.c$\|\.h$&#x27; | xargs wc -l<br></code></pre></div></td></tr></table></figure>
 <blockquote>
@@ -449,6 +455,28 @@
 </ul>
 <h3><span id="chmod">chmod</span></h3><figure class="highlight apache"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">chmod</span> -R <span class="hljs-number">777</span> &lt;FILENAME&gt;<br><span class="hljs-attribute">chmod</span> -R <span class="hljs-number">777</span> *<br></code></pre></div></td></tr></table></figure>
 <p>有关777的含义与权限，可参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/lh2008xp/article/details/121408309">https://blog.csdn.net/lh2008xp/article/details/121408309</a></p>
+<h3><span id="查看端口与杀死进程">查看端口与杀死进程</span></h3><p>netstat -a命令可以查看已经连接的服务端口</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/c255efc595ee41c15ca5bce08d88912ca4ca9bd5-166056827141548.jpg" srcset="/img/loading.gif" lazyload alt="ubuntu 查看端口使用情况方法"></p>
+<p>netstat -ap命令可以查看所有的服务端口</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/906dbbcadce89048f27e6744130e5f20427192d5-166056829203052.jpg" srcset="/img/loading.gif" lazyload alt="ubuntu 查看端口使用情况方法"></p>
+<p>结合grep命令可以查看指定端口，例如netstat -ap | grep ssh</p>
+<p>也可以使用lsof命令</p>
+<p>若要关闭使用这个端口的程序，使用kill + 对应的pid</p>
+<p><strong>总结</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">lsof | grep 端口号<br><span class="hljs-built_in">kill</span> pid号<br></code></pre></div></td></tr></table></figure>
+<h3><span id="vscode-浏览-markdown时一直亮色">vscode 浏览 markdown时一直亮色</span></h3><p>解决办法：</p>
+<p>第一步，开启dark</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220815212004889-16605696058741.png" srcset="/img/loading.gif" lazyload alt="image-20220815212004889"></p>
+<p>第二步，选择一个适合的主题</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220815211827567.png" srcset="/img/loading.gif" lazyload alt="image-20220815211827567"></p>
+<blockquote>
+<p>其他选项</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220815211849200.png" srcset="/img/loading.gif" lazyload alt="image-20220815211849200"></p>
+<p><strong>注意，如果配置不成功，记得切换到设置的工作区</strong></p>
+</blockquote>
+<h2><span id="推荐工具">推荐工具</span></h2><ol>
+<li>baobab 磁盘分析工具</li>
+</ol>
 
             </div>
             <hr>

@@ -1,0 +1,3810 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/con1.png">
+  <link rel="icon" href="/img/con1.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="“无论最终结果将人类历史导向何处，我们决定选择希望”">
+  <meta name="author" content="友人律 | Guilin Chang">
+  <meta name="keywords" content="三差学生、不学无术">
+  <meta name="description" content="本文参考分析整理总结了AMBA AXI and ACE Protocol Specification文档的AXI总线协议规范部分，错误之处欢迎指出 1: Introduction1.1 About the AXI protocolAMBA AXI协议支持高性能高频的系统设计，该协议拥有以下优点：  适合高带宽和低延迟的设计 不需要复杂的桥即可提供高频操作 可以满足多种组件的接口需求 适合高初始访问">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EDA入门">
+<meta property="og:url" content="http://yoursite.com/202207121659/IC/%E6%80%BB%E7%BA%BF/AXIessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/AXI4%E4%B8%AD%E6%96%87%E7%BF%BB%E8%AF%91/index.html">
+<meta property="og:site_name" content="友人律的博客">
+<meta property="og:description" content="本文参考分析整理总结了AMBA AXI and ACE Protocol Specification文档的AXI总线协议规范部分，错误之处欢迎指出 1: Introduction1.1 About the AXI protocolAMBA AXI协议支持高性能高频的系统设计，该协议拥有以下优点：  适合高带宽和低延迟的设计 不需要复杂的桥即可提供高频操作 可以满足多种组件的接口需求 适合高初始访问">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/v2-fc3a5e30635b9b15283cd7d45358bed6_720w.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/v2-dd9a68e28f125959a0305918f9796d79_720w.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220627164755032.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/v2-03ec608f75d259e1d84f5c0d52f42e21_720w.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/v2-4f789a7a6272fd092ee9af27fe8353f7_720w.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/v2-cabd75b3a7992649bc8d862bd94c14c3_720w.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/v2-ed6fcd7111d11d563cf8682a7db447eb_720w.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/v2-5621834dd1a77596a070b3fec6b741ad_720w.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/v2-766d5e85e554291961294abde9003beb_720w.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/v2-3e82b6d26d5061f551fd4aaf34e35a6b_720w.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220628211446662.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220628211641246.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220628212737595.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220628224021067.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220628224007875.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220630024745953.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/v2-285c6ba96a08e27047606bf0af6efdb1_720w.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/v2-f1d20ac7429fd5061708c59aa034eb57_720w.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/v2-6e713205e3a16b1f21048d245f3589e8_720w.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/v2-b915b5008e6c717d11673b0f8752afb8_720w.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/v2-cf783a9899d0944e3f67474a856186d8_720w.jpg">
+<meta property="article:published_time" content="2022-07-12T08:59:19.000Z">
+<meta property="article:modified_time" content="2022-08-18T07:35:39.493Z">
+<meta property="article:author" content="友人律 | Guilin Chang">
+<meta property="article:tag" content="IC">
+<meta property="article:tag" content="总线">
+<meta property="article:tag" content="AXI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/v2-fc3a5e30635b9b15283cd7d45358bed6_720w.jpg">
+  
+  <title>EDA入门 - 友人律的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/stackoverflow-dark.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"eca4a4d34dadf0d4e282cc6ef2dc3de6","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body><!-- hexo injector body_begin start -->
+<link defer rel="stylesheet" href="/css/article_para.css" />
+<div id="web_bg"></div><!-- hexo injector body_begin end -->
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>友人律的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E9%80%9A%E7%9F%A5/">
+                <i class="iconfont icon-link-fill"></i>
+                通知
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1/">
+                <i class="iconfont icon-link-fill"></i>
+                项目与设计
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">
+                <i class="iconfont icon-link-fill"></i>
+                开发工具
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/CS/">
+                <i class="iconfont icon-link-fill"></i>
+                CS
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/IC/">
+                <i class="iconfont icon-link-fill"></i>
+                IC
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/banner_img/anime/93302401_p0.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="EDA入门">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-07-12 16:59" pubdate>
+        2022年7月12日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      47k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      148 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">EDA入门</h1>
+            
+            <div class="markdown-body">
+              <p><strong>本文参考分析整理总结了AMBA AXI and ACE Protocol Specification文档的AXI总线协议规范部分，错误之处欢迎指出</strong></p>
+<h2><span id="1-introduction">1: Introduction</span></h2><h3><span id="11-about-the-axi-protocol">1.1 About the AXI protocol</span></h3><p>AMBA AXI协议支持高性能高频的系统设计，该协议拥有以下优点：</p>
+<ul>
+<li>适合高带宽和低延迟的设计</li>
+<li><strong>不需要复杂的桥</strong>即可提供高频操作</li>
+<li>可以满足多种组件的接口需求</li>
+<li>适合高初始访问延迟的存储器控制器</li>
+<li>提供互联架构实现的灵活性</li>
+<li><strong>向后兼容AHB与APB接口</strong></li>
+</ul>
+<p><strong>同时，该协议还拥有以下特点：</strong></p>
+<ul>
+<li>分离的地址/控制和数据阶段</li>
+<li>通过使用字节选通信号的方式支持<strong>非对齐数据传输</strong></li>
+<li>使用突<strong>发传输时只需要传输起始地址</strong>v</li>
+<li><strong>允许地址信息提前于实际数据传输发送</strong></li>
+<li><strong>分离的读写数据通道</strong>，这可以提供低损耗的DMA</li>
+<li><strong>支持发出多个未完成的地址</strong></li>
+<li><strong>支持乱序传输完成</strong></li>
+<li><strong>允许简单添加寄存器阶段以提供时序收敛</strong></li>
+</ul>
+<p>AXI协议同时包含了低功耗操作所需的信号扩展，也包含了AXI4-Lite协议，该协议是AXI4的子集，有着更简单的控制寄存器接口和组件</p>
+<h3><span id="12-axi架构">1.2 AXI架构</span></h3><p>AXI协议基于突发传输，定义了下列5个独立事务（一个事务可能包含多次传输）通道：</p>
+<ul>
+<li>Read address，以<strong>AR</strong>做信号前缀</li>
+<li>Read data，以<strong>R</strong>做信号前缀</li>
+<li>Write address，以<strong>AW</strong>做信号前缀</li>
+<li>Write data，以<strong>W</strong>做信号前缀</li>
+<li>Write response，以<strong>B</strong>做信号前缀</li>
+</ul>
+<p><strong>地址通道</strong>携带控制信息，数据在主设备和从设备间通过以下方式传输：</p>
+<ol>
+<li><p>写数据通道，从主设备传输数据到从设备</p>
+<ul>
+<li>在写传输时，从设备使用写响应通道通知主设备传输完成</li>
+</ul>
+</li>
+<li><p>读数据通道，从从设备传输数据到主设备</p>
+</li>
+</ol>
+<p>一个使用aw, w, b channel的write transaction如下图所示：</p>
+<p><strong>读写事务Timing diagrams</strong></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/v2-fc3a5e30635b9b15283cd7d45358bed6_720w.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>一个使用ar, r channel读数据的过程如下图所示：</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/v2-dd9a68e28f125959a0305918f9796d79_720w.jpg" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="121-通道定义channel">1.2.1 通道定义(channel)</span></h4><ul>
+<li>五个独立通道都具有双向握手机制的valid和ready</li>
+<li>VALID信号表示通道的地址、数据或控制信息已经可用</li>
+<li>READY信号则表示接收方已准备好接收信息</li>
+<li>w,r channel还拥有<strong>LAST</strong>信号，该信号用于指示当前传输是否为当前事务中的最后一次传输</li>
+</ul>
+<p><strong>AW, AR 读地址与写地址通道</strong>，读事务与写事务都拥有其自己的地址通道，对应的地址通道会携带一次事务所需的全部地址和控制信息</p>
+<p><strong>R 读数据通道</strong>，读数据通道携带从设备传送给主设备的数据和响应信息，该通道包括两部分：</p>
+<ul>
+<li>位宽可为8、16、32、64、128、256、512、1024bit的数据总线 data bus</li>
+<li>表示读事务完成状态的读响应信号 response</li>
+</ul>
+<p><strong>W 写数据通道</strong>，写数据通道携带主设备传送给从设备的数据，该通道包括两部分：</p>
+<ul>
+<li>位宽可为8、16、32、64、128、256、512、1024bit的数据总线data bus</li>
+<li>为每一个8bit数据准备的字节选通信号，用于指示数据的哪几个字节是有效的 strobe</li>
+<li><strong>写数据通道的内容被视为带buffer</strong>，因此主设备可以在未收到前一次写事务的从设备响应消息时<strong>再次执行写操作</strong></li>
+</ul>
+<p><strong>B 写响应通道</strong>，从设备使用写响应通道回应写事务，<strong>全部的写事务都需要写响应通道的完成信号</strong>，并且完成信号<strong>仅在一个写事务彻底完成时才产</strong>生，而并不会在每次数据传输时都产生</p>
+<h4><span id="122-axi互联结构interface-and-interconnect">1.2.2 AXI互联结构(Interface and interconnect)</span></h4><p>典型的系统有多个manager和subordinate组成，这些设备通过某种Interconnect互联在一起：</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220627164755032.png" srcset="/img/loading.gif" lazyload alt="image-20220627164755032"></p>
+<p>AXI协议为以下接口提供了单一的接口定义：</p>
+<ul>
+<li>一个主设备(Manager)和一个互联器(Interconnect)之间</li>
+<li>一个从设备(Subordinate)和一个互联器(Interconnect)之间</li>
+<li>一个主设备(Manager)和一个从设备(Subordinate)之间</li>
+</ul>
+<p>该接口定义支持不同的互联器实现</p>
+<blockquote>
+<p><strong>NOTE</strong></p>
+<p>一个与不同devices连接的Interconnect等价于，一个同时具有Manager和Subordinate端口并可以与真正devices连接的device</p>
+</blockquote>
+<p>三种经典系统<strong>拓扑结构</strong>：</p>
+<ul>
+<li><p>共享(Shared)的地址数据总线(address and data buses)</p>
+<ul>
+<li>总结：就一条*地址数据总线</li>
+</ul>
+</li>
+<li><p>共享(Shared)的地址总线(address buses)、多条数据总线(multiple data buses)</p>
+<ul>
+<li>总结：一条*地址总线，多条数据总线</li>
+</ul>
+</li>
+<li><p>多层，具有多条地址数据总线(Multilayer, multiple address and data buses)</p>
+<ul>
+<li>总结：多条地址数据总线，各发各的</li>
+</ul>
+</li>
+</ul>
+<p>在大多数的系统中，地址通道带宽需求远小于数据通道带宽需求。使用共享地址总线、多条数据总线（第二种）结构，实现并行数据传输时，可以在系统效率和互联复杂性间取得平衡</p>
+<h4><span id="123-在axi中使用寄存器register-slices">1.2.3 在AXI中使用寄存器(Register slices)</span></h4><p>每一个AXI Channel都是<strong>单向的</strong>，通道间彼此独立</p>
+<ul>
+<li>这意味着寄存器可以插入到任何通道的任何位置，不过这会带来额外的延迟(Latency)</li>
+</ul>
+<blockquote>
+<p><strong>NOTE</strong></p>
+<p>以下两点是可能的：</p>
+<ul>
+<li>在延迟和最大操作频率之间取得trade-off</li>
+<li>processor和high-performaance memory之间建立直接、快速的连接，使用register slices来isolate一个less performance关键外设</li>
+</ul>
+</blockquote>
+<h3><span id="13-axi术语terminology">1.3 AXI术语(Terminology)</span></h3><h4><span id="131-axi组件与拓扑">1.3.1 AXI组件与拓扑</span></h4><p>下列术语描述了AXI组件：</p>
+<ul>
+<li>组件（Component）</li>
+<li>主组件（Mangaer component）</li>
+<li>从组件（Subordinate component），从组件包含存储器子组件(Memory Subordinate components)和外设子组件(Peripheral Subordinate components)</li>
+<li>互联组件(Interconnect components)</li>
+</ul>
+<p>对于特定的AXI事务中，上游(Upstream)与下游(Downstream)指代AXI拓扑中AXI组件的相对位置</p>
+<h4><span id="132-axi事务transactions与存储器类型memory-types">1.3.2 AXI事务(transactions)与存储器类型(memory types)</span></h4><p>当<strong>AXI主设备初始化</strong>一个AXI操作时，且目标是AXI从设备：</p>
+<ul>
+<li>AXI总线上所需的一整套操作构成了AXI Transaction</li>
+<li>任何所需的有效负载数据(payload data)都将作为AXI Brust</li>
+<li>Brust可包括多个数据传输(multiple data transfers)或AXI Beats</li>
+</ul>
+<ul>
+<li>The complete set of required operations on the AXI bus form the AXI Transaction(Transaction)</li>
+<li>Any required payload data is transferred as an AXI Burst(Burst)</li>
+<li>A burst can comprise multiple data transfers, or AXI Beats(Beat)</li>
+</ul>
+<h4><span id="133-caches-和-cache-operation">1.3.3 Caches 和 cache operation</span></h4><p>本规范未定义标准cache术语，cache属于是在具体工作中定义的。不过本规范的cache和cache line中仍然提到了cache术语在本文档中的使用方式</p>
+<h4><span id="134-暂态temporal-description">1.3.4 暂态(Temporal description)</span></h4><p>协议无法定义必须发生事件的绝对时间。然而，在一个足够空闲的系统中，它将取得进展并完成，而无需任何明确的操作</p>
+<h2><span id="2-axi信号描述">2: AXI信号描述</span></h2><p>本章介绍AXI接口信号。大多数信号都是协议的AXI3和AXI4实现所需的，相关总结表格会提示这两种类型的区别。本章包括以下部分：</p>
+<ul>
+<li>Global singals</li>
+<li>Write address channel signals</li>
+<li>Write data channel singals</li>
+<li>Wrtie response channel signals</li>
+<li>Read address channel signals</li>
+<li>Read data channel signals</li>
+</ul>
+<h3><span id="21-全局信号">2.1 全局信号</span></h3><p>下列信号被用于AXI3和AXI4</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>信号名</th>
+<th>来源</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ACLK</td>
+<td>时钟源</td>
+<td>全局时钟信号</td>
+</tr>
+<tr>
+<td>ARESETn</td>
+<td>复位源</td>
+<td>全局复位信号，低有效</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>所有信号都在公共时钟的上升沿被采样。</strong></p>
+<h3><span id="22-write-address-channel-signals-写地址信号">2.2 Write address channel signals 写地址信号</span></h3><p>AXI写入地址通道信号。除非说明中另有说明，否则是AXI3和AXI4都支持的信号</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>信号名</th>
+<th>来源</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AWID</td>
+<td>主设备</td>
+<td>写地址ID，该信号用于写地址事务(Identification <strong>tag</strong> for a write transaction. )</td>
+</tr>
+<tr>
+<td>AWADDR</td>
+<td>主设备</td>
+<td>写地址，写突发操作中第一次数据传输的地址</td>
+</tr>
+<tr>
+<td>AWLEN</td>
+<td>主设备</td>
+<td>突发长度，写突发事务中的数据<strong>传输的确切次数</strong>，决定与地址有关的传输的次数<br>AXI4与AXI3有变化</td>
+</tr>
+<tr>
+<td>AWSIZE</td>
+<td>主设备</td>
+<td>突发大小，这个字段此次写突发事务中的<strong>每次传输的大小</strong></td>
+</tr>
+<tr>
+<td>AWBURST</td>
+<td>主设备</td>
+<td>突发类型，包括突发类型和突发大小信息，该字段决定了<strong>每次突发传输时地址的计算方法</strong></td>
+</tr>
+<tr>
+<td>AWLOCK</td>
+<td>主设备</td>
+<td>锁定类型，提供关于传输时原子特性的额外信息<br>AXI4与AXI3有变化</td>
+</tr>
+<tr>
+<td>AWCACHE</td>
+<td>主设备</td>
+<td>存储器类型，指示如何要求写入事务在系统中进行</td>
+</tr>
+<tr>
+<td>AWPROT</td>
+<td>主设备</td>
+<td>写突发事务的保护类型，包括： privilege, security level, and access type三种信息</td>
+</tr>
+<tr>
+<td>AWQOS</td>
+<td>主设备</td>
+<td>服务质量，即每次写传输的QoS标识符<br>仅AXI4支持</td>
+</tr>
+<tr>
+<td>AWREGION</td>
+<td>主设备</td>
+<td>区域标识符，允许一个从设备的单个物理接口用作多个逻辑接口<br>仅AXI4支持</td>
+</tr>
+<tr>
+<td>AWUSER*</td>
+<td>主设备</td>
+<td>用户定义信号，可选<br>仅AXI4支持</td>
+</tr>
+<tr>
+<td>AWVALID</td>
+<td>主设备</td>
+<td>主设备给出的地址和相关控制信号有效</td>
+</tr>
+<tr>
+<td>AWREADY</td>
+<td><em>从设备</em></td>
+<td>从设备已准备好接收地址和相关的控制信号</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3><span id="23-write-data-channel-signals-写数据信号">2.3 Write data channel signals 写数据信号</span></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>信号名</th>
+<th>来源</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WID</td>
+<td>主设备</td>
+<td>写数据ID，该信号用于标识写数据传输<br>仅AXI3支持</td>
+</tr>
+<tr>
+<td>WDATA</td>
+<td>主设备</td>
+<td>写出的数据</td>
+</tr>
+<tr>
+<td>WSTRB</td>
+<td>主设备</td>
+<td>数据的字节选通，指示那些字节通道保存有效数据，数据中1byte对应这里的1bit</td>
+</tr>
+<tr>
+<td>WLAST</td>
+<td>主设备</td>
+<td>该信号用于标识当前传输是否为写突发事务中的最后一次传输</td>
+</tr>
+<tr>
+<td>WUSER*</td>
+<td>主设备</td>
+<td>用户定义信号，可选<br>仅AXI4支持</td>
+</tr>
+<tr>
+<td>WVALID</td>
+<td>主设备</td>
+<td>主设备给出的数据和字节选通信号有效</td>
+</tr>
+<tr>
+<td>WREADY</td>
+<td><em>从设备</em></td>
+<td>从设备已准备好接收数据选通信号</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3><span id="24-write-response-channel-signals-写响应信号">2.4 Write response channel signals 写响应信号</span></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>信号名</th>
+<th>来源</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BID</td>
+<td><em>从设备</em></td>
+<td>写响应ID，该信号用于标识写响应传输（这里AXI3和AXI4都支持要注意）</td>
+</tr>
+<tr>
+<td>BRESP</td>
+<td><em>从设备</em></td>
+<td>写响应，该信号表示一个写事务的状态</td>
+</tr>
+<tr>
+<td>BUSER*</td>
+<td><em>从设备</em></td>
+<td>用户定义信号，可选</td>
+</tr>
+<tr>
+<td>BVALID</td>
+<td><em>从设备</em></td>
+<td>从设备给出的写响应信号有效</td>
+</tr>
+<tr>
+<td>BREADY</td>
+<td>主设备</td>
+<td>主设备已准备好接收写响应信号</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3><span id="25-read-address-channel-signals-读地址信号">2.5 Read address channel signals 读地址信号</span></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>信号名</th>
+<th>来源</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ARID</td>
+<td>主设备</td>
+<td>读地址ID，该信号用于标识读地址组（这里AXI3和AXI4都支持要注意）</td>
+</tr>
+<tr>
+<td>ARADDR</td>
+<td>主设备</td>
+<td>读地址，读突发事务中第一次数据传输的地址</td>
+</tr>
+<tr>
+<td>ARLEN</td>
+<td>主设备</td>
+<td>突发长度，这个字段标识每次突发传输的传输次数<br>AXI4与AXI3有变化</td>
+</tr>
+<tr>
+<td>ARSIZE</td>
+<td>主设备</td>
+<td>突发大小，这个字段表示每次突发传输的大小</td>
+</tr>
+<tr>
+<td>ARBURST</td>
+<td>主设备</td>
+<td>突发类型，包括突发类型和突发大小信息，该字段决定了每次突发传输时地址的计算方法</td>
+</tr>
+<tr>
+<td>ARLOCK</td>
+<td>主设备</td>
+<td>锁定类型，提供关于传输时原子特性的额外信息<br>AXI4与AXI3有变化</td>
+</tr>
+<tr>
+<td>ARCACHE</td>
+<td>主设备</td>
+<td>存储器类型，指示如何要求读取事务在系统中进行</td>
+</tr>
+<tr>
+<td>ARPROT</td>
+<td>主设备</td>
+<td>一次读事物的保护类型，包括： privilege, security level, and access type三种信息</td>
+</tr>
+<tr>
+<td>ARQOS</td>
+<td>主设备</td>
+<td>服务质量，即每次读传输的QoS标识符<br>仅AXI4支持</td>
+</tr>
+<tr>
+<td>ARREGION</td>
+<td>主设备</td>
+<td>区域标识符，允许一个从设备的单个物理接口用作多个逻辑接口<br>仅AXI4支持</td>
+</tr>
+<tr>
+<td>ARUSER*</td>
+<td>主设备</td>
+<td>用户定义信号，可选<br>仅AXI4支持</td>
+</tr>
+<tr>
+<td>ARVALID</td>
+<td>主设备</td>
+<td>主设备给出的地址和相关控制信号有效</td>
+</tr>
+<tr>
+<td>ARREADY</td>
+<td><em>从设备</em></td>
+<td>从设备已准备好接收地址和相关的控制信号</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3><span id="26-read-data-channel-signals-读数据信号">2.6 Read data channel signals 读数据信号</span></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>信号名</th>
+<th>来源</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RID</td>
+<td><em>从设备</em></td>
+<td>读数据ID，该信号用于标识读数据传输（这里AXI3和AXI4都支持要注意）</td>
+</tr>
+<tr>
+<td>RDATA</td>
+<td><em>从设备</em></td>
+<td>读出的数据</td>
+</tr>
+<tr>
+<td>RRESP</td>
+<td><em>从设备</em></td>
+<td>读响应，这信号表示读传输的状态</td>
+</tr>
+<tr>
+<td>RLAST</td>
+<td><em>从设备</em></td>
+<td>该信号用于标识当前传输是否为突发传输中的最后一次传输</td>
+</tr>
+<tr>
+<td>RUSER</td>
+<td><em>从设备</em></td>
+<td>用户定义信号，可选<br>仅AXI4支持</td>
+</tr>
+<tr>
+<td>RVALID</td>
+<td><em>从设备</em></td>
+<td>从设备给出的数据和响应信息有效</td>
+</tr>
+<tr>
+<td>RREADY</td>
+<td>主设备</td>
+<td>主设备已准备好接收读取的数据和响应信息</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3><span id="低功耗接口信号">低功耗接口信号</span></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>信号名</th>
+<th>来源</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CSYSREQ</td>
+<td>时钟控制器</td>
+<td>系统退出低功耗状态请求，外设的系统时钟控制器通过该信号发出请求用于离开低功耗状态</td>
+</tr>
+<tr>
+<td>CSYSACK</td>
+<td>外设</td>
+<td>退出低功耗状态响应，外设响应系统低功耗状态退出请求时使用的信号</td>
+</tr>
+<tr>
+<td>CACTIVE</td>
+<td>外设</td>
+<td>时钟激活，该信号表示外设需要时钟信号</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2><span id="3-单接口需求">3: 单接口需求</span></h2><p>本章内容：<strong>单主设备</strong>与<strong>单从设备</strong>之间的基本AXI协议事务需求：</p>
+<ul>
+<li>clock and reset</li>
+<li>basic read and write transactions</li>
+<li>relationships between the channels</li>
+<li>transaction structure</li>
+</ul>
+<h3><span id="31-时钟和复位">3.1 时钟和复位</span></h3><h4><span id="311-clcok">3.1.1 Clcok</span></h4><p>每个AXI接口都需要一个单独的<strong>ACLK</strong>，所有的信号都在ACLK的上升沿采样，所有的输出信号只能在上升沿之后发生改变</p>
+<p><strong>在主从接口之间的输入输出信号间不能有组合路径</strong></p>
+<h4><span id="312-reset">3.1.2 Reset</span></h4><p>AXI协议使用<strong>低有效</strong>复位信号<strong>ARESETn</strong>，该信号是可以异步拉低，但必须在ACLK的上升沿同步释放</p>
+<p>在复位期间，下列信号需要遵循特定的要求：</p>
+<ul>
+<li><strong>Master 接口</strong>：必须拉低ARVALID、AWVALID与WVALID信号</li>
+<li><strong>Slave 接口：</strong>必须拉低RVALID与BVALID信号</li>
+<li><strong>其它信号</strong>：则可以为任意值</li>
+</ul>
+<p>在ARESETn被释放后的下一个时钟上升沿，主设备可以拉高ARVALID、AWVALID与WVALID信号，如下图所示：</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/v2-03ec608f75d259e1d84f5c0d52f42e21_720w.jpg" srcset="/img/loading.gif" lazyload alt="img">avatar</p>
+<h3><span id="32-基本读写事务">3.2 基本读写事务</span></h3><p>基本机制( basic mechanisms)：</p>
+<ul>
+<li>The Handshake process 握手过程</li>
+<li>The Channel signaling requirementes 通道的握手信号条件</li>
+</ul>
+<h4><span id="321-握手过程">3.2.1 握手过程</span></h4><p>五个事务通道都使用VALID/READY作为握手信号来传输：地址、数据和控制信息。使用这种握手方式，主从双方都可以对传输速度进行控制</p>
+<ul>
+<li>源端产生VALID信号意味着其地址、数据或控制信息有效</li>
+<li>目的端产生READY信号意味着它可以接收信息</li>
+<li>只有当双方的VALID与READY信号都为高时传输才会开始</li>
+</ul>
+<p><strong>在主从接口之间的输入输出信号间不能有组合路径</strong></p>
+<p><strong>下面三个Timing Diagram描述了三种握手情况</strong></p>
+<p>第一种情况，正常情况，一个握手过程实例，握手消耗了两个时钟周期</p>
+<ul>
+<li>源端在T1之后给出地址、数据或控制信息，同时让VALID有效</li>
+<li>在T2之后，目的端检测到VALID有效并给出READY有效信息</li>
+<li>在T3阶段传输会发生，因此在T3阶段及之前，源端不能释放或改变需要传输的信息</li>
+</ul>
+<blockquote>
+<p><strong>VALID有效之后：</strong></p>
+<p>源端必须在令VALID信号有效之后再等待READY信号有效，一旦VALID有效，源端必须等待握手发生，即在保持VALID不变的情况下，等待目的端的READY信号有效</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/v2-4f789a7a6272fd092ee9af27fe8353f7_720w.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>第二种情况，目的端的READY比源端的VALID提前，握手只消耗了一个周期</p>
+<blockquote>
+<p><strong>死锁问题：</strong></p>
+<p>目的端可以在自身READY信号无效的情况下，等待源端的VALID信号有效，这一条规则和上一条规则必须同时遵守，否则可能造成死锁等待，同时，在VALID有效前，即使READY已经有效，也可以再次令READY无效</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/v2-cabd75b3a7992649bc8d862bd94c14c3_720w.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>第三种情况，两端的VALID/READY信号同时有效，则传输立刻在下一个时钟周期开始</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/v2-ed6fcd7111d11d563cf8682a7db447eb_720w.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h4><span id="322-通道信号条件">3.2.2 通道信号条件</span></h4><p>每个通道都有自己的握手信号对：</p>
+<ul>
+<li><p>AW写地址通道：AWVALID, AWREADY</p>
+</li>
+<li><p>A写数据通道：WVALID, WREADY</p>
+</li>
+<li><p>B写响应通道：BVALID, BREADY</p>
+</li>
+<li><p>AR读地址通道：ARVALID, ARREADY</p>
+</li>
+<li><p>R读数据通道：RVALID, RREADY</p>
+</li>
+</ul>
+<p><strong>AW 写地址通道：</strong></p>
+<ul>
+<li>AWVALID：主设备仅当输出有效的地址和控制信息时才能<strong>使能</strong>AWVALID信号，在从设备的AWREADY信号有效后的第一个时钟上升沿，主设备的AWVALID信号必须<strong>保持有效</strong></li>
+<li>AWREADY：信号的默认状态可以为高也可以为低电平，规范推荐默认状态为高电平。当该信号为高电平时，意味着从设备一定可以接受任何有效的地址</li>
+</ul>
+<blockquote>
+<p><strong>NOTE</strong></p>
+<p>规范<strong>不推荐AWREADY信号默认为低电平</strong>是因为这会强制使传输周期拉长到至少两个时钟周期，一个周期用于使能AWVALID信号，另一个周期则用于使能AWREADY信号</p>
+</blockquote>
+<p><strong>W 写数据通道：</strong></p>
+<ul>
+<li>WVALID：在写突发过程中，主设备可以仅当它输出有效数据时才<strong>使能</strong>WVALID信号，同样的，该信号必须在从设备WREADY信号有效后的第一个时钟上升沿<strong>保持有效</strong></li>
+<li>WREADY：信号默认可以为高电平，但这意味着从设备总是可以在<strong>一个时钟周期内接收待写入的数据</strong></li>
+<li>WLAST：主设备在进行突发事务中的<strong>最后一次写传输时</strong>，必须令WLAST信号有效</li>
+</ul>
+<p><strong>B 写响应通道：</strong></p>
+<ul>
+<li>BVALID：从设备输出有效的写响应信号后才能<strong>使能</strong>BVALID信号，该信号在BREADY信号有效后的第一个时钟上升沿<strong>保持有效</strong></li>
+<li>BREADY：信号默认可以为高电平，但此时主设备必须总能在一个时钟周期内接收写响应</li>
+</ul>
+<p><strong>AR 读地址通道：</strong></p>
+<ul>
+<li>ARVALID：主设备仅当输出有效的地址和控制信息时才能<strong>使能</strong>ARVALID信号，在从设备的AWREADY信号有效后的第一个时钟上升沿，主设备的ARVALID信号<strong>必须保持有效</strong></li>
+<li>ARREADY：信号的默认状态可以为高也可以为低电平，规范推荐默认状态为高电平。当该信号为高电平时，意味着从设备一定可以接受任何有效的地址。</li>
+</ul>
+<blockquote>
+<p><strong>NOTE</strong></p>
+<p>规范不推荐ARREADY信号默认为低电平是因为这会强制使传输周期拉长到至少两个时钟周期，一个周期用于使能ARVALID信号，另一个周期则用于使能ARREADY信号</p>
+</blockquote>
+<p><strong>R 读数据通道：</strong></p>
+<ul>
+<li>RVALID：从设备只有在输出有效读数据时才能使能RVALID信号，同时在主设备的RREADY信号有效后的第一个时钟上升沿必须保持有效。<strong>即使从设备只有一个读数据源，它也必须在收到数据请求时才令RVALID信号有效</strong></li>
+<li>RREADY：主接口使用RREADY信号表示它可以接收数据，RREADY信号默认可以为高电平，但此时主设备启动读事务时必须能立即接收数据</li>
+<li>RLAST：从设备在进行突发传输事务中的<strong>最后一次传输时</strong>必须使能RLAST信号。</li>
+</ul>
+<h3><span id="33-通道间的关系">3.3 通道间的关系</span></h3><p>AXI协议要求各个通道间必须保持如下关系（之后表示前者的下一个周期）：</p>
+<ul>
+<li>B必须紧跟所属写事务的最后一次写传输之后</li>
+<li>R必须紧跟着它的读地址传输之后</li>
+<li>通道握手必须符合通道握手依赖关系(A3.3.1节中的定义)</li>
+</ul>
+<p>你甚至可以把写数据优先于写地址之前：</p>
+<ul>
+<li>除此上述关系外，协议没有规定其它的任何关系，这意味着，在一个事务中，写数据信号可以提前于写地址信号，这种情况通常发生在写地址的通道的寄存器阶段要更多时， 同样，写数据可以和写地址信号同时出现。</li>
+</ul>
+<blockquote>
+<p><strong>NOTE 互联器与地址空间【重要】</strong> </p>
+<p>当互联器需要决定目标地址空间或从设备地址空间时，必须对地址和写数据重排，以确保写数据仅对其关联的从设备有效</p>
+</blockquote>
+<h4><span id="331-通道握手信号间的依赖关系">3.3.1 通道握手信号间的依赖关系</span></h4><p>为了避免死锁，握手信号必须遵守依赖规则</p>
+<p><strong>1）通道内部握手信号的依赖关系</strong></p>
+<p><strong>作为A3.2.1的总结</strong>，在任何事务中：</p>
+<ul>
+<li>发送信息的AXI接口的VALID信号，不能依赖于接收信息的AXI接口的READY信号</li>
+<li>接收信号的AXI接口在其自身的READY信号有效前可以等待对方的VALID信号</li>
+</ul>
+<blockquote>
+<p><strong>NOTE</strong></p>
+<p>VALID信号<strong>可以</strong>在READY信号之前有效，READY信号<strong>也可以</strong>在检测VALID信号之前有效，这些方式都会<strong>提升传输效率</strong></p>
+</blockquote>
+<p><strong>2）通道间握手信号的依赖关系</strong></p>
+<p>除此之外，<strong>不同的通道上的握握手信号</strong>之间存在依赖关系。除此之外，AXI4定义了额外的写响应后，写事务时通道之间的依赖关系将在下面几节中提出：</p>
+<ul>
+<li>Read transaction dependencies</li>
+<li>AXI3 write transaction dependencies</li>
+<li>AXI4 and AXI5 write transaction dependencies</li>
+</ul>
+<p>在下面的依赖图中：</p>
+<ul>
+<li><strong>单头箭头</strong>指向的信号<strong>可以</strong>在始端信号有效前或有效后有效</li>
+<li><strong>双头箭头</strong>指向的信号<strong>只有</strong>在始端信号有效后才能有效</li>
+</ul>
+<p><strong>1）Read transaction dependencies 读事务依赖（AR -&gt; R）</strong></p>
+<p>在一个读传输中：</p>
+<ul>
+<li>AR：主设备使能ARVALID，<strong>禁止</strong>等待从设备使能ARREADY</li>
+<li>AR：从设备在使能自身的ARREADY前，<strong>可以</strong>等待主设备使能ARVALID（可以的意思是，等不等待无所谓，即不等待也可使能，下面提到可以时将不进行解释）</li>
+<li>AR-&gt;R：从设备在使能RVALID前，<strong>必须</strong>等待ARVALID和ARREADY信号都使能</li>
+<li>R：从设备在使能RVALID后，<strong>才能</strong>等待主设备使能RREADY</li>
+<li>R：主设备在使能RREADY前，<strong>可以</strong>等待从设备使能RVALID</li>
+</ul>
+<p>总结就是：VALID信号发出方，必须首先使能VALID，才能等待READY信号；READY信号发出方，不必等待VALID有效，就可以发出READY信号，也可以等待VALID有效，再发出READY信号，同时，读数据通道的VALID信号不能保持常态有效</p>
+<p>依赖关系图如下：</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/v2-5621834dd1a77596a070b3fec6b741ad_720w.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><strong>2）AXI3 write transaction dependencies AXI3写事务依赖</strong></p>
+<ul>
+<li>AW/W：主设备在使能AWVALID或WVALID后，<strong>才能</strong>等待从设备使能AWREADY或WREADY</li>
+<li>AW：从设备在使能AWREADY前，<strong>可以</strong>等待AWVALID或WVALID有效</li>
+<li>W：从设备在使能WREADY前，<strong>可以</strong>等待AWVALID与WVALID有效</li>
+<li>W：从设备<strong>必须</strong>等待WVALID与WREADY都有效后才能使能BVALID</li>
+<li>B：从设备<strong>必须</strong>等待WLAST有效后，<strong>才能</strong>使能BVALID。需要等待的原因是，写响应BRESP，必须发生在一次写事务中的最后一次数据传输之后</li>
+<li>B：从设备在使能BVALID后，<strong>才能</strong>等待主设备使能BREADY</li>
+<li>B：主设备使能BREADY前，<strong>可以</strong>等待BVALID</li>
+</ul>
+<blockquote>
+<p><strong>CAUTION !</strong></p>
+<p>如果从设备在使能AWREADY前等待WVALID，会造成死锁</p>
+</blockquote>
+<p>依赖关系图如下：</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/v2-766d5e85e554291961294abde9003beb_720w.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><strong>3）AXI4 and AXI5 write transaction dependencies 写事务依赖（AW -&gt; W -&gt; B）</strong></p>
+<p>AXI4和AXI5 定义了一个额外的从设备的写响应相关依赖[1]：从设备使能BVALID前，<strong>必须等待</strong>AWVLID, AWREADY, WVALID, WREADY信号使能</p>
+<ul>
+<li>这个依赖关系是AXI3所期望的，因为AXI3不希望任何组件在接收到有效的地址前接收写数据并提供写响应信号</li>
+<li>通过这种写响应，从设备负责对写事务和所有后续事务进行<strong>冒险检查</strong></li>
+</ul>
+<p>具体依赖关系如下：</p>
+<ul>
+<li>AW/W：主设备在使能AWVALID或WVALID后，<strong>才能</strong>等待从设备使能AWREADY或WREADY</li>
+<li>AW：从设备在使能AWREADY前，<strong>可以</strong>等待AWVALID或WVALID有效</li>
+<li>W：从设备可以在使能WREADY前，<strong>可以</strong>等待AWVALID与WVALID有效</li>
+<li>B[1]：从设备等待AWVALID、AWREADY、WVALID、WREADY有效后，<strong>才能</strong>使能BVALID</li>
+<li>B：从设备等待WLAST有效后，<strong>才能</strong>使能BVALID。因为写响应BRESP必须发生在一次写事务中的最后一次数据传输后</li>
+<li>B：从设备在使能BVALID后，<strong>才能</strong>等待主设备使能BREADY</li>
+<li>B：主设备使能BREADY前，<strong>可以</strong>等待BVALID</li>
+</ul>
+<p>依赖关系图如下：</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/v2-3e82b6d26d5061f551fd4aaf34e35a6b_720w.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h4><span id="332-legacy-considerations-axi3遗留问题">3.3.2  Legacy considerations AXI3遗留问题</span></h4><p>AXI4与AXI5的额外的写响应依赖关系意味着，不兼容所有写响应在接收写地址之前的AXI3从设备，而主设备完全兼容。</p>
+<p>将AXI3的主从设备转为AXI4或AXI5时，应确保额外的修正wrapper会在从设备接收写地址前，不应发送写响应</p>
+<blockquote>
+<p>NOTE</p>
+<p>任何AXI3的主设备，都符合AXI4和AXI5写响应要求</p>
+<p>本规范<strong>强烈建议</strong>任何新的AXI3依赖关系都遵守上面提到的额外写响应依赖实现</p>
+</blockquote>
+<h3><span id="34-事务结构">3.4 事务结构</span></h3><p>事务结构主要定义了address, data, response等结构：</p>
+<ul>
+<li>Address structure</li>
+<li>transfer伪代码描述</li>
+<li>Data read and write structure</li>
+<li>Read and write response structure</li>
+</ul>
+<h4><span id="341-地址结构">3.4.1 地址结构</span></h4><p>AXI协议是基于突发的：</p>
+<ul>
+<li><strong>主设备</strong>向从设备传送事务的<strong>控制信息</strong>和<strong>第一个字节的地址</strong></li>
+<li>接收到控制信息和第一个字节地址后，<strong>从设备必须在此后的每次传输中计算数据地址</strong></li>
+<li><strong>突发传输不能跨越4KB地址边界</strong></li>
+</ul>
+<blockquote>
+<p><strong>NOTE【重要】</strong></p>
+<p>避免突发传输跨越两个从设备的边界，同时必须使用从设备支持的地址增加范围</p>
+</blockquote>
+<p><strong>1）Burst length</strong></p>
+<p>AXI4 突发长度由下列字段指定：</p>
+<ul>
+<li>对于读传输，ARLEN[7:0]</li>
+<li>对于写传输，AWLEN[7:0]</li>
+</ul>
+<p>AXI3：</p>
+<ul>
+<li>支持1~16的突发长度</li>
+</ul>
+<p>AXI4：</p>
+<ul>
+<li>对于INCR突发类型，支持1~256的突发长度</li>
+<li>对于其它突发类型，支持1~16的突发长度</li>
+</ul>
+<p>具体定义：</p>
+<ul>
+<li>AXI3中突发长度 = AxLEN[3:0] + 1</li>
+<li>AXI4为适应INCR扩充的长度定义，突发长度 = AxLEN[7:0] + 1</li>
+</ul>
+<p>具体规则：</p>
+<ul>
+<li>对于wrapping bursts回绕传输，突发长度必须为2、4、8或16</li>
+<li>突发传输不能跨越4KB地址边界</li>
+<li>突发传输不支持过早结束<ul>
+<li>没有组件可以提前终止突发。然而，为了减少写入突发中的数据传输数量，管理器可以通过取消所有写入选通来禁用进一步的写入。在这种情况下，管理器必须完成突发中的剩余传输。在读突发中，管理器可以丢弃读数据，但必须完成突发中的所有传输</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>NOTE    </strong>    访问FIFO等读敏感设备时</p>
+<p>在访问读敏感设备（如FIFO）时，丢弃不需要的读取数据可能会导致数据丢失。访问此类设备时，主设备<strong>必须</strong>使用与所需数据传输<strong>大小完全匹配的突发长度</strong></p>
+</blockquote>
+<p>INCR且突发长度大于16的情况：在AXI4中，突发类型为INCR且突发长度大于16的突发传输可以<strong>转换为多个长度更短的突发传输</strong>，即使突发属性表明事务是不可修改的。在这种情况下，生成的突发事务必须保持与原始事务相同的事务特征，唯一的例外是：</p>
+<ul>
+<li>突发长度变小</li>
+<li>突发地址被适当调整</li>
+</ul>
+<blockquote>
+<p><strong>NOTE</strong></p>
+<p>为了实现AXI3兼容性，将长突发传输转换为多个短突发传输是必要的，同时这也可以<strong>减少长突发对QoS保证的影响</strong></p>
+</blockquote>
+<p><strong>2）Burst size</strong></p>
+<p>该字段表示每次突发数据传输或每个节拍中中数据的字节数，由以下字段指定：</p>
+<ul>
+<li>对于读传输，ARSIZE[2:0]</li>
+<li>对于写传输，AWSIZE[2:0]</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>AxSIZE[2:0]</th>
+<th>Bytes in transfer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0b000</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0b001</td>
+<td>2</td>
+</tr>
+<tr>
+<td>0b010</td>
+<td>4</td>
+</tr>
+<tr>
+<td>0b011</td>
+<td>8</td>
+</tr>
+<tr>
+<td>0b100</td>
+<td>16</td>
+</tr>
+<tr>
+<td>0b101</td>
+<td>32</td>
+</tr>
+<tr>
+<td>0b110</td>
+<td>64</td>
+</tr>
+<tr>
+<td>0b111</td>
+<td>128</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>当接口的实际宽度大于Brust size规定的大小时，AXI接口必须<strong>根据地址</strong>判断使用哪几条数据线，且任何一次transfer 的data size都不能超过事务中任一代理的数据总线宽度</p>
+<p><strong>3）Burst type</strong></p>
+<p><strong>AXI协议定义了三种突发类型：</strong></p>
+<p><strong>固定（FIXED, fixed burst）</strong></p>
+<ul>
+<li>AxADDR一致</li>
+<li>有效的字节线(AxSIZE)一致，但可通过<strong>WSTRB</strong>控制实际有效的字节</li>
+<li>常用于对同一位置的重复访问，如读取或清空FIFO时</li>
+</ul>
+<p><strong>递增（INCR, incrementing burst）</strong></p>
+<ul>
+<li><p>AxADDR在每次传输中递增，递增量为AxSIZE bytes</p>
+<ul>
+<li>例如大小为4bytes的传输，addr0=0x0000, addr1=0x0004…</li>
+</ul>
+</li>
+<li><p>常用于访问普通顺序内存</p>
+</li>
+</ul>
+<p><strong>回绕（WRAP, wrapping burst）</strong></p>
+<ul>
+<li>与递增方式类似，但地址到达上界后，会回绕到下界</li>
+<li><p>在回绕传输中，有两点需要注意：</p>
+<ul>
+<li>起始地址必须与每次传输的大小对齐</li>
+<li>Brust length必须为 2, 4, 8, 16个transfers</li>
+</ul>
+</li>
+<li><p>回绕传输的具体行为：</p>
+<ul>
+<li>回绕边界wrap boundary：突发所使用的地址下界会对齐到传输数据的总量，这也被称为回绕边界</li>
+<li>在每次传输后，地址都会像递增突发方式一样递增，但是，一旦递增后的地址超过回绕边界，就会回到回绕边界的开始位置</li>
+<li>第一次传输的地址可以大于回绕边界的开始位置</li>
+</ul>
+</li>
+<li>此突发类型常用于cache line accesses</li>
+</ul>
+<p><strong>突发类型由如下字段指定：</strong></p>
+<ul>
+<li>对于读传输，ARBURST[1:0]</li>
+<li>对于写传输，AWBURST[1:0]</li>
+</ul>
+<p>字段取值如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>AxBURST[1:0]</th>
+<th>突发类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00</td>
+<td>FIXED</td>
+</tr>
+<tr>
+<td>01</td>
+<td>INCR</td>
+</tr>
+<tr>
+<td>10</td>
+<td>WRAP</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Reserved保留</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4><span id="342-伪代码描述">3.4.2 伪代码描述</span></h4><ul>
+<li><strong>Start_Address</strong>，由主机发起的开始地址</li>
+<li><strong>Number_Bytes</strong>，一次transfer中最大数据字节数</li>
+<li><p><strong>Data_Bus_Bytes</strong>，数据总线上面byte lanes的数量（其实就是说数据总线上有几个字节是用来传数据的）</p>
+</li>
+<li><p><strong>Aligned_Address</strong>，起始地址对齐后的地址</p>
+</li>
+<li><strong>Burst_Length</strong>，一次burst中的数据transfer次数</li>
+<li><strong>Address_N</strong>，一次burst中transfer的序号，首个为1</li>
+<li><strong>Wrap_Boundary</strong>，一次wrap中最低的那个地址</li>
+<li><strong>Lower_Byte_Lane</strong>，一次transfer中最低地址对应的字节通道</li>
+<li><strong>Upper_Byte_Lane</strong>， 一次transfer中最高地址对应的字节通道</li>
+<li><strong>INT(x)</strong>，x向下舍入取整</li>
+</ul>
+<p>如何确定一次burst内的transfer地址：</p>
+<figure class="highlight ini"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs ini"><span class="hljs-attr">Start_Address</span> = AxADDR<br><span class="hljs-attr">Number_Bytes</span> = <span class="hljs-number">2</span> ^ AxSIZE<br><span class="hljs-attr">Burst_Length</span> = AxLEN + <span class="hljs-number">1</span><br><span class="hljs-attr">Aligned_Address</span> = (INT(Start_Address / Number_Bytes)) × Number_Bytes<br></code></pre></div></td></tr></table></figure>
+<p>如何确定一次burst的开始地址：</p>
+<figure class="highlight ini"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs ini"><span class="hljs-attr">Address_1</span> = Start_Address<br></code></pre></div></td></tr></table></figure>
+<p>对于INCR ，以及地址未wrapped的WRAP，如何确定突发中第一次传输后第N个transfer的地址</p>
+<figure class="highlight ini"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs ini"><span class="hljs-attr">Address_N</span> = Aligned_Address + (N – <span class="hljs-number">1</span>) × Number_Bytes<br></code></pre></div></td></tr></table></figure>
+<p>对于一个WRAP，Wrap_Boundary未</p>
+<figure class="highlight ini"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs ini"><span class="hljs-attr">Wrap_Boundary</span> = (INT(Start_Address / (Number_Bytes × Burst_Length)))× (Number_Bytes × Burst_Length)<br></code></pre></div></td></tr></table></figure>
+<p>对于WRAP，当Address_N = Wrap_Boundary + (Number_Bytes × Burst_Length)时</p>
+<ul>
+<li>当前address = Address_N = Wrap_Boundary</li>
+<li>随后的address = Address_N = Start_Address + ((N – 1) × Number_Bytes) – (Number_Bytes × Burst_Length)</li>
+</ul>
+<p>通过使用以下方程可以确定一次Burst中，哪个字节通道用于首次传输：</p>
+<figure class="highlight autohotkey"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs autohotkey">Lower_Byte_Lane = Start_Address – (INT(Start_Address / Dat<span class="hljs-built_in">a_Bus</span>_Bytes)) × Dat<span class="hljs-built_in">a_Bus</span>_Bytes<br>Upper_Byte_Lane = Aligned_Address + (Number_Bytes – <span class="hljs-number">1</span>) – (INT(Start_Address / Dat<span class="hljs-built_in">a_Bus</span>_Bytes)) × Dat<span class="hljs-built_in">a_Bus</span>_Bytes<br></code></pre></div></td></tr></table></figure>
+<p>首次传输之后，所有传输都使用了哪些字节通道</p>
+<figure class="highlight ini"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs ini"><span class="hljs-attr">Lower_Byte_Lane</span> = Address_N – (INT(Address_N / Data_Bus_Bytes)) × Data_Bus_Bytes<br><span class="hljs-attr">Upper_Byte_Lane</span> = Lower_Byte_Lane + Number_Bytes – <span class="hljs-number">1</span><br></code></pre></div></td></tr></table></figure>
+<p>transfer DATA为</p>
+<figure class="highlight apache"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">DATA</span>((<span class="hljs-number">8</span> × Upper_Byte_Lane) + <span class="hljs-number">7</span>: (<span class="hljs-number">8</span> × Lower_Byte_Lane))<br></code></pre></div></td></tr></table></figure>
+<p>transaction container，如果地址对齐并且字节有效位被断言，transaction container描述了该事务可以访问的所有字节</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mipsasm">The transaction container describes all the <span class="hljs-keyword">bytes </span>that could <span class="hljs-keyword">be </span>accessed in that transaction, if the <span class="hljs-keyword">address </span>is aligned  <span class="hljs-keyword">and </span>strobes are asserted:<br>	Container_Size = Number_Bytes x <span class="hljs-keyword">Burst_Length</span><br><span class="hljs-keyword"></span>For INCR <span class="hljs-keyword">bursts:</span><br><span class="hljs-keyword"></span>	Container_Lower = Aligned_Address<br>	Container_Upper = Aligned_Address + Container_Size<br>For WRAP <span class="hljs-keyword">bursts:</span><br><span class="hljs-keyword"></span>	Container_Lower = Wrap_Boundary<br>	Container_Upper = Wrap_Boundary + Container_Size<br></code></pre></div></td></tr></table></figure>
+<p>transfer内部各个属性生成的伪代码</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C"><span class="hljs-comment">// DataTransfer()</span><br><span class="hljs-comment">// ==============</span><br>DataTransfer(Start_Address, Number_Bytes, Burst_Length, Data_Bus_Bytes, Mode, IsWrite)<br><span class="hljs-comment">// Data_Bus_Bytes is the number of 8-bit byte lanes in the bus</span><br><span class="hljs-comment">// Mode is the AXI transfer mode</span><br><span class="hljs-comment">// IsWrite is TRUE for a write, and FALSE for a read</span><br>    assert Mode IN &#123;FIXED, WRAP, INCR&#125;;<br>    addr = Start_Address;                         <span class="hljs-comment">// Variable for current address</span><br>    Aligned_Address = (INT(addr/Number_Bytes) * Number_Bytes);<br>    aligned = (Aligned_Address == addr);          <span class="hljs-comment">// Check whether addr is aligned to nbytes</span><br>    dtsize = Number_Bytes * Burst_Length;         <span class="hljs-comment">// Maximum total data transaction size</span><br>    <br>    <span class="hljs-keyword">if</span> mode == WRAP then<br>        Lower_Wrap_Boundary = (INT(addr/dtsize) * dtsize);<br>        <span class="hljs-comment">// addr must be aligned for a wrapping burst</span><br>        Upper_Wrap_Boundary = Lower_Wrap_Boundary + dtsize;<br>        <br>    <span class="hljs-keyword">for</span> n = <span class="hljs-number">1</span> to Burst_Length<br>        Lower_Byte_Lane = addr - (INT(addr/Data_Bus_Bytes)) * Data_Bus_Bytes;<br>        <span class="hljs-keyword">if</span> aligned then<br>            Upper_Byte_Lane = Lower_Byte_Lane + Number_Bytes - <span class="hljs-number">1</span><br>        <span class="hljs-keyword">else</span><br>            Upper_Byte_Lane = Aligned_Address + Number_Bytes - <span class="hljs-number">1</span> - (INT(addr/Data_Bus_Bytes)) * Data_Bus_Bytes; <br>            <br>        <span class="hljs-comment">// Peform data transfer</span><br>        <span class="hljs-function"><span class="hljs-keyword">if</span> IsWrite then</span><br><span class="hljs-function">            <span class="hljs-title">dwrite</span><span class="hljs-params">(addr, low_byte, high_byte)</span></span><br><span class="hljs-function">        <span class="hljs-keyword">else</span></span><br><span class="hljs-function">            <span class="hljs-title">dread</span><span class="hljs-params">(addr, low_byte, high_byte)</span></span>;<br>            <br>        <span class="hljs-comment">// Increment address if necessary</span><br>        <span class="hljs-keyword">if</span> mode != FIXED then<br>            <span class="hljs-keyword">if</span> aligned then<br>					addr = addr + Number_Bytes;<br>			<span class="hljs-keyword">if</span> mode == WRAP then <span class="hljs-comment">// WRAP mode is always aligned</span><br>                    <span class="hljs-keyword">if</span> addr &gt;= Upper_Wrap_Boundary then addr = Lower_Wrap_Boundary;<br>            <span class="hljs-keyword">else</span> <span class="hljs-comment">// All transfers after the first are aligned</span><br>                addr = Aligned_Address + Number_Bytes;<br>                aligned = TRUE;            <br>    <span class="hljs-keyword">return</span>; <br></code></pre></div></td></tr></table></figure>
+<h4><span id="343-regular-transaction-常规事务">3.4.3 Regular Transaction 常规事务</span></h4><p>事务有许多突发、大小和长度选项，但某些接口和事务类型可能只使用这些选项的一个<strong>子集</strong></p>
+<p>如果从组件连接到仅使用事务选项子集的主设备，则可以简化解码逻辑进行设计</p>
+<p>下面定义的常规标准说明了一个常规事务应满足的<strong>要求</strong>：</p>
+<ul>
+<li>AxLEN 为 1, 2, 4, 8, 或 16</li>
+<li>如果AxLEN大于1，则AxSIZE与数据总线宽度相同</li>
+<li>AxBURST 为 INCR 或 WRAP , 而不是 FIXED</li>
+<li>AxADDR 在INCR事务中与transaction container对齐</li>
+<li>AxADDR 在WRAP事务中与AxSIZE对齐</li>
+</ul>
+<p>Regular transactions property：</p>
+<ul>
+<li>Regular_Transactions_Only 属性用来定义主设备提交的是否为一个Regular type，或一个从设备是否支持Regular事件<ul>
+<li>TRUE：表明只支持Regular事件</li>
+<li>FALSE：表明所有AxBURST, AxSIZE, AxLEN合法组合都支持</li>
+<li>Regular_Transaction_Only在缺省时为FALSE</li>
+<li>在<strong>AXI5, ACE5, ACE5-Lite, ACE5-LiteDVM</strong>中这种类型将被支持</li>
+</ul>
+</li>
+</ul>
+<p>主从设备兼容性</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Subordinate：FALSE</strong></th>
+<th><strong>Subordinate：TRUE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Manager：FALSE</strong></td>
+<td>兼容</td>
+<td>不兼容<br>如果主设备提交一个不是Regular的事务，可能发生数据冲突或者死锁</td>
+</tr>
+<tr>
+<td><strong>Manager：TRUE</strong></td>
+<td>兼容</td>
+<td>兼容</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4><span id="344-数据读写结构">3.4.4 数据读写结构</span></h4><p>本节介绍AXI读写数据总线上不同大小的传输，以及接口如何执行混合大小端、未对其的传输：</p>
+<ul>
+<li>Write Strobes</li>
+<li>Narrow transfer</li>
+<li>Byte invariance</li>
+<li>Unaligned transfers</li>
+</ul>
+<p><strong>1）写选通（Write strobes）</strong></p>
+<p>当WSTRB[i]为高电平时，对应的WDATA[(8i+7):8i]数据线有效</p>
+<p>当WVALID为低电平时，写选通信号可以为任何值，不过标准推荐写选通信号全0或保持上一次的值</p>
+<p><strong>2）窄传输（Narrow transfer）：</strong></p>
+<p>当主设备产生一个数据宽度小于数据总线的传输时，地址和控制信号按照如何方式决定使用哪些字节线：</p>
+<ul>
+<li>在INCR或WRAP突发模式中，每拍使用<strong>不同</strong>的字节线</li>
+<li>在固定突发模式中，每拍使用相同的字节线</li>
+</ul>
+<p>下面给出窄传输出字节线状态的两个示例，隐单元表示该字节线没有进行传输</p>
+<p>Figure A3-8：</p>
+<ul>
+<li><p>5 transfers, INCR Burst</p>
+</li>
+<li><p>start address 为0</p>
+</li>
+<li><p>each transfer size 为8bits</p>
+</li>
+<li><p>transfer的数据总线宽度为32bits</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220628211446662.png" srcset="/img/loading.gif" lazyload alt="image-20220628211446662"></p>
+</li>
+</ul>
+<p>Figure A3-9</p>
+<ul>
+<li>3 transfers</li>
+<li>start address 为4</li>
+<li>each transfer size 为23bits</li>
+<li>transfer的数据总线宽度为64bits</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220628211641246.png" srcset="/img/loading.gif" lazyload alt="image-20220628211641246"></p>
+<p><strong>3）字节不变性（Byte invariance）：</strong></p>
+<p>在访问单个存储器空间中的大小端混合数据时，AXI协议使用字节不变性大小端模式</p>
+<p>字节不变性大小端模式是指：</p>
+<ul>
+<li>数据元素使用相同连续的内存字节，而不管数据的大小端如何</li>
+<li>大小端决定了存储器中的字节顺序，也就是说存储器中的第一个字节是数据元素的MSB还是LSB</li>
+<li>字节传输时，只需要将字节传输到地址给定的位置，而<strong>不需要考虑该字节是数据元素的哪一部分</strong></li>
+</ul>
+<p>通常情况下，大多数小端组件可以直接连接到一个字节不变性接口，而<strong>只支持大端的组件则需要一个转换器</strong></p>
+<p><strong>4）非对齐传输</strong></p>
+<p>AXI支持非对齐传输，对于任何数据宽度大于一个字节的突发传输而言，第一个字节的访问都可能是非对齐的。</p>
+<p>一个主设备可以：</p>
+<ul>
+<li>使用低位地址线发送一个非对齐的开始地址</li>
+<li>提供对齐的开始地址，并使用字节选通信号线发送非对齐的开始地址</li>
+</ul>
+<blockquote>
+<p><strong>NOTE</strong></p>
+<ul>
+<li>低位地址线上的信息必须与字节选通信号提供的信息一致</li>
+<li>对从设备无要求</li>
+</ul>
+</blockquote>
+<p>下图显示了32位具有对齐和未对齐32位传输的INCR的示例，图中的每一行表示一次传输，阴影单元格表示未传输的字节</p>
+<ul>
+<li>这几个示例表明未对齐的数据传输，第一个transfer在未对齐的位置上的数字使用通选信号使其无效</li>
+<li>如何找到对齐的位置？正常传输时通选的数据，就是正常应该出现的位置</li>
+<li>总而言之，按照对齐多传输第一个transfer的data，并把没对齐的地址的byte lane设为无效</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220628212737595.png" srcset="/img/loading.gif" lazyload alt="image-20220628212737595"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220628224021067.png" srcset="/img/loading.gif" lazyload alt="image-20220628224021067"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220628224007875.png" srcset="/img/loading.gif" lazyload alt="image-20220628224007875"></p>
+<h4><span id="345-读写响应结构">3.4.5 读写响应结构</span></h4><p>AXI协议提供了读写事务中的响应信号：</p>
+<ul>
+<li>对于读事务，从设备在读数据通道（<strong>R</strong>）上发送响应信息，使用<strong>RRESP[1:0]</strong>信号</li>
+<li>对于写事务，从设备在写响应通道（<strong>B</strong>）上发送响应信息，使用<strong>BRESP[1:0]</strong>信号</li>
+</ul>
+<p>响应共有四种类型：</p>
+<ul>
+<li>OKAY：一般访问成功。该信号表示一个一般访问成功，也表示一个独占访问失败</li>
+<li>EXOKAY：独占访问成功</li>
+<li>SLVERR：从设备错误。该信号表示向从设备的访问已成功，但从设备希望向原始主设备返回一个错误条件</li>
+<li>DECERR：译码错误。通常由互联器生成，表示根据给定的事务地址找不到从设备</li>
+</ul>
+<p>RRESP与BRESP的取值如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>RRESP/BRESP[1:0]</th>
+<th>响应</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0b00</td>
+<td>OKAY, normal access success</td>
+</tr>
+<tr>
+<td>0b01</td>
+<td>EXOKAY, exclusive access success</td>
+</tr>
+<tr>
+<td>0b10</td>
+<td>SLVERR, Subordinate error</td>
+</tr>
+<tr>
+<td>0b11</td>
+<td>DECERR, decode error</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>一些特性：</p>
+<ul>
+<li>对于写事务而言，只有当整个突发事务结束时才会发出一个响应</li>
+<li>对于读事务而言，从设备可以针对突发事务中的每个传输发送不同的响应</li>
+<li>协议规定，指定数量的数据传输必须全部被执行，即使发生了错误</li>
+</ul>
+<p>下面详细介绍不同的响应所对应的可能情况：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>可能出现的情况</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OKAY</td>
+<td>1. 一个一般访问成功<br>2. 一个独占访问失败<br>3. 独占访问指定的从设备不支持独占访问</td>
+<td>OKAY是大多数事物的响应</td>
+</tr>
+<tr>
+<td>EXOKAY</td>
+<td>1. 一个独占访问成功</td>
+<td>此响应只能作为对独占读或写的响应给出</td>
+</tr>
+<tr>
+<td>SLVERR</td>
+<td>1. FIFO或缓冲区已满或已空<br>2. 尝试不支持的传输大小<br>3. 尝试写一个只读位置<br>4. 从设备超时<br>5. 试图访问已禁用或断电的功能</td>
+<td>为了简化系统监控和调试，规范推荐这种错误响应只用于错误条件，而不用于除了事件外的一般通知，具体<strong>示例</strong>条件如左</td>
+</tr>
+<tr>
+<td>DECERR</td>
+<td>1. 当互联器不能成功解码找到从设备</td>
+<td>规范推荐互联器<strong>此时路由到一个默认的从设备，并由该默认从设备返回DECERR响应</strong><br>AXI协议要求事务中的全部数据传输必须都被完成，即使发生了错误，因此<strong>任何给定DECERR响应的组件满足这个需求</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2><span id="4-事务属性">4: 事务属性</span></h2><p>本章描述确定系统组件（如缓存、缓冲区和内存控制器）应如何处理事务的属性。它包含以下部分：</p>
+<ul>
+<li>Transaction types and attributes</li>
+<li>AXI3 memory attribute signaling</li>
+<li>AXI4 changes to memory attribute signaling</li>
+<li>Memory types </li>
+<li>Mismatched memory attributes</li>
+<li>Transaction buffering</li>
+<li>Access permissions</li>
+<li>Legacy considerations</li>
+<li>Usage examples</li>
+</ul>
+<h3><span id="41-事务类型和属性">4.1 事务类型和属性</span></h3><p><strong>从设备</strong>可以分为以下两种类型：</p>
+<ul>
+<li>存储器：一个需要正确处理全部事务类型的存储器从设备</li>
+<li>外设：一个外设从设备实现了定义的访问方法。通常，这被记载在组件的datasheet中。</li>
+</ul>
+<blockquote>
+<p><strong>NOTE</strong> 外设的undefined access</p>
+<ul>
+<li>对于未定义的访问方法，外设从设备必须能够完成事务，但是规范并不要求从设备能够正确的完成所操作<ul>
+<li>它之要求从设备能够继续处理接下来的事务，这主要是为了避免系统发生死锁</li>
+</ul>
+</li>
+<li>因为外围从设备只有在定义的访问方法下才能正常工作，所以它可以拥有一组减少的接口信号</li>
+</ul>
+</blockquote>
+<p>AXI协议定义了一系列支持存储器和外设从设备的事务属性，使用<strong>ARCACHE</strong>与<strong>AWCACHE</strong>信号来指示这些事务属性，他们控制：</p>
+<ul>
+<li>一个事务如何穿过系统</li>
+<li>任一系统级cache如何处理事务</li>
+</ul>
+<p>这部分内容主要在下面两节：</p>
+<ul>
+<li>AXI3 memory attribute signaling</li>
+<li>AXI4 changes to memory attribute signaling</li>
+</ul>
+<h3><span id="42-axi3-存储器属性信号">4.2 AXI3 存储器属性信号</span></h3><p>在AXI3中，AxCache[3:0]指定了事务的：</p>
+<ul>
+<li>可Buffer(Bufferable)</li>
+<li>可Cache(Cacheable)</li>
+<li>分配(Allocate)</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>AxCACHE</th>
+<th>值</th>
+<th>事务属性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[0]</td>
+<td>0/1</td>
+<td>不可Buffer/可Buffer</td>
+</tr>
+<tr>
+<td>[1]</td>
+<td>0/1</td>
+<td>不可Cache/可Cache</td>
+</tr>
+<tr>
+<td>[2]</td>
+<td>0/1</td>
+<td>不可读分配/可读分配</td>
+</tr>
+<tr>
+<td>[3]</td>
+<td>0/1</td>
+<td>不可写分配/可写分配</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>AxCACHE属性详解：</p>
+<ul>
+<li>AxCACHE[0], Bufferable (B) bit：<ul>
+<li>该位<strong>断言时</strong>，互联器或者其它任何组件都可以将事务到达其最终目的地的时间，延迟任意数量的周期</li>
+<li><strong>通常该属性仅与写请求相关</strong></li>
+</ul>
+</li>
+<li>AxCACHE[1], Cacheable (C) bit<ul>
+<li>该位<strong>取消断言时</strong>，传输分配也被取消</li>
+<li>该位<strong>断言时</strong><ul>
+<li>传输分配被允许，RA与RW将提供额外控制信息</li>
+<li>到达最终目的的事务特征，不必与原始特征相符<ul>
+<li>对于<strong>写操作</strong>，这意味着可以将多个不同的写入<strong>合并</strong>在一起</li>
+<li>对于<strong>读操作</strong>，这意味着可以预取位置的内容，或者可以将单个提取的值<strong>分解</strong>为多个读取事务</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>AxCACHE[2], Read-Allocate (RA) bit<ul>
+<li>该位<strong>断言时</strong>，推荐事务进行读分配，但不是强制的</li>
+<li>当不可Cache时，该位必须为0（取消断言）</li>
+</ul>
+</li>
+<li>AxCACHE[3], Write-Allocate (WA) bit<ul>
+<li>该位<strong>断言时</strong>，推荐事务进行写分配，但不是强制的</li>
+<li>当不可Cache时，该位必须为0（取消断言）</li>
+</ul>
+</li>
+</ul>
+<h3><span id="43-axi4-对存储器属性信号的变更">4.3 AXI4 对存储器属性信号的变更</span></h3><p>AXI4做出了如下变更：</p>
+<ul>
+<li>AxCACHE[1] Cacheable重命名为可修改Modifiable</li>
+<li>对于不可修改事务，定义了传输顺序要求</li>
+<li>更新了读分配和写分配的含义</li>
+</ul>
+<h4><span id="431-axcache1-modifiable">4.3.1 AxCACHE[1], Modifiable</span></h4><p>在AXI4中，AxCACHE[1]位为Modifiable位</p>
+<ul>
+<li>当该位为断言时，表示事务特征可修改</li>
+<li>当改位为取消断言时，表示事务特征不可修改</li>
+</ul>
+<blockquote>
+<p><strong>NOTE</strong> Modifiable与Bufferable</p>
+<p>该位仅仅是被重命名，因为新的名字能更好地描述该位的用途，而实际功能并未改变</p>
+</blockquote>
+<p>下面介绍Non-modifiable与modifiable的含义：</p>
+<p><strong>1）Non-modifiable 事务</strong></p>
+<p>一个 Non-modifiable 事务由取消断言的Cache[1]确定</p>
+<p>一个 Non-modifiable 事务不得拆分为多个事务或合并为一个事务，下表中的参数也不能被改变：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>信号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>传输地址</td>
+<td>AxADDR以及AxREGION</td>
+</tr>
+<tr>
+<td>突发大小</td>
+<td>AxSIZE</td>
+</tr>
+<tr>
+<td>突发长度</td>
+<td>AxLEN</td>
+</tr>
+<tr>
+<td>突发类型</td>
+<td>AxBURST</td>
+</tr>
+<tr>
+<td>锁定类型</td>
+<td>AxLOCK</td>
+</tr>
+<tr>
+<td>保护类型</td>
+<td>AxPROT</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>允许修改的内容：</p>
+<ul>
+<li><strong>AxCache</strong>信号仅被允许由可Buffer修改为不可Buffer，<strong>不允许其它的修改</strong></li>
+<li>事务ID和QoS可被修改</li>
+<li>对于一个突发长度超过16的不可修改事务，可被分割为多个事务，产生的事务仍然必须满足上述要求，除了：<ul>
+<li><strong>AxLEN</strong>减小</li>
+<li>生成的突发的地址被适当地调整</li>
+</ul>
+</li>
+<li>对于一个<strong>保持总访问字节数不变</strong>的独占的不可修改事务，允许修改<strong>AxSIZE</strong>与<strong>AxLEN</strong></li>
+</ul>
+<blockquote>
+<p><strong>NOTE</strong></p>
+<ul>
+<li>存在一些无法满足不可修改事务需求的情况<ul>
+<li>例如：传输降级到更狭窄的总线时，事务的传输大小AxSIZE必须修改</li>
+</ul>
+</li>
+<li>一个组件可以包含自定义的机制来通知事务特征发生了修改，这有助于软件调试</li>
+</ul>
+</blockquote>
+<p><strong>2）Modifiable 事务</strong></p>
+<p>一个 modifiable 事务由断言的Cache[1]确定</p>
+<p>一个 modifiable 事务允许修改的内容：</p>
+<ul>
+<li>一个事务可以被分割为多个事务</li>
+<li>多个事务可以被合并为一个事务</li>
+<li>一个读事务可以进行预取操作</li>
+<li>一个写事务可以访问比所需更大的地址范围，使用<strong>WSTRB</strong>信号以确保只有合适的位置被更新</li>
+<li>在每个生成的事务中，下列信号可以被修改：<ul>
+<li>传输地址 <strong>AxADDR</strong></li>
+<li>突发大小 <strong>AxSIZE</strong></li>
+<li>突发长度 <strong>AxLEN</strong></li>
+<li>突发类型 <strong>AxBURST</strong></li>
+<li>传输ID和QoS可被修改</li>
+<li>存储器属性<strong>AxCACHE</strong>可以被修改，但是：<ul>
+<li>任何修改都必须<strong>确保事务的可见性</strong>不会因为阻止事务传播到所需的点或更改在Cache中寻找事务的需求而减少</li>
+<li>任何对于存储器属性的修改都必须与相同地址范围内的其它事务一致</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>下列特征<strong>不可以被修改</strong>：</p>
+<ul>
+<li>锁定类型 <strong>AxLOCK</strong></li>
+<li>保护类型 <strong>AxPROT</strong></li>
+</ul>
+<p>修改的结果出现如下情况时是<strong>不允许的</strong>：</p>
+<ul>
+<li>导致访问与原始事务不同的4KB地址空间</li>
+<li>导致针对单次拷贝原子大小的区域的单次访问变为多次访问操作</li>
+</ul>
+<p><strong>3）不可修改事务的顺序要求</strong></p>
+<p>AXI4要求满足下列全部条件的任何事务集的顺序被保证：</p>
+<ul>
+<li>事务是不可修改的</li>
+<li>事务使用了相同的AXI ID</li>
+<li>事务目标是相同的从设备</li>
+</ul>
+<p>无论事务的地址是什么，只要事务目标是同一个从设备，事务顺序都必须被保证</p>
+<p><strong>注意：当读写通道上分别出现独立的事务时，如果一个事务在另一个事务的响应被收到后才发出，则顺序可以被保证，否则顺序不能被保证</strong></p>
+<h4><span id="432-更新后的读分配与写分配">4.3.2 更新后的读分配与写分配</span></h4><p>在AXI4中：</p>
+<ul>
+<li><strong>读分配位</strong>表示事务中是否会发生分配</li>
+<li><strong>写分配位</strong>表示是否可能由于另一个事务而进行了分配</li>
+</ul>
+<p>对于读事务，写分配位被重定义用来表示：</p>
+<ul>
+<li>由于先前的写事务，该位置可能已经预先在Cache中分配（就像AXI3所定义的那样）</li>
+<li>由于先前另一个主设备的行为，该位置可能已经预先在Cache中分配（AXI4的附加定义）</li>
+</ul>
+<p>对于写事务，读分配位被重定义用来表示：</p>
+<ul>
+<li>由于先前的读事务，该位置可能已经预先在Cache中分配（就像AXI3所定义的那样）</li>
+<li>由于先前另一个主设备的行为，该位置可能已经预先在Cache中分配（AXI4的附加定义）</li>
+</ul>
+<p>这样变更意味着：</p>
+<ul>
+<li>如果AxCACHE[3:2]不等于00，事务必须在Cache中查找。</li>
+<li>如果AxCACHE[3:2]等于00，事务不需要在Cache中查找。</li>
+</ul>
+<p>新的AWCACHE定义如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>AXI4定义</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AWCACHE[3]</td>
+<td>Allocate</td>
+<td>当该位<strong>AWCACHE[3]</strong>有效时，事务必须首先在Cache中查找，因为它可能被预先分配。如果<strong>AWCACHE[2]</strong>有效，事务同样需要预先在Cache中查找。而如果这两位都为0，事务则不必查找Cache。规则推荐，该位有效时，在cache中分配。</td>
+</tr>
+<tr>
+<td>AWCACHE[2]</td>
+<td>Other Allocate</td>
+<td>当该位有效时，事务必须首先在Cache中查找，因为它可能由于其它的事务，即读事务或来自另一个主设备的事务，在Cache中被预先分配。如果这两位都为0，事务则不必查找Cache，且该事务必须传到最终目的地。</td>
+</tr>
+<tr>
+<td>AWCACHE[1]</td>
+<td>Modifiable</td>
+<td>当该位有效时，事务的特征可以修改，写事务可以被合并</td>
+</tr>
+<tr>
+<td>AWCACHE[0]</td>
+<td>Bufferable</td>
+<td>当该位无效时，如果AWCACHE[3:2]为00，写响应必须来自最终目的端。 当该位有效时，若AWCACHE[3:2]为00，写响应可以来自中间点，但写事务必须及时被最终目的端看到。当该位无效时，如果AWCACHE[3:2]不为00，写响应可以来自中间点，但写事务必须及时被最终目的端看到。当该位有效时，如果AWCACHE[3:2]不为00，写响应可以来自中间点，同时写传输可以不必被最终目的端看到</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>新的ARCACHE定义如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>AXI4定义</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ARCACHE[3]</td>
+<td>Other Allocate</td>
+<td>当该位有效时，事务必须首先在Cache中查找，因为它可能由于其它的事务，即写事务或来自另一个主设备的事务，在Cache中被预先分配，同样的，如果ARCACHE[2]有效，事务同样需要预先在Cache中查找</td>
+</tr>
+<tr>
+<td>ARCACHE[2]</td>
+<td>Allocate</td>
+<td>当该位有效时，事务必须首先在Cache中查找，因为它可能被预先分配</td>
+</tr>
+<tr>
+<td>ARCACHE[1]</td>
+<td>Modifiable</td>
+<td>当该位有效时，事务的特征可以修改，写事务可以被合并</td>
+</tr>
+<tr>
+<td>ARCACHE[0]</td>
+<td>Bufferable</td>
+<td>当ARCACHE[3:1]为000时该位无用。 当ARCACHE[3:2]为00且ARCACHE[1]为1时，若该位无效，则读取的数据必须来自最终目的端，否则可以来自一个指向该目的端正在处理的写事务。当ARCACHE[3]有效或ARCACHE[2]有效时，该位可以用来区分写穿和写回存储器类型</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3><span id="44-存储器类型">4.4 存储器类型</span></h3><p>下列的表中给出了AxCACHE的编码含义，其中有的类型在读通道和写通道上拥有两种编码，其中括号内的是AXI3所采用的编码，其它则为AXI4所采用的编码，这主要是为了让AXI4具有向下兼容能力：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>ARCACHE[3:0]</th>
+<th>AWCACHE[3:0]</th>
+<th>存储器类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0000</td>
+<td>0000</td>
+<td>Device Non-bufferable</td>
+</tr>
+<tr>
+<td>0001</td>
+<td>0001</td>
+<td>Device Bufferable</td>
+</tr>
+<tr>
+<td>0010</td>
+<td>0010</td>
+<td>Normal Non-cacheable Non-bufferable</td>
+</tr>
+<tr>
+<td>0011</td>
+<td>0011</td>
+<td>Normal Non-cacheable Bufferable</td>
+</tr>
+<tr>
+<td>1010</td>
+<td>0110</td>
+<td>Write-Through No-Allocate</td>
+</tr>
+<tr>
+<td>1110(0110)</td>
+<td>0110</td>
+<td>Write-Through Read-Allocate</td>
+</tr>
+<tr>
+<td>1010</td>
+<td>1110(1010)</td>
+<td>Write-Through Write-Allocate</td>
+</tr>
+<tr>
+<td>1110</td>
+<td>1110</td>
+<td>Write-Through Read and Write-Allocate</td>
+</tr>
+<tr>
+<td>1011</td>
+<td>0111</td>
+<td>Write-Back No-Allocate</td>
+</tr>
+<tr>
+<td>1111(0111)</td>
+<td>0111</td>
+<td>Write-Back Read-Allocate</td>
+</tr>
+<tr>
+<td>1011</td>
+<td>1111(1011)</td>
+<td>Write-Back Write-Allocate</td>
+</tr>
+<tr>
+<td>1111</td>
+<td>1111</td>
+<td>Write-Back Read and Write-Allocate</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4><span id="441-存储器类型具体要求">4.4.1 存储器类型具体要求</span></h4><p><strong>1）Device Non-bufferable</strong></p>
+<ul>
+<li>写响应必须来自最终目的地</li>
+<li>读数据必须来自最终目的地</li>
+<li>事务不可修改</li>
+<li>不可预先读取，不可写合并</li>
+</ul>
+<p><strong>2）Device Bufferable</strong></p>
+<ul>
+<li>写响应可以来自中间节点</li>
+<li>写事务必须在最终目的地可见</li>
+<li>读数据必须来自最终目的地</li>
+<li>事务不可修改</li>
+<li>不可预先读取，不可写合并</li>
+</ul>
+<blockquote>
+<p><strong>NOTE</strong> Device</p>
+<ul>
+<li>对于读事务Device Bufferable与Device Non-bufferable没区别</li>
+<li>Device Bufferable与Device Non-bufferable都是内存不可修改的，因此Device memory与Non-modifiable memory叫法可以互换</li>
+</ul>
+</blockquote>
+<h3><span id="45-匹配失败存储器属性">4.5 匹配失败存储器属性</span></h3><p>访问存储器相同区域的多个节点可以使用不同的内存属性，然而为保证功能正确性，必须遵守如下几条规则：</p>
+<ul>
+<li><p>所有访问存储器相同区域的主设备都必须拥有该区域的一致性可Cache视图，表现为：</p>
+<ul>
+<li>当寻址区域not Cacheable：所有主设备必须使用<strong>AxCACHE[3:2]</strong>均为00的事务</li>
+<li>当寻址区域Cacheable：所有主设备必须使用<strong>AxCACHE[3:2]</strong>非00的事务</li>
+</ul>
+</li>
+<li><p>不同的主设备可以使用不同的可分配提示(hints)</p>
+</li>
+<li>如果一个寻址区域是Normal Non-cacheable，任何主设备都可用Device memory方式访问</li>
+<li>如果一个寻址区域是可Bufferable，任何主设备使用Non-Bufferable的方式的事务都可以访问</li>
+</ul>
+<blockquote>
+<p><strong>NOTE</strong></p>
+<p>例如，一个事务需要来自最终目的地的响应，这个事务不允许bufferable行为</p>
+</blockquote>
+<h4><span id="451-改变存储器属性">4.5.1 改变存储器属性</span></h4><p>一个特定存储器区域的属性可以被改变，不过这需要一个合适的流程来执行，通常如下所示：</p>
+<ol>
+<li>所有的主设备停止访问该区域</li>
+<li>由单个主设备执行Cache所需的维护操作</li>
+<li>所有的主设备使用新属性重启对该区域的访问</li>
+</ol>
+<h3><span id="46-事务缓冲">4.6 事务缓冲</span></h3><p>对以下存储器类型，不要求一个来自最终目的地的响应，但需要事务在最终目的地的可见：</p>
+<ul>
+<li>Device Bufferable</li>
+<li>Normal Non-cacheable Bufferable</li>
+<li>Write-Through</li>
+</ul>
+<p>对写事务，上面三种memory类型应该有同样的行为</p>
+<p>对读事务，上面三种应分别保证以下行为：</p>
+<ul>
+<li>对于Devie Bufferable memory, 读数据必须来自最终目的地</li>
+<li>对于Normal Non-cacheable Bufferable，读数据必须来自最终目的地，或者一个写事务（这个写事务在去向最终目的地的过程中）</li>
+<li>对于Write-Through，读数据来自中间的cache副本</li>
+</ul>
+<p>写事务除了要确保及时向最终目的地推进，中间的buffer应该需要满足：</p>
+<ul>
+<li>An intermediate buffer that can respond to a transaction must ensure that, over time, any read transaction to<br>Normal Non-cacheable Bufferable propagates towards its destination. This propagation means that, when<br>forwarding a read transaction, the attempted forwarding must not continue indefinitely, and any data that is<br>used for forwarding must not persist indefinitely. The protocol does not define any mechanism for<br>determining how long data that is used for forwarding a read transaction can persist. However, in such a<br>mechanism, the act of reading the data must not reset the data timeout period</li>
+</ul>
+<blockquote>
+<p>NOTE</p>
+<p>如果没有这条要求，对同一位置的持续轮询可以防止buufer中的读取超时，从而阻止读事务在去向去向它目的地的过程</p>
+</blockquote>
+<ul>
+<li>An intermediate buffer that can hold and merge write transactions must ensure that transactions do not remain<br>in its buffer indefinitely. For example, merging write transactions must not reset the mechanism that<br>determines when a write is drained towards its final destination</li>
+</ul>
+<blockquote>
+<p>NOTE</p>
+<p>如果没有此要求，对同一位置的连续写入可以防止buufer中的写入超时，从而阻止写事务在去向它目的地的过程</p>
+</blockquote>
+<h3><span id="47-访问权限">4.7 访问权限</span></h3><p>AXI提供了访问权限信号用以阻止非法事务：</p>
+<ul>
+<li>ARPROT[2:0]定义了读访问的访问权限</li>
+<li>AWPROT[2:0]定义了写访问的访问权限</li>
+</ul>
+<p>其中，信号定义如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>AxPROT</th>
+<th>值</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[0]</td>
+<td>0</td>
+<td>非特权访问</td>
+</tr>
+<tr>
+<td>[0]</td>
+<td>1</td>
+<td>特权访问</td>
+</tr>
+<tr>
+<td>[1]</td>
+<td>0</td>
+<td>安全访问</td>
+</tr>
+<tr>
+<td>[1]</td>
+<td>1</td>
+<td>不安全访问</td>
+</tr>
+<tr>
+<td>[2]</td>
+<td>0</td>
+<td>数据访问</td>
+</tr>
+<tr>
+<td>[2]</td>
+<td>1</td>
+<td>指令访问</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>1）非特权与特权访问</strong></p>
+<p>AXI主设备可能会支持多个级别的权限操作，并把权限的概念扩展到内存访问。<strong>AxPORT[0]</strong>将访问标识为非特权或特权态</p>
+<blockquote>
+<p>NOTE</p>
+<p>某些处理器支持多级权限，具体参考所选处理器的文档，以确保到AXI级别的权限映射，AXI仅支持特权态与非特权态</p>
+</blockquote>
+<p><strong>2）安全与非安全访问</strong></p>
+<p>AXI主设备可能支持安全和非安全操作状态，并将此安全概念扩展到内存访问。<strong>AxPROT[1]</strong>将访问标识为安全或不安全</p>
+<ul>
+<li><strong>AxPROT[1]</strong>可以被视为定义了两个地址空间，一个安全地址空间和一个非安全地址空间。该信号可被视为附加地址位。必须正确处理安全和非安全地址空间之间的任何别名</li>
+</ul>
+<blockquote>
+<p><strong>NOTE</strong></p>
+<p>当该位被断言，事务被标识为不安全，这与arm安全扩展中的定义一致</p>
+</blockquote>
+<p><strong>3）指令与数据</strong></p>
+<p>此位表示事务是指令访问还是数据访问</p>
+<p>在AXI协议规范中，该位仅仅是一种暗示，并不在所有情况下都准确。例如：若某个事务包含指令和数据的混合项，则推荐将该位设置为0，表示当前进行的是数据访问而不是指令访问</p>
+<p>总而言之，本规范建议主设备将AxPROT设置为低，以指示数据访问或其他情况，只有在已知访问是指令访问时断言</p>
+<h3><span id="48-遗留问题">4.8 遗留问题</span></h3><p>AXI4在处理一些AxCACHE存储器属性时引入了额外的要求</p>
+<p><strong>在AXI4中，所有使用相同ID，目的从设备相同的设备事务都必须按序排列</strong></p>
+<blockquote>
+<p><strong>NOTE</strong> 互联器与AxCACHE</p>
+<ul>
+<li>这并不是AXI3的要求，<strong>任何依赖该行为的AXI4组件都不能连接到不支持该特性的AXI3互联器上</strong></li>
+<li><strong>ARM相信大多数的AXI3互联器都支持所需的AXI4行为</strong></li>
+</ul>
+</blockquote>
+<p><strong>该规范强烈推荐任何新的AXI3设计都应该实现AXI4的要求</strong></p>
+<p>对于AxCACHE位名和存储器类型名，AX3组件可以使用AXI3或AXI4的名字，AXI4必须使用AXI4的新术语</p>
+<h3><span id="49-使用示例-usage-examples">4.9 使用示例 Usage examples</span></h3><h4><span id="491-设备内存类型的使用-use-of-device-memory-types">4.9.1 设备内存类型的使用  Use of Device memory types</span></h4><p>The specification supports the combined use of Device Non-bufferable and Device Bufferable memory types to<br>force write transactions to reach their final destination and ensure that the issuing Manager knows when the<br>transaction is visible to all other Managers.<br>A write transaction that is marked as Device Bufferable is required to reach its final destination in a timely manner.<br>However, the write response for the transaction can be signaled by an intermediate buffer. Therefore, the issuing<br>Manager cannot know when the write is visible to all other Managers.<br>If a Manager issues a Device Bufferable write transaction, or stream of write transactions, followed by a Device<br>Non-bufferable write transaction, and all transactions use the same AXI ID, the AXI ordering requirements force<br>all of the Device Bufferable write transactions to reach the final destination before a response is given to the Device<br>Non-bufferable transaction. Therefore, the response to the Device Non-bufferable transaction indicates that all the<br>transactions are visible to all Managers</p>
+<blockquote>
+<p>NOTE</p>
+<p> A Device Non-bufferable transaction can only guarantee the completion of Device Bufferable transactions that are issued with the same ID, and are to the same Subordinate device.</p>
+</blockquote>
+<h2><span id="5-事务id">5: 事务ID</span></h2><p>本章描述了支持无序事务完成的机制，以及支持多个未完成地址发布的机制：</p>
+<ul>
+<li>AXI transaction identifiers</li>
+<li>ID singals</li>
+</ul>
+<h3><span id="51-axi-事务标识符identifiers">5.1 AXI 事务标识符(identifiers)</span></h3><p>AXI协议包含AXI ID transaction identifiers，主设备可以使用这个区分需要按序返回的事务</p>
+<p>拥有相同ID的事务，应该保持顺序；具有不同ID的事务，不用保持顺序</p>
+<ul>
+<li>这意味着单个物理端口可以支持乱序事务，并据此模拟出多个逻辑端口，其中每个端口都是按序端口</li>
+</ul>
+<p>通过使用ID，主设备可以在前面事务未完成的时候就发送新的事务，这可以提升系统效率，因为这允许事务的并行处理</p>
+<blockquote>
+<p><strong>NOTE</strong> 主从设备不一定要使用AXI ID，只处理一个事务</p>
+<p>这并没有要求主设备和从设备一定使用AXI事务ID</p>
+<p>当主设备和从设备可以同时<strong>只处理一个事务</strong>，这意味着所有的事务都是按序的，同时从设备返回的BID和RID必须和主设备发出的AXI ID一致</p>
+</blockquote>
+<h3><span id="52-id-signals">5.2 ID signals</span></h3><p>每一个事务通道都拥有自己的事务ID，如下表所示：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>事务通道</th>
+<th>事务ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>写地址通道</td>
+<td>AWID</td>
+</tr>
+<tr>
+<td>写数据通道，仅AXI3实现</td>
+<td>WID</td>
+</tr>
+<tr>
+<td>写响应通道</td>
+<td>BID</td>
+</tr>
+<tr>
+<td>读地址通道</td>
+<td>ARID</td>
+</tr>
+<tr>
+<td>读数据通道</td>
+<td>RID</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p><strong>NOTE</strong></p>
+<p>AXI4协议支持基于AXI ID的扩展顺序模型（A6 AXI ordering model）</p>
+</blockquote>
+<p><strong>1）读数据顺序</strong></p>
+<ul>
+<li><strong>从设备</strong>：需确保它返回的<strong>RID</strong>与它接收的<strong>ARID</strong>相匹配</li>
+<li><strong>互联器</strong>：必须确保主设备发出的一组具有相同<strong>ARID</strong>且目的是不同从设备的读数据，在接收时能按照发射的地址顺序接收</li>
+<li><strong>深度问题：</strong><ul>
+<li>read data reordering depth与slave中可以pending的address的个数相同，(<strong>也叫interleave depth)</strong> 。按顺序处理transaction的slave，等于read data reordering depth为1</li>
+<li>主设备无法使用任何机制来确定从设备的read data reordering depth</li>
+</ul>
+</li>
+</ul>
+<p><strong>2）写数据顺序</strong></p>
+<ul>
+<li><strong>主设备</strong>：必须按照发送该事务的地址顺序，发送写数据</li>
+<li><strong>互联器：</strong>一个把来自不同主设备的不同写事务收集组合的连接器，必须确保按照地址顺序发送</li>
+<li>Interleaving：AXI3允许来自不同ID交错写入数据，但在AXI4及更高版本不推荐使用，有关写入数据interleaving请参考该文档的F版本</li>
+</ul>
+<p><strong>3）互联器使用的事务ID</strong></p>
+<ul>
+<li><p>当主设备连接到连接器时，连接器会对主设备端口添加<strong>ARID</strong>, <strong>AWID</strong> 与 <strong>WID</strong>额外且唯一的扩展，这将导致两个后果：</p>
+<ul>
+<li>主设备不知道其他主设备使用的ID，因为互联器将主设备发送过来的编号加到原始标识符，使得每个主设备使用ID唯一</li>
+<li>从设备接口上的ID标识符比主设备上的ID标识符位要宽</li>
+</ul>
+</li>
+<li><p>对于读数据，互联器使用<strong>RID</strong>的附加位来确定读取数据的目标主设备，同时删除这些额外的附加位</p>
+</li>
+<li>对于写响应，互联器使用<strong>BID</strong>的附加位来确定接收响应的目标主设备，同时删除这些额外的附加位</li>
+</ul>
+<blockquote>
+<p>补充内容：</p>
+<p><strong>其他内容</strong></p>
+<p><strong>1）事务顺序</strong></p>
+<p>主设备可以使用AWID和ARID事务ID信号来表明它的顺序要求，具体情况如下：</p>
+<ul>
+<li>来自不同主设备的事务是不需按序的</li>
+<li>来自相同主设备但ID不同的事务是不需按序的</li>
+<li>具有相同ARID的一系列读事务的数据传输必须按照主设备发出地址的顺序返回</li>
+<li>具有相同AWID的一系列写事务的数据传输必须按照主设备发出地址的顺序返回</li>
+<li>在AWID与ARID使用相同值的读写事务之间是不需按序的</li>
+</ul>
+<p><strong>注意：AXI3因为支持写数据交错，因此写数据通道中才含有WID信号，而在AXI4中，写数据的顺序必须和写地址的顺序一致，因此WID信号被移除</strong></p>
+<p><strong>2）事务ID信号的宽度</strong></p>
+<p>事务ID信号的宽度可以任意定义，然而，规范推荐下列事务ID信号宽度：</p>
+<ul>
+<li>主设备实现至多4bit的事务ID</li>
+<li>互联器增加额外的至多4bit的事务ID用于支持多主端口</li>
+<li>从设备实现8bit的事物ID信号支持</li>
+</ul>
+<p>对于只支持单个按序接口的主设备，将事务ID信号置为一个常量，例如0，是可以接受的</p>
+<p>对于不使用顺序信息而将所有事务按序处理的从设备而言，事务ID信号可以在不改变从设备功能的情况下被加入</p>
+<p><strong>3）遗留问题</strong></p>
+<p>大多数AXI3主设备不支持写交错，因此为了满足AXI4的要求不需要做任何改动，而支持写交错的AXI主设备必须要支持写交错深度的配置方法，通过将写交错深度设置为1来兼容AXI4</p>
+<p><strong>注意：任何需要WID信号的AXI3的组件都可以从AWID信号生成WID信号</strong></p>
+</blockquote>
+<h2><span id="6-axi顺序模型ordering-model">6 AXI顺序模型(Ordering Model)</span></h2><p>本章内容：</p>
+<ul>
+<li>AXI ordering model overview</li>
+<li>Memory locations and Peripheral regions</li>
+<li>Transactions and ordering</li>
+<li>Observation and completion definitions</li>
+<li>Manager ordering guarantees</li>
+<li>Ordering requirements</li>
+<li>Response before the endpoint</li>
+<li>Ordered write observation</li>
+</ul>
+<h3><span id="61-顺序模型的概括">6.1 顺序模型的概括</span></h3><p>AXI 顺序模型 基于AXI ID事务标识符（<strong>ARID or AWID</strong>），下面两条是顺序模型的基本模型</p>
+<ul>
+<li>同一通道上具有相同ID和目标的顺序请求保持有序</li>
+<li>具有相同ID的事务响应的返回与发出请求的顺序相同</li>
+</ul>
+<p>顺序模型在以下关系中不提供以下之间的任何排序保证：</p>
+<ul>
+<li>不同主设备之间</li>
+<li>读写事务之间</li>
+<li>不同ID的事务之间</li>
+<li>去往不同外设域的事务之间</li>
+<li>去往不同存储区的事务之间</li>
+</ul>
+<p>无顺序保证时的顺序模型(a Manager requires ordering between transactions that have no ordering guarantee)：</p>
+<ul>
+<li>如何一个主设备要求事务之间顺序，但没有保证机制，主设备则必须等待收到第一个事物的响应后，在发射第二个事务</li>
+</ul>
+<h3><span id="62-存储区与外设域memory-locations-and-peripheral-regions">6.2 存储区与外设域(Memory locations and Peripheral regions)</span></h3><p>AMBA中的地址映射由存储区与外设域构成</p>
+<p>一个存储区具有以下性质：</p>
+<ul>
+<li>从一个存储区域读取一个字节，将返回写入该字节位置的最后一个值</li>
+<li>对一个存储区域写入一个字节，会将该位置的值更新为通过后续读取该位置获得的新值</li>
+<li>读取或写入内存区，对其他任何内存位置都没有副作用</li>
+<li>为内存的每个区域都提供观察保证</li>
+<li>内存区的大小等于该组建的single-copy atomicity大小</li>
+</ul>
+<p>一个外设域具有以下性质：</p>
+<ul>
+<li>从外设域中的地址读取，不一定返回写入该地址的最后一个值</li>
+<li>对外设域写入一个字节，不一定会将该处的值更新为通过后续读取时获得的新值</li>
+<li>访问外设域内的地址可能会对该区域内的其他地址产生副作用</li>
+<li>为外设的每个区域都提供观察保证</li>
+<li>外设域的大小由实现定义，但它必须包含在单个从组件中</li>
+</ul>
+<h3><span id="63-事务与顺序transaction-and-ordering">6.3 事务与顺序(transaction and ordering)</span></h3><p>transaction事务是对一个或多个地址位置的读取或写入</p>
+<p>location位置由<strong>AxADDR</strong>和任何相关限定符（如<strong>AxPROT</strong>中的非安全位）确定</p>
+<p>顺序排序规则：</p>
+<ul>
+<li>仅在访问同一存储区与外设区域之间，提供顺序保证</li>
+<li>到外设域的事务必须完全包含在该区域内</li>
+<li>跨多个内存区的事务具有多个排序保证</li>
+</ul>
+<p>事务可以是Device类型或者Normal类型：</p>
+<ul>
+<li>Device transaction<ul>
+<li>读写时<strong>AxCACHE[1]</strong>已取消断言</li>
+<li>Device类型的事务可以访问内存区或外设域</li>
+</ul>
+</li>
+<li>Normal transaction<ul>
+<li>读写时<strong>AxCACHE[1]已断言</strong></li>
+<li>Normal类型的事务用于访问内存区，并不会用来访问外设域</li>
+<li>一个对外设域的Normal的正常访问，必须以符合协议的方式来完成，但结果是根据具体实现定义的（自定义的）</li>
+</ul>
+</li>
+</ul>
+<p>写入transaction：</p>
+<ul>
+<li>写入事务可以是Non-bufferable 或 Bufferable。可以向可缓冲写入发送早期响应<ul>
+<li>Non-bufferable transaction  <strong>AxCACHE[0]</strong>已取消断言</li>
+<li>Bufferabletransaction  <strong>AxCACHE[0]</strong>已断言</li>
+</ul>
+</li>
+</ul>
+<h3><span id="64-观察与完成的定义observation-and-completion-definitions">6.4 观察与完成的定义(Observation and completion definitions)</span></h3><ul>
+<li>DRW：a Device read or write access</li>
+<li>DW：a Device write</li>
+<li>DR：a Device read</li>
+<li>W：a write</li>
+<li>R：a read</li>
+</ul>
+<p><strong>1）观察</strong></p>
+<p>对于外设域的访问，当DRW1在DRW2前到达从组件时，DRW1应被DRW2观察到</p>
+<p>对于内存区的访问，下面所有条件均适用：</p>
+<ul>
+<li>如果W2如果在W1后才生效，则W1应被W2观察到</li>
+<li>如果R1返回数据来自于W3，且W2在W3后生效，R1应被W2观察到</li>
+<li>如果R2返回数据来自W1，或在W1后的W3时，W1应被R2观察到</li>
+</ul>
+<p>其中：</p>
+<ul>
+<li>R1或W1可以是Device或Normal类型</li>
+</ul>
+<p><strong>2）完成</strong></p>
+<p>写完成响应：</p>
+<ul>
+<li>当前周期时，相关<strong>BRESP</strong>握手信号给出，并且<strong>BVALID</strong>与<strong>BREADY</strong>信号被断言</li>
+</ul>
+<p>读完成响应：</p>
+<ul>
+<li>当前周期时，最后一个相关<strong>RDATA</strong>握手信号给出，并且<strong>RLAST, RVALID</strong>与<strong>RREADY</strong>信号被断言</li>
+</ul>
+<h3><span id="65-主设备顺序保证">6.5 主设备顺序保证</span></h3><p>有三种类型的主设备顺序保证：</p>
+<ul>
+<li>在一个完整响应接受前的，可观察性保证</li>
+<li>来自一个完整响应的，可观察性保证</li>
+<li>响应顺序保证</li>
+</ul>
+<h4><span id="651-一个完整响应接受前的可观察性保证">6.5.1 一个完整响应接受前的，可观察性保证</span></h4><p>来自同一主设备并且ID相同的事务的保证：</p>
+<ul>
+<li>DW1应保证比DW2早到达目的地，在DW2与DW1都发向同一外设域且发射晚于DW1时</li>
+<li>DR1应保证比DR2早到达目的地，在DR2与DR1都发向同一外设域且发射晚于DR1时</li>
+<li>W1应保证被W2观察到，在W2与W1都发向同一存储区且发射晚于W1时</li>
+<li>W1应保证被R2观察到，在R2与R1都发向同一存储区且发射晚于R1时</li>
+</ul>
+<p>这些保证意味着，在Device 与 Normal发送向同一存储区的过程中，是顺序的</p>
+<h4><span id="652-来自一个完整响应的可观察性保证">6.5.2 来自一个完整响应的，可观察性保证</span></h4><p>一个完整响应的保证以下：</p>
+<ul>
+<li>对一个读请求的完整响应保证：主设备发出的所有后续<strong>读写</strong>请求都是可观察的</li>
+<li>对一个写请求的完整响应保证：主设备发出的所有后续<strong>读写</strong>请求都是可观察的。这种可观察性是一个multi-copy atomic 的必要条件</li>
+</ul>
+<p>包含符合Arm体系结构的处理器，必须是multi-copy atomic，也就是说<strong>Multi_Copy_Atomicity</strong>属性必须为TRUE</p>
+<p>对于Bufferable写请求的响应可以来自于中间节点。它并不能保证在终点处完成，只能保证对未来的事务可观察的</p>
+<h4><span id="653-响应顺序保证">6.5.3 响应顺序保证</span></h4><p>事务响应具有以下所有的顺序保证：</p>
+<ul>
+<li>R1应保证在R2之前收到响应<ul>
+<li>R1 R2 ID相同</li>
+<li>R2紧随R1</li>
+<li>从同一个主设备发射</li>
+</ul>
+</li>
+<li>W1应保证在W2之前收到响应<ul>
+<li>W1 W2 ID相同</li>
+<li>W2紧随W1</li>
+<li>从同一个主设备发射</li>
+</ul>
+</li>
+</ul>
+<h3><span id="66-顺序要求">6.6 顺序要求</span></h3><p>为满足主设备的顺序保证，这里对从设备和连接器做了具体要求</p>
+<h4><span id="661-从设备顺序保证">6.6.1 从设备顺序保证</span></h4><p>For Peripheral locations, the execution order of transactions to Peripheral locations is IMPLEMENTATION DEFINED. This execution order is typically expected to match the arrival order, but that is not a requirement.</p>
+<p>For Memory locations:</p>
+<ul>
+<li>A write W1 must be ordered before a write W2 with the same ID, to the same Memory location, where W2 is received after W1 is received.</li>
+<li>A write W1 must be ordered before a write W2 to the same Memory location, where W2 is received after the completion response for W1 is given.</li>
+<li>A write W1 must be ordered before a read R2 to the same Memory location, where R2 is received after the completion response for W1 is given.</li>
+<li>A read R1 must be ordered before a write W2 to the same Memory location, where W2 is received after the completion response for R1 is given.</li>
+</ul>
+<p>Response ordering requirements:</p>
+<ul>
+<li>The response to read R1 must be returned before the response to a read R2, where R2 is received after R1 with the same ID.</li>
+<li>The response to write W1 must be returned before the response to a write W2, where W2 is received after W1 with the same ID</li>
+</ul>
+<h4><span id="662-连接器顺序保证">6.6.2 连接器顺序保证</span></h4><p>An interconnect component has the following attributes:</p>
+<ul>
+<li>A request is received on one port and is either issued on a different port or responded to.</li>
+<li>A response is received on one port and is either issued on a different port or consumed.</li>
+</ul>
+<p>When the interconnect issues requests or responses, it must adhere to the following requirements:</p>
+<ul>
+<li>A read R1 request must be issued before a read R2 request, where R2 is received after R1, with the same ID and to the same or overlapping locations.</li>
+<li>A write W1 request must be issued before a write W2 request, where W2 is received after W1, with the same ID, to the same or overlapping locations.</li>
+<li>A Device read DR1 request must be issued before a Device read DR2 request, where DR2 is received after DR1, with the same ID and to the same Peripheral region.</li>
+<li>A Device write DW1 request must be issued before a Device write DW2 request, where DW2 is received after DW1, with the same ID and to the same Peripheral region.</li>
+<li>A read R1 response must be issued before a read R2 response, where R2 is received after R1, with the same ID.</li>
+<li>A write W1 response must be issued before a write W2 response, where W2 is received after W1, with the same ID.</li>
+</ul>
+<p>When the interconnect is acting as a Subordinate component, it must also adhere to the Subordinate requirements. Any manipulation of the AXI ID values that are associated with a transaction must ensure that the ordering requirements of the original ID values are maintained.</p>
+<h3><span id="67-终点之前发出响应">6.7 终点之前发出响应</span></h3><p>为了提高系统性能，任何中间组件可以对某些事务发出响应。这一行动被称为提前响应。发布早期响应的中间组件必须确保满足可见性和顺序保证性</p>
+<h4><span id="671-早期读响应">6.7.1 早期读响应</span></h4><p>For Normal read transactions, an intermediate component can respond with read data from a local memory if it is<br>up-to-date with respect to all earlier writes to the same or overlapping address. In this case, the request is not<br>required to propagate beyond the intermediate component.<br>An intermediate component must observe ID ordering rules, which means a read response can only be sent if all<br>earlier reads with the same ID have already had a response</p>
+<h4><span id="672-早期写响应">6.7.2 早期写响应</span></h4><p>For Bufferable write transactions, an intermediate component can send an early write response for transactions that<br>have no downstream observers. If the intermediate component sends an early write response, the intermediate<br>component can store a local copy of the data, but must propagate the transaction downstream, before discarding that<br>data.<br>An intermediate component must observe ID ordering rules, that means a write response can only be sent if all<br>earlier writes with the same ID have already had a response.<br>After sending an early write response, the component must be responsible for ordering and observability of that<br>transaction until the write has been propagated downstream and a write response is received. During the period<br>between sending the early write response and receiving a response from downstream, the component must ensure<br>that:</p>
+<ul>
+<li>If an early write response was given for a Normal transaction, all subsequent transactions to the same or<br>overlapping Memory locations are ordered after the write that has had an early response.</li>
+<li>If an early write response was given for a Device transaction, then all subsequent transactions to the same<br>Peripheral region are ordered after the write that has had an early response.</li>
+</ul>
+<p>When giving an early write response for a Device Bufferable transaction, the intermediate component is expected<br>to propagate the write transaction without dependency on other transactions. The intermediate component cannot<br>wait for another read or write to arrive before propagating a previous Device write.</p>
+<h3><span id="a68-有序写入观察ordered_write_observation">A6.8 有序写入观察(Ordered_Write_Observation)</span></h3><p>为了提升接口对不同顺序模型接口协议的兼容性，规范提供了Ordered_Write_Observation属性，该属性可针对单个接口设置为True或False：</p>
+<ul>
+<li>True：说明该端口拥有该属性</li>
+<li>False：说明该接口不支持该属性</li>
+<li>如果未声明Ordered_Write_Observation，则认为它为False</li>
+</ul>
+<p>Ordered_Write_Observation接口，为不依赖目标或地址的写事务提供了保证：</p>
+<ul>
+<li>W1应保证被W2观察到<ul>
+<li>W1 W2 ID相同</li>
+<li>W2紧随W1</li>
+<li>从同一个主设备发射</li>
+</ul>
+</li>
+</ul>
+<p>主设备在使用生产者-消费者顺序模型，连接到Ordered_Write_Observation的从设备时，无需等待来自早期写入的完成响应</p>
+<h2><span id="7-原子访问atomic-accesses">7 原子访问(Atomic Accesses)</span></h2><p>本章介绍AXI4 single-copy atomicity size、AXI 协议如何实现独占和锁定的机制：</p>
+<ul>
+<li>Single-copy atomicity size</li>
+<li>Exclusive accesses</li>
+<li>Locked accesses</li>
+<li>Atomic access signaling</li>
+</ul>
+<h3><span id="71-单拷贝原子大小single-copy-atomicity-size">7.1 单拷贝原子大小(Single-copy atomicity size)</span></h3><p>AXI4协议引入了单拷贝原子大小的概念，<strong>这个术语定义了一个事务原子更新的最小字节数</strong>。AXI4协议要求大于一个单拷贝原子大小的事务必须更新至少为单拷贝原子大小的内存块</p>
+<blockquote>
+<p><strong>NOTE</strong></p>
+<p>原子性<strong>并不定义数据更新的确切时刻</strong>。必须确保的是，没有一个主设备可以观察到原子数据的部分更新形式</p>
+<p>例如，在使用许多系统数据结构例如由32bit原子元素构成的链表时，针对这些元素的原子更新操作必须同时更新整个32bit的值，任何一个主设备在某个时刻只观测到其中的16bit发生更新，而在另一个时刻观测到另外16bit发生更新的的这一行为是不可接受的</p>
+</blockquote>
+<p>更复杂的系统要求支持更大的原子元素，特别是64bit原子元素，以便主设备可以使用基于更大原子元素的数据结构通信</p>
+<p>系统所支持的单拷贝原子大小非常重要，因为给定通信中设计的所有组件都必须支持苏偶像的原子元素大小。如果两个主设备正在通过互联器和同一个从设备通信，则所有涉及到的组件都必须确保所需大小的事务被原子对待</p>
+<p>AXI4协议不要求特定的单拷贝原子大小，系统可以支持不同的单拷贝原子大小</p>
+<p>对于组内通信，不同的组件组可以拥有不同的单拷贝原子大小，在AXI4中，单拷贝原子组这一术语指的是一组可以以特定的原子性进行通信的组件</p>
+<p>下图展示了如下的一个系统：</p>
+<ul>
+<li>处理器、DSP、DRAM控制器、DMA控制器、外设、SRAM以及关联的互联器都在一个32bit的单拷贝原子组中</li>
+<li>处理器、DSP、DRAM控制器以及关联的互联器同时也在一个64bit的单拷贝原子组中</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220630024745953.png" srcset="/img/loading.gif" lazyload alt="image-20220630024745953"></p>
+<p>事务的原子性<strong>只有在它的起始地址正确对齐时才能得到保证</strong>，例如，对于一个64bit的单拷贝原子组来说，如果突发事务的地址没有对齐到8字节边界，那么该事务就没有任何64bit单拷贝原子保证。</p>
+<p>事务的<strong>字节选通信号不会影响单拷贝原子大小</strong></p>
+<h4><span id="711-多拷贝写原子性multi-copy-write-atomicity">7.1.1 多拷贝写原子性(Multi-copy write atomicity)</span></h4><p>要指定一个系统提供多拷贝原子性，必须定义Multi_Copy_Atomicity属性。</p>
+<ul>
+<li>True，则该系统拥有这个能力</li>
+<li>False，则该系统不拥有这个能力</li>
+<li>未定义时默认为False</li>
+</ul>
+<p>如果以下条件满足，则可以说明一个系统具有多拷贝原子性：</p>
+<ul>
+<li>针对同一个位置的写操作可以被所有的代理以相同的顺序观察到</li>
+<li>对于一个除发出者外的代理可以观测到的写操作而言，其它的代理也都能观测到</li>
+</ul>
+<p>多拷贝原子性可以通过如下手段来保证：</p>
+<ul>
+<li>对于一个给定的地址使用单点序列化（POS, Point of Serialization），这样针对相同位置的全部访问操作都可以按序处理器，必须确保在该位置的新值针对任何代理都可见之前将被Cache的一致性拷贝全部无效化</li>
+<li>避免在代理的上游使用前向Buffer，这可以避免一个Buffer写操作在对全部代理可见前对某些代理可见</li>
+</ul>
+<blockquote>
+<p><strong>NOTE</strong></p>
+<p>如果一个系统使用了ARM v8架构处理器，则该系统必须拥有Multi_Copy_Atomicity属性。该属性用来支持获取加载和释放存储指令，释放存储指令要求存储操作是多拷贝原子性的</p>
+</blockquote>
+<h3><span id="72-独占访问exclusive-accesses">7.2 独占访问(Exclusive accesses)</span></h3><p>独占访问机制提供了信号量类型(semaphore-type)的操作，利用该机制时不需要在整个访问周期内让总线被一个主设备所独占，这意味着信号量类型操作不会影响总线访问延迟以及最大可实现带宽</p>
+<p><strong>AxLOCK</strong>信号选择独占访问：</p>
+<ul>
+<li><strong>RRESP</strong>表示独占读操作的成功与否</li>
+<li><strong>BRESP</strong>表示独占写操作的成功与否</li>
+</ul>
+<p><strong>从设备要求额外的逻辑实现独占访问</strong></p>
+<p>当主设备访问一个不支持独占访问的从设备时，AXI协议提供了一种机制用来<strong>通知该主设备其所访问的从设备不支持独占访问操作</strong></p>
+<h4><span id="721-独占访问过程">7.2.1 独占访问过程</span></h4><p>独占访问的基本机制如下：</p>
+<ol>
+<li>主设备在给定地址上执行独占读事务</li>
+<li>过一段时间后，主设备尝试在相同的地址上执行独占写事务，这会导致独占读事务的完成，同时，独占写事务的<strong>AWID</strong>与独占读事务的<strong>ARID</strong>相同</li>
+<li>如果从执行独占读事务开始没有其它主设备写相同的位置，独占写事务将会更新存储器，并返回成功信号，否则会返回失败信号</li>
+</ol>
+<p>主设备或许不会完成独占事务的写部分，独占访问监视硬件对于每一个事务ID只会监视一个地址。如果一个主设备没有完成独占事务的写部分，接下来这个主设备又以相同的事务ID对另一个地址发起了独占读事务，则独占访问监视的地址就会被改变</p>
+<h4><span id="722-主设备视角看待独占访问">7.2.2 主设备视角看待独占访问</span></h4><p>一个主设备通过执行一个独占读事务的方式开始一个独占操作，如果事务成功，从设备就会返回<strong>EXOKAY</strong>响应，表示从设备已经记录了要监视的地址</p>
+<p>如果主设备尝试向不支持独占访问的从设备发出独占读事务请求，从设备会返回<strong>OKAY</strong>响应而不是<strong>EXOKAY</strong>响应</p>
+<blockquote>
+<p><strong>NOTE</strong></p>
+<p>主设备可以将OKAY响应作为独占访问不支持的错误响应看待，规范推荐主设备接下来不要执行独占操作的写部分</p>
+</blockquote>
+<p>在独占读操作之后的一段时间后，主设备尝试对相同位置发起独占写事务：</p>
+<ul>
+<li>如果从独占读事务开始时到现在对应地址的内容始终没有发生改变，独占写操作就会成功，从设备返回EXOKAY响应，并更新对应的存储器位置</li>
+<li>否则，独占写操作就会失败，从设备返回OKAY响应而不是EXOKAY响应，独占写操作不会更新对应的存储器位置</li>
+</ul>
+<p>主设备或许不会完成独占操作的写部分，如果发生了这种情况，从设备将会继续监视独占访问的地址直到针对该从设备的另一个独占读事务启动一个新的独占访问序列</p>
+<p>主设备在独占访问序列的读部分完成后才会开始独占访问序列的写部分</p>
+<h4><span id="723-从设备视角看待独占访问">7.2.3 从设备视角看待独占访问</span></h4><p>不支持独占访问的从设备可以忽略<strong>AxLOCK</strong>信号，这样的从设备对于一般和独占访问都必须提供<strong>OKAY</strong>响应信号</p>
+<p>支持独占访问的从设备必须拥有<strong>监视硬件</strong>，<strong>规范推荐对于每一个支持独占的事务ID而言都准备一个监视单元</strong>。ARM规范参考手册，ARMv7-A和ARMv7-R版本定义了一种独占访问监视器：</p>
+<ul>
+<li>一个单端口的从设备可以拥有一个外接的独占访问监视器</li>
+<li>一个多端口的从设备则或许需要实现内部监视器</li>
+</ul>
+<p>独占访问监视器需要记录任何独占读操作的地址和<strong>ARID</strong>，然后需要监视指定的位置，直到：针对该位置的写操作发生，或使用相同ARID的另一个独占读操作复位监视器并将地址设置为另一个值</p>
+<p>当从设备接收到一个独占写事务时，监视器就会根据给定的<strong>AWID</strong>检查指定的地址是否被监视，如果是，这表示从独占读操作开始以来没有发生写操作，然后就会处理写操作并完成整个独占访问过程，返回<strong>EXOKAY</strong>响应，并更新存储器</p>
+<p>如果在进行独占写时，地址不再被相同<strong>AWID</strong>的监视硬件监视，则表明发生了下列情况之一：</p>
+<ul>
+<li>在独占读访问事务发起之后，对应的位置的内容被更新</li>
+<li>监视器的地址被另一个独占读事务重置修改</li>
+</ul>
+<p>在以上两种情况中，独占写事务都不会更新对应的存储器位置，从设备必须返回<strong>OKAY</strong>而不是<strong>EXOKAY</strong>响应</p>
+<h4><span id="724-独占访问的限制">7.2.4 独占访问的限制</span></h4><p>独占访问存在以下限制：</p>
+<ul>
+<li>独占写操作的<strong>突发大小</strong>和<strong>突发长度</strong>，必须与其对应的独占读操作一致</li>
+<li>独占访问的地址必须对齐到事务的<strong>总字节数</strong>，也就是突发大小与突发长度的乘积</li>
+<li>独占读与独占写事务的<strong>地址</strong>必须一致</li>
+<li>独占读事务的<strong>ARID</strong>必须与独占写事务的<strong>AWID</strong>一致</li>
+<li>独占读和独占写事务的<strong>控制信号</strong>必须一致</li>
+<li>独占访问突发传输的<strong>字节数</strong>必须是2的幂，即1、2、4、8、16、32、64或128字节</li>
+<li>独占访问突发传输的<strong>最大字节数</strong>为128字节</li>
+<li>在AXI4中，独占访问的<strong>突发长度</strong>不能超过16</li>
+<li><strong>AxCACHE</strong>信号的值必须保证监视独占访问的从设备可以看到事务。例如，独占访问事务的AxCACHE的值一定不表示事务是可Cache的</li>
+<li>domain必须是Non-shareable或System-shareable的</li>
+<li>事务类型必须是 ReadNoSnoop 或 WriteNoSnoop</li>
+</ul>
+<p>不遵守这些限制将会导致<strong>不可预测</strong>的结果。</p>
+<p>在独占操作过程中监视的<strong>最小字节数</strong>由事务的突发长度和突发大小所定义，而从设备可以选择监视更大的字节数（最大不超过128字节），但当相邻的字节被更新时，这会导致本应成功的独占访问操作变为失败状态</p>
+<p>为了将独占读取和独占写入是为同一独占访问序列的一部分，以下信号对于两种传输必须相同：</p>
+<ul>
+<li>AxID</li>
+<li>AxADDR</li>
+<li>AxREGION</li>
+<li>AxLEN</li>
+<li>AxSIZE</li>
+<li>AxBURST</li>
+<li>AxLOCK</li>
+<li>AxCACHE</li>
+<li>AxPROT</li>
+<li>AxDOMAIN</li>
+<li>AxSNOOP</li>
+<li>AxMMUSECSID</li>
+<li>AxMMUSID</li>
+<li>AxMMUSSIDV</li>
+<li>AxMMUSSID</li>
+<li>AxMMUATST</li>
+</ul>
+<h4><span id="725-对独占访问的响应">7.2.5 对独占访问的响应</span></h4><p>一般访问：</p>
+<ul>
+<li><strong>RRESP</strong>与<strong>BRESP</strong>响应信号在表示一般访问成功时使用OKAY信号</li>
+</ul>
+<p>独占访问：</p>
+<ul>
+<li><strong>RRESP</strong>与<strong>BRESP</strong>响应信号在表示独占访问成功时使用EXOKAY信号，这意味着不支持独占访问的从设备会使用OKAY信号表示独占访问操作的失败</li>
+</ul>
+<blockquote>
+<p><strong>NOTE</strong></p>
+<ul>
+<li>针对不支持独占访问从设备的独占写操作总会更新存储器</li>
+<li>针对支持独占访问从设备的独占写操作只有在独占写操作成功时才会更新存储器</li>
+</ul>
+</blockquote>
+<p>一个独占写操作会收到一个<strong>BRESP</strong>响应，且信号可以是OKAY , EXOKAY , SLVERR or DECERR</p>
+<p>一个独占读操作会收到一个或多个响应。这些响应可能是EXOKAY , SLVERR and DECERR信号的混合，或者OKAY , SLVERR and DECERR信号的混合。EXOKAY与OKAY在一个事务内的混合是不被允许的</p>
+<h3><span id="73-锁定访问">7.3 锁定访问</span></h3><p>AXI4不支持锁定事务，而AXI3实现则必须支持锁定事务</p>
+<blockquote>
+<p><strong>NOTE</strong></p>
+<p>AXI4由于以下原因移除了锁定事务的支持：</p>
+<ul>
+<li>大多数组件不需要锁定事务</li>
+<li>锁定事务的实现会对互联器的复杂度以及QoS保证能力造成显著的影响</li>
+</ul>
+</blockquote>
+<p>互联器：</p>
+<ul>
+<li>当主设备使用<strong>AxLOCK</strong>信号表示当前事务是一个锁定事务时，互联器就必须确保只有当前主设备可以访问目标从设备区域，直到该主设备发出解锁事务为止，互联器的仲裁器必须强制执行此限制 </li>
+<li>任何携带<strong>AxLOCK</strong>信号的事务都是锁定事务，这会强制互联器锁定接下来的事务，因此，一个锁定序列只有当主设备发出无AxLOCK信号事务时才会终止，这个终止事务包含在锁定序列中并实际上移除了锁</li>
+</ul>
+<p>主设备：</p>
+<ul>
+<li>在主设备开始读事务或写事务的锁定序列前，该主设备必须确保没有其它等待完成的事务</li>
+<li>在即将完成锁定序列时，必须首先确保所有的锁定事务都已经完成，然后才能发出终止解锁事务，并必须确保在进行接下来的任何事务之前该解锁事务已经执行完成</li>
+<li>主设备必须确保一个锁定序列中的全部事务都拥有相同的<strong>AxID</strong>值</li>
+</ul>
+<blockquote>
+<p><strong>NOTE</strong></p>
+<p>锁定访问事务需要互联器在锁定序列进行中时避免任何其它的事务发生，这会对互联器的效率产生影响，因此，该规范推荐锁定访问事务只用于支持早期设备</p>
+</blockquote>
+<p>该规范推荐下列的限制（但不是强制性的）：</p>
+<ul>
+<li>在单个4KB地址域内保持任何锁定事务序列</li>
+<li>将任何锁定任务序列限制为两个事务</li>
+</ul>
+<h3><span id="74-原子访问信号">7.4 原子访问信号</span></h3><p>在AXI3中，AxLOCK信号用于指定一般、独占和锁定访问，下表为<strong>AXI3</strong>规范对于AxLOCK信号的编码：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>AxLOCK[1:0]</th>
+<th>访问类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00</td>
+<td>一般访问</td>
+</tr>
+<tr>
+<td>01</td>
+<td>独占访问</td>
+</tr>
+<tr>
+<td>10</td>
+<td>锁定访问</td>
+</tr>
+<tr>
+<td>11</td>
+<td>保留</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>AXI4移除了锁定事务，仅使用1bit锁定信号，下表为<strong>AXI4</strong>规范对于AxLOCK信号的编码：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>AxLOCK</th>
+<th>访问类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>一般访问</td>
+</tr>
+<tr>
+<td>1</td>
+<td>独占访问</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4><span id="741-遗留问题">7.4.1 遗留问题</span></h4><p>在AXI4环境中，任何AXI3锁定事务可以按照下列方式被转换为一般事务：</p>
+<ul>
+<li><strong>AWLOCK[1:0]</strong> = 10被转换为一般写事务，AWLOCK = 0</li>
+<li><strong>ARLOCK[1:0]</strong> = 10被转换为一般读事务，ARLOCK = 0</li>
+</ul>
+<p>该规范推荐任何组件执行这样的转换，一般是在互联器中包含一个可选的机制用于检测和标记这样的事务发生</p>
+<p>如果某些组件执行了这样的转换后不能正确工作，<strong>则这样的组件不能在AXI4环境中使用</strong></p>
+<blockquote>
+<p><strong>NOTE</strong></p>
+<p>对于许多早期使用锁定事务的例子，例如SWP指令的执行，或许需要通过修改软件的方式来避免使用强制使用锁定事务的指令</p>
+</blockquote>
+<h2><span id="8-amba4-附加信号">8 AMBA4 附加信号</span></h2><p>本章介绍AMBA 4中引入的附加信令，以扩展AXI接口的应用，包括：</p>
+<ul>
+<li>QoS signaling</li>
+<li>Multiple region signaling</li>
+<li>User-defined signaling</li>
+</ul>
+<h3><span id="81-qos信号">8.1 QoS信号</span></h3><h4><span id="811-qos接口信号">8.1.1 QoS接口信号</span></h4><p>AXI4信号集支持两个4bit的QoS标识符：</p>
+<ul>
+<li><strong>AWQOS</strong>：一个4bit的QoS标识符，在每次写事务中由写地址通道发送</li>
+<li><strong>ARQOS</strong>：一个4bit的QoS标识符，在每次读事务中由读地址通道发送</li>
+</ul>
+<p><strong>协议并没有指定QoS标识符的精确使用方法</strong>，规范推荐AxQOS的值<strong>用于优先级指示器</strong>，更大的值表示更高优先级的事务</p>
+<p><strong>当使用默认值0000时表示接口不参与任何QoS方案</strong></p>
+<h4><span id="812-主设备注意事项">8.1.2 主设备注意事项</span></h4><p>一个主设备可以产生自己的AxQOS值，如果它可以产生多个传输流，则可以为这些流分配不同的QoS值</p>
+<p>为了支持QoS，需要对正在使用的QoS方案有系统级的理解，同时需要全部的组件之间互相配合，因此，规范推荐主设备组件支持精确控制QoS值的机制<strong>用于任何给定的场景</strong></p>
+<p>如果主设备组件不支持任何可编程的QoS方案，则它可以使用QoS值代表事务的相对优先级，然后可以将这些值映射到备用的系统级QoS值</p>
+<p>不能产生AxQOS值的主设备必须使用默认值</p>
+<blockquote>
+<p><strong>NOTE</strong></p>
+<p>规范期望一些互联组件实现一些可编程寄存器，这些寄存器可以用于分配QoS值到连接的主设备，覆盖掉主设备原先的QoS值</p>
+</blockquote>
+<h4><span id="813-系统注意事项">8.1.3 系统注意事项</span></h4><p>AXI4中定义的QoS信号可以用于任何兼容的系统级QoS方法</p>
+<p>QoS默认的系统级实现是，任何组件可以选择处理多个事务时，都会选择QoS值较高的事务优先处理。这个选择仅当没有其他要求事务需要按特定顺序处理的约束时才会发生</p>
+<blockquote>
+<p><strong>NOTE</strong></p>
+<p>这意味着AXI顺序规则优先于QoS</p>
+</blockquote>
+<p>可以实现兼容默认方案的更复杂的QoS方案</p>
+<h3><span id="82-region-多区域信号可选">8.2 REGION 多区域信号（可选）</span></h3><h4><span id="821-附加接口信号">8.2.1 附加接口信号</span></h4><p>AXI4接口信号集支持两个4bit区域标识符（可选）：</p>
+<ul>
+<li><strong>AWREGION</strong>：一个区域标识符，在每次写事务中由写地址通道发送</li>
+<li><strong>ARREGION</strong>：一个区域标识符，在每次读事务中由读地址通道发送</li>
+</ul>
+<p><strong>4bit位宽</strong>：4bit区域标识符可以用于唯一地标识多达16个不同的区域，区域标识符可以提供更高阶的地址位译码，但在任何4KB地址空间内必须保持不变</p>
+<p><strong>作用</strong>：区域标识符的使用意味着从设备的单个物理接口可以提供多个逻辑接口，每一个都位于系统地址映射中的不同位置，区域标识符的使用也意味着从设备必不支持不同逻辑接口间的地址译码</p>
+<p><strong>互联器</strong>：这个协议期望互联器在为拥有多个逻辑接口的单个从设备执行地址译码功能时产生AxREGION信号，如果一个从设备在系统地址映射中只有一个物理接口，则互联器必须使用默认的AxREGION值</p>
+<p><strong>从设备</strong>：</p>
+<ul>
+<li>从设备必须确保两个位于不同区域但拥有相同的AXI ID的事务以正确地顺序响应</li>
+<li>如果从设备实现的区域少于16个时，从设备必须确保在任何主设备尝试访问不支持的区域时给出正确的协议信号，而这需要具体实现自行定义，例如，从设备或许需要通过下列方式来确保上述事宜：<ul>
+<li>对于任何访问不支持区域的事务提供一个错误响应</li>
+<li>为所有不支持的区域分配支持区域的别名，以确保响应符合协议</li>
+</ul>
+</li>
+</ul>
+<p><strong>AxREGION</strong>信号仅提供了对从设备可使用的现存地址空间的地址译码功能，以消除对地址译码功能的需求，这个信号并没有创建新的独立地址空间</p>
+<p><strong>AxREGION</strong>只能出现在地址译码功能的下游接口上</p>
+<h3><span id="83-用户定义信号">8.3 用户定义信号</span></h3><p>在AMBA4中引入了用户定义的信号。对于AMBA5，使这些信号的用和配置会进一步解释。</p>
+<p>AXI接口可以包括一组用户定义的信号，称为用户信号。<strong>如果存在现有AMBA规范未涵盖的要求，则可以使用这些信号来增加事务的信息</strong></p>
+<p>信息可以添加到：</p>
+<ul>
+<li>一个请求事务</li>
+<li>一个响应事务</li>
+<li>事务中读或写数据的每一拍</li>
+</ul>
+<p>一般情况下，规范<strong>推荐用户不使用用户信号</strong>，因为AXI协议并没有定义这些信号的功能，贸然使用可能会导致两个组件之间出现互<strong>操作性的问题</strong>，因为两个组件可能以不兼容的方法使用了相同的用户信号</p>
+<h4><span id="831-用户定义的信号设置">8.3.1 用户定义的信号设置</span></h4><p>用户定义信号与其位宽由以下属性值所指定：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>NAME</th>
+<th>Min</th>
+<th>Max</th>
+<th>Applies</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>USER_REQ_WIDTH</td>
+<td>0</td>
+<td>128</td>
+<td>AWUSER,  ARUSER</td>
+</tr>
+<tr>
+<td>USER_DATA_WIDTH</td>
+<td>0</td>
+<td>DATA_WIDTH/2</td>
+<td>BWUSER,  BRUSER</td>
+</tr>
+<tr>
+<td>USER_RESP_WIDTH</td>
+<td>0</td>
+<td>16</td>
+<td>BUSER, RUSER</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>如果某一属性值为0，则表哦名该信号不存在在该接口上</p>
+<p>最大值<strong>仅供参考</strong>，以便为可配置接口设置合理的最大值</p>
+<p>以下接口类型可以包括用户信号：</p>
+<ul>
+<li>ACE5</li>
+<li>ACE5-Lite</li>
+<li>ACE5-LiteDVM</li>
+<li>ACE5-LiteACP</li>
+<li>AXI5</li>
+<li>AXI5-Lite</li>
+</ul>
+<h4><span id="832-信号命名">8.3.2 信号命名</span></h4><p>每个AXI4通道定义的用户信号名称如下：</p>
+<ul>
+<li>AWUSER：写地址通道用户信号</li>
+<li>ARUSER：读地址通道用户信号</li>
+<li>WUSER：写数据通道用户信号</li>
+<li>RUSER：读数据通道用户信号</li>
+<li>BUSER：写响应通道用户信号</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Signal</th>
+<th>Width</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ARUSER</td>
+<td>USER_REQ_WIDTH</td>
+<td>用户定义的读请求属性<br>它与其他AR信道信号具有相同的有效性要求</td>
+</tr>
+<tr>
+<td>AWUSER</td>
+<td>USER_REQ_WIDTH</td>
+<td>用户定义的写请求属性<br>它与其他AW信道信号具有相同的有效性要求</td>
+</tr>
+<tr>
+<td>WUSER</td>
+<td>USER_DA TA_WIDTH</td>
+<td>用户定义的写数据属性<br>这与其他W通道信号具有相同的有效性要求</td>
+</tr>
+<tr>
+<td>RUSER</td>
+<td>USER_DA TA_WIDTH + USER_RESP_WIDTH</td>
+<td>用户定义的读数据和响应属性<br>这与其他R通道信号具有相同的有效性要求</td>
+</tr>
+<tr>
+<td>BUSER</td>
+<td>USER_RESP_WIDTH</td>
+<td>用户定义的写响应属性<br>这与其他B通道信号具有相同的有效性要求</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4><span id="833-使用问题">8.3.3 使用问题</span></h4><p>协议并<strong>不要求所有通道都支持用户信号</strong></p>
+<p>（规范<strong>推荐互联器包含用户信号</strong>，并没有要求主设备和从设备包含用户信号）</p>
+<p>（规范<strong>推荐互联组件包含用户信号的支持</strong>，以便互联组件可以将用户信号在主设备和从设备之间传送，用户定义信号的宽度是具体实现定义的，对于每个通道都可以是不同的）</p>
+<p>为了协助数据宽度和协议转换，本规范建议：</p>
+<ul>
+<li>USER_DA TA_WIDTH为数据总线宽度的整数倍（字节）</li>
+<li>用户响应位对于读或写响应的每一拍都是相同的值</li>
+<li><strong>RUSER</strong>的低位用于传输每个事务的响应信息</li>
+<li>RUSER的高位用于传输每拍读取的数据信息</li>
+</ul>
+<h2><span id="9-默认信号和互操作性">9 默认信号和互操作性</span></h2><p>AXI协议并不要求一个组件使用AXI接口的完整可用信号集。为了帮助连接不使用每个信号的组件，本章定义了接口的主要类别以及适用于每个类别的限制。它包含以下部分：</p>
+<ul>
+<li>Interoperability principles</li>
+<li>Major interface categories</li>
+<li>Default signal values on page A9-110</li>
+</ul>
+<h3><span id="a91-互操作性原则">A9.1 互操作性原则</span></h3><p>下列互操作性原则针对AXI3和AXI4组件</p>
+<p>作为一个<strong>一般性原则</strong>，组件<strong>必须支持全部的输入组合</strong>，<strong>但不必生成全部的输出组合</strong></p>
+<ul>
+<li>例如：从设备必须支持不同可能突发长度，但主设备可以只生成它所用的突发类型，这个策略保证全部的组件都能配合其它的组件工作</li>
+</ul>
+<p>AXI接口可以省略信号的条件如下：</p>
+<ul>
+<li><p>可选输出：</p>
+<ul>
+<li>如果一个组件所需的值不与默认值匹配，组件就必须拥有其对应的输出信号</li>
+<li>如果一个组件总是需要默认值，则不需要组件存在实际的信号</li>
+</ul>
+</li>
+<li><p>可选输入：</p>
+<ul>
+<li>如果一个信号不需要被主设备或从设备观测，功能也能正确执行，则该输入信号是可以忽略的</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>NOTE</strong></p>
+<p><strong>互联组件</strong>在合适的时候也可以忽略信号</p>
+<ul>
+<li>例如，当一个信号仅输出默认值，则该信号就不需要被互联器转发，该信号可以直接在其目的端生成</li>
+<li>类似地，如果一个信号不被任何目的端所使用，那么就不需要互联器转发该信号</li>
+</ul>
+</blockquote>
+<h3><span id="a92-主要接口类别">A9.2 主要接口类别</span></h3><h4><span id="a921-读写接口">A9.2.1 读写接口</span></h4><p>读写接口包含下列AXI通道：</p>
+<ul>
+<li>AR：读地址通道</li>
+<li>R：读数据通道</li>
+<li>AW：写地址通道</li>
+<li>W：写数据通道</li>
+<li>B：写响应通道</li>
+</ul>
+<h4><span id="a922-只读接口">A9.2.2 只读接口</span></h4><p>只读接口仅支持读事务，因此只包含下述通道：</p>
+<ul>
+<li>AR：读地址通道</li>
+<li>R：读数据通道</li>
+</ul>
+<blockquote>
+<p><strong>NOTE</strong></p>
+<p>只读接口不支持独占访问</p>
+</blockquote>
+<h4><span id="a923-只写接口">A9.2.3 只写接口</span></h4><p>只写接口仅支持写事务，因此只包含下述通道：</p>
+<ul>
+<li>AW：写地址通道</li>
+<li>W：写数据通道</li>
+<li>B：写响应通道</li>
+</ul>
+<blockquote>
+<p><strong>NOTE</strong></p>
+<p>只写接口不支持独占访问</p>
+</blockquote>
+<h4><span id="a924-存储器从设备和外设从设备">A9.2.4 存储器从设备和外设从设备</span></h4><p>AXI从设备分为：</p>
+<ul>
+<li>存储器从设备</li>
+<li>外设从设备</li>
+</ul>
+<p><strong>存储器从设备</strong>必须正确地处理全部事务类型</p>
+<p>外设从设备：</p>
+<ul>
+<li><p>规范期望，<strong>外设从设备</strong>应拥有一个定义的访问方法</p>
+<ul>
+<li>该方法建立了可以用于访问设备的事务类型以及对设备访问方式的限制</li>
+<li>通常定义的访问方法在组件的datasheet中描述</li>
+<li>任何未定义的访问方法或许都会造成外设从设备失败，但规范期望以协议兼容的失败-安全方法(protocol-compliant fail-safe manner )完成访问以避免系统死锁，但不要求外设从设备继续进行正确的操作</li>
+</ul>
+</li>
+<li><p>因为只有当使用外设定义的访问方法时才要求外设正常工作，因此<strong>外设从设备可以拥有接口信号的极小子集</strong></p>
+</li>
+</ul>
+<blockquote>
+<p><strong>NOTE</strong></p>
+<p>规范期望所有外设都应支持事务子集，允许使用可在C代码中指定的访问来控制外围设备</p>
+<ul>
+<li>例如：可以支持单个8位、单个16位或单个32位对齐的事务</li>
+</ul>
+<p>并不存在要求支持的最小子集，因为每个组件支持的事务子集都可以不同</p>
+<ul>
+<li>例如：一个外设可能只支持16bit访问事务，但另一个外设只支持32bit访问事务</li>
+</ul>
+</blockquote>
+<h3><span id="93-默认信号值">9.3 默认信号值</span></h3><p>规范建议，一般而言，为了最大限度地重用IP，一个AXI组件接口包含所有的信号，这样就降低了设计流程中系统集成阶段出现错误的风险，它还可以帮助一些不能有效支持缺少信号的默认值的设计流程</p>
+<p>以下各节提供了有关默认信号要求的更多信息：</p>
+<ul>
+<li>Manager addresses</li>
+<li>Subordinate addresses</li>
+<li>Memory Subordinates</li>
+<li>Write transactions</li>
+<li>Read transactions</li>
+<li>Response signaling</li>
+<li>Non-secure and Secure accesses</li>
+</ul>
+<p>下列的几个表展示了AXI强制和可选的信号，以及给出了可选信号未实现时的默认值</p>
+<h5><span id="1master-aww-channel-主接口写通道信号和默认值"><strong>1）Master  AW/W Channel 主接口写通道信号和默认值</strong></span></h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>信号</th>
+<th>描述</th>
+<th>方向</th>
+<th>是否强制</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ACLK</td>
+<td>公共时钟</td>
+<td>输入</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>ARESETn</td>
+<td>公共复位</td>
+<td>输入</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>AWID</td>
+<td>写地址ID</td>
+<td>输出</td>
+<td>可选</td>
+<td>全0</td>
+</tr>
+<tr>
+<td>AWADDR</td>
+<td>写地址</td>
+<td>输出</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>AWREGION</td>
+<td>写区域</td>
+<td>输出</td>
+<td>可选</td>
+<td>全0</td>
+</tr>
+<tr>
+<td>AWLEN</td>
+<td>突发长度</td>
+<td>输出</td>
+<td>可选</td>
+<td>全0，长度1</td>
+</tr>
+<tr>
+<td>AWSIZE</td>
+<td>突发大小</td>
+<td>输出</td>
+<td>可选</td>
+<td>数据总线宽度</td>
+</tr>
+<tr>
+<td>AWBURST</td>
+<td>突发类型</td>
+<td>输出</td>
+<td>可选</td>
+<td>01，递增模式</td>
+</tr>
+<tr>
+<td>AWLOCK</td>
+<td>锁定类型</td>
+<td>输出</td>
+<td>可选</td>
+<td>全0，一般访问</td>
+</tr>
+<tr>
+<td>AWCACHE</td>
+<td>Cache类型</td>
+<td>输出</td>
+<td>可选</td>
+<td>0000</td>
+</tr>
+<tr>
+<td>AWPROT</td>
+<td>保护类型</td>
+<td>输出</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>AWQOS</td>
+<td>QoS值</td>
+<td>输出</td>
+<td>可选</td>
+<td>0000</td>
+</tr>
+<tr>
+<td>AWVALID</td>
+<td>写地址有效</td>
+<td>输出</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>AWREADY</td>
+<td>写地址准备好</td>
+<td>输入</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>WDATA</td>
+<td>写数据</td>
+<td>输出</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>WSTRB</td>
+<td>写字节使能</td>
+<td>输出</td>
+<td>可选</td>
+<td>全0</td>
+</tr>
+<tr>
+<td>WLAST</td>
+<td>写最后</td>
+<td>输出</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>WVALID</td>
+<td>写有效</td>
+<td>输出</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>WREADY</td>
+<td>写准备好</td>
+<td>输入</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>BID</td>
+<td>响应ID</td>
+<td>输入</td>
+<td>可选</td>
+<td>-</td>
+</tr>
+<tr>
+<td>BRESP</td>
+<td>写响应</td>
+<td>输入</td>
+<td>可选</td>
+<td>-</td>
+</tr>
+<tr>
+<td>BVALID</td>
+<td>写响应有效</td>
+<td>输入</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>BREADY</td>
+<td>响应准备好</td>
+<td>输出</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5><span id="2memory-slave-awwb-channel-存储器从接口写通道信号和默认值"><strong>2）Memory Slave AW/W/B Channel 存储器从接口写通道信号和默认值</strong></span></h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>信号</th>
+<th>描述</th>
+<th>方向</th>
+<th>是否强制</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ACLK</td>
+<td>公共时钟</td>
+<td>输入</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>ARESETn</td>
+<td>公共复位</td>
+<td>输入</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>AWID</td>
+<td>写地址ID</td>
+<td>输入</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>AWADDR</td>
+<td>写地址</td>
+<td>输入</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>AWREGION</td>
+<td>写区域</td>
+<td>输入</td>
+<td>可选</td>
+<td>-</td>
+</tr>
+<tr>
+<td>AWLEN</td>
+<td>突发长度</td>
+<td>输入</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>AWSIZE</td>
+<td>突发大小</td>
+<td>输入</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>AWBURST</td>
+<td>突发类型</td>
+<td>输入</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>AWLOCK</td>
+<td>锁定类型</td>
+<td>输入</td>
+<td>可选</td>
+<td>-</td>
+</tr>
+<tr>
+<td>AWCACHE</td>
+<td>Cache类型</td>
+<td>输入</td>
+<td>可选</td>
+<td>-</td>
+</tr>
+<tr>
+<td>AWPROT</td>
+<td>保护类型</td>
+<td>输入</td>
+<td>可选</td>
+<td>-</td>
+</tr>
+<tr>
+<td>AWQOS</td>
+<td>QoS值</td>
+<td>输入</td>
+<td>可选</td>
+<td>-</td>
+</tr>
+<tr>
+<td>AWVALID</td>
+<td>写地址有效</td>
+<td>输入</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>AWREADY</td>
+<td>写地址准备好</td>
+<td>输出</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>WDATA</td>
+<td>写数据</td>
+<td>输入</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>WSTRB</td>
+<td>写字节使能</td>
+<td>输入</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>WLAST</td>
+<td>写最后</td>
+<td>输入</td>
+<td>可选</td>
+<td>-</td>
+</tr>
+<tr>
+<td>WVALID</td>
+<td>写有效输入</td>
+<td>输入</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>WREADY</td>
+<td>写准备好</td>
+<td>输出</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>BID</td>
+<td>响应ID</td>
+<td>输出</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>BRESP</td>
+<td>写响应</td>
+<td>输出</td>
+<td>可选</td>
+<td>00，OKAY</td>
+</tr>
+<tr>
+<td>BVALID</td>
+<td>写响应有效</td>
+<td>输出</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>BREADY</td>
+<td>响应准备好</td>
+<td>输入</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5><span id="3master-arr-channel-主接口读通道信号和默认值"><strong>3）Master AR/R Channel 主接口读通道信号和默认值</strong></span></h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>信号</th>
+<th>描述</th>
+<th>方向</th>
+<th>是否强制</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ARID</td>
+<td>读地址ID</td>
+<td>输出</td>
+<td>可选</td>
+<td>全0</td>
+</tr>
+<tr>
+<td>ARADDR</td>
+<td>读地址</td>
+<td>输出</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>ARREGION</td>
+<td>读区域</td>
+<td>输出</td>
+<td>可选</td>
+<td>0x0</td>
+</tr>
+<tr>
+<td>ARLEN</td>
+<td>突发长度</td>
+<td>输出</td>
+<td>可选</td>
+<td>全0，长度1</td>
+</tr>
+<tr>
+<td>ARSIZE</td>
+<td>突发大小</td>
+<td>输出</td>
+<td>可选</td>
+<td>数据总线宽度</td>
+</tr>
+<tr>
+<td>ARBURST</td>
+<td>突发类型</td>
+<td>输出</td>
+<td>可选</td>
+<td>01，递增模式</td>
+</tr>
+<tr>
+<td>ARLOCK</td>
+<td>锁定类型</td>
+<td>输出</td>
+<td>可选</td>
+<td>全0，一般访问</td>
+</tr>
+<tr>
+<td>ARCACHE</td>
+<td>Cache类型</td>
+<td>输出</td>
+<td>可选</td>
+<td>0000</td>
+</tr>
+<tr>
+<td>ARPROT</td>
+<td>保护类型</td>
+<td>输出</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>ARQOS</td>
+<td>QoS值</td>
+<td>输出</td>
+<td>可选</td>
+<td>0000</td>
+</tr>
+<tr>
+<td>ARVALID</td>
+<td>读地址有效</td>
+<td>输出</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>ARREADY</td>
+<td>读地址准备好</td>
+<td>输入</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>RID</td>
+<td>读数据ID</td>
+<td>输入</td>
+<td>可选</td>
+<td>-</td>
+</tr>
+<tr>
+<td>RDATA</td>
+<td>读数据</td>
+<td>输入</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>RRESP</td>
+<td>读响应</td>
+<td>输入</td>
+<td>可选</td>
+<td>-</td>
+</tr>
+<tr>
+<td>RLAST</td>
+<td>读最后</td>
+<td>输入</td>
+<td>可选</td>
+<td>-</td>
+</tr>
+<tr>
+<td>RVALID</td>
+<td>读有效</td>
+<td>输入</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>RREADY</td>
+<td>读准备好</td>
+<td>输出</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5><span id="4memory-slave-arr-channel-存储器从接口读通道信号和默认值"><strong>4）Memory Slave AR/R Channel 存储器从接口读通道信号和默认值</strong></span></h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>信号</th>
+<th>描述</th>
+<th>方向</th>
+<th>是否强制</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ARID</td>
+<td>读地址ID</td>
+<td>输入</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>ARADDR</td>
+<td>读地址</td>
+<td>输入</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>ARREGION</td>
+<td>读区域</td>
+<td>输入</td>
+<td>可选</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ARLEN</td>
+<td>突发长度</td>
+<td>输入</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>ARSIZE</td>
+<td>突发大小</td>
+<td>输入</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>ARBURST</td>
+<td>突发类型</td>
+<td>输入</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>ARLOCK</td>
+<td>锁定类型</td>
+<td>输入</td>
+<td>可选</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ARCACHE</td>
+<td>Cache类型</td>
+<td>输入</td>
+<td>可选</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ARPROT</td>
+<td>保护类型</td>
+<td>输入</td>
+<td>可选</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ARQOS</td>
+<td>QoS值</td>
+<td>输入</td>
+<td>可选</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ARVALID</td>
+<td>读地址有效</td>
+<td>输入</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>ARREADY</td>
+<td>读地址准备好</td>
+<td>输出</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>RID</td>
+<td>读数据ID</td>
+<td>输出</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>RDATA</td>
+<td>读数据</td>
+<td>输出</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>RRESP</td>
+<td>读响应</td>
+<td>输出</td>
+<td>可选</td>
+<td>00，OKAY</td>
+</tr>
+<tr>
+<td>RLAST</td>
+<td>读最后</td>
+<td>输出</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>RVALID</td>
+<td>读有效</td>
+<td>输出</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+<tr>
+<td>RREADY</td>
+<td>读准备好</td>
+<td>输入</td>
+<td><strong>强制</strong></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4><span id="931-主设备地址axaddr">9.3.1 主设备地址AxADDR</span></h4><p><strong>AxADDR</strong>：规范并没有规定该信号的最小长度，如果系统地址总线比主设备地址信号更宽，则额外的高地址位全部设为0，如果更窄，则多余的高地址位不能连接到系统地址总线</p>
+<blockquote>
+<p><strong>NOTE</strong></p>
+<p>一般情况下主设备支持32bit地址，主设备可选支持到至多64bit地址</p>
+</blockquote>
+<h4><span id="932-从设备地址axaddr">9.3.2 从设备地址AxADDR</span></h4><p>AxADDR：规范并没有规定该信号的最小长度，同时规范也不要求从设备对系统数据总线宽度内的数据使用低地址位进行寻址，并假设这些低地址位为全0，如果从设备的地址线比互联器更宽，则多余的高低地址位默认全0</p>
+<p>通常一个存储器从设备至少能够完全译码整个4KB地址空间。</p>
+<h4><span id="933-存储器从设备-axlock-axcache">9.3.3 存储器从设备 AxLOCK AxCACHE</span></h4><p><strong>AxLOCK</strong>：规范不要求存储器从设备使用AxLOCK输入信号，然而，支持独占访问事务的存储器从设备需要这些信号</p>
+<p><strong>AxCACHE</strong>：规范不要求存储器从设备使用AxCACHE信号，如果一个存储器从设备不支持Cache行为或所有的事务以相同的方式Cache，则该设备不需要这个信号</p>
+<h4><span id="934-写事务-wstrb30-wlast">9.3.4 写事务 WSTRB[3:0] WLAST</span></h4><p><strong>WSTRB[3:0]：</strong>如果主设备总是执行整个数据总线宽度的写事务，则规范不要求主设备使用写字节使能信号，写字节使能的默认值是全1</p>
+<p><strong>WLAST：</strong>规范不要求从设备使用WLAST信号，因为已定义写突发长度，从设备可以根据突发长度AWLEN[7:0]信号计算出最后一次写数据传输</p>
+<h4><span id="935-读事务">9.3.5 读事务</span></h4><p><strong>RLAST：</strong>规范不要求主设备使用RLAST信号，因为已定义读突发长度，主设备可以根据突发长度ARLEN[7:0]信号计算出最后一次读数据传输</p>
+<h4><span id="936-响应信号">9.3.6 响应信号</span></h4><p><strong>RRESP，BRESP：</strong>如果主设备不需要执行独占访问事务也不需要事务错误通知，则主设备可以不使用RRESP与BRESP输入信号；如果从设备不需要支持独占访问事务也不需要生成错误响应，则从设备可以不使用RRESP与BRESP输出信号。</p>
+<h4><span id="937-prot-不安全和安全访问">9.3.7 PROT 不安全和安全访问</span></h4><p><strong>AxPROT：</strong>规范不要求从设备区分非安全和安全访问，也不要求任何额外的保护支持，因此不要求从设备支持AxPROT输入信号</p>
+<blockquote>
+<p><strong>NOTE</strong></p>
+<p>要特别注意AxPROT信号，AxPROT[1]信号表示事务是否为安全事务，不正确的设置可能会导致不正确的系统行为</p>
+</blockquote>
+<h2><span id="低功耗接口">低功耗接口</span></h2><h3><span id="关于低功耗接口">关于低功耗接口</span></h3><p>低功耗接口是AXI协议的可选扩展，以如下两类外设为目标：</p>
+<ul>
+<li>任何没有下电序列且可以指示其时钟何时被关闭的外设。</li>
+<li>任何要求下电序列，且只有在进入低功耗状态后才能停止时钟的外设，这样的外设要求系统时钟控制器指示其何时开始下电序列，并且外设在进入低功耗状态后必须发出通知信号。</li>
+</ul>
+<h3><span id="低功耗时钟控制">低功耗时钟控制</span></h3><p>低功耗时钟控制接口包含如下信号：</p>
+<ul>
+<li>一个来自外设的信号用于指示其时钟何时可以被开启关闭。</li>
+<li>两个为系统时钟控制器准备的握手信号用于请求进入或退出低功耗状态。</li>
+</ul>
+<h3><span id="外设时钟要求">外设时钟要求</span></h3><p>CACTIVE信号表示外设是否需要时钟信号，当外设需要时钟使能的时候就会拉高CACTIVE信号，此时系统时钟控制器就必须立即使能时钟。当外设不需要时钟的时候就会拉低CACTIVE信号，系统时钟控制器可以关闭该时钟，但也可以不关闭。</p>
+<p>如果一个外设在任何时候都允许其时钟被使能或禁用，则可以永久性地拉低CATIVE信号，若一个外设要求其时钟永久使能，则必须永久性地拉高CACTIVE信号。</p>
+<p>CACTIVE仅用于没有下电或上电序列支持的某些外设的时钟控制。</p>
+<h3><span id="下电或上电握手">下电或上电握手</span></h3><p>对于一个拥有下电或上电序列的外设而言，只有在系统时钟控制器发出请求之后外设才会进入低功耗状态，AXI协议提供了请求/响应握手信号用于支持这个功能：</p>
+<ul>
+<li>CSYSREQ：系统时钟控制器使用CSYSREQ信号请求外设进入低功耗状态（拉低CSYSREQ信号）或退出低功耗状态（拉高CSYSREQ信号）。</li>
+<li>CSYSACK：外设使用CSYSACK信号通知系统时钟控制器已完成请求，对于进入低功耗状态请求，外设会拉低CSYSACK信号，对于退出低功耗状态请求，外设会拉高CSYSACK信号。</li>
+</ul>
+<p>下列是这CSYSREQ与CSYSACK信号的时序图：</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/v2-285c6ba96a08e27047606bf0af6efdb1_720w.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>在序列开始时，CSYSREQ与CSYSACK信号都为高电平，在T1时刻，系统时钟控制器拉低CSYSREQ表示请求外设进入低功耗状态，外设在T2时刻拉低CSYSACK信号响应请求，在T3时刻，系统时钟控制器拉高CSYSREQ信号请求外设退出低功耗状态，在T4时刻，外设拉高CSYSACK信号响应请求。</p>
+<p>外设可以同意或拒绝系统时钟控制器进入低功耗状态的请求，在外设响应请求的时候通过将CACTIVE信号拉高或拉低来表示接受或拒绝请求。</p>
+<h3><span id="接受低功耗请求">接受低功耗请求</span></h3><p>下图是外设接受系统低功耗请求时的时序图：</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/v2-f1d20ac7429fd5061708c59aa034eb57_720w.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>在T1时刻，系统时钟控制器拉低CSYSREQ信号以请求外设进入低功耗状态，在外设识别到这个请求后，执行了自己的下电序列，并在T2时刻拉低了CACTIVE信号用来表示时钟信号可以被移除。在T3时刻，外设拉低CSYSACK信号通知系统时钟控制器该外设已进入低功耗模式，</p>
+<p>外设只有在拉低CACTIVE至少一个时钟之后才能拉低CSYSACK信号。</p>
+<h3><span id="拒绝低功耗请求">拒绝低功耗请求</span></h3><p>下图是外设拒绝系统低功耗请求时的时序图：</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/v2-6e713205e3a16b1f21048d245f3589e8_720w.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>在T1时刻，系统时钟控制器拉低CSYSREQ信号以请求外设进入低功耗状态，在T2时刻外设响应该请求，但此时仅拉低了CSYSACK信号而并没有拉低CACTIVE信号，因此系统时钟控制器必须维持时钟，并且在执行了低功耗状态退出序列后才能发起另一个低功耗请求。在T3时刻，系统时钟控制器通过拉高CSYSREQ开始了低功耗状态退出序列，在T4时刻，外设拉高CSYSACK表示完成了低功耗状态退出序列。</p>
+<h3><span id="退出低功耗状态">退出低功耗状态</span></h3><p>无论是系统时钟控制器还是外设都可以请求退出低功耗状态，外设要求CACTIVE与CSYSREQ信号在整个低功耗状态期间保持为低电平，这两个信号之一变为高电平都会触发低功耗状态退出序列的启动。</p>
+<p>系统时钟控制器触发退出序列：</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/v2-b915b5008e6c717d11673b0f8752afb8_720w.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>在T1时刻，系统时钟控制器拉高CSYSREQ信号以请求退出低功耗状态，然后使能时钟，外设识别到CSYSREQ信号为高电平后开始执行其自身的上电序列，并在T2时刻拉高CACTIVE信号表示它需要时钟信号，然后外设在T3时刻拉高CSYSACK完成退出序列。</p>
+<p>外设触发退出序列：</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/v2-cf783a9899d0944e3f67474a856186d8_720w.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>在T1时刻外设拉高CACTIVE信号以通知其需要时钟信号，然后系统时钟控制器必须恢复时钟。</p>
+<p>在T2时刻系统时钟控制器拉高CSYSREQ信号以便继续握手序列，外设接下来会拉高CSYSACK信号以完成退出序列。</p>
+<p><strong>注意：外设可以让CSYSACK保持数个周期的低电平以完成自身的退出序列。</strong></p>
+<h4><span id="组合低功耗域中的外设">组合低功耗域中的外设</span></h4><p>系统时钟控制器可以组合一些不同的外设到一个相同的低功耗时钟域中，它可以将时钟域看作一个单独的外设，但要求下列规则必须遵守：</p>
+<ul>
+<li>时钟域的CACTIVE信号是时钟域中所有外设CACTIVE信号的逻辑或，这意味着系统时钟控制器只有当所有外设都表示其时钟可以被关闭时才可以关闭时钟。</li>
+<li>系统控制器必须使用单个CSYSREQ信号路由到时钟域中的全部外设。<ul>
+<li>时钟域CSYSACK信号通过下述方法生成：只有当时钟域中的最后一个外设拉低CSYSACK信号时才会拉低总的CSYSACK信号，只有当时钟域中的最后一个外设拉高CSYSACK信号时才会拉高总的CSYSACK信号。</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/">IC</a>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/%E6%80%BB%E7%BA%BF/">总线</a>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/%E6%80%BB%E7%BA%BF/AXI/">AXI</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/IC/">IC</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%80%BB%E7%BA%BF/">总线</a>
+                    
+                      <a class="hover-with-bg" href="/tags/AXI/">AXI</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/202208131437/IC/%E7%90%86%E8%AE%BA/%E5%85%B6%E4%BB%96essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/verilog%E5%B8%B8%E7%94%A8/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Verilog常用</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/202207110000/IC/%E5%85%B6%E4%BB%96essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/IC%E7%BD%91%E7%AB%99(%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0)/">
+                        <span class="hidden-mobile">IC网站(持续更新)</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'preferred-color-scheme';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'GreensCH/commitutterances');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <span> | </span> <a href="https://weibo.com/u/7453939976" target="_blank" rel="nofollow noopener"> Green Weibo</a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?eca4a4d34dadf0d4e282cc6ef2dc3de6";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<!-- hexo injector body_end start --><script src="/js/backgroundize.js"></script>
+  <link defer rel="stylesheet" href="/css/backgroundize.css" />
+  
+  <div id="aplayer" style="width:300px"></div>
+  <link defer rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css" />
+  <script src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js"></script>
+  <script defer src="/js/aplayer.js"></script><script src="/js/githubcalendar.js"></script> 
+  <script data-pjax src="/js/githubcalendar.js"></script>
+  <script data-pjax>
+        function GithubCalendarConfig(){
+            var git_githubapiurl ="https://python-github-calendar-api.vercel.app/api?greensch";
+            var git_color =['#ebedf0', '#f0fff4', '#dcffe4', '#bef5cb', '#85e89d', '#34d058', '#28a745', '#22863a', '#176f2c', '#165c26', '#144620'];
+            var git_user ="greensch";
+            var parent_div_git = document.getElementById('board');
+            var git_div_html = '<div id="github-calendar" style="width:100%;height:auto;padding:10px;margin-bottom:20px;box-shadow:none;"><div id="github_loading" style="width:10%;height:100%;margin:0 auto;display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div><div id="github_container"></div></div>';
+            if(parent_div_git && location.pathname =='/'){
+                console.log('已挂载github calendar')
+                // parent_div_git.innerHTML=git_div_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",git_div_html) // 有报错，但不影响使用(支持pjax跳转)
+            };
+            GithubCalendar(git_githubapiurl,git_color,git_user)
+        }
+        if(document.getElementById('board')){
+            GithubCalendarConfig()
+        }
+    </script>
+    <style>#github_container{min-height:200px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
+    <style>#github_container > .position-relative > .border{border:0!important}#github-calendar{position: relative;margin-top: -2rem;background-color: var(--board-bg-color);transition: background-color 0.2s ease-in-out;border-radius: 0.5rem;z-index: 3;-webkit-box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);}</style><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"superSample":1,"position":"left","width":150,"height":400,"vOffset":-18},"mobile":{"show":true,"scale":0.25},"dialog":{"enable":false,"hitokoto":true,"width":10,"height":10,"vOffset":-100},"log":false});</script></body>
+</html>

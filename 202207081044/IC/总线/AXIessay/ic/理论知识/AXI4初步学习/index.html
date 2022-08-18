@@ -1,0 +1,1065 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/con1.png">
+  <link rel="icon" href="/img/con1.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="“无论最终结果将人类历史导向何处，我们决定选择希望”">
+  <meta name="author" content="友人律 | Guilin Chang">
+  <meta name="keywords" content="三差学生、不学无术">
+  <meta name="description" content="参考资料手册 An introduction to AMBA AXI   一个介绍指南 该指南概述了与 AMBA AXI 相关的主要主题，包括不同通道和信号的使用和操作。当您通过阅读AMBA AXI 和 ACE 协议规范了解更多有关 AMBA AXI 的信息时，这些知识将很有用。您可以将您的知识付诸实践，以开发实现 AMBA AXI 协议的接口   AMBA AXI and ACE Protoco">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AXI4.0 初步学习">
+<meta property="og:url" content="http://yoursite.com/202207081044/IC/%E6%80%BB%E7%BA%BF/AXIessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/AXI4%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:site_name" content="友人律的博客">
+<meta property="og:description" content="参考资料手册 An introduction to AMBA AXI   一个介绍指南 该指南概述了与 AMBA AXI 相关的主要主题，包括不同通道和信号的使用和操作。当您通过阅读AMBA AXI 和 ACE 协议规范了解更多有关 AMBA AXI 的信息时，这些知识将很有用。您可以将您的知识付诸实践，以开发实现 AMBA AXI 协议的接口   AMBA AXI and ACE Protoco">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/AX4-Lite%E5%8D%8F%E8%AE%AE%E6%8E%A5%E5%8F%A3%E4%BF%A1%E5%8F%B7.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/AXI4%E5%92%8CAXI4-Lite%E4%BA%92%E8%81%94-165666733529916.png">
+<meta property="article:published_time" content="2022-07-08T02:44:00.000Z">
+<meta property="article:modified_time" content="2022-08-18T07:53:19.195Z">
+<meta property="article:author" content="友人律 | Guilin Chang">
+<meta property="article:tag" content="IC">
+<meta property="article:tag" content="总线">
+<meta property="article:tag" content="AXI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/AX4-Lite%E5%8D%8F%E8%AE%AE%E6%8E%A5%E5%8F%A3%E4%BF%A1%E5%8F%B7.png">
+  
+  <title>AXI4.0 初步学习 - 友人律的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/stackoverflow-dark.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"eca4a4d34dadf0d4e282cc6ef2dc3de6","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body><!-- hexo injector body_begin start -->
+<link defer rel="stylesheet" href="/css/article_para.css" />
+<div id="web_bg"></div><!-- hexo injector body_begin end -->
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>友人律的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E9%80%9A%E7%9F%A5/">
+                <i class="iconfont icon-link-fill"></i>
+                通知
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1/">
+                <i class="iconfont icon-link-fill"></i>
+                项目与设计
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">
+                <i class="iconfont icon-link-fill"></i>
+                开发工具
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/CS/">
+                <i class="iconfont icon-link-fill"></i>
+                CS
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/IC/">
+                <i class="iconfont icon-link-fill"></i>
+                IC
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/banner_img/anime/100517229_p0.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="AXI4.0 初步学习">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-07-08 10:44" pubdate>
+        2022年7月8日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.2k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      10 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">AXI4.0 初步学习</h1>
+            
+            <div class="markdown-body">
+              <h2><span id="参考资料">参考资料</span></h2><h3><span id="手册">手册</span></h3><ul>
+<li><a target="_blank" rel="noopener" href="https://developer.arm.com/documentation/102202/latest/">An introduction to AMBA AXI</a></li>
+</ul>
+<blockquote>
+<p>一个介绍指南</p>
+<p>该指南概述了与 AMBA AXI 相关的主要主题，包括不同通道和信号的使用和操作。<a target="_blank" rel="noopener" href="https://developer.arm.com/documentation/ihi0022/latest">当您通过阅读AMBA AXI 和 ACE 协议规范</a>了解更多有关 AMBA AXI 的信息时，这些知识将很有用。您可以将您的知识付诸实践，以开发实现 AMBA AXI 协议的接口</p>
+</blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://developer.arm.com/documentation/ihi0022/latest">AMBA AXI and ACE Protocol Specification Version H.c</a></li>
+</ul>
+<blockquote>
+<p>手册的下载地址</p>
+</blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://developer.arm.com/Architectures/AMBA">AMBA</a></li>
+</ul>
+<blockquote>
+<p>AMBA协议簇不同协议汇总</p>
+</blockquote>
+<h3><span id="axi基础七讲">AXI基础七讲</span></h3><ul>
+<li><p><a target="_blank" rel="noopener" href="https://support.xilinx.com/s/topic/0TO2E000000YNxCWAW/axi-basics-series?language=en_US&amp;tabset-50c42=2">https://support.xilinx.com/s/topic/0TO2E000000YNxCWAW/axi-basics-series?language=en_US&amp;tabset-50c42=2</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://support.xilinx.com/s/article/1053914?language=en_US">AXI Basics 1 - Introduction to AXI</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://support.xilinx.com/s/article/1053935">AXI Basics 2 - Simulating AXI interfaces with the AXI Verification IP (AXI VIP)</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://support.xilinx.com/s/article/1058302">AXI Basics 3 - Master AXI4-Lite simulation with the AXI VIP</a></p>
+</li>
+<li><a target="_blank" rel="noopener" href="https://support.xilinx.com/s/article/1062002">AXI Basics 4 - Using the AXI VIP as protocol checker for an AXI4 Master interface</a></li>
+<li><a target="_blank" rel="noopener" href="https://support.xilinx.com/s/article/1064306">AXI Basics 5 - Create an AXI4-Lite Sniffer IP to use in Xilinx Vivado IP Integrator</a></li>
+<li><a target="_blank" rel="noopener" href="https://support.xilinx.com/s/article/1137153">AXI Basics 6 - Introduction to AXI4-Lite in Vitis HLS</a></li>
+<li><a target="_blank" rel="noopener" href="https://support.xilinx.com/s/article/1137753">AXI Basics 7 - Connecting to the PS using AXI4-Lite and Vitis HLS</a></li>
+</ul>
+<h3><span id="axi基础七讲中文版">AXI基础七讲（中文版）</span></h3><h3><span id="amba协议集技术文档pdf下载"></span></h3><h2><span id="主要内容">主要内容</span></h2><h3><span id="1-axi3与axi4之间的区别是什么">1 AXI3与AXI4之间的区别是什么？</span></h3><ul>
+<li>AXI3只支持多达16拍的burst 。而AXI4支持高达256拍的burst 。</li>
+<li>AXI3支持write interleave。AXI4不支持write interleave</li>
+<li>AXI3支持locked 传输，AXI4不支持locked 传输</li>
+<li>AXI4支持QoS，AXI3不支持QoS</li>
+</ul>
+<h3><span id="2-axi4-lite详解">2 AXI4-Lite详解</span></h3><h4><span id="21-axi4-lite特性">2.1 AXI4-Lite特性</span></h4><p>AXI4-Lite是AXI4协议的精简版，它适用于不需要AXI4完整功能的简单控制寄存器样式的接口</p>
+<p>相较AXI4，AXI4-Lite协议的特点是：</p>
+<ul>
+<li>所有读写交易的突发长度均为1</li>
+<li>仅支持32位或64位的数据总线宽度</li>
+<li>所有访问都是不可修改的，不可缓冲的</li>
+<li>不支持独占访问</li>
+</ul>
+<h4><span id="22-axi4-lite接口信号">2.2 AXI4-Lite接口信号</span></h4><p>AXI4-Lite协议信号较AXI4少了很多，具体信号如下：</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/AX4-Lite%E5%8D%8F%E8%AE%AE%E6%8E%A5%E5%8F%A3%E4%BF%A1%E5%8F%B7.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><strong>1）全局信号</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>信号</th>
+<th>源</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ACLK</td>
+<td>时钟源</td>
+<td>全局时钟信号，所有输入信号均在ACLK上升沿采样，所有输出信号的更改只能在ACLK上升沿之后。主从接口上的所有输入和输出信号间不允许有组合路径同AXI4</td>
+</tr>
+<tr>
+<td>ARESETn</td>
+<td>复位源</td>
+<td>全局复位信号，为异步复位同步置位信号，即ARESETn在任意时刻变为低电平可立刻生效，但置位为1时只能在ACLK的下一个上升沿生效同AXI4</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>2）写地址通道</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>信号</th>
+<th>源</th>
+<th>位宽</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AWID(可选，仅但主机是AXI4而从机是AXI-Lite时需要此信号)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>当需要和主机的AXI4协议互联时，从机的AXI-Lite协议增加此信号</td>
+</tr>
+<tr>
+<td>AWADDR</td>
+<td>主</td>
+<td>可变，协议未定义位宽， Xilinx使用12, 13, … 64，一般为32/64</td>
+<td>-</td>
+<td>要写入数据的内存地址同AXI4</td>
+</tr>
+<tr>
+<td>AWPORT</td>
+<td>主</td>
+<td>3</td>
+<td>-</td>
+<td>写事务的保护属性：特权，安全级别和访问类型提供用于禁止非法传输事务的访问权限信号同AXI4</td>
+</tr>
+<tr>
+<td>AWVALID</td>
+<td>主</td>
+<td>1</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>AWREADY</td>
+<td>从</td>
+<td>1</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>AxPORT</strong> </p>
+<ul>
+<li>AxPORT共3位，每一位的值代表不同的意义。一般可设置为3’b000，表示非特权且安全的数据访问</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>AxPROT</th>
+<th>值</th>
+<th>功能</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[0]</td>
+<td>0</td>
+<td>Unprivileged access 非特权访问</td>
+<td>AXI主站可能支持多个级别的操作特权，并将这种特权概念扩展到内存访问。 AxPROT [0]将访问标识为非特权或特权</td>
+</tr>
+<tr>
+<td>[0]</td>
+<td>1</td>
+<td>Privileged access 特权访问</td>
+<td>-</td>
+</tr>
+<tr>
+<td>[1]</td>
+<td>0</td>
+<td>Secure access 安全访问</td>
+<td>AXI主站可能支持安全和非安全操作状态，并将这种安全性概念扩展到内存访问。 AxPROT [1]将访问标识为安全或不安全。 AxPROT [1]可以视为定义了两个地址空间，一个安全地址空间和一个非安全地址空间。该信号可被视为附加地址位。安全和非安全地址空间之间的任何别名都必须正确处理。</td>
+</tr>
+<tr>
+<td>[1]</td>
+<td>1</td>
+<td>Non-secure access 非安全访问</td>
+<td>-</td>
+</tr>
+<tr>
+<td>[2]</td>
+<td>0</td>
+<td>Data access 数据访问</td>
+<td>该位指示事务是指令访问还是数据访问。 AXI协议将此指示定义为提示。并非在所有情况下都是准确的，例如，当事务包含指令和数据项的混合时。本规范建议主机将AxPROT [2]设置为LOW，以指示数据访问，除非已知该访问是指令访问。</td>
+</tr>
+<tr>
+<td>[2]</td>
+<td>1</td>
+<td>Instruction access 指令访问</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>3）写数据通道</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>信号</th>
+<th>源</th>
+<th>位宽</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WDATA</td>
+<td>主</td>
+<td>32/64</td>
+<td>-</td>
+<td>要写入的数据，大部分数据总线为32位。32位主机可访问64位丛机，通常使用64位中的低32位作为有效位宽</td>
+</tr>
+<tr>
+<td>WSTRB</td>
+<td>主</td>
+<td>4/8</td>
+<td>全0</td>
+<td>写选通，指示哪些字节通道保存有效数据WSTRB为高表示数据总线的哪一/几字节是有效数据，具体的WSTRB [n]为高对应于WDATA [(8n+7：8n]这一字节的数据有效4位对应32位总线，8位对应64位总线</td>
+</tr>
+<tr>
+<td>WVALID</td>
+<td>主</td>
+<td>1</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>WREADY</td>
+<td>从</td>
+<td>1</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>WSTRB</strong></p>
+<ul>
+<li>AXI4-Lite协议支持写选通。这意味着可以实现多尺寸寄存器，如8位/16位寄存器</li>
+<li>所有的主机接口和与主机互联的元件都必须支持写选通，而从机被允许：<ul>
+<li>充分利用写选通信号</li>
+<li>忽略写选通信号并将所有写访问视为整个数据总线宽度（我的理解：无论写选通信号是多少，都将数据总线上的所有位视为有效位）</li>
+<li>检测不支持的写选通信号并提供错误响应，如一个32位从机仅支持低8位写选通，如果WSTRB为4‘b1000表示高8位写选通，则此时从机不支持并报错。</li>
+</ul>
+</li>
+<li>特殊的：提供内存访问的从站必须完全支持写选通。存储器映射中的其他从机可能支持更有限的写选通选项。</li>
+</ul>
+<p><strong>4）写响应通道</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>信号</th>
+<th>源</th>
+<th>位宽</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BID可选，仅但主机是AXI4而从机是AXI-Lite时需要此信号)</td>
+<td>从</td>
+<td>-</td>
+<td>-</td>
+<td>从机接收到AWID，写响应返回BID，主机的AXI4协议需要BID才能识别从机的写响应</td>
+</tr>
+<tr>
+<td>BRESP</td>
+<td>从</td>
+<td>2</td>
+<td>2‘b00</td>
+<td>写响应，指示写事务状态2’b00 OKAY 正常访问成功2’b01 EXOKAY 无意义，在AXI4中表示独占访问成功，但AXI4-Lite不支持独占访问2‘b10 SLVERR 从机反映错误2’b11 DECERR 互连模块无法成功解码从属访问</td>
+</tr>
+<tr>
+<td>BVALID</td>
+<td>从</td>
+<td>1</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>BREADY</td>
+<td>主</td>
+<td>1</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>5）读地址通道</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>信号</th>
+<th>源</th>
+<th>位宽</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ARID(可选，仅但主机是AXI4而从机是AXI-Lite时需要此信号)</td>
+<td>主</td>
+<td>-</td>
+<td>-</td>
+<td>接收主机AXI4协议的ARID</td>
+</tr>
+<tr>
+<td>ARADDR</td>
+<td>主</td>
+<td>可变，协议未定义位宽， Xilinx使用12, 13, … 64，一般为32/64</td>
+<td>-</td>
+<td>要读取的内存地址同AXI4</td>
+</tr>
+<tr>
+<td>ARRPOT</td>
+<td>主</td>
+<td>3</td>
+<td>-</td>
+<td>写事务的保护属性：特权，安全级别和访问类型提供用于禁止非法传输事务的访问权限信号，同AWRPOT同AXI4</td>
+</tr>
+<tr>
+<td>ARVALID</td>
+<td>主</td>
+<td>1</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ARREADY</td>
+<td>从</td>
+<td>1</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>6）读数据通道</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>信号</th>
+<th>源</th>
+<th>位宽</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RID(可选，仅但主机是AXI4而从机是AXI-Lite时需要此信号)</td>
+<td>从</td>
+<td>-</td>
+<td>-</td>
+<td>从机接收到ARID，读数据返回RID，主机的AXI4协议需要RID才能识别从机的读数据</td>
+</tr>
+<tr>
+<td>RDATA</td>
+<td>从</td>
+<td>32/64</td>
+<td>-</td>
+<td>读数据</td>
+</tr>
+<tr>
+<td>RRESP</td>
+<td>从</td>
+<td>2</td>
+<td>2‘b00</td>
+<td>读响应，指示读事务状态，同BRESP同AXI4</td>
+</tr>
+<tr>
+<td>RVALID</td>
+<td>从</td>
+<td>1</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>RREADY</td>
+<td>主</td>
+<td>1</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4><span id="23-axi4与axi4-lite的互联">2.3 AXI4与AXI4-Lite的互联</span></h4><p>AXI4协议和AXI4-Lite是可以互联的，唯一需要注意的是当主机是AXI4且从机是AXI4-Lite时，从机的AXI4-Lite协议需增加AXI ID信号以匹配主机的AXI ID</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/AXI4%E5%92%8CAXI4-Lite%E4%BA%92%E8%81%94-165666733529916.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/">IC</a>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/%E6%80%BB%E7%BA%BF/">总线</a>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/%E6%80%BB%E7%BA%BF/AXI/">AXI</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/IC/">IC</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%80%BB%E7%BA%BF/">总线</a>
+                    
+                      <a class="hover-with-bg" href="/tags/AXI/">AXI</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/202207110000/IC/%E5%85%B6%E4%BB%96essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/IC%E7%BD%91%E7%AB%99(%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0)/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">IC网站(持续更新)</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/202207052149/IC/STAessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/petalinux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+                        <span class="hidden-mobile">petalinux常用命令</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'preferred-color-scheme';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'GreensCH/commitutterances');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <span> | </span> <a href="https://weibo.com/u/7453939976" target="_blank" rel="nofollow noopener"> Green Weibo</a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?eca4a4d34dadf0d4e282cc6ef2dc3de6";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<!-- hexo injector body_end start --><script src="/js/backgroundize.js"></script>
+  <link defer rel="stylesheet" href="/css/backgroundize.css" />
+  
+  <div id="aplayer" style="width:300px"></div>
+  <link defer rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css" />
+  <script src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js"></script>
+  <script defer src="/js/aplayer.js"></script><script src="/js/githubcalendar.js"></script> 
+  <script data-pjax src="/js/githubcalendar.js"></script>
+  <script data-pjax>
+        function GithubCalendarConfig(){
+            var git_githubapiurl ="https://python-github-calendar-api.vercel.app/api?greensch";
+            var git_color =['#ebedf0', '#f0fff4', '#dcffe4', '#bef5cb', '#85e89d', '#34d058', '#28a745', '#22863a', '#176f2c', '#165c26', '#144620'];
+            var git_user ="greensch";
+            var parent_div_git = document.getElementById('board');
+            var git_div_html = '<div id="github-calendar" style="width:100%;height:auto;padding:10px;margin-bottom:20px;box-shadow:none;"><div id="github_loading" style="width:10%;height:100%;margin:0 auto;display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div><div id="github_container"></div></div>';
+            if(parent_div_git && location.pathname =='/'){
+                console.log('已挂载github calendar')
+                // parent_div_git.innerHTML=git_div_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",git_div_html) // 有报错，但不影响使用(支持pjax跳转)
+            };
+            GithubCalendar(git_githubapiurl,git_color,git_user)
+        }
+        if(document.getElementById('board')){
+            GithubCalendarConfig()
+        }
+    </script>
+    <style>#github_container{min-height:200px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
+    <style>#github_container > .position-relative > .border{border:0!important}#github-calendar{position: relative;margin-top: -2rem;background-color: var(--board-bg-color);transition: background-color 0.2s ease-in-out;border-radius: 0.5rem;z-index: 3;-webkit-box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);}</style><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"superSample":1,"position":"left","width":150,"height":400,"vOffset":-18},"mobile":{"show":true,"scale":0.25},"dialog":{"enable":false,"hitokoto":true,"width":10,"height":10,"vOffset":-100},"log":false});</script></body>
+</html>

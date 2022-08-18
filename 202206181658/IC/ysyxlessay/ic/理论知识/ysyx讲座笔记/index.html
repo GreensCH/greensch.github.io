@@ -18,13 +18,58 @@
   <meta name="description" content="“无论最终结果将人类历史导向何处，我们决定选择希望”">
   <meta name="author" content="友人律 | Guilin Chang">
   <meta name="keywords" content="三差学生、不学无术">
-  <meta name="description" content="什么是中断和异常参考内容The RISC-V Instruction Set Manual Volume II: Privileged Architecture Document Version 20190608-Priv-MSU-Ratified 中断异常简介 异常(狭义)：一般指来源于核内部的异常 -如:指令错误、访存错误等   中断：一般指来源于核外部的异常，属于广义的异常 包括外部中断、计">
+  <meta name="description" content="SoC或CPU参考架构图汇总：   https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_40500005&#x2F;article&#x2F;details&#x2F;117880249 AGU（Address Generation Unit） LSU（Load Store Unit）    Chisel 初步AXI4 连接 Chisel使用经验 Chisel开发环境 用Chisel 写个简单的模块: Adder 创建这个模块的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ysyx讲座笔记">
 <meta property="og:url" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="友人律的博客">
-<meta property="og:description" content="什么是中断和异常参考内容The RISC-V Instruction Set Manual Volume II: Privileged Architecture Document Version 20190608-Priv-MSU-Ratified 中断异常简介 异常(狭义)：一般指来源于核内部的异常 -如:指令错误、访存错误等   中断：一般指来源于核外部的异常，属于广义的异常 包括外部中断、计">
+<meta property="og:description" content="SoC或CPU参考架构图汇总：   https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_40500005&#x2F;article&#x2F;details&#x2F;117880249 AGU（Address Generation Unit） LSU（Load Store Unit）    Chisel 初步AXI4 连接 Chisel使用经验 Chisel开发环境 用Chisel 写个简单的模块: Adder 创建这个模块的">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://oscpu.github.io/NutShell-doc/%E7%B3%BB%E7%BB%9F/mem-model.svg">
+<meta property="og:image" content="https://oscpu.github.io/NutShell-doc/%E4%BB%8B%E7%BB%8D/NutShell-arch.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621153910155.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621140101972.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621140145632.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621140210761.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621144638625.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621144735393.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621144710515.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621150402487.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621151428760.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621151909478.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621151955270.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621153153323.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621014257802.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621014431924.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621014511324.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621014852096.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220711185731224.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220711185543001.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621015019575.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621015144329.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621015350856.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621015433286.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621015513522.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621015710711.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621015818662.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621020002811.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621020055118.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621020445026.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621020647595.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621020606688.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621021153647.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621023637785.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621024035126.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621024248398.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621024255563.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621024339370.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621024403981.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621024523039.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621024610888.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621024718656.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621024815837.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621025046638.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621025153220.png">
 <meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220618172834396.png">
 <meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220618172922145.png">
 <meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220618173210600.png">
@@ -43,6 +88,37 @@
 <meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220618182706509.png">
 <meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220618202840804.png">
 <meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220618203956923.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220625203118393.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220625203134077.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220625203327974.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220625203457203.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220625204843292.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220625205035384.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220625205143384.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220616200533214-16566667061515.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220616201717788-16566667061503.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220616223703387-16566667061502.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220616223728109-16566667061514.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220616223854710-16566667061516.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220616223944488-16566667061517.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220616224145444-16553905056621-16566667061518.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220616224501296-16566667061519.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/AXI4%E5%92%8CAXI4-Lite%E4%BA%92%E8%81%94.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220616224654697-165666670615110.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220617010130923-165666670615111.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220617010550340-165666670615212.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220617012108640-165666670615213.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220617012500211-165666670615214.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220617023021809.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220617023952518.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220617024035239.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220617024215965.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220617024530219.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220617024400211.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220617025054411.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220617025121564.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220620161127202.png">
+<meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220620161053683.png">
 <meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220620015020896.png">
 <meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220620015511158.png">
 <meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220620015744997.png">
@@ -62,13 +138,13 @@
 <meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220620151351070.png">
 <meta property="og:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220620151531430.png">
 <meta property="article:published_time" content="2022-06-18T08:58:00.000Z">
-<meta property="article:modified_time" content="2022-06-20T13:57:55.344Z">
+<meta property="article:modified_time" content="2022-08-09T14:06:34.301Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
-<meta property="article:tag" content="lysyx">
+<meta property="article:tag" content="ysyx">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="第三期">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://yoursite.com/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220618172834396.png">
+<meta name="twitter:image" content="https://oscpu.github.io/NutShell-doc/%E7%B3%BB%E7%BB%9F/mem-model.svg">
   
   <title>ysyx讲座笔记 - 友人律的博客</title>
 
@@ -299,7 +375,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.9k 字
+      9.3k 字
     </span>
   
 
@@ -308,7 +384,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      12 分钟
+      29 分钟
     </span>
   
 
@@ -340,7 +416,180 @@
             <h1 style="display: none">ysyx讲座笔记</h1>
             
             <div class="markdown-body">
-              <h2><span id="什么是中断和异常">什么是中断和异常</span></h2><h3><span id="参考内容">参考内容</span></h3><p>The RISC-V Instruction Set Manual Volume II: Privileged Architecture Document Version 20190608-Priv-MSU-Ratified</p>
+              <h2><span id="soc或cpu参考架构图">SoC或CPU参考架构图</span></h2><h2><span id="汇总">汇总：</span></h2><p><img src="https://oscpu.github.io/NutShell-doc/%E7%B3%BB%E7%BB%9F/mem-model.svg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://oscpu.github.io/NutShell-doc/%E4%BB%8B%E7%BB%8D/NutShell-arch.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40500005/article/details/117880249">https://blog.csdn.net/qq_40500005/article/details/117880249</a><ul>
+<li>AGU（Address Generation Unit）</li>
+<li>LSU（Load Store Unit）</li>
+</ul>
+</li>
+</ul>
+<h2><span id="chisel-初步">Chisel 初步</span></h2><h3><span id="axi4-连接">AXI4 连接</span></h3><p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621153910155.png" srcset="/img/loading.gif" lazyload alt="image-20220621153910155"></p>
+<h2><span id="chisel使用经验">Chisel使用经验</span></h2><ul>
+<li>Chisel开发环境</li>
+<li>用Chisel 写个简单的模块: Adder</li>
+<li>创建这个模块的端口类</li>
+<li>创建这个模块的伴生对象</li>
+<li>创建这个模块的 Chisel-Testers 2 TB</li>
+<li>继承这个模块的端口类</li>
+<li>高阶实例: Adder Tree (map, foreach, case, forkjoin]</li>
+<li>优化命令 (suggestName, dontTouch, dontCare)</li>
+<li>几个个人习惯</li>
+</ul>
+<h3><span id="chisel开发环境">Chisel开发环境</span></h3><ul>
+<li>使用GitHub repo模板(mill)<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/sequencer/chipsalliance-playground">https://github.com/sequencer/chipsalliance-playground</a> 大杂烩，需要自己删去一部分不需要的submodule</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/SingularityKChen/chipsalliance-playground">https://github.com/SingularityKChen/chipsalliance-playground</a> 没有冗余submodule</li>
+</ul>
+</li>
+<li>使用EasySoC Chisel插件 (sbt)<ul>
+<li><a target="_blank" rel="noopener" href="https://plugins.jetbrains.com/plugin/14269-easysoc-chisel">https://plugins.jetbrains.com/plugin/14269-easysoc-chisel</a></li>
+</ul>
+</li>
+</ul>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621140101972.png" srcset="/img/loading.gif" lazyload alt="image-20220621140101972"></p>
+<h3><span id="用chisel-写个简单的模块-adder">用Chisel 写个简单的模块: Adder</span></h3><p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621140145632.png" srcset="/img/loading.gif" lazyload alt="image-20220621140145632"></p>
+<h3><span id="改进为创建模块的端口类">改进为创建模块的端口类</span></h3><p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621140210761.png" srcset="/img/loading.gif" lazyload alt="image-20220621140210761"></p>
+<h3><span id="创建这个模块的伴生对象">创建这个模块的伴生对象</span></h3><p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621144638625.png" srcset="/img/loading.gif" lazyload alt="image-20220621144638625"></p>
+<ul>
+<li>Adder<ul>
+<li>class</li>
+<li>object（伴生对象）<ul>
+<li>例化时直接进行连接，不用在手动进行连接</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>一个class与两个object.apply（一个使用bundle，一个端口单独拿出来）</p>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621144735393.png" srcset="/img/loading.gif" lazyload alt="image-20220621144735393"></p>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621144710515.png" srcset="/img/loading.gif" lazyload alt="image-20220621144710515"></p>
+<p><strong>调用方法</strong></p>
+<figure class="highlight reasonml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs reasonml"><span class="hljs-keyword">val</span> adder = <span class="hljs-constructor">Adder(<span class="hljs-params">a</span>=<span class="hljs-operator">...</span>, <span class="hljs-params">b</span>=<span class="hljs-operator">...</span>)</span><br>或<br><span class="hljs-keyword">val</span> adder2 = <span class="hljs-constructor">Module(<span class="hljs-params">new</span> Adder()</span>)<br></code></pre></div></td></tr></table></figure>
+<h3><span id="高级实例adder-tree-加法器树">高级实例：adder tree 加法器树</span></h3><p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621150402487.png" srcset="/img/loading.gif" lazyload alt="image-20220621150402487"></p>
+<ul>
+<li>Vec（类似scala的seq）<ul>
+<li>参数一：个数</li>
+<li>参数二：类型</li>
+</ul>
+</li>
+<li>Array.map(x =&gt; function(x))<ul>
+<li>array里面的元素，以x做迭代器，替代为=&gt;后的函数表达式</li>
+</ul>
+</li>
+</ul>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621151428760.png" srcset="/img/loading.gif" lazyload alt="image-20220621151428760"></p>
+<h3><span id="优化命令很少用">优化命令（很少用）</span></h3><p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621151909478.png" srcset="/img/loading.gif" lazyload alt="image-20220621151909478"></p>
+<h3><span id="个人习惯">个人习惯</span></h3><p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621151955270.png" srcset="/img/loading.gif" lazyload alt="image-20220621151955270"></p>
+<h3><span id="重构与注释">重构与注释</span></h3><ul>
+<li>经常refactor（代码重构）</li>
+<li>整理代码结构</li>
+<li>合并重复代码</li>
+<li>…</li>
+</ul>
+<ul>
+<li>经常添加注释</li>
+<li>Scaladoc（官方scala注释）</li>
+</ul>
+<h3><span id="更多技巧">更多技巧</span></h3><p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621153153323.png" srcset="/img/loading.gif" lazyload alt="image-20220621153153323"></p>
+<h3><span id="补充">补充</span></h3><ul>
+<li>DecoupledIO：<a target="_blank" rel="noopener" href="https://msyksphinz.hatenablog.com/entry/2017/08/10/020000">https://msyksphinz.hatenablog.com/entry/2017/08/10/020000</a></li>
+</ul>
+<h2><span id="chisel在nutshell中的使用">chisel在Nutshell中的使用</span></h2><h3><span id="chisel在nutshell中的使用">chisel在Nutshell中的使用</span></h3><h4><span id="nutshell设计">NutShell设计</span></h4><p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621014257802.png" srcset="/img/loading.gif" lazyload alt="image-20220621014257802"></p>
+<h4><span id="确定架构">确定架构</span></h4><p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621014431924.png" srcset="/img/loading.gif" lazyload alt="image-20220621014431924"></p>
+<h4><span id="模块-分解">模块  分解</span></h4><p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621014511324.png" srcset="/img/loading.gif" lazyload alt="image-20220621014511324"></p>
+<ul>
+<li>上面是一个单周期cpu</li>
+<li>下面是nutshell cpu</li>
+</ul>
+<h4><span id="参数定义">参数定义</span></h4><p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621014852096.png" srcset="/img/loading.gif" lazyload alt="image-20220621014852096"></p>
+<ul>
+<li>实例化显式传参</li>
+<li>实例化时隐式传参（推荐）<ul>
+<li>作用：在一个类中声明隐式参数，则该类内部所有实例化类都传入了改参数</li>
+</ul>
+</li>
+</ul>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220711185731224.png" srcset="/img/loading.gif" lazyload alt="顶层传入隐式参数"></p>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220711185543001.png" srcset="/img/loading.gif" lazyload alt="隐式参数的类的声明"></p>
+<ul>
+<li>全局参数</li>
+</ul>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621015019575.png" srcset="/img/loading.gif" lazyload alt="image-20220621015019575"></p>
+<ul>
+<li>CDE（自己研究，较难）</li>
+<li>Diplomacy（自己研究，较难）</li>
+</ul>
+<h4><span id="接口定义">接口定义</span></h4><p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621015144329.png" srcset="/img/loading.gif" lazyload alt="image-20220621015144329"></p>
+<h4><span id="模块组装">模块组装</span></h4><p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621015350856.png" srcset="/img/loading.gif" lazyload alt="image-20220621015350856"></p>
+<p>时序电路的组装</p>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621015433286.png" srcset="/img/loading.gif" lazyload alt="image-20220621015433286"></p>
+<p>凡是两个流水级要连接，可以直接调用这个类</p>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621015513522.png" srcset="/img/loading.gif" lazyload alt="image-20220621015513522"></p>
+<h4><span id="模块开发">模块开发</span></h4><p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621015710711.png" srcset="/img/loading.gif" lazyload alt="image-20220621015710711"></p>
+<ul>
+<li>chisel 仲裁器Arbiter和队列Queue（ready-valid接口）</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39507748/article/details/118887707">https://blog.csdn.net/qq_39507748/article/details/118887707</a></p>
+<ul>
+<li>一个有初始值的二维寄存器示例</li>
+</ul>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621015818662.png" srcset="/img/loading.gif" lazyload alt="image-20220621015818662"></p>
+<ul>
+<li>chisel多使用for加速电路描述</li>
+</ul>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621020002811.png" srcset="/img/loading.gif" lazyload alt="image-20220621020002811"></p>
+<h4><span id="测试和调试">测试和调试</span></h4><p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621020055118.png" srcset="/img/loading.gif" lazyload alt="image-20220621020055118"></p>
+<h3><span id="nutshell中使用到的一些chisel特性">NutShell中使用到的一些Chisel特性</span></h3><p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621020445026.png" srcset="/img/loading.gif" lazyload alt="image-20220621020445026"></p>
+<ul>
+<li>可以看《scala函数式编程》</li>
+<li>一个生成掩码的函数</li>
+</ul>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621020647595.png" srcset="/img/loading.gif" lazyload alt="image-20220621020647595"></p>
+<h4><span id="设计maskedregmap来描述csr">设计MaskedRegMap来描述CSR</span></h4><p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621020606688.png" srcset="/img/loading.gif" lazyload alt="image-20220621020606688"></p>
+<ul>
+<li>副作用：改一个csr对系统状态进行改变</li>
+<li>reg addr：csr在手册中的地址</li>
+<li>reg data source：实际硬件寄存器</li>
+</ul>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621021153647.png" srcset="/img/loading.gif" lazyload alt="image-20220621021153647"></p>
+<ul>
+<li>map(maskedregmap)<ul>
+<li>Mstaatus：reg addr，一个常量</li>
+<li>mstatus：一个实例化的寄存器</li>
+<li>“hfffffffffffffffffffff”.U一个掩码</li>
+<li>mstatusUppdateSideEffect：一个函数</li>
+</ul>
+</li>
+<li>maskedregmap.generator(进行完整实现)</li>
+</ul>
+<p><strong>maskedregmap：</strong></p>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621023637785.png" srcset="/img/loading.gif" lazyload alt="image-20220621023637785"></p>
+<p><strong>总的MaskedRegMap一行</strong></p>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621024035126.png" srcset="/img/loading.gif" lazyload alt="image-20220621024035126"></p>
+<h4><span id="axi4设备中的代码复用">AXI4设备中的代码复用</span></h4><p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621024248398.png" srcset="/img/loading.gif" lazyload alt="image-20220621024248398"></p>
+<ul>
+<li>使用面向对象的思想进行复用</li>
+</ul>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621024255563.png" srcset="/img/loading.gif" lazyload alt="image-20220621024255563"></p>
+<p>UART就很简单，大量逻辑在AXI4Slave里面：</p>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621024339370.png" srcset="/img/loading.gif" lazyload alt="image-20220621024339370"></p>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621024403981.png" srcset="/img/loading.gif" lazyload alt="image-20220621024403981"></p>
+<h3><span id="chisel开发中的注意事项坑">Chisel开发中的注意事项（坑）</span></h3><h4><span id="注意事项">注意事项</span></h4><p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621024523039.png" srcset="/img/loading.gif" lazyload alt="image-20220621024523039"></p>
+<ul>
+<li>把scala看作宏一样的东西</li>
+</ul>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621024610888.png" srcset="/img/loading.gif" lazyload alt="image-20220621024610888"></p>
+<h4><span id="坑">坑</span></h4><p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621024718656.png" srcset="/img/loading.gif" lazyload alt="image-20220621024718656"></p>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621024815837.png" srcset="/img/loading.gif" lazyload alt="image-20220621024815837"></p>
+<ul>
+<li>DontCare非常危险，流片前消灭掉</li>
+</ul>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621025046638.png" srcset="/img/loading.gif" lazyload alt="image-20220621025046638"></p>
+<h3><span id="提早发现错误">提早发现错误</span></h3><p><strong>两种assert（俄则特）</strong></p>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220621025153220.png" srcset="/img/loading.gif" lazyload alt="image-20220621025153220"></p>
+<h2><span id="什么是中断和异常">什么是中断和异常</span></h2><h3><span id="参考内容">参考内容</span></h3><p>The RISC-V Instruction Set Manual Volume II: Privileged Architecture Document Version 20190608-Priv-MSU-Ratified</p>
 <h3><span id="中断异常简介">中断异常简介</span></h3><ul>
 <li>异常(狭义)：一般指来源于核内部的异常<ul>
 <li>-如:指令错误、访存错误等</li>
@@ -568,7 +817,7 @@
 <li>CPU捕获计时器中断</li>
 <li>保存/更新CSRs<ul>
 <li>mepc<ul>
-<li>中断：<strong>下一条指令的PC值（与环境调用异常中硬件保存的PC不同，这里是pc+4）</strong>,其实和环境调用异常中的ecall在硬件实现上一样，这里的下一条指的就是中断发生时正在执行的指令</li>
+<li>中断：<strong>下一条指令的PC值</strong>（与环境调用异常中硬件保存的PC不同，这里是pc+4，但是这里的pc+4指的是发生中断时还未执行的那一条指令，即译码时期的指令）,其实和环境调用异常中的ecall在硬件实现上一样，这里的下一条指的就是中断发生时正在执行的指令</li>
 </ul>
 </li>
 <li>mcause<ul>
@@ -612,14 +861,356 @@
 <li>mret</li>
 </ul>
 <h3><span id="其他注意事项">其他注意事项</span></h3><p>备注： csr指令中的5位立即数不需要符号位扩展。<a target="_blank" rel="noopener" href="https://www.cnblogs.com/mikewolf2002/p/11196680.html">https://www.cnblogs.com/mikewolf2002/p/11196680.html</a></p>
-<h2><span id="soc总线框架">SOC总线框架</span></h2><p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220620015020896.png" srcset="/img/loading.gif" lazyload alt="image-20220620015020896"></p>
+<h2><span id="流水线">流水线</span></h2><p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220625203118393.png" srcset="/img/loading.gif" lazyload alt="image-20220625203118393"></p>
+<ul>
+<li>请参考这个符号位扩展的位置</li>
+</ul>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220625203134077.png" srcset="/img/loading.gif" lazyload alt="image-20220625203134077"></p>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220625203327974.png" srcset="/img/loading.gif" lazyload alt="image-20220625203327974"></p>
+<ul>
+<li>命名规范<ul>
+<li>i/o 输入输出</li>
+<li>IDRN隶属模块</li>
+<li>xxxxx具体功能 </li>
+</ul>
+</li>
+</ul>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220625203457203.png" srcset="/img/loading.gif" lazyload alt="image-20220625203457203"></p>
+<p><strong>动态分支预测</strong></p>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220625204843292.png" srcset="/img/loading.gif" lazyload alt="image-20220625204843292"></p>
+<p>2bit分支预测器与3/4/5/6…性能差不多，资料网上多就不赘述了</p>
+<p><strong>使用动态分支预测后的图</strong></p>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220625205035384.png" srcset="/img/loading.gif" lazyload alt="image-20220625205035384"></p>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220625205143384.png" srcset="/img/loading.gif" lazyload alt="image-20220625205143384"></p>
+<blockquote>
+<p>静态分支预测：永远猜他跳/不跳</p>
+</blockquote>
+<h2><span id="axi">AXI</span></h2><h3><span id="握手">握手</span></h3><p>master发送给slave数据</p>
+<ul>
+<li>有效信号valid：一方想发送</li>
+<li>就绪信号ready：另一方能接受</li>
+<li>valid &amp;&amp; ready：数据成进行一次传输<ul>
+<li>不重不漏 </li>
+</ul>
+</li>
+</ul>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220616200533214-16566667061515.png" srcset="/img/loading.gif" lazyload alt="image-20220616200533214"></p>
+<p>异步总线，每一路都有握手</p>
+<ul>
+<li>读请求信号<ul>
+<li>RAVALID -&gt;</li>
+<li>RAREADY &lt;-</li>
+<li>RADDR -&gt;</li>
+</ul>
+</li>
+<li>读响应信号<ul>
+<li>RDVALID &lt;-</li>
+<li>RDREADY -&gt;</li>
+<li>RDATA</li>
+</ul>
+</li>
+<li>写请求信号<ul>
+<li>WAVALID(wen) -&gt;</li>
+<li>WRAREADY &lt;-</li>
+<li>WRADDR -&gt;</li>
+<li>WDATA -&gt;</li>
+<li>WMASK -&gt;</li>
+</ul>
+</li>
+<li>写响应信号<ul>
+<li>WDVALID &lt;-</li>
+<li>WDREADY -&gt;</li>
+</ul>
+</li>
+</ul>
+<h3><span id="axi-lite">AXI-Lite</span></h3><p>AXI4-Lite 是一种异步存储器总线协议</p>
+<ul>
+<li><p>五个通道</p>
+<ul>
+<li><p>读地址 AR、读数据 R</p>
+<ul>
+<li>与之前的异步总线完全一致</li>
+</ul>
+</li>
+<li><p>写地址 AW、写数据 W</p>
+<ul>
+<li>将原先的写请求通道一分为二</li>
+</ul>
+</li>
+<li><p>写响应</p>
+</li>
+</ul>
+</li>
+<li><p>时钟信号 ACLK 上升沿触发</p>
+</li>
+<li>同步复位 ARESETn 低电平有效</li>
+</ul>
+<h4><span id="axi读写事务transcation"><strong>AXI读写事务transcation</strong></span></h4><p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220616201717788-16566667061503.png" srcset="/img/loading.gif" lazyload alt="image-20220616201717788"></p>
+<h4><span id="axi4-lite-读地址-ar"><strong>AXI4-Lite 读地址 AR</strong></span></h4><ul>
+<li>读地址握手信号<ul>
+<li>ARVALID-&gt;</li>
+<li>ARREADY &lt;-</li>
+</ul>
+</li>
+<li>读地址<ul>
+<li>ARADDR -&gt;</li>
+</ul>
+</li>
+</ul>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220616223703387-16566667061502.png" srcset="/img/loading.gif" lazyload alt="image-20220616223703387"></p>
+<h4><span id="axi4-lite-读数据-r"><strong>AXI4-Lite 读数据 R</strong></span></h4><ul>
+<li>读地址握手信号<ul>
+<li>RVALID-&gt;</li>
+<li>RREADY &lt;-</li>
+</ul>
+</li>
+<li>读地址<ul>
+<li>RDATA -&gt;</li>
+</ul>
+</li>
+</ul>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220616223728109-16566667061514.png" srcset="/img/loading.gif" lazyload alt="image-20220616223728109"></p>
+<h4><span id="axi4-lite-写地址-aw"><strong>AXI4-Lite 写地址 AW</strong></span></h4><ul>
+<li>写地址握手信号<ul>
+<li>AMVALID -&gt;</li>
+<li>AWREADY &lt;-</li>
+</ul>
+</li>
+<li>写地址<ul>
+<li>AWADDR -&gt;</li>
+</ul>
+</li>
+</ul>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220616223854710-16566667061516.png" srcset="/img/loading.gif" lazyload alt="image-20220616223854710"></p>
+<h4><span id="axi4-lite-写数据-w"><strong>AXI4-Lite 写数据 W</strong></span></h4><ul>
+<li>写数据握手信号<ul>
+<li>WVALID -&gt;</li>
+<li>WREADY &lt;-</li>
+</ul>
+</li>
+<li>写数据<ul>
+<li>WDATA -&gt;</li>
+</ul>
+</li>
+<li>写掩码<ul>
+<li>WSTRB -&gt;</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>STRB(Strobe)选通的意思</p>
+</blockquote>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220616223944488-16566667061517.png" srcset="/img/loading.gif" lazyload alt="image-20220616223944488"></p>
+<h4><span id="axi4-lite-写响应-b"><strong>AXI4-Lite 写响应 B</strong></span></h4><p>写响应握手信号</p>
+<ul>
+<li>BVALID &lt;-</li>
+<li>BREADY-&gt;</li>
+</ul>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220616224145444-16553905056621-16566667061518.png" srcset="/img/loading.gif" lazyload alt="image-20220616224145444"></p>
+<h4><span id="axi4-lite注意事项">AXI4-Lite注意事项</span></h4><ul>
+<li>读事务和写事务分别均为<strong>顺序响应</strong>（也就是第一个地址、第二个地址、第三个….)</li>
+<li>写地址通道和写数据通道<strong>可以不同时有效</strong></li>
+<li>为了避免总线死锁，规定每个通道内<ul>
+<li>valid 置有效<strong>不能</strong>依赖于 ready 是否有效</li>
+<li>ready 置有效<strong>可以</strong>依赖于valid 是否有效</li>
+</ul>
+</li>
+</ul>
+<h4><span id="axi4-lite信号一览">AXI4-Lite信号一览</span></h4><p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220616224501296-16566667061519.png" srcset="/img/loading.gif" lazyload alt="image-20220616224501296"></p>
+<h4><span id="axi4与axi4-lite的互联">AXI4与AXI4-Lite的互联</span></h4><p>AXI4协议和AXI4-Lite是可以互联的，唯一需要注意的是当主机是AXI4且从机是AXI4-Lite时，从机的AXI4-Lite协议需增加AXI ID信号以匹配主机的AXI ID</p>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/AXI4%E5%92%8CAXI4-Lite%E4%BA%92%E8%81%94.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h3><span id="从axi4-lite到axi4">从AXI4-Lite到AXI4</span></h3><p>如果我想从内存读一整页 (4K) 的内容</p>
+<ul>
+<li>一次读 8 Bytes，则需要发送 512 次读请求</li>
+<li>-有没有更好的办法呢</li>
+</ul>
+<p>什么是突发传输(Brust)</p>
+<ul>
+<li>一段时间内，<strong>连续</strong>地传输多个<strong>地址相邻或相同</strong>的数据</li>
+</ul>
+<h4><span id="突发传输burst">突发传输burst</span></h4><p>突发传输事务与普通传输的对比：</p>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220616224654697-165666670615110.png" srcset="/img/loading.gif" lazyload alt="image-20220616224654697"></p>
+<ul>
+<li>注意burst突发和transaction事务所代表的范围</li>
+</ul>
+<p><strong>突发传输三要素(x为W或R，代表读或写)</strong></p>
+<ul>
+<li>突发宽度 AxSIZE</li>
+<li>突发类型 AxBURST</li>
+<li>突发长度 AxLEN</li>
+</ul>
+<p><strong>突发宽度 AxSIZE</strong></p>
+<ul>
+<li>每个 transfer/beat 的数据宽度</li>
+<li>必须小于<strong>该</strong> transaction 中<strong>任</strong>一主从数据总线的宽度</li>
+</ul>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220617010130923-165666670615111.png" srcset="/img/loading.gif" lazyload alt="image-20220617010130923"></p>
+<p><strong>突发类型AxBURST 有三种</strong></p>
+<ul>
+<li>FIXED（固定）<ul>
+<li>所有的数据都使用AxADDR，通常用于FIFO,串口等，即每一次读/写数据都是AxADDR</li>
+</ul>
+</li>
+<li>INCR<ul>
+<li>第一个数据的地址为 AxADDR</li>
+<li>后一个数据在前一个数据的基础上递增“突发宽度</li>
+<li>常用于RAM等</li>
+</ul>
+</li>
+<li>WRAP</li>
+</ul>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220617010550340-165666670615212.png" srcset="/img/loading.gif" lazyload alt="image-20220617010550340"></p>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220617012108640-165666670615213.png" srcset="/img/loading.gif" lazyload alt="image-20220617012108640"></p>
+<p><strong>突发长度 AxLEN</strong></p>
+<p>burst 中 transfer/beat的个数 = AXLEN + 1</p>
+<ul>
+<li>AxLEN 位宽为8 位<ul>
+<li>对于INCR类型的突发传输，AxLEN 可取0~255</li>
+<li>对于FIXED类型的突发传输，AxLEN 可取0~15</li>
+</ul>
+</li>
+</ul>
+<h4><span id="axi4中的xid信号">AXI4中的xID信号</span></h4><blockquote>
+<p>五级流水线CPU 中，取指与访存都会发出读请求</p>
+<ul>
+<li>取指和访存分别发出读请求，然后读数据返回</li>
+<li>取指和访存都以为是自己的读数据</li>
+<li>怎么解决这一问题呢</li>
+</ul>
+</blockquote>
+<p>为通道新增ID信号，不同流水级可用不同ID</p>
+<ul>
+<li>master 发出的请求便用什么 ID，slave 返回的响应就使用什么ID</li>
+<li>master根据响应的 ID 判断是哪一流水级的响应</li>
+</ul>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220617012500211-165666670615214.png" srcset="/img/loading.gif" lazyload alt="image-20220617012500211"></p>
+<blockquote>
+<p>为什么没有WID写数据ID（AXI3中有，AXI4中不再使用）</p>
+<p>答：</p>
+<p>AXI4单主机传输事务规定</p>
+<ul>
+<li>写数据顺序与写事务的顺序一致<ul>
+<li>这就使得我们不需要 WID信号</li>
+</ul>
+</li>
+<li>ID相同的事务，从机需要<strong>按照主机发出事务的顺序</strong>执行，并按序返回数据或者回复信号</li>
+<li>ID不同的事务，之间不存在顺序约束，从机可以按照任意的顺序返回数据或回复</li>
+<li>读写事务之间不存在顺序约束</li>
+<li>或者，我们也可以干脆把IF级和MEM 级当作是两个 master 设备！<ul>
+<li>IF级和 MEM 级都能读</li>
+<li>只有MEM 级才能写</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h4><span id="axi4-多主机传输事务">AXI4 多主机传输事务</span></h4><p>如何支持多主机？实现一个仲裁器</p>
+<ul>
+<li>N-to-1 Interconnect</li>
+</ul>
+<ul>
+<li>协议规定，不同主机间的事务是独立的，没有顺序约束</li>
+</ul>
+<p>仲裁器如何将读数据和写响应返回给正确的主机?（两种方案）</p>
+<ul>
+<li>方案1（简单粗暴）：各主机保证自己的 ID与其他主机不同</li>
+<li>方案2（推荐）：仲裁器对不同主机请求的 ID 进行调整，使得即使不同主机发出的请求ID相同，从机看到的ID不同<ul>
+<li>仲裁器接收主机事务后，在原有事务 ID附加一个表示来源端口的前缓</li>
+<li>仲裁器接收从机事务后，根据事务ID前缀判断应当返还给哪一个主机</li>
+<li>返还给主机前，仲裁器需要将 ID 前缀去掉<ul>
+<li>协议<strong>建议</strong>主机端ID 不超过4位</li>
+<li>协议建议仲裁器为ID 添加的前缀不超过4 位</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220617023021809.png" srcset="/img/loading.gif" lazyload alt="image-20220617023021809"></p>
+<p><strong>AXI4仲裁器对写事务保序</strong></p>
+<ul>
+<li>写数据顺序与写事务顺序一致（即lock住了，其他master来了先存起来）<ul>
+<li>可以看作是之前单主机版本的约定的一个扩展</li>
+</ul>
+</li>
+<li>一个事务内的写数据间，不能插入其他事务的数据（AXI4新增，AXI3支持但可以实现的设备较少且难度较大，因此在AXI4中删除）</li>
+<li>这些抓定讲一步保障了即使在多主机的情况下，我们也依然不需要WID<ul>
+<li>如果没有保序会搞乱</li>
+</ul>
+</li>
+</ul>
+<h4><span id="窄传输">窄传输</span></h4><p>当本次传输的突发宽度 (AxSIZE)小于通道本身的宽度(假设为 size) 时，这次传输被称为窄传输</p>
+<ul>
+<li>数据在通道上传输的位置必须与 (数据的地址) % size 保持一致</li>
+</ul>
+<p>AX4规定:</p>
+<ul>
+<li>master 必须保证 WSTRB<strong>只在对应字节有效时为高</strong></li>
+</ul>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220617023952518.png" srcset="/img/loading.gif" lazyload alt="示例1"></p>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220617024035239.png" srcset="/img/loading.gif" lazyload alt="示例2"></p>
+<h4><span id="非对齐传输">非对齐传输</span></h4><p>起始地址 AxADDR 与突发宽度 AxSIZE 不对齐</p>
+<p>对于非对齐传输，master可以把它变成对齐的：</p>
+<ul>
+<li>在首个 transfer 填充无效数据至对齐</li>
+<li>将起始地址调整为对齐的地址</li>
+</ul>
+<p>然后，问题就退化为了窄传输/正常传输</p>
+<p>特别提示</p>
+<ul>
+<li>master 必须保证WSTRB  <strong>只在对应字节有效时为高</strong></li>
+</ul>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220617024215965.png" srcset="/img/loading.gif" lazyload alt="示例"></p>
+<h4><span id="transaction的回复信号">transaction的回复信号</span></h4><p>读数据和写响应通道分别有一个回复信号 xRESP</p>
+<ul>
+<li>写事务的回复信号针对整个事务</li>
+<li>读事务的回复信号针对每个 transfer</li>
+</ul>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220617024530219.png" srcset="/img/loading.gif" lazyload alt="写事务与读事务"></p>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220617024400211.png" srcset="/img/loading.gif" lazyload alt="image-20220617024400211"></p>
+<ul>
+<li>OKAY</li>
+<li>SLVERR从机问题</li>
+<li>DECERR解码错误（一般是不存在的地址）</li>
+</ul>
+<h4><span id="总结">总结</span></h4><p>这里只介绍了一些最主要的信号和规范，若需了解更多，可以自行查阅手册</p>
+<h3><span id="输入输出">输入输出</span></h3><p>那么，MMIO 在硬件上应该由谁来实现呢</p>
+<ul>
+<li>访问设备由访存指令实现</li>
+<li>访存需要经过总线</li>
+<li>总线负责把不同地址的访问请求分发给不同的设备</li>
+<li>1-to-N Interconnect 负责分发</li>
+</ul>
+<p>1-to-N AXI4 Interconnect（单主机多从机，我们在设计CPU时一般参考这个就行）</p>
+<ul>
+<li>也称为 decoder/router</li>
+<li>根据 <strong>AxADDR</strong>将相应的请求转发到不同的从机</li>
+</ul>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220617025054411.png" srcset="/img/loading.gif" lazyload alt="image-20220617025054411"></p>
+<p>CPU 中的可能情况 </p>
+<ul>
+<li>多主机：IF，MEM</li>
+<li>多从机：DRAM，UART，CLINT等</li>
+</ul>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220617025121564.png" srcset="/img/loading.gif" lazyload alt="image-20220617025121564"></p>
+<p><strong>NEMU的MMIO</strong></p>
+<p>nemu 的设备及其内存映射</p>
+<ul>
+<li>串口: 0xA10003F8，1字节</li>
+<li>时钟: 0xA1000048，2 字节</li>
+<li>键盘:0xA1000060，4字节</li>
+</ul>
+<p>各设备寄存器的用法请自行查阅手册和阅读代码</p>
+<h3><span id="一个有关interconnect的问题">一个有关interconnect的问题</span></h3><h3><span id="axi4-interconnect">axi4-interconnect</span></h3><p>问题：axi interconnect 外围子系统包含一个  AXI crossbar，每个 S/M 端口带有couplers 。这些对不是标准的 AXI 对 IP，而是直接将 S_AXI 连接到 M_AXI 的自定义 IP。我猜这些是虚拟 IP，如果我不必在我的设计中实现耦合器，则不需要。我想得到一些关于设计的确认和见解。<a target="_blank" rel="noopener" href="https://support.xilinx.com/s/question/0D52E00006lLghiSAC/why-using-custom-coupler-ip-with-axi-crossbar-in-tpg-design-example?language=en_US">链接</a></p>
+<p>回答：Each sub modules in the axi_interconnect are generated automatically by the tools per MI/SI protocols. Couples are needed for auto generation. If no signals conversion are needed, it’s only a <strong>dummy</strong> as you have seen. This doesn’t matter. If you really don’t want to see it(I cannot image the reason), don’t use axi_interconnect you can manually add each AXI infrastructure cores like Crossbar, converter, etc.</p>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220620161127202.png" srcset="/img/loading.gif" lazyload alt="image-20220620161127202"></p>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220620161053683.png" srcset="/img/loading.gif" lazyload alt="image-20220620161053683"></p>
+<p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220620015020896.png" srcset="/img/loading.gif" lazyload alt="image-20220620015020896"></p>
 <ul>
 <li>CPU访问FPGA外设：crossbar-&gt;chiplink-&gt;FPGA</li>
 <li>CPU使用UART：crossbar-&gt;UART</li>
 <li>CPU上有两个AXI4接口，一个master一个slave，slave与dma接，没有则悬空</li>
 </ul>
 <h3><span id="ram替换">RAM替换</span></h3><p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220620015511158.png" srcset="/img/loading.gif" lazyload alt="image-20220620015511158"></p>
-<h3><span id="ram与cache">RAM与cache</span></h3><p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220620015744997.png" srcset="/img/loading.gif" lazyload alt="image-20220620015744997"></p>
+<h3><span id="ram与cache">RAM/与cache</span></h3><p><img src="ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/image-20220620015744997.png" srcset="/img/loading.gif" lazyload alt="image-20220620015744997"></p>
 <ul>
 <li>注意：数据输出会延后一个周期</li>
 </ul>
@@ -702,7 +1293,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/lysyx/">lysyx</a>
+                      <a class="hover-with-bg" href="/tags/ysyx/">ysyx</a>
                     
                       <a class="hover-with-bg" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
                     
@@ -725,7 +1316,7 @@
                     
                       <a href="/202206201044/IC/%E7%90%86%E8%AE%BA/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/cache/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">cpu cache</span>
+                        <span class="hidden-mobile">ysyx 工作进度与终点</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     

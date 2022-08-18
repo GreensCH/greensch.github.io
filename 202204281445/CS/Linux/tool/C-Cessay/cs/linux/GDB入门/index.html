@@ -26,7 +26,7 @@
 <meta property="og:description" content="GDB 入门GDB (Gnu Debugger) 启动编译时：gcc  &lt;code file&gt; -g  使可执行程序包含调试信息  启动gdb，两种方法：  gdb &lt;exe&gt; gdb：先输入gdb file &lt;exe&gt;：使用file打开程序    相关操作： r&#x2F;run：执行程序 q&#x2F;quit：退出 s&#x2F;set &lt;var&gt; &#x3D; &lt;value&amp;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-04-28T06:45:00.000Z">
-<meta property="article:modified_time" content="2022-05-08T07:45:10.243Z">
+<meta property="article:modified_time" content="2022-06-28T05:55:23.055Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="gdb">
@@ -263,7 +263,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.7k 字
+      2.9k 字
     </span>
   
 
@@ -272,7 +272,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      8 分钟
+      9 分钟
     </span>
   
 
@@ -407,7 +407,19 @@
 <p>无限循环是另一个很难自行查找的错误，但使用 GDB 很容易找到。在 GDB 中加载你的程序，并运行它直到你进入循环。然后按 control-C 强制返回 GDB 提示符。输入 bt，你会被告知你在哪一行。使用list查看代码，看看是否可以找出导致循环的原因。如果不能，请使用n（或next）一次一行地通过循环，同时使用p 检查您的计数器变量。</p>
 <p><strong>莫名其妙的错误</strong></p>
 <p>大多数错误都不是那么简单的分类。通常，您的程序会无缘无故地提供错误的输出。当您遇到此类问题时，有一些技巧可以派上用场。您可以做的一件事是在您的程序要求输入后立即设置断点，然后继续 执行，定期查看堆栈和变量以确保一切按计划进行。如果您认为问题出在某个特定变量的值并且您的代码难以理解，您可以观察该变量。</p>
-<p>下面是一个 GDB 会话的记录，其中包含一个旨在解析正则表达式的程序（该程序最初称为 rep.cc，但您不需要原始源代码来遵循调试流程）。我的评论将以 C++ 评论风格显示。</p>
+<p>下面是一个 GDB 会话的记录，其中包含一个旨在解析正则表达式的程序（该程序最初称为 rep.cc，但您不需要原始源代码来遵循调试流程）。我的评论将以 C++ 评论风格显示</p>
+<h3><span id="tui显示错误">TUI显示错误</span></h3><ul>
+<li>进入TUI模式：<code>gdb &lt;main.o&gt; -tui</code></li>
+<li>terminial下：<code>ctrl + L</code>刷新界面</li>
+<li>vscode中：<code>ctrl + k</code>调整</li>
+<li>使用dashboard</li>
+<li>tui模式，</li>
+<li>上下按键被锁定到了源码位置，如果想上下更新命令，需要如下快捷键：<ul>
+<li><code>ctrl + n</code>，下一命令（Next）</li>
+<li><code>ctrl + p</code>，上一命令（Prev）</li>
+</ul>
+</li>
+</ul>
 
             </div>
             <hr>

@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/cs/202205011937491.jpg">
 <meta property="article:published_time" content="2022-03-04T09:17:00.000Z">
-<meta property="article:modified_time" content="2022-05-25T04:07:24.573Z">
+<meta property="article:modified_time" content="2022-07-14T08:11:20.462Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="学习">
 <meta property="article:tag" content="CS">
@@ -272,7 +272,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      130 分钟
+      131 分钟
     </span>
   
 
@@ -582,7 +582,8 @@
 </li>
 </ul>
 <figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala">scala&gt; isInt1(<span class="hljs-number">1</span>)<br>res0: <span class="hljs-type">String</span> = <span class="hljs-number">1</span> is a <span class="hljs-type">Int</span>.<br><br>scala&gt; isInt2(<span class="hljs-number">1</span>)<br>res1: <span class="hljs-type">String</span> = <span class="hljs-number">1</span> is a <span class="hljs-type">Int</span>.<br><br>scala&gt; isInt1.isDefinedAt(&#x27;<span class="hljs-number">1</span>&#x27;)<br>res2: <span class="hljs-type">Boolean</span> = <span class="hljs-literal">false</span><br><br>scala&gt; isInt2.isDefinedAt(&#x27;<span class="hljs-number">1</span>&#x27;)<br>res3: <span class="hljs-type">Boolean</span> = <span class="hljs-literal">false</span><br><br>scala&gt; isInt1(&#x27;<span class="hljs-number">1</span>&#x27;)<br>scala.<span class="hljs-type">MatchError</span>: <span class="hljs-number">1</span> (of <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">java</span>.<span class="hljs-title">lang</span>.<span class="hljs-title">Character</span>)</span><br>  at scala.<span class="hljs-type">PartialFunction</span>$ $anon$<span class="hljs-number">1.</span>apply(<span class="hljs-type">PartialFunction</span>.scala:<span class="hljs-number">255</span>)<br>  at scala.<span class="hljs-type">PartialFunction</span>$ $anon$<span class="hljs-number">1.</span>apply(<span class="hljs-type">PartialFunction</span>.scala:<span class="hljs-number">253</span>)<br>  at $anonfun$<span class="hljs-number">1.</span>applyOrElse(&lt;console&gt;:<span class="hljs-number">12</span>)<br>  at scala.runtime.<span class="hljs-type">AbstractPartialFunction</span>.apply(<span class="hljs-type">AbstractPartialFunction</span>.scala:<span class="hljs-number">34</span>)<br>  ... <span class="hljs-number">28</span> elided<br><br>scala&gt; isInt2(&#x27;<span class="hljs-number">1</span>&#x27;)<br>java.lang.<span class="hljs-type">ClassCastException</span>: java.lang.<span class="hljs-type">Character</span> cannot be cast to java.lang.<span class="hljs-type">Integer</span><br>  at scala.runtime.<span class="hljs-type">BoxesRunTime</span>.unboxToInt(<span class="hljs-type">BoxesRunTime</span>.java:<span class="hljs-number">101</span>)<br>  at $anon$<span class="hljs-number">1.</span>apply(&lt;console&gt;:<span class="hljs-number">13</span>)<br>  at $anon$<span class="hljs-number">1.</span>apply(&lt;console&gt;:<span class="hljs-number">12</span>)<br>  ... <span class="hljs-number">28</span> elided<br><br></code></pre></div></td></tr></table></figure>
-<h1><span id="13-类型参数化泛型">13 类型参数化（泛型）</span></h1><blockquote>
+<h1><span id="13-类型参数化泛型">13 类型参数化（泛型）</span></h1><p>推荐！！！扩展阅读，泛型父类：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/388138614">https://zhuanlan.zhihu.com/p/388138614</a></p>
+<blockquote>
 <p>​        在面向对象的编程里，提高代码复用率的一个重要方法就是泛型。泛型是一种重要的多态，称为“全类型多态”或“参数多态”。在某些容器类里，通常需要存储其它类型的对象，但是具体是什么类型，事先并不知道。倘若对每种可能包含的类型都编写一个新类，那么这完全不现实。一是工作量巨大，二是自定义类型是什么完全无法预知。例如，列表的元素可以是基本类型，也可以是自定义的类型，不可能在编写列表类时把自定义类型也考虑进去。更重要的是，这些容器类仅仅需要知道一个具体的类型，其它成员完全是一样的。既然这样，那完全可以编写一个泛型的类，它独立于成员的类型存在，然后把类型也作为一个参数，实例化生成不同的类对象。</p>
 <p>​        既然与定义类型相关，那么可以泛型的自然是类和特质。</p>
 </blockquote>

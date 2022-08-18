@@ -41,7 +41,7 @@
 <meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220511203959665.png">
 <meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220511203756282.png">
 <meta property="article:published_time" content="2022-05-12T07:23:16.587Z">
-<meta property="article:modified_time" content="2022-06-19T09:24:49.012Z">
+<meta property="article:modified_time" content="2022-08-05T16:09:42.594Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="IC">
 <meta property="article:tag" content="数字电路">
@@ -279,7 +279,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      11k 字
+      14k 字
     </span>
   
 
@@ -288,7 +288,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      35 分钟
+      45 分钟
     </span>
   
 
@@ -885,11 +885,59 @@ Asanovi&#39;c 2017]的表 19.2。"></p>
 <p>所以，<strong>FENCE.I和FENCE指令不同，并不是必须的指令，解决的也是不同类型的问题。</strong></p>
 <p>对于有I$的CPU来说，FENCE.I一般可以采用invalidate I$来解决（当然这不是唯一的途径），prefetch一并clear掉。如果只有prefetch buffer的就可以像处理跳转指令一样把prefetch buffer clear掉，就像Ibex的处理方式一样。</p>
 <p><strong>但是也不能对FENCE.I指令期望过高，它解决的仅仅是单hart上的code coherence问题。</strong> 其他hart上的code改动并不能保证一定被当前的hart及时取到。这个时候就需要在OS层面用诸如system call之类的软件方案去实现指令存取一致性。这也就是为什么FENCE.I指令被从I指令集移了出来的原因之一了，另一个原因是对于一些系统实现FENCE.I的代价太大。</p>
-<h3><span id="csr">CSR</span></h3><ol>
+<h3><span id="csr-control-and-status-registers">CSR Control and Status Registers</span></h3><ol>
 <li>CSR地址映射的约定（原文查看卷II即可）</li>
 </ol>
 <p>标准RISC-V ISA为多达4,096个csr留出12位编码空间(csr[11:0])。按照约定，CSR地址的前4位(CSR[11:8])根据权限级别对CSR的读写可访问性进行编码，最上面的两位(csr[11:10])表示寄存器是读/写(00、01或10)还是只读(11)，接下来的两位(csr[9:8])编码可以访问csr的最低特权级别。</p>
 <p>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/dai_xiangjun/article/details/123373303">https://blog.csdn.net/dai_xiangjun/article/details/123373303</a></p>
+<h2><span id="riscv-的交叉编译环境搭建">RISCV 的交叉编译环境搭建</span></h2><h3><span id="参考文章">参考文章</span></h3><ul>
+<li>我主要参考的：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44881486/article/details/121712865">https://blog.csdn.net/qq_44881486/article/details/121712865</a></li>
+<li>内容较全，有上面文章中的一些行为的解释：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42454243/article/details/124087611">https://blog.csdn.net/weixin_42454243/article/details/124087611</a></li>
+<li>正常的拉取步骤、riscv32版本可以参考这个configure、QEMU安装：<a target="_blank" rel="noopener" href="https://blog.csdn.net/limanjihe/article/details/122373942">https://blog.csdn.net/limanjihe/article/details/122373942</a></li>
+<li>这里是一个汇总了不同版本的，配置选项的链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/lizhao_yang_/article/details/121809405">https://blog.csdn.net/lizhao_yang_/article/details/121809405</a></li>
+<li>一篇不明不白地博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40836704/article/details/120391584">https://blog.csdn.net/qq_40836704/article/details/120391584</a></li>
+</ul>
+<h3><span id="正文">正文</span></h3><h4><span id="方式一主要介绍这一种gitee-riscv-toolchain">方式一（主要介绍这一种）：gitee riscv-toolchain</span></h4><p>riscv工具链整个工程太大，在<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=github&amp;spm=1001.2101.3001.7020">github</a>下载再递归下载子文件夹，以国内的网络很容易超时断开。一般去码云gitee上面找镜像文件</p>
+<p><strong>1）clone riscv-toolchain</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> <span class="hljs-variable">$HOME</span><br>mkdir riscv<br><span class="hljs-built_in">cd</span> riscv<br><br>git <span class="hljs-built_in">clone</span> https://gitee.com/lizeyujack/riscv-gnu-toolchain.git<br><span class="hljs-comment"># 或者 git clone  https://gitee.com/mirrors/riscv-gnu-toolchain</span><br><span class="hljs-built_in">cd</span> riscv-gnu-toolchain<br>rm -rf riscv-*<br></code></pre></div></td></tr></table></figure>
+<ul>
+<li>建立git clone目录</li>
+<li>git clone  riscv-toolchain</li>
+<li>删除原有riscv-*子目录</li>
+</ul>
+<p><strong>2）clone submodule</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">sudo git <span class="hljs-built_in">clone</span> https://gitee.com/mirrors/riscv-dejagnu.git<br>sudo git <span class="hljs-built_in">clone</span> -b riscv-gcc-10.2.0 https://gitee.com/mirrors/riscv-gcc.git<br>sudo git <span class="hljs-built_in">clone</span> -b riscv-glibc-2.29 https://gitee.com/mirrors/riscv-glibc.git<br>sudo git <span class="hljs-built_in">clone</span> https://gitee.com/mirrors/riscv-newlib.git<br><br>sudo git <span class="hljs-built_in">clone</span> -b riscv-binutils-2.35 https://gitee.com/mirrors/riscv-binutils-gdb.git  riscv-binutils<br>sudo git <span class="hljs-built_in">clone</span> -b fsf-gdb-10.1-with-sim https://gitee.com/mirrors/riscv-binutils-gdb.git riscv-gdb<br></code></pre></div></td></tr></table></figure>
+<ul>
+<li>码云上的子模块的地址仍然为github的地址，所以需要分别拉取其子模块在码云上的镜像</li>
+<li>riscv-binutils与riscv-gdb来自于同一个仓库，且与本地要求的文件夹名称不同，需用命令指定本地名，riscv-gdb同理</li>
+</ul>
+<p>补充内容：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/limanjihe/article/details/122373942">子模块地址</a>：</li>
+</ul>
+<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">riscv-newlib：https:<span class="hljs-regexp">//gi</span>tee.com<span class="hljs-regexp">/mirrors/</span>riscv-newlib<br>riscv-binutils：https:<span class="hljs-regexp">//gi</span>tee.com<span class="hljs-regexp">/mirrors/</span>riscv-binutils-gdb<br>riscv-gdb：https:<span class="hljs-regexp">//gi</span>tee.com<span class="hljs-regexp">/mirrors/</span>riscv-binutils-gdb(riscv-gdb和riscv-binutils为同一个仓库下的不同分支)<br>riscv-dejagnu：https:<span class="hljs-regexp">//gi</span>tee.com<span class="hljs-regexp">/mirrors/</span>riscv-dejagnu<br>riscv-glibc：https:<span class="hljs-regexp">//gi</span>tee.com<span class="hljs-regexp">/mirrors/</span>riscv-glibc<br>riscv-gcc：https:<span class="hljs-regexp">//gi</span>tee.com<span class="hljs-regexp">/mirrors/</span>riscv-gcc<br><br></code></pre></div></td></tr></table></figure>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/limanjihe/article/details/122373942">子模块对应的分支</a>：(工具链可能会更新，要使用最新版本大家自行切换具体分支）</li>
+</ul>
+<figure class="highlight apache"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">riscv</span>-binutils：riscv-binutils-<span class="hljs-number">2</span>.<span class="hljs-number">35</span><br><span class="hljs-attribute">riscv</span>-dejagnu：master<br><span class="hljs-attribute">riscv</span>-gcc：riscv-gcc-<span class="hljs-number">10</span>.<span class="hljs-number">2</span>.<span class="hljs-number">0</span><br><span class="hljs-attribute">riscv</span>-gdb：fsf-gdb-<span class="hljs-number">10</span>.<span class="hljs-number">1</span>-with-sim<br><span class="hljs-attribute">riscv</span>-glibc：riscv-glibc-<span class="hljs-number">2</span>.<span class="hljs-number">29</span><br><span class="hljs-attribute">riscv</span>-newlib：master<br></code></pre></div></td></tr></table></figure>
+<p><strong>3）下载依赖库</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">sudo apt-get install autoconf automake autotools-dev curl libmpc-dev libmpfr-dev libgmp-dev gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev libexpat-dev<br>sudo apt-get install libnewlib-dev<br></code></pre></div></td></tr></table></figure>
+<p><strong>4）配置与编译</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">./configure --prefix=/opt/riscv <span class="hljs-comment">#--prefix后面是你想要安装的位置，opt文件夹下默认是应用程序</span><br>sudo make -jN <span class="hljs-comment">#考虑到opt文件夹创建文件和删除文件需要用root权限</span><br><span class="hljs-comment"># make linux 带linux-gnu的gcc</span><br></code></pre></div></td></tr></table></figure>
+<p><strong>5）添加环境变量</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">vim ~/.bashrc		<span class="hljs-comment">#然后添加语句</span><br><span class="hljs-built_in">export</span> PATH=/opt/riscv/bin:<span class="hljs-variable">$PATH</span>	<span class="hljs-comment">#保存并更新环境</span><br>:wq<br><span class="hljs-built_in">source</span> ~/.bashrc<br></code></pre></div></td></tr></table></figure>
+<p><strong>6）测试</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">riscv64-unknown-elf-gcc --version<br></code></pre></div></td></tr></table></figure>
+<h4><span id="方式二github-riscv-toolchain">方式二：github riscv-toolchain</span></h4><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span>  git@github.com:riscv/riscv-gnu-toolchain.git<br><span class="hljs-built_in">cd</span> riscv-gnu-toolchain<br>git submodule update --init --recursive<br></code></pre></div></td></tr></table></figure>
+<h3><span id="其他问题">其他问题</span></h3><h4><span id="如何生成riscv64-unknown-linux-gnu-gcc">如何生成riscv64-unknown-linux-gnu-gcc</span></h4><p>指定make linux，否则默认为unknown-elf</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">make linux<br></code></pre></div></td></tr></table></figure>
+<h3><span id="riscv-gnu-toolchain不同版本">riscv-gnu-toolchain不同版本</span></h3><p>riscv-gnu-toolchain 工具链分elf-gcc，linux-gnu-gcc两个版本，以及他们对应的32位和64位版本。两个的主要区别在于<a target="_blank" rel="noopener" href="https://blog.csdn.net/limanjihe/article/details/122373942">参考链接</a>：</p>
+<ul>
+<li>riscv32-unknown-elf-gcc，riscv64-unknown-elf-gcc：使用的riscv-newlib库(面向嵌入式的C库)，而且只支持静态链接，不支持动态链接</li>
+<li>riscv32-unknown-linux-gnu-gcc，riscv64-unknown-linux-gnu-gcc：使用的是glibc标准库，支持动态链接</li>
+</ul>
+<p>个人认为从名字上便可以区分两者的使用场景，如果是编译简单，较小的elf程序，使用elf-gcc版本即可，如果编译比较大的程序或者需要动态库（比如编译linux，或opencv库等），推荐使用linux-gnu-gcc版本</p>
+<p>这里是一个汇总了不同版本的，配置选项的链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/lizhao_yang_/article/details/121809405">https://blog.csdn.net/lizhao_yang_/article/details/121809405</a></p>
 
             </div>
             <hr>

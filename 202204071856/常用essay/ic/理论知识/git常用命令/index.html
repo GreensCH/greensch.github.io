@@ -30,7 +30,7 @@
 <meta property="og:image" content="http://yoursite.com/202204071856/%E5%B8%B8%E7%94%A8essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L09saXZlcl9fTGF1,size_16,color_FFFFFF,t_70.png">
 <meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011901568.png">
 <meta property="article:published_time" content="2022-04-07T10:56:00.000Z">
-<meta property="article:modified_time" content="2022-05-25T04:07:24.547Z">
+<meta property="article:modified_time" content="2022-07-24T16:57:31.127Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="常用">
 <meta property="article:tag" content="命令">
@@ -267,7 +267,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.4k 字
+      3.9k 字
     </span>
   
 
@@ -276,7 +276,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      11 分钟
+      12 分钟
     </span>
   
 
@@ -318,7 +318,7 @@
 </ul>
 <p>git config -l查看所有的配置信息，依次是系统级别、用户级别、仓库级别<br>git config —local -l 查看仓库配置<br>git config —global -l 查看用户配置<br>git config —system -l 查看系统配置<br>git config 添加配置文件<br>git config —global user.email “You Email”<br>git config —global user.name “Your Name”<br>git config -e 编辑配置文件<br>git config —local -e 编辑仓库级别配置文件<br>git config —global -e 编辑用户级别配置文件<br>git config —system -e 编辑系统级别配置文件<br>编辑会打开一个 Vim 编辑器，很多人可能不会用。<br>打开 Vim 编辑器后，键盘按下字母 O 键开始编辑<br>保存并退出编辑 Esc ——&gt; :wq<br>退出编辑 Esc ——&gt; :q<br>强制退出编辑 Esc ——&gt; :q!</p>
 <p><strong>git clone</strong></p>
-<p>git clone 复制仓库到新的目录<br>git clone &lt;远程仓库地址&gt;</p>
+<p>git clone 拉取仓库到新的目录<br>git clone \<repo\><br>git clone -b \<branch name\> \<repo\> 拉取repo的某个分支，到该目录下<br>git clone —recursive \<repo\> 拉取repo分支，并递归提取其submodule<br>git submodule update —init —recursive 提取并初始化submodule（如果没有git clone —recursive可以这么补救，<a target="_blank" rel="noopener" href="https://blog.csdn.net/u013171226/article/details/121393763">参考链接</a>）<br>git clone \<repo\> \<local path>  拉取repo分支，到local path目录下（不存在则自动创建该目录）</local></repo\></repo\></repo\></branch></repo\></p>
 <p><strong>git fetch</strong></p>
 <p>git fetch 创建并更新本地远程分支<br>git fetch origin 手动指定要 fetch 的 remote,在不指定分支时通常默认为 master；<br>git fetch origin master:temp 如在本地新建一个temp分支，并将远程 origin 仓库的master 分支代码下载到本地 temp 分支<br>git diff temp 比较本地代码与刚刚从远程下载下来的代码的区别<br>git merge temp 合并代码<br>git branch -d temp 不想要 tmp 分支，删除分支</p>
 <p><strong>git pull</strong></p>
@@ -382,6 +382,13 @@
 <h3><span id="git历史版本查看log和前进后退reset">Git历史版本查看(log)和前进后退(reset)</span></h3><p>  <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/195543519">https://zhuanlan.zhihu.com/p/195543519</a></p>
 <h2><span id="c远程仓库相关">C.远程仓库相关</span></h2><p>git remote -v 查看远程仓库<br>git push —all origin 推送所有分支到远程仓库<br>git push每次都要输入密码，应该是没有设置为ssh，参考下图<br><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011901568.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>git远程仓库修改与删除：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_29232943/article/details/104637674">https://blog.csdn.net/qq_29232943/article/details/104637674</a></p>
+<h3><span id="解决办法">解决办法</span></h3><h4><span id="git报错fatal-unable-to-access-httpsgithubcom-openssl-ssl_read-connection-was-reset">git报错fatal: unable to access \’‘: OpenSSL SSL_read: Connection was reset</span></h4><p><strong>bug描述：</strong></p>
+<p><code>fatal: unable to access ‘https://github.com/…’: OpenSSL SSL_read: Connection was reset, errno 10054</code></p>
+<p><strong>bug产生原因：</strong></p>
+<p>一般是这是因为服务器的SSL证书没有经过第三方机构的签署，所以才报错</p>
+<p><strong>bug 解决方法：</strong></p>
+<p>参考网上解决办法：解除ssl验证后，再次git即可</p>
+<figure class="highlight arduino"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs arduino">git config --global http.sslVerify <span class="hljs-literal">false</span><br></code></pre></div></td></tr></table></figure>
 <p>draw_bed_token：</p>
 <figure class="highlight gcode"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs gcode">ghp_<span class="hljs-number">2</span>a<span class="hljs-number">650</span>vF<span class="hljs-number">9</span>rx<span class="hljs-number">0</span>d<span class="hljs-symbol">nkqQjcdbVmxwlR7</span>A<span class="hljs-number">7</span>l<span class="hljs-number">1</span>HX<span class="hljs-number">6</span>zC<br></code></pre></div></td></tr></table></figure>
 
