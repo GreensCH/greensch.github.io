@@ -20,7 +20,7 @@
   <meta name="keywords" content="三差学生、不学无术">
   <meta name="description" content="概述在芯片的资料上，有两个非常特殊的寄存器配置位，分别是 CPOL （Clock POlarity）和 CPHA （Clock PHAse）。  CPOL配置SPI总线的极性 CPHA配置SPI总线的相位  极性和相位，这么专业的名词，非常难理解。我们不妨从时序图入手，了解极性和相位的效果。 SPI总线的极性极性，会直接影响SPI总线空闲时的时钟信号是高电平还是低电平。 这也就说明spi的时钟不是">
 <meta property="og:type" content="article">
-<meta property="og:title" content="随便记一点：初识aurora接口">
+<meta property="og:title" content="SPI模式">
 <meta property="og:url" content="http://yoursite.com/202210272206/IC/%E6%8E%A5%E5%8F%A3%E4%B8%8E%E5%8D%8F%E8%AE%AE/spiessay/ic/%E6%8E%A5%E5%8F%A3/SPI%E6%A8%A1%E5%BC%8F/index.html">
 <meta property="og:site_name" content="友人律的博客">
 <meta property="og:description" content="概述在芯片的资料上，有两个非常特殊的寄存器配置位，分别是 CPOL （Clock POlarity）和 CPHA （Clock PHAse）。  CPOL配置SPI总线的极性 CPHA配置SPI总线的相位  极性和相位，这么专业的名词，非常难理解。我们不妨从时序图入手，了解极性和相位的效果。 SPI总线的极性极性，会直接影响SPI总线空闲时的时钟信号是高电平还是低电平。 这也就说明spi的时钟不是">
@@ -34,7 +34,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20221027221046652.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20221027221553904.png">
 <meta property="article:published_time" content="2022-10-27T14:06:00.000Z">
-<meta property="article:modified_time" content="2023-03-19T07:39:59.248Z">
+<meta property="article:modified_time" content="2023-03-19T08:22:39.669Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="fpga">
 <meta property="article:tag" content="verilog">
@@ -42,7 +42,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/988790-20200311120347500-1100628087-166688000687624.png">
   
-  <title>随便记一点：初识aurora接口 - 友人律的博客</title>
+  <title>SPI模式 - 友人律的博客</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -245,12 +245,12 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/index_img/banner_img/anime/101595616_p0.png') no-repeat center center;
+         style="background: url('/img/banner_img/anime/101595616_p0.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="随便记一点：初识aurora接口">
+            <span class="h2" id="subtitle" title="SPI模式">
               
             </span>
 
@@ -309,7 +309,7 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">随便记一点：初识aurora接口</h1>
+            <h1 style="display: none">SPI模式</h1>
             
             <div class="markdown-body">
               <h2><span id="概述">概述</span></h2><p>在芯片的资料上，有两个非常特殊的寄存器配置位，分别是 CPOL （Clock POlarity）和 CPHA （Clock PHAse）。</p>
