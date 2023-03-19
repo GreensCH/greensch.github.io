@@ -25,184 +25,184 @@
 <meta property="og:site_name" content="友人律的博客">
 <meta property="og:description" content="UVM入门和进阶实验0介绍UVM系列实验学习流程：  如何搭建验证框架 验证组件之间的连接和通信 如何编写测试用例，继而完成复用和覆盖率收敛  UVM实验0与SV实验0思想一样，让大家通过简单 的实验要求，在轻松愉悦的气氛下，踏出 UVM 世界的第一步，大体步骤如下：  懂得如何编译UVM代码 理解 SV 和 UVM 之间的关系 了解 UVM 验证顶层盒子与SV验证顶层盒子之间的联系 掌握启动 U">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230226204159218.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230226204748662.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230226202510715-16774143111246.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230226204407682.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230226205431953.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230226213003007.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230226212506169.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230226212923590.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230226220354013.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230226220458215.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230226215946814.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230226220745101.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230226220637976.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230226220214415.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230226204159218.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230226204748662.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230226202510715-16774143111246.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230226204407682.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230226205431953.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230226213003007.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230226212506169.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230226212923590.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230226220354013.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230226220458215.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230226215946814.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230226220745101.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230226220637976.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230226220214415.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230226231621070.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230226231656428-16774246167848.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230226232120279.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230226232132432.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230227134521248.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228201815077.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228202011270.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228202123647.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228140716742.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228140746975.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228140241102.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228134357986.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228214746190.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228214901760.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228215224753.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228221101656.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228215401766.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228215432019.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228220351151.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228220654219.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228220914647.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228224547314.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228224851322.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228222803219.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228223824368.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228225500933.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228230232251.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228232313562.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228232411136.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228232657772.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228232729297.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228233857741.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228233928453.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228234253525.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228234604690.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301000108740.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301000309489.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301201325273.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301201805226.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301214308783.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301215230451.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301215308389.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301215337861.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301215731874.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301215659586.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301215932058.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301215920286.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301220033865.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301221933217.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301221325961.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301221334697.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301221500455.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301221547061.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301221705886.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301221620254.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301222052522.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301222134019.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301222733535.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301222914186.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301225046664.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301225154997.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301225248889.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301225401576.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301231302483.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301231325920.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301231540071-16776837411866.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301231718385.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301232021561.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301232336974.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301232535566.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301232609463.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301232911584.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301233645432.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301232135797.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301233853554.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301234134144.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302192602063.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302192439753.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302192922045.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302193119609.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302193613203.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302193758152.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302193840574.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302195041460.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302200238308.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302220851441.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302214346606.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302214450531.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302220912158.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302221008709.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302221138842.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302221206816.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302221221499.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302221246137.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302221616291.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302221751565.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302221854844.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302221859297.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302222031401.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302222336534.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302222406164.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302222431573.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302223116082.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302222744774.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302222826603.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302222843039.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302223130527.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302223504114.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302223611149.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302223704117-16777678243008.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302224410753.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302224442493.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302224510515.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302224528803.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302224536902.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302224738156.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302225230757.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302225509637.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302225653202.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302230904818.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302225812013.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302230337974.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302230537896.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302230531567.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230304183307941.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230304183533825.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230304225945964.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230304230041064.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230304230104957.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230304230143028.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230304230210194.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230304230314884.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230304183533825.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230304230644987.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230304231151622.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230304183533825.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230304231526551.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230304231732290.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230304232011622.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230304235538415.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230304235706202.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230305000156718.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230305000404779.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230305000419712.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230305000542201.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230305000638784.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230305000729231.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230305000757818.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230305000947525.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230305001131838.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230305001229197.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230305001324275.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230305001836554.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230305001924566.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230305002051811.png">
-<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228234833483.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230226231656428-16774246167848.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230226232120279.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230226232132432.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230227134521248.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228201815077.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228202011270.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228202123647.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228140716742.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228140746975.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228140241102.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228134357986.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228214746190.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228214901760.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228215224753.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228221101656.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228215401766.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228215432019.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228220351151.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228220654219.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228220914647.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228224547314.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228224851322.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228222803219.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228223824368.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228225500933.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228230232251.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228232313562.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228232411136.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228232657772.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228232729297.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228233857741.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228233928453.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228234253525.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228234604690.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301000108740.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301000309489.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301201325273.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301201805226.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301214308783.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301215230451.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301215308389.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301215337861.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301215731874.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301215659586.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301215932058.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301215920286.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301220033865.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301221933217.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301221325961.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301221334697.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301221500455.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301221547061.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301221705886.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301221620254.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301222052522.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301222134019.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301222733535.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301222914186.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301225046664.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301225154997.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301225248889.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301225401576.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301231302483.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301231325920.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301231540071-16776837411866.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301231718385.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301232021561.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301232336974.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301232535566.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301232609463.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301232911584.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301233645432.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301232135797.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301233853554.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301234134144.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302192602063.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302192439753.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302192922045.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302193119609.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302193613203.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302193758152.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302193840574.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302195041460.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302200238308.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302220851441.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302214346606.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302214450531.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302220912158.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302221008709.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302221138842.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302221206816.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302221221499.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302221246137.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302221616291.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302221751565.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302221854844.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302221859297.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302222031401.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302222336534.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302222406164.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302222431573.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302223116082.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302222744774.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302222826603.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302222843039.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302223130527.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302223504114.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302223611149.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302223704117-16777678243008.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302224410753.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302224442493.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302224510515.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302224528803.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302224536902.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302224738156.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302225230757.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302225509637.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302225653202.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302230904818.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302225812013.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302230337974.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302230537896.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302230531567.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230304183307941.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230304183533825.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230304225945964.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230304230041064.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230304230104957.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230304230143028.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230304230210194.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230304230314884.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230304183533825.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230304230644987.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230304231151622.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230304183533825.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230304231526551.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230304231732290.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230304232011622.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230304235538415.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230304235706202.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230305000156718.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230305000404779.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230305000419712.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230305000542201.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230305000638784.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230305000729231.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230305000757818.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230305000947525.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230305001131838.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230305001229197.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230305001324275.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230305001836554.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230305001924566.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230305002051811.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228234833483.png">
 <meta property="article:published_time" content="2023-02-26T06:26:00.000Z">
-<meta property="article:modified_time" content="2023-03-06T13:23:41.718Z">
+<meta property="article:modified_time" content="2023-03-19T11:49:43.210Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="uvm学习">
 <meta property="article:tag" content="实验">
 <meta property="article:tag" content="IC">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230226204159218.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230226204159218.png">
   
   <title>HelloWorld | SV实验0 | SV实验1 - 友人律的博客</title>
 
@@ -490,11 +490,11 @@
 <p>上面四个步骤对应四个独立的文件</p>
 <h3><span id="内容">内容</span></h3><h4><span id="1-uvm编译">1 UVM编译</span></h4><p>本节视频内容主要介绍了uvm编译相关的内容，使用到的源码为：uvm_compile.sv</p>
 <p>1）直接编译uvm_compile.sv</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230226204159218.png" srcset="/img/loading.gif" lazyload alt="image-20230226204159218"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230226204159218.png" srcset="/img/loading.gif" lazyload alt="image-20230226204159218"></p>
 <p>2）运行仿真</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230226204748662.png" srcset="/img/loading.gif" lazyload alt="image-20230226204748662"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230226204748662.png" srcset="/img/loading.gif" lazyload alt="image-20230226204748662"></p>
 <p><strong>发现Loading了sv语言标准和uvm_pkg</strong></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230226202510715-16774143111246.png" srcset="/img/loading.gif" lazyload alt="image-20230226202510715"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230226202510715-16774143111246.png" srcset="/img/loading.gif" lazyload alt="image-20230226202510715"></p>
 <p><strong>为什么不用编译uvm_pkg？</strong></p>
 <p>因为Questasim，默认编译到Library里面了，如下图所示，mtiUvm（默认版本uvm1.1，mti意思是mentor）</p>
 <p>mtiUvm里面包括两个库：</p>
@@ -502,7 +502,7 @@
 <li>uvm开源库：uvm_pkg（我们uvm_compile.sv中import的是这个 ）</li>
 <li>Questa的UVM定制部分库：questa_uvm_pkg</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230226204407682.png" srcset="/img/loading.gif" lazyload alt="image-20230226204407682"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230226204407682.png" srcset="/img/loading.gif" lazyload alt="image-20230226204407682"></p>
 <h5><span id="uvm_pkg编译">uvm_pkg编译</span></h5><p>在qustasim帮你编译好了，其他eda中类似vcs你需要自己编译一次</p>
 <p>3）run -all</p>
 <figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog">run -all<br># ----------------------------------------------------------------<br># UVM-<span class="hljs-number">1</span><span class="hljs-variable">.1d</span><br># (C) <span class="hljs-number">2007</span>-<span class="hljs-number">2013</span> Mentor Graphics Corporation<br># (C) <span class="hljs-number">2007</span>-<span class="hljs-number">2013</span> Cadence Design Systems, Inc.<br># (C) <span class="hljs-number">2006</span>-<span class="hljs-number">2013</span> Synopsys, Inc.<br># (C) <span class="hljs-number">2011</span>-<span class="hljs-number">2013</span> Cypress Semiconductor Corp.<br># ----------------------------------------------------------------<br># <br>#   ***********       IMPORTANT RELEASE NOTES         ************<br># <br>#   You are using a version of the UVM <span class="hljs-keyword">library</span> that has been compiled<br>#   <span class="hljs-keyword">with</span> <span class="hljs-meta">`UVM_NO_DEPRECATED undefined.</span><br>#   See http:<span class="hljs-comment">//www.eda.org/svdb/view.php?id=3313 for more details.</span><br># <br>#   You are using a version of the UVM <span class="hljs-keyword">library</span> that has been compiled<br>#   <span class="hljs-keyword">with</span> <span class="hljs-meta">`UVM_OBJECT_MUST_HAVE_CONSTRUCTOR undefined.</span><br>#   See http:<span class="hljs-comment">//www.eda.org/svdb/view.php?id=3770 for more details.</span><br># <br>#       (Specify +UVM_NO_RELNOTES to turn off <span class="hljs-keyword">this</span> notice)<br># <br># UVM_INFO verilog_src/questa_uvm_pkg-<span class="hljs-number">1</span><span class="hljs-variable">.2</span>/src/questa_uvm_pkg<span class="hljs-variable">.sv</span>(<span class="hljs-number">215</span>) @ <span class="hljs-number">0</span>: reporter [Questa UVM] QUESTA_UVM-<span class="hljs-number">1</span><span class="hljs-variable">.2</span><span class="hljs-variable">.3</span><br># UVM_INFO verilog_src/questa_uvm_pkg-<span class="hljs-number">1</span><span class="hljs-variable">.2</span>/src/questa_uvm_pkg<span class="hljs-variable">.sv</span>(<span class="hljs-number">217</span>) @ <span class="hljs-number">0</span>: reporter [Questa UVM]  questa_uvm::init(+<span class="hljs-keyword">struct</span>)<br># UVM_INFO D:/Projects/Learn/luke/v2<span class="hljs-variable">.2</span>-uvm-project/lab0/uvm_compile<span class="hljs-variable">.sv</span>(<span class="hljs-number">9</span>) @ <span class="hljs-number">0</span>: reporter [UVM] Hello, welcome to RKV UVM training!<br># UVM_INFO D:/Projects/Learn/luke/v2<span class="hljs-variable">.2</span>-uvm-project/lab0/uvm_compile<span class="hljs-variable">.sv</span>(<span class="hljs-number">11</span>) @ <span class="hljs-number">1000</span>: reporter [UVM] Bye, <span class="hljs-keyword">and</span> more gifts waiting <span class="hljs-keyword">for</span> you!<br></code></pre></div></td></tr></table></figure>
@@ -513,13 +513,13 @@
 <li>@top：该实例的类</li>
 <li>@1：该实例类的第几次实例化</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230226205431953.png" srcset="/img/loading.gif" lazyload alt="image-20230226205431953"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230226205431953.png" srcset="/img/loading.gif" lazyload alt="image-20230226205431953"></p>
 <p>class interface：</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230226213003007.png" srcset="/img/loading.gif" lazyload alt="image-20230226213003007"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230226213003007.png" srcset="/img/loading.gif" lazyload alt="image-20230226213003007"></p>
 <p>class tree：</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230226212506169.png" srcset="/img/loading.gif" lazyload alt="image-20230226212506169"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230226212506169.png" srcset="/img/loading.gif" lazyload alt="image-20230226212506169"></p>
 <p>class graph：</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230226212923590.png" srcset="/img/loading.gif" lazyload alt="image-20230226212923590"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230226212923590.png" srcset="/img/loading.gif" lazyload alt="image-20230226212923590"></p>
 <ul>
 <li>graph比较大，不仅包括了文件中定义的top类</li>
 <li>一般查看类的继承关系用class interface就够了</li>
@@ -533,22 +533,22 @@
 <li>查看内部成员的另外一种方法</li>
 </ul>
 <p>1）raise_objection：</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230226220354013.png" srcset="/img/loading.gif" lazyload alt="image-20230226220354013"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230226220354013.png" srcset="/img/loading.gif" lazyload alt="image-20230226220354013"></p>
 <p>执行这个没有一开始就raise_objection的例子，则执行到14行断点后会自动退出仿真，最终显示0时刻就结束了仿真。所以run_phase必须一开始就执行raise_objection</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230226220458215.png" srcset="/img/loading.gif" lazyload alt="image-20230226220458215"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230226220458215.png" srcset="/img/loading.gif" lazyload alt="image-20230226220458215"></p>
 <p>2）仿真退出会打印统计的<code>uvm_info</code>内容</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230226215946814.png" srcset="/img/loading.gif" lazyload alt="打印统计报告"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230226215946814.png" srcset="/img/loading.gif" lazyload alt="打印统计报告"></p>
 <p>3）可以通过点击示例，直接在objects里面看内部成员，而不用locals了（路科大哥你是不是一开始说的就有问题，什么locals只能看软件）</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230226220745101.png" srcset="/img/loading.gif" lazyload alt="image-20230226220745101"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230226220745101.png" srcset="/img/loading.gif" lazyload alt="image-20230226220745101"></p>
 <h3><span id="要点总结">要点总结</span></h3><p><strong>1.双顶层：</strong></p>
 <ul>
 <li>验证环境顶层：uvm_root</li>
 <li>硬件顶层：uvm_test_inst</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230226220637976.png" srcset="/img/loading.gif" lazyload alt="image-20230226220637976"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230226220637976.png" srcset="/img/loading.gif" lazyload alt="image-20230226220637976"></p>
 <p><strong>2.timescale缺失的情况</strong></p>
 <p>没有设置<code>timescale</code>默认时间单位为1ns/1ns，所以ps在仿真里面不被识别了，等同于<code>#0</code></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230226220214415.png" srcset="/img/loading.gif" lazyload alt="image-20230226220214415"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230226220214415.png" srcset="/img/loading.gif" lazyload alt="image-20230226220214415"></p>
 <p><strong>3.questasim中的uvm_pkg的编译</strong>（见本节1.1 uvm_pkg的编译）</p>
 <p>questasim默认编译，其他eda（如vcs）中需要手动编译uvm_pkg</p>
 <p><strong>4.uvm_pkg的导入</strong></p>
@@ -623,23 +623,23 @@
 <ul>
 <li>2.2 使用域了可以进行compare（不相等则直接停下来，不会告诉你其他不相等的内部成员）</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230226231656428-16774246167848.png" srcset="/img/loading.gif" lazyload alt="image-20230226231656428"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230226231656428-16774246167848.png" srcset="/img/loading.gif" lazyload alt="image-20230226231656428"></p>
 <ul>
 <li>2.3 改变compare效果，使其比较的不同结果更多一点：使用全局控制compare的实例<code>uvm_default_comparer</code></li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230226232120279.png" srcset="/img/loading.gif" lazyload alt="image-20230226232120279"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230226232120279.png" srcset="/img/loading.gif" lazyload alt="image-20230226232120279"></p>
 <ul>
 <li>2.4 自定义compare函数：<code>do_compare()</code></li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230226232132432.png" srcset="/img/loading.gif" lazyload alt="image-20230226232132432"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230226232132432.png" srcset="/img/loading.gif" lazyload alt="image-20230226232132432"></p>
 <ul>
 <li>2.5 掌握print()作用，在调用copy之前先把对象的内容打印处理啊</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230227134521248.png" srcset="/img/loading.gif" lazyload alt="image-20230227134521248"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230227134521248.png" srcset="/img/loading.gif" lazyload alt="image-20230227134521248"></p>
 <ul>
 <li>2.6 掌握copy()作用</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228201815077.png" srcset="/img/loading.gif" lazyload alt="image-20230228201815077"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228201815077.png" srcset="/img/loading.gif" lazyload alt="image-20230228201815077"></p>
 <h4><span id="3-phase机制">3 phase机制</span></h4><p>phase_order.sv与phase_order_ref.sv</p>
 <p>uvm独有的9个大phase</p>
 <p>run_phase以及与其平行的12个小phase是task phase</p>
@@ -655,7 +655,7 @@
 </ul>
 <p>实验二，组件的phase如何自动执行中对不同组建的run_phase进行了解释，实际上顶层uvm_root对所有的组件都是fork_join_none遍历的启动run_phase。不同于SV的类似点火一样一层一层调用run()</p>
 <p><strong>打印信息</strong>：通过打印信息，理解不同phase的执行顺序</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228202011270.png" srcset="/img/loading.gif" lazyload alt="image-20230228202011270"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228202011270.png" srcset="/img/loading.gif" lazyload alt="image-20230228202011270"></p>
 <ul>
 <li>“CONNECT”——id</li>
 <li>“comp1 connect phase entered”——message body</li>
@@ -677,7 +677,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228202123647.png" srcset="/img/loading.gif" lazyload alt="image-20230228202123647"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228202123647.png" srcset="/img/loading.gif" lazyload alt="image-20230228202123647"></p>
 <ul>
 <li>4.4 思考问题：<ul>
 <li>接口传递与run_test之间是否存在顺序</li>
@@ -696,14 +696,14 @@
 <li>使用uvm_root::get()来获取最顶层（即uvm_message_test的顶层）来控制过过滤”CREATE”和”TOPTB”的消息</li>
 </ul>
 <h3><span id="lab1-object创建名字传入问题">lab1 object创建名字传入问题</span></h3><p><strong>问题</strong></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228140716742.png" srcset="/img/loading.gif" lazyload alt="image-20230228140716742"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228140716742.png" srcset="/img/loading.gif" lazyload alt="image-20230228140716742"></p>
 <p><strong>原因</strong></p>
 <p>Qustasim默认uvm1.1d，而vcs的Makefile使用的是uvm1.2，不同uvm版本导致执行不一样</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228140746975.png" srcset="/img/loading.gif" lazyload alt="image-20230228140746975"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228140746975.png" srcset="/img/loading.gif" lazyload alt="image-20230228140746975"></p>
 <h4><span id="如何修改questasim为uvm12">如何修改Questasim为uvm1.2</span></h4><p>找到配置目录：</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228140241102.png" srcset="/img/loading.gif" lazyload alt="image-20230228140241102"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228140241102.png" srcset="/img/loading.gif" lazyload alt="image-20230228140241102"></p>
 <p>修改modelsim.ini：</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228134357986.png" srcset="/img/loading.gif" lazyload alt="image-20230228134357986"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228134357986.png" srcset="/img/loading.gif" lazyload alt="image-20230228134357986"></p>
 <p>再创建project</p>
 <h2><span id="uvm入门和进阶实验2">UVM入门和进阶实验2</span></h2><h3><span id="介绍">介绍</span></h3><p>uvm实验2的验证结构与sv保持一致，几乎全部是svlab5一致过来的，绝大多数都没有改变（因为还没有学到），包括：</p>
 <ul>
@@ -764,36 +764,36 @@
 <h5><span id="chnl_pkgsv">chnl_pkg.sv</span></h5><p>1.do_driver</p>
 <p>1）run_phase和run</p>
 <p>run_phase就是把run的内容放进来了，别的没变</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228214746190.png" srcset="/img/loading.gif" lazyload alt="image-20230228214746190"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228214746190.png" srcset="/img/loading.gif" lazyload alt="image-20230228214746190"></p>
 <p>2）有个细节</p>
 <p>do_reset没有变化，do_driver有个细节变化</p>
 <ul>
 <li>sv中的req.clone都是相同transacation类型的</li>
 <li>uvm中返回的都是uvm_sequence_item父类句柄，需要转换</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228214901760.png" srcset="/img/loading.gif" lazyload alt="image-20230228214901760"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228214901760.png" srcset="/img/loading.gif" lazyload alt="image-20230228214901760"></p>
 <p>3）chnl_write不用$display了</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228215224753.png" srcset="/img/loading.gif" lazyload alt="image-20230228215224753"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228215224753.png" srcset="/img/loading.gif" lazyload alt="image-20230228215224753"></p>
 <p>4）clone()和sprint()直接注释了</p>
 <p>原因：我们用域的自动化里面有了</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228221101656.png" srcset="/img/loading.gif" lazyload alt="image-20230228221101656"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228221101656.png" srcset="/img/loading.gif" lazyload alt="image-20230228221101656"></p>
 <p>2.generator</p>
 <p>1）没大改</p>
 <p>这里还没改成sequencer和sequence，我们在环境四进行改造，我们学到哪里，改到哪里</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228215401766.png" srcset="/img/loading.gif" lazyload alt="image-20230228215401766"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228215401766.png" srcset="/img/loading.gif" lazyload alt="image-20230228215401766"></p>
 <p>2）成员变量，域的自动化</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228215432019.png" srcset="/img/loading.gif" lazyload alt="image-20230228215432019"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228215432019.png" srcset="/img/loading.gif" lazyload alt="image-20230228215432019"></p>
 <p>3）send_trans()创建trans</p>
 <ul>
 <li>创建用type_id（大多数uvm类可以type_id创建，如uvm_obj和uvm_comp；但有一些类不能用type_id创建如port类，port类继承于uvm_void。原因在实验3？）</li>
 <li>随机化没变</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228220351151.png" srcset="/img/loading.gif" lazyload alt="image-20230228220351151"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228220351151.png" srcset="/img/loading.gif" lazyload alt="image-20230228220351151"></p>
 <p>4）super.sprint()</p>
 <p>sprint()只打印了一个头，具体内容直接调用了super.sprint()</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228220654219.png" srcset="/img/loading.gif" lazyload alt="image-20230228220654219"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228220654219.png" srcset="/img/loading.gif" lazyload alt="image-20230228220654219"></p>
 <p>也可以直接sprint不用super，比如你把函数改成gen_sprint()这样就不会有歧义了，编译直接去父类找</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228220914647.png" srcset="/img/loading.gif" lazyload alt="image-20230228220914647"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228220914647.png" srcset="/img/loading.gif" lazyload alt="image-20230228220914647"></p>
 <p>5）new和build_phase</p>
 <p>什么时候放到new，什么时候放到build_phase？</p>
 <ul>
@@ -801,9 +801,9 @@
 <li>new创建的放在new或者build_phase里都ok</li>
 <li>最简单，所有放在build_phase，绝对错不了</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228224547314.png" srcset="/img/loading.gif" lazyload alt="image-20230228224547314"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228224547314.png" srcset="/img/loading.gif" lazyload alt="image-20230228224547314"></p>
 <p>send_trans中创建的req就直接type_id创建了，因为我们不需要用到工厂override机制</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228224851322.png" srcset="/img/loading.gif" lazyload alt="image-20230228224851322"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228224851322.png" srcset="/img/loading.gif" lazyload alt="image-20230228224851322"></p>
 <p>创建组件一定要要用type_id，因为需要形成uvm层次结构</p>
 <p>3.monitor</p>
 <p>没有变化</p>
@@ -812,19 +812,19 @@
 <p>以前的例化连接放在new里面</p>
 <p>现在例化放在build_phase</p>
 <p>2）接口的传递没有config_db，仍然set_interface</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228222803219.png" srcset="/img/loading.gif" lazyload alt="image-20230228222803219"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228222803219.png" srcset="/img/loading.gif" lazyload alt="image-20230228222803219"></p>
 <p>3）重要！run的调用</p>
 <ul>
 <li>以前run需要调用子一级的run</li>
 <li>现在uvm_root对run_phase统一调度，因此不需要调用了</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228223824368.png" srcset="/img/loading.gif" lazyload alt="image-20230228223824368"></p>
-<h5><span id="其他package思路和chnl_pkg一样">其他package思路和chnl_pkg一样</span></h5><h5><span id="mcdf_pkgsvsv顶层环境">mcdf_pkg.sv（sv顶层环境）</span></h5><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228225500933.png" srcset="/img/loading.gif" lazyload alt="image-20230228225500933"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228223824368.png" srcset="/img/loading.gif" lazyload alt="image-20230228223824368"></p>
+<h5><span id="其他package思路和chnl_pkg一样">其他package思路和chnl_pkg一样</span></h5><h5><span id="mcdf_pkgsvsv顶层环境">mcdf_pkg.sv（sv顶层环境）</span></h5><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228225500933.png" srcset="/img/loading.gif" lazyload alt="image-20230228225500933"></p>
 <p>1.mcdf_checker</p>
 <p>refmod就是加了个extends uvm_component;</p>
 <p>1）组件间的连接</p>
 <p>组件间mailbox的连接从new函数转移到connect_phase</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228230232251.png" srcset="/img/loading.gif" lazyload alt="image-20230228230232251"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228230232251.png" srcset="/img/loading.gif" lazyload alt="image-20230228230232251"></p>
 <p>2）set_interface没有变化</p>
 <p>3）do_compare</p>
 <p>为了避免与uvm的回调函数冲突，改了do_compare的名字为do_data_compare，里面内容一样只不过打印信息用了uvm宏</p>
@@ -836,30 +836,30 @@
 <p>组件间mailbox连接放到了connect_phase</p>
 <p>2）run</p>
 <p>不用调用内部组件了，直接run</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228232313562.png" srcset="/img/loading.gif" lazyload alt="image-20230228232313562"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228232313562.png" srcset="/img/loading.gif" lazyload alt="image-20230228232313562"></p>
 <p>3）do_report</p>
 <p>sv放到do_report</p>
 <p>uvm放到report_phase，其中env不需要调用了，因此直接删掉就行，checker则是把do_report内容转移到了report_phase中</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228232411136.png" srcset="/img/loading.gif" lazyload alt="image-20230228232411136"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228232411136.png" srcset="/img/loading.gif" lazyload alt="image-20230228232411136"></p>
 <p>4.mcdf_base_test</p>
 <p>1）改为继承于uvm_test了</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228232657772.png" srcset="/img/loading.gif" lazyload alt="image-20230228232657772"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228232657772.png" srcset="/img/loading.gif" lazyload alt="image-20230228232657772"></p>
 <p>2）添加了许多vif</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228232729297.png" srcset="/img/loading.gif" lazyload alt="image-20230228232729297"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228232729297.png" srcset="/img/loading.gif" lazyload alt="image-20230228232729297"></p>
 <p>获取？在build_phase中，这些vif通过config_db::get从外部顶层获取</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228233857741.png" srcset="/img/loading.gif" lazyload alt="image-20230228233857741"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228233857741.png" srcset="/img/loading.gif" lazyload alt="image-20230228233857741"></p>
 <p>分发？在connect_phase进行分发</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228233928453.png" srcset="/img/loading.gif" lazyload alt="image-20230228233928453"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228233928453.png" srcset="/img/loading.gif" lazyload alt="image-20230228233928453"></p>
 <p>set_interface里面是啥？调用内部组件的set_interface</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228234253525.png" srcset="/img/loading.gif" lazyload alt="image-20230228234253525"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228234253525.png" srcset="/img/loading.gif" lazyload alt="image-20230228234253525"></p>
 <p>3）重要！run_phase与raise_objection</p>
 <p>这里的测试用例调用了内部定义的一些任务，并且使用了objection机制</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228234604690.png" srcset="/img/loading.gif" lazyload alt="image-20230228234604690"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228234604690.png" srcset="/img/loading.gif" lazyload alt="image-20230228234604690"></p>
 <h5><span id="mcdf_data_consistence_basic_test">mcdf_data_consistence_basic_test</span></h5><p>继承于mcdf_base_test同sv一样，其他do任务（如发送产生激励等）一点没变化，因为没学到，实验四会讲</p>
-<h5><span id="tbsv">tb.sv</span></h5><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301000108740.png" srcset="/img/loading.gif" lazyload alt="image-20230301000108740"></p>
+<h5><span id="tbsv">tb.sv</span></h5><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301000108740.png" srcset="/img/loading.gif" lazyload alt="image-20230301000108740"></p>
 <p>1.interface传递！只能使用config_db</p>
 <p><strong>使用config_db形式传递interface，而不是调用set_interface</strong></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301000309489.png" srcset="/img/loading.gif" lazyload alt="image-20230301000309489"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301000309489.png" srcset="/img/loading.gif" lazyload alt="image-20230301000309489"></p>
 <p>为什么不能使用set_interface了？因为这个时候你的test还没创建，而是在run_test的时候创建</p>
 <p>如果先run_test呢？也不行，进入build_phase，还是没拿到interface指针</p>
 <p>为什么SV可以？因为sv的时候把所有test已经例化了，此时所有的层次结构已经有了，这个时候你再对所有的test执行set_interface是合理的。这就是为什么SV需要例化所有test的原因，如果你不全部例化了，此时你的set_interface是失败的</p>
@@ -890,9 +890,9 @@
 <li>report_phase（大多数情况可以因为层层调用而删掉）</li>
 </ul>
 <h3><span id="其他">其他</span></h3><h4><span id="void39"><code>void&#39;</code></span></h4><p>当你使用一个有返回值的函数，但你不需要使用返回值时使用，如果不加<code>void&#39;</code>则编译器会提醒警告</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301201325273.png" srcset="/img/loading.gif" lazyload alt="image-20230301201325273"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301201325273.png" srcset="/img/loading.gif" lazyload alt="image-20230301201325273"></p>
 <h4><span id="先配置再创建">先配置再创建</span></h4><p>问题：</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301201805226.png" srcset="/img/loading.gif" lazyload alt="image-20230301201805226"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301201805226.png" srcset="/img/loading.gif" lazyload alt="image-20230301201805226"></p>
 <p>结论：此处不会出错，但不确保以后这种情况不会出错。应该遵循先配置后创建的原则。</p>
 <p>原因：不容易出错，可以避雷。这里在build_phase可以，但当不同phase遵循不同创建配置顺序时，则创建的先后顺序会控制不住</p>
 <h2><span id="uvm入门和进阶实验3">UVM入门和进阶实验3</span></h2><h3><span id="介绍">介绍</span></h3><p>在实验3中，我们将SV环境移植到UVM的重点将主要在以下几个方面：</p>
@@ -909,7 +909,7 @@
 </ul>
 <p>内容：我们需要大家使用TLM端口进行通信，做通信元素和方法的替换</p>
 <p>最终的更新方案（你需要围绕这个方案更新接口）：</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301214308783.png" srcset="/img/loading.gif" lazyload alt="image-20230301214308783"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301214308783.png" srcset="/img/loading.gif" lazyload alt="image-20230301214308783"></p>
 <p>如图所示我们要修改的内容：</p>
 <p>1.各个agent的monitor（chnl、reg、fmt）</p>
 <p>具体内容：请将在monitor中的用来与checker中的mailbox通信的mon_mb句柄替换为对应的<code>uvm blocking_put_port</code>类型</p>
@@ -917,15 +917,15 @@
 <ul>
 <li>端口句柄添加</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301215230451.png" srcset="/img/loading.gif" lazyload alt="image-20230301215230451"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301215230451.png" srcset="/img/loading.gif" lazyload alt="image-20230301215230451"></p>
 <ul>
 <li>端口例化（要用new而不是create，因为它不是object）</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301215308389.png" srcset="/img/loading.gif" lazyload alt="image-20230301215308389"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301215308389.png" srcset="/img/loading.gif" lazyload alt="image-20230301215308389"></p>
 <ul>
 <li>端口发送数据给checker</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301215337861.png" srcset="/img/loading.gif" lazyload alt="image-20230301215337861"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301215337861.png" srcset="/img/loading.gif" lazyload alt="image-20230301215337861"></p>
 <p>2.checker</p>
 <p><s>具体内容：</s></p>
 <ul>
@@ -936,48 +936,48 @@
 <ul>
 <li>外部5种端口宏声明（1）</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301215731874.png" srcset="/img/loading.gif" lazyload alt="image-20230301215731874"></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301215659586.png" srcset="/img/loading.gif" lazyload alt="image-20230301215659586"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301215731874.png" srcset="/img/loading.gif" lazyload alt="image-20230301215731874"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301215659586.png" srcset="/img/loading.gif" lazyload alt="image-20230301215659586"></p>
 <ul>
 <li>内部与refmod的4端口宏声明（2）<ul>
 <li>思考问题：get端口与get_peek不同是否可以不用宏声明？路科这里为了统一统一进行了宏声明</li>
 </ul>
 </li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301215932058.png" srcset="/img/loading.gif" lazyload alt="image-20230301215932058"></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301215920286.png" srcset="/img/loading.gif" lazyload alt="image-20230301215920286"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301215932058.png" srcset="/img/loading.gif" lazyload alt="image-20230301215932058"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301215920286.png" srcset="/img/loading.gif" lazyload alt="image-20230301215920286"></p>
 <ul>
 <li>以上几个端口的声明</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301220033865.png" srcset="/img/loading.gif" lazyload alt="image-20230301220033865"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301220033865.png" srcset="/img/loading.gif" lazyload alt="image-20230301220033865"></p>
 <ul>
 <li>以上几个端口的例化</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301221933217.png" srcset="/img/loading.gif" lazyload alt="image-20230301221933217"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301221933217.png" srcset="/img/loading.gif" lazyload alt="image-20230301221933217"></p>
 <ul>
 <li>以上几个端口的方法实现（1.3）</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301221325961.png" srcset="/img/loading.gif" lazyload alt="image-20230301221325961"></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301221334697.png" srcset="/img/loading.gif" lazyload alt="image-20230301221334697"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301221325961.png" srcset="/img/loading.gif" lazyload alt="image-20230301221325961"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301221334697.png" srcset="/img/loading.gif" lazyload alt="image-20230301221334697"></p>
 <p>3.refmod（1.4）</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301221500455.png" srcset="/img/loading.gif" lazyload alt="image-20230301221500455"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301221500455.png" srcset="/img/loading.gif" lazyload alt="image-20230301221500455"></p>
 <ul>
 <li>左侧4端口声明</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301221547061.png" srcset="/img/loading.gif" lazyload alt="image-20230301221547061"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301221547061.png" srcset="/img/loading.gif" lazyload alt="image-20230301221547061"></p>
 <ul>
 <li>左侧4端口例化</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301221705886.png" srcset="/img/loading.gif" lazyload alt="image-20230301221705886"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301221705886.png" srcset="/img/loading.gif" lazyload alt="image-20230301221705886"></p>
 <ul>
 <li>原有的fifo使用tlm_fifo替代（2.1为了练习通信管道）</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301221620254.png" srcset="/img/loading.gif" lazyload alt="image-20230301221620254"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301221620254.png" srcset="/img/loading.gif" lazyload alt="image-20230301221620254"></p>
 <ul>
 <li>通过port与验证环境进行交互</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301222052522.png" srcset="/img/loading.gif" lazyload alt="image-20230301222052522"></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301222134019.png" srcset="/img/loading.gif" lazyload alt="image-20230301222134019"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301222052522.png" srcset="/img/loading.gif" lazyload alt="image-20230301222052522"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301222134019.png" srcset="/img/loading.gif" lazyload alt="image-20230301222134019"></p>
 <p>4.连接</p>
 <ul>
 <li>monitor与checker<ul>
@@ -986,7 +986,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301222733535.png" srcset="/img/loading.gif" lazyload alt="image-20230301222733535"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301222733535.png" srcset="/img/loading.gif" lazyload alt="image-20230301222733535"></p>
 <ul>
 <li>checker与refmod<ul>
 <li>1.6请在checker的connect_phase()阶段， 完成mcdf_refmod的TLM port与mcdf_checker的TLM import的连接</li>
@@ -994,7 +994,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301222914186.png" srcset="/img/loading.gif" lazyload alt="image-20230301222914186"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301222914186.png" srcset="/img/loading.gif" lazyload alt="image-20230301222914186"></p>
 <h4><span id="tlm通信管道">TLM通信管道</span></h4><p>在完成了上述实验之后，你可能会抱怨，看起来工作量增加不少了呢！怎么会说，TLM通信有它的好处呢？那路桑再阐述几个TLM通信的优点：</p>
 <ul>
 <li>通信函数可以定制化，例如你可以定制put()/get()/peek()的内容和参数，这其实比mailbox的通信更加灵活</li>
@@ -1002,95 +1002,95 @@
 </ul>
 <p>如何不实现自己的put()/get()/peek()方法呢？当然有啦！依然可以参考红宝书12.3.1 节，关于uvm tm fifo 类的使用。请按照以下要求，完成本实验：</p>
 <p>1.将原本在mcdf_refmod中的out_mb替换为uvm_tlm_fifo类型，并且完成例化，以及对应的变量名替换</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301225046664.png" srcset="/img/loading.gif" lazyload alt="image-20230301225046664"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301225046664.png" srcset="/img/loading.gif" lazyload alt="image-20230301225046664"></p>
 <ul>
 <li>你不需要再为这些tlm_fifo再例化inport了</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301225154997.png" srcset="/img/loading.gif" lazyload alt="image-20230301225154997"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301225154997.png" srcset="/img/loading.gif" lazyload alt="image-20230301225154997"></p>
 <ul>
 <li>例化tlm_fifo，可以new也可以create，因为他是组件，且你不做override</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301225248889.png" srcset="/img/loading.gif" lazyload alt="image-20230301225248889"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301225248889.png" srcset="/img/loading.gif" lazyload alt="image-20230301225248889"></p>
 <ul>
 <li>mailbox的put改为tlm_fifo的put</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301225401576.png" srcset="/img/loading.gif" lazyload alt="image-20230301225401576"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301225401576.png" srcset="/img/loading.gif" lazyload alt="image-20230301225401576"></p>
 <p>2.将原本在mcdf_checker中的exp_mbs[3]的邮箱柄数组，替换为uvm_blocking_get_port类型柄数组，并且做相应的例化以及变量名替换</p>
 <ul>
 <li>内容同上</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301231302483.png" srcset="/img/loading.gif" lazyload alt="image-20230301231302483"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301231302483.png" srcset="/img/loading.gif" lazyload alt="image-20230301231302483"></p>
 <p>3.在mcdf_checker中，完成在mcdf_checker中的TLM port端口到mcdf_refmod中的uvm_tlm_fifo自带的blocking_get_expot端口的连接</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301231325920.png" srcset="/img/loading.gif" lazyload alt="image-20230301231325920"></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301231540071-16776837411866.png" srcset="/img/loading.gif" lazyload alt="image-20230301231540071"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301231325920.png" srcset="/img/loading.gif" lazyload alt="image-20230301231325920"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301231540071-16776837411866.png" srcset="/img/loading.gif" lazyload alt="image-20230301231540071"></p>
 <ul>
 <li>注意端口对应</li>
 </ul>
 <p>在完成这个实验环节之后，请开始编译原有的仿真测试，进行仿真，检查仿真结果是否与实验2的结构保持一致。另外，请再思考，上述两个实验环节中，针对一般的数据存储和TLM端口连接，哪一种方式更为简便?</p>
 <p>补充：为什么没有把这一部分也改成tlm_fifo？</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301231718385.png" srcset="/img/loading.gif" lazyload alt="image-20230301231718385"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301231718385.png" srcset="/img/loading.gif" lazyload alt="image-20230301231718385"></p>
 <ul>
 <li>因为要练习mailbox做buffer如何自己实现方法</li>
 </ul>
-<h4><span id="uvm回调类">UVM回调类</span></h4><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301232021561.png" srcset="/img/loading.gif" lazyload alt="image-20230301232021561"></p>
+<h4><span id="uvm回调类">UVM回调类</span></h4><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301232021561.png" srcset="/img/loading.gif" lazyload alt="image-20230301232021561"></p>
 <p>内容：原有的测试用例是继承于<code>mcdf_base_test</code>，现在像用回调方式实现</p>
 <p>原有的测试用例基于<code>mcdf_base_test</code>，自定义了：<code>do_reg()</code>、<code>do_formatter()</code>、<code>do_data()</code></p>
 <p>1.定义callback类，并预定义虚函数/任务</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301232336974.png" srcset="/img/loading.gif" lazyload alt="image-20230301232336974"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301232336974.png" srcset="/img/loading.gif" lazyload alt="image-20230301232336974"></p>
 <p>2.对base_test注册（绑定）</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301232535566.png" srcset="/img/loading.gif" lazyload alt="image-20230301232535566"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301232535566.png" srcset="/img/loading.gif" lazyload alt="image-20230301232535566"></p>
 <p>3.对base_test插入（3.2）</p>
 <ul>
 <li>把callback里三个对应函数，插入进mcdf_base_test</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301232609463.png" srcset="/img/loading.gif" lazyload alt="image-20230301232609463"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301232609463.png" srcset="/img/loading.gif" lazyload alt="image-20230301232609463"></p>
 <p>4.定义测试用例的回调函数类，并预定义虚函数/任务</p>
 <ul>
 <li>继承于第一步定义callback类</li>
 <li>移植原有mcdf_data_consistence_basic中的三个<code>do_xxx()</code>方法</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301232911584.png" srcset="/img/loading.gif" lazyload alt="image-20230301232911584"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301232911584.png" srcset="/img/loading.gif" lazyload alt="image-20230301232911584"></p>
 <p>5.定义测试用例类，例化并添加回调类</p>
 <ul>
 <li>父类为#参数</li>
 <li>不用实现原有mcdf_data_consistence_basic中的三个<code>do_xxx()</code>方法</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301233645432.png" srcset="/img/loading.gif" lazyload alt="image-20230301233645432"></p>
-<h4><span id="uvm仿真控制方法">UVM仿真控制方法</span></h4><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301232135797.png" srcset="/img/loading.gif" lazyload alt="image-20230301232135797"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301233645432.png" srcset="/img/loading.gif" lazyload alt="image-20230301233645432"></p>
+<h4><span id="uvm仿真控制方法">UVM仿真控制方法</span></h4><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301232135797.png" srcset="/img/loading.gif" lazyload alt="image-20230301232135797"></p>
 <p>end_of_elaboration_phase九大phase之一，build、connect之后，run之前，作用是在环境运行之前再进行一些配置</p>
 <p>查看mcdf_basic_test的end_of_elaboration_phase</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301233853554.png" srcset="/img/loading.gif" lazyload alt="image-20230301233853554"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301233853554.png" srcset="/img/loading.gif" lazyload alt="image-20230301233853554"></p>
 <ul>
 <li>配置打印消息的冗余度</li>
 <li>配置error最大退出消息次数</li>
 <li>timeout：代替do_watchdog()，watchdog()是检查仿真时间，如果超过设定阈值测退出，watch_dog()代码：</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230301234134144.png" srcset="/img/loading.gif" lazyload alt="image-20230301234134144"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230301234134144.png" srcset="/img/loading.gif" lazyload alt="image-20230301234134144"></p>
 <h3><span id="下一节">下一节</span></h3><p>目前环境generator与driver仍然是mailbox，下一节讨论这几个通信：sequencer与driver、sequencer与sequence</p>
 <h3><span id="lab3-tlm端口通信缓存与信箱的比较">lab3 TLM端口通信缓存与信箱的比较</span></h3><p>TLM端口通信相比较信箱的三个优点：</p>
 <p>1.可以不用缓存</p>
 <p>考虑以下验证方案，其中monitor对scb和coverage model都是用analysis连接</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302192602063.png" srcset="/img/loading.gif" lazyload alt="image-20230302192602063"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302192602063.png" srcset="/img/loading.gif" lazyload alt="image-20230302192602063"></p>
 <ul>
 <li>对于scb来说，需要从monitor来的数据进行缓存</li>
 <li>对于coverage model来说，可能不需要进行缓存，而是调用write函数，write函数触发一个event，这个event让不同的covergounp进行采样</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302192439753.png" srcset="/img/loading.gif" lazyload alt="image-20230302192439753"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302192439753.png" srcset="/img/loading.gif" lazyload alt="image-20230302192439753"></p>
 <p>2.TLM端口支持空发送</p>
 <p>同样以上面的验证环境为例，如果你不需要scb和coverage model大可以删除，monitor的端口可以空发；而mailbox不行，它的句柄为空会报错</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302192922045.png" srcset="/img/loading.gif" lazyload alt="image-20230302192922045"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302192922045.png" srcset="/img/loading.gif" lazyload alt="image-20230302192922045"></p>
 <p>3.跨层次问题</p>
 <p>mailbox仍然是在顶层进行句柄的连接，这样如果sub组件外面嵌套另外一个组件时，需要改变顶层调用的路径</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302193119609.png" srcset="/img/loading.gif" lazyload alt="image-20230302193119609"></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302193613203.png" srcset="/img/loading.gif" lazyload alt="对sub组件添加一层组件"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302193119609.png" srcset="/img/loading.gif" lazyload alt="image-20230302193119609"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302193613203.png" srcset="/img/loading.gif" lazyload alt="对sub组件添加一层组件"></p>
 <p>使用TLM组件，一层一层进行端口连接则不存在顶层修改路径的问题，只需要对新嵌套的组件进行连接即可</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302193758152.png" srcset="/img/loading.gif" lazyload alt="image-20230302193758152"></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302193840574.png" srcset="/img/loading.gif" lazyload alt="image-20230302193840574"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302193758152.png" srcset="/img/loading.gif" lazyload alt="image-20230302193758152"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302193840574.png" srcset="/img/loading.gif" lazyload alt="image-20230302193840574"></p>
 <h3><span id="lab3-回调与继承的应用区别">lab3 回调与继承的应用区别</span></h3><p>错误的插入，讲的很抽象</p>
 <p> 一般的错误插入方法，实际上我们不这么做：写错误的SEQ，其中涂橙色的是错误的transaction，SEQ1用于发送正常的trans，SEQ2用于发送错误的trans</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302195041460.png" srcset="/img/loading.gif" lazyload alt="image-20230302195041460"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302195041460.png" srcset="/img/loading.gif" lazyload alt="image-20230302195041460"></p>
 <p>实际的错误插入方法，更省事更易于复用的错误插入：通过使用uvm_callback</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302200238308.png" srcset="/img/loading.gif" lazyload alt="image-20230302200238308"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302200238308.png" srcset="/img/loading.gif" lazyload alt="image-20230302200238308"></p>
 <p>话说为什么我们要插入错误？当我们对安全性能要求较高的时候</p>
 <p>其他体现回调的例子我没仔细听，路科也就随便一带</p>
 <p>什么时候用callback？我需要做一些局部手术，不需要子类继承父类，去override写一大段，只是在原类添加代码</p>
@@ -1110,84 +1110,84 @@
 </ul>
 <h3><span id="内容">内容</span></h3><p>1.1-1.3 集中讲reg_pkg.sv，fmt_pkg与chnl_pkg类似</p>
 <p>1.4主要在mcdf_pkg中</p>
-<h4><span id="11-driver与sequencer的改建">1.1 driver与sequencer的改建</span></h4><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302220851441.png" srcset="/img/loading.gif" lazyload alt="image-20230302220851441"></p>
+<h4><span id="11-driver与sequencer的改建">1.1 driver与sequencer的改建</span></h4><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302220851441.png" srcset="/img/loading.gif" lazyload alt="image-20230302220851441"></p>
 <p>driver不再需要mailbox句柄，而是<code>seq_item_port</code>的一个port（uvm_driver内部成员，自带）</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302214346606.png" srcset="/img/loading.gif" lazyload alt="image-20230302214346606"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302214346606.png" srcset="/img/loading.gif" lazyload alt="image-20230302214346606"></p>
 <p>以前利用req_mailbox拿到req，并通过rsp_mailbox发送rsq；<br>现在通过<code>seq_item_port.get_next_item(req)</code>拿到，通过<code>item_done(rsq);</code>返回</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302214450531.png" srcset="/img/loading.gif" lazyload alt="image-20230302214450531"></p>
-<h4><span id="12-底层sequence的提取">1.2 底层sequence的提取</span></h4><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302220912158.png" srcset="/img/loading.gif" lazyload alt="image-20230302220912158"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302214450531.png" srcset="/img/loading.gif" lazyload alt="image-20230302214450531"></p>
+<h4><span id="12-底层sequence的提取">1.2 底层sequence的提取</span></h4><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302220912158.png" srcset="/img/loading.gif" lazyload alt="image-20230302220912158"></p>
 <p>原有的<code>xxx_reg()</code>是调用的generator来进行的操作，现在我们没有generator而是sequence，所以要有对应的sequence而移除generator</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302221008709.png" srcset="/img/loading.gif" lazyload alt="image-20230302221008709"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302221008709.png" srcset="/img/loading.gif" lazyload alt="image-20230302221008709"></p>
 <p><strong>把generator修改为sqr与对应的seq</strong></p>
 <p><em>reg_sequencer</em></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302221138842.png" srcset="/img/loading.gif" lazyload alt="image-20230302221138842"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302221138842.png" srcset="/img/loading.gif" lazyload alt="image-20230302221138842"></p>
 <ul>
 <li>sqr很简单，注意额外的参数类reg_trans</li>
 </ul>
 <p><em>reg_base_sequence</em></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302221206816.png" srcset="/img/loading.gif" lazyload alt="image-20230302221206816"></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302221221499.png" srcset="/img/loading.gif" lazyload alt="image-20230302221221499"></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302221246137.png" srcset="/img/loading.gif" lazyload alt="image-20230302221246137"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302221206816.png" srcset="/img/loading.gif" lazyload alt="image-20230302221206816"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302221221499.png" srcset="/img/loading.gif" lazyload alt="image-20230302221221499"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302221246137.png" srcset="/img/loading.gif" lazyload alt="image-20230302221246137"></p>
 <ul>
 <li>seq包含随机的变量、约束、发送，实际上就是把generator的产生数据的部分搬过来了，只不过不再使用句柄创建mailbox了</li>
 <li>以前数据的握手是通过req = new()，req.randomize()，req_mb.put(req)与rsq_mb.get(rsq)</li>
 <li>现在数据握手非常简单，通过uvm_do_with，即创建、又随机化、又发送，get_response获取响应</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302221616291.png" srcset="/img/loading.gif" lazyload alt="image-20230302221616291"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302221616291.png" srcset="/img/loading.gif" lazyload alt="image-20230302221616291"></p>
 <ul>
 <li>post_randomize()没变</li>
 </ul>
 <p><em>idle_reg_sequence</em></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302221751565.png" srcset="/img/loading.gif" lazyload alt="image-20230302221751565"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302221751565.png" srcset="/img/loading.gif" lazyload alt="image-20230302221751565"></p>
 <ul>
 <li>继承于reg_base_sequence</li>
 <li>就是对cmd增加了<code>`IDLE</code>限制</li>
 </ul>
 <p><em>write_reg_sequence</em>与<em>read_reg_sequence</em></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302221854844.png" srcset="/img/loading.gif" lazyload alt="image-20230302221854844"></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302221859297.png" srcset="/img/loading.gif" lazyload alt="image-20230302221859297"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302221854844.png" srcset="/img/loading.gif" lazyload alt="image-20230302221854844"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302221859297.png" srcset="/img/loading.gif" lazyload alt="image-20230302221859297"></p>
 <ul>
 <li>继承于reg_base_sequence</li>
 <li>就是对cmd增加了限制</li>
 <li>为什么没对addr增加约束？因为我们要在外部，调用write_reg_sequence与read_reg_sequence时，加以做约束</li>
 </ul>
 <p><em>idle_reg_sequence，write_reg_sequence与read_reg_sequence</em></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302222031401.png" srcset="/img/loading.gif" lazyload alt="image-20230302222031401"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302222031401.png" srcset="/img/loading.gif" lazyload alt="image-20230302222031401"></p>
 <ul>
 <li>实际上就是generator中的这三个函数对应的sequence，进行了转化</li>
 </ul>
-<h4><span id="13-sequencer的创建连接">1.3 sequencer的创建连接</span></h4><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302222336534.png" srcset="/img/loading.gif" lazyload alt="image-20230302222336534"></p>
+<h4><span id="13-sequencer的创建连接">1.3 sequencer的创建连接</span></h4><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302222336534.png" srcset="/img/loading.gif" lazyload alt="image-20230302222336534"></p>
 <p>在agent里面声明sqr句柄</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302222406164.png" srcset="/img/loading.gif" lazyload alt="image-20230302222406164"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302222406164.png" srcset="/img/loading.gif" lazyload alt="image-20230302222406164"></p>
 <p>在agent里面sqr的创建和连接</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302222431573.png" srcset="/img/loading.gif" lazyload alt="image-20230302222431573"></p>
-<h4><span id="14-移除generator的踪迹">1.4 移除generator的踪迹</span></h4><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302223116082.png" srcset="/img/loading.gif" lazyload alt="image-20230302223116082"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302222431573.png" srcset="/img/loading.gif" lazyload alt="image-20230302222431573"></p>
+<h4><span id="14-移除generator的踪迹">1.4 移除generator的踪迹</span></h4><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302223116082.png" srcset="/img/loading.gif" lazyload alt="image-20230302223116082"></p>
 <p>接下来的改动主要在mcdf_pkg中</p>
 <p>以前的generator都在test里面，现在的sqr都在agent里面，所有的seq会被组合到vseq里面</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302222744774.png" srcset="/img/loading.gif" lazyload alt="image-20230302222744774"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302222744774.png" srcset="/img/loading.gif" lazyload alt="image-20230302222744774"></p>
 <ul>
 <li>删除句柄（以前的generator都在test里面，现在的sqr都在agent里面，所有的seq会被组合到vseq里面）</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302222826603.png" srcset="/img/loading.gif" lazyload alt="image-20230302222826603"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302222826603.png" srcset="/img/loading.gif" lazyload alt="image-20230302222826603"></p>
 <ul>
 <li>删除例化</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302222843039.png" srcset="/img/loading.gif" lazyload alt="image-20230302222843039"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302222843039.png" srcset="/img/loading.gif" lazyload alt="image-20230302222843039"></p>
 <ul>
 <li>删除连接</li>
 </ul>
-<h4><span id="15-移除uvm_base_test的transaction发送方法">1.5 移除uvm_base_test的transaction发送方法</span></h4><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302223130527.png" srcset="/img/loading.gif" lazyload alt="image-20230302223130527"></p>
+<h4><span id="15-移除uvm_base_test的transaction发送方法">1.5 移除uvm_base_test的transaction发送方法</span></h4><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302223130527.png" srcset="/img/loading.gif" lazyload alt="image-20230302223130527"></p>
 <p>以前uvm_base_test</p>
 <ul>
 <li>既具有容器的性质例化env，例化各个generator</li>
 <li>又具有例化场景描述的作用，协调各个generator进行do_reg、do_data，do_formatter</li>
 </ul>
 <p>现在的uvm_base_test变成了容器的性质，它主要由mcdf_env，将来要添加的mcdf_config，以及被用来挂载的顶层virtual sequence构成。场景的描述由挂载的顶层virtual sequence实现</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302223504114.png" srcset="/img/loading.gif" lazyload alt="image-20230302223504114"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302223504114.png" srcset="/img/loading.gif" lazyload alt="image-20230302223504114"></p>
 <ul>
 <li>删除idle_reg，write_reg，read_reg（我们已经改造为对应的seq了）</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302223611149.png" srcset="/img/loading.gif" lazyload alt="image-20230302223611149"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302223611149.png" srcset="/img/loading.gif" lazyload alt="image-20230302223611149"></p>
 <ul>
 <li>run不一样了，不需要控制了，而是增加了一个run_top_virtual_sequence方法</li>
 <li>run_top_virtual_sequence作用就是挂载<ul>
@@ -1195,53 +1195,53 @@
 </ul>
 </li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302223704117-16777678243008.png" srcset="/img/loading.gif" lazyload alt="image-20230302223704117"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302223704117-16777678243008.png" srcset="/img/loading.gif" lazyload alt="image-20230302223704117"></p>
 <ul>
 <li>三个do移除了</li>
 </ul>
-<h4><span id="16-17-添加顶层的virtual-sequencer">1.6-1.7 添加顶层的virtual sequencer</span></h4><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302224410753.png" srcset="/img/loading.gif" lazyload alt="image-20230302224410753"></p>
+<h4><span id="16-17-添加顶层的virtual-sequencer">1.6-1.7 添加顶层的virtual sequencer</span></h4><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302224410753.png" srcset="/img/loading.gif" lazyload alt="image-20230302224410753"></p>
 <p><em>mcdf_virtual_sequencer</em></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302224442493.png" srcset="/img/loading.gif" lazyload alt="image-20230302224442493"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302224442493.png" srcset="/img/loading.gif" lazyload alt="image-20230302224442493"></p>
 <ul>
 <li>就是添加了各个sqr句柄</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302224510515.png" srcset="/img/loading.gif" lazyload alt="image-20230302224510515"></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302224528803.png" srcset="/img/loading.gif" lazyload alt="image-20230302224528803"></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302224536902.png" srcset="/img/loading.gif" lazyload alt="image-20230302224536902"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302224510515.png" srcset="/img/loading.gif" lazyload alt="image-20230302224510515"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302224528803.png" srcset="/img/loading.gif" lazyload alt="image-20230302224528803"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302224536902.png" srcset="/img/loading.gif" lazyload alt="image-20230302224536902"></p>
 <ul>
 <li>mcdf_env中做声明、例化和连接</li>
 <li>把各个底层的sqr句柄都赋值给顶层vsqr的句柄</li>
 </ul>
-<h4><span id="18-重构mcdf_base_test">1.8 重构mcdf_base_test</span></h4><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302224738156.png" srcset="/img/loading.gif" lazyload alt="image-20230302224738156"></p>
+<h4><span id="18-重构mcdf_base_test">1.8 重构mcdf_base_test</span></h4><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302224738156.png" srcset="/img/loading.gif" lazyload alt="image-20230302224738156"></p>
 <p>实际上是对mcdf_base_test的拆解：</p>
 <ul>
 <li>我们之前把do_data，do_reg，do_config都删除，只定义了一个run_top_virtual_sequence()</li>
 <li>场景描述主要在run_top_virtual_sequence里面</li>
 </ul>
 <p><em>mcdf_base_virtual_sequence</em></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302225230757.png" srcset="/img/loading.gif" lazyload alt="image-20230302225230757"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302225230757.png" srcset="/img/loading.gif" lazyload alt="image-20230302225230757"></p>
 <ul>
 <li>对各个底层的seq进行声明</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302225509637.png" srcset="/img/loading.gif" lazyload alt="image-20230302225509637"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302225509637.png" srcset="/img/loading.gif" lazyload alt="image-20230302225509637"></p>
 <ul>
 <li>body和base_test的run的任务一样</li>
 <li>为什么mcdf_base_virtual_sequence的do_reg、do_formatter、do_data都是空的？因为要被继承的seq镜像描述</li>
 </ul>
-<h4><span id="19-重构mcdf_data_consistence_basic_test">1.9 重构mcdf_data_consistence_basic_test</span></h4><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302225653202.png" srcset="/img/loading.gif" lazyload alt="image-20230302225653202"></p>
+<h4><span id="19-重构mcdf_data_consistence_basic_test">1.9 重构mcdf_data_consistence_basic_test</span></h4><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302225653202.png" srcset="/img/loading.gif" lazyload alt="image-20230302225653202"></p>
 <p>实际上是对mcdf_data_consistence_basic_test的拆解</p>
 <p><em>mcdf_data_consistence_basic_virtual_sequence</em></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302230904818.png" srcset="/img/loading.gif" lazyload alt="image-20230302230904818"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302230904818.png" srcset="/img/loading.gif" lazyload alt="image-20230302230904818"></p>
 <ul>
 <li>以前，分别调用了base_test的三个任务</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302225812013.png" srcset="/img/loading.gif" lazyload alt="image-20230302225812013"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302225812013.png" srcset="/img/loading.gif" lazyload alt="image-20230302225812013"></p>
 <ul>
 <li>现在，使用uvm_do_on_with，on挂载到对应sqr，并发送with的数据</li>
 </ul>
 <p>mcdf_data_consistence_basic_virtual_sequence分别发送了属于不同sqr的seq</p>
 <p><em>mcdf_data_consistence_basic_test</em></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302230337974.png" srcset="/img/loading.gif" lazyload alt="image-20230302230337974"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302230337974.png" srcset="/img/loading.gif" lazyload alt="image-20230302230337974"></p>
 <ul>
 <li>顶层的测试用例会非常清爽</li>
 <li>做了例化：top_sqe = new()</li>
@@ -1249,9 +1249,9 @@
 </ul>
 <p>我们发现：往往一个virtual sequence会跟着一个名称一致的test</p>
 <h4><span id="110-重构mcdf_full_random_test">1.10 重构mcdf_full_random_test</span></h4><p><em>mcdf_data_random_virtual_sequence</em></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302230537896.png" srcset="/img/loading.gif" lazyload alt="image-20230302230537896"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302230537896.png" srcset="/img/loading.gif" lazyload alt="image-20230302230537896"></p>
 <p><em>mcdf_data_random_test</em></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230302230531567.png" srcset="/img/loading.gif" lazyload alt="image-20230302230531567"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230302230531567.png" srcset="/img/loading.gif" lazyload alt="image-20230302230531567"></p>
 <h3><span id="小总结">小总结</span></h3><p>实验4主要是把各个测试用例功能拆分，分为容器与场景的描述，其中</p>
 <ul>
 <li>容器为uvm_test衍生类</li>
@@ -1333,7 +1333,7 @@
 <li>应用<strong>内建的寄存器序列</strong>，做全面的寄存器测试</li>
 </ul>
 <p>与之前实验内容的不同？</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230304183307941.png" srcset="/img/loading.gif" lazyload alt="image-20230304183307941"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230304183307941.png" srcset="/img/loading.gif" lazyload alt="image-20230304183307941"></p>
 <ul>
 <li>增加了mcdf_rgm_pkg</li>
 <li>为了集成寄存器模型而对mcdf_pkg进行了修改</li>
@@ -1345,10 +1345,10 @@
 <li>UVM其他的一些特性，使用UVM的内建方法进行寄存器测试使用UVM提供的方法收集寄存器覆盖率</li>
 </ul>
 <h3><span id="内容">内容</span></h3><h4><span id="寄存器模型的完善和嵌入">寄存器模型的完善和嵌入</span></h4><p><strong>1.0 uvm_reg和uvm_reg_block的定义已经完成</strong></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230304183533825.png" srcset="/img/loading.gif" lazyload alt="image-20230304183533825"></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230304225945964.png" srcset="/img/loading.gif" lazyload alt="image-20230304225945964"></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230304230041064.png" srcset="/img/loading.gif" lazyload alt="image-20230304230041064"></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230304230104957.png" srcset="/img/loading.gif" lazyload alt="image-20230304230104957"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230304183533825.png" srcset="/img/loading.gif" lazyload alt="image-20230304183533825"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230304225945964.png" srcset="/img/loading.gif" lazyload alt="image-20230304225945964"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230304230041064.png" srcset="/img/loading.gif" lazyload alt="image-20230304230041064"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230304230104957.png" srcset="/img/loading.gif" lazyload alt="image-20230304230104957"></p>
 <p>定义ctrl_reg、stat_reg：</p>
 <ul>
 <li>field</li>
@@ -1356,9 +1356,9 @@
 <li>创建与config</li>
 <li>sample()与sample_values()</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230304230143028.png" srcset="/img/loading.gif" lazyload alt="image-20230304230143028"></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230304230210194.png" srcset="/img/loading.gif" lazyload alt="image-20230304230210194"></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230304230314884.png" srcset="/img/loading.gif" lazyload alt="image-20230304230314884"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230304230143028.png" srcset="/img/loading.gif" lazyload alt="image-20230304230143028"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230304230210194.png" srcset="/img/loading.gif" lazyload alt="image-20230304230210194"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230304230314884.png" srcset="/img/loading.gif" lazyload alt="image-20230304230314884"></p>
 <p>定义block：</p>
 <ul>
 <li>6个reg</li>
@@ -1366,26 +1366,26 @@
 <li>添加default_map，与地址添加，field与block添加hdl路径</li>
 </ul>
 <p><strong>1.1 实现reg2bus以及bus2reg</strong></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230304183533825.png" srcset="/img/loading.gif" lazyload alt="image-20230304183533825"></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230304230644987.png" srcset="/img/loading.gif" lazyload alt="image-20230304230644987"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230304183533825.png" srcset="/img/loading.gif" lazyload alt="image-20230304183533825"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230304230644987.png" srcset="/img/loading.gif" lazyload alt="image-20230304230644987"></p>
 <ul>
 <li>reg2bus</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230304231151622.png" srcset="/img/loading.gif" lazyload alt="image-20230304231151622"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230304231151622.png" srcset="/img/loading.gif" lazyload alt="image-20230304231151622"></p>
 <ul>
 <li>bus2reg</li>
 </ul>
 <p><strong>1.2 mcdf_env集成</strong></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230304183533825.png" srcset="/img/loading.gif" lazyload alt="image-20230304183533825"></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230304231526551.png" srcset="/img/loading.gif" lazyload alt="image-20230304231526551"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230304183533825.png" srcset="/img/loading.gif" lazyload alt="image-20230304183533825"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230304231526551.png" srcset="/img/loading.gif" lazyload alt="image-20230304231526551"></p>
 <ul>
 <li>声明rgm、adapter、predictor</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230304231732290.png" srcset="/img/loading.gif" lazyload alt="image-20230304231732290"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230304231732290.png" srcset="/img/loading.gif" lazyload alt="image-20230304231732290"></p>
 <ul>
 <li>创建</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230304232011622.png" srcset="/img/loading.gif" lazyload alt="image-20230304232011622"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230304232011622.png" srcset="/img/loading.gif" lazyload alt="image-20230304232011622"></p>
 <ul>
 <li>连接<ul>
 <li>adapter需要map、sqr</li>
@@ -1395,45 +1395,45 @@
 </ul>
 </li>
 </ul>
-<h4><span id="寄存器模型的使用">寄存器模型的使用</span></h4><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230304235538415.png" srcset="/img/loading.gif" lazyload alt="image-20230304235538415"></p>
+<h4><span id="寄存器模型的使用">寄存器模型的使用</span></h4><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230304235538415.png" srcset="/img/loading.gif" lazyload alt="image-20230304235538415"></p>
 <p><strong>2.1 rgm句柄传递</strong></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230304235706202.png" srcset="/img/loading.gif" lazyload alt="image-20230304235706202"></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230305000156718.png" srcset="/img/loading.gif" lazyload alt="image-20230305000156718"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230304235706202.png" srcset="/img/loading.gif" lazyload alt="image-20230304235706202"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230305000156718.png" srcset="/img/loading.gif" lazyload alt="image-20230305000156718"></p>
 <ul>
 <li>vsqr需要rgm句柄（在env中连接获得）</li>
 <li>vseq需要rgm（从p_sequencer获取）</li>
 </ul>
 <p><strong>2.2 mcdf_data_consistence_basic_virtual_sequence改写为rgm实现寄存器读写</strong></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230305000404779.png" srcset="/img/loading.gif" lazyload alt="image-20230305000404779"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230305000404779.png" srcset="/img/loading.gif" lazyload alt="image-20230305000404779"></p>
 <ul>
 <li>以前使用sequence</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230305000419712.png" srcset="/img/loading.gif" lazyload alt="image-20230305000419712"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230305000419712.png" srcset="/img/loading.gif" lazyload alt="image-20230305000419712"></p>
 <ul>
 <li>现在直接read/write</li>
 </ul>
 <p><strong>2.3 mcdf_full_random_virtual_sequence改写为rgm实现寄存器读写</strong></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230305000542201.png" srcset="/img/loading.gif" lazyload alt="image-20230305000542201"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230305000542201.png" srcset="/img/loading.gif" lazyload alt="image-20230305000542201"></p>
 <ul>
 <li>2.3有点不一样，是为了让大家做更多的练习</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230305000638784.png" srcset="/img/loading.gif" lazyload alt="image-20230305000638784"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230305000638784.png" srcset="/img/loading.gif" lazyload alt="image-20230305000638784"></p>
 <ul>
 <li>以前使用sequence</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230305000729231.png" srcset="/img/loading.gif" lazyload alt="image-20230305000729231"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230305000729231.png" srcset="/img/loading.gif" lazyload alt="image-20230305000729231"></p>
 <ul>
 <li>复位</li>
 <li>设置期望值</li>
 <li>更所有寄存器值</li>
 <li>比较</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230305000757818.png" srcset="/img/loading.gif" lazyload alt="image-20230305000757818"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230305000757818.png" srcset="/img/loading.gif" lazyload alt="image-20230305000757818"></p>
 <ul>
 <li>具体实现如上，注意检查是从后门直接检查</li>
 <li>为什么只mirror控制寄存器，而不是状态寄存器？因为状态寄存器往往和rgm里面的不一样</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230305000947525.png" srcset="/img/loading.gif" lazyload alt="image-20230305000947525"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230305000947525.png" srcset="/img/loading.gif" lazyload alt="image-20230305000947525"></p>
 <ul>
 <li>两种mirror方式：<ul>
 <li>第一种对寄存器mirror</li>
@@ -1441,35 +1441,35 @@
 </ul>
 </li>
 </ul>
-<h4><span id="寄存器内建序列的应用">寄存器内建序列的应用</span></h4><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230305001131838.png" srcset="/img/loading.gif" lazyload alt="image-20230305001131838"></p>
+<h4><span id="寄存器内建序列的应用">寄存器内建序列的应用</span></h4><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230305001131838.png" srcset="/img/loading.gif" lazyload alt="image-20230305001131838"></p>
 <p><strong>3.1 在自定义的新建sequence中使用rgm的几个内建seq完成检查</strong></p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230305001229197.png" srcset="/img/loading.gif" lazyload alt="image-20230305001229197"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230305001229197.png" srcset="/img/loading.gif" lazyload alt="image-20230305001229197"></p>
 <ul>
 <li>因为是对寄存器的检查，只需要实现do_reg()即可</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230305001324275.png" srcset="/img/loading.gif" lazyload alt="image-20230305001324275"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230305001324275.png" srcset="/img/loading.gif" lazyload alt="image-20230305001324275"></p>
 <ul>
 <li>例化</li>
 <li>复位</li>
 <li>rgm句柄传递</li>
 <li>挂载到对应reg_sqr句柄上</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230305001836554.png" srcset="/img/loading.gif" lazyload alt="image-20230305001836554"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230305001836554.png" srcset="/img/loading.gif" lazyload alt="image-20230305001836554"></p>
 <ul>
 <li>第二次seq，同时在总线上对硬件进行了复位，也对rgm进行了复位</li>
 </ul>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230305001924566.png" srcset="/img/loading.gif" lazyload alt="image-20230305001924566"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230305001924566.png" srcset="/img/loading.gif" lazyload alt="image-20230305001924566"></p>
 <ul>
 <li>第三次seq</li>
 </ul>
 <h4><span id="额外内容">额外内容</span></h4><p>有基础的同学可以在此基础上收集寄存器覆盖率</p>
-<h4><span id="uvm新兵结束了">UVM新兵结束了！</span></h4><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230305002051811.png" srcset="/img/loading.gif" lazyload alt="image-20230305002051811"></p>
+<h4><span id="uvm新兵结束了">UVM新兵结束了！</span></h4><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230305002051811.png" srcset="/img/loading.gif" lazyload alt="image-20230305002051811"></p>
 <h2><span id="全局实例">全局实例</span></h2><p><code>uvm_root</code></p>
 <p><code>uvm_test_top</code></p>
 <p><code>uvm_factory f = uvm_factory::get();</code></p>
 <p><code>uvm_default_comparer</code></p>
 <h2><span id="一些小函数">一些小函数</span></h2><p>get_type_name()：</p>
-<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E9%AA%8C/image-20230228234833483.png" srcset="/img/loading.gif" lazyload alt="image-20230228234833483"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230228234833483.png" srcset="/img/loading.gif" lazyload alt="image-20230228234833483"></p>
 
             </div>
             <hr>
