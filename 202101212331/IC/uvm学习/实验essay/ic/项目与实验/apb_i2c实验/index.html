@@ -1,0 +1,1383 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/con1.png">
+  <link rel="icon" href="/img/con1.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="“无论最终结果将人类历史导向何处，我们决定选择希望”">
+  <meta name="author" content="友人律 | Guilin Chang">
+  <meta name="keywords" content="三差学生、不学无术">
+  <meta name="description" content="具备APB接口的I2C_master控制器验证 验证计划基于uvm的i2c模块验证  和以前项目的不同：不再是台阶，而是给你指定一个终点 虚拟项目给大家提供要给模拟的环境 按照模块验证时间，给大家6周时间（真实环境需要8-12周） 为什么有的8周有的12周？测试点列的越多所花费时间会用的更久，该项目不会特别多测试点   演练环节 每周会推出至少一版中的代码-&gt;石墨文档教下载最新代码 相关资料">
+<meta property="og:type" content="article">
+<meta property="og:title" content="apb_i2c实验">
+<meta property="og:url" content="http://yoursite.com/202101212331/IC/uvm%E5%AD%A6%E4%B9%A0/%E5%AE%9E%E9%AA%8Cessay/ic/%E9%A1%B9%E7%9B%AE%E4%B8%8E%E5%AE%9E%E9%AA%8C/apb_i2c%E5%AE%9E%E9%AA%8C/index.html">
+<meta property="og:site_name" content="友人律的博客">
+<meta property="og:description" content="具备APB接口的I2C_master控制器验证 验证计划基于uvm的i2c模块验证  和以前项目的不同：不再是台阶，而是给你指定一个终点 虚拟项目给大家提供要给模拟的环境 按照模块验证时间，给大家6周时间（真实环境需要8-12周） 为什么有的8周有的12周？测试点列的越多所花费时间会用的更久，该项目不会特别多测试点   演练环节 每周会推出至少一版中的代码-&gt;石墨文档教下载最新代码 相关资料">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309215434684.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312021528781.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312021703720.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312021548410.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309225337817.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309225341826.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309225346236.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309225351043.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309225354800.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309225358200.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309225632493.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309230414104.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309230842879.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309230706157.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309230915333.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309233255019.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309233223567.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309233931573.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309234039347.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309234130671.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309234249525.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309234506229.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309234826566.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309235031079.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309234848607.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312013534314.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312013629984.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312020124318.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312021931795.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312022030371.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312022347231.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312162052538.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312162333809.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312162539002.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312162623471.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312171646577.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312214832749.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312215044895.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312220741565.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312215517579.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312221222041.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312221316271.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312222707188.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312232044751.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312232307422.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312232604002.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312234641932.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312234817988.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312235203747.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230313124415504.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230313124511775.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230313124818634.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230313124901407.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230313124938119.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230313125019157.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230313125242591.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230313125405246.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314170450684.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314170615599.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314171132024.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314170826544.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314171013095.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314185316628.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314185344675.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314185634260.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314185754755.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314190144849.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314191423677-16787924639261.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314191510586.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314192505840.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314192510560.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314191859326.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314192038283.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314232232305.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314232445399.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314232516342.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314232543008.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314232624810.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314232651925.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314232725533.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314232758882.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314233704081.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314234234272.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314234315370.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314234505815.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314234833113.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314235136695.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315092303085.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315093400994.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315094517311.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315094414243.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315094650458.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315095937418.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315100250599.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315100337125.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315100437855.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315101354855.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315101046854.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315134129963.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315134244048.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315134330242.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315150547633.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315150953689.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315152255650.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315153449614.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315154441701.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315154616281.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315154501085.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315155916578.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315160046394.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315160625517.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315160552804.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315161035745.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315161044969.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315160533814.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315160516630.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315161404076.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315161605104.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315162007265.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315162111615.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315162423546.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315163007030.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315170607200.png">
+<meta property="article:published_time" content="2021-01-21T15:31:00.000Z">
+<meta property="article:modified_time" content="2023-03-19T06:19:00.840Z">
+<meta property="article:author" content="友人律 | Guilin Chang">
+<meta property="article:tag" content="uvm学习">
+<meta property="article:tag" content="实验">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309215434684.png">
+  
+  <title>apb_i2c实验 - 友人律的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/stackoverflow-dark.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"eca4a4d34dadf0d4e282cc6ef2dc3de6","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body><!-- hexo injector body_begin start -->
+<link defer rel="stylesheet" href="/css/article_para.css" />
+<div id="web_bg"></div><!-- hexo injector body_begin end -->
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>友人律的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E9%80%9A%E7%9F%A5/">
+                <i class="iconfont icon-link-fill"></i>
+                通知
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1/">
+                <i class="iconfont icon-link-fill"></i>
+                项目与设计
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">
+                <i class="iconfont icon-link-fill"></i>
+                开发工具
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/CS/">
+                <i class="iconfont icon-link-fill"></i>
+                CS
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/IC/">
+                <i class="iconfont icon-link-fill"></i>
+                IC
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/banner_img/anime/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="apb_i2c实验">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-01-21 23:31" pubdate>
+        2021年1月21日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      11k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      34 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">apb_i2c实验</h1>
+            
+            <div class="markdown-body">
+              <p>具备APB接口的I2C_master控制器验证</p>
+<h2><span id="验证计划">验证计划</span></h2><p>基于uvm的i2c模块验证</p>
+<ul>
+<li>和以前项目的不同：不再是台阶，而是给你指定一个终点</li>
+<li>虚拟项目给大家提供要给模拟的环境</li>
+<li>按照模块验证时间，给大家6周时间（真实环境需要8-12周）<ul>
+<li>为什么有的8周有的12周？测试点列的越多所花费时间会用的更久，该项目不会特别多测试点</li>
+</ul>
+</li>
+<li>演练环节<ul>
+<li>每周会推出至少一版中的代码-&gt;石墨文档教下载最新代码</li>
+<li>相关资料在课程说明里面（每周目标）<ul>
+<li>设计功能描述文档</li>
+<li>验证文档</li>
+<li>代码资料（github）</li>
+<li>虚拟项目讲义</li>
+</ul>
+</li>
+<li>每周目标（6周）<ul>
+<li>第1周 熟悉材料（文档+代码），在Questa(Win)/VCS(Linux)，都可以把对应版本的代码，根据简单指令提示运行起来</li>
+<li>第2周 构建初步的验证环境（APB VIP, I2C VIP, virtual sequencer, env, test, RGM/adapter/predictor）完成build/connect/run，最终呈现一个清晰的验证结构层次，准备验证文档（使用DVT build文件，很快的理解结构与VIP中的方法）</li>
+<li>第3周 发送典型激励：register test（简单的测试或者直接用内建测试）、i2c的TX/RX两个方向的数据发送、中断的发起和清除，最终应该有对应的virtual sequence和test</li>
+<li>第4周 按照Quessta Vplan表格 / VCS HVP的表格（VCS的HVP可能不会提供），对应Coverage Model（env例化组件cgm），在测试点和功能覆盖率之间做映射，完善测试用例；同时，应该逐步完善<strong>scoreboard</strong></li>
+<li>第5周 准备验证文档（老实讲第2周就应该准备验证文档），可以作为一个面试材料呈现给面试官；继续填充sequence/tests，并且开始走收集覆盖率的流程（不管收集到哪里）</li>
+<li>第6周 结合v2pro-第四周内容的回归管理（Quest Run Manager），利用这个回归管理工具，进行回归测试、覆盖率收敛</li>
+<li>所有的核心在前五周，第六周使用回归管理工具/脚本把编译流程、收集覆盖率流程、覆盖率分析流程，全部固化到脚本中，通过用户界面的方式，很快的进行迭代工作</li>
+</ul>
+</li>
+<li>验证文档的框架（虚拟项目的说明的石墨文档）</li>
+</ul>
+</li>
+<li>I2C虚拟项目背景<ul>
+<li>设计来源Synopsys  DesignWare I IP（属于design IP）（OpenCore上的开源I2C IP太简单wishbound总线）<ul>
+<li>通过CoreTool/coreConsultant独立配置（参数），生成代码或文档（RTL代码、RGM代码、寄存器相关的HTLM、设计配置参数文档）</li>
+<li>设计文档不需要每一页都读，对应我们参数设置到的</li>
+</ul>
+</li>
+<li>VIP来源<ul>
+<li>APB3 package来源于v2.3 VIP初级开发</li>
+<li>I2C package来源于v3.2 I2C VIP高级开发（3周）</li>
+</ul>
+</li>
+<li>顶层集成验证环境代码<ul>
+<li>较为完整文件列表</li>
+<li>类名已预定义好</li>
+<li>类内部多数为空（需要大家填充）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>提供文档，为了方便理解设计文档、协议文档、接口文档</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309215434684.png" srcset="/img/loading.gif" lazyload alt="image-20230309215434684"></p>
+<p>DW：DesignWare</p>
+<ul>
+<li>使用LVC（Liezhen Verification Component）系列，比如lvc_i2c_pkg<ul>
+<li>参考Synopsysy SVT svt_i2c_pkg，即参考Sysnopsys的i2c的VIP文档（<ul>
+<li>所有类名和文件名，保持高度一致（只是将svt替换为lvc）</li>
+<li>各个类的成员变量和方法（一部分保留，一部分做了剪裁）</li>
+</ul>
+</li>
+<li>建立DVT环境（build.dvt），通过UVM type/hierarchy browser，查看lv2_i2c_pkg每一个类的成员（你是做集成而不是开发，所以最快的方法是通过DVT的方法）<strong>第二周</strong></li>
+<li>提供example，学习lvc_i2c master/slave 集成、配置（configuration）、激励发送（transaction/sequence）</li>
+<li>学习过程中，参考V3.1 SVT APB VIP说明（选学），掌握如何快速认识一个SVT VIP，比如I2C VIP，要用到的文档最多就是uvm class reference-&gt;index.html</li>
+<li>主要学习的两个类：<ul>
+<li>svt_i2c_configuration -&gt; lvc_i2c_configuration，配置参数一摸一样，我们只是类名改了（学习如何配置）</li>
+<li>svt_i2c_transaction -&gt; lvc_i2c_transaction（学习如何发送）</li>
+<li>学习方式：参考example，或者rkv_config.sv，学习方法如下：</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><em>看配置参数</em></p>
+<ul>
+<li>configuration</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312021528781.png" srcset="/img/loading.gif" lazyload alt="image-20230312021528781"></p>
+<ul>
+<li>如何发送transaciton（这个是sequence，到时候找文档是查询transaction配置的参数）</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312021703720.png" srcset="/img/loading.gif" lazyload alt="image-20230312021703720"></p>
+<p><em>找文档解析</em></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312021548410.png" srcset="/img/loading.gif" lazyload alt="image-20230312021548410"></p>
+<h3><span id="dw_apb_i2c_databookpdf阅读">DW_apb_i2c_databook.pdf阅读</span></h3><p><strong>1.3 Feature思路对照配置内容</strong></p>
+<ul>
+<li>设计IP配置<ul>
+<li>Synopsys coreConsultant，<strong>用于生成design ip</strong></li>
+<li>参数配置，进行功能裁剪<ul>
+<li>接口信号数量</li>
+<li>寄存器和寄存器域数量</li>
+<li>内部功能逻辑填充</li>
+</ul>
+</li>
+<li>在阅读DW_apb_i2c_databook功能文档时，对照我们的配置，去查看功能（相关配置信息截图如下）</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309225337817.png" srcset="/img/loading.gif" lazyload alt="image-20230309225337817"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309225341826.png" srcset="/img/loading.gif" lazyload alt="image-20230309225341826"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309225346236.png" srcset="/img/loading.gif" lazyload alt="image-20230309225346236"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309225351043.png" srcset="/img/loading.gif" lazyload alt="image-20230309225351043"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309225354800.png" srcset="/img/loading.gif" lazyload alt="image-20230309225354800"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309225358200.png" srcset="/img/loading.gif" lazyload alt="image-20230309225358200"></p>
+<p><strong>2.Functional Description 功能描述</strong></p>
+<ul>
+<li>2.2到2.7为i2c协议，可以在design里面或者i2c协议里面看</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309225632493.png" srcset="/img/loading.gif" lazyload alt="image-20230309225632493"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309230414104.png" srcset="/img/loading.gif" lazyload alt="image-20230309230414104"></p>
+<ul>
+<li>2.8根据设计功能走的可以配置成什么样的工作模式，2.9，2.10增么样配置</li>
+<li>2.11到2.14不用看</li>
+<li>2.15可以看</li>
+<li>2.16应该是不用看的吧（hold没有用）</li>
+<li>2.17不用看</li>
+<li>2.18很简单，简单看一下就好</li>
+<li><strong>2.19 IO接口很重要的</strong>，涉及到I2c接口的上拉电阻的处理（上拉电阻的意义：多驱动都保持低时，该点保持为高，由于i2c为低有效所以使用到了上拉电阻），需要我们在验证环境中实现相应连接的逻辑<strong>（看一下路桑怎么处理的）</strong></li>
+<li>2.20在第五章先不讲了</li>
+<li>2.21不用看也是disable</li>
+</ul>
+<p><strong>3.Parameter Descriptions</strong></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309230842879.png" srcset="/img/loading.gif" lazyload alt="image-20230309230842879"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309230706157.png" srcset="/img/loading.gif" lazyload alt="image-20230309230706157"></p>
+<p>参数在生成的verilog文件中：</p>
+<ul>
+<li><code>xxxxxx_i2c_cc_constans.v</code></li>
+<li><code>xxxxxx_i2c_bcm_params.v</code>，主要看这个，CoreTool是对这个进行了修改，这里面的每一个参数都跟spec下面的相关：</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309230915333.png" srcset="/img/loading.gif" lazyload alt="image-20230309230915333"></p>
+<p>更简明扼要的参数配置信息在report的HTML里面</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309233255019.png" srcset="/img/loading.gif" lazyload alt="image-20230309233255019"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309233223567.png" srcset="/img/loading.gif" lazyload alt="image-20230309233223567"></p>
+<ul>
+<li><p>Generated Reports看着这个就够了</p>
+<ul>
+<li>I/O：中断接口、I2C接口、APB接口，Debug接口（设计流片/验证）</li>
+<li>Area stimate：后端相关不用看</li>
+<li>Component Registers：寄存器说明</li>
+<li>Component Configuration：配置表，配置表往往表明了哪些feature你需要验，讲的很明白了，只不过时英文的</li>
+</ul>
+</li>
+<li><p>Optional View不用看了，对应寄存器生成的头文件，UVM RGM在tb文件夹里有对应视频提到</p>
+</li>
+<li>Activity Summary Report不用看</li>
+</ul>
+<p><strong>4.Signal Description</strong>不用看，看上面那个HTML，这里面讲的太全了</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309233931573.png" srcset="/img/loading.gif" lazyload alt="image-20230309233931573"></p>
+<p><strong>5.Register Description</strong>不用看，看上面那个HTML，这里面讲的太全了</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309234039347.png" srcset="/img/loading.gif" lazyload alt="image-20230309234039347"></p>
+<p><strong>6.Programming the DW_apb_i2c</strong>很有意义的，但可以不用看</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309234130671.png" srcset="/img/loading.gif" lazyload alt="image-20230309234130671"></p>
+<ul>
+<li>编译、测试、配置会给建议的，但是以I2C的软件，C的配置为主，暂时不看不影响</li>
+</ul>
+<p><strong>7.Verification</strong>不需要看，我们不需要Vera的testbench</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309234249525.png" srcset="/img/loading.gif" lazyload alt="image-20230309234249525"></p>
+<h3><span id="dw_apb_i2c_rgm_doc">DW_apb_i2c_RGM_doc</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309234506229.png" srcset="/img/loading.gif" lazyload alt="image-20230309234506229"></p>
+<p>也是寄存器的描述，是VCS生成寄存器模型的时候生成的HTML，但是比较简陋，大概浏览是够的</p>
+<h3><span id="nxp-i2c-specification-and-user-manualpdf-时序协议">NXP I2C Specification and User Manual.pdf 时序协议</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309234826566.png" srcset="/img/loading.gif" lazyload alt="image-20230309234826566"></p>
+<p>i2c的bus以前是在飞利浦从内部标准衍生为外部标准</p>
+<p><strong>主要看：就是看3.1</strong></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309235031079.png" srcset="/img/loading.gif" lazyload alt="image-20230309235031079"></p>
+<ul>
+<li>1-8要看</li>
+<li>7-9都是disable</li>
+<li>14-17是disable</li>
+<li>13不测广播，目前是single</li>
+<li>11 12可以测</li>
+<li>10了解，我们VIP是slave，测得I2C的ip设置为master</li>
+</ul>
+<p><strong>不要看3.2</strong></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230309234848607.png" srcset="/img/loading.gif" lazyload alt="image-20230309234848607"></p>
+<ul>
+<li>不需要看3.2我们已经disable了，目前我们就看standra fast fast-mode-plus这几种传输速度下的不同feature</li>
+</ul>
+<p><strong>4.Other</strong>不用看</p>
+<p><strong>5.Bus speeds</strong>可以看一下这些不同模式的要求</p>
+<p><strong>6.Electrical</strong>电气特性的要求，在不一样的情况下的时序要求，了解就可以了，在真正的验SoC的IIC是很重要的，如果不满足则不能满足电气上的要求</p>
+<p>对于synopsys的VIP时序要求都会检查的，在设计IP或者目前我们自己写的IIC-VIP，关于时序检查电气特性的检查没有做要求</p>
+<p><strong>7.Electrical connection</strong>电气上的连接，主要做了解，主要是一个上拉电阻的处理，更多的关于电气特性的要求和SoC做集成时候的要求关系不大，包括上拉电阻的处理我们一般在板上面进行一个处理，当然放在SoC内部也是ok的</p>
+<h3><span id="apb-vip文档">APB VIP文档</span></h3><p>本不需要文档，v2.3第一周第二周就知道怎么用了</p>
+<h3><span id="i2c-vip文档">I2C VIP文档</span></h3><p>这里推这个VIP，是参考sysnopsys VIP开发的，目前还没有这个文档，V3会运行sysnopsys VIP，但这个对我们来说太大太冗余了，因此我们用自己实现的20％功能的VIP，而且这个商业VIP也是加密的</p>
+<p>这里参考Sysnopsys的文档</p>
+<h4><span id="synopsys-svt-i2c-vip-doc">Synopsys SVT I2C VIP doc</span></h4><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312013534314.png" srcset="/img/loading.gif" lazyload alt="image-20230312013534314"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312013629984.png" srcset="/img/loading.gif" lazyload alt="image-20230312013629984"></p>
+<ul>
+<li>getting starting：快上手，<strong>这个可以看，参考这个把VIP集成进Testbench里面</strong>，目前提供的顶层env已经把该有的集成元素放进来了，你只需要在build和connect中进行例化与连接</li>
+<li>user_guide：重点！涉及到I2C VIP component是什么？如何配置的？User Interface是什么</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312020124318.png" srcset="/img/loading.gif" lazyload alt="user_guide"></p>
+<p>如何看VIP的feature？那么多feature不需要看，主要看虚拟项目牵扯到的driver和monitor，送给scoreboard和coverage model。如何学习iic的VIP完全可以从APB的VIP开始</p>
+<ul>
+<li><strong>uvm_class_reference非常重要</strong></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312021931795.png" srcset="/img/loading.gif" lazyload alt="image-20230312021931795"></p>
+<p>是synopsys vip里面每一个ip的说明，详尽的不得了，看的方法仍然参考APB VIP的阅读指导</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312022030371.png" srcset="/img/loading.gif" lazyload alt="image-20230312022030371"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312022347231.png" srcset="/img/loading.gif" lazyload alt="image-20230312022347231"></p>
+<ul>
+<li>callbacks和functional coverage可以暂时不看</li>
+</ul>
+<h2><span id="uvm代码环境介绍">UVM代码环境介绍</span></h2><h3><span id="规范">规范</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312162052538.png" srcset="/img/loading.gif" lazyload alt="image-20230312162052538"></p>
+<ul>
+<li>agents包含目前的VIP，apb-master，apb-slave，i2c-master，i2c-slave</li>
+<li>cfg顶层的配置，第二周才会讲，参考代码第三周才ok，结合参考代码与DVT才能看出作用来</li>
+<li>cov功能覆盖率模型，跟vplan做一个映射</li>
+<li>doc生成的寄存器html（可以直接看设计这边的report），可有可无吧<ul>
+<li><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312162333809.png" srcset="/img/loading.gif" lazyload alt="image-20230312162333809"></li>
+</ul>
+</li>
+<li>docs没有任何作用，删掉</li>
+<li>reg寄存器模型，如何自动生成？通过sysnopsys工具生成设计ip的时候带着ralf文件，借助vcs工具reg gen从ralf文件生成寄存器模型<ul>
+<li><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312162539002.png" srcset="/img/loading.gif" lazyload alt="image-20230312162539002"></li>
+</ul>
+</li>
+<li>seq_lib空的，你不会填怎么办？先做一个<strong>quick_reg_access</strong>测试一下寄存器能否访问到（这是前两周的任务），因为第三周我们要做四个典型测试（register test，TX，RX，中断发起和清楚），其实第三周你知道测试怎么做了基本上是一个循序渐进的过程<ul>
+<li><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312162623471.png" srcset="/img/loading.gif" lazyload alt="image-20230312162623471"></li>
+</ul>
+</li>
+<li>如何运行？两条路线Questa和VCS，仿真都可以进行，但是只有Questa的会有覆盖率收敛与vplan的工具链讲解，VCS的没有</li>
+</ul>
+<p>Questa运行步骤：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog">cd rkv_i2c_tb/sim <span class="hljs-comment">//进入脚本目录 </span><br><br><span class="hljs-keyword">do</span> rkv_i2c_sim<span class="hljs-variable">.do</span> <span class="hljs-comment">//运行脚本</span><br>    <br>run <span class="hljs-number">1</span>ns<span class="hljs-comment">//运行仿真</span><br></code></pre></div></td></tr></table></figure>
+<p> VCS运行步骤：Makefile（这里你直接看视频吧）</p>
+<p>rkv_2c_sim.do文件作用：</p>
+<ul>
+<li>编译（39行前）</li>
+<li>仿真</li>
+</ul>
+<h2><span id="第二周">第二周</span></h2><h3><span id="顶层环境更新-测试用例要求-本周要求">顶层环境更新、测试用例要求、本周要求</span></h3><p><strong>验证环境</strong></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312171646577.png" srcset="/img/loading.gif" lazyload alt="image-20230312171646577"></p>
+<p>designware_apb_i2c有三类接口：</p>
+<ul>
+<li>apb_slave</li>
+<li>i2c_master</li>
+<li>interrupt</li>
+</ul>
+<p>为啥这里还有i2c_master_agent？因为方便如果要验证DUT的slave模式，不过本实验仅验证DUT的master模式</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312214832749.png" srcset="/img/loading.gif" lazyload alt="image-20230312214832749"></p>
+<p>coverage model第四周提供，这里为空</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312215044895.png" srcset="/img/loading.gif" lazyload alt="image-20230312215044895"></p>
+<p>为什么不画框图？因为DVT给你画了验证结构</p>
+<p><strong>测试用例要求</strong></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312220741565.png" srcset="/img/loading.gif" lazyload alt="image-20230312220741565"></p>
+<p>directed_read</p>
+<p>directed_write</p>
+<p>dirct_interrupt：实现任意一个interrupt拉高的测试都可以</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312215517579.png" srcset="/img/loading.gif" lazyload alt="image-20230312215517579"></p>
+<p>每一个test对应一个sequence</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312221222041.png" srcset="/img/loading.gif" lazyload alt="image-20230312221222041"></p>
+<p>在做的时候要依赖底层的一些sequence</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312221316271.png" srcset="/img/loading.gif" lazyload alt="image-20230312221316271"></p>
+<p><strong>这周的要求</strong></p>
+<p>填写vritual sequence</p>
+<p>把test跑起来，看vseq发送的激励与DUT输出的波形</p>
+<h3><span id="底层序列库说明">底层序列库说明</span></h3><p>如何填坑seq？</p>
+<p><strong>elem_seqs</strong></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312222707188.png" srcset="/img/loading.gif" lazyload alt="image-20230312222707188"></p>
+<p>1.<code>rkv_apb_xxx_sequence.sv</code>：利用寄存器模型对寄存器进行访问</p>
+<p><code>config_seq</code>：会对设计里面的若干寄存器做操作，以实现DUT工作前的预期状态</p>
+<p><code>write_packet_seq</code>：把packet[]数据写入DUT</p>
+<p><code>read_packet_seq</code>：</p>
+<ul>
+<li>根据packet数量，把读命令全部写入寄存器中</li>
+<li>根据packet数量，把数据读出来（只要rx FIFO不为空就读）</li>
+</ul>
+<p><code>wait_empty_seq</code>：严格来说应该是<code>wait_tx_empty_seq</code>，读状态寄存器，如果ACTIVITY等于零并且FIFO为空</p>
+<p><code>intr_enable_seq</code>：内部为空，可能不需要使用到后期可能会删除这个seq，因为目前没有intr没有相应的enable，i2c的intr不需要给他intr，只需要给他对应状态，不需要使能</p>
+<p><code>intr_wait_seq</code>：根据intr_id不同，等待不同的intr</p>
+<p><code>intr_clear_seq</code>：好多intr可以通过软件clear掉（直接用rgm写寄存器）</p>
+<p>2.<code>rkv_i2c_slave_xxx_sequence.sv</code>：表示目前外接的i2c_slave VIP，需要做一些反馈</p>
+<p>就是一个write和read（和上图比删掉了rkv_i2c_slave_rx_seq）</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312232044751.png" srcset="/img/loading.gif" lazyload alt="image-20230312232044751"></p>
+<p>对总线进行约束，没有进行randomize（nack=0）</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312232307422.png" srcset="/img/loading.gif" lazyload alt="image-20230312232307422"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312232604002.png" srcset="/img/loading.gif" lazyload alt="image-20230312232604002"></p>
+<ul>
+<li>read多了一个packet.size，因为多了一个反馈嘛~</li>
+<li>read同时对data部分做了一个约束</li>
+</ul>
+<p>路科这里讲的和傻逼一样，搁着绕口令呢</p>
+<p>3.举个例子：如何实现<code>directed_write</code></p>
+<p>先调用apb_config_seq，再调用apb_write_packet写一个数据，同时调用i2c_salve_write_response确保slave是ack的</p>
+<p><code>directed_read</code>也是这个思路</p>
+<p><code>directed_interrupt</code>有一点不一样，具体问题具体分析（可以写满后检查，或者写满后清空再检查）</p>
+<p>4.任务</p>
+<p>第二周、第三周、第四周，这几周慢慢的补充这些sequence；第三周第四周给一个function coverage，给一个vplan，这个vplan不是一个非常全面的一个还需要考虑大家的时间，有可能这个vplan量不是很大，但是希望这些coding自己做</p>
+<h3><span id="用户测试用例开发策略">用户测试用例开发策略</span></h3><p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312234641932.png" srcset="/img/loading.gif" lazyload alt="image-20230312234641932"></p>
+<ul>
+<li>vseq填充完毕后对应的test也能跑起来了</li>
+</ul>
+<p>第四周主要在做vplan和对应的cgm</p>
+<blockquote>
+<p>路科就和傻逼一样，念车轱辘话，真他妈傻逼</p>
+</blockquote>
+<p><strong>自定义</strong></p>
+<p>自己写的elem_seq要写在user_elem_seqs里面</p>
+<p>自己写的virt_seq要写在user_virt_seqs里面</p>
+<ul>
+<li>写完后include到对应的<code>xxx_sequences.svh</code>里面</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312234817988.png" srcset="/img/loading.gif" lazyload alt="image-20230312234817988"></p>
+<p>自己写的test要写在user_tests里面（include同上）</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312235203747.png" srcset="/img/loading.gif" lazyload alt="image-20230312235203747"></p>
+<h3><span id="dvt项目配置及验证结构">DVT项目配置及验证结构</span></h3><p>项目目录：tb目录，不用包括设计IP，在build里面会添加设计IP的目录</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230313124415504.png" srcset="/img/loading.gif" lazyload alt="image-20230313124415504"></p>
+<p>default.build使用sim目录下提供的dvt.build，内容直接复制即可</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230313124511775.png" srcset="/img/loading.gif" lazyload alt="image-20230313124511775"></p>
+<p>编译使用Internal Builder</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230313124818634.png" srcset="/img/loading.gif" lazyload alt="image-20230313124818634"></p>
+<p>编译完成查看验证层次</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230313124901407.png" srcset="/img/loading.gif" lazyload alt="image-20230313124901407"></p>
+<p>查看验证结构图</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230313124938119.png" srcset="/img/loading.gif" lazyload alt="image-20230313124938119"></p>
+<p>修改查看层次：</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230313125019157.png" srcset="/img/loading.gif" lazyload alt="image-20230313125019157"></p>
+<p>查看object参差（点完以后，重新按照上一步修改层次Apply后，层次结构图就更新出来了）</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230313125242591.png" srcset="/img/loading.gif" lazyload alt="image-20230313125242591"></p>
+<p>图标保存</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230313125405246.png" srcset="/img/loading.gif" lazyload alt="image-20230313125405246"></p>
+<h2><span id="第三周">第三周</span></h2><p>完善我们几个virtual sequence：</p>
+<ul>
+<li>quick_reg</li>
+<li>master_directed_read</li>
+<li>master_directed_write</li>
+<li>master_directed_interrupt</li>
+</ul>
+<p>寄存器名称简写：</p>
+<ul>
+<li>CON：control</li>
+<li>TAR：target</li>
+<li>FS：fast speed</li>
+<li>DATA：</li>
+</ul>
+<p>域：</p>
+<p>RSVD前缀表示用不到</p>
+<p>MST=master，一般表示master模式下的某种状态</p>
+<p>SLV=slave，一般表示slave模式下的某种状态</p>
+<p>其他：</p>
+<p>STANDARD\FAST\HIGH三种模式：不同的速度模式的波特率、频率不一样</p>
+<h3><span id="测试序列示例讲解1">测试序列示例讲解1</span></h3><h4><span id="quick_reg_access_virtual_sequence">quick_reg_access_virtual_sequence</span></h4><p>1.在这里面利用寄存器模型写一些基本操作</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314170450684.png" srcset="/img/loading.gif" lazyload alt="image-20230314170450684"></p>
+<p>调用顶层rkv_i2c_interface的一些函数，进行时序操作：</p>
+<ul>
+<li>wait_rstn_release();等待总线释放</li>
+<li>wait_apb();等待是个周期</li>
+</ul>
+<p><strong>2.do_reset_callback()，每次发现reset操作，就会同步的把register model也reset</strong></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314170615599.png" srcset="/img/loading.gif" lazyload alt="image-20230314170615599"></p>
+<p><strong>3.rand一般表示可写入，没有rand一般表示只读</strong></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314171132024.png" srcset="/img/loading.gif" lazyload alt="image-20230314171132024"></p>
+<p><strong>4.desired value</strong></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314170826544.png" srcset="/img/loading.gif" lazyload alt="image-20230314170826544"></p>
+<p>应该set而不能直接write，否则会导致寄存器整体被修改而不是特定field，或者使用get先获取如下：</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314171013095.png" srcset="/img/loading.gif" lazyload alt="image-20230314171013095"></p>
+<p><strong>5.FAST MODE &amp; FAST SPEED</strong></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314185316628.png" srcset="/img/loading.gif" lazyload alt="image-20230314185316628"></p>
+<p>CON配置FAST SPEED模式，FS配置计数器</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314185344675.png" srcset="/img/loading.gif" lazyload alt="image-20230314185344675"></p>
+<ul>
+<li>HCNT、LCNT分别表示信号为高和为低的周期，一共加起来4us</li>
+<li>200*10ns为2us</li>
+<li>默认值在DesignWare配置的时候已经设置好了</li>
+</ul>
+<p><strong>6.最后使能，原因是因为很多配置寄存器的操作要求I2C模块是停止状态</strong></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314185634260.png" srcset="/img/loading.gif" lazyload alt="image-20230314185634260"></p>
+<p><strong>7.DATA_CMD</strong></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314185754755.png" srcset="/img/loading.gif" lazyload alt="image-20230314185754755"></p>
+<p>DATA_CMD重要寄存器！这个寄存器除了写的命令和数据外，其他部分RSVD保留了（也就是说用不到，因为我们配置的时候取消了）</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314190144849.png" srcset="/img/loading.gif" lazyload alt="image-20230314190144849"></p>
+<p><strong>8.寄存器模型数据更新</strong></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314191423677-16787924639261.png" srcset="/img/loading.gif" lazyload alt="image-20230314191423677"></p>
+<ul>
+<li>set的好处：会整体的写出去</li>
+</ul>
+<p>为什么调用的是<strong>自定义</strong>的<code>update_regs()</code>而没有直接<strong>rgm自带的</strong><code>rgm.update(status)</code>？因为rgm.updata(status)只会做写操作不会读操作，且会对所有寄存器都进行写操作，导致会<strong>对状态寄存器进行一个写操作</strong>，写入的为我们RGM中的数值，因此造成状态寄存器状态失效</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314191510586.png" srcset="/img/loading.gif" lazyload alt="image-20230314191510586"></p>
+<p>rgm.update()源码：</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314192505840.png" srcset="/img/loading.gif" lazyload alt="每一个reg都写"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314192510560.png" srcset="/img/loading.gif" lazyload alt></p>
+<p>updata_regs(寄存器数组)：</p>
+<ul>
+<li>在所有virtual sequence内定义的更新寄存器任务</li>
+<li>含义：按照顺序对输入参数寄存器一个一个进行更新，而不是全部寄存器更新（rgm.update这种）</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314191859326.png" srcset="/img/loading.gif" lazyload alt="image-20230314191859326"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314192038283.png" srcset="/img/loading.gif" lazyload alt="image-20230314192038283"></p>
+<h3><span id="测试序列示例讲解2">测试序列示例讲解2</span></h3><p>做了questa仿真</p>
+<p>run 0ns看了验证结构</p>
+<p>设了断点，用于查看quick_reg_virt_seq执行</p>
+<h3><span id="测试序列示例讲解3">测试序列示例讲解3</span></h3><h4><span id="master_directed_write_packet_virtual_sequence">master_directed_write_packet_virtual_sequence</span></h4><p>这个vseq主要内容：apb发送数据到tx_fifo，i2c拿到这个数据写到i2c_slave</p>
+<p>1.查看第一个uvm_do_on_with</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314232232305.png" srcset="/img/loading.gif" lazyload alt="image-20230314232232305"></p>
+<ul>
+<li>不使用10BitADDR模式</li>
+</ul>
+<p>2.配置seq设置了默认值，方便覆盖</p>
+<p>值默认-1，方便seq被启动的时候overwrite</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314232445399.png" srcset="/img/loading.gif" lazyload alt="定义"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314232516342.png" srcset="/img/loading.gif" lazyload alt="如何实现overwrite"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314232543008.png" srcset="/img/loading.gif" lazyload alt="最终update"></p>
+<p>3.查看第二个uvm_do_with之apb_write_packet+sequence</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314232624810.png" srcset="/img/loading.gif" lazyload alt="image-20230314232624810"></p>
+<p>定义packet动态数组</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314232651925.png" srcset="/img/loading.gif" lazyload alt="image-20230314232651925"></p>
+<p>核心就是写数据</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314232725533.png" srcset="/img/loading.gif" lazyload alt="image-20230314232725533"></p>
+<p>为啥要读？读FIFO是否为满</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314232758882.png" srcset="/img/loading.gif" lazyload alt="image-20230314232758882"></p>
+<p><strong>4.对i2c_slave一个要求</strong></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314233704081.png" srcset="/img/loading.gif" lazyload alt="image-20230314233704081"></p>
+<p>设置slave的ACK的i2c_slv_write_resp_seq在写TX_FIFO后面不会出问题吗？不会，写TX_FIFO是在很短时间内发生的，还没发送完全</p>
+<p>能不能把34行放前面？可以，但是最好和27行fork_join_none</p>
+<p><strong>5.最后等待</strong></p>
+<p>为了让所有数据发出来，最后等待一个信号（但是路科觉得这个逻辑还要改）</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314234234272.png" srcset="/img/loading.gif" lazyload alt="image-20230314234234272"></p>
+<p>但是路科觉得apb_wait_empty_seq需要改，增加RX_empty和TX_empty都为1的时候不应该光TX_empty</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314234315370.png" srcset="/img/loading.gif" lazyload alt="image-20230314234315370"></p>
+<p><strong>6.关于scoreboard一点提示</strong></p>
+<p>主要看master_scoreboard，后期测试用例越来越复杂，scoreboard会报错，这时候需要修改</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314234505815.png" srcset="/img/loading.gif" lazyload alt="image-20230314234505815"></p>
+<p><strong>8.波形一点小提示</strong></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314234833113.png" srcset="/img/loading.gif" lazyload alt="image-20230314234833113"></p>
+<p>这点毛刺不用管</p>
+<p><strong>9.debug信号很好用</strong></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230314235136695.png" srcset="/img/loading.gif" lazyload alt="image-20230314235136695"></p>
+<p>s_gen：开始</p>
+<p>p_gen：p结束</p>
+<p>data：数据周期</p>
+<p>addr：地址周期</p>
+<p>…</p>
+<p>由于设计是verilog代码，我们后期把debug_mst_cstate和debug_slv_cstate改枚举方便查看</p>
+<h3><span id="测试序列示例讲解4">测试序列示例讲解4</span></h3><h4><span id="master_directed_read_packet_virtual_sequence">master_directed_read_packet_virtual_sequence</span></h4><p>1.配置我们就不看了</p>
+<p>2.这里有个fork_join</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315092303085.png" srcset="/img/loading.gif" lazyload alt="image-20230315092303085"></p>
+<p> 3.apb_read_packet_seq只需要指定大小，不需要指定内容</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315093400994.png" srcset="/img/loading.gif" lazyload alt="image-20230315093400994"></p>
+<p><strong>4.apb_read_packet_seq</strong></p>
+<p>写入读命令：</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315094517311.png" srcset="/img/loading.gif" lazyload alt="image-20230315094517311"></p>
+<p>等待I2C返回读数据：</p>
+<ul>
+<li>条件：RX_FIFO不为空（之前写是TX_FIFO不为满）</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315094414243.png" srcset="/img/loading.gif" lazyload alt="image-20230315094414243"></p>
+<p><strong>5.i2c_slv_read_resp_seq</strong></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315094650458.png" srcset="/img/loading.gif" lazyload alt="image-20230315094650458"></p>
+<p>slave_i2c不仅返回ACK，并且返回两个读数据</p>
+<p><strong>6.为啥没有在seq里做数据比对</strong></p>
+<p>在模块一级，我们倾向于把数据比对放到单独的scoreboard（这里是master_scoreboar）</p>
+<p><strong>7.到后期提升coverage</strong></p>
+<p>写自己的virtual_seq（在user文件里）</p>
+<h4><span id="master_directed_interrupt_virtual_sequence">master_directed_interrupt_virtual_sequence</span></h4><p>interrupt不是针对某一种行为发起interrupt，而是针对很多行为interrupt</p>
+<p>后期coverage达到100％最难的就是制造interrupt场景</p>
+<p><strong>1.CLR，清空异常</strong></p>
+<p>每一个interrupt都有i个对应的CLR寄存器，CLR是只读寄存器，但CLR读了以后对应的异常会被清除</p>
+<p>但TX_EMPTY拉低不了，因为他是硬件的行为，软件尚不支持直接CLR，他不是个异常（你说说路科讲的是不是依托答辩？）</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315095937418.png" srcset="/img/loading.gif" lazyload alt="image-20230315095937418"></p>
+<p><strong>2.查看vseq</strong></p>
+<ul>
+<li>配置不看了</li>
+<li>直接把resp挂着</li>
+<li>写了两个数</li>
+<li>wait_seq</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315100250599.png" srcset="/img/loading.gif" lazyload alt="image-20230315100250599"></p>
+<p><strong>4.wait_seq</strong></p>
+<p>读状态寄存器，等中断</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315100337125.png" srcset="/img/loading.gif" lazyload alt="image-20230315100337125"></p>
+<p>和DUT(apb_i2c)顶层中的中断标志信号中INTERRUPT的名称做对比</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315100437855.png" srcset="/img/loading.gif" lazyload alt="image-20230315100437855"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315101354855.png" srcset="/img/loading.gif" lazyload alt="image-20230315101354855"></p>
+<p>这些INTERRUPT名称使用场景如下（并不是和状态寄存器完全匹配，有些可能没有）：</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315101046854.png" srcset="/img/loading.gif" lazyload alt="image-20230315101046854"></p>
+<p><strong>5.最后写一下仿真命令吧</strong></p>
+<p><code>vsim work.rkv_i2c_tb -classdebug -sv_seed $SEED +UVM_TESTNAME=rkv_i2c_master_directed_read_packet_test +UVM_VERBOSITY=$VERB -l sim.log</code></p>
+<h2><span id="第四周">第四周</span></h2><h4><span id="测试点拆解">测试点拆解</span></h4><p>梳理功能，测试点拆解（正常应该第一节开始做），路科想让你先从底层框架开始拆解功能点</p>
+<p>第四周、第五周、第六周，需要列出测试功能点，拿着这些功能点去定义coverage group和testcase</p>
+<p>在映射方面，v3是vcs基础上通过hvp的表格使用verdi进行管理跟踪，v2pro是通过run manager和verification manager进行管理跟踪</p>
+<p>1.手册阅读</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315134129963.png" srcset="/img/loading.gif" lazyload alt="image-20230315134129963"></p>
+<p>我们使用到了4-50的feature，其他的没用到</p>
+<p>2.查看configuration这个表决定了哪些功能要测试</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315134244048.png" srcset="/img/loading.gif" lazyload alt="image-20230315134244048"></p>
+<p>3.questa_vplan（跟1.2.有关）</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315134330242.png" srcset="/img/loading.gif" lazyload alt="image-20230315134330242"></p>
+<ul>
+<li>只列了我们要测的，并不是这个设计IP全部特性，为什么？<ul>
+<li>虚拟项目时长有关</li>
+<li>和实际情况有关，我们只是用到master</li>
+<li>有些feature测和不测都一样不影响</li>
+</ul>
+</li>
+<li>顺序<ul>
+<li>首当其冲先测寄存器</li>
+<li>第二个i2c本身的协议</li>
+</ul>
+</li>
+<li>部分测试点解释<ul>
+<li>2.4有没有发生过restart</li>
+<li>3.1查看时idel还是activity，是master模式下的activity还是slave还是同时master和slave模式？</li>
+<li>3.2 enable还是disable</li>
+<li>5.3 hardware signal在DUT顶层接口上的中断信号</li>
+<li>5.4 tx_abort_source是一个专门的情况，状态寄存器STAT.TX_ABRT一旦拉高，需要去ABRT_SOURCE寄存器查看ABRT原因，但这些SOURCE不一定在design里面都发生，有的存在有的不一定（原因：有些source没有起到作用interrupt直接一直为0了）</li>
+<li>6 SDA control，根据SDA_SETUP和SDA_HOLD寄存器描述，通过不同配置后观察波形是否出现相应的setup和hold timing来实现测试<ul>
+<li>好处：一方面软件知道怎么去配置了，一方面送到pad做接口交互时配置时更了解了</li>
+<li>uart、spi都不需要配置这个</li>
+</ul>
+</li>
+<li>7 timeout counter，读REG_TIMEOUT_RST寄存器，内容：一旦复位以后就开始做counting down，计数是计的占用apb总线的时间</li>
+</ul>
+</li>
+</ul>
+<h4><span id="功能覆盖率定义和收集">功能覆盖率定义和收集</span></h4><p>第六周，助手会在user目录里定义参考的sequence</p>
+<p>1.关于2.1的覆盖率</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315150547633.png" srcset="/img/loading.gif" lazyload alt="image-20230315150547633"></p>
+<p><code>with function sample</code>：覆盖covergroup内建采样函数</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315150953689.png" srcset="/img/loading.gif" lazyload alt="image-20230315150953689"></p>
+<ul>
+<li>作用：外部调用sample的时候会传递两个参数进来</li>
+<li>和直接在target_address_and_slave_address_cg加参数的不同：只是作为covergroup在例化的时候传递进去的参数，而with sample是外部传递进来的</li>
+<li>这样做的好处？与之前学到的covergroup定义不同，可以不用传递interface进来了</li>
+</ul>
+<p>2.为啥这里没写？添加自己的设置，你认为min、max多少合适，边界尽量cover到就行</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315152255650.png" srcset="/img/loading.gif" lazyload alt="image-20230315152255650"></p>
+<p>3.wildcard，x或?表示不关心</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315153449614.png" srcset="/img/loading.gif" lazyload alt="image-20230315153449614"></p>
+<p>4.covergroup的例化</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315154441701.png" srcset="/img/loading.gif" lazyload alt="image-20230315154441701"></p>
+<p>5.采样 </p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315154616281.png" srcset="/img/loading.gif" lazyload alt="image-20230315154616281"></p>
+<p>主要是检测APB总线</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315154501085.png" srcset="/img/loading.gif" lazyload alt="image-20230315154501085"></p>
+<p>检测到APB上有数据（事件）则进行采样</p>
+<ul>
+<li>i2c_field_access_fd_e前门访问事件</li>
+<li>i2c_field_access_bd_e后门访问事件（寄存器测试中不会触发，所以添加了一个enable变量进行控制）</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315155916578.png" srcset="/img/loading.gif" lazyload alt="image-20230315155916578"></p>
+<p>CLR的采样第一个参数修改为<code>1</code></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315160046394.png" srcset="/img/loading.gif" lazyload alt="image-20230315160046394"></p>
+<p>给事件产生添加enable条件</p>
+<ul>
+<li>设置中设置</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315160625517.png" srcset="/img/loading.gif" lazyload alt="image-20230315160625517"></p>
+<ul>
+<li>scoreboard获取</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315160552804.png" srcset="/img/loading.gif" lazyload alt="image-20230315160552804"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315161035745.png" srcset="/img/loading.gif" lazyload alt="image-20230315161035745"></p>
+<ul>
+<li>cgm应用</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315161044969.png" srcset="/img/loading.gif" lazyload alt="赋值"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315160533814.png" srcset="/img/loading.gif" lazyload alt="作用"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315160516630.png" srcset="/img/loading.gif" lazyload alt="作用"></p>
+<h4><span id="cdv脚本及流程演示">CDV脚本及流程演示</span></h4><p>最后走一遍流程吧</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315161404076.png" srcset="/img/loading.gif" lazyload alt="image-20230315161404076"></p>
+<p>questa_vplan就是i2c的plan，不管是xml还是xlsx都是插件编辑导出的，可以直接用vplan.ucdb</p>
+<p><strong>脚本流程</strong></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315161605104.png" srcset="/img/loading.gif" lazyload alt="image-20230315161605104"></p>
+<ul>
+<li>遍历运行UVM_TEST（不需要单独运行了，所有49行注释了）</li>
+<li>最后所有ucdb与questa_vplan.ucdb进行合并</li>
+</ul>
+<p><strong>结束后打开覆盖率收集文件</strong></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315162007265.png" srcset="/img/loading.gif" lazyload alt="image-20230315162007265"></p>
+<p>图标右上角有p，表示plan</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315162111615.png" srcset="/img/loading.gif" lazyload alt="image-20230315162111615"></p>
+<p><strong>看什么</strong></p>
+<ul>
+<li><strong>在ip的集成里面我们不会看ip的code coverage</strong>，最多看toggle coverage，因为IP设计公司提供的代码针对不同feature进行不同配置，因此code coverage在不同情况下覆盖率都不一样</li>
+<li>主要看covergroups</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315162423546.png" srcset="/img/loading.gif" lazyload alt="image-20230315162423546"></p>
+<p><strong>回顾一下后门访问的优势</strong></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315163007030.png" srcset="/img/loading.gif" lazyload alt="image-20230315163007030"></p>
+<h2><span id="测试日记">测试日记</span></h2><h3><span id="315">3/15</span></h3><p>第一次运行tb5收集覆盖率，遇到了<code>Failed to open design unit file &quot;../agents/lvc_i2c_mti/lvc_i2c_if.sv&quot; in read mode.</code>问题，原因是原工程目录中<code>lvc_i2c</code>目录应该是<code>lvc_i2c_mti</code>，修改下名字即可</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315170607200.png" srcset="/img/loading.gif" lazyload alt="image-20230315170607200"></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/">IC</a>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/uvm%E5%AD%A6%E4%B9%A0/">uvm学习</a>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/uvm%E5%AD%A6%E4%B9%A0/%E5%AE%9E%E9%AA%8C/">实验</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/uvm%E5%AD%A6%E4%B9%A0/">uvm学习</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AE%9E%E9%AA%8C/">实验</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/202101212331/IC/uvm%E5%AD%A6%E4%B9%A0/%E5%AE%9E%E9%AA%8Cessay/ic/%E9%A1%B9%E7%9B%AE%E4%B8%8E%E5%AE%9E%E9%AA%8C/%E5%9F%BA%E4%BA%8EUVM%E9%AA%8C%E8%AF%81%E6%96%B9%E6%B3%95%E5%AD%A6%E7%9A%84UART%E6%A8%A1%E5%9D%97%E9%AA%8C%E8%AF%81/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">（放弃）UART模块验证</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/202011291125/%E9%80%9A%E7%9F%A5notify/notifyOpenMusicCommitLive2d/">
+                        <span class="hidden-mobile">开放评论、live2d与音乐盒!</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'preferred-color-scheme';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'GreensCH/commitutterances');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <span> | </span> <a href="https://weibo.com/u/7453939976" target="_blank" rel="nofollow noopener"> Green Weibo</a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?eca4a4d34dadf0d4e282cc6ef2dc3de6";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<!-- hexo injector body_end start --><script src="/js/backgroundize.js"></script>
+  <link defer rel="stylesheet" href="/css/backgroundize.css" />
+  
+  <div id="aplayer" style="width:300px"></div>
+  <link defer rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css" />
+  <script src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js"></script>
+  <script defer src="/js/aplayer.js"></script><script src="/js/githubcalendar.js"></script> 
+  <script data-pjax src="/js/githubcalendar.js"></script>
+  <script data-pjax>
+        function GithubCalendarConfig(){
+            var git_githubapiurl ="https://python-github-calendar-api.vercel.app/api?greensch";
+            var git_color =['#ebedf0', '#f0fff4', '#dcffe4', '#bef5cb', '#85e89d', '#34d058', '#28a745', '#22863a', '#176f2c', '#165c26', '#144620'];
+            var git_user ="greensch";
+            var parent_div_git = document.getElementById('board');
+            var git_div_html = '<div id="github-calendar" style="width:100%;height:auto;padding:10px;margin-bottom:20px;box-shadow:none;"><div id="github_loading" style="width:10%;height:100%;margin:0 auto;display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div><div id="github_container"></div></div>';
+            if(parent_div_git && location.pathname =='/'){
+                console.log('已挂载github calendar')
+                // parent_div_git.innerHTML=git_div_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",git_div_html) // 有报错，但不影响使用(支持pjax跳转)
+            };
+            GithubCalendar(git_githubapiurl,git_color,git_user)
+        }
+        if(document.getElementById('board')){
+            GithubCalendarConfig()
+        }
+    </script>
+    <style>#github_container{min-height:200px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
+    <style>#github_container > .position-relative > .border{border:0!important}#github-calendar{position: relative;margin-top: -2rem;background-color: var(--board-bg-color);transition: background-color 0.2s ease-in-out;border-radius: 0.5rem;z-index: 3;-webkit-box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);}</style><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"superSample":1,"position":"left","width":150,"height":400,"vOffset":-18},"mobile":{"show":false,"scale":0.25},"dialog":{"enable":false,"hitokoto":true,"width":10,"height":10,"vOffset":-100},"log":false});</script></body>
+</html>

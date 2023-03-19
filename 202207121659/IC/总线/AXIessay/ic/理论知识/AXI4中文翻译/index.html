@@ -47,7 +47,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/v2-b915b5008e6c717d11673b0f8752afb8_720w.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/v2-cf783a9899d0944e3f67474a856186d8_720w.jpg">
 <meta property="article:published_time" content="2022-07-12T08:59:19.000Z">
-<meta property="article:modified_time" content="2022-08-31T15:01:38.267Z">
+<meta property="article:modified_time" content="2023-03-07T12:42:29.635Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="IC">
 <meta property="article:tag" content="总线">
@@ -824,7 +824,7 @@
 <li><strong>其它信号</strong>：则可以为任意值</li>
 </ul>
 <p>在ARESETn被释放后的下一个时钟上升沿，主设备可以拉高ARVALID、AWVALID与WVALID信号，如下图所示：</p>
-<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/v2-03ec608f75d259e1d84f5c0d52f42e21_720w.jpg" srcset="/img/loading.gif" lazyload alt="img">avatar</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/v2-03ec608f75d259e1d84f5c0d52f42e21_720w.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
 <h3><span id="32-基本读写事务">3.2 基本读写事务</span></h3><p>基本机制( basic mechanisms)：</p>
 <ul>
 <li>The Handshake process 握手过程</li>
@@ -988,7 +988,7 @@
 </ul>
 <p>依赖关系图如下：</p>
 <p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/v2-3e82b6d26d5061f551fd4aaf34e35a6b_720w.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
-<h4><span id="332-legacy-considerations-axi3遗留问题">3.3.2  Legacy considerations AXI3遗留问题</span></h4><p>AXI4与AXI5的额外的写响应依赖关系意味着，不兼容所有写响应在接收写地址之前的AXI3从设备，而主设备完全兼容。</p>
+<h4><span id="332-legacy-considerations-axi3遗留问题">3.3.2  Legacy considerations AXI3遗留问题</span></h4><p>AXI4与AXI5的额外的写响应依赖关系意味着，不兼容所有写响应在接收写地址之前的AXI3从设备，而主设备完全兼容</p>
 <p>将AXI3的主从设备转为AXI4或AXI5时，应确保额外的修正wrapper会在从设备接收写地址前，不应发送写响应</p>
 <blockquote>
 <p>NOTE</p>
@@ -1218,7 +1218,7 @@
 <ul>
 <li>AxLEN 为 1, 2, 4, 8, 或 16</li>
 <li>如果AxLEN大于1，则AxSIZE与数据总线宽度相同</li>
-<li>AxBURST 为 INCR 或 WRAP , 而不是 FIXED</li>
+<li>AxBURST 为INCR或WRAP, 而不是FIXED</li>
 <li>AxADDR 在INCR事务中与transaction container对齐</li>
 <li>AxADDR 在WRAP事务中与AxSIZE对齐</li>
 </ul>
@@ -1266,7 +1266,7 @@
 <p><strong>1）写选通（Write strobes）</strong></p>
 <p>当WSTRB[i]为高电平时，对应的WDATA[(8i+7):8i]数据线有效</p>
 <p>当WVALID为低电平时，写选通信号可以为任何值，不过标准推荐写选通信号全0或保持上一次的值</p>
-<p><strong>2）窄传输（Narrow transfer）：</strong></p>
+<p><strong>2）窄传输（Narrow transfer）</strong></p>
 <p>当主设备产生一个数据宽度小于数据总线的传输时，地址和控制信号按照如何方式决定使用哪些字节线：</p>
 <ul>
 <li>在INCR或WRAP突发模式中，每拍使用<strong>不同</strong>的字节线</li>
@@ -3474,7 +3474,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/202208131437/IC/%E7%90%86%E8%AE%BA/%E5%85%B6%E4%BB%96essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/verilog%E5%B8%B8%E7%94%A8/">
+                      <a href="/202208131437/IC/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/verilog%E5%B8%B8%E7%94%A8/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">Verilog常用</span>
                         <span class="visible-mobile">上一篇</span>
@@ -3806,5 +3806,5 @@
         }
     </script>
     <style>#github_container{min-height:200px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
-    <style>#github_container > .position-relative > .border{border:0!important}#github-calendar{position: relative;margin-top: -2rem;background-color: var(--board-bg-color);transition: background-color 0.2s ease-in-out;border-radius: 0.5rem;z-index: 3;-webkit-box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);}</style><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"superSample":1,"position":"left","width":150,"height":400,"vOffset":-18},"mobile":{"show":true,"scale":0.25},"dialog":{"enable":false,"hitokoto":true,"width":10,"height":10,"vOffset":-100},"log":false});</script></body>
+    <style>#github_container > .position-relative > .border{border:0!important}#github-calendar{position: relative;margin-top: -2rem;background-color: var(--board-bg-color);transition: background-color 0.2s ease-in-out;border-radius: 0.5rem;z-index: 3;-webkit-box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);}</style><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"superSample":1,"position":"left","width":150,"height":400,"vOffset":-18},"mobile":{"show":false,"scale":0.25},"dialog":{"enable":false,"hitokoto":true,"width":10,"height":10,"vOffset":-100},"log":false});</script></body>
 </html>

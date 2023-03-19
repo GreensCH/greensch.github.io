@@ -253,34 +253,34 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/202207081044/IC/%E6%80%BB%E7%BA%BF/AXIessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/AXI4%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0/" target="_self">
-          <img src="/img/banner_img/anime/100517229_p0.jpg" srcset="/img/loading.gif" lazyload alt="AXI4.0 初步学习">
+        <a href="/202210311521/IC/fpgaessay/ic/fpga/Xilnx%20%E5%8E%9F%E8%AF%AD/" target="_self">
+          <img src="/img/banner_img/default.png" srcset="/img/loading.gif" lazyload alt="Xilinx原语">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/202207081044/IC/%E6%80%BB%E7%BA%BF/AXIessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/AXI4%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0/" target="_self">
-          AXI4.0 初步学习
+        <a href="/202210311521/IC/fpgaessay/ic/fpga/Xilnx%20%E5%8E%9F%E8%AF%AD/" target="_self">
+          Xilinx原语
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/202207081044/IC/%E6%80%BB%E7%BA%BF/AXIessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/AXI4%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0/" target="_self">
+        <a href="/202210311521/IC/fpgaessay/ic/fpga/Xilnx%20%E5%8E%9F%E8%AF%AD/" target="_self">
           
           
             
           
-          参考资料手册
-An introduction to AMBA AXI
+          IOBUF
+参考链接：
+
+https://blog.csdn.net/fpga_Spig/article/details/125448621
+https://blog.csdn.net/alan_wuchun/article/details/106908443
+https://blog.csdn.net/dxz44444/article/details/107201166
 
 
-一个介绍指南
-该指南概述了与 AMBA AXI 相关的主要主题，包括不同通道和信号的使用和操作。当您通过阅读AMBA AXI 和 ACE 协议规范了解更多有关 AMBA AXI 的信息时，这些知识将很有用。您可以将您的知识付诸实践，以开发实现 AMBA AXI 协议的接口
-
-
-AMBA AXI and ACE Protoco
+1234567891
         </a>
       </p>
 
@@ -288,8 +288,601 @@ AMBA AXI and ACE Protoco
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2022-07-08 10:44" pubdate>
-              2022-07-08
+            <time datetime="2022-10-31 15:21" pubdate>
+              2022-10-31
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/IC/">IC</a>
+            
+              <a href="/categories/IC/fpga/">fpga</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/fpga/">fpga</a>
+            
+              <a href="/tags/%E7%9F%A5%E8%AF%86/">知识</a>
+            
+              <a href="/tags/xilinx/">xilinx</a>
+            
+              <a href="/tags/%E5%8E%9F%E8%AF%AD/">原语</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/202210272206/IC/%E6%8E%A5%E5%8F%A3%E4%B8%8E%E5%8D%8F%E8%AE%AE/spiessay/ic/%E6%8E%A5%E5%8F%A3/SPI%E6%A8%A1%E5%BC%8F/" target="_self">
+          <img src="/img/index_img/banner_img/anime/101595616_p0.png" srcset="/img/loading.gif" lazyload alt="随便记一点：初识aurora接口">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/202210272206/IC/%E6%8E%A5%E5%8F%A3%E4%B8%8E%E5%8D%8F%E8%AE%AE/spiessay/ic/%E6%8E%A5%E5%8F%A3/SPI%E6%A8%A1%E5%BC%8F/" target="_self">
+          随便记一点：初识aurora接口
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/202210272206/IC/%E6%8E%A5%E5%8F%A3%E4%B8%8E%E5%8D%8F%E8%AE%AE/spiessay/ic/%E6%8E%A5%E5%8F%A3/SPI%E6%A8%A1%E5%BC%8F/" target="_self">
+          
+          
+            
+          
+          概述在芯片的资料上，有两个非常特殊的寄存器配置位，分别是 CPOL （Clock POlarity）和 CPHA （Clock PHAse）。
+
+CPOL配置SPI总线的极性
+CPHA配置SPI总线的相位
+
+极性和相位，这么专业的名词，非常难理解。我们不妨从时序图入手，了解极性和相位的效果。
+SPI总线的极性极性，会直接影响SPI总线空闲时的时钟信号是高电平还是低电平。
+这也就说明spi的时钟不是
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-10-27 22:06" pubdate>
+              2022-10-27
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/IC/">IC</a>
+            
+              <a href="/categories/IC/%E6%8E%A5%E5%8F%A3%E4%B8%8E%E5%8D%8F%E8%AE%AE/">接口与协议</a>
+            
+              <a href="/categories/IC/%E6%8E%A5%E5%8F%A3%E4%B8%8E%E5%8D%8F%E8%AE%AE/spi/">spi</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/fpga/">fpga</a>
+            
+              <a href="/tags/verilog/">verilog</a>
+            
+              <a href="/tags/spi/">spi</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/202210271754/IC/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E6%89%87%E5%8C%BA%E3%80%81%E5%9D%97%EF%BC%88%E7%B0%87%EF%BC%89%E3%80%81%E9%A1%B5/" target="_self">
+          <img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/b4bca411af7a1de2e024a7afdf9d3fd7-16668644721399.png" srcset="/img/loading.gif" lazyload alt="扇区">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/202210271754/IC/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E6%89%87%E5%8C%BA%E3%80%81%E5%9D%97%EF%BC%88%E7%B0%87%EF%BC%89%E3%80%81%E9%A1%B5/" target="_self">
+          扇区
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/202210271754/IC/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E6%89%87%E5%8C%BA%E3%80%81%E5%9D%97%EF%BC%88%E7%B0%87%EF%BC%89%E3%80%81%E9%A1%B5/" target="_self">
+          
+          
+            
+          
+          操作系统操作内存是以页为基本单位、文件系统操作磁盘是以块为基本单位，而磁盘自身读写是以扇区为基本单位。
+
+文件系统就是操作系统的一部分，所以文件系统操作文件的最小单位是块
+
+
+块（簇）操作系统-&gt;块/簇—-磁盘控制器—-&gt;扇区-&gt;磁盘
+
+块是操作系统中最小的逻辑存储单位，虚拟存储单位
+在Windows下如NTFS等文件系统中叫做簇；在Linux下如Ext4等文件系统中叫做块（bl
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-10-27 17:54" pubdate>
+              2022-10-27
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/IC/">IC</a>
+            
+              <a href="/categories/IC/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/">理论知识</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/IC/">IC</a>
+            
+              <a href="/tags/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/">数字电路</a>
+            
+              <a href="/tags/%E7%90%86%E8%AE%BA/">理论</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/202209272008/%E8%AF%BE%E9%A2%98/%E9%9B%B7%E8%BE%BEessay/radar/%E6%AF%AB%E7%B1%B3%E6%B3%A2/" target="_self">
+          <img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/800px-EM_Spectrum_Properties_edit_zh.svg.png" srcset="/img/loading.gif" lazyload alt="雷达">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/202209272008/%E8%AF%BE%E9%A2%98/%E9%9B%B7%E8%BE%BEessay/radar/%E6%AF%AB%E7%B1%B3%E6%B3%A2/" target="_self">
+          雷达
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/202209272008/%E8%AF%BE%E9%A2%98/%E9%9B%B7%E8%BE%BEessay/radar/%E6%AF%AB%E7%B1%B3%E6%B3%A2/" target="_self">
+          
+          
+            
+          
+          一般分类ELF极低频 3~30Hz
+SLF超低频30~300Hz
+ULF 特低频300~3000Hz
+VLF甚低频3~30kHz
+LF低频 30~300kHz 长波
+MF中频300~3000kHz | 100m~1000m中波 AM广播
+HF高频3~30MHz | 10~100m 短波 短波广播
+VHF 甚高频 30~300MHz | 1~10m 米波 FM广播
+UHF 特高频 300~3000M
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-09-27 20:08" pubdate>
+              2022-09-27
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E8%AF%BE%E9%A2%98/">课题</a>
+            
+              <a href="/categories/%E8%AF%BE%E9%A2%98/%E9%9B%B7%E8%BE%BE/">雷达</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9B%B7%E8%BE%BE/">雷达</a>
+            
+              <a href="/tags/%E6%AF%AB%E7%B1%B3%E6%B3%A2/">毫米波</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/202209011659/IC/%E9%AA%8C%E8%AF%81essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E9%AA%8C%E8%AF%81%E5%AE%9E%E6%88%98/" target="_self">
+          <img src="/img/banner_img/anime/98001658_p0.png" srcset="/img/loading.gif" lazyload alt="验证实战">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/202209011659/IC/%E9%AA%8C%E8%AF%81essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E9%AA%8C%E8%AF%81%E5%AE%9E%E6%88%98/" target="_self">
+          验证实战
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/202209011659/IC/%E9%AA%8C%E8%AF%81essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E9%AA%8C%E8%AF%81%E5%AE%9E%E6%88%98/" target="_self">
+          
+          
+            
+          
+          
+搭建UVM平台：https://blog.csdn.net/qq_45031392/article/details/125492948
+下载UVM1.d：http://www.hzcourse.com/web/refbook/detail/5651/229
+
+
+
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-09-01 16:59" pubdate>
+              2022-09-01
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/IC/">IC</a>
+            
+              <a href="/categories/IC/%E9%AA%8C%E8%AF%81/">验证</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/IC/">IC</a>
+            
+              <a href="/tags/%E9%AA%8C%E8%AF%81/">验证</a>
+            
+              <a href="/tags/%E5%AE%9E%E6%88%98/">实战</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/202208301459/IC/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/verilogsv%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC/" target="_self">
+          Verilog|SystemVerilog代码风格
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/202208301459/IC/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/verilogsv%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC/" target="_self">
+          
+          
+            
+          
+          Verilog代码风格参考资料
+https://verilogcodingstyle.readthedocs.io/en/latest/
+
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-30 14:59" pubdate>
+              2022-08-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/IC/">IC</a>
+            
+              <a href="/categories/IC/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/">理论知识</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/verilog/">verilog</a>
+            
+              <a href="/tags/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC/">代码风格</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/202208281330/%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1essay/radar/%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E8%AF%BE%E9%A2%98/" target="_self">
+          <img src="/img/banner_img/anime/93302401_p0.jpg" srcset="/img/loading.gif" lazyload alt="动态加载课题">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/202208281330/%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1essay/radar/%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E8%AF%BE%E9%A2%98/" target="_self">
+          动态加载课题
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/202208281330/%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1essay/radar/%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E8%AF%BE%E9%A2%98/" target="_self">
+          
+          
+            
+          
+          随便写写123456789101112131415161718//Top.vmodule htg_zrf8_top (  output  [3:0]  LED,  output         SI5341_CLK_RST_N,  output         SI5341_CLK_FDEC,  output         SI5341_CLK_FINC,  output         SI5
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-28 13:30" pubdate>
+              2022-08-28
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1/">项目与设计</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E7%8E%B0/">项目实现</a>
+            
+              <a href="/tags/%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD/">动态加载</a>
+            
+              <a href="/tags/fpga/">fpga</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/202208181544/IC/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E5%BC%82%E6%AD%A5%E5%A4%8D%E4%BD%8D%E5%90%8C%E6%AD%A5%E9%87%8A%E6%94%BE%E7%94%B5%E8%B7%AF%E7%9A%84%E8%AF%A6%E7%BB%86%E8%A7%A3%E9%87%8A/" target="_self">
+          <img src="/img/banner_img/anime/100539076_p0.png" srcset="/img/loading.gif" lazyload alt="异步复位和同步释放电路的详细解释">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/202208181544/IC/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E5%BC%82%E6%AD%A5%E5%A4%8D%E4%BD%8D%E5%90%8C%E6%AD%A5%E9%87%8A%E6%94%BE%E7%94%B5%E8%B7%AF%E7%9A%84%E8%AF%A6%E7%BB%86%E8%A7%A3%E9%87%8A/" target="_self">
+          异步复位和同步释放电路的详细解释
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/202208181544/IC/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E5%BC%82%E6%AD%A5%E5%A4%8D%E4%BD%8D%E5%90%8C%E6%AD%A5%E9%87%8A%E6%94%BE%E7%94%B5%E8%B7%AF%E7%9A%84%E8%AF%A6%E7%BB%86%E8%A7%A3%E9%87%8A/" target="_self">
+          
+          
+            
+          
+          转载自：http://blog.csdn.net/gtatcs/article/details/8931123https://www.cnblogs.com/qidaiymm/p/4959445.htmlhttp://www.xue5.com/Developer/Software/665219.htmlhttps://blog.csdn.net/dongdongnihao_/article/det
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-18 15:44" pubdate>
+              2022-08-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/IC/">IC</a>
+            
+              <a href="/categories/IC/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/">理论知识</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/IC/">IC</a>
+            
+              <a href="/tags/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/">数字电路</a>
+            
+              <a href="/tags/%E6%BA%90%E7%A0%81/">源码</a>
+            
+              <a href="/tags/code/">code</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/202208131437/IC/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/verilog%E5%B8%B8%E7%94%A8/" target="_self">
+          <img src="/img/banner_img/anime/81943456_p0.jpg" srcset="/img/loading.gif" lazyload alt="Verilog常用">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/202208131437/IC/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/verilog%E5%B8%B8%E7%94%A8/" target="_self">
+          Verilog常用
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/202208131437/IC/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/verilog%E5%B8%B8%E7%94%A8/" target="_self">
+          
+          
+            
+          
+          Verilog常用$random$random函数，调用时返回一个32位的随机数，它是一个带符号的整形数。在使用时根据具体场景对符号以及位宽进行调整
+比如：
+12reg[23:0] rand;rand=$random % 60; //产生一个在 -59—59范围的随机数
+12reg[23:0] rand;rand=&#123;$random&#125; % 60; //通过位拼接操作&#123;&
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-13 14:37" pubdate>
+              2022-08-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/IC/">IC</a>
+            
+              <a href="/categories/IC/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/">理论知识</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+            
+              <a href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>
+            
+              <a href="/tags/verilog/">verilog</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/202207121659/IC/%E6%80%BB%E7%BA%BF/AXIessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/AXI4%E4%B8%AD%E6%96%87%E7%BF%BB%E8%AF%91/" target="_self">
+          <img src="/img/banner_img/anime/93302401_p0.jpg" srcset="/img/loading.gif" lazyload alt="EDA入门">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/202207121659/IC/%E6%80%BB%E7%BA%BF/AXIessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/AXI4%E4%B8%AD%E6%96%87%E7%BF%BB%E8%AF%91/" target="_self">
+          EDA入门
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/202207121659/IC/%E6%80%BB%E7%BA%BF/AXIessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/AXI4%E4%B8%AD%E6%96%87%E7%BF%BB%E8%AF%91/" target="_self">
+          
+          
+            
+          
+          本文参考分析整理总结了AMBA AXI and ACE Protocol Specification文档的AXI总线协议规范部分，错误之处欢迎指出
+1: Introduction1.1 About the AXI protocolAMBA AXI协议支持高性能高频的系统设计，该协议拥有以下优点：
+
+适合高带宽和低延迟的设计
+不需要复杂的桥即可提供高频操作
+可以满足多种组件的接口需求
+适合高初始访问
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-07-12 16:59" pubdate>
+              2022-07-12
             </time>
           </div>
         
@@ -321,648 +914,11 @@ AMBA AXI and ACE Protoco
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/202207052149/IC/STAessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/petalinux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" target="_self">
-          <img src="/img/banner_img/anime/100288083_p0.jpg" srcset="/img/loading.gif" lazyload alt="petalinux常用命令">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/202207052149/IC/STAessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/petalinux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" target="_self">
-          petalinux常用命令
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/202207052149/IC/STAessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/petalinux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" target="_self">
-          
-          
-            
-          
-          petalinux常用命令petalinux-package —boot —format BIN —fsbl zynq_fsbl.elf —fpga system.bit —u-boot100288083_p0
-
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-07-05 21:49" pubdate>
-              2022-07-05
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/IC/">IC</a>
-            
-              <a href="/categories/IC/STA/">STA</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/IC/">IC</a>
-            
-              <a href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
-            
-              <a href="/tags/STA/">STA</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/202207011659/IC/%E7%90%86%E8%AE%BA/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E7%8A%B6%E6%80%81%E6%9C%BA%E5%9F%BA%E7%A1%80/" target="_self">
-          <img src="/img/banner_img/anime/100499530_p0.jpg" srcset="/img/loading.gif" lazyload alt="验证实战">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/202207011659/IC/%E7%90%86%E8%AE%BA/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E7%8A%B6%E6%80%81%E6%9C%BA%E5%9F%BA%E7%A1%80/" target="_self">
-          验证实战
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/202207011659/IC/%E7%90%86%E8%AE%BA/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E7%8A%B6%E6%80%81%E6%9C%BA%E5%9F%BA%E7%A1%80/" target="_self">
-          
-          
-            
-          
-          参考链接
-https://zhuanlan.zhihu.com/p/126498115
-
-基础1需要注意的是根据状态机的输出是否与输入有关，可以分为下列两种状态机：
-
-Moore型：输出只与当前状态有关，与输入无关；
-Mealy型：输出不仅与当前状态有关，还与输入有关。
-
-这两种状态机在电路实现上的区别如下图所示[1]，当然对这种状态机的具体区别和转换等可以参考[1]
-Moore型状态机
-Meal
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-07-01 16:59" pubdate>
-              2022-07-01
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/IC/">IC</a>
-            
-              <a href="/categories/IC/%E7%90%86%E8%AE%BA/">理论</a>
-            
-              <a href="/categories/IC/%E7%90%86%E8%AE%BA/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">基础知识</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/IC/">IC</a>
-            
-              <a href="/tags/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/">数字电路</a>
-            
-              <a href="/tags/%E6%BA%90%E7%A0%81/">源码</a>
-            
-              <a href="/tags/code/">code</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/202206201044/IC/%E7%90%86%E8%AE%BA/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/cache/" target="_self">
-          <img src="/img/banner_img/anime/98062954_p0.jpg" srcset="/img/loading.gif" lazyload alt="ysyx 工作进度与终点">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/202206201044/IC/%E7%90%86%E8%AE%BA/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/cache/" target="_self">
-          ysyx 工作进度与终点
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/202206201044/IC/%E7%90%86%E8%AE%BA/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/cache/" target="_self">
-          
-          
-            
-          
-          工作任务
-6/27 阅读 IHI0022H
-7/07
-
-测试AXI过程中，发现了一个 致命问题：
-branch/jal/jalr时，若之前一个指令cache miss，则IDU生成jump时，curr_state为预测错误指令的issue状态，此时ready=0，导致pcu无法接收到jump的信号
-解决办法：在pcu中对jump进行缓存
-
-
-
-7.16
-7.24增加mmio
-
-
-修改内容：
-emu
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-06-20 10:44" pubdate>
-              2022-06-20
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/IC/">IC</a>
-            
-              <a href="/categories/IC/%E7%90%86%E8%AE%BA/">理论</a>
-            
-              <a href="/categories/IC/%E7%90%86%E8%AE%BA/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">基础知识</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/IC/">IC</a>
-            
-              <a href="/tags/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/">数字电路</a>
-            
-              <a href="/tags/%E6%BA%90%E7%A0%81/">源码</a>
-            
-              <a href="/tags/code/">code</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/" target="_self">
-          ysyx讲座笔记
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/202206181658/IC/ysyxlessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/ysyx%E8%AE%B2%E5%BA%A7%E7%AC%94%E8%AE%B0/" target="_self">
-          
-          
-            
-          
-          SoC或CPU参考架构图汇总：
-
-
-https://blog.csdn.net/qq_40500005/article/details/117880249
-AGU（Address Generation Unit）
-LSU（Load Store Unit）
-
-
-
-Chisel 初步AXI4 连接
-Chisel使用经验
-Chisel开发环境
-用Chisel 写个简单的模块: Adder
-创建这个模块的
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-06-18 16:58" pubdate>
-              2022-06-18
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/IC/">IC</a>
-            
-              <a href="/categories/IC/ysyxl/">ysyxl</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/ysyx/">ysyx</a>
-            
-              <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
-            
-              <a href="/tags/%E7%AC%AC%E4%B8%89%E6%9C%9F/">第三期</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/202206171658/%E5%B8%B8%E7%94%A8/linux/wslessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/WSL2%E5%AE%89%E8%A3%85vivado/" target="_self">
-          WSL2安装vivado
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/202206171658/%E5%B8%B8%E7%94%A8/linux/wslessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/WSL2%E5%AE%89%E8%A3%85vivado/" target="_self">
-          
-          
-            
-          
-          WSL2安装vivado参考资料
-官方文档：https://docs.microsoft.com/zh-cn/windows/wsl/install
-官方基础命令：https://docs.microsoft.com/zh-cn/windows/wsl/basic-commands
-高级配置设置：https://docs.microsoft.com/zh-cn/windows/wsl/wsl-co
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-06-17 16:58" pubdate>
-              2022-06-17
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%B8%B8%E7%94%A8/">常用</a>
-            
-              <a href="/categories/%E5%B8%B8%E7%94%A8/linux/">linux</a>
-            
-              <a href="/categories/%E5%B8%B8%E7%94%A8/linux/wsl/">wsl</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%B8%B8%E7%94%A8/">常用</a>
-            
-              <a href="/tags/%E5%91%BD%E4%BB%A4/">命令</a>
-            
-              <a href="/tags/linux/">linux</a>
-            
-              <a href="/tags/wsl/">wsl</a>
-            
-              <a href="/tags/eda/">eda</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/202206151044/IC/%E6%80%BB%E7%BA%BF/AMBAessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/AMBA%202.0%20%E5%AD%A6%E4%B9%A0/" target="_self">
-          <img src="/img/index_img/amba.png" srcset="/img/loading.gif" lazyload alt="AMBA2.0学习">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/202206151044/IC/%E6%80%BB%E7%BA%BF/AMBAessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/AMBA%202.0%20%E5%AD%A6%E4%B9%A0/" target="_self">
-          AMBA2.0学习
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/202206151044/IC/%E6%80%BB%E7%BA%BF/AMBAessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/AMBA%202.0%20%E5%AD%A6%E4%B9%A0/" target="_self">
-          
-          
-            
-          
-          
-1 AMBA总线概述系统总线简介
-系统芯片中各个模块之间需要有接口来连接
-总线作为子系统之间共享的通信链路
-优点：低成本方便易用
-缺点：会造成件能瓶颈
-补充：AXI4.0提高了数据传输率（读信号写信号分为了5个channel）
-
-
-
-AMBA2.0Advanced Microcontroller Bus Architecture
-
-片上总线的标准
-
-定义了三种总线
-
-AHB (Advanced 
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-06-15 10:44" pubdate>
-              2022-06-15
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/IC/">IC</a>
-            
-              <a href="/categories/IC/%E6%80%BB%E7%BA%BF/">总线</a>
-            
-              <a href="/categories/IC/%E6%80%BB%E7%BA%BF/AMBA/">AMBA</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/IC/">IC</a>
-            
-              <a href="/tags/%E6%80%BB%E7%BA%BF/">总线</a>
-            
-              <a href="/tags/AMBA/">AMBA</a>
-            
-              <a href="/tags/ARM/">ARM</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/202206111507/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7essay/tools/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/" target="_self">
-          <img src="/img/banner_img/anime/100347557_p0.jpg" srcset="/img/loading.gif" lazyload alt="常用工具">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/202206111507/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7essay/tools/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/" target="_self">
-          常用工具
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/202206111507/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7essay/tools/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/" target="_self">
-          
-          
-            
-          
-          一些会用到的工具（写作、整理...)
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-06-11 15:07" pubdate>
-              2022-06-11
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a>
-            
-              <a href="/tags/typora/">typora</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/202206061748/%E5%B8%B8%E7%94%A8/linuxessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/tmux%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_self">
-          <img src="/img/banner_img/anime/63450144_p0.png" srcset="/img/loading.gif" lazyload alt="TMUX入门">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/202206061748/%E5%B8%B8%E7%94%A8/linuxessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/tmux%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_self">
-          TMUX入门
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/202206061748/%E5%B8%B8%E7%94%A8/linuxessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/tmux%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_self">
-          
-          
-            
-          
-          
-https://github.com/tmux/tmux/wiki
-https://ostechnix.com/tmux-command-examples-to-manage-multiple-terminal-sessions/
-较清晰的介绍：https://www.ruanyifeng.com/blog/2019/10/tmux.ht
-tmux基本操作：https://blog.csdn.n
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-06-06 17:48" pubdate>
-              2022-06-06
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%B8%B8%E7%94%A8/">常用</a>
-            
-              <a href="/categories/%E5%B8%B8%E7%94%A8/linux/">linux</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%B8%B8%E7%94%A8/">常用</a>
-            
-              <a href="/tags/%E5%91%BD%E4%BB%A4/">命令</a>
-            
-              <a href="/tags/linux/">linux</a>
-            
-              <a href="/tags/shell/">shell</a>
-            
-              <a href="/tags/tmux/">tmux</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/202205211806/IC/%E7%90%86%E8%AE%BA/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E5%8D%95%E5%91%A8%E6%9C%9F%E5%A4%84%E7%90%86%E5%99%A8%E8%AE%BE%E8%AE%A1/" target="_self">
-          <img src="/img/banner_img/anime/98062954_p0.jpg" srcset="/img/loading.gif" lazyload alt="单周期处理器设计">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/202205211806/IC/%E7%90%86%E8%AE%BA/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E5%8D%95%E5%91%A8%E6%9C%9F%E5%A4%84%E7%90%86%E5%99%A8%E8%AE%BE%E8%AE%A1/" target="_self">
-          单周期处理器设计
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/202205211806/IC/%E7%90%86%E8%AE%BA/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E5%8D%95%E5%91%A8%E6%9C%9F%E5%A4%84%E7%90%86%E5%99%A8%E8%AE%BE%E8%AE%A1/" target="_self">
-          
-          
-            
-          
-          参考资料
-跟我一步一步实现简单的五级流水MIPS：https://github.com/hitwh-nscscc/simple-5stage-pipeline-MIPS-imple
-Build Your PC：https://zanpu.spencerwoo.com
-
-专业名词第一章
-Microarchitecture 微架构
-Superscalar 超标量
-IPC(Instructions Pe
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-05-21 18:06" pubdate>
-              2022-05-21
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/IC/">IC</a>
-            
-              <a href="/categories/IC/%E7%90%86%E8%AE%BA/">理论</a>
-            
-              <a href="/categories/IC/%E7%90%86%E8%AE%BA/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">基础知识</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/IC/">IC</a>
-            
-              <a href="/tags/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/">数字电路</a>
-            
-              <a href="/tags/%E6%BA%90%E7%A0%81/">源码</a>
-            
-              <a href="/tags/code/">code</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/#board">10</a><a class="extend next" rel="next" href="/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/#board">11</a><a class="extend next" rel="next" href="/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
@@ -1170,5 +1126,5 @@ IPC(Instructions Pe
         }
     </script>
     <style>#github_container{min-height:200px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
-    <style>#github_container > .position-relative > .border{border:0!important}#github-calendar{position: relative;margin-top: -2rem;background-color: var(--board-bg-color);transition: background-color 0.2s ease-in-out;border-radius: 0.5rem;z-index: 3;-webkit-box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);}</style><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"superSample":1,"position":"left","width":150,"height":400,"vOffset":-18},"mobile":{"show":true,"scale":0.25},"dialog":{"enable":false,"hitokoto":true,"width":10,"height":10,"vOffset":-100},"log":false});</script></body>
+    <style>#github_container > .position-relative > .border{border:0!important}#github-calendar{position: relative;margin-top: -2rem;background-color: var(--board-bg-color);transition: background-color 0.2s ease-in-out;border-radius: 0.5rem;z-index: 3;-webkit-box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);}</style><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"superSample":1,"position":"left","width":150,"height":400,"vOffset":-18},"mobile":{"show":false,"scale":0.25},"dialog":{"enable":false,"hitokoto":true,"width":10,"height":10,"vOffset":-100},"log":false});</script></body>
 </html>

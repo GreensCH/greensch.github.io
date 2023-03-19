@@ -1,0 +1,1798 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/con1.png">
+  <link rel="icon" href="/img/con1.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="“无论最终结果将人类历史导向何处，我们决定选择希望”">
+  <meta name="author" content="友人律 | Guilin Chang">
+  <meta name="keywords" content="三差学生、不学无术">
+  <meta name="description" content="Hello World1.创建工程 不会新建项目文件夹需要自己mkdir 2.创建sv文件  你想做任何工作，要在module里面才能运行 initial包括所有过程语句  3.gvim编辑 4.Project-&gt;compile 5.Library-&gt;simulate 编译到库里面（前面新建的时候默认work），之后在库里面仿真  如果qustasim 是10.7则直接simulate">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HelloWorld | SV实验0~5">
+<meta property="og:url" content="http://yoursite.com/202211151136/IC/sv%E5%AD%A6%E4%B9%A0/%E5%AE%9E%E9%AA%8Cessay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/index.html">
+<meta property="og:site_name" content="友人律的博客">
+<meta property="og:description" content="Hello World1.创建工程 不会新建项目文件夹需要自己mkdir 2.创建sv文件  你想做任何工作，要在module里面才能运行 initial包括所有过程语句  3.gvim编辑 4.Project-&gt;compile 5.Library-&gt;simulate 编译到库里面（前面新建的时候默认work），之后在库里面仿真  如果qustasim 是10.7则直接simulate">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011841150.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011841151.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011841152.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230208224220133.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230208224542241.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011841153.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C%E4%B8%80/image-20230208224830038.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230208224845852.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011841154.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011841155.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011841156.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011841157.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011841158.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011841159.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230212164453595-16761914940063.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230210225018832.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230210224025096.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230210224032449.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230210224525207.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230210225222366.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230210225250449.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230210225332768.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230210225352206.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230210225854006.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230210230531358.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230210230537782.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230210231555784.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230210231422822.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230210230813016.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230210230851520.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230210230914667-16760418167091-16760418168953.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230210231037704.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230212161043771.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230212161122027.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230212161702265-16761898227021.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230212161817273.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230212214915369.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230212214923655.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230210232855644.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230210232753989.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230212153029125.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230212153119309.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230215214410651.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230215215913925.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230215213223585.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230214211450654.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230216215918742.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230218172447766.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230218172521023.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230218172740755.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230218134916384.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230218142630860.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230216215423044.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230218143410552.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230216215518947.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230218151050595.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230218145323467.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230218230223574.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230219133511056.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230219134040371.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230219223559888.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230219223832063.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230219231120225.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230219231411882.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230219231532563.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230219232718780.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230219232653196.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230219232939535.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230219233516803.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230219233536990.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230219233944122.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230220233716694.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230221211600204.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230219233859900.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230219235047907.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230219235200202.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230219235126471.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230221212431968.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230220225936452.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230220224328728.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230220224827496.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230220231640514.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230220232000033.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230220232314431.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230221221859943.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222211750747.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222212256897.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222212058541.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222215320579.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222215532608.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222215626533.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222215751862.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222222328374.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222222654589.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222222619866.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222225418886.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222224717049.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222224755391.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222225748117.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222230054035.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222230112753.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222230203795.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222230232300.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222230615477.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222230634856.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222230719334.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222231940402.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222232122203.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222232241090.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222232523299.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222232721477.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222232835526.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222232920444.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222232947003.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230226141234706.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230223142631222.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230223142622915.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230223144343063.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230223150410861.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230223150423637.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230219231120225.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230224225723694.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230224230408100.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230224230604236.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230224232415755.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230224232320869.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230224233409701.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230225144327024.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230225153443068.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230226024036146.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230226024703526.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230226025112875.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230226030047732.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230226030344385.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230226030442977.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230226041510873.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230226041642616.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230226041607667.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230226041621097.png">
+<meta property="article:published_time" content="2022-11-15T03:36:00.000Z">
+<meta property="article:modified_time" content="2023-03-19T07:31:22.035Z">
+<meta property="article:author" content="友人律 | Guilin Chang">
+<meta property="article:tag" content="实验">
+<meta property="article:tag" content="IC">
+<meta property="article:tag" content="sv学习">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011841150.png">
+  
+  <title>HelloWorld | SV实验0~5 - 友人律的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/stackoverflow-dark.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"eca4a4d34dadf0d4e282cc6ef2dc3de6","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body><!-- hexo injector body_begin start -->
+<link defer rel="stylesheet" href="/css/article_para.css" />
+<div id="web_bg"></div><!-- hexo injector body_begin end -->
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>友人律的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E9%80%9A%E7%9F%A5/">
+                <i class="iconfont icon-link-fill"></i>
+                通知
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1/">
+                <i class="iconfont icon-link-fill"></i>
+                项目与设计
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">
+                <i class="iconfont icon-link-fill"></i>
+                开发工具
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/CS/">
+                <i class="iconfont icon-link-fill"></i>
+                CS
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/IC/">
+                <i class="iconfont icon-link-fill"></i>
+                IC
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/banner_img/anime/100723659_p0.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="HelloWorld | SV实验0~5">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-11-15 11:36" pubdate>
+        2022年11月15日 中午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      25k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      78 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">HelloWorld | SV实验0~5</h1>
+            
+            <div class="markdown-body">
+              <h2><span id="hello-world">Hello World</span></h2><p>1.创建工程</p>
+<p>不会新建项目文件夹需要自己mkdir</p>
+<p>2.创建sv文件</p>
+<ul>
+<li>你想做任何工作，要在module里面才能运行</li>
+<li>initial包括所有过程语句</li>
+</ul>
+<p>3.gvim编辑</p>
+<p>4.Project-&gt;compile</p>
+<p>5.Library-&gt;simulate</p>
+<p>编译到库里面（前面新建的时候默认work），之后在库里面仿真</p>
+<ul>
+<li>如果qustasim 是10.7则直接<code>simulate</code>（<code>simulate without optimization</code>会报错）</li>
+<li>如果qustasim 是10.6则直接<code>simulate  without optimization</code>（<code>simulate</code>会报错）</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">vsim work.tb<br></code></pre></div></td></tr></table></figure>
+<p>6.run</p>
+<p>命令行输入run</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">run<br></code></pre></div></td></tr></table></figure>
+<h2><span id="sv实验0">SV实验0</span></h2><h3><span id="1目的">1.目的</span></h3><p>认识什么是设计功能描述文档</p>
+<p>是设计功能描述文档</p>
+<h3><span id="2设计结构">2.设计结构</span></h3><h4><span id="21-mcdf">2.1 MCDF</span></h4><p>多通道数据整形器MCDF, mult-channel data formatter</p>
+<p>FIFO的margin信号提示内部缓存余量</p>
+<ul>
+<li>Arbiter：仲裁</li>
+<li>Formatter：Formatter输出明显比输入多，时序与输入不同</li>
+<li>Registers：功能寄存器，起到配置MCDF作用<ul>
+<li>使能具体channel（哪个channel工作）</li>
+<li>channel优先级</li>
+<li>输出数据包长度</li>
+<li>….</li>
+</ul>
+</li>
+</ul>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011841150.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="22-实验0实现结构">2.2 实验0实现结构</span></h4><p>降低难度要求</p>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011841151.png" srcset="/img/loading.gif" lazyload alt></p>
+<h4><span id="23-需要准备的源代码">2.3 需要准备的源代码</span></h4><p>每次运行一个实验前把mcdt三个<strong>设计</strong>文件（arbiter.v, mcdt.v, slave_fifo.v)，与tb.v文件都放在一个文件夹里面</p>
+<h2><span id="3实验步骤">3.实验步骤</span></h2><p>有人会问只编译tb那<strong>DUT</strong>怎么办，实际上DUT就在tb里面</p>
+<p><strong>实验1，实验2是在实验0很简单的基础上一步一步修改</strong></p>
+<h3><span id="31熟悉questasim">3.1熟悉questasim</span></h3><ul>
+<li>前面没重点</li>
+</ul>
+<hr>
+<ul>
+<li><strong>库</strong>（questasim-&gt;library）<ul>
+<li>与sv中的package的区别（在SVpackage中讲的）</li>
+<li>同时库和你的工程是完全两个概念</li>
+</ul>
+</li>
+</ul>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011841152.png" srcset="/img/loading.gif" lazyload alt></p>
+<p>work里面包含编译后的module</p>
+<p>双击这些module可以运行仿真，但单个module运行没有作用</p>
+<hr>
+<ul>
+<li><strong>transcript</strong>可以输入命令</li>
+</ul>
+<h3><span id="32编译">3.2编译</span></h3><ul>
+<li><p>先编译设计（arbiter、slave_fifo、mcdt）</p>
+</li>
+<li><p>再编译tb文件</p>
+</li>
+</ul>
+<h3><span id="33-simulate">3.3 simulate</span></h3><p>Library-&gt;work-&gt;tb1-&gt;simulate without optimazition</p>
+<ul>
+<li>藩镇建议simulate without optimazition：不逻辑优化的仿真（Questasim直接仿真会出错，而且还会优化掉我们希望看到的一些逻辑信息）<ul>
+<li>如果qustasim 是10.7则直接<code>simulate</code>（<code>simulate without optimization</code>会报错）</li>
+<li>如果qustasim 是10.6则直接<code>simulate  without optimization</code>（<code>simulate</code>会报错）</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>tb1里面定义了testbench，内部实例化了DUT</li>
+<li>work存放编译后的目标文件(类似于*.elf)</li>
+<li>library是库（详细参考<a target="_blank" rel="noopener" href="https://blog.yourenlv.top/202110151604/IC/sv%E5%AD%A6%E4%B9%A0/%E7%B2%BE%E9%80%9Aessay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AD%A6%E4%B9%A02-2%EF%BC%9A%E6%8E%A5%E5%8F%A3%E9%87%87%E6%A0%B7%E9%A9%B1%E5%8A%A8_%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9D%9F%E5%BC%80%E5%A7%8B_%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95/#%E5%9B%9B%E3%80%81%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95">《SV学习2-2》4.2节内容</a>）</li>
+</ul>
+<p><strong>补充：</strong></p>
+<p>Questsim的simulate的layout界面如下</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230208224220133.png" srcset="/img/loading.gif" lazyload alt="image-20230208224220133"></p>
+<p>配置sim的内容</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230208224542241.png" srcset="/img/loading.gif" lazyload alt="image-20230208224542241"></p>
+<h3><span id="34-add-wave">3.4 Add Wave</span></h3><p>shift从上到下选中，右键Add Wave</p>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011841153.png" srcset="/img/loading.gif" lazyload alt></p>
+<ul>
+<li>此时右边会出现波形窗口</li>
+</ul>
+<p><strong>补充：</strong></p>
+<p>取消路径显示</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C%E4%B8%80/image-20230208224830038.png" srcset="/img/loading.gif" lazyload alt="单击这个"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230208224845852.png" srcset="/img/loading.gif" lazyload alt="变成这个"></p>
+<h3><span id="35-运行1us">3.5 运行1us</span></h3><p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011841154.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="36-放大波形显示">3.6 放大波形显示</span></h3><ul>
+<li><strong>键盘敲击F</strong>：整个波形适应窗口显示（重点！）</li>
+<li>鼠标滚轮按住拖动：放大区间内波形</li>
+</ul>
+<h3><span id="其他qusta-sim操作">其他Qusta Sim操作</span></h3><p><strong>1.调整sim结构窗口内容</strong></p>
+<p>sim结构窗口内容中有：module，task，过程块，语句等等</p>
+<p>当我们不需要看这么多东西时我们怎么设置</p>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011841155.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011841156.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><strong>2.object窗口显示信号</strong></p>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011841157.png" srcset="/img/loading.gif" lazyload alt></p>
+<ul>
+<li>In：输入信号，后缀_i</li>
+<li>Out：输出信号，后缀_o</li>
+<li>Internal：内部信号，后缀_s</li>
+</ul>
+<p><strong>3.Wave窗口不显示路径</strong></p>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011841158.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011841159.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><strong>4.关闭仿真</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230212164453595-16761914940063.png" srcset="/img/loading.gif" lazyload alt="image-20230212164453595"></p>
+<p>或者输入命令：<code>quit -sim</code></p>
+<p><strong>5.保存波形</strong></p>
+<p>如何把仿真中TB层次下的所有信号都保存到数据库中，以便查看波形？</p>
+<p>命令窗口（transcript window ）使用<code>log -r /*</code></p>
+<h2><span id="三个小实验">三个小实验</span></h2><h3><span id="实验1race">实验1：race</span></h3><p>该实验主要是用来学习<code>delta-cycle</code>的</p>
+<p><code>run 1m , s, ms, us, ns, ps, fs</code>, <code>0</code>就是时间片，一个时间片里又包括无穷个delta-cycle，在仿真时无法用最小的时间单位衡量</p>
+<h4><span id="具体代码">具体代码</span></h4><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230210225018832.png" srcset="/img/loading.gif" lazyload alt="image-20230210225018832"></p>
+<h4><span id="实验步骤">实验步骤</span></h4><p><strong>1.添加svlab2中的文件</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230210224025096.png" srcset="/img/loading.gif" lazyload alt="image-20230210224025096"></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230210224032449.png" srcset="/img/loading.gif" lazyload alt="image-20230210224032449"></p>
+<p><strong>2.编译所有文件</strong></p>
+<p><strong>3.启动仿真第一个文件</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230210224525207.png" srcset="/img/loading.gif" lazyload alt="image-20230210224525207"></p>
+<blockquote>
+<p>如何把仿真中TB层次下的所有信号都保存到数据库中，以便查看波形？</p>
+<p>命令窗口（transcript window ）使用<code>log -r /*</code></p>
+</blockquote>
+<p><strong>4.运行仿真</strong></p>
+<p>运行100ns：命令窗口（transcript window ）使用<code>run 100ns</code></p>
+<p>可以看到目前显示45ns时，clk1与clk2波形都为1，并不像代码上那样具有先后顺序，原因是：在仿真中显示的结果为所有delte-cycle运行完后的结果，在45ns时所有delte-cycle运行完毕当然看不出来，不过可以通过查看delte-cycle模式看出信号严格的采样</p>
+<p><strong>5.查看delte-cycle的模式</strong></p>
+<p>①选择查看delte-cycle的模式</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230210225222366.png" srcset="/img/loading.gif" lazyload alt="image-20230210225222366"></p>
+<p>②移动光标到对应时间片上</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230210225250449.png" srcset="/img/loading.gif" lazyload alt="image-20230210225250449"></p>
+<p>③查看delte-cycle</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230210225332768.png" srcset="/img/loading.gif" lazyload alt="image-20230210225332768"></p>
+<p>④结果查看</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230210225352206.png" srcset="/img/loading.gif" lazyload alt="image-20230210225352206"></p>
+<h3><span id="实验2simstar">实验2：simstar</span></h3><h4><span id="具体代码">具体代码</span></h4><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230210225854006.png" srcset="/img/loading.gif" lazyload alt="image-20230210225854006"></p>
+<h4><span id="实验步骤">实验步骤</span></h4><p><strong>①启动仿真并观察</strong></p>
+<p>logic变量成功进行了初始化</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230210230531358.png" srcset="/img/loading.gif" lazyload alt="image-20230210230531358"></p>
+<p><strong>①运行0ns并观察</strong></p>
+<p>成功执行了initial块，并且无法进入断点</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230210230537782.png" srcset="/img/loading.gif" lazyload alt="image-20230210230537782"></p>
+<blockquote>
+<p>不同initial块的执行顺序没有标准，有的eda会从上到下，有的不然！</p>
+</blockquote>
+<h4><span id="其他要点">其他要点</span></h4><p>重新开始仿真的命令：<code>restart</code></p>
+<p>如何测量时钟频率：</p>
+<p>①添加光标</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230210231555784.png" srcset="/img/loading.gif" lazyload alt="image-20230210231555784"></p>
+<p>②进行设置</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230210231422822.png" srcset="/img/loading.gif" lazyload alt="image-20230210231422822"></p>
+<h3><span id="breakpoint">breakpoint</span></h3><h4><span id="实验步骤">实验步骤</span></h4><p>①启动仿真，并设置断点</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230210230813016.png" srcset="/img/loading.gif" lazyload alt="image-20230210230813016"></p>
+<p>②打开Locals查看局部变量</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230210230851520.png" srcset="/img/loading.gif" lazyload alt="image-20230210230851520"></p>
+<blockquote>
+<p>硬件变量与软件变量</p>
+<ul>
+<li>Objects：硬件变量的值</li>
+<li>Locals：软件变量的值</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230210230914667-16760418167091-16760418168953.png" srcset="/img/loading.gif" lazyload alt="image-20230210230914667"></p>
+</blockquote>
+<p>③运行</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230210231037704.png" srcset="/img/loading.gif" lazyload alt="image-20230210231037704"></p>
+<h2><span id="sv实验1">SV实验1</span></h2><h3><span id="实验文件">实验文件</span></h3><p>DUT(MCDT)：</p>
+<ul>
+<li><p>arbiter.v</p>
+</li>
+<li><p>slave_fifo.v</p>
+</li>
+<li>mcdt.v</li>
+</ul>
+<p>TB：tb1.v/tb2.sv/tb3.sv/tb4.sv</p>
+<p>其中tbx_ref.sv为参考代码</p>
+<h3><span id="代码讲解">代码讲解</span></h3><p>实验1代码要是没有思路 ，可以参考实验3、实验4的代码</p>
+<h4><span id="tb1-从-verilog-到-sv-的进场">TB1  从 Verilog 到 SV 的进场</span></h4><p><strong>tb1.v</strong></p>
+<ul>
+<li>为了了解sv兼容verilog，其实就是lab0的tb</li>
+</ul>
+<p><strong>仿真结果</strong></p>
+<p>tb1所有信号修改logic前</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230212161043771.png" srcset="/img/loading.gif" lazyload alt="image-20230212161043771"></p>
+<p>tb1所有信号修改logic后（包括rstn）</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230212161122027.png" srcset="/img/loading.gif" lazyload alt="image-20230212161122027"></p>
+<p><strong>结论</strong></p>
+<ul>
+<li>Net类型变成了Register</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230212161702265-16761898227021.png" srcset="/img/loading.gif" lazyload alt="image-20230212161702265"></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230212161817273.png" srcset="/img/loading.gif" lazyload alt="image-20230212161817273"></p>
+<h4><span id="tb2-方法-task-和函数-function">TB2 方法 task 和函数 function</span></h4><p> tb2.sv</p>
+<ul>
+<li>为了练习task和function，实现动态的时钟周期（时钟参数化，把tb1.v中的initial放到task里面）</li>
+</ul>
+<h4><span id="tb3-数组的使用">TB3 数组的使用</span></h4><p><strong>tb3.sv</strong></p>
+<ul>
+<li>练习动态数组，并且发送更多的数据！</li>
+</ul>
+<p><strong>结论</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230212214915369.png" srcset="/img/loading.gif" lazyload alt="image-20230212214915369"></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230212214923655.png" srcset="/img/loading.gif" lazyload alt="image-20230212214923655"></p>
+<p>动态数组及其连接的线网无法体现在仿真的Wave里，但是可以通过寄存器捕捉到（通道的FIFO）</p>
+<h4><span id="tb4-验证结构">TB4 验证结构</span></h4><p>tb4.sv</p>
+<ul>
+<li>为了实现清晰的验证结构，我们希望将 DUT 和激励发生器(stimulator) 之间划分</li>
+</ul>
+<p>在接下来开展实验步骤前，同学们可以将“数组的使用”环节中添加的代码部分移植到tb4.sv对应的位置上</p>
+<p>我们取消了<code>channel_write_task</code>，取而代之使用三个例化的<code>chnl_initator</code>来实现每个<code>channel_slave</code>对应的stimulator，用来发送激励，我们需要定义了三个方法：</p>
+<ul>
+<li><code>set_name()</code>：tb4.sv已实现</li>
+<li><code>chnl_write()</code></li>
+<li><code>chnl_idle()</code></li>
+</ul>
+<h4><span id="验证结构总结">验证结构总结</span></h4><p>主要内容：把TB对DUT发送接收信号的任务，改进到<code>chnl_initiator</code>中，从而对DUT进行驱动 </p>
+<p>补充：在实验2中我们会把硬件的<code>chnl_initiator</code>改成软件实现，实验1就是一个过渡</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230210232855644.png" srcset="/img/loading.gif" lazyload alt="验证结构"></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230210232753989.png" srcset="/img/loading.gif" lazyload alt="细节解释"></p>
+<ul>
+<li>clock &amp; reset proc：产生时钟</li>
+<li>chnl_initiator：发送接收与DUT的信号<ul>
+<li>角标M代表硬件模块</li>
+</ul>
+</li>
+<li>chnl_arr[]：动态数组，产生激励</li>
+</ul>
+<h4><span id="思考如何发送更快更紧密的数据">思考：如何发送更快更紧密的数据</span></h4><p>实验为什么希望发送更紧读高速的数据，足为了同学们可以观察到，是否你的三个<code>channel. slave</code>各自的<code>chX_ready</code>信号可以拉低呢?如果拉低了，这代表着什么?那么谓你试试看，考虑如何发送史多史快的数据，让MCDT的三个<code>chx_ready</code>信号可以拉低吧</p>
+<blockquote>
+<p><strong>我的理解</strong></p>
+<p>就是让你看到chX_ready信号拉低。。。这个拉低是因为MCDT的每条channel内部FIFO满了所以拉低了</p>
+<p>记得<code>chnl_idle</code></p>
+<p>否则所有数据发送完毕后，MCDT状态还是发送</p>
+<ul>
+<li>没有idle：</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230212153029125.png" srcset="/img/loading.gif" lazyload alt="没有idle"></p>
+<ul>
+<li>增加idle：</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230212153119309.png" srcset="/img/loading.gif" lazyload alt="增加idle"></p>
+</blockquote>
+<h2><span id="sv实验2">SV实验2</span></h2><p>回顾接口、仿真结束、类和包的使用</p>
+<h3><span id="代码讲解">代码讲解</span></h3><h4><span id="tb1-接口的使用">TB1 接口的使用</span></h4><p>本实验内容是实验1的tb4基础上的改进，主要改进内容：</p>
+<ul>
+<li>把<code>chnl_initator</code>的信号参数改为interface形式</li>
+<li>把data generator封装到<code>chnl_generator</code>模块中</li>
+</ul>
+<p>本节主要是写，TODO为：</p>
+<ul>
+<li>使用clocking块进行时钟驱动</li>
+<li>使用<code>idle_cycles</code>来控制空闲周期</li>
+</ul>
+<p><strong>实验</strong></p>
+<p>1.1</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230215214410651.png" srcset="/img/loading.gif" lazyload alt="image-20230215214410651"></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230215215913925.png" srcset="/img/loading.gif" lazyload alt="image-20230215215913925"></p>
+<h4><span id="tb2-仿真的结束">TB2 仿真的结束</span></h4><p>本实验需要移植tb1内容，<strong>了解</strong>仿真如何结束</p>
+<p>本节主要是了解，TODO具体需要实现两种定向测试：</p>
+<ul>
+<li><code>burst_test()</code>：发送500个数据后结束仿真</li>
+<li><code>fifo_full_test()</code>：发送直到DUT.channle.FIFO满后结束仿真</li>
+</ul>
+<h4><span id="tb3-类的例化和类的成员">TB3 类的例化和类的成员</span></h4><p>本实验已经变化了，但你不需要自己变</p>
+<p><strong>在类里面声明interface的指针一定要加<code>virtual</code>不然报错</strong></p>
+<p>在类里面的函数不用再和module一样声明为<code>function automatic void/...</code></p>
+<p>为什么我们把数据<code>transaction</code>放到类里面而不是结构体？因为我们后面可能还需要对这些数据进行处理</p>
+<p>本节TODO：</p>
+<ul>
+<li>类的例化</li>
+<li>类的调用</li>
+<li>测试的启动</li>
+</ul>
+<h4><span id="tb4-包的定义和类的继承">TB4 包的定义和类的继承</span></h4><p>我们的实验最终的一个形态，引入了新的类：<code>chnl_agent</code>、<code>chnl_root_test</code>、<code>chnl_basic_test</code>、<code>chnl_burst_test</code>和<code>chnl_fifo_full_test</code></p>
+<p>关于<code>chnl_agent</code>， 我们将它作为一个标准组件单元，它应该包括generator、driver(initiator)和monitor</p>
+<p>使用继承实现代码的复用</p>
+<p>以前的类之间裸漏的，现在的类都需要放在package里面，package相当于一个盒子。因此在tb4.sv中你首先要做的就是从包里import定义的类</p>
+<p>TODO：</p>
+<ul>
+<li>import package</li>
+<li>使用继承机制，移植<code>burst_test</code>和<code>fifo_full_test</code></li>
+<li>例化三个测试环境</li>
+<li>每个通道进行连接</li>
+<li>运行</li>
+</ul>
+<h3><span id="验证结构">验证结构</span></h3><p>tb4的验证结构如下（主要理解结构）</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230215213223585.png" srcset="/img/loading.gif" lazyload alt="image-20230215213223585"></p>
+<ul>
+<li>MCDT是硬件部分（module）</li>
+<li><p>chnl_root_test是软件部分</p>
+</li>
+<li><p>interface进行软硬件通信</p>
+</li>
+<li><p>软件类事先编译到package里面，最后一起编译到work library里面</p>
+</li>
+</ul>
+<p>功能图（主要理解功能）</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230214211450654.png" srcset="/img/loading.gif" lazyload alt="image-20230214211450654"></p>
+<ul>
+<li>结构</li>
+<li>接口传递，即interface如何一步一步传递到各个initiator</li>
+<li>组件连接</li>
+<li>运行</li>
+</ul>
+<h2><span id="sv实验3">SV实验3</span></h2><p>内容：随机约束和环境结构</p>
+<p>具体：升级实验2中generator和initiator之间的数据生成和数据传输的处理，减少agent里面的工作内容使其只做连接和子模块运行，完善结束测试</p>
+<p>一定要看实验3，不然验证结构越来越大看不过来</p>
+<h3><span id="实验分析">实验分析</span></h3><h4><span id="tb1-随机约束">TB1 随机约束</span></h4><p>了解：</p>
+<ul>
+<li>随机约束在类中定义方式</li>
+<li>如何随机化对象</li>
+<li>随机种子的使用方法</li>
+<li>对象的产生等等</li>
+</ul>
+<p>tb1继承了实验二绝大多数代码，主要是把：</p>
+<ul>
+<li>chnl_pkg移动到独立的chnl_pkg.sv文件中</li>
+<li>增强了chnl_trans类，把随机化和基本约束从generator交给了chnl_trans</li>
+<li>把发送多少trans从agent交给了generator，意味着真正控制仿真退出的是generator</li>
+<li>initiator不再会执行完毕，而是一直运行</li>
+<li>减少agent里面的工作内容使其只做连接和子模块运行，变成了个盒子</li>
+<li>同时更改了initiator和generator的连接，改为mailbox，同时增加<code>send_trans</code>并在实例化的trans添加外部约束</li>
+</ul>
+<p><strong>chnl_trans类内部成员：</strong></p>
+<ul>
+<li>动态数组：rand bit[31:0] data[];</li>
+<li>通道ID（方便调试）：rand int ch_id;</li>
+<li>数据包ID（方便调试）：rand int pkt_id;</li>
+<li>数据IDLE数量：rand int data_nidles;</li>
+<li>包IDLE数量：rand int pkt_nidles;</li>
+<li>bit rsp;</li>
+<li>local static int obj_id = 0;</li>
+</ul>
+<p><strong>chnl_trans类的约束</strong></p>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">constraint</span> cstr&#123;<br>  data<span class="hljs-variable">.size</span> <span class="hljs-keyword">inside</span> &#123;[<span class="hljs-number">4</span>:<span class="hljs-number">8</span>]&#125;;<br>  <span class="hljs-keyword">foreach</span>(data[i]) data[i] == <span class="hljs-number">&#x27;hC000_0000</span> + (<span class="hljs-keyword">this</span><span class="hljs-variable">.ch_id</span>&lt;&lt;<span class="hljs-number">24</span>) + (<span class="hljs-keyword">this</span><span class="hljs-variable">.pkt_id</span>&lt;&lt;<span class="hljs-number">8</span>) + i;<br>  <span class="hljs-keyword">soft</span> ch_id == <span class="hljs-number">0</span>;<span class="hljs-comment">//软约束</span><br>  <span class="hljs-keyword">soft</span> pkt_id == <span class="hljs-number">0</span>;<br>  data_nidles <span class="hljs-keyword">inside</span> &#123;[<span class="hljs-number">0</span>:<span class="hljs-number">2</span>]&#125;;<br>  pkt_nidles <span class="hljs-keyword">inside</span> &#123;[<span class="hljs-number">1</span>:<span class="hljs-number">10</span>]&#125;;<br>&#125;;<br></code></pre></div></td></tr></table></figure>
+<p><strong>TODO：</strong></p>
+<ul>
+<li>1.1 定义约束来实现chnl_base_test request</li>
+<li>1.2 由generator结束仿真</li>
+<li>1.3 命令行，随机数种子（如果种子不改变，则每次随机后的结果都一样）</li>
+<li>1.4 chnl_trans实例的充分利用</li>
+</ul>
+<p><strong>vsim参数</strong></p>
+<ul>
+<li><p><code>-sv_seed [num]</code>，传递随机种子，如果值为<code>random</code>则值表示随机，如果为固定值则会产生相同的数据</p>
+</li>
+<li><p><code>-solvefaildebug</code>，仿真失败后出现调试信息（用于看随机化失败原因）使用示例：</p>
+</li>
+</ul>
+<p><code>vsim -novopt -solvefaildebug -sv_seed random work.tb1</code></p>
+<h4><span id="验证结构">验证结构</span></h4><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230216215918742.png" srcset="/img/loading.gif" lazyload alt="image-20230216215918742"></p>
+<h4><span id="实验结果">实验结果</span></h4><p><strong>1.3实验结果</strong></p>
+<p><code>-sv_seed [num]</code>，传递随机种子，如果值为<code>random</code>则值表示随机，如果为固定值则会产生相同的数据，如下图是重复执行两次的结果，可以看到seed固定为1时每次随机的都一样：<code>vsim -novopt -solvefaildebug -sv_seed 1 work.tb1</code></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230218172447766.png" srcset="/img/loading.gif" lazyload alt="image-20230218172447766"></p>
+<p>下图是重复执行三次的结果，可以看到seed固定为0时每次随机的一样：<code>vsim -novopt -solvefaildebug -sv_seed 0 work.tb1</code></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230218172521023.png" srcset="/img/loading.gif" lazyload alt="image-20230218172521023"></p>
+<p>下图是重复执行三次的结果，可以看到seed随机后每次运行不一样：<code>vsim -novopt -solvefaildebug -sv_seed random work.tb1</code></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230218172740755.png" srcset="/img/loading.gif" lazyload alt="image-20230218172740755"></p>
+<p><strong>1.4实验结果</strong></p>
+<p>其实你改<code>$finish</code>到generator里面后就跑不到1200个数了，只有在chnl_root_test.run()中才可以</p>
+<p>具体实现猜测是只在generator中实例化一次req，initator中clone也要修改（我猜的clone）</p>
+<h4><span id="tb2-更加灵活的测试控制">TB2 更加灵活的测试控制</span></h4><p>内容：</p>
+<ul>
+<li>把generator从agent里面拿了出来，为什么要拿出来？因为我们可以很方便从chnl_root_test层次控制和随机化generator（控制方法在tb2中通过<code>do_config</code>）</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230218134916384.png" srcset="/img/loading.gif" lazyload alt="image-20230218134916384"></p>
+<ul>
+<li>在generator里面也存在trans的<strong>成员变量和对应约束</strong>，以便从generator控制chnl_trans的对应约束，并且randomize了generator也就randomize了chnl_trans</li>
+<li>chnl_root_test中加入<code>do_config()</code>用来randomize了generator，通过在每一个test里面实现不同的do_config来控制不同的测试</li>
+<li><mark>重要！</mark>之前的tb如果需要单独执行不同的测试用例需要例化不同的test并进行连接、调用和运行，<strong>还需要重新编译！</strong>反复编译是我们不希望的！通过添加命令行参数来选择测试用例。具体实现是在tb.sv中例化所有test并交给一个父类句柄数组调用<code>$value$plusargs(&quot;TESTNAME=%s&quot;, name)</code>来实现参数</li>
+</ul>
+<p>①为什么要有test？实际上我们的UVM代码并不会降低测试环境的代码量，尤其是环境测试的代码量没有减少，但是<strong>测试代码(即chnl_xxx_test)很明显减少</strong></p>
+<p>②为什么do_config是绿色的？因为到tb2，如果我们要改变测试，我们其他的组件都不用变，变得只是do_config</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230218142630860.png" srcset="/img/loading.gif" lazyload alt="image-20230218142630860"></p>
+<p>迁移generator，控制随机化，要实现不同的test类（测试用例），TODO：</p>
+<ul>
+<li>2.1 连接generator和agent.init</li>
+<li>2.2 <code>do_config()</code>中进行generator的随机化</li>
+<li>2.3 chnl_burst_test和chnl_fifo_full_test的随机化</li>
+<li>2.4 学习捕捉命令参数，来选择正确的测试用例（<code>-TESTNAME=xxx</code>)</li>
+</ul>
+<p>仿真运行命令可以是：<code>vsim +TESTNAME=chnl_burst_test work.tb2</code></p>
+<p><code>vsim -novopt -sv_seed random -solvefaildebug +TESTNAME=chnl_fifo_full_test work.tb3</code></p>
+<h4><span id="验证结构">验证结构</span></h4><p>验证结构</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230216215423044.png" srcset="/img/loading.gif" lazyload alt="image-20230216215423044"></p>
+<p>运行流程</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230218143410552.png" srcset="/img/loading.gif" lazyload alt="image-20230218143410552"></p>
+<p>运行流程原图</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230216215518947.png" srcset="/img/loading.gif" lazyload alt="image-20230216215518947"></p>
+<h4><span id="tb3-测试平台结构">TB3 测试平台结构</span></h4><p>tb3验证的结构会越来越丰满，tb2只有产生和发送激励的组件，一个完整的测试环境应该还有监测、比对的组件。到了svlab4，我们从一个小模块mcdt变成mcdf子系统，验证环境也会变大，只要理解svlab3则svlab4也比较容易理解了</p>
+<ul>
+<li>添加channel的monitor，mcdt的monitor，checker（checker内部fifo也是mailbox实现的）</li>
+<li>学习monitor如何于checker数据通信</li>
+<li>checker如何针对MCDT进行内部数据的比较</li>
+</ul>
+<p>为什么monitor和initiator放在一起？因为都依赖于interface，且功能单一。agent构成了验证组件里的最小单元</p>
+<p>为什么mcdt_monitior没有initiator？因为不需要输入激励啊傻逼</p>
+<p>内容：</p>
+<ul>
+<li><p>定义monitor和检测到的数据类</p>
+<ul>
+<li>monitor声明了要给mailbox句柄（真正实例化在checker里面）</li>
+<li>monitor同initiator一样，不再会执行完毕，而是一直运行</li>
+<li><p>在agent里面效仿initiator进行例化、连接和与运行（chnl_monitor和chnl_initiator一起对DUT的接口set_interface）</p>
+</li>
+<li><p>定义的监测数据结构体：</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230218151050595.png" srcset="/img/loading.gif" lazyload alt="image-20230218151050595"></p>
+<ul>
+<li>定义check并进行数据比对<code>do_compare()</code><ul>
+<li>check同initiator一样，不再会执行完毕，而是一直运行</li>
+<li>首先需要从MCDT输出的monitor取一个数据，这样才可以判断是哪个通道的数据</li>
+<li>进行性比较</li>
+</ul>
+</li>
+<li>在chnl_root_test进行各个组建的例化和接口连接，同时进行checker的mailbox和各种monitor的连接，并让整个环境运行起来</li>
+</ul>
+<p>TODO：</p>
+<ul>
+<li>3.1 monitor的mon_trans实现，功能是写入mailbox并打印数据</li>
+<li>3.2 agent里效仿initiator进行例化monitor，在test中进行interface连接</li>
+<li>3.3 实现check的数据比对<code>do_compare()</code>，如何从mailbox里面拿出数据，以及先从输出拿再从输入拿</li>
+<li>3.4 对各种组件进行例化，并进行接口的连接，mailbox的连接</li>
+</ul>
+<h4><span id="验证结构">验证结构</span></h4><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230218145323467.png" srcset="/img/loading.gif" lazyload alt="image-20230218145323467"></p>
+<h4><span id="思考fifo_full_test详解">思考：fifo_full_test详解</span></h4><h5><span id="测试用例内部的运行顺序">测试用例内部的运行顺序</span></h5><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230218230223574.png" srcset="/img/loading.gif" lazyload alt="image-20230218230223574"></p>
+<ul>
+<li>先<code>do_config()</code>，配置要发送多少个什么样的trans</li>
+<li>再运行各种组件</li>
+<li>最后运行generator</li>
+</ul>
+<p>为什么最后运行generator？</p>
+<ul>
+<li>如果generator放到前面，则generator的fork_join会卡住后面的fork_join</li>
+<li>如果generator放到前面并改为fork_join_none，则会全部并行启动不等待任何一个线程，直接结束仿真</li>
+</ul>
+<h5><span id="如何正常结束">如何正常结束</span></h5><p><code>run_stop_callback</code>收集三个generator的旗语，全部收集后结束仿真</p>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog">  <span class="hljs-keyword">class</span> chnl_generator;<br>	...<br>    <span class="hljs-keyword">task</span> run();<br>      <span class="hljs-keyword">repeat</span>(ntrans) send_trans();<br>      run_stop_flags<span class="hljs-variable">.put</span>();<br>    <span class="hljs-keyword">endtask</span><br>    ...<br>  <span class="hljs-keyword">endclass</span><br><br><span class="hljs-keyword">class</span> chnl_root_test;<br>    ...<br>   <span class="hljs-keyword">virtual</span> <span class="hljs-keyword">task</span> run_stop_callback();<br>      <span class="hljs-built_in">$display</span>(<span class="hljs-string">&quot;run_stop_callback enterred&quot;</span>);<br>      <span class="hljs-comment">// by default, run would be finished once generators raised &#x27;finish&#x27;</span><br>      <span class="hljs-comment">// flags </span><br>      <span class="hljs-built_in">$display</span>(<span class="hljs-string">&quot;%s: wait for all generators have generated and tranferred transcations&quot;</span>, <span class="hljs-keyword">this</span><span class="hljs-variable">.name</span>);<br>      run_stop_flags<span class="hljs-variable">.get</span>(<span class="hljs-number">3</span>);<br>      <span class="hljs-built_in">$display</span>(<span class="hljs-built_in">$sformatf</span>(<span class="hljs-string">&quot;*****************%s finished********************&quot;</span>, <span class="hljs-keyword">this</span><span class="hljs-variable">.name</span>));<br>      <span class="hljs-built_in">$finish</span>();<br>    <span class="hljs-keyword">endtask</span><br>	...<br><span class="hljs-keyword">endclass</span><br></code></pre></div></td></tr></table></figure>
+<h5><span id="fifo_full如何结束">fifo_full如何结束</span></h5><ul>
+<li>重载<code>gen_stop_callback()</code>函数，forever检测ready信号，如果检测到则break并触发事件</li>
+<li>另外一个线程等待这个事件出发，如果触发则关闭所有generator.run线程，此时我们应该意识到正常结束的条件改变了，我们无法收到三个旗语了因此需要重载<code>run_stop_callback</code>函数</li>
+<li>重载<code>run_stop_callback</code>函数，等待所有fifo为空后结束仿真</li>
+</ul>
+<p>这里我们还用到了系统函数<code>$countones</code>！</p>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">class</span> chnl_fifo_full_test <span class="hljs-keyword">extends</span> chnl_root_test;<br>	<span class="hljs-keyword">virtual</span> <span class="hljs-keyword">task</span> gen_stop_callback();<br>      <span class="hljs-keyword">bit</span>[<span class="hljs-number">2</span>:<span class="hljs-number">0</span>] chnl_ready_flags;<br>      <span class="hljs-built_in">$display</span>(<span class="hljs-string">&quot;gen_stop_callback enterred&quot;</span>);<br>      @(<span class="hljs-keyword">posedge</span> agents[<span class="hljs-number">0</span>]<span class="hljs-variable">.vif</span><span class="hljs-variable">.rstn</span>);<br>      <span class="hljs-keyword">forever</span> <span class="hljs-keyword">begin</span><br>        @(<span class="hljs-keyword">posedge</span> agents[<span class="hljs-number">0</span>]<span class="hljs-variable">.vif</span><span class="hljs-variable">.clk</span>);<br>        chnl_ready_flags = <span class="hljs-keyword">this</span><span class="hljs-variable">.get_chnl_ready_flags</span>();<br>        <span class="hljs-keyword">if</span>(<span class="hljs-built_in">$countones</span>(chnl_ready_flags) &lt;= <span class="hljs-number">1</span>) <span class="hljs-keyword">break</span>;<br>      <span class="hljs-keyword">end</span><br><br>      <span class="hljs-built_in">$display</span>(<span class="hljs-string">&quot;%s: stop 3 generators running&quot;</span>, <span class="hljs-keyword">this</span><span class="hljs-variable">.name</span>);<br>      -&gt; <span class="hljs-keyword">this</span><span class="hljs-variable">.gen_stop_e</span>;<br>    <span class="hljs-keyword">endtask</span><br>    <br>    <span class="hljs-keyword">virtual</span> <span class="hljs-keyword">task</span> run_stop_callback();<br>      ...<br>      <span class="hljs-keyword">fork</span><br>        <span class="hljs-keyword">wait</span>(agents[<span class="hljs-number">0</span>]<span class="hljs-variable">.vif</span><span class="hljs-variable">.ch_margin</span> == <span class="hljs-number">&#x27;h20</span>);<br>        <span class="hljs-keyword">wait</span>(agents[<span class="hljs-number">1</span>]<span class="hljs-variable">.vif</span><span class="hljs-variable">.ch_margin</span> == <span class="hljs-number">&#x27;h20</span>);<br>        <span class="hljs-keyword">wait</span>(agents[<span class="hljs-number">2</span>]<span class="hljs-variable">.vif</span><span class="hljs-variable">.ch_margin</span> == <span class="hljs-number">&#x27;h20</span>);<br>      <span class="hljs-keyword">join</span><br>	  ...<br>      <span class="hljs-built_in">$finish</span>();<br>    <span class="hljs-keyword">endtask</span><br><span class="hljs-keyword">endclass</span><br></code></pre></div></td></tr></table></figure>
+<h5><span id="定义这两个callback的意义">定义这两个callback的意义</span></h5><p>使得不同的测试用例，重载不同的方式结束仿真，并且最大程度进行代码复用</p>
+<h4><span id="思考时序逻辑采样和组合逻辑采样的区别">思考：时序逻辑采样和组合逻辑采样的区别</span></h4><p>clocking本身是时序逻辑，模拟不出来组合逻辑的效果</p>
+<p>组合逻辑不能用clocking!!!，因为clocking代表的时序逻辑，组合信号进去或者出来一定是跟采样相关的，这时候就体现不出来组合逻辑了，如下所示：</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230219133511056.png" srcset="/img/loading.gif" lazyload alt="image-20230219133511056"></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230219134040371.png" srcset="/img/loading.gif" lazyload alt="image-20230219134040371"></p>
+<h2><span id="sv实验4">SV实验4</span></h2><p>实验4的环境是完善的，相对于实验3结构和连接都不变，但是需要验证的DUT变大了</p>
+<p>仿真命令：<code>vsim -novopt -classdebug -solvefaildebug -sv_seed 0 +TESTNAME=mcdf_data_consistence_basic_test -l mcdf_data_consistence_basic_test_sim.log work.tb</code></p>
+<p><strong>对于软件验证环境主要有以下几个阶段：</strong></p>
+<ul>
+<li>建立阶段(build)</li>
+<li>连接阶段(connect)</li>
+<li>产生机理阶段(generate)</li>
+<li>发送激励阶段(transfer)</li>
+</ul>
+<p>区别：</p>
+<ul>
+<li>DUT变大了，接口变复杂了，验证环境变大了</li>
+<li>4个pkg，用于提供可分别验证四个模块的组件（主要是agent）：<ul>
+<li><code>chnl_pkg.sv</code>（不梳理了，和之前的一样）</li>
+<li><code>arb_pkg.sv</code>（只是为了表示正常验证别的项目的情况，需要对每个设计组件进行验证，此处全部忽略是因为MCDF不需要对arbiter进行验证）</li>
+<li><code>reg_pkg.sv</code></li>
+<li><code>fmt_pkg.sv</code></li>
+</ul>
+</li>
+<li>1个子系统pkg，最顶层的pkg集成了上面四个验证pkg，用于提供基础的验证环境（env、测试用例、checker） ：<code>mcdf_pkg.sv</code></li>
+<li>其他：<ul>
+<li>initiator换为driver，更好对应uvm</li>
+</ul>
+</li>
+</ul>
+<p>内容：</p>
+<ul>
+<li>梳理DUT</li>
+<li>梳理每一个pkg</li>
+<li>梳理硬件结构tb，按照硬件层次理解</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230219223559888.png" srcset="/img/loading.gif" lazyload alt="image-20230219223559888"></p>
+<p>编译要有顺序：对于设计文件，先编译底层模块，再编译mcdf.sv顶层模块</p>
+<p>MCDF相对于MCDT的扩充：</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230219223832063.png" srcset="/img/loading.gif" lazyload alt="image-20230219223832063"></p>
+<p>顶层mcdf_pkg：</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230219231120225.png" srcset="/img/loading.gif" lazyload alt="image-20230219231120225"></p>
+<ul>
+<li>mcdf_pkg用到的不同pkg的内容（包括mcdf_pkg）</li>
+<li>mcdf_pkg包括了其他pkg不具有的：mcdf_env、mcdf_base_test、mcdf_checker</li>
+<li>表达了代码复用的观点，即：<ul>
+<li>其他pkg放置可以复用的基本验证组件</li>
+<li>mcdf_pkg放置用于验证的环境、比较器等公用组件</li>
+</ul>
+</li>
+</ul>
+<p>实验看的顺序</p>
+<ul>
+<li>看tb文件：DUT接口、环境里例化的接口</li>
+<li>软件环境各个pkg包含的组件</li>
+<li>顶层的mcdf盒子里env的结构，组件里面怎么连接的，test是怎么协调各个generator工作的</li>
+</ul>
+<h4><span id="看tb文件">看tb文件</span></h4><p>验证环境复用设计的位宽等参数：</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230219231411882.png" srcset="/img/loading.gif" lazyload alt="image-20230219231411882"></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230219231532563.png" srcset="/img/loading.gif" lazyload alt="image-20230219231532563"></p>
+<p>mcdf_interface接口的作用</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230219232718780.png" srcset="/img/loading.gif" lazyload alt="image-20230219232718780"></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230219232653196.png" srcset="/img/loading.gif" lazyload alt="image-20230219232653196"></p>
+<p>mcdf_interface在之前的结构图里没有，这里我们手动加一个，从而实现MCDF的内部模块与测试环境的直接连接（而不是通过fmt），从而实现灰盒测试</p>
+<p><strong>可以直接跑tb.sv</strong>，有一个基本的测试mcdf_data_consistence_basic_test</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230219232939535.png" srcset="/img/loading.gif" lazyload alt="image-20230219232939535"></p>
+<p><strong>实验4的目的</strong>是参考目前我们写的测试，实现更多的测试</p>
+<h4><span id="看reg_pkg">看reg_pkg</span></h4><p>reg_pkg用于验证DUT寄存器，模拟上游配置DUT的模块</p>
+<p><strong>reg_trans</strong></p>
+<p>reg_pkg复用设计的宏：</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230219233516803.png" srcset="/img/loading.gif" lazyload alt="image-20230219233516803"></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230219233536990.png" srcset="/img/loading.gif" lazyload alt="image-20230219233536990"></p>
+<p>命令约束：</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230219233944122.png" srcset="/img/loading.gif" lazyload alt="image-20230219233944122"></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230220233716694.png" srcset="/img/loading.gif" lazyload alt="image-20230220233716694"></p>
+<ul>
+<li>根据手册对寄存器的要求，对相关地址和命令的随机化约束</li>
+<li><mark><strong>约束合理与否取决于你对设计的理解</strong></mark></li>
+</ul>
+<p>reg_driver</p>
+<p>发送激励</p>
+<p>同时forever运行这两个任务：</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230221211600204.png" srcset="/img/loading.gif" lazyload alt="image-20230221211600204"></p>
+<p>时序实现：</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230219233859900.png" srcset="/img/loading.gif" lazyload alt="image-20230219233859900"></p>
+<p><strong>最终可以看到</strong></p>
+<p>reg_pkg与chnl_pkg的大体结构一样</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230219235047907.png" srcset="/img/loading.gif" lazyload alt="image-20230219235047907"></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230219235200202.png" srcset="/img/loading.gif" lazyload alt="image-20230219235200202"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230219235126471.png" srcset="/img/loading.gif" lazyload alt="image-20230219235126471"></p>
+<h4><span id="补充monitor数据到哪了">补充：monitor数据到哪了？</span></h4><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230221212431968.png" srcset="/img/loading.gif" lazyload alt="image-20230221212431968"></p>
+<p>chnl_monitor、fmt_monitor、reg_monitor都到mcdf_checker里面了</p>
+<h4><span id="看fmt_pkg">看fmt_pkg</span></h4><p>fmt_pkg模拟下游模块接收数据，并于DUT进行总线交互</p>
+<p><strong>fmt_trans</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230220225936452.png" srcset="/img/loading.gif" lazyload alt="image-20230220225936452"></p>
+<ul>
+<li>其实之前的实验中trans也又配置部分（如：ntrans），只不过我们将太多精力集中到数据的产生了，从而忽视了配置部分</li>
+</ul>
+<p><strong>fmt_generator</strong></p>
+<p>和之前的一样</p>
+<p><strong>fmt_agnet</strong></p>
+<ul>
+<li>driver：模拟下游模块和DUT进行总线交互</li>
+<li>monitor：接收总线数据，打包发送给checker</li>
+</ul>
+<p><strong>fmt_driver</strong></p>
+<p>1）内部增加FIFO：和之前的driver不一样，多了一个FIFO，用于模拟内部数据的处理</p>
+<p>2）fmt_agent模拟下游模块，具有两种状态：</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230220224328728.png" srcset="/img/loading.gif" lazyload alt="image-20230220224328728"></p>
+<ul>
+<li>Formatter大数据量，fmt_agent小深度（来不及消耗）</li>
+<li>Formatter小数据量，fmt_agent大深度（过分消耗）</li>
+</ul>
+<p>3）模拟下游模块，下游模块存在4个同时forever运行的功能（四个功能forever运行）</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230220224827496.png" srcset="/img/loading.gif" lazyload alt="image-20230220224827496"></p>
+<ul>
+<li>do_receive模拟总线交互：总线按照时序进行交互，写内部FIFO</li>
+<li>do_consume模拟下游功能：读内部FIFO，模拟n个周期</li>
+<li>do_config模拟被配置的情况：不断的从generator得到配置内容，再次进行配置（不断地fifo = new(bound)，不断地配置内部控制变量）</li>
+<li>do_reset模拟复位情况：下游组件运行过程中复位的情况（检测并驱动grant = 0）</li>
+</ul>
+<p>4）为什么一开始new fifo需要无穷大，bound=4096，consum_period=1？</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230220231640514.png" srcset="/img/loading.gif" lazyload alt="image-20230220231640514"></p>
+<ul>
+<li>为了确保验证坏境一开始运行正确？（我猜的）</li>
+</ul>
+<h4><span id="看mcdf_pkg">看mcdf_pkg</span></h4><p>mcdf_pkg主要是构建一个验证环境，为此还需要一个checker用于比较</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230220232000033.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><strong>checker与参考模型的相对位置（checker内部结构）</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230220232314431.png" srcset="/img/loading.gif" lazyload alt></p>
+<p>数据格式问题：reg、chnl生成的数据与fmt_agent生成的数据不一样，需要进行转换</p>
+<p>相比较lab3，我们这里有条件使用参考模型，用于模拟mcdf的行为：mcdf_refmod</p>
+<ul>
+<li>参考模型内部针对数据有一些方法：<ul>
+<li><code>do_pack()</code>打包数据</li>
+<li><code>do_reg_update()</code>更新寄存器模型，为什么要有寄存器模型，因为DUT有</li>
+</ul>
+</li>
+<li>最终数据输出会在out_mbs[…]</li>
+</ul>
+<h4><span id="结构分析">结构分析</span></h4><p>内部寄存器：</p>
+<ul>
+<li>结构体建模</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230221221859943.png" srcset="/img/loading.gif" lazyload alt="image-20230221221859943"></p>
+<ul>
+<li>所按照设计要求</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222211750747.png" srcset="/img/loading.gif" lazyload alt="image-20230222211750747"></p>
+<ul>
+<li>所需要内部寄存器数量：三个结构体实例（实际上有6个，但因为功能都一样，这里把只读和读写寄存器合并到一起了）</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222212256897.png" srcset="/img/loading.gif" lazyload alt="image-20230222212256897"></p>
+<ul>
+<li>寄存器内部域</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222212058541.png" srcset="/img/loading.gif" lazyload alt="image-20230222212058541"></p>
+<p><strong>mcdf_refmod</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222215320579.png" srcset="/img/loading.gif" lazyload alt="image-20230222215320579"></p>
+<p>有指针、有实例、有函数</p>
+<p>参考模型内部针对数据有一些方法：</p>
+<ul>
+<li><code>do_pack()</code>打包数据</li>
+<li><code>do_reg_update()</code>更新寄存器模型，为什么要有寄存器模型，因为DUT有</li>
+</ul>
+<p>构造函数：对out mailbox实例化（in mailbox为句柄）</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222215532608.png" srcset="/img/loading.gif" lazyload alt="image-20230222215532608"></p>
+<p>run：</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222215626533.png" srcset="/img/loading.gif" lazyload alt="image-20230222215626533"></p>
+<ul>
+<li>do_reset()：复位寄存器、复位out_mb缓存（mailbox可以<code>.delete()</code>也可以<code>.new()</code>）</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222215751862.png" srcset="/img/loading.gif" lazyload alt="image-20230222215751862"></p>
+<p>更新寄存器：do_reg_update</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222222328374.png" srcset="/img/loading.gif" lazyload alt="image-20230222222328374"></p>
+<ul>
+<li>用法要点：<strong>按照地址访问结构体数组</strong><code>regs.[t.addr[3:2]]</code></li>
+<li>更新逻辑：只要捕捉到硬件上面对寄存器进行读写了，就可以及时更新checker里面refmod里面的寄存器</li>
+</ul>
+<p>不断的打包：do_packet</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222222654589.png" srcset="/img/loading.gif" lazyload alt="image-20230222222654589"></p>
+<ul>
+<li>用法要点：<code>wait(this.in_mbs[id].num() &gt; 0)</code></li>
+<li>内部功能：按照寄存器要求和内部状态进行数据打包，打包完毕按照ch_id进行各个通道out_mailbox发送</li>
+</ul>
+<p>get_field_valid</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222222619866.png" srcset="/img/loading.gif" lazyload alt="image-20230222222619866"></p>
+<p>refmod补充：</p>
+<ul>
+<li>refmod没有实现的内容：<ul>
+<li>reg控制通道开关</li>
+<li>arbiter仲裁没有模拟。目前假定的情况是3个chnl数据都能正常处理、没有丢数，in_mailbox(chnl_mailbox)深度足够大</li>
+</ul>
+</li>
+<li>refmod实现的内容：<ul>
+<li>寄存器的模拟</li>
+<li>对于数据的长度打包</li>
+</ul>
+</li>
+<li>refmod的作用：<ul>
+<li>数据完整性检查，但对于不同channel开关、谁在前谁在后没有进行检查优先级</li>
+</ul>
+</li>
+<li>如何检查refmod没实现的功能？参考本节TODO1.3内容</li>
+</ul>
+<p><strong>checker</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222225418886.png" srcset="/img/loading.gif" lazyload alt="image-20230222225418886"></p>
+<p>流程：</p>
+<ul>
+<li>从fmt_agent.monitor获取dut的输出trans</li>
+<li>根据这个trans从refmod中获取对应ch_id的trans</li>
+<li>调用trans.compare进行比较</li>
+<li>成功了…失败了…</li>
+</ul>
+<p>打印错误消息：使用rpt_pkg</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222224717049.png" srcset="/img/loading.gif" lazyload alt="image-20230222224717049"></p>
+<p>do_report</p>
+<ul>
+<li>仿真结束要做总结</li>
+<li>如果chnl/reg_mb/fmt_mb仍有数据则报错 </li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222224755391.png" srcset="/img/loading.gif" lazyload alt="image-20230222224755391"></p>
+<h4><span id="整合环境">整合环境</span></h4><h5><span id="mcdf_env">mcdf_env</span></h5><p>主要功能：内部验证组建的连接、例化、运行、报告</p>
+<p>内部组件</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222225748117.png" srcset="/img/loading.gif" lazyload alt="image-20230222225748117"></p>
+<p>例化与连接</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222230054035.png" srcset="/img/loading.gif" lazyload alt="image-20230222230054035"></p>
+<p>配置与运行</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222230112753.png" srcset="/img/loading.gif" lazyload alt="image-20230222230112753"></p>
+<ul>
+<li>do_config实验四没提过，难道我们不用配置generator了？我们在这个地方配置：</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222230203795.png" srcset="/img/loading.gif" lazyload alt="image-20230222230203795"></p>
+<p>报告：嵌套运行do_report</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222230232300.png" srcset="/img/loading.gif" lazyload alt="image-20230222230232300"></p>
+<h5><span id="test">test</span></h5><p>主要功能：generator与组建的连接、env的例化</p>
+<p>内部组件：</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222230615477.png" srcset="/img/loading.gif" lazyload alt="image-20230222230615477"></p>
+<p>例化与连接：</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222230634856.png" srcset="/img/loading.gif" lazyload alt="image-20230222230634856"></p>
+<ul>
+<li>report的细节稍后单独讲</li>
+</ul>
+<p>运行：</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222230719334.png" srcset="/img/loading.gif" lazyload alt="image-20230222230719334"></p>
+<ul>
+<li>为什么先<code>env.run()</code>，因为里面有些组件不一定能run完，所以直接fork_joinnone就性</li>
+<li>接下来我们要做，do_reg，do_formatter，do_data，最后do_report，什么逻辑？流程与逻辑如下：<ul>
+<li>就像我们配置一个硬件一样，先配置寄存器功能模式（do_reg）</li>
+<li>随机化配置下游用于接受的组件（do_formatter）</li>
+<li>类似实验三，随机化、并发送三个chnl数据（do_data）</li>
+<li>仿真结束</li>
+<li>do_report，嵌套调用env里面的do_report，再调用rpt_pkg的report</li>
+</ul>
+</li>
+</ul>
+<p>mcdf_base_test：</p>
+<p>作为父类都是虚方法，需要我们实现各自的test</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222231940402.png" srcset="/img/loading.gif" lazyload alt="image-20230222231940402"></p>
+<p>mcdf_base_test内部还声明了一些我们可能用到的一些基本函数：</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222232122203.png" srcset="/img/loading.gif" lazyload alt="image-20230222232122203"></p>
+<ul>
+<li>diff_value：单纯进行比较数据</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222232241090.png" srcset="/img/loading.gif" lazyload alt="image-20230222232241090"></p>
+<ul>
+<li>read_reg、idle_reg、write_reg：在do_reg函数中会有作用<ul>
+<li>间接的控制，register_generator产生对应的transaction并通过driver发送出去</li>
+<li>哪些trans？`IDLE `READ `WRITE</li>
+<li>注意对于read_reg是一个读的方向，还会有读数据，数据通路如下图所示：</li>
+</ul>
+</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222232523299.png" srcset="/img/loading.gif" lazyload alt="image-20230222232523299"></p>
+<h5><span id="mcdf_data_consistence_basic_test-一个非常基本的test">mcdf_data_consistence_basic_test 一个非常基本的test</span></h5><p>实现内容：do_reg、do_formatter、do_data</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222232721477.png" srcset="/img/loading.gif" lazyload alt="image-20230222232721477"></p>
+<p>do_reg：</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222232835526.png" srcset="/img/loading.gif" lazyload alt="image-20230222232835526"></p>
+<ul>
+<li>最后记得对reg总线进行idle</li>
+</ul>
+<p>do_formatter</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222232920444.png" srcset="/img/loading.gif" lazyload alt="image-20230222232920444"></p>
+<p>do_data：和实验三类似</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230222232947003.png" srcset="/img/loading.gif" lazyload alt="image-20230222232947003"></p>
+<p>说完了回到实验里面</p>
+<h4><span id="todo">TODO</span></h4><ul>
+<li>1.1 绘制验证结构</li>
+<li>1.2 根据自己情况实现测试功能点（路桑建议根据你的时间，至少写两到三个）</li>
+<li>1.3 选做，要求我们实现的一些<strong>额外检查</strong>的方法（可以从实验五中可以查找到）</li>
+</ul>
+<p>1.2功能点：</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230226141234706.png" srcset="/img/loading.gif" lazyload alt="image-20230226141234706"></p>
+<ul>
+<li>这几个验证功能点，对用lab5的测试用例：</li>
+</ul>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-comment">// Vplan 1.1 registers.read_write_test</span><br><span class="hljs-keyword">class</span> mcdf_reg_read_write_test <span class="hljs-keyword">extends</span> mcdf_base_test;<br><br><span class="hljs-comment">// Vplan 1.2.2 registers.stability_test.reserved_fields_write</span><br><span class="hljs-comment">// Vplan 1.2.3 registers.stability_test.status_regs_write</span><br><span class="hljs-keyword">class</span> mcdf_reg_stability_test <span class="hljs-keyword">extends</span> mcdf_base_test;<br>    <br><span class="hljs-comment">// Vplan 1.2.1 registers.stability_test.illegal_addr_access</span><br><span class="hljs-comment">// Vplan 2.0 channel switch</span><br><span class="hljs-comment">// Vplan 3.0 arbiter priority</span><br><span class="hljs-comment">// Vplan 4.0 packet length</span><br><span class="hljs-keyword">class</span> mcdf_full_random_test <span class="hljs-keyword">extends</span> mcdf_base_test;<br><br><span class="hljs-comment">// Vplan 5.0 channel switch</span><br><span class="hljs-comment">// configure formatter agent with low bandwidth and check delayed time</span><br><span class="hljs-comment">// between req and grant </span><br><span class="hljs-keyword">class</span> mcdf_down_stream_low_bandwidth_test <span class="hljs-keyword">extends</span> mcdf_base_test;<br></code></pre></div></td></tr></table></figure>
+<ul>
+<li>lab5中的基本测试：</li>
+</ul>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">class</span> mcdf_data_consistence_basic_test <span class="hljs-keyword">extends</span> mcdf_base_test;<br></code></pre></div></td></tr></table></figure>
+<p>1.3额外检查的方法解释：</p>
+<ul>
+<li>寄存器的读写（参考mcdf_data_consistence_base_test里面的寄存器读写函数）</li>
+<li><code>mcdf_checker::do_channel_disable_check()</code>，数据通道的开关的检查（通过检测enable信号，再得到chnl_intf，从而进行检查）</li>
+<li><code>mcdf_checker::do_arbiter_priority_check()</code>优先级检查</li>
+<li>发包的长度的检查</li>
+<li>下游低带宽的测试</li>
+</ul>
+<p>额外的检查方法与refmod：所以我们知道不是所有用能都要用refmod进行模拟，有些功能是独立进行检查的</p>
+<h4><span id="report-package">report package</span></h4><p>为什么要有report package？</p>
+<ul>
+<li>控制消息：因为UVM里面也有消息的管理，没有那么简单的直接$display，你会发现如果我们在SV中用了消息包（report package）管理和过滤消息会更加容易</li>
+<li>总结消息：帮助我们获得全局信息整体的一个总结</li>
+</ul>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-comment">//我懒得写了</span><br>分类<br><br>严重等级<br><br>不同报告的处理<br><br>默认严重等级为LOW<br><br>logname<br><br>counter为了最终汇总<br></code></pre></div></td></tr></table></figure>
+<blockquote>
+<p><strong>lab4代码有关rpk_pkg函数调用的解释：</strong></p>
+<p>你不都import了吗，为什么mcdf_pkg调用rpk_pkg方法要::？这里是路科画蛇添足，说是什么为了明确的告诉大家这个report哪里来的</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230223142631222.png" srcset="/img/loading.gif" lazyload alt="image-20230223142631222"></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230223142622915.png" srcset="/img/loading.gif" lazyload alt="image-20230223142622915"></p>
+<p>顶层的打印消息：</p>
+<p>两个do_report，不仅env环境里面需要report，并且还需要统计总共的report</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230223144343063.png" srcset="/img/loading.gif" lazyload alt="image-20230223144343063"></p>
+</blockquote>
+<h4><span id="看设计文件">看设计文件</span></h4><p>fifo、arbiter不讲了</p>
+<p>讲register和formatter，以及param_def</p>
+<p><code>`SLVn_X_REG</code>用于寄存器编码</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230223150410861.png" srcset="/img/loading.gif" lazyload alt="image-20230223150410861"></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230223150423637.png" srcset="/img/loading.gif" lazyload alt="image-20230223150423637"></p>
+<p>小白的时候就以黑盒的方式验证：看接口、看端口的时序、看寄存器</p>
+<p>后面我们需要个别比特位从内部检测出来，实验五会讲，以一种灰盒方式验证</p>
+<p>如果我们想看MCDF的介绍，再回看实验0</p>
+<h4><span id="要点总结">要点总结</span></h4><p>1.通过对功能和接口进行研究，需要围绕四个主要的功能区的子模块设计agent组件以及对应的不同的数据传输结构，最终封装到xxx_pkg中：chnl、arbiter、formatter、register</p>
+<p>有一个专门的package（mcdf_pakage）用于集成，集成内容：</p>
+<ul>
+<li>这四个agent中的除了generator相关的内容、以及checker会在env中连接、例化、配置、运行</li>
+<li>generator则单独在base_test中例化并与各个agent连接（这样做的好处可能是方便config）</li>
+</ul>
+<p>env和generator运行</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230219231120225.png" srcset="/img/loading.gif" lazyload alt="z"></p>
+<p>2.refmod的输入输出</p>
+<p>使用mailbox，通过句柄传递，所以体现不到接口上</p>
+<p>3.在哪结束的？</p>
+<p>mcdf_base_test的run函数中调用的$finishz，其中run函数会调用do_reg和do_fmt进行运行时配置，配置后会调用do_data发送主要数据激励</p>
+<p>4.如何写测试用例</p>
+<p>通过学习TODO的1.2内容我们可以发现测试用用例主要有以下几种：</p>
+<ul>
+<li>完全随机的测试用例，这种测试用例可以覆盖的功能点最全<ul>
+<li>mcdf_full_random_test</li>
+</ul>
+</li>
+<li>数据激励随机，其他配置固定/感兴趣的约束<ul>
+<li>mcdf_data_consistence_basic_test</li>
+<li>mcdf_down_stream_low_bandwidth_test</li>
+</ul>
+</li>
+<li>某些特定功能的测试，无数据激励do_data发送<ul>
+<li>mcdf_reg_read_write_test</li>
+<li>mcdf_reg_stability_test</li>
+</ul>
+</li>
+</ul>
+<h2><span id="sv实验5">SV实验5</span></h2><h3><span id="主要内容">主要内容</span></h3><p><strong>实验5的不同</strong></p>
+<p>实验5相比较实验4并没有添加更多的代码，实验5是在实验4的基础上（实验4需要理解验证结构）添加了实验四的1.3内容，我们先看看实验5的代码</p>
+<p>实验5路科已经定义了所有的功能覆盖率了，实验五就是让大家收集而不是定义，因为每个人自己定义它的标准可能不一样，则实验验收没有标准。要求，在该情况下理解每一个功能覆盖率是如何映射到测试功能点的。</p>
+<p>实验四是怎么测试，实验五是如何映射到测试功能点，测试写的充分对应的功能覆盖点一定是100％，如果不充分对应的功能覆盖率一定是不满足的</p>
+<p>我们还需要理解这些功能覆盖率如何定义的，以后工作里面就参考这些实验里的代码</p>
+<p><strong>运行实验5</strong></p>
+<p>实验5相对于实验四还有一个cover的summary：</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230224225723694.png" srcset="/img/loading.gif" lazyload alt="image-20230224225723694"></p>
+<ul>
+<li>total coverage表示的是本次仿真的整体覆盖率</li>
+</ul>
+<h4><span id="回顾实验4">回顾实验4</span></h4><p><strong>mcdf_interface（灰盒验证）</strong></p>
+<p>验证平台抓取DUT内部信号，在实验五中通过<code>mcdf_if</code>抓取的：</p>
+<ul>
+<li>补充：mcdf_if与chnl_if的不同：chnl_if利用的设计已有接口，并在设计实例化处进行连接；mcdf_if则是直接在tb中通过层次调用dut中的信号进行连接的，设计不对外的信号</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230224230408100.png" srcset="/img/loading.gif" lazyload alt="image-20230224230408100"></p>
+<p>如何把DUT信号连接到mcdf_if上？通过句柄间接引用</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230224230604236.png" srcset="/img/loading.gif" lazyload alt="image-20230224230604236"></p>
+<p><strong>checker</strong></p>
+<blockquote>
+<p><code>do_channel_disable_check()</code>如何实现的？</p>
+<p>使用@和iff对mcdf中的enable信号进行检查，获取方法是从mcdf_vif中获取</p>
+<p>如果为低则检查该通道的chnl_valid信号与chnl_ready信号，都为高则报错</p>
+<p>可以不用mcdf_if实现<code>do_channel_disable_check()</code>吗？</p>
+<p>可以，你可以直接用refmod里面对应的寄存器域，一种可行的改法如下：</p>
+<p>原来</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230224232415755.png" srcset="/img/loading.gif" lazyload alt="image-20230224232415755"></p>
+<p>改为</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230224232320869.png" srcset="/img/loading.gif" lazyload alt="image-20230224232320869"></p>
+<p>但这种用法需要有两个假设：</p>
+<ul>
+<li>假设你的refmod中对寄存器的功能的描述准确（你的refmod中寄存器的值，应该和设计里面相同）</li>
+<li>假设你对设计中寄存器的配置可以反映到refmod中 </li>
+</ul>
+<p><code>do_arbiter_priority_check()</code>优先级检查<mark>重点：get_slave_id_with_prio模拟了arbiter的仲裁逻辑</mark></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230224233409701.png" srcset="/img/loading.gif" lazyload alt="image-20230224233409701"></p>
+<ul>
+<li>通过arb_if获取f2a_id_req信号，为高则是准备拿数了</li>
+<li>调用<code>get_slave_id_with_prio()</code>来模拟arbiter的按照prio的仲裁逻辑，获得当前应该拿数的通道</li>
+<li>再等待设计一个上升沿</li>
+<li>检测设计内部的对应通道的发送请求是否为高</li>
+</ul>
+<p>补充：注意逻辑不等号<code>!==</code>，此时x与z也参与表达式（即x等于x，0不等于x）</p>
+</blockquote>
+<p>还有一个test路科不讲了，让你自己实现</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230225144327024.png" srcset="/img/loading.gif" lazyload alt="image-20230225144327024"></p>
+<h4><span id="实验五代码讲解">实验五代码讲解</span></h4><p>实验5不是我们去定义功能覆盖率，而是理解功能覆盖率如何定义的情况下了来完成功能覆盖率的增长、收集、分析的要求</p>
+<p>你要做的是根据实验5的内容去完成上述要求，但是视频的内容主要是分析功能覆盖率的定义</p>
+<h5><span id="mcdf_coverage"><strong>mcdf_coverage</strong></span></h5><p>实验5对比实验4新增一个组件：<code>mcdf_coverage</code>类</p>
+<p><strong>关于内部结构</strong></p>
+<ul>
+<li>mcdf_coverage里面有很多interface指针，我们利用interface指针查看变量，多数都是硬件信号的变量（几乎把所有intf都拿过来了：chnl_intf, reg_intf, arb_intf, fmt_intf, mcdf_intf）</li>
+<li>mcdf_coverage里面定义了6个covergroup，这些covergroup进行实例化<code>new()</code></li>
+<li>mcdf_coverage里面定义了4个采样任务来对这6个covergroup进行采样，调用了实例的<code>sample()</code>方法，这四个任务统一在<code>run()</code>任务中启动，任务中对采样的时刻为各自感兴趣的时刻而不是每一个上升沿采样</li>
+<li>mcdf_coverage定义<code>do_report()</code>函数用于打印覆盖率，会被env调用（env会调用check.report和coverage.report）</li>
+</ul>
+<p>关于<code>$get_coverage()</code>和<code>inst.get_coverage()</code></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230225153443068.png" srcset="/img/loading.gif" lazyload alt="image-20230225153443068"></p>
+<ul>
+<li><code>$get_coverage()</code>返回全局的覆盖率</li>
+<li><code>inst.get_coverage()</code>返回该covergroup的覆盖率</li>
+</ul>
+<p><strong>covergroup如何定义的</strong></p>
+<p>回顾：<code>binsof()</code>构造生成其表达式的bins，可以是覆盖点(为单个变量显式定义或隐式定义)或覆盖点仓</p>
+<p>覆盖率与测试用例：</p>
+<ul>
+<li>为什么6个covergroup，对应实验4中验证计划6个功能点，并且可以看到给covergroup就是对这6个功能点的测试类名称添加了<code>cg_</code>前缀，如：<code>mcdf_reg_write_read_test</code>对应<code>cg_mcdf_reg_write_read</code></li>
+<li><strong>覆盖率的收集主要是针对测试用例，用于统计测试用例是否测试充分</strong>，因此bin主要是针对覆盖点来的，并且如果出现不符合要求的组合合理运用<code>illegal_bins</code>进行报错</li>
+</ul>
+<p>我们一般如何定义一个covergroup？</p>
+<ul>
+<li>使用covergroup去针对某个信号点进行定义，并不在covergroup产生纳入统计的bin，同时对非法值配置<code>illegal_bins</code></li>
+<li>主要的覆盖逻辑在cross中产生，通过cross不同的covergroup并对其中的值进行组合成为不同的bins</li>
+</ul>
+<p>我们要理解这6个测试内容，再研究如何映射，如何量化，下面进行具体分析：</p>
+<p><code>cg_mcdf_reg_write_read</code></p>
+<ul>
+<li>addr：为交叉覆盖点，定义寄存器地址的覆盖点</li>
+<li>cmd：为交叉覆盖点，定义读写指令的覆盖点</li>
+<li>(重点)cmdXaddr：用于生成bins的交叉覆盖点，内部主要用到前面定义覆盖点的对应信号</li>
+</ul>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">covergroup</span> cg_mcdf_reg_write_read;<br>    addr: <span class="hljs-keyword">coverpoint</span> reg_vif<span class="hljs-variable">.mon_ck</span><span class="hljs-variable">.cmd_addr</span> &#123;<br>        type_option<span class="hljs-variable">.weight</span> = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">bins</span> slv0_rw_addr = &#123;<span class="hljs-meta">`SLV0_RW_ADDR&#125;;</span><br>        <span class="hljs-keyword">bins</span> slv1_rw_addr = &#123;<span class="hljs-meta">`SLV1_RW_ADDR&#125;;</span><br>        <span class="hljs-keyword">bins</span> slv2_rw_addr = &#123;<span class="hljs-meta">`SLV2_RW_ADDR&#125;;</span><br>        <span class="hljs-keyword">bins</span> slv0_r_addr  = &#123;<span class="hljs-meta">`SLV0_R_ADDR &#125;;</span><br>        <span class="hljs-keyword">bins</span> slv1_r_addr  = &#123;<span class="hljs-meta">`SLV1_R_ADDR &#125;;</span><br>        <span class="hljs-keyword">bins</span> slv2_r_addr  = &#123;<span class="hljs-meta">`SLV2_R_ADDR &#125;;</span><br>    &#125;<br>    cmd: <span class="hljs-keyword">coverpoint</span> reg_vif<span class="hljs-variable">.mon_ck</span><span class="hljs-variable">.cmd</span> &#123;<br>        type_option<span class="hljs-variable">.weight</span> = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">bins</span> write = &#123;<span class="hljs-meta">`WRITE&#125;;</span><br>        <span class="hljs-keyword">bins</span> read  = &#123;<span class="hljs-meta">`READ&#125;;</span><br>        <span class="hljs-keyword">bins</span> idle  = &#123;<span class="hljs-meta">`IDLE&#125;;</span><br>    &#125;<br>    cmdXaddr: <span class="hljs-keyword">cross</span> cmd, addr &#123;<br>        <span class="hljs-keyword">bins</span> slv0_rw_addr = <span class="hljs-keyword">binsof</span>(addr<span class="hljs-variable">.slv0_rw_addr</span>);<br>        <span class="hljs-keyword">bins</span> slv1_rw_addr = <span class="hljs-keyword">binsof</span>(addr<span class="hljs-variable">.slv1_rw_addr</span>);<br>        <span class="hljs-keyword">bins</span> slv2_rw_addr = <span class="hljs-keyword">binsof</span>(addr<span class="hljs-variable">.slv2_rw_addr</span>);<br>        <span class="hljs-keyword">bins</span> slv0_r_addr  = <span class="hljs-keyword">binsof</span>(addr<span class="hljs-variable">.slv0_r_addr</span> );<br>        <span class="hljs-keyword">bins</span> slv1_r_addr  = <span class="hljs-keyword">binsof</span>(addr<span class="hljs-variable">.slv1_r_addr</span> );<br>        <span class="hljs-keyword">bins</span> slv2_r_addr  = <span class="hljs-keyword">binsof</span>(addr<span class="hljs-variable">.slv2_r_addr</span> );<br>        <span class="hljs-keyword">bins</span> write        = <span class="hljs-keyword">binsof</span>(cmd<span class="hljs-variable">.write</span>);<br>        <span class="hljs-keyword">bins</span> read         = <span class="hljs-keyword">binsof</span>(cmd<span class="hljs-variable">.read</span> );<br>        <span class="hljs-keyword">bins</span> idle         = <span class="hljs-keyword">binsof</span>(cmd<span class="hljs-variable">.idle</span> );<br>        <span class="hljs-keyword">bins</span> write_slv0_rw_addr  = <span class="hljs-keyword">binsof</span>(cmd<span class="hljs-variable">.write</span>) &amp;&amp; <span class="hljs-keyword">binsof</span>(addr<span class="hljs-variable">.slv0_rw_addr</span>);<br>        <span class="hljs-keyword">bins</span> write_slv1_rw_addr  = <span class="hljs-keyword">binsof</span>(cmd<span class="hljs-variable">.write</span>) &amp;&amp; <span class="hljs-keyword">binsof</span>(addr<span class="hljs-variable">.slv1_rw_addr</span>);  <br>        <span class="hljs-keyword">bins</span> write_slv2_rw_addr  = <span class="hljs-keyword">binsof</span>(cmd<span class="hljs-variable">.write</span>) &amp;&amp; <span class="hljs-keyword">binsof</span>(addr<span class="hljs-variable">.slv2_rw_addr</span>);<br>        <span class="hljs-keyword">bins</span> read_slv0_rw_addr   = <span class="hljs-keyword">binsof</span>(cmd<span class="hljs-variable">.read</span>) &amp;&amp; <span class="hljs-keyword">binsof</span>(addr<span class="hljs-variable">.slv0_rw_addr</span>);<br>        <span class="hljs-keyword">bins</span> read_slv1_rw_addr   = <span class="hljs-keyword">binsof</span>(cmd<span class="hljs-variable">.read</span>) &amp;&amp; <span class="hljs-keyword">binsof</span>(addr<span class="hljs-variable">.slv1_rw_addr</span>);<br>        <span class="hljs-keyword">bins</span> read_slv2_rw_addr   = <span class="hljs-keyword">binsof</span>(cmd<span class="hljs-variable">.read</span>) &amp;&amp; <span class="hljs-keyword">binsof</span>(addr<span class="hljs-variable">.slv2_rw_addr</span>);<br>        <span class="hljs-keyword">bins</span> read_slv0_r_addr    = <span class="hljs-keyword">binsof</span>(cmd<span class="hljs-variable">.read</span>) &amp;&amp; <span class="hljs-keyword">binsof</span>(addr<span class="hljs-variable">.slv0_r_addr</span>); <br>        <span class="hljs-keyword">bins</span> read_slv1_r_addr    = <span class="hljs-keyword">binsof</span>(cmd<span class="hljs-variable">.read</span>) &amp;&amp; <span class="hljs-keyword">binsof</span>(addr<span class="hljs-variable">.slv1_r_addr</span>); <br>        <span class="hljs-keyword">bins</span> read_slv2_r_addr    = <span class="hljs-keyword">binsof</span>(cmd<span class="hljs-variable">.read</span>) &amp;&amp; <span class="hljs-keyword">binsof</span>(addr<span class="hljs-variable">.slv2_r_addr</span>); <br>    &#125;<br><span class="hljs-keyword">endgroup</span><br></code></pre></div></td></tr></table></figure>
+<blockquote>
+<p><code>type_option.weight=0</code>的作用？</p>
+<p>在coverpoint中调用<code>type_option.weight=0</code>的作用是不生成该覆盖点下的bins，并且不把该覆盖点纳入覆盖率收集</p>
+<p>并且定义的cross如果使用到了该coverpoint，则依旧不自动生成该覆盖点相关的bins</p>
+<p>为什么在cmdXaddr重复声明addr和cmd？</p>
+<p>cmdXaddr是你真正产生bins的覆盖点，由于已经设置了<code>type_option.weight=0</code>则之前的覆盖点都不会生成bins，所以你如果仍然需要对这些覆盖点进行收集，你需要重复定义addr和cmd的bins，以便收集对应的覆盖率</p>
+<p>同时在cmdXaddr中一个一个声明我们关心的组合情况，可以从容地知名我们关心的情况</p>
+</blockquote>
+<p><code>cg_mcdf_reg_illegal_access</code></p>
+<p>也就是说你需要访问一些非法的：非法地址、对寄存器保留域、对状态寄存器进行读写</p>
+<ul>
+<li>addr：地址（因为我们在一个专门收集非法地址的覆盖点，所以我们希望illegal出现）</li>
+<li>cmd：读写命令</li>
+<li>wdata：写数据合法与非法范围</li>
+<li>rdata：读数据合法范围</li>
+<li>cmdXaddrXdata：用于生成bins的交叉覆盖点</li>
+</ul>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">covergroup</span> cg_mcdf_reg_illegal_access;<br>    addr: <span class="hljs-keyword">coverpoint</span> reg_vif<span class="hljs-variable">.mon_ck</span><span class="hljs-variable">.cmd_addr</span> &#123;<br>        type_option<span class="hljs-variable">.weight</span> = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">bins</span> legal_rw = &#123;<span class="hljs-meta">`SLV0_RW_ADDR, `SLV1_RW_ADDR, `SLV2_RW_ADDR&#125;;</span><br>        <span class="hljs-keyword">bins</span> legal_r = &#123;<span class="hljs-meta">`SLV0_R_ADDR, `SLV1_R_ADDR, `SLV2_R_ADDR&#125;;</span><br>        <span class="hljs-keyword">bins</span> illegal = &#123;[<span class="hljs-number">8&#x27;h20</span>:$], <span class="hljs-number">8&#x27;hC</span>, <span class="hljs-number">8&#x27;h1C</span>&#125;;<br>    &#125;<br>    cmd: <span class="hljs-keyword">coverpoint</span> reg_vif<span class="hljs-variable">.mon_ck</span><span class="hljs-variable">.cmd</span> &#123;<br>        type_option<span class="hljs-variable">.weight</span> = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">bins</span> write = &#123;<span class="hljs-meta">`WRITE&#125;;</span><br>        <span class="hljs-keyword">bins</span> read  = &#123;<span class="hljs-meta">`READ&#125;;</span><br>    &#125;<br>    wdata: <span class="hljs-keyword">coverpoint</span> reg_vif<span class="hljs-variable">.mon_ck</span><span class="hljs-variable">.cmd_data_m2s</span> &#123;<br>        type_option<span class="hljs-variable">.weight</span> = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">bins</span> legal = &#123;[<span class="hljs-number">0</span>:<span class="hljs-number">&#x27;h3F</span>]&#125;;<br>        <span class="hljs-keyword">bins</span> illegal = &#123;[<span class="hljs-number">&#x27;h40</span>:$]&#125;;<br>    &#125;<br>    rdata: <span class="hljs-keyword">coverpoint</span> reg_vif<span class="hljs-variable">.mon_ck</span><span class="hljs-variable">.cmd_data_s2m</span> &#123;<br>        type_option<span class="hljs-variable">.weight</span> = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">bins</span> legal = &#123;[<span class="hljs-number">0</span>:<span class="hljs-number">&#x27;hFF</span>]&#125;;<br>        <span class="hljs-keyword">illegal_bins</span> illegal = <span class="hljs-keyword">default</span>;<br>    &#125;<br>    cmdXaddrXdata: <span class="hljs-keyword">cross</span> cmd, addr, wdata, rdata &#123;<br>        <span class="hljs-keyword">bins</span> addr_legal_rw = <span class="hljs-keyword">binsof</span>(addr<span class="hljs-variable">.legal_rw</span>);<br>        <span class="hljs-keyword">bins</span> addr_legal_r = <span class="hljs-keyword">binsof</span>(addr<span class="hljs-variable">.legal_r</span>);<br>        <span class="hljs-keyword">bins</span> addr_illegal = <span class="hljs-keyword">binsof</span>(addr<span class="hljs-variable">.illegal</span>);<br>        <span class="hljs-keyword">bins</span> cmd_write = <span class="hljs-keyword">binsof</span>(cmd<span class="hljs-variable">.write</span>);<br>        <span class="hljs-keyword">bins</span> cmd_read = <span class="hljs-keyword">binsof</span>(cmd<span class="hljs-variable">.read</span>);<br>        <span class="hljs-keyword">bins</span> wdata_legal = <span class="hljs-keyword">binsof</span>(wdata<span class="hljs-variable">.legal</span>);<br>        <span class="hljs-keyword">bins</span> wdata_illegal = <span class="hljs-keyword">binsof</span>(wdata<span class="hljs-variable">.illegal</span>);<br>        <span class="hljs-keyword">bins</span> rdata_legal = <span class="hljs-keyword">binsof</span>(rdata<span class="hljs-variable">.legal</span>);<br>        <span class="hljs-keyword">bins</span> write_illegal_addr = <span class="hljs-keyword">binsof</span>(cmd<span class="hljs-variable">.write</span>) &amp;&amp; <span class="hljs-keyword">binsof</span>(addr<span class="hljs-variable">.illegal</span>);<br>        <span class="hljs-keyword">bins</span> read_illegal_addr  = <span class="hljs-keyword">binsof</span>(cmd<span class="hljs-variable">.read</span>) &amp;&amp; <span class="hljs-keyword">binsof</span>(addr<span class="hljs-variable">.illegal</span>);<br>        <span class="hljs-keyword">bins</span> write_illegal_rw_data = <span class="hljs-keyword">binsof</span>(cmd<span class="hljs-variable">.write</span>) &amp;&amp; <span class="hljs-keyword">binsof</span>(addr<span class="hljs-variable">.legal_rw</span>) &amp;&amp; <span class="hljs-keyword">binsof</span>(wdata<span class="hljs-variable">.illegal</span>);<br>        <span class="hljs-keyword">bins</span> write_illegal_r_data = <span class="hljs-keyword">binsof</span>(cmd<span class="hljs-variable">.write</span>) &amp;&amp; <span class="hljs-keyword">binsof</span>(addr<span class="hljs-variable">.legal_r</span>);<br>    &#125;<br><span class="hljs-keyword">endgroup</span><br></code></pre></div></td></tr></table></figure>
+<blockquote>
+<p>为什么我们期望非法的写数据、非法的地址，并且illegal_bins非法的读数据？</p>
+<p>因为我们此处覆盖率收集的测试用例为<code>cg_mcdf_reg_illegal</code>，该测试用例会进行非法的寄存器读写操作，通过统计这些操作我们可以得到对应覆盖率进度</p>
+<p>而<code>illegal_bins</code>可以使得读出非法的数据时，报错并停止仿真，实现纠错（legal的bins则直接统计覆盖率就好）</p>
+<p>关于<code>bins legal_rw[]</code>的这个中括号（视频中讲到过）路科讲的太抽象了真服了，我觉得可以先空着</p>
+</blockquote>
+<p><code>cg_mcdf_channel_disable</code></p>
+<p>容易理解，就不说了</p>
+<p>从这个测试用例你可以直到为什么你直接运行实验5代码的覆盖率不是100%，因为你还没有针对通道关闭情况下进行写入数据操作（即mcdf_channel_disable_test测试用例内容）</p>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">covergroup</span> cg_channel_disable;<br>  ch0_en: <span class="hljs-keyword">coverpoint</span> mcdf_vif<span class="hljs-variable">.mon_ck</span><span class="hljs-variable">.chnl_en</span>[<span class="hljs-number">0</span>] &#123;<br>    type_option<span class="hljs-variable">.weight</span> = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">wildcard</span> <span class="hljs-keyword">bins</span> en  = &#123;<span class="hljs-number">1&#x27;b1</span>&#125;;<br>    <span class="hljs-keyword">wildcard</span> <span class="hljs-keyword">bins</span> dis = &#123;<span class="hljs-number">1&#x27;b0</span>&#125;;<br>  &#125;<br>  ch1_en: <span class="hljs-keyword">coverpoint</span> mcdf_vif<span class="hljs-variable">.mon_ck</span><span class="hljs-variable">.chnl_en</span>[<span class="hljs-number">1</span>] &#123;<br>    type_option<span class="hljs-variable">.weight</span> = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">wildcard</span> <span class="hljs-keyword">bins</span> en  = &#123;<span class="hljs-number">1&#x27;b1</span>&#125;;<br>    <span class="hljs-keyword">wildcard</span> <span class="hljs-keyword">bins</span> dis = &#123;<span class="hljs-number">1&#x27;b0</span>&#125;;<br>  &#125;<br>  ch2_en: <span class="hljs-keyword">coverpoint</span> mcdf_vif<span class="hljs-variable">.mon_ck</span><span class="hljs-variable">.chnl_en</span>[<span class="hljs-number">2</span>] &#123;<br>    type_option<span class="hljs-variable">.weight</span> = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">wildcard</span> <span class="hljs-keyword">bins</span> en  = &#123;<span class="hljs-number">1&#x27;b1</span>&#125;;<br>    <span class="hljs-keyword">wildcard</span> <span class="hljs-keyword">bins</span> dis = &#123;<span class="hljs-number">1&#x27;b0</span>&#125;;<br>  &#125;<br>  ch0_vld: <span class="hljs-keyword">coverpoint</span> chnl_vifs[<span class="hljs-number">0</span>]<span class="hljs-variable">.mon_ck</span><span class="hljs-variable">.ch_valid</span> &#123;<br>    type_option<span class="hljs-variable">.weight</span> = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">bins</span> hi = &#123;<span class="hljs-number">1&#x27;b1</span>&#125;;<br>    <span class="hljs-keyword">bins</span> lo = &#123;<span class="hljs-number">1&#x27;b0</span>&#125;;<br>  &#125;<br>  ch1_vld: <span class="hljs-keyword">coverpoint</span> chnl_vifs[<span class="hljs-number">1</span>]<span class="hljs-variable">.mon_ck</span><span class="hljs-variable">.ch_valid</span> &#123;<br>    type_option<span class="hljs-variable">.weight</span> = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">bins</span> hi = &#123;<span class="hljs-number">1&#x27;b1</span>&#125;;<br>    <span class="hljs-keyword">bins</span> lo = &#123;<span class="hljs-number">1&#x27;b0</span>&#125;;<br>  &#125;<br>  ch2_vld: <span class="hljs-keyword">coverpoint</span> chnl_vifs[<span class="hljs-number">2</span>]<span class="hljs-variable">.mon_ck</span><span class="hljs-variable">.ch_valid</span> &#123;<br>    type_option<span class="hljs-variable">.weight</span> = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">bins</span> hi = &#123;<span class="hljs-number">1&#x27;b1</span>&#125;;<br>    <span class="hljs-keyword">bins</span> lo = &#123;<span class="hljs-number">1&#x27;b0</span>&#125;;<br>  &#125;<br>  chenXchvld: <span class="hljs-keyword">cross</span> ch0_en, ch1_en, ch2_en, ch0_vld, ch1_vld, ch2_vld &#123;<br>    <span class="hljs-keyword">bins</span> ch0_en  = <span class="hljs-keyword">binsof</span>(ch0_en<span class="hljs-variable">.en</span>);<br>    <span class="hljs-keyword">bins</span> ch0_dis = <span class="hljs-keyword">binsof</span>(ch0_en<span class="hljs-variable">.dis</span>);<br>    <span class="hljs-keyword">bins</span> ch1_en  = <span class="hljs-keyword">binsof</span>(ch1_en<span class="hljs-variable">.en</span>);<br>    <span class="hljs-keyword">bins</span> ch1_dis = <span class="hljs-keyword">binsof</span>(ch1_en<span class="hljs-variable">.dis</span>);<br>    <span class="hljs-keyword">bins</span> ch2_en  = <span class="hljs-keyword">binsof</span>(ch2_en<span class="hljs-variable">.en</span>);<br>    <span class="hljs-keyword">bins</span> ch2_dis = <span class="hljs-keyword">binsof</span>(ch2_en<span class="hljs-variable">.dis</span>);<br>    <span class="hljs-keyword">bins</span> ch0_hi  = <span class="hljs-keyword">binsof</span>(ch0_vld<span class="hljs-variable">.hi</span>);<br>    <span class="hljs-keyword">bins</span> ch0_lo  = <span class="hljs-keyword">binsof</span>(ch0_vld<span class="hljs-variable">.lo</span>);<br>    <span class="hljs-keyword">bins</span> ch1_hi  = <span class="hljs-keyword">binsof</span>(ch1_vld<span class="hljs-variable">.hi</span>);<br>    <span class="hljs-keyword">bins</span> ch1_lo  = <span class="hljs-keyword">binsof</span>(ch1_vld<span class="hljs-variable">.lo</span>);<br>    <span class="hljs-keyword">bins</span> ch2_hi  = <span class="hljs-keyword">binsof</span>(ch2_vld<span class="hljs-variable">.hi</span>);<br>    <span class="hljs-keyword">bins</span> ch2_lo  = <span class="hljs-keyword">binsof</span>(ch2_vld<span class="hljs-variable">.lo</span>);<br>    <span class="hljs-keyword">bins</span> ch0_en_vld = <span class="hljs-keyword">binsof</span>(ch0_en<span class="hljs-variable">.en</span>) &amp;&amp; <span class="hljs-keyword">binsof</span>(ch0_vld<span class="hljs-variable">.hi</span>);<br>    <span class="hljs-keyword">bins</span> ch0_dis_vld = <span class="hljs-keyword">binsof</span>(ch0_en<span class="hljs-variable">.dis</span>) &amp;&amp; <span class="hljs-keyword">binsof</span>(ch0_vld<span class="hljs-variable">.hi</span>);<span class="hljs-comment">//统计你的测试用例，有没有在通道关闭的情况下对通道进行写数据</span><br>    <span class="hljs-keyword">bins</span> ch1_en_vld = <span class="hljs-keyword">binsof</span>(ch1_en<span class="hljs-variable">.en</span>) &amp;&amp; <span class="hljs-keyword">binsof</span>(ch1_vld<span class="hljs-variable">.hi</span>);<br>    <span class="hljs-keyword">bins</span> ch1_dis_vld = <span class="hljs-keyword">binsof</span>(ch1_en<span class="hljs-variable">.dis</span>) &amp;&amp; <span class="hljs-keyword">binsof</span>(ch1_vld<span class="hljs-variable">.hi</span>);<br>    <span class="hljs-keyword">bins</span> ch2_en_vld = <span class="hljs-keyword">binsof</span>(ch2_en<span class="hljs-variable">.en</span>) &amp;&amp; <span class="hljs-keyword">binsof</span>(ch2_vld<span class="hljs-variable">.hi</span>);<br>    <span class="hljs-keyword">bins</span> ch2_dis_vld = <span class="hljs-keyword">binsof</span>(ch2_en<span class="hljs-variable">.dis</span>) &amp;&amp; <span class="hljs-keyword">binsof</span>(ch2_vld<span class="hljs-variable">.hi</span>);<br>  &#125;<br><span class="hljs-keyword">endgroup</span><br></code></pre></div></td></tr></table></figure>
+<p><code>cg_arbiter_priority</code></p>
+<p>容易理解，这里覆盖组定义过于简单了，难一点的覆盖组的定义可以多一些特殊情况，如：有没有出现相同prio、有没有出现三个全相同的prio情况</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230226024036146.png" srcset="/img/loading.gif" lazyload alt="image-20230226024036146"></p>
+<p><code>cg_formatter_length</code></p>
+<p>容易理解，这里也简单了，没用cross</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230226024703526.png" srcset="/img/loading.gif" lazyload alt="image-20230226024703526"></p>
+<p><code>cg_formatter_grant</code></p>
+<p>之前我们的covergroup取得都是硬件信号，这里取得是软件信号，是我们自己计算器出来的<code>delay_req_to_grant</code></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230226025112875.png" srcset="/img/loading.gif" lazyload alt="image-20230226025112875"><code>delay_req_to_grant</code>：从req拉高到grant拉高之间的延迟数目</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230226030047732.png" srcset="/img/loading.gif" lazyload alt="image-20230226030047732"></p>
+<p><strong>其他细节</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230226030344385.png" srcset="/img/loading.gif" lazyload alt="image-20230226030344385"></p>
+<p>为什么不直接放在@里面，而是拿出一个if来呢，如下这种形式？路科说他嫌都在一行太长了。。。</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230226030442977.png" srcset="/img/loading.gif" lazyload alt="image-20230226030442977"></p>
+<h5><span id="coverage要点总结">coverage要点总结</span></h5><ul>
+<li>采样是如何采样的（调用covergroup.sample()）</li>
+<li>覆盖率组是如何定义的<ul>
+<li>覆盖率是对谁的覆盖？对不同测试用例（见<strong>covergroup如何定义的</strong>），对设计的覆盖率统计（见下一节实验编译）</li>
+<li>covergroup中都应该定义什么？bins，illegal_bins，ignore_bins</li>
+<li>cross与coverpoint，weight=0</li>
+</ul>
+</li>
+<li>覆盖率结果是如何report的（调用$get_coverage()和inst.get_coverage()）</li>
+</ul>
+<h4><span id="实验">实验</span></h4><p><mark>只收集设计的覆盖率</mark>，tb的覆盖率没用，编译的时候先编译设计文件并添加相关选项</p>
+<p>窗口：</p>
+<ul>
+<li>代码覆盖率：analysis</li>
+<li>功能覆盖率：covergroups</li>
+<li>断言覆盖率：断言自身的一个窗口</li>
+</ul>
+<p>参考命令：</p>
+<p>10.6用novopt：<code>vsim -i -novopt -classdebug -solvefaildebug -coverage -coverstore D:/Projects/Learn/luke/svlab/svlab5/coverage -testname mcdf_full_random_test -sv_seed random +TESTNAME=mcdf_full_random_test -l mcdf_full_random_test.log work.tb</code></p>
+<p>10.7不用novopt：<code>vsim -i -classdebug -solvefaildebug -coverage -coverstore D:/Projects/Learn/luke/svlab/svlab5/coverage -testname mcdf_full_random_test -sv_seed random +TESTNAME=mcdf_full_random_test -l mcdf_full_random_test.log work.tb</code></p>
+<p>合并覆盖率：</p>
+<p><code>vcover merge -out  D:/Projects/Learn/luke/svlab/svlab5/coveraged D:/Projects/Learn/luke/svlab/svlab5/coverage</code></p>
+<p>实验5其他内容：</p>
+<p>对HTML报告进行分析，发现toggle覆盖率偏低</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230226041510873.png" srcset="/img/loading.gif" lazyload alt="image-20230226041510873"></p>
+<p>最后发现是控制寄存器的高位不会被写入，符合设计要求</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230226041642616.png" srcset="/img/loading.gif" lazyload alt="image-20230226041642616"></p>
+<p>因此在questasim中可以exclude</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230226041607667.png" srcset="/img/loading.gif" lazyload alt="image-20230226041607667"></p>
+<p>之后就好了</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E9%AA%8C/image-20230226041621097.png" srcset="/img/loading.gif" lazyload alt="image-20230226041621097"></p>
+<h4><span id="如何提高覆盖率">如何提高覆盖率</span></h4><ul>
+<li>尽可能多的运行仿真</li>
+<li>写多个测试用例</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/">IC</a>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/sv%E5%AD%A6%E4%B9%A0/">sv学习</a>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/sv%E5%AD%A6%E4%B9%A0/%E5%AE%9E%E9%AA%8C/">实验</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AE%9E%E9%AA%8C/">实验</a>
+                    
+                      <a class="hover-with-bg" href="/tags/IC/">IC</a>
+                    
+                      <a class="hover-with-bg" href="/tags/sv%E5%AD%A6%E4%B9%A0/">sv学习</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/202211211151/IC/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86essay/ic/sv%E5%AD%A6%E4%B9%A0/UVM%E5%AE%9E%E6%88%98%20%E6%B1%87%E6%80%BB%E4%B8%8E%E9%99%84%E5%BD%95/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">UVM实战 汇总与附录</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/202211032130/%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1essay/projects/flash%E8%AF%BB%E5%86%99%E6%A8%A1%E5%9D%97%E8%AF%B4%E6%98%8E/">
+                        <span class="hidden-mobile">flash读写模块说明</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'preferred-color-scheme';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'GreensCH/commitutterances');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <span> | </span> <a href="https://weibo.com/u/7453939976" target="_blank" rel="nofollow noopener"> Green Weibo</a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?eca4a4d34dadf0d4e282cc6ef2dc3de6";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<!-- hexo injector body_end start --><script src="/js/backgroundize.js"></script>
+  <link defer rel="stylesheet" href="/css/backgroundize.css" />
+  
+  <div id="aplayer" style="width:300px"></div>
+  <link defer rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css" />
+  <script src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js"></script>
+  <script defer src="/js/aplayer.js"></script><script src="/js/githubcalendar.js"></script> 
+  <script data-pjax src="/js/githubcalendar.js"></script>
+  <script data-pjax>
+        function GithubCalendarConfig(){
+            var git_githubapiurl ="https://python-github-calendar-api.vercel.app/api?greensch";
+            var git_color =['#ebedf0', '#f0fff4', '#dcffe4', '#bef5cb', '#85e89d', '#34d058', '#28a745', '#22863a', '#176f2c', '#165c26', '#144620'];
+            var git_user ="greensch";
+            var parent_div_git = document.getElementById('board');
+            var git_div_html = '<div id="github-calendar" style="width:100%;height:auto;padding:10px;margin-bottom:20px;box-shadow:none;"><div id="github_loading" style="width:10%;height:100%;margin:0 auto;display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div><div id="github_container"></div></div>';
+            if(parent_div_git && location.pathname =='/'){
+                console.log('已挂载github calendar')
+                // parent_div_git.innerHTML=git_div_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",git_div_html) // 有报错，但不影响使用(支持pjax跳转)
+            };
+            GithubCalendar(git_githubapiurl,git_color,git_user)
+        }
+        if(document.getElementById('board')){
+            GithubCalendarConfig()
+        }
+    </script>
+    <style>#github_container{min-height:200px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
+    <style>#github_container > .position-relative > .border{border:0!important}#github-calendar{position: relative;margin-top: -2rem;background-color: var(--board-bg-color);transition: background-color 0.2s ease-in-out;border-radius: 0.5rem;z-index: 3;-webkit-box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);}</style><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"superSample":1,"position":"left","width":150,"height":400,"vOffset":-18},"mobile":{"show":false,"scale":0.25},"dialog":{"enable":false,"hitokoto":true,"width":10,"height":10,"vOffset":-100},"log":false});</script></body>
+</html>

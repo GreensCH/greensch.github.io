@@ -1,0 +1,864 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/con1.png">
+  <link rel="icon" href="/img/con1.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="“无论最终结果将人类历史导向何处，我们决定选择希望”">
+  <meta name="author" content="友人律 | Guilin Chang">
+  <meta name="keywords" content="三差学生、不学无术">
+  <meta name="description" content="0 前言世界三大EDA厂商一般指的是Cadence, Synopsys. Mentor Graphics 数字IC前端设计：  以RTL设计为起点，以生成可以布局布线的网表为终点； 主要是实现用设计的电路实现想法  前端设计主要包括：  基本的RTL编程和仿真 C系统设计 功能验证 综合 静态时序分析 逻辑等值验证  做IC前端设计常用的是Synopsys家的EDA工具：  仿真使用的VCS(ve">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EDA入门">
+<meta property="og:url" content="http://yoursite.com/202204221659/IC/EDAessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/EDA%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:site_name" content="友人律的博客">
+<meta property="og:description" content="0 前言世界三大EDA厂商一般指的是Cadence, Synopsys. Mentor Graphics 数字IC前端设计：  以RTL设计为起点，以生成可以布局布线的网表为终点； 主要是实现用设计的电路实现想法  前端设计主要包括：  基本的RTL编程和仿真 C系统设计 功能验证 综合 静态时序分析 逻辑等值验证  做IC前端设计常用的是Synopsys家的EDA工具：  仿真使用的VCS(ve">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20221208202204473.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20221208202234765.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20221208202330597.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20221208202348560.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20221208202359357.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20221208202423254.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/20200922145423671-166055458941440.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/20200922150439894-166055461603244.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/EDA%E5%85%A5%E9%97%A8/image-20230207220111665.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/EDA%E5%85%A5%E9%97%A8/image-20230207221919720.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011901086.jpg">
+<meta property="article:published_time" content="2022-04-22T08:59:19.000Z">
+<meta property="article:modified_time" content="2023-03-19T06:44:14.078Z">
+<meta property="article:author" content="友人律 | Guilin Chang">
+<meta property="article:tag" content="IC">
+<meta property="article:tag" content="学习">
+<meta property="article:tag" content="总线">
+<meta property="article:tag" content="AMBA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20221208202204473.png">
+  
+  <title>EDA入门 - 友人律的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/stackoverflow-dark.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"eca4a4d34dadf0d4e282cc6ef2dc3de6","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body><!-- hexo injector body_begin start -->
+<link defer rel="stylesheet" href="/css/article_para.css" />
+<div id="web_bg"></div><!-- hexo injector body_begin end -->
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>友人律的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E9%80%9A%E7%9F%A5/">
+                <i class="iconfont icon-link-fill"></i>
+                通知
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1/">
+                <i class="iconfont icon-link-fill"></i>
+                项目与设计
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">
+                <i class="iconfont icon-link-fill"></i>
+                开发工具
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/CS/">
+                <i class="iconfont icon-link-fill"></i>
+                CS
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/IC/">
+                <i class="iconfont icon-link-fill"></i>
+                IC
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/banner_img/anime/97756295_p0.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="EDA入门">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-04-22 16:59" pubdate>
+        2022年4月22日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      11k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      35 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">EDA入门</h1>
+            
+            <div class="markdown-body">
+              <h2><span id="0-前言">0 前言</span></h2><p>世界三大EDA厂商一般指的是Cadence, Synopsys. Mentor Graphics</p>
+<p>数字IC前端设计：</p>
+<ul>
+<li>以RTL设计为起点，以生成可以布局布线的网表为终点；</li>
+<li>主要是实现用设计的电路实现想法</li>
+</ul>
+<p>前端设计主要包括：</p>
+<ul>
+<li>基本的RTL编程和仿真</li>
+<li>C系统设计</li>
+<li>功能验证</li>
+<li>综合</li>
+<li>静态时序分析</li>
+<li>逻辑等值验证</li>
+</ul>
+<p>做IC前端设计常用的是Synopsys家的EDA工具：</p>
+<ul>
+<li>仿真使用的VCS(verilog compiled simulator)</li>
+<li>综合使用的DC(Design Compiler)</li>
+<li>时序分析使用的PT( PrimeTime)</li>
+</ul>
+<p>其他EDA工具也有很多，如布线布局使用的ICC(IC Compiler)，做物理验证的Herclues等<br>这里主要介绍下前面提到的VCS，DC，PT这三者</p>
+<h2><span id="1-vcsverilog-compiled-simulator">1 VCS(Verilog Compiled Simulator)</span></h2><p>VCS是编译型Verilog模拟器，它完全⽀持OVI标准的Verilog HDL语言、PLI和SDF。 VCS具有目前行业中最高的模拟性能，其出色的内存管理能力足以支持千万门级的ASIC设计，而其模拟精度也完全满足深亚微米ASIC Sign-Off的要求。VCS结合了节拍式算法和事件驱动算法，具有高性能、⼤规模和高精度的特点，适⽤于从行为级、RTL到Sign-Off等各个阶段。VCS已经将CoverMeter中所有的覆盖率测试功能集成，并提供VeraLite、CycleC等智能验证方法。VCS和Scirocco也⽀持混合语言仿真。VCS和Scirocco都集成了Virsim图形用户界面，它提供了对模拟结果的交互和后处理分析。</p>
+<h2><span id="2-dc">2 DC</span></h2><p>Design Compiler为Synopsys公司逻辑合成⼯具。DC得到全球60多个半导体⼚商、380多个⼯艺库的支持。据最新Dataquest的统计，Synopsys的逻辑综合工具占据91%的市场份额。DC是十多年来工业界标准的逻辑综合工具，也是Synopsys最核心的产品。它使IC设计者在最短的时间内最佳的利用硅片完成设计。它根据设计描述和约束条件并针对特定的工艺库自动综合出⼀个优化的门级电路。它可以接受多种输⼊格式，如硬件描述语言、原理图和网表等，并产生多种性能报告，在缩短设计时间的同时提⾼设计性能。Synopsys发布的最新版Design Compiler综合解决方案——Design Compiler。新版本扩展了拓扑技术，以加速采用先进低功耗和测试技术的设计收敛，帮助设计人员提高生产效率和IC性能。拓扑技术可帮助设计人员正确评估芯片在综合过程中的功耗，在设计早期解决所有功耗问题。此外，还支持Design Compiler中新的测试压缩技术，在实现⾼质量测试的同时，减少测试时间和测试数据量超过100倍，并减少后续物理实现阶段由于测试电路带来的可能的布线拥塞。新的Design Compiler采用了多项创新综合技术，如自适应retiming和功耗驱动门控时钟，性能较以前版本平均提⾼8%，⾯积减少4%，功耗降低5%。此外，Synopsys Formality等效检测解决⽅案得到了增强，能够独立、彻底地验证这些技术，因此设计者⽆需舍去验证就可以实现更高的性能。</p>
+<h2><span id="3-pt">3 PT</span></h2><p>PrimeTime是针对复杂、百万门芯片进行全芯片、门级静态时序分析的工具。PrimeTime可以集成于逻辑综合和物理综合的流程，让设计者分析并解决复杂的时序问题，并提高时序收敛的速度。PrimeTime是众多半导体厂商认可的、业界标准的静态时序分析工具。Galaxy™ 设计平台中的时序验证核心工具—PrimeTime®的最新版本凭借其静态时序分析能力和对数百万门设计进行认可的能力，成为新的时序工具标准。从用户使用情况显示，最新发布的PrimeTime的运行速度比之前版本平均提高了2到7倍，从而提升了设计者的设计能力，并实现快速的时序认可。PrimeTime强大的性能得益于在生成报告和基于标准延迟文件（SDF）的时序分析方面的算法的改进。PrimeTime提供全芯片级的静态时序分析，同时整合了延迟计算和先进的建模功能，以实现有效而又精确的时序认可。PrimeTime SI是全芯片门级信号完整性分析工具。PrimeTime SI建立在成功流片验证过的PrimeTime平台之上的，提供精确的串扰延迟分析，IR drop(电压降落)分析和静态时序分析。PrimeTime SI业界领先的超快运⾏时间和处理容量让数百万门的复杂设计⼀次流片成功，让设计者取得极快的进⼊市场时间</p>
+<h2><span id="总结">总结</span></h2><figure class="highlight reasonml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs reasonml"><span class="hljs-number">1.</span> scl<br>许可管理的<br><br><span class="hljs-number">2.</span><span class="hljs-constructor">VCS( <span class="hljs-params">verilog</span> <span class="hljs-params">compiled</span> <span class="hljs-params">simulator</span> )</span><br>Verilog 编译仿真器，现在公司主流的仿真器，和windows下modelsim一样的作用。<br><br><span class="hljs-number">3.</span>Verdi/dve<br>verdi是比较强大的debug工具，两个基本波形查看工具<br><br><span class="hljs-number">4.</span><span class="hljs-constructor">DC( Design Compiler )</span><br>综合实现工具，要配合工艺库使用。<br><br><span class="hljs-number">5.</span><span class="hljs-constructor">ICC( IC Compiler )</span><br>布局布线工具<br><br><span class="hljs-number">6.</span><span class="hljs-constructor">PT( PrimeTime )</span><br>静态时序分析工具<br><br><span class="hljs-number">7.</span>coreConsultant<br>用于配置designIP <br></code></pre></div></td></tr></table></figure>
+<h2><span id="安装">安装</span></h2><ul>
+<li>SCL11.9 —— Synopsys官方的管理License文件的软件</li>
+<li>VCS2016 —— Verilog仿真软件</li>
+<li>Verdi2016 —— 一款可以生成仿真波形的软件，验证工程师必备</li>
+<li>Formality2015 —— 形式化验证软件</li>
+<li>SpyGlass2016 —— 有五大模块： lint，CDC，LP，Constraint，DFT，功能强大</li>
+<li>Primetime2016 —— 针对STA（静态时序分析）的软件</li>
+<li>Design complier2016 —— 用于做电路综合的核心工具</li>
+<li>Installer3.2 —— Synopsys官方的安装软件，以上软件除SpyGlass外，均用它安装</li>
+<li>License —— 用来生成license的文件</li>
+</ul>
+<h3><span id="ubuntu-vcs安装">Ubuntu VCS安装</span></h3><p>1.所有文件放到一个非中文目录！否则dve打开时swf文件会找不到</p>
+<p>2.先安装installer</p>
+<p>解压后，运行<code>.run</code>文件，之后会提示installer安装目录的指定</p>
+<p>3.再安装scl进行破解</p>
+<p>点就完了</p>
+<p>4.生成破解文件（具体破解过程参考链接）</p>
+<p>5.license生成、环境以及激活</p>
+<blockquote>
+<p>启动scl_keygen生成器</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20221208202204473.png" srcset="/img/loading.gif" lazyload alt="image-20221208202204473"></p>
+<p>这个需要在window下进行，双击运行scl_keygen.exe.</p>
+<p>需要填写这4项信息，HOST ID Daemon 和HOST ID Feature填写一样的，Port选择27000。</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20221208202234765.png" srcset="/img/loading.gif" lazyload alt="image-20221208202234765"></p>
+<p>进入虚拟机，打开terminal使用以下命令查找</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs ebnf"><span class="hljs-attribute">hostname</span><br><span class="hljs-attribute">ifconfig</span><br></code></pre></div></td></tr></table></figure>
+<p>我的填写如下，然后点击Generate生成license</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20221208202330597.png" srcset="/img/loading.gif" lazyload alt="image-20221208202330597"></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20221208202348560.png" srcset="/img/loading.gif" lazyload alt="image-20221208202348560"></p>
+<p>打开生成licens文件，修改第二行，这个需要与虚拟机里面scl路径一致，不然license无效。修改好后把这个文件复制到共享文件中。这个文件最后需要放到这个“scl/2018.06/admin/license/”目录下，要与环境里面设置的路径一致</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20221208202359357.png" srcset="/img/loading.gif" lazyload alt="image-20221208202359357"></p>
+</blockquote>
+<p>5.设置bashrc</p>
+<p>打开.bashrc环境文件，加入以下内容，对应自己安装路径。但是需要注意倒数第二行，需要确认主机名是否正确。保存退出，source一下</p>
+<p>我的bashrc：</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment">#synopsys</span><br><span class="hljs-built_in">export</span> DVE_HOME=/home/chang/opt/synopsys/vcs/O-2018.09-SP2<br><span class="hljs-built_in">export</span> VCS_HOME=/home/chang/opt/synopsys/vcs/O-2018.09-SP2<br><span class="hljs-built_in">export</span> VCS_MX_HOME=/home/chang/opt/synopsys/vcs-mx/O-2018.09-SP2<br><span class="hljs-built_in">export</span> VERDI_HOME=/home/chang/opt/synopsys/verdi/Verdi_O-2018.09-SP2<br><span class="hljs-built_in">export</span> SCL_HOME=/home/chang/opt/synopsys/scl/2018.06<br><span class="hljs-built_in">export</span> DC_HOME=/home/chang/opt/synopsys/syn/O-2018.06-SP1<br><span class="hljs-built_in">export</span> NOVAS_HOME=<span class="hljs-variable">$VERDI_HOME</span><br><span class="hljs-comment"># 这个必须得打开， 否则FSDB 是不能dump 的</span><br><span class="hljs-built_in">export</span> LD_LIBRARY_PATH=<span class="hljs-variable">$VERDI_HOME</span>/share/PLI/VCS/LINUX64<br><span class="hljs-comment"># export LD_LIBRARY_PATH=$VERDI_HOME/share/PLI/IUS/LINUX64:$LD_LIBRARY_PATH</span><br><span class="hljs-comment"># export LD_LIBRARY_PATH=$VERDI_HOME/share/PLI/lib/LINUX64:$LD_LIBRARY_PATH</span><br><span class="hljs-comment"># export LD_LIBRARY_PATH=$VERDI_HOME/share/PLI/Ius/LINUX64:$LD_LIBRARY_PATH</span><br><span class="hljs-comment"># export LD_LIBRARY_PATH=$VERDI_HOME/share/PLI/MODELSIM/LINUX64:$LD_LIBRARY_PATH</span><br><span class="hljs-comment">#dve</span><br>PATH=<span class="hljs-variable">$PATH</span>:<span class="hljs-variable">$VCS_HOME</span>/gui/dve/bin<br><span class="hljs-built_in">alias</span> dve=<span class="hljs-string">&quot;dve -full64&quot;</span><br><br><span class="hljs-comment">#VCS</span><br>PATH=<span class="hljs-variable">$PATH</span>:<span class="hljs-variable">$VCS_HOME</span>/bin<br><span class="hljs-built_in">alias</span> vcs=<span class="hljs-string">&quot;vcs -full64&quot;</span><br><br><span class="hljs-comment">#VERDI</span><br>PATH=<span class="hljs-variable">$PATH</span>:<span class="hljs-variable">$VERDI_HOME</span>/bin<br><span class="hljs-built_in">alias</span> verdi=<span class="hljs-string">&quot;verdi&quot;</span><br><br><span class="hljs-comment">#DC</span><br><span class="hljs-built_in">export</span> SYNOPSYS=/home/chang/opt/synopsys             <span class="hljs-comment">#不加这个路径，直接运行 dc 会报错</span><br>PATH=<span class="hljs-variable">$PATH</span>:<span class="hljs-variable">$DC_HOME</span>/bin                              <span class="hljs-comment">#改 Verdi 安装路径</span><br><span class="hljs-built_in">alias</span> dc=<span class="hljs-string">&#x27;dc_shell&#x27;</span><br><span class="hljs-built_in">alias</span> dv=<span class="hljs-string">&#x27;design_vision&#x27;</span><br><br><br><span class="hljs-comment">#scl</span><br>PATH=<span class="hljs-variable">$PATH</span>:<span class="hljs-variable">$SCL_HOME</span>/linux64/bin<br><span class="hljs-built_in">export</span> VCS_TARGET_ARCH=<span class="hljs-string">&quot;amd64&quot;</span><br><span class="hljs-built_in">export</span> VCS_ARCH_OVERRIDE=linux <span class="hljs-comment">#没这个vcs会提示&quot;Sorry, Linux version 5.11.0-49-generic is not supported&quot;</span><br><span class="hljs-comment">#LICENCE</span><br><span class="hljs-built_in">export</span> LM_LICENSE_FILE=27000@chang-virtual-machine<br><span class="hljs-built_in">alias</span> lmg_synopsys=<span class="hljs-string">&quot;lmgrd -c /home/chang/opt/synopsys/scl/2018.06/admin/license/Synopsys.dat&quot;</span><br></code></pre></div></td></tr></table></figure>
+<p>6.激活（每次重启都要重新激活）</p>
+<p>先使用以下命令设置开放端口：</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">firewall-cmd --zone=public --add-port=27000/tcp --permanent<br>firewall-cmd --reload<br></code></pre></div></td></tr></table></figure>
+<p>然后在输入“lmg_synopsys”进行激活，这个每次启动虚拟机都需要这样操作一下。但是这里提示缺少依赖库。输入以下命令进行安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">lmg_synopsys<br>yum install redhat-lsb.i686<br></code></pre></div></td></tr></table></figure>
+<p>success图示：</p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20221208202423254.png" srcset="/img/loading.gif" lazyload alt="image-20221208202423254"></p>
+<p><strong>几个推荐链接</strong></p>
+<ul>
+<li>ubuntu18.04安装VCS+verdi错误集锦 <a target="_blank" rel="noopener" href="https://blog.csdn.net/ciscomonkey/article/details/105119397">https://blog.csdn.net/ciscomonkey/article/details/105119397</a></li>
+<li>VCS+verdi /dve 仿真环境搭建-问题汇总 <a target="_blank" rel="noopener" href="https://blog.csdn.net/u010451780/article/details/121018902">https://blog.csdn.net/u010451780/article/details/121018902</a></li>
+<li>synopsys软件安装 <a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_39901027/article/details/116094393">https://blog.csdn.net/sinat_39901027/article/details/116094393</a><ul>
+<li><code>alias lmg_synopsys=&quot;lmgrd -c /home/tools/synopsys/license/license.dat&quot;</code></li>
+<li><code>alias dve=&quot;dve -full64&quot;</code></li>
+</ul>
+</li>
+<li>CentOS下安装Synopsys Design Compiler软件避坑指南 <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43249158/article/details/123406736">https://blog.csdn.net/weixin_43249158/article/details/123406736</a><ul>
+<li>dc打不开GUI界面的问题</li>
+</ul>
+</li>
+<li>ubuntu 18.04 vcs2016 安装记录 <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_30405421/article/details/96531035">https://blog.csdn.net/weixin_30405421/article/details/96531035</a><ul>
+<li>比较一般，可以不看</li>
+</ul>
+</li>
+<li>【强烈建议参考！】VCS+Verdi 安装及破解过程(Ubuntu)【1】 <a target="_blank" rel="noopener" href="https://blog.csdn.net/huayangshiboqi/article/details/89525723">https://blog.csdn.net/huayangshiboqi/article/details/89525723</a><ul>
+<li>【强烈建议参考！】success图示，lsb_core安装，/usr/tmp/，以及其他很多问题的解决方案，gcc参数等 | VCS+Verdi 安装及破解过程(Ubuntu)【1】_huayangshiboqi的博客-CSDN博客_ubuntu vcs安装</li>
+</ul>
+</li>
+<li>【强烈推荐参考2！】数字IC设计的第一步——Synopsys EDA Tools的安装<a target="_blank" rel="noopener" href="https://www.cxyzjd.com/article/qq_33589780/108720685">https://www.cxyzjd.com/article/qq_33589780/108720685</a><ul>
+<li>全部EDA的bashrc都有，而且DC的错误也有解决办法</li>
+</ul>
+</li>
+<li>VCS2018在Ubuntu20 18安装步骤 <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41717683/article/details/122267191">https://blog.csdn.net/qq_41717683/article/details/122267191</a><ul>
+<li>比较详细</li>
+<li>export VCS_TARGET_ARCH=”amd64”</li>
+<li>lmgrd安装</li>
+<li>更改License日期</li>
+</ul>
+</li>
+<li>RISCV学习笔记5.2—ubuntu18.04安装芯片设计软件(vcs、verdi)的正式安装过程 <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41735476/article/details/125245329">https://blog.csdn.net/qq_41735476/article/details/125245329</a><ul>
+<li>一步一步来的，还可以</li>
+</ul>
+</li>
+</ul>
+<h3><span id="vcs-verdi安装问题">VCS Verdi安装问题</span></h3><h4><span id="verdi缺少库">verdi缺少库</span></h4><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">chang@chang-virtual-machine:~/下载/synopsys/synopsysinstaller_v5.0$ verdi<br>/home/chang/opt/synopsys/verdi/Verdi_O-2018.09-SP2/platform/LINUXAMD64/bin/Novas: error <span class="hljs-keyword">while</span> loading shared libraries: libpng12.so.0: cannot open shared object file: No such file or directory<br><br></code></pre></div></td></tr></table></figure>
+<p>解决指令：</p>
+<figure class="highlight smali"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs smali">sudo<span class="hljs-built_in"> add-apt-repository </span>ppa:linuxuprising/libpng12<br>sudo apt update<br>sudo apt install libpng12-0<br></code></pre></div></td></tr></table></figure>
+<p>参考链接：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.linuxuprising.com/2018/05/fix-libpng12-0-missing-in-ubuntu-1804.html">https://www.linuxuprising.com/2018/05/fix-libpng12-0-missing-in-ubuntu-1804.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.eetop.cn/blog-1789771-6950474.html">https://blog.eetop.cn/blog-1789771-6950474.html</a></li>
+</ul>
+<h4><span id="lmgrd-cant-make-directory-usrtmpflexlm-when-running-server-on-ubuntu问题">lmgrd can’t make directory /usr/tmp/.flexlm when running server on Ubuntu问题：</span></h4><p>这个问题，可以参考这个链接<a target="_blank" rel="noopener" href="http://www.myir-tech.com/faq_list.asp?id=521">http://www.myir-tech.com/faq_list.asp?id=521</a></p>
+<p>就是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">sudo -i              <span class="hljs-comment">#切换到root权限</span><br>mkdir /usr/tmp/      <span class="hljs-comment">#创建目录（Ubuntu下没有这个目录）</span><br>chmod 777 /usr/tmp/  <span class="hljs-comment">#修改权限</span><br></code></pre></div></td></tr></table></figure>
+<h4><span id="生成fsdb时需要的链接">生成fsdb时需要的链接</span></h4><ul>
+<li>方法一，vcs编译的时候使用，进行手动链接</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">-P <span class="hljs-variable">$&#123;LD_LIBRARY_PATH&#125;</span>/novas.tab <span class="hljs-variable">$&#123;LD_LIBRARY_PATH&#125;</span>/pli.a<br></code></pre></div></td></tr></table></figure>
+<ul>
+<li>方法而，vcs编译的时候使用如下参数，自动链接</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">-debug_access+all： VCS2014之后加入debug_access，不需要手动配置verdi.tab，和静态库pli.a，只需要设置<span class="hljs-variable">$VERDI_HOME</span>，VCS会自动查找所需文件<br></code></pre></div></td></tr></table></figure>
+<h3><span id="dc安装问题">DC安装问题</span></h3><p>输入<code>dc</code>，会有以下的错误出现，关于<strong>libtiff.so.3</strong></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/20200922145423671-166055458941440.png" srcset="/img/loading.gif" lazyload alt></p>
+<p>由于<strong>Ubuntu16.04</strong>已经安装了<strong>libtiff.so.5</strong>，这个文件可以在<code>/usr/lib/x86_64-linux-gnu/</code>下找到，输入<code>locate libtiff.so.5</code>即可找到它的路径<br>接下来直接做一个软链接即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">sudo ln -s /usr/lib/x86_64-linux-gnu/libtiff.so.5  /usr/lib/x86_64-linux-gnu/libtiff.so.3<br></code></pre></div></td></tr></table></figure>
+<p>接着输入<code>dc</code>，又出现一个错误,关于<strong>libmng.so.1</strong></p>
+<p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/20200922150439894-166055461603244.png" srcset="/img/loading.gif" lazyload alt></p>
+<p>解决方案也和上面差不多<br>可以先安装<strong>libmng2</strong>，如果已存在，就直接软链接到<strong>libmng.so.1</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">sudo apt-get install libmng2<br>sudo ln -s /usr/lib/x86_64-linux-gnu/libmng.so.2  /usr/lib/x86_64-linux-gnu/libmng.so.1<br></code></pre></div></td></tr></table></figure>
+<h3><span id="我的第一个vcsverdi联调">我的第一个VCS+VERDI联调</span></h3><p><strong>参考文章</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41717683/article/details/122267191">https://blog.csdn.net/qq_41717683/article/details/122267191</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/mu_guang_/article/details/109549444">https://blog.csdn.net/mu_guang_/article/details/109549444</a></li>
+</ul>
+<p><strong>VCS 各种参数</strong></p>
+<figure class="highlight haml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs haml">compile:<br>        vcs \<br>        -<span class="ruby">full64 \</span><br><span class="ruby"></span>        -<span class="ruby">sverilog \</span><br><span class="ruby"></span>        -<span class="ruby">cpp g++-<span class="hljs-number">4.8</span> \</span><br><span class="ruby"></span>        -<span class="ruby">cc gcc-<span class="hljs-number">4.8</span> \</span><br><span class="ruby"></span>        -<span class="ruby">LDFLAGS \</span><br><span class="ruby"></span>        -<span class="ruby">Wl, --no-as-needed \</span><br><span class="ruby"></span>        -<span class="ruby">debug_all \</span><br><span class="ruby"></span>        -<span class="ruby">rdynamic \</span><br><span class="ruby"></span>        -<span class="ruby">P <span class="hljs-variable">$&#123;</span>LD_LIBRARY_PATH&#125;/novas.tab \</span><br><span class="ruby"></span>        $&#123;LD_LIBRARY_PATH&#125;/pli.a \<br>        -<span class="ruby">f filelist.f \</span><br><span class="ruby"></span>        +vcs+lic+wait \<br>        -<span class="ruby">timescale=1ns/1ps \</span><br><span class="ruby"></span>        -<span class="ruby">l compile.log</span><br><span class="ruby"></span><br>-<span class="ruby">full64 ： VCS以<span class="hljs-number">64</span>位运行</span><br><span class="ruby"></span>-<span class="ruby">sverilog：如果你的文件后缀名用的是.sv，那么编译时要加上该参数</span><br><span class="ruby"></span>-<span class="ruby">cpp g++ -<span class="hljs-number">4.8</span> ： 要根据的VCS的版本寻找对应的G++的版本</span><br><span class="ruby"></span>-<span class="ruby">cc gcc-<span class="hljs-number">4.8</span>：对应gcc的版本</span><br><span class="ruby"></span>-<span class="ruby">LDFLAGS ：这个参数和后面的参数不写有时还会报错，指用GCC等编译器中的一些优化参数</span><br><span class="ruby"></span>-<span class="ruby">Wl, --no-as-needed：把用户指定的链接库全部写入可执行文件中，而不是依赖的库写入</span><br><span class="ruby"></span>-<span class="ruby">debug_all：这个参数是肯定需要的</span><br><span class="ruby"></span>-<span class="ruby">rdynamic：指示需要加载的动态库</span><br><span class="ruby"></span>-<span class="ruby">R：表示在编译完成之后自动运行仿真</span><br><span class="ruby"></span>-<span class="ruby">f ：filelist.f文件，用于表示所有源文件</span><br><span class="ruby"></span>-<span class="ruby">o ：指定输出的可执行文件的名字，缺省是simv</span><br><span class="ruby"></span>-<span class="ruby">full64： 在<span class="hljs-number">64</span>-bit模式下编译，生成<span class="hljs-number">64</span>-bit模式仿真的可执行文件</span><br><span class="ruby"></span>-<span class="ruby">sverilog： 支持systemverilog语法</span><br><span class="ruby"></span>-<span class="ruby">timescale=1ns/1ns： 仿真时间刻度，要和tb保持一致</span><br><span class="ruby"></span>+v2k： 支持verilog2001<br>-<span class="ruby">debug_access+all： VCS2014之后加入debug_access，不需要手动配置verdi.tab，和静态库pli.a，只需要设置<span class="hljs-variable">$VERDI_HOME</span>，VCS会自动查找所需文件</span><br><span class="ruby"></span>-<span class="ruby">kdb -lca： 用于生成kdb.elab++，位于simv.daiddir目录下</span><br><span class="ruby"></span>-<span class="ruby">f file.f： 指定文件列表，file.f存着要编译文件的路径，可以通过shell命令find 该目录路径 -name <span class="hljs-string">&quot;*.*v&quot;</span> 生成的文件名</span><br><span class="ruby"></span>例子中加入-cpp和-cc的主要原因是用的VCS2016.06, 而我电脑里用gcc7.5，所以在下载完gcc4.8之后需要显性的表示出vcs调用GCC的版本。之后动态库链接的一些参数也是因为同样的原因，如果不加-Wl,–no-as-needed会显示其他动态库找不到函数声明，因此需要我们链接的时候把一些链接库直接添加到可执行文件中<br><br>verdi：<br>	verdi -ssf rtl.fsdb<br>-<span class="ruby">ssf rtl.fsdb： 加载fsdb波形文件。verdi是第三方软件，支持的波形文件为.fsdb，dve为vcs自带的软件，支持的波形文件为.vpd。</span><br><span class="ruby"></span>verdi -ssf rtl.fsdb： verdi加载.fsdb文件<br><br></code></pre></div></td></tr></table></figure>
+<p><strong>主要内容</strong></p>
+<figure class="highlight makefile"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs Makefile">WORKPLACE = .<br>VSRCS = <span class="hljs-variable">$(<span class="hljs-built_in">shell</span> find $(<span class="hljs-built_in">abspath</span> <span class="hljs-variable">$(WORKPLACE)</span>/)</span> -name <span class="hljs-string">&quot;*.v&quot;</span>)<br>FILELIST = <span class="hljs-variable">$(WORKPLACE)</span>/file.f<br><br>VCS = vcs -full64 -sverilog -timescale=1ns/1ns \<br>		-cpp g++ -cc gcc -LDFLAGS -Wl,--no-as-needed\<br>		+v2k \<br>		-debug_access+all -kdb -lca\<br>		-f file.f	<br><br><br><span class="hljs-section">comp:</span><br>	find <span class="hljs-variable">$(WORKPLACE)</span> -name <span class="hljs-string">&quot;*.v&quot;</span> &gt; <span class="hljs-variable">$(FILELIST)</span><br>	<span class="hljs-variable">$(VCS)</span> <br><br><span class="hljs-section">verdi:</span><br>	verdi -ssf rtl.fsdb<br><br><span class="hljs-section">clean:</span><br>	rm -rf csrc simv* *.lib *.lib++ nLint*<br>	rm -rf *.log *.vpd *.fsdb* *.key *log rtl.fsdb*<br><br></code></pre></div></td></tr></table></figure>
+<p><strong>写一个简单的加法器</strong></p>
+<p>add.v</p>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">module</span> add (<br><br>	<span class="hljs-keyword">input</span>         [<span class="hljs-number">20</span>:<span class="hljs-number">0</span>]	A ,<br>	<span class="hljs-keyword">input</span> <span class="hljs-keyword">signed</span>  [<span class="hljs-number">17</span>:<span class="hljs-number">0</span>]	B	,<br><br>	<span class="hljs-keyword">output</span> <span class="hljs-keyword">signed</span> [<span class="hljs-number">22</span>:<span class="hljs-number">0</span>]	C);<br><br>	<span class="hljs-keyword">wire</span> <span class="hljs-keyword">signed</span> [<span class="hljs-number">21</span>:<span class="hljs-number">0</span>]	A_signed;<br><br><span class="hljs-keyword">assign</span> A_signed = &#123;<span class="hljs-number">1&#x27;b0</span>,A&#125;;<br><span class="hljs-keyword">assign</span> C = A_signed + B;<br><br><span class="hljs-keyword">endmodule</span><br></code></pre></div></td></tr></table></figure>
+<p>test.v</p>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-meta">`<span class="hljs-meta-keyword">timescale</span> 1ns/1ns</span><br><br><span class="hljs-keyword">module</span> test;<br><br><span class="hljs-keyword">reg</span> clk;<br><span class="hljs-keyword">reg</span> rst_n;<br><br><span class="hljs-keyword">reg</span> [<span class="hljs-number">20</span>:<span class="hljs-number">0</span>] A;<br><span class="hljs-keyword">reg</span> <span class="hljs-keyword">signed</span> [<span class="hljs-number">17</span>:<span class="hljs-number">0</span>] B;<br><br><span class="hljs-keyword">wire</span> <span class="hljs-keyword">signed</span> [<span class="hljs-number">22</span>:<span class="hljs-number">0</span>] C;<br><br><span class="hljs-keyword">initial</span> <span class="hljs-keyword">begin</span><br>	clk = <span class="hljs-number">0</span>;<br>	rst_n = <span class="hljs-number">0</span>;<br>        A = <span class="hljs-number">21&#x27;b0</span>;<br>	B = <span class="hljs-number">18&#x27;b0</span>;<br>	#<span class="hljs-number">10</span>;<br>	rst_n = <span class="hljs-number">1</span>;<br>	<span class="hljs-keyword">repeat</span>(<span class="hljs-number">80</span>) @(<span class="hljs-keyword">posedge</span> clk) <span class="hljs-keyword">begin</span><br>	  A = A + <span class="hljs-number">21&#x27;b1</span>;<br>	<span class="hljs-keyword">end</span><br>	<br>    #<span class="hljs-number">2000</span>;<br>    <span class="hljs-built_in">$finish</span>;<br><br><span class="hljs-keyword">end</span><br><br><span class="hljs-keyword">always</span> #<span class="hljs-number">5</span> clk = ~clk;<br><br><span class="hljs-keyword">initial</span> <span class="hljs-keyword">begin</span><br>	$fsdbDumpfile(<span class="hljs-string">&quot;./rtl.fsdb&quot;</span>);<br>	$fsdbDumpvars(<span class="hljs-string">&quot;+all&quot;</span>);<br><span class="hljs-keyword">end</span><br><br>add add_inst(<br>	<span class="hljs-variable">.A</span>(A),<br>	<span class="hljs-variable">.B</span>(B),<br>	<span class="hljs-variable">.C</span>(C));<br><br><span class="hljs-keyword">endmodule</span><br><br></code></pre></div></td></tr></table></figure>
+<p><strong>Makefile</strong></p>
+<p>假设你已经装上的 make 和 gcc，且熟悉make编译规则</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">WORKPLACE = .<br>VSRCS = $(shell find $(abspath $(WORKPLACE)/) -name <span class="hljs-string">&quot;*.v&quot;</span>)<br>FILELIST = $(WORKPLACE)/file.f<br><br>VCS = vcs -full64 -sverilog -timescale=1ns/1ns \<br>		-cpp g++ -cc gcc -LDFLAGS -Wl,--no-as-needed\<br>		+v2k \<br>		-debug_access+all -kdb -lca\<br>		-f file.f	<br><br><br>comp:<br>	find $(WORKPLACE) -name <span class="hljs-string">&quot;*.v&quot;</span> &gt; $(FILELIST)<br>	$(VCS) <br><br>verdi:<br>	verdi -ssf rtl.fsdb<br><br>clean:<br>	rm -rf csrc simv* *.lib *.lib++ nLint*<br>	rm -rf *.<span class="hljs-built_in">log</span> *.vpd *.fsdb* *.key *<span class="hljs-built_in">log</span> rtl.fsdb*<br><br></code></pre></div></td></tr></table></figure>
+<p>生成.fsdb有两种方法，一种是在vcs编译时生成，需要在tb顶层添加下面两个系统函数，然后在用verdi加载波形文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-variable">$fsdbDumpfile</span>(<span class="hljs-string">&quot;./rtl.fsdb&quot;</span>);//生成rtl.fsdb波形文件<br><span class="hljs-variable">$fsdbDumpvars</span>(<span class="hljs-string">&quot;+all&quot;</span>);//把所有变量全都加进去<br></code></pre></div></td></tr></table></figure>
+<p>第二种方法是通过verdi界面生成fsdb。编译完后通过输入下面命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">./simv -gui=verdi<br></code></pre></div></td></tr></table></figure>
+<p>打开verdi界面，然后在verdi命令行输入run，也可以生成.fsdb文件，但是这种方法比较麻烦，而且每加一个变量都得重新run，不然看不到这个变量的波形。所以一般采用第一种方式</p>
+<p>也可以通过输入下面命令通过dve仿真</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">./simv -gui<br></code></pre></div></td></tr></table></figure>
+<h2><span id="其他问题">其他问题</span></h2><h3><span id="vcs">VCS</span></h3><h4><span id="1-vlogan找不到">1 vlogan找不到</span></h4><p> 编译程序失败，打印消息如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">chang@chang-virtual-machine:~/programs/study/luke/V2 X 代码/V2.1_SV实验/lab0$ make comp <br>vlogan -full64 -sverilog -timescale=1ps/1ps -nc -l comp.log  ../mcdt/v1/&#123;arbiter.v,slave_fifo.v,mcdt.v&#125; tb1.v<br><br>Warning-[MXIR-W] VCS-MX build is required<br>  Please make sure that vlogan is from the intended build.<br><br><br>Error-[ILWOR] Incorrect Logical Worklib or Reflib<br>  The incorrect logical lib is <span class="hljs-string">&quot;work&quot;</span>.  <br>  Please check your Synopsys setup file.<br><br>make: *** [Makefile:18：comp] 错误 255<br></code></pre></div></td></tr></table></figure>
+<p>解决方法：改VCS_HOME路径</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/EDA%E5%85%A5%E9%97%A8/image-20230207220111665.png" srcset="/img/loading.gif" lazyload alt="image-20230207220111665"></p>
+<p>参考链接：<a target="_blank" rel="noopener" href="https://bbs.eetop.cn/thread-842862-1-1.html">https://bbs.eetop.cn/thread-842862-1-1.html</a></p>
+<h3><span id="2ubuntu进行vcs编译时libvcsnewsounderfined-reference-to-xxx">2.ubuntu进行vcs编译时：libvcsnew.so：underfined reference to xxx</span></h3><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/EDA%E5%85%A5%E9%97%A8/image-20230207221919720.png" srcset="/img/loading.gif" lazyload alt="image-20230207221919720"></p>
+<p>ubuntu上进行vcs编译时报错libvcsnew.so：underfined reference to xxx，问题原因是默认情况下 gcc 在 Debian/Ubuntu 上使用的链接器选项与在 Fedora 上使用的链接器选项略有不同（这是测试 VCS 的平台）</p>
+<p>解决方法：编译添加参数<code>-LDFLAGS -Wl,--no-as-needed</code></p>
+<p>参考链接：</p>
+<p>① 解决方法链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/kissdragan/article/details/128599150">https://blog.csdn.net/kissdragan/article/details/128599150</a></p>
+<p>② 原因链接：<a target="_blank" rel="noopener" href="https://github.com/chipsalliance/rocket-chip/issues/21">https://github.com/chipsalliance/rocket-chip/issues/21</a></p>
+<hr>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011901086.jpg" srcset="/img/loading.gif" lazyload alt="97756295_p0"></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/">IC</a>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/EDA/">EDA</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/IC/">IC</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%80%BB%E7%BA%BF/">总线</a>
+                    
+                      <a class="hover-with-bg" href="/tags/AMBA/">AMBA</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/202204221950/IC/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E7%BB%8F%E5%85%B8%E7%BB%84%E5%90%88%E5%92%8C%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%9A%84%E8%AE%BE%E8%AE%A1/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">数字电路设计基础</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/202204211940/%E5%B8%B8%E7%94%A8essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/Gvim%E5%85%A5%E9%97%A8/">
+                        <span class="hidden-mobile">Gvim入门</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'preferred-color-scheme';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'GreensCH/commitutterances');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <span> | </span> <a href="https://weibo.com/u/7453939976" target="_blank" rel="nofollow noopener"> Green Weibo</a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?eca4a4d34dadf0d4e282cc6ef2dc3de6";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<!-- hexo injector body_end start --><script src="/js/backgroundize.js"></script>
+  <link defer rel="stylesheet" href="/css/backgroundize.css" />
+  
+  <div id="aplayer" style="width:300px"></div>
+  <link defer rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css" />
+  <script src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js"></script>
+  <script defer src="/js/aplayer.js"></script><script src="/js/githubcalendar.js"></script> 
+  <script data-pjax src="/js/githubcalendar.js"></script>
+  <script data-pjax>
+        function GithubCalendarConfig(){
+            var git_githubapiurl ="https://python-github-calendar-api.vercel.app/api?greensch";
+            var git_color =['#ebedf0', '#f0fff4', '#dcffe4', '#bef5cb', '#85e89d', '#34d058', '#28a745', '#22863a', '#176f2c', '#165c26', '#144620'];
+            var git_user ="greensch";
+            var parent_div_git = document.getElementById('board');
+            var git_div_html = '<div id="github-calendar" style="width:100%;height:auto;padding:10px;margin-bottom:20px;box-shadow:none;"><div id="github_loading" style="width:10%;height:100%;margin:0 auto;display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div><div id="github_container"></div></div>';
+            if(parent_div_git && location.pathname =='/'){
+                console.log('已挂载github calendar')
+                // parent_div_git.innerHTML=git_div_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",git_div_html) // 有报错，但不影响使用(支持pjax跳转)
+            };
+            GithubCalendar(git_githubapiurl,git_color,git_user)
+        }
+        if(document.getElementById('board')){
+            GithubCalendarConfig()
+        }
+    </script>
+    <style>#github_container{min-height:200px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
+    <style>#github_container > .position-relative > .border{border:0!important}#github-calendar{position: relative;margin-top: -2rem;background-color: var(--board-bg-color);transition: background-color 0.2s ease-in-out;border-radius: 0.5rem;z-index: 3;-webkit-box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);}</style><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"superSample":1,"position":"left","width":150,"height":400,"vOffset":-18},"mobile":{"show":false,"scale":0.25},"dialog":{"enable":false,"hitokoto":true,"width":10,"height":10,"vOffset":-100},"log":false});</script></body>
+</html>

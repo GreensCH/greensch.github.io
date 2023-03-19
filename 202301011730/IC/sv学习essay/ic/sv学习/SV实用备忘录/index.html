@@ -1,0 +1,853 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/con1.png">
+  <link rel="icon" href="/img/con1.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="“无论最终结果将人类历史导向何处，我们决定选择希望”">
+  <meta name="author" content="友人律 | Guilin Chang">
+  <meta name="keywords" content="三差学生、不学无术">
+  <meta name="description" content="语法打印相关%0d：抛去输出中的0与空格，使输出更紧密 %p：十进制打印全部元素（数组，动态数组，队列，结构体），用的较多 数据类型相关packed array 与 unpacked array12bit [7:0] packed_array;     &#x2F;&#x2F; packed arrayevent unpacked_array[0:7]; &#x2F;&#x2F; unpacked array 1.packed arra">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SV实用备忘录">
+<meta property="og:url" content="http://yoursite.com/202301011730/IC/sv%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E7%94%A8%E5%A4%87%E5%BF%98%E5%BD%95/index.html">
+<meta property="og:site_name" content="友人律的博客">
+<meta property="og:description" content="语法打印相关%0d：抛去输出中的0与空格，使输出更紧密 %p：十进制打印全部元素（数组，动态数组，队列，结构体），用的较多 数据类型相关packed array 与 unpacked array12bit [7:0] packed_array;     &#x2F;&#x2F; packed arrayevent unpacked_array[0:7]; &#x2F;&#x2F; unpacked array 1.packed arra">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E7%94%A8%E5%A4%87%E5%BF%98%E5%BD%95/f30e5a2dde38dad87807f68a5be81eba.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E7%94%A8%E5%A4%87%E5%BF%98%E5%BD%95/8f174f73f1fb804f00dca6cd4c9b7fbf.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E7%94%A8%E5%A4%87%E5%BF%98%E5%BD%95/a31f509696fe426283ca738594fd0e7b.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E7%94%A8%E5%A4%87%E5%BF%98%E5%BD%95/image-20230215205604746.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E7%94%A8%E5%A4%87%E5%BF%98%E5%BD%95/image-20230215210723515.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E7%94%A8%E5%A4%87%E5%BF%98%E5%BD%95/image-20230215212744440.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011835767.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E7%94%A8%E5%A4%87%E5%BF%98%E5%BD%95/image-20230216232618130.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E7%94%A8%E5%A4%87%E5%BF%98%E5%BD%95/image-20230216233004611.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E7%94%A8%E5%A4%87%E5%BF%98%E5%BD%95/image-20230216233140031.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E7%94%A8%E5%A4%87%E5%BF%98%E5%BD%95/image-20230216233219546.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E7%94%A8%E5%A4%87%E5%BF%98%E5%BD%95/ee6aad13c3b646de89954b5ad8c59592.png">
+<meta property="article:published_time" content="2023-01-01T09:30:00.000Z">
+<meta property="article:modified_time" content="2023-02-24T15:50:35.725Z">
+<meta property="article:author" content="友人律 | Guilin Chang">
+<meta property="article:tag" content="IC">
+<meta property="article:tag" content="sv学习">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E7%94%A8%E5%A4%87%E5%BF%98%E5%BD%95/f30e5a2dde38dad87807f68a5be81eba.png">
+  
+  <title>SV实用备忘录 - 友人律的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/stackoverflow-dark.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"eca4a4d34dadf0d4e282cc6ef2dc3de6","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body><!-- hexo injector body_begin start -->
+<link defer rel="stylesheet" href="/css/article_para.css" />
+<div id="web_bg"></div><!-- hexo injector body_begin end -->
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>友人律的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E9%80%9A%E7%9F%A5/">
+                <i class="iconfont icon-link-fill"></i>
+                通知
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1/">
+                <i class="iconfont icon-link-fill"></i>
+                项目与设计
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">
+                <i class="iconfont icon-link-fill"></i>
+                开发工具
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/CS/">
+                <i class="iconfont icon-link-fill"></i>
+                CS
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/IC/">
+                <i class="iconfont icon-link-fill"></i>
+                IC
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/banner_img/anime/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="SV实用备忘录">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2023-01-01 17:30" pubdate>
+        2023年1月1日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5.5k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      17 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">SV实用备忘录</h1>
+            
+            <div class="markdown-body">
+              <h2><span id="语法">语法</span></h2><h3><span id="打印相关">打印相关</span></h3><p><code>%0d</code>：抛去输出中的0与空格，使输出更紧密</p>
+<p><code>%p</code>：十进制打印全部元素（数组，动态数组，队列，结构体），<strong>用的较多</strong></p>
+<h3><span id="数据类型相关">数据类型相关</span></h3><h3><span id="packed-array-与-unpacked-array">packed array 与 unpacked array</span></h3><figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">bit</span> [<span class="hljs-number">7</span>:<span class="hljs-number">0</span>] packed_array;     <span class="hljs-comment">// packed array</span><br><span class="hljs-keyword">event</span> unpacked_array[<span class="hljs-number">0</span>:<span class="hljs-number">7</span>]; <span class="hljs-comment">// unpacked array</span><br></code></pre></div></td></tr></table></figure>
+<p><strong>1.packed array</strong></p>
+<ul>
+<li>常由按位（bit-wise）类型（logic、bit、reg，etc）、线网（wire、uwire、wand、tri、triand，etc）、枚举类型和其他的packed数据结构等构成，而像byte、shortint、int、longint、integer和time等这些数据类型，因为其本身就已经包含特定的位宽信息，所以不能指定这些类型为packed array，但是这并不影响这些类型声明的变量在满足一定要求的情况下同packed array进行交互的</li>
+<li>packed array中数组元素在存储时是按照位连续的方式进行存放的，即其中所有元素是连续存放的，并且存放不依赖于任何EDA工具，一般情况下一维的packed array与vector类似，根据packed array的特点，其存储方式如下图示例所示：</li>
+<li>对packed array赋值时采用的是拼位操作实现的</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E7%94%A8%E5%A4%87%E5%BF%98%E5%BD%95/f30e5a2dde38dad87807f68a5be81eba.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><strong>2.unpacked array</strong></p>
+<ul>
+<li>基本上通吃所有数据类型，数组的索引范围声明在数组名的右侧，数组的维数也可以像packed array一样指定为多维的，与packed array维数指定不同的是，unpacked array维数的指定有两种方式：一种是传统的数组声明方式<code>int Array[0:7][0:31]</code>，另一种方式是采用C语言方式<code>int Array[8][32]</code></li>
+<li>在数据存储方面，unpacked array中所有的数据元素在存储时是相互独立的，在数组元素存储时，数组中元素具体存储在几位的空间一般情况下取决于编译器，例如如果定义的unpacked array中每个元素宽度为8位，但是编译器在存储数组元素时给每个元素分配了32位空间，那么unpacked array中每个元素将仅使用32位中的8位，从而导致部分空间的浪费，下图为一个unpacked array的存储示意图：</li>
+<li>对unpacked array进行赋值操作时采用的是数值列表的方式，即<code>&#39;&#123;&#125;</code>，注意不能使用拼位方式，但是packed array赋值方式不仅可以使用拼位方式也可以使用数值列表方式</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E7%94%A8%E5%A4%87%E5%BF%98%E5%BD%95/8f174f73f1fb804f00dca6cd4c9b7fbf.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><strong>3.多维数组</strong><br>在实际使用时，除了会单独定义使用packed array和unpacked array之外，经常还会将两者组合在一起形成多维数组进行使用，特别是在声明定义一些memory模型时。下图为一个多维数组的示例，其中标明了索引时各索引号对应的索引位置。</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E7%94%A8%E5%A4%87%E5%BF%98%E5%BD%95/a31f509696fe426283ca738594fd0e7b.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>多维数组索引的顺序如上图所示，即<strong>先从unpacked维数开始</strong>，并且unpacked的维数中按照从左到右的顺序进行索引，完成unpacked侧所有维数索引之后，再从packed侧的维数开始索引，也是按照从左到右的顺序进行索引</p>
+<p><strong>4.使用场景</strong></p>
+<p>unpacked array：</p>
+<ul>
+<li>非bit-wise类型（例如byte、int、integer、real、其他unpacked类型结构）</li>
+<li>构建存储类模型时，常需要一次访问一个多位元素的数组时</li>
+</ul>
+<p>packed array：</p>
+<ul>
+<li>bit-wise类型、所有的packed类型结构都可以采用</li>
+<li>如果需要经常访问数组中的某些位时，可以考虑构建数组时采用packed array</li>
+</ul>
+<h4><span id="字符串">字符串</span></h4><p>判断字符串为空</p>
+<p><code>if(str == &quot;&quot;)</code></p>
+<p>字符串拼接</p>
+<ul>
+<li>方法一：<code>s3 = &#123;s1, &quot; to &quot;, s2&#125;; // concatenation operator &#39;&#123;...&#125;&#39;</code></li>
+<li>方法二：<code>s4 = $sformatf(&quot;%s to %s&quot;, s1, s2); // system format function</code></li>
+<li>方法三：<code>s5 = $psprintf(&quot;%s to %s&quot;, s1, s2); // system format function</code></li>
+</ul>
+<p>整形转字符串：<code>itoa</code></p>
+<p>字符串拼接的时候一定要用{}预留足够的位宽：<code>s3 = &#123;s1.len()+s2.len()&#123;&quot; &quot;&#125;&#125;;</code></p>
+<h4><span id="结构体">结构体</span></h4><p>接口与struct放在module外面仿真时才能看见，而且这种方式<strong>更常见</strong></p>
+<h3><span id="接口">接口</span></h3><ul>
+<li>接口内有时间概念</li>
+<li>接口与struct放在module外面仿真时才能看见，而且这种方式<strong>更常见</strong><ul>
+<li>接口中不能在类里面或包里面定义，因为他是软件的概念</li>
+</ul>
+</li>
+<li>接口内部定义的函数与module里面定义的是一样的，换句话module里做一件事在interface也都是可以做</li>
+</ul>
+<h3><span id="类和对象">类和对象</span></h3><p><strong>在类里面声明interface的指针一定要加<code>virtual</code>不然报错</strong></p>
+<p>一种奇怪的例化？我还没查过手册，第一次出现在svlab2的tb1，也不用特意连接interface的接口信号</p>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog">chnl_intf chnl0_if(.*);<br>chnl_intf chnl1_if(.*);<br>chnl_intf chnl2_if(.*);<br></code></pre></div></td></tr></table></figure>
+<p>又一种奇怪的例化传参：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">this</span><span class="hljs-variable">.init</span> = <span class="hljs-keyword">new</span>(&#123;name, <span class="hljs-string">&quot;.init&quot;</span>&#125;);<br><span class="hljs-comment">//init的构造函数原型为</span><br><span class="hljs-keyword">function</span> <span class="hljs-keyword">new</span>(<span class="hljs-keyword">string</span> name = <span class="hljs-string">&quot;chnl_initiator&quot;</span>);<br>    <span class="hljs-keyword">this</span><span class="hljs-variable">.name</span> = name;<br><span class="hljs-keyword">endfunction</span><br></code></pre></div></td></tr></table></figure>
+<h3><span id="clocking时序块">clocking时序块</span></h3><p>clocking基于时钟进行采样，使得testbench不在苦恼于如何即使准确的对信号进行驱动和采样，消除了信号竞争问题，我们应该在验证消耗的驱动环境就添加固定延时，使得在仿真波形中更容易体现出时钟与被驱动信号前后的时序关系</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E7%94%A8%E5%A4%87%E5%BF%98%E5%BD%95/image-20230215205604746.png" srcset="/img/loading.gif" lazyload alt="image-20230215205604746"></p>
+<ul>
+<li>第一行@(信号)：定义上升沿事件</li>
+<li>第二行指定的是：默认情况下所有的输出相比较上升沿<strong>之后</strong>2ns延迟，对所有输入信号在上升沿<strong>之前</strong>10ns做一个采样。和电路里面建立保持时间差不多。</li>
+<li>第三行：我们要对data,ready和enable信号做采样了，且以及声明方向了</li>
+<li>属于输出驱动额外强调在时钟下降沿</li>
+<li>#1step 过上一个单位的step表示，可以看作一个时间片或者上升沿上一个时间片之间的采样域内</li>
+</ul>
+<p>定义与使用：</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E7%94%A8%E5%A4%87%E5%BF%98%E5%BD%95/image-20230215210723515.png" srcset="/img/loading.gif" lazyload alt="image-20230215210723515"></p>
+<p>除了上述例子，总结下我们通常用到clocking的方式：</p>
+<ul>
+<li>如何让clocking后的信号介入：<code>接口实例.clocking块.信号</code><ul>
+<li>如果单纯：<code>接口实例.信号</code>则没有clocking块下过</li>
+</ul>
+</li>
+<li>如何检测clocking的变化：<code>@clocking块</code></li>
+</ul>
+<hr>
+<ul>
+<li>对于时钟而言可以定义在：module，Interface,program中</li>
+<li>clocking内列举的信号是由interface或其他的地方去定义</li>
+<li>对于时钟块他只声明而不定义</li>
+<li>没有定义的话默认输入在事件前1step，驱动在事件后#0（一个时钟片相当于无穷多个step，肯定比step大）</li>
+<li>处理定义默认的采样和驱动时间，可以用新的时间对默认事件覆盖</li>
+</ul>
+<h3><span id="program">program</span></h3><ul>
+<li>program是软件的领域</li>
+<li>module是硬件的领域（不可以出现硬件行为相关的过程快：always, module, interface）</li>
+<li>interface硬件软件的媒介</li>
+</ul>
+<p>program的作用：</p>
+<ul>
+<li>我们建议将设计部分放到module，测试采样放到program</li>
+<li>发起多个initial（全部执行完毕则结束仿真，这种方式是隐式结束，使用较少）</li>
+<li>调用program专用系统函数<code>$exit()</code>结束仿真，这种方式是显式结束</li>
+</ul>
+<h3><span id="package的使用">package的使用</span></h3><p>包的意义：相关的类可以组织在同一命名空间中（多个module、Interface和program之间共享数据的方法）</p>
+<p>要点：<strong>命名空间实际上就是个package</strong>    </p>
+<p>定义：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">package</span> reg_pkg;<br>	<span class="hljs-meta">`<span class="hljs-meta-keyword">include</span> &quot;xxx_1.sv&quot;</span><br>	<span class="hljs-meta">`<span class="hljs-meta-keyword">include</span> &quot;xxx_2.sv&quot;</span><br>	...<br><span class="hljs-keyword">endpackage</span><br></code></pre></div></td></tr></table></figure>
+<p>导入：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">module</span><br>    <span class="hljs-keyword">import</span> xxx_pkg::*;<br>    或者直接引用<br>    xxx_pkg::monitor mon1 = <span class="hljs-keyword">new</span>();<br><span class="hljs-keyword">endmodule</span><br></code></pre></div></td></tr></table></figure>
+<p>注意：</p>
+<ul>
+<li>包不用例化，包就是个容器</li>
+<li>软件的东西一定要放到包里面，类是包的好朋友，包是类的归宿，我们会把类都放到包里面</li>
+<li>不能定义与硬件相关的部分(module,interface,program都不能)</li>
+</ul>
+<p>包、library和编译：</p>
+<ul>
+<li>package会被编译到library里面。编译的默认路径为包的路径，若包中有其他include的文件不在包路径下，则编译包时候需要加上额外指定的搜索路径选项</li>
+<li>包就像一个library一样，只不过比Library低一个层级，你把定义好的东西放到包里面</li>
+<li>同名类，不同包编译的结果：</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E7%94%A8%E5%A4%87%E5%BF%98%E5%BD%95/image-20230215212744440.png" srcset="/img/loading.gif" lazyload alt="image-20230215212744440"></p>
+<h3><span id="随机化">随机化</span></h3><p>软约束<code>soft</code>：</p>
+<ul>
+<li>约束有冲突时soft声明的约束不起作用</li>
+<li>软约束用于为随机变量指定默认值和分布</li>
+</ul>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011835767.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><code>local::</code></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E7%94%A8%E5%A4%87%E5%BF%98%E5%BD%95/image-20230216232618130.png" srcset="/img/loading.gif" lazyload alt="image-20230216232618130"></p>
+<ul>
+<li>这里不能用<code>this</code>，<code>this</code>仍然代表该处的trans的成员变量</li>
+</ul>
+<p>随机变量和约束初始化为负数的好处（070-实验3代码讲解，15:00）</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E7%94%A8%E5%A4%87%E5%BF%98%E5%BD%95/image-20230216233004611.png" srcset="/img/loading.gif" lazyload alt="image-20230216233004611"></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E7%94%A8%E5%A4%87%E5%BF%98%E5%BD%95/image-20230216233140031.png" srcset="/img/loading.gif" lazyload alt="image-20230216233140031"></p>
+<ul>
+<li>具体约束位置（send_trans()位于generator类里）</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E7%94%A8%E5%A4%87%E5%BF%98%E5%BD%95/image-20230216233219546.png" srcset="/img/loading.gif" lazyload alt="image-20230216233219546"></p>
+<ul>
+<li>可以完成从该generator到chnl_trans的层层递进的控制（通过ch_id &gt;= 0 约束了generator，进一步通过-&gt;约束了ch_id）</li>
+</ul>
+<h4><span id="调用">调用</span></h4><p>调用<code>randomize()</code>或者<code>randomize() with &#123;约束条件&#125;</code>前/后</p>
+<ul>
+<li>该类内重载过的<code>pre_randomzie();</code>或<code>post_randomize()</code>函数会自动被调用</li>
+</ul>
+<h3><span id="断言">断言</span></h3><p>注意：system verilog是包含有assert语句的，但是raw verilog没有</p>
+<p>简单写法：<code>assert(表达式);</code></p>
+<p>一种写法：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">assert</span>(表达式)<span class="hljs-comment">//为真则正常运行，为否则报错终止并运行else语句</span><br>    <span class="hljs-keyword">else</span> 语句;<br></code></pre></div></td></tr></table></figure>
+<h3><span id="事件控制">事件控制</span></h3><p>1.<code>iff(表达式)</code>，只有当iff表达式/事件表达式为真时，事件控制才会被触发</p>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog">@(<span class="hljs-keyword">posedge</span> clk <span class="hljs-keyword">iff</span>(vld));<br>do_something;<br><span class="hljs-comment">//它产生的效果和下面的代码一样</span><br><span class="hljs-keyword">forever</span> <span class="hljs-keyword">begin</span><br>	@(<span class="hljs-keyword">posedge</span> clk);<br>	<span class="hljs-keyword">if</span>(vld)<br>		<span class="hljs-keyword">break</span>;<br><span class="hljs-keyword">end</span><br>do_something;<br></code></pre></div></td></tr></table></figure>
+<p><code>iff</code> 和 <code>if</code> 之间的区别是：这个表达式只有在 <code>vld</code> 发生变化时计算，而不是 <code>clk</code> 发生变化的时候</p>
+<p>优点：会使得 <code>iff</code> 比 <code>if</code> 效率更高，因为它作为一个线程被唤醒的概率更小。所以更推荐使用 <code>iff</code></p>
+<p>disable iff：《System Verilog Assertions应用指南》</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E5%AE%9E%E7%94%A8%E5%A4%87%E5%BF%98%E5%BD%95/ee6aad13c3b646de89954b5ad8c59592.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h3><span id="表达式">表达式</span></h3><h4><span id="等于与不等于">等于与不等于</span></h4><p><code>===</code>和<code>==</code>不同体现在对含有不定制<code>X</code>和高阻态<code>Z</code>数据的处理中：</p>
+<ul>
+<li><code>==</code>为逻辑相等，没有x/z时相同输出1，不同输出0；有x/z时，若其余位相同，输出是x，其余位不同，输出为0</li>
+<li><code>!=</code>为逻辑不等，没有x/z时相同输出0，不同输出1；有x/z时，若其余位相同，输出是x，其余位不同，输出为1</li>
+<li><code>===</code>与<code>!==</code>为逻辑全等和逻辑不全等，x/z当作普通元素处理</li>
+</ul>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-built_in">$displayb</span> ( <span class="hljs-number">4</span>’b0011 == <span class="hljs-number">4</span>’b1010 ); <span class="hljs-comment">// 0</span><br><span class="hljs-built_in">$displayb</span> ( <span class="hljs-number">4</span>’b0011 == <span class="hljs-number">4</span>’b0011 ); <span class="hljs-comment">// 1</span><br> <br> <br><span class="hljs-built_in">$displayb</span> ( <span class="hljs-number">4</span>’b1010 == <span class="hljs-number">4</span>’b1x10 ); <span class="hljs-comment">// x</span><br><span class="hljs-built_in">$displayb</span> ( <span class="hljs-number">4</span>’b0x10 == <span class="hljs-number">4</span>’b1x10 ); <span class="hljs-comment">// 0</span><br><span class="hljs-built_in">$displayb</span> ( <span class="hljs-number">4</span>’b1z10 == <span class="hljs-number">4</span>’b1z10 ); <span class="hljs-comment">// x</span><br> <br><span class="hljs-built_in">$displayb</span> ( <span class="hljs-number">4</span>’b0011 != <span class="hljs-number">4</span>’b1x10 ); <span class="hljs-comment">// 1</span><br><span class="hljs-built_in">$displayb</span> ( <span class="hljs-number">4</span>’b1x10 != <span class="hljs-number">4</span>’b1x10 ); <span class="hljs-comment">// x</span><br><br><span class="hljs-built_in">$displayb</span> ( <span class="hljs-number">4</span>’b01zx === <span class="hljs-number">4</span>’b01zx ); <span class="hljs-comment">// 1</span><br><span class="hljs-built_in">$displayb</span> ( <span class="hljs-number">4</span>’b01zx !== <span class="hljs-number">4</span>’b01zx ); <span class="hljs-comment">// 0</span><br><span class="hljs-built_in">$displayb</span> ( <span class="hljs-number">4</span>’b01zx === <span class="hljs-number">4</span>’b00zx ); <span class="hljs-comment">// 0</span><br><span class="hljs-built_in">$displayb</span> ( <span class="hljs-number">4</span>’b01zx !== <span class="hljs-number">4</span>’b11zx ); <span class="hljs-comment">// 1</span><br></code></pre></div></td></tr></table></figure>
+<h2><span id="系统函数">系统函数</span></h2><p><code>stop()</code> //停止运行</p>
+<h3><span id="统计类">统计类</span></h3><p>1.<code>$countbits(expression , control_bit&#123; , control_bit &#125;)</code>：其他统计函数的原型，该函数用于统计某个变量中满足control_bit条件的bit个数。比如可以统计某个变量中1的个数，0的个数，x态的个数等，示例如下：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">bit</span>[<span class="hljs-number">15</span>:<span class="hljs-number">0</span>] a=<span class="hljs-number">16&#x27;hFF00</span>;<br><span class="hljs-keyword">int</span> b = <span class="hljs-number">9</span>;<br><span class="hljs-built_in">$display</span>(<span class="hljs-string">&quot;countbits of a =%0d\ncounbits of b =%0d&quot;</span>, <span class="hljs-built_in">$countbits</span>(a, &#x27;<span class="hljs-number">1</span>), <span class="hljs-built_in">$countbits</span>(b, &#x27;<span class="hljs-number">0</span>));<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">结果为：<br>countbits of a = 8<br>countbits of b = 30<br></code></pre></div></td></tr></table></figure>
+<p>2.<code>$countones()</code>：统计变量中1的个数，等同于<code>$countbits(expression,&#39;1)</code>，在MCDT-svlab3中用于统计ready信号为1的个数</p>
+<p>3.<code>$onehot()</code>：判断某个变量是否是onehot，即1的个数等于1</p>
+<p>4.<code>$isunknown()</code>：判断某个变量是否含有x态或者z态，等同于：<code>returns true(1&#39;b1) if $countbits(expression,&#39;x,&#39;z)!=0, otherwise it returns false (1&#39;b0)</code></p>
+<blockquote>
+<p>上述的bit统计函数在断言检测中经常使用，比如断言仲裁时序，仲裁出口只有1bit有效，可以使用$onehot函数</p>
+</blockquote>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/">IC</a>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/sv%E5%AD%A6%E4%B9%A0/">sv学习</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/IC/">IC</a>
+                    
+                      <a class="hover-with-bg" href="/tags/sv%E5%AD%A6%E4%B9%A0/">sv学习</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/202301281714/IC/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86essay/ic/sv%E5%AD%A6%E4%B9%A0/SV%E8%BF%98%E8%83%BD%E8%BF%99%E4%B9%88%E7%94%A8/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">SV还能这么用</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/202301010000/%E9%80%9A%E7%9F%A5notify/2023%E6%96%B0%E5%B9%B4%E5%BF%AB%E4%B9%90/">
+                        <span class="hidden-mobile">2023新年快乐🎇</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'preferred-color-scheme';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'GreensCH/commitutterances');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <span> | </span> <a href="https://weibo.com/u/7453939976" target="_blank" rel="nofollow noopener"> Green Weibo</a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?eca4a4d34dadf0d4e282cc6ef2dc3de6";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<!-- hexo injector body_end start --><script src="/js/backgroundize.js"></script>
+  <link defer rel="stylesheet" href="/css/backgroundize.css" />
+  
+  <div id="aplayer" style="width:300px"></div>
+  <link defer rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css" />
+  <script src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js"></script>
+  <script defer src="/js/aplayer.js"></script><script src="/js/githubcalendar.js"></script> 
+  <script data-pjax src="/js/githubcalendar.js"></script>
+  <script data-pjax>
+        function GithubCalendarConfig(){
+            var git_githubapiurl ="https://python-github-calendar-api.vercel.app/api?greensch";
+            var git_color =['#ebedf0', '#f0fff4', '#dcffe4', '#bef5cb', '#85e89d', '#34d058', '#28a745', '#22863a', '#176f2c', '#165c26', '#144620'];
+            var git_user ="greensch";
+            var parent_div_git = document.getElementById('board');
+            var git_div_html = '<div id="github-calendar" style="width:100%;height:auto;padding:10px;margin-bottom:20px;box-shadow:none;"><div id="github_loading" style="width:10%;height:100%;margin:0 auto;display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div><div id="github_container"></div></div>';
+            if(parent_div_git && location.pathname =='/'){
+                console.log('已挂载github calendar')
+                // parent_div_git.innerHTML=git_div_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",git_div_html) // 有报错，但不影响使用(支持pjax跳转)
+            };
+            GithubCalendar(git_githubapiurl,git_color,git_user)
+        }
+        if(document.getElementById('board')){
+            GithubCalendarConfig()
+        }
+    </script>
+    <style>#github_container{min-height:200px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
+    <style>#github_container > .position-relative > .border{border:0!important}#github-calendar{position: relative;margin-top: -2rem;background-color: var(--board-bg-color);transition: background-color 0.2s ease-in-out;border-radius: 0.5rem;z-index: 3;-webkit-box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);}</style><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"superSample":1,"position":"left","width":150,"height":400,"vOffset":-18},"mobile":{"show":false,"scale":0.25},"dialog":{"enable":false,"hitokoto":true,"width":10,"height":10,"vOffset":-100},"log":false});</script></body>
+</html>

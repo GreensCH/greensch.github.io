@@ -1,0 +1,926 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/con1.png">
+  <link rel="icon" href="/img/con1.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="“无论最终结果将人类历史导向何处，我们决定选择希望”">
+  <meta name="author" content="友人律 | Guilin Chang">
+  <meta name="keywords" content="三差学生、不学无术">
+  <meta name="description" content="数字电路设计基础验证三要素：  灌激励：产生输入信号 集响应：收集输出信号 作比较：比较结果  Testbench送激励最好是下降沿送激励 FSM  作用：做控制  2.1 RAM的设计一个16x8的双端口RAM  RAM宽度8bit RAM深度16 ADDR位宽2^4，取值范围0~15      双端口RAM端口列表：  公共：reset  写：w_clk, w_en, w_addr, w_da">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数字电路设计基础">
+<meta property="og:url" content="http://yoursite.com/202204221950/IC/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/%E7%BB%8F%E5%85%B8%E7%BB%84%E5%90%88%E5%92%8C%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%9A%84%E8%AE%BE%E8%AE%A1/index.html">
+<meta property="og:site_name" content="友人律的博客">
+<meta property="og:description" content="数字电路设计基础验证三要素：  灌激励：产生输入信号 集响应：收集输出信号 作比较：比较结果  Testbench送激励最好是下降沿送激励 FSM  作用：做控制  2.1 RAM的设计一个16x8的双端口RAM  RAM宽度8bit RAM深度16 ADDR位宽2^4，取值范围0~15      双端口RAM端口列表：  公共：reset  写：w_clk, w_en, w_addr, w_da">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011903755.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011903756.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011903757.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011903758.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011903759.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011903760.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011903761.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011903762.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011903763.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011903764.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011903765.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011903766.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011903767.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011903768.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011903769.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011903770.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011903771.jpg">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011903772.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011903773.jpg">
+<meta property="article:published_time" content="2022-04-22T11:50:00.000Z">
+<meta property="article:modified_time" content="2023-03-19T06:43:00.020Z">
+<meta property="article:author" content="友人律 | Guilin Chang">
+<meta property="article:tag" content="IC">
+<meta property="article:tag" content="数字电路">
+<meta property="article:tag" content="源码">
+<meta property="article:tag" content="code">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011903755.png">
+  
+  <title>数字电路设计基础 - 友人律的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/stackoverflow-dark.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"eca4a4d34dadf0d4e282cc6ef2dc3de6","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body><!-- hexo injector body_begin start -->
+<link defer rel="stylesheet" href="/css/article_para.css" />
+<div id="web_bg"></div><!-- hexo injector body_begin end -->
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>友人律的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E9%80%9A%E7%9F%A5/">
+                <i class="iconfont icon-link-fill"></i>
+                通知
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1/">
+                <i class="iconfont icon-link-fill"></i>
+                项目与设计
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">
+                <i class="iconfont icon-link-fill"></i>
+                开发工具
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/CS/">
+                <i class="iconfont icon-link-fill"></i>
+                CS
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/IC/">
+                <i class="iconfont icon-link-fill"></i>
+                IC
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/banner_img/anime/94219763_p0.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="数字电路设计基础">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-04-22 19:50" pubdate>
+        2022年4月22日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      12k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      36 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">数字电路设计基础</h1>
+            
+            <div class="markdown-body">
+              <h1><span id="数字电路设计基础">数字电路设计基础</span></h1><p><strong>验证三要素：</strong></p>
+<ul>
+<li>灌激励：产生输入信号</li>
+<li>集响应：收集输出信号</li>
+<li>作比较：比较结果</li>
+</ul>
+<p>Testbench送激励最好是<strong>下降沿</strong>送激励</p>
+<p><strong>FSM</strong></p>
+<ul>
+<li>作用：做控制</li>
+</ul>
+<h3><span id="21-ram的设计">2.1 RAM的设计</span></h3><p>一个16x8的双端口RAM</p>
+<ul>
+<li>RAM宽度8bit</li>
+<li>RAM深度16</li>
+<li>ADDR位宽2^4，取值范围0~15</li>
+</ul>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011903755.png" srcset="/img/loading.gif" lazyload alt></p>
+<p>   双端口RAM端口列表：</p>
+<ul>
+<li><p>公共：reset</p>
+</li>
+<li><p>写：w_clk, w_en, w_addr, w_data</p>
+</li>
+<li><p>读：r_clk, r_en, r_addr, r_data</p>
+<p> 单端口RAM端口列表：</p>
+</li>
+<li><p>公共：clk, rst_n, addr, wr_en</p>
+</li>
+<li><p>写：w_data</p>
+</li>
+<li><p>读：r_data</p>
+</li>
+</ul>
+<h3><span id="22-fifo">2.2 FIFO</span></h3><p><strong>FIFO的作用：</strong><br>FIFO存储器是系统的缓冲环节，如果没有FIFO存储器，整个系统就不可能正常工作它主要有几方面的功能：</p>
+<ul>
+<li>对连续的数据流进行缓存，防止在进机和存储操作时丢失数据；</li>
+<li>数据集中起来进行进机和存储，可避免频繁的总线操作，减轻CPU的负担；</li>
+<li>允许系统进行DMA操作，提高数据的传输速度。这是<strong>至关重要的一点</strong>，如果不采用DMA操作，数据传输将达不到传输要求，而且大大增加CPU的负担，无法同时完成数据的存储工作</li>
+</ul>
+<blockquote>
+<p>比如FIFO的一端时AD数据采集，另一端时计算机的PCI总线，假设其AD采集的速率为16位100KBPS，那么每秒的数据量为100K×16bit=1.6Mbps，而PCI总线的速度为33MHz，总线宽度32bit，其最大传输速率为1056Mbps，在两个不同的时钟域间就可以采用FIFO来作为数据缓冲<br>对于不同宽度的数据接口也可以用FIFO，例如单片机位8位数据输出，而DSP可能是16位数据输入，在单片机与DSP连接时就可以使用FIFO来达到数据匹配的目的</p>
+</blockquote>
+<p><strong>同步FIFO与异步FIFO：</strong></p>
+<ul>
+<li>同步/sync_fifo：写和读都在一个clock下工作</li>
+<li>异步/asyn_fifo：写和读不在一个clock下工作</li>
+</ul>
+<p><strong>FIFO的原理：</strong><br>FIFO就是对这个双口RAM进行操作。FIFO产生empty和full信号。告诉外面，满和空的状态。满的话就不能在写数据进去了。空的话就不能将数据读出来</p>
+<p><strong>FIFO结构图：</strong></p>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011903756.png" srcset="/img/loading.gif" lazyload alt="FIFO的模块接口"></p>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011903757.png" srcset="/img/loading.gif" lazyload alt="FIFO内部结构图"></p>
+<ul>
+<li>FIFO control：作用是产生读写指针和full，empty信号</li>
+</ul>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011903758.png" srcset="/img/loading.gif" lazyload alt="FIFO Control内部结构："></p>
+<p><strong>空满标志的意义：</strong></p>
+<ul>
+<li><strong>满信号</strong>有效表示FIFO已经处于满状态，不能再执行写入动作<ul>
+<li>满信号复位表示FIFO非满，还可以执行写入动作</li>
+</ul>
+</li>
+<li><strong>空信号</strong>有效表示FIFO处于空状态，这时没有有效数据可以读出<ul>
+<li>空信号复位说明FIFO非空，这时可以进行读操作</li>
+</ul>
+</li>
+<li>正确产生空/满标志是整个FIFO设计的最关键部分，这部分的好坏直接影响着整个FIFO的性能，<strong>空/满标志产生的原则是</strong>：当整个FIFO被写满时而不会溢出，当整个么FIFO被读空时而不会多读。之</li>
+<li>每进行一次<strong>读写操作</strong>，相应的指针就增加一次，指向下一个位置。当指针移动到最后的位置时，它又重新回到初始位置。</li>
+<li>FIFO<strong>非空或非满的状态</strong>下，这个过程将随着读写控制信号的变化一直变化下去。如果FIFO处于空状态，再进行一个读出动作会产生向下溢出（<strong>underflow</strong>），一个无效的数据被读出；样地，对于一个写满的FIFO如果进行一个写入动作，会产生向上溢出（<strong>overflow</strong>），一个有用的数据会被新写入。这会导致先前的数据被覆盖。为了避免这种错误的产生，应该对FIFO设置满和空两个信号</li>
+</ul>
+<blockquote>
+<p>关于溢出与空满的另外一种解释：</p>
+<p><strong>空信号：</strong>我们可以想象一下当写信号较慢的时候，读信号较快，那么读信号指针就会追上写信号指针则会产生EMPTY的空信号。或者reset复位时也是空信号。、</p>
+<p><strong>满信号：</strong>当写指针快于读指针，写信号较快，很容易使得写指针越过最大深度后追上读指针，那么就会产生满溢出信号。</p>
+</blockquote>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011903759.png" srcset="/img/loading.gif" lazyload alt="空满信号的简单示意图"></p>
+<p><strong>如何判断是空是满？</strong><br>可以用不同的方法判断：</p>
+<ul>
+<li>是写指针从后面追上了读指针</li>
+<li>还是读指针从后面追上了写指针</li>
+</ul>
+<p><strong>一种同步FIFO的设计方法：</strong><br>本文所应用的方法是分别<strong>将读/写地址寄存器扩展一位，将最高位设置为状态位，其余低位作为地址位，指针由地址位以及状态位组成</strong>。<br>首先把读、写状态位全部复位，如果地址循环了奇数次，则状态位置1，偶数次则又重新复位，应用地址位和状态位的结合实现对空、满标志位的控制。当读写指针的地址位和状态位全部吻合的时候，读写指针经历了相同次数的循环移动，也就是说，FIFO处于空状态；如果读写指针的地址位相同而状态位相反，写指针比读指针多循环一次，标志FIFO处于满状态</p>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-comment">//可以使用下面的公式来判断空满状态：</span><br>empty=（w_ptr[n：<span class="hljs-number">0</span>]==r_ptr[n：<span class="hljs-number">0</span>]）<br>full=（w_ptr[n-<span class="hljs-number">1</span>：<span class="hljs-number">0</span>]==r_ptr[n-<span class="hljs-number">1</span>：<span class="hljs-number">0</span>]&amp;&amp;w_ptr[n]!r_ptr[n]）<br></code></pre></div></td></tr></table></figure>
+<p><strong>FIFO MEM</strong><br>FIFO MEM虽然FIFOmem由厂家提供，但我们做仿真的时候必须要把它写出来<br>所以我们要用语言把它描述出来。让它和实际上的mem功能相同</p>
+<p><strong>写和读的时间差：</strong><br>在真实情况下，写进去的数是不能立即读出来的。按照要求必须延迟两个clock，两个clock以后，数据稳定了才能将它读出来（当然，前面讲的是同一地址下的读写）。而我们logic不会出现这种情况，写进去的数据可以立即读出，当然这是不正确的，所以我们写mem的时候考虑到这点。</p>
+<p><strong>读和写的使能：</strong><br>如果系统reset后，读写使能同时有效，这时RAM输出的数据并不是输入的数据</p>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011903760.png" srcset="/img/loading.gif" lazyload alt></p>
+<p>如果读写地址不同，读写使能同为1时，读不会延迟两个clock。<br>用这种方法可以处理这种情况</p>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011903761.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3><span id="23-同步fifo的设计">2.3 同步FIFO的设计</span></h3><ul>
+<li>FIFO原则：满不能写，空不能读</li>
+<li>关键：full和empty信号是如何产生的</li>
+<li>方法：<ul>
+<li>方法1：用长度计数器factor。执行一次写操作，factor加1，执行一次读操作，factor减1<ul>
+<li>满的时候：factor=depth；空的时候：factor=0</li>
+</ul>
+</li>
+<li>方法2：地址位扩展一位，用最高位来判断空满<ul>
+<li>空信号：读和写地址相同的时候</li>
+<li>满信号：waddr超了一圈且赶上raddr时full<ul>
+<li>错误想法：w_addr=depth</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4><span id="方法一计数器"><strong>方法一：计数器</strong></span></h4><p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011903762.png" srcset="/img/loading.gif" lazyload alt="FIFO接口"></p>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011903763.png" srcset="/img/loading.gif" lazyload alt="接口类型"></p>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011903764.png" srcset="/img/loading.gif" lazyload alt="内部信号"></p>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011903765.png" srcset="/img/loading.gif" lazyload alt="①例化一个512x8的双端RAM"></p>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011903766.png" srcset="/img/loading.gif" lazyload alt="②空信号产生"></p>
+<ul>
+<li><p>原理：</p>
+<ul>
+<li>使用计数器：读写计数器为0时</li>
+</ul>
+</li>
+<li><p>复位状态下空为1</p>
+</li>
+<li>正常工作状态下，空状态判断<ul>
+<li>就是空：计数器为0、没有在写数据</li>
+<li>空往外面读一个 ：计数器为1、正在读数据、没有在写数据</li>
+</ul>
+</li>
+</ul>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011903767.png" srcset="/img/loading.gif" lazyload alt="③满信号产生"></p>
+<ul>
+<li><p>原理：</p>
+<ul>
+<li>使用计数器：统计读写了多少个</li>
+</ul>
+</li>
+<li><p>复位状态为0</p>
+</li>
+<li>正常工作状态下，满状态判断<ul>
+<li>已经是满：计数器全1、没有在读数据</li>
+<li>正在变为满：计数器除了最低位全为1、正在写数据、没有在读数据</li>
+</ul>
+</li>
+</ul>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011903768.png" srcset="/img/loading.gif" lazyload alt="④产生读地址与写地址"></p>
+<ul>
+<li>读地址：<ul>
+<li>每一个周期加一次，</li>
+</ul>
+</li>
+</ul>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011903769.png" srcset="/img/loading.gif" lazyload alt="⑤计数器"></p>
+<ul>
+<li>读写使能其中一个为高时<ul>
+<li>写使能为高+1</li>
+<li>读使能为高-1</li>
+</ul>
+</li>
+</ul>
+<p><strong>示例源码：</strong></p>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-meta">`<span class="hljs-meta-keyword">timescale</span> 1ns/10ps</span><br><br><span class="hljs-keyword">module</span> SYNCFIFO#(<span class="hljs-keyword">parameter</span>  DATA_WIDTH = <span class="hljs-number">8</span>,<br>                            ADDR_WIDTH = <span class="hljs-number">9</span>)<br>                (<span class="hljs-keyword">input</span>  <span class="hljs-keyword">wire</span>                 fifo_rst,       <span class="hljs-comment">//复位信号</span><br>                 <span class="hljs-keyword">input</span>  <span class="hljs-keyword">wire</span>                 clock,          <span class="hljs-comment">//读写的同步时钟</span><br>                 <span class="hljs-keyword">input</span>  <span class="hljs-keyword">wire</span>                 read_enable,    <br>                 <span class="hljs-keyword">input</span>  <span class="hljs-keyword">wire</span>                 write_enable,<br>                 <span class="hljs-keyword">input</span>  <span class="hljs-keyword">reg</span> [DATA_WIDTH-<span class="hljs-number">1</span>:<span class="hljs-number">0</span>] write_data,<br>                 <span class="hljs-keyword">output</span> <span class="hljs-keyword">reg</span> [DATA_WIDTH-<span class="hljs-number">1</span>:<span class="hljs-number">0</span>] read_data,<br>                 <span class="hljs-keyword">output</span> <span class="hljs-keyword">reg</span>                  full,          <span class="hljs-comment">//满信号</span><br>                 <span class="hljs-keyword">output</span> <span class="hljs-keyword">reg</span>                  empty,         <span class="hljs-comment">//空信号    </span><br>                 <span class="hljs-keyword">output</span> <span class="hljs-keyword">reg</span> [ADDR_WIDTH-<span class="hljs-number">1</span>:<span class="hljs-number">0</span>] fcounter<br>                 );<br><br>    <span class="hljs-keyword">wire</span>    read_allow   = (read_enable  &amp;&amp; !empty);    <span class="hljs-comment">//读允许+不空</span><br>    <span class="hljs-keyword">wire</span>    write_allow  = (write_enable &amp;&amp; !full);     <span class="hljs-comment">//写允许+不满</span><br><br>    dp_ram fifo_ram(<br>        <span class="hljs-variable">.write_clock</span>(clock),<br>        <span class="hljs-variable">.read_clock</span> (clock),<br>        <span class="hljs-variable">.write_allow</span>(write_allow),<br>        <span class="hljs-variable">.read_allow</span> (read_allow),<br>        <span class="hljs-variable">.read_addr</span>  (read_addr),<br>        <span class="hljs-variable">.write_addr</span> (write_addr),<br>        <span class="hljs-variable">.write_data</span> (write_data),<br>        <span class="hljs-variable">.read_data</span>  (read_data)<br>    );<br>    <br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">     * 1. 判断fifo的空满</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">always</span> @(<span class="hljs-keyword">posedge</span> clock <span class="hljs-keyword">or</span> <span class="hljs-keyword">posedge</span> fifo_rst)<br>        <span class="hljs-keyword">if</span>(fifo_rst)<br>            empty &lt;= <span class="hljs-number">&#x27;b1</span>;<br>        <span class="hljs-keyword">else</span><br>            empty &lt;= (!write_enable &amp;&amp; (fcounter[<span class="hljs-number">8</span>:<span class="hljs-number">1</span>] == <span class="hljs-number">8&#x27;h0</span>) &amp;&amp; <br>                     ((fcounter[<span class="hljs-number">0</span>] == <span class="hljs-number">0</span>)||read_enable));<br><br>    <span class="hljs-keyword">always</span> @(<span class="hljs-keyword">posedge</span> clock <span class="hljs-keyword">or</span> <span class="hljs-keyword">posedge</span> fifo_rst)<br>        <span class="hljs-keyword">if</span>(fifo_rst)<br>            full &lt;= <span class="hljs-number">&#x27;b1</span>;<br>        <span class="hljs-keyword">else</span> <br>            full &lt;=  (!read_enable &amp;&amp; (fcounter[<span class="hljs-number">8</span>:<span class="hljs-number">1</span>] == <span class="hljs-number">8&#x27;hFF</span>) &amp;&amp; <br>                     ((fcounter[<span class="hljs-number">0</span>] == <span class="hljs-number">1</span>)||write_enable));<br>    <br>    <span class="hljs-comment">/* </span><br><span class="hljs-comment">     * 2. 产生读写地址 </span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">always</span> @(<span class="hljs-keyword">posedge</span> clock <span class="hljs-keyword">or</span> <span class="hljs-keyword">posedge</span> fifo_rst)<br>        <span class="hljs-keyword">if</span>(fifo_rst)<br>            read_addr &lt;= <span class="hljs-number">&#x27;h0</span>;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(read_allow)<br>            read_addr &lt;= read_addr + <span class="hljs-number">&#x27;b1</span>;<br><br>    <span class="hljs-keyword">always</span> @(<span class="hljs-keyword">posedge</span> clock <span class="hljs-keyword">or</span> <span class="hljs-keyword">posedge</span> fifo_rst)<br>        <span class="hljs-keyword">if</span>(fifo_rst)<br>            write_addr &lt;= <span class="hljs-number">&#x27;h0</span>;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(write_allow)<br>            write_addr &lt;= write_addr + <span class="hljs-number">&#x27;b1</span>;<br><br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">     * 3. 读写计数（写：计数器加1；读：计数器减1）</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">always</span> @(<span class="hljs-keyword">posedge</span> clock <span class="hljs-keyword">or</span> <span class="hljs-keyword">posedge</span> fifo_rst)<br>        <span class="hljs-keyword">if</span>(fifo_rst)<br>            fcounter &lt;= <span class="hljs-number">&#x27;h0</span>;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>((!read_allow &amp;&amp; write_allow)||(read_allow &amp;&amp; !write_allow))<br>        <span class="hljs-keyword">begin</span><br>            <span class="hljs-keyword">if</span>(write_allow) fcounter &lt;= fcounter + <span class="hljs-number">&#x27;b1</span>;<br>            <span class="hljs-keyword">else</span> fcounter &lt;= fcounter - <span class="hljs-number">&#x27;b1</span>;<br>        <span class="hljs-keyword">end</span><br><span class="hljs-keyword">endmodule</span><br></code></pre></div></td></tr></table></figure>
+<h4><span id="方法二地址位扩展一位"><strong>方法二：地址位扩展一位</strong></span></h4><p>原理</p>
+<ul>
+<li>空信号：读和写地址相同的时候</li>
+<li>满信号：waddr超了一圈且赶上raddr时full<ul>
+<li>错误想法：w_addr=depth</li>
+</ul>
+</li>
+</ul>
+<p><strong>示例源码：</strong></p>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-meta">`<span class="hljs-meta-keyword">timescale</span> 1ns/10ps</span><br><br><span class="hljs-keyword">module</span> sync_fifo(<br>    <span class="hljs-keyword">input</span>       clk,<br>                rst,<br>                write_enable,<br>                read_enable,<br>    <span class="hljs-keyword">input</span>       [<span class="hljs-number">7</span>:<span class="hljs-number">0</span>] data_in,<br>    <span class="hljs-keyword">output</span>  <span class="hljs-keyword">reg</span> [<span class="hljs-number">7</span>:<span class="hljs-number">0</span>] data_out,<br>    <span class="hljs-keyword">output</span>      empty,<br>                full<br>);<br>    <span class="hljs-comment">/* 数据宽度为8bit，深度为16的RAM */</span><br>    <span class="hljs-keyword">reg</span> [<span class="hljs-number">7</span>:<span class="hljs-number">0</span>] mem[<span class="hljs-number">15</span>:<span class="hljs-number">0</span>];    <br>    <br>    <span class="hljs-comment">/* 地址 */</span><br>    <span class="hljs-keyword">wire</span>[<span class="hljs-number">3</span>:<span class="hljs-number">0</span>] w_addr, w_addr;<br>    <span class="hljs-keyword">reg</span> [<span class="hljs-number">4</span>:<span class="hljs-number">0</span>] r_addr_a, w_addr_a;<br><br>    <span class="hljs-keyword">assign</span> r_addr = r_addr_a[<span class="hljs-number">3</span>:<span class="hljs-number">0</span>];<br>    <span class="hljs-keyword">assign</span> w_addr = w_addr_a[<span class="hljs-number">3</span>:<span class="hljs-number">0</span>];<br>    <br>    <span class="hljs-comment">/* 读 */</span><br>    <span class="hljs-keyword">always</span>@(<span class="hljs-keyword">posedge</span> clk <span class="hljs-keyword">or</span> <span class="hljs-keyword">negedge</span> rst) <span class="hljs-keyword">begin</span><br>        <span class="hljs-keyword">if</span>(!rst)    <br>            r_addr_a &lt;= <span class="hljs-number">5&#x27;b0</span>;   <span class="hljs-comment">//复位，读地址清零</span><br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">begin</span><br>            <span class="hljs-keyword">if</span>(rd_en == <span class="hljs-number">1</span> &amp;&amp; empty == <span class="hljs-number">0</span>) <span class="hljs-keyword">begin</span>  <span class="hljs-comment">//当读允许，非空时执行</span><br>                data_out &lt;= mem[r_addr];        <span class="hljs-comment">//读出数据</span><br>                r_addr_a &lt;= r_addr_a + <span class="hljs-number">1</span>;       <span class="hljs-comment">//读地址加1</span><br>            <span class="hljs-keyword">end</span><br>        <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">end</span><br>    <br>    <span class="hljs-comment">/* 写 */</span><br>    <span class="hljs-keyword">always</span>@(<span class="hljs-keyword">posedge</span> clk <span class="hljs-keyword">or</span> <span class="hljs-keyword">negedge</span> rst) <span class="hljs-keyword">begin</span><br>        <span class="hljs-keyword">if</span>(!rst)    <br>            w_addr_a &lt;= <span class="hljs-number">5&#x27;b0</span>;   <span class="hljs-comment">//复位，写地址清零   </span><br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">begin</span><br>            <span class="hljs-keyword">if</span>(wr_en == <span class="hljs-number">1</span> &amp;&amp; full == <span class="hljs-number">0</span>) <span class="hljs-keyword">begin</span>   <span class="hljs-comment">//当写允许，非满时执行</span><br>                mem[w_addr] &lt;= data_in;         <span class="hljs-comment">//数据写入指定地址</span><br>                w_addr_a &lt;= w_addr_a + <span class="hljs-number">1</span>;       <span class="hljs-comment">//写地址加1</span><br>            <span class="hljs-keyword">end</span><br>        <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">end</span><br><br>    <span class="hljs-comment">/* 判断空满 */</span><br>    <span class="hljs-keyword">assign</span> empty = (r_addr_a == w_addr_a) ? <span class="hljs-number">1</span> : <span class="hljs-number">0</span>;<span class="hljs-comment">//读和写地址相同的时候</span><br>    <span class="hljs-keyword">assign</span> full  = (r_addr_a[<span class="hljs-number">4</span>] != w_addr_a[<span class="hljs-number">4</span>] &amp;&amp; r_addr_a[<span class="hljs-number">3</span>:<span class="hljs-number">0</span>] == w_addr_a[<span class="hljs-number">3</span>:<span class="hljs-number">0</span>]) ? <span class="hljs-number">1</span> : <span class="hljs-number">0</span>;<br><br><span class="hljs-keyword">endmodule</span><br></code></pre></div></td></tr></table></figure>
+<h3><span id="24-异步fifo的设计某课网">2.4 异步FIFO的设计(某课网)</span></h3><ul>
+<li>使用扩展地址位的方式判断空满</li>
+<li>读写信号时钟不同，带来的跨时钟域关键问题：<ul>
+<li>跨时钟域：使用格雷码</li>
+<li>单比特传输</li>
+<li>打拍</li>
+<li>亚稳态</li>
+</ul>
+</li>
+</ul>
+<h4><span id="整体结构">整体结构</span></h4><ul>
+<li>Write_control：控制写操作与满信号（w_full）的判断与产生。</li>
+<li>Read_control：控制读操作与空信号(r_empty)的判断与产生。</li>
+<li>RAM：双端口数据存取RAM。</li>
+<li>Bin_to_gray：二进制码转格雷码模块。用于将读写地址二进制码转成格雷码。</li>
+<li>SYN：跨时钟同步模块，即将读地址的格雷码（r_g_addr）向w_clk同步；将写地址的格雷码（w_g_addr）向r_clk同步。主要操作就是通过寄存器打两拍</li>
+</ul>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011903770.png" srcset="/img/loading.gif" lazyload alt></p>
+<p>关键点解释：</p>
+<ul>
+<li>跨时钟域传递信号做时钟同步一般通过打两拍。</li>
+<li>采用格雷码编码(解决汇聚问题)，因为格雷码每次跳转只会有一位发生变化，所以如果出现不确定状态也只会有两种状况，即正确变化了和不变。因此在读写时钟不一样的情况下，纵使读写地址每bit同步过程中出现延时不一致，也不会使得FIFO在实际空或者满之后，FIFO却没有正确的产生出空满信号。只有可能是实际没有空或者满，但产生了空满信号，但这对于FIFO的功能不会有影响，只会使得FIFO的读或者写操作暂停。</li>
+<li>读比写时钟更快，只会只出现实际没满，但误判为满；不会对功能（数据流）造成错误。</li>
+<li>写比读时钟更快，只会出现实际没空，但误判为空；不会对功能（数据流）造成错误。</li>
+</ul>
+<h4><span id="示例源码"><strong>示例源码</strong></span></h4><p><strong>源码1</strong></p>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-comment">/* 格雷码的转换 */</span><br><span class="hljs-keyword">module</span> gray(<br>    <span class="hljs-keyword">input</span>   [<span class="hljs-number">4</span>:<span class="hljs-number">0</span>] b_in,<br>    <span class="hljs-keyword">output</span>  [<span class="hljs-number">4</span>:<span class="hljs-number">0</span>] g_out<br>);<br><br><span class="hljs-keyword">assign</span>  g_out[<span class="hljs-number">4</span>] = b_in[<span class="hljs-number">4</span>];<br><span class="hljs-keyword">assign</span>  g_out[<span class="hljs-number">3</span>] = b_in[<span class="hljs-number">3</span>];<br><span class="hljs-keyword">assign</span>  g_out[<span class="hljs-number">2</span>] = b_in[<span class="hljs-number">3</span>]^b_in[<span class="hljs-number">2</span>];<br><span class="hljs-keyword">assign</span>  g_out[<span class="hljs-number">1</span>] = b_in[<span class="hljs-number">2</span>]^b_in[<span class="hljs-number">1</span>];<br><span class="hljs-keyword">assign</span>  g_out[<span class="hljs-number">0</span>] = b_in[<span class="hljs-number">1</span>]^b_in[<span class="hljs-number">0</span>];<br><br><span class="hljs-keyword">endmodule</span><br><br><span class="hljs-comment">/* 异步FIFO */</span><br><span class="hljs-keyword">module</span> fifo(<br>    <span class="hljs-keyword">input</span>      [<span class="hljs-number">7</span>:<span class="hljs-number">0</span>] data_in,        <span class="hljs-comment">//写数据 </span><br>    <span class="hljs-keyword">input</span>            rclk, wclk,     <span class="hljs-comment">//读写时钟</span><br>                     wr_en, rd_en,   <span class="hljs-comment">//读写允许信号</span><br>                     rst,            <span class="hljs-comment">//复位信号</span><br>    <span class="hljs-keyword">output</span>  <span class="hljs-keyword">reg</span>[<span class="hljs-number">7</span>:<span class="hljs-number">0</span>] data_out,<br>    <span class="hljs-keyword">output</span>  <span class="hljs-keyword">reg</span>      halffull,       <span class="hljs-comment">//半满</span><br>    <span class="hljs-keyword">output</span>           empty,          <span class="hljs-comment">//空信号</span><br>                     full            <span class="hljs-comment">//满信号</span><br>);<br><br><span class="hljs-comment">//RAM存储器</span><br><span class="hljs-keyword">reg</span>  [<span class="hljs-number">7</span>:<span class="hljs-number">0</span>] mem[<span class="hljs-number">15</span>:<span class="hljs-number">0</span>];<br><br><span class="hljs-comment">//地址和扩展地址</span><br><span class="hljs-keyword">wire</span> [<span class="hljs-number">3</span>:<span class="hljs-number">0</span>] w_addr, r_addr;      <span class="hljs-comment">//存取地址</span><br><span class="hljs-keyword">wire</span> [<span class="hljs-number">4</span>:<span class="hljs-number">0</span>] w_addr_g, r_addr_g;  <span class="hljs-comment">//扩展地址的格雷码</span><br><span class="hljs-keyword">reg</span>  [<span class="hljs-number">4</span>:<span class="hljs-number">0</span>] w_addr_b, r_addr_b;  <span class="hljs-comment">//扩展地址</span><br><br><span class="hljs-keyword">reg</span>  [<span class="hljs-number">4</span>:<span class="hljs-number">0</span>] w_addr_r, r_addr_w;  <br><br><span class="hljs-comment">//地址转换为格雷码地址</span><br>gray g1(<span class="hljs-variable">.b_in</span> (w_addr_b),<br>        <span class="hljs-variable">.g_out</span>(w_addr_g));<br><br>gray g2(<span class="hljs-variable">.b_in</span> (r_addr_b),<br>        <span class="hljs-variable">.g_out</span>(r_addr_g));<br><br><span class="hljs-comment">//扩展地址获取存取地址</span><br><span class="hljs-keyword">assign</span> w_addr = w_addr_b[<span class="hljs-number">3</span>:<span class="hljs-number">0</span>];<br><span class="hljs-keyword">assign</span> r_addr = r_addr_b[<span class="hljs-number">3</span>:<span class="hljs-number">0</span>];<br><br><span class="hljs-comment">//读</span><br><span class="hljs-keyword">always</span>@(<span class="hljs-keyword">posedge</span> rclk <span class="hljs-keyword">or</span> <span class="hljs-keyword">negedge</span> rst)<br><span class="hljs-keyword">begin</span><br>    <span class="hljs-keyword">if</span>(!rst)    <span class="hljs-comment">//复位</span><br>    <span class="hljs-keyword">begin</span><br>        r_addr_b &lt;= <span class="hljs-number">5&#x27;b0</span>;<br>        r_addr_w &lt;= <span class="hljs-number">5&#x27;b0</span>;<br>    <span class="hljs-keyword">end</span><br><br>    <span class="hljs-keyword">else</span><br>    <span class="hljs-keyword">begin</span><br>        r_addr_w &lt;= w_addr_g; <span class="hljs-comment">//写地址</span><br>        <span class="hljs-keyword">if</span>(rd_en == <span class="hljs-number">1</span> &amp;&amp; empty == <span class="hljs-number">0</span>)    <br>        <span class="hljs-keyword">begin</span><br>            data_out &lt;= mem[r_addr];    <span class="hljs-comment">//在地址读出数据 </span><br>            r_addr_b &lt;= r_addr_b + <span class="hljs-number">1</span>;   <span class="hljs-comment">//读地址+1</span><br>        <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br><br><br><span class="hljs-keyword">always</span>@(<span class="hljs-keyword">posedge</span> wclk <span class="hljs-keyword">or</span> <span class="hljs-keyword">negedge</span> rst)<br><span class="hljs-keyword">begin</span><br>    <span class="hljs-keyword">if</span>(!rst)    <span class="hljs-comment">//复位</span><br>    <span class="hljs-keyword">begin</span><br>        w_addr_b &lt;= <span class="hljs-number">5&#x27;b0</span>;<br>        w_addr_r &lt;= <span class="hljs-number">5&#x27;b0</span>;<br>    <span class="hljs-keyword">end</span><br><br>    <span class="hljs-keyword">else</span><br>    <span class="hljs-keyword">begin</span><br>        w_addr_r &lt;= r_addr_g; <span class="hljs-comment">//写地址</span><br>        <span class="hljs-keyword">if</span>(wr_en == <span class="hljs-number">1</span> &amp;&amp; full == <span class="hljs-number">0</span>)    <br>        <span class="hljs-keyword">begin</span><br>            mem[w_addr] &lt;= data_in;    <span class="hljs-comment">//在地址读出数据 </span><br>            w_addr_b &lt;= w_addr_b + <span class="hljs-number">1</span>;   <span class="hljs-comment">//读地址+1</span><br>        <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br><br><span class="hljs-keyword">assign</span> empty = (r_addr_g == r_addr_w) ? <span class="hljs-number">1</span> : <span class="hljs-number">0</span>;<br><span class="hljs-keyword">assign</span> full  = (w_addr_g[<span class="hljs-number">4</span>] != w_addr_r[<span class="hljs-number">4</span>] &amp;&amp; <br>                w_addr_b[<span class="hljs-number">3</span>:<span class="hljs-number">0</span>] == w_addr_r[<span class="hljs-number">3</span>:<span class="hljs-number">0</span>] ? <span class="hljs-number">1</span> : <span class="hljs-number">0</span>) ? <span class="hljs-number">1</span> : <span class="hljs-number">0</span>;<br><br><span class="hljs-keyword">endmodule</span><br></code></pre></div></td></tr></table></figure>
+<p><strong>源码2</strong></p>
+<p>top module：asyn_fifo.v</p>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">module</span> asyn_fifo #(<br>   <span class="hljs-keyword">parameter</span> DEPTH   = <span class="hljs-number">256</span>,       <br>   <span class="hljs-keyword">parameter</span> WIDTH_A = <span class="hljs-number">8</span>,       <br>   <span class="hljs-keyword">parameter</span> WIDTH_D = <span class="hljs-number">16</span>       <br>)(                                 <br>   <span class="hljs-keyword">input</span>                     w_clk,<br>   <span class="hljs-keyword">input</span>                     rst_n,<br>   <span class="hljs-keyword">input</span>                     w_req,<br>   <span class="hljs-keyword">input</span> [WIDTH_D-<span class="hljs-number">1</span>:<span class="hljs-number">0</span>]       w_data,<br>                     <br>   <span class="hljs-keyword">input</span>                     r_clk, <br>   <span class="hljs-keyword">input</span>                     r_req, <br>                     <br>   <span class="hljs-keyword">output</span> [WIDTH_D-<span class="hljs-number">1</span>:<span class="hljs-number">0</span>]      r_data,<br>   <br>   <span class="hljs-keyword">output</span>                    w_full ,  <br>   <span class="hljs-keyword">output</span>                    r_empty <br>   <br>);<br><br><span class="hljs-keyword">wire</span> [WIDTH_A:<span class="hljs-number">0</span>]  w_addr;<br><span class="hljs-keyword">wire</span> [WIDTH_A:<span class="hljs-number">0</span>]  r_gaddr_syn;<br><span class="hljs-keyword">wire</span> [WIDTH_A:<span class="hljs-number">0</span>]  r_addr;<br><span class="hljs-keyword">wire</span> [WIDTH_A:<span class="hljs-number">0</span>]  w_gaddr;<br><span class="hljs-keyword">wire</span> [WIDTH_A:<span class="hljs-number">0</span>]  r_gaddr;<br><span class="hljs-keyword">wire</span> [WIDTH_A:<span class="hljs-number">0</span>]  w_gaddr_syn;<br><br>write_part #(<br>   <span class="hljs-variable">.WIDTH_A</span>(WIDTH_A)     <br>)write_control(            <br>  <span class="hljs-variable">.w_clk</span>  ( w_clk   ),     <br>  <span class="hljs-variable">.w_rst</span>  ( rst_n   ),     <br>  <span class="hljs-variable">.w_req</span>  ( w_req   ),     <br>                   <br>  <span class="hljs-variable">.r_gaddr</span>( r_gaddr_syn ),   <br>                   <br>  <span class="hljs-variable">.w_full</span> ( w_full  ),   <br>  <span class="hljs-variable">.w_addr</span> ( w_addr  ),    <br>                   <br>  <span class="hljs-variable">.w_gaddr</span>( w_gaddr )    <br>);                     <br><br>RAM #(                                 <br>   <span class="hljs-variable">.DEPTH</span>  (DEPTH  ),                     <br>   <span class="hljs-variable">.WIDTH_A</span>(WIDTH_A),                     <br>   <span class="hljs-variable">.WIDTH_D</span>(WIDTH_D)                                                                  <br>)<br>RAM_inst<br>(                                            <br>    <span class="hljs-variable">.r_clk</span> ( r_clk  ) , <br>    <span class="hljs-variable">.w_clk</span> ( w_clk  ) ,             <br>    <span class="hljs-variable">.rst_n</span> ( rst_n  ) ,             <br>                   <br>    <span class="hljs-variable">.w_addr</span>( w_addr[WIDTH_A-<span class="hljs-number">1</span>:<span class="hljs-number">0</span>] ) ,            <br>    <span class="hljs-variable">.w_data</span>( w_data ) ,     <br>    <span class="hljs-variable">.w_en</span>  ( w_req &amp; (!w_full)   ) ,              <br>                   <br>    <span class="hljs-variable">.r_addr</span>( r_addr[WIDTH_A-<span class="hljs-number">1</span>:<span class="hljs-number">0</span>] ) ,            <br>    <span class="hljs-variable">.r_en</span>  ( r_req &amp; (!r_empty)   ) ,              <br>                   <br>    <span class="hljs-variable">.r_data</span>( r_data )      <br>);                                            <br>    <br><br>syn #(                          <br>  <span class="hljs-variable">.WIDTH_D</span>(WIDTH_A)                <br>)<br>syn_w_2_r                                      <br>(                                      <br>    <span class="hljs-variable">.syn_clk</span> ( r_clk ) ,  <br>    <span class="hljs-variable">.syn_rst</span> ( rst_n ) ,  <br>    <span class="hljs-variable">.data_in</span> ( w_gaddr ) ,  <br>             <br>    <span class="hljs-variable">.syn_data</span>( w_gaddr_syn )  <br>);        <br><br>syn #(                     <br>  <span class="hljs-variable">.WIDTH_D</span>(WIDTH_A)                                          <br>)                          <br>syn_r_2_w                  <br>(                          <br>   <span class="hljs-variable">.syn_clk</span> ( w_clk ) ,    <br>   <span class="hljs-variable">.syn_rst</span> ( rst_n ) ,    <br>   <span class="hljs-variable">.data_in</span> ( r_gaddr ),  <br>                           <br>   <span class="hljs-variable">.syn_data</span>( r_gaddr_syn )  <br>);     <br><br>                    <br>read_part  #(<br>  <span class="hljs-variable">.WIDTH_A</span>(WIDTH_A)   <br>)read_control(                               <br>  <span class="hljs-variable">.r_clk</span>   ( r_clk   ),              <br>  <span class="hljs-variable">.r_rst</span>   ( rst_n   ),              <br>  <span class="hljs-variable">.r_req</span>   ( r_req   ),              <br>                              <br>  <span class="hljs-variable">.w_gaddr</span> ( w_gaddr_syn ),            <br>                            <br>  <span class="hljs-variable">.r_empty</span> ( r_empty ),           <br>  <span class="hljs-variable">.r_addr</span>  ( r_addr  ),            <br>                             <br>  <span class="hljs-variable">.r_gaddr</span> ( r_gaddr )            <br>);                      <br><br><span class="hljs-keyword">endmodule</span>                  <br></code></pre></div></td></tr></table></figure>
+<p>sub module：bin_to_gray.v    RAM.v    syn.v     read_part.v    write_part.v</p>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">module</span> bin_to_gray #(<br>  <span class="hljs-keyword">parameter</span>  WIDTH_D = <span class="hljs-number">5</span><br>)(<br>   <span class="hljs-keyword">input</span>  [WIDTH_D-<span class="hljs-number">1</span>:<span class="hljs-number">0</span>] bin_c,<br>   <span class="hljs-keyword">output</span> [WIDTH_D-<span class="hljs-number">1</span>:<span class="hljs-number">0</span>] gray_c<br>);                 <br><br><span class="hljs-keyword">wire</span> h_b;<br><span class="hljs-keyword">assign</span> h_b = bin_c[WIDTH_D-<span class="hljs-number">1</span>];     <br><br><span class="hljs-keyword">reg</span> [WIDTH_D-<span class="hljs-number">2</span>:<span class="hljs-number">0</span>] gray_c_d;<br><br><span class="hljs-keyword">integer</span> i;     <br><span class="hljs-keyword">always</span> @( * )<br>  <span class="hljs-keyword">for</span>( i=<span class="hljs-number">0</span>;i&lt;WIDTH_D-<span class="hljs-number">1</span>;i=i+<span class="hljs-number">1</span> )<br>    gray_c_d[i] = bin_c[i]^bin_c[i+<span class="hljs-number">1</span>];      <br>    <br><span class="hljs-keyword">assign</span> gray_c = &#123;h_b,gray_c_d&#125;;<br><br><br><span class="hljs-keyword">endmodule</span><br><br></code></pre></div></td></tr></table></figure>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">module</span> RAM #(<br>   <span class="hljs-keyword">parameter</span> DEPTH = <span class="hljs-number">256</span>,<br>   <span class="hljs-keyword">parameter</span> WIDTH_A = <span class="hljs-number">9</span>,<br>   <span class="hljs-keyword">parameter</span> WIDTH_D = <span class="hljs-number">16</span><br><br>)(<br>  <span class="hljs-keyword">input</span>                    r_clk,<br>  <span class="hljs-keyword">input</span>                    w_clk,<br>  <span class="hljs-keyword">input</span>                    rst_n,<br>                           <br>  <span class="hljs-keyword">input</span> [WIDTH_A-<span class="hljs-number">1</span>:<span class="hljs-number">0</span>]      w_addr,   <br>  <span class="hljs-keyword">input</span> [WIDTH_D-<span class="hljs-number">1</span>:<span class="hljs-number">0</span>]             w_data,<br>  <span class="hljs-keyword">input</span>                    w_en,<br>  <br>  <span class="hljs-keyword">input</span> [WIDTH_A-<span class="hljs-number">1</span>:<span class="hljs-number">0</span>]      r_addr,<br>  <span class="hljs-keyword">input</span>                    r_en,<br>  <br>  <span class="hljs-keyword">output</span> <span class="hljs-keyword">reg</span>[WIDTH_D-<span class="hljs-number">1</span>:<span class="hljs-number">0</span>]         r_data<br>);<br><br><br><span class="hljs-keyword">reg</span> [<span class="hljs-number">15</span>:<span class="hljs-number">0</span>]  mem[<span class="hljs-number">0</span>:DEPTH-<span class="hljs-number">1</span>];<br><br><span class="hljs-keyword">integer</span> i;<br><span class="hljs-keyword">always</span> @( <span class="hljs-keyword">posedge</span> w_clk )<br>  <span class="hljs-keyword">if</span>( !rst_n )<br>    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;DEPTH;i=i+<span class="hljs-number">1</span>)<br>      mem[i] &lt;= <span class="hljs-number">&#x27;h0000</span>;<br>  <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>( w_en )<br>    mem[w_addr] &lt;= w_data;<br>    <br><span class="hljs-keyword">always</span> @( <span class="hljs-keyword">posedge</span> r_clk )<br>  <span class="hljs-keyword">if</span>( !rst_n )<br>    r_data &lt;= <span class="hljs-number">&#x27;h0000</span>;<br>  <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>( r_en )<br>    r_data &lt;= mem[r_addr];<br>    <br><span class="hljs-keyword">endmodule</span>  <br></code></pre></div></td></tr></table></figure>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">module</span> read_part #(<br>   <span class="hljs-keyword">parameter</span> WIDTH_A = <span class="hljs-number">8</span> <br>)(<br>      <span class="hljs-keyword">input</span>            r_clk,          <br>      <span class="hljs-keyword">input</span>            r_rst,          <br>      <span class="hljs-keyword">input</span>            r_req,          <br>                                              <br>      <span class="hljs-keyword">input</span>      [WIDTH_A:<span class="hljs-number">0</span>] w_gaddr,        <br>                                       <br>      <span class="hljs-keyword">output</span>           		r_empty ,        <br>      <span class="hljs-keyword">output</span> <span class="hljs-keyword">reg</span>[WIDTH_A:<span class="hljs-number">0</span>]  r_addr ,                                        <br>      <span class="hljs-keyword">output</span> <span class="hljs-keyword">reg</span> [WIDTH_A:<span class="hljs-number">0</span>]  r_gaddr         <br>);<br><br><span class="hljs-keyword">always</span> @( <span class="hljs-keyword">posedge</span> r_clk )                                                          <br>  <span class="hljs-keyword">if</span>( !r_rst )                                                                     <br>    r_addr &lt;= <span class="hljs-number">&#x27;h00</span>;                                                                <br>  <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>( r_req&amp;&amp;(!r_empty) )                                                      <br>    r_addr &lt;= r_addr + <span class="hljs-number">1&#x27;b1</span>;                                                       <br>       <br><span class="hljs-keyword">wire</span> [WIDTH_A:<span class="hljs-number">0</span>] r_gaddr_w;									    <br>bin_to_gray #(                                                                     <br>  <span class="hljs-variable">.WIDTH_D</span>(WIDTH_A+<span class="hljs-number">1</span>)                                                                      <br>)                                                                                  <br>bin_to_gray_inst                                                                   <br>(                                                                                  <br>   <span class="hljs-variable">.bin_c</span> ( r_addr ),                                                    <br>   <span class="hljs-variable">.gray_c</span>( r_gaddr_w )                                                              <br>); <br><br><span class="hljs-keyword">always</span> @( <span class="hljs-keyword">posedge</span> r_clk )<br>  <span class="hljs-keyword">if</span>( !rst_n )<br>    r_gaddr &lt;= <span class="hljs-number">&#x27;h0</span>;<br>  <span class="hljs-keyword">else</span><br>    r_gaddr &lt;= r_gaddr_w;	  <br><br>                                                                                   <br><span class="hljs-keyword">assign</span> r_empty = (w_gaddr==r_gaddr_w)?<span class="hljs-number">1&#x27;b1</span>:<span class="hljs-number">1&#x27;b0</span>;       <br><br><span class="hljs-keyword">endmodule</span><br></code></pre></div></td></tr></table></figure>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">module</span> write_part #(<br>  <span class="hljs-keyword">parameter</span> WIDTH_A = <span class="hljs-number">8</span> <br>)(<br>  <span class="hljs-keyword">input</span>            w_clk,<br>  <span class="hljs-keyword">input</span>            w_rst,<br>  <span class="hljs-keyword">input</span>            w_req,<br>             <br>  <span class="hljs-keyword">input</span>      [WIDTH_A:<span class="hljs-number">0</span>] r_gaddr,<br>             <br>  <span class="hljs-keyword">output</span>           w_full ,<br>  <span class="hljs-keyword">output</span> <span class="hljs-keyword">reg</span>[WIDTH_A:<span class="hljs-number">0</span>]  w_addr ,<br>  <br>  <span class="hljs-keyword">output</span> <span class="hljs-keyword">reg</span> [WIDTH_A:<span class="hljs-number">0</span>]  w_gaddr       <br>);                                   <br><br><span class="hljs-comment">//reg [4:0] w_addr;</span><br><span class="hljs-keyword">always</span> @( <span class="hljs-keyword">posedge</span> w_clk )<br>  <span class="hljs-keyword">if</span>( !w_rst )<br>    w_addr &lt;= <span class="hljs-number">&#x27;h00</span>;<br>  <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>( w_req&amp;&amp;(!w_full) )<br>    w_addr &lt;= w_addr + <span class="hljs-number">1&#x27;b1</span>;<br><br><span class="hljs-keyword">wire</span> [WIDTH_A:<span class="hljs-number">0</span>] w_gaddr_w;<br>bin_to_gray #(             <br>  <span class="hljs-variable">.WIDTH_D</span>(WIDTH_A+<span class="hljs-number">1</span>)              <br>)<br>bin_to_gray_inst<br>(                                <br>   <span class="hljs-variable">.bin_c</span> ( w_addr ),    <br>   <span class="hljs-variable">.gray_c</span>( w_gaddr_w )    <br>);        <br><br><span class="hljs-keyword">always</span> @( <span class="hljs-keyword">posedge</span> w_clk )<br>  <span class="hljs-keyword">if</span>( !rst_n )<br>    w_gaddr &lt;= <span class="hljs-number">&#x27;h0</span>;<br>  <span class="hljs-keyword">else</span><br>    w_gaddr &lt;= w_gaddr_w;	  <br><br><br><br><span class="hljs-keyword">assign</span> w_full = (&#123;~w_gaddr_w[WIDTH_A],~w_gaddr_w[WIDTH_A-<span class="hljs-number">1</span>],w_gaddr_w[WIDTH_A-<span class="hljs-number">2</span>:<span class="hljs-number">0</span>]&#125;==r_gaddr)?<span class="hljs-number">1&#x27;b1</span>:<span class="hljs-number">1&#x27;b0</span>;<br><br><span class="hljs-keyword">endmodule</span>                  <br><br></code></pre></div></td></tr></table></figure>
+<figure class="highlight verilog"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs verilog"><span class="hljs-keyword">module</span> syn #(<br>  <span class="hljs-keyword">parameter</span> WIDTH_D = <span class="hljs-number">5</span><br>)<br>(<br>    <span class="hljs-keyword">input</span>                    syn_clk,<br>    <span class="hljs-keyword">input</span>                    syn_rst,<br>    <span class="hljs-keyword">input</span> [WIDTH_D:<span class="hljs-number">0</span>]      data_in,<br>    <br>    <span class="hljs-keyword">output</span> [WIDTH_D:<span class="hljs-number">0</span>]     syn_data<br>);<br><br><span class="hljs-keyword">reg</span> [WIDTH_D:<span class="hljs-number">0</span>] syn_reg_1,syn_reg_2;<br><br><span class="hljs-keyword">always</span> @( <span class="hljs-keyword">posedge</span> syn_clk )<br>  <span class="hljs-keyword">if</span>( !syn_rst ) <span class="hljs-keyword">begin</span><br>  	syn_reg_1 &lt;= <span class="hljs-number">&#x27;h00</span>;<br>  	syn_reg_2 &lt;= <span class="hljs-number">&#x27;h00</span>;<br>  <span class="hljs-keyword">end</span><br>  <span class="hljs-keyword">else</span> <span class="hljs-keyword">begin</span><br>    syn_reg_1 &lt;= data_in;<br>    syn_reg_2 &lt;= syn_reg_1;<br>  <span class="hljs-keyword">end</span><br>  <br><span class="hljs-keyword">assign</span> syn_data = syn_reg_2;<br><br><span class="hljs-keyword">endmodule</span><br><br></code></pre></div></td></tr></table></figure>
+<ul>
+<li>上述代码为同步模块，执行打两拍操作</li>
+</ul>
+<h4><span id="异步fifo可能出现的问题">异步FIFO可能出现的问题</span></h4><p>FIFO产生empty和full的信号，读的一侧需要将写的一侧的地址同步过来，进行两侧地址的比较，由于读和写是两个不同的时钟，可能会导致同步过来的地址发生错误。因此地址需要经过格雷码的转换</p>
+<h3><span id="24-异步fifob站">2.4 异步FIFO(b站)</span></h3><p>跨时钟域不能把写指针和读指针直接进行比较</p>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011903771.jpg" srcset="/img/loading.gif" lazyload alt="异步FIFO内部结构图1"></p>
+<ul>
+<li>左边写指针、满信号产生</li>
+<li>右边读指针、空信号产生</li>
+<li>读写指针跨时钟域到对方的信号产生模块中的步骤：<ul>
+<li>先经过二进制2格雷码转换</li>
+<li>再打两拍（为什么打两拍，因为格雷码只有一位不同，打两拍就够了）</li>
+<li>到对方时钟域，进行读写/写读指针比较，进而生成空/满比较</li>
+</ul>
+</li>
+</ul>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011903772.png" srcset="/img/loading.gif" lazyload alt="异步FIFO内部结构图2"></p>
+<hr>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/img/202205011903773.jpg" srcset="/img/loading.gif" lazyload alt="94219763_p0"></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/">IC</a>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/">理论知识</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/IC/">IC</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/">数字电路</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%BA%90%E7%A0%81/">源码</a>
+                    
+                      <a class="hover-with-bg" href="/tags/code/">code</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/202204251658/%E5%B8%B8%E7%94%A8/linuxessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/Makefile%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Makefile常用代码</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/202204221659/IC/EDAessay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/EDA%E5%85%A5%E9%97%A8/">
+                        <span class="hidden-mobile">EDA入门</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'preferred-color-scheme';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'GreensCH/commitutterances');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <span> | </span> <a href="https://weibo.com/u/7453939976" target="_blank" rel="nofollow noopener"> Green Weibo</a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?eca4a4d34dadf0d4e282cc6ef2dc3de6";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<!-- hexo injector body_end start --><script src="/js/backgroundize.js"></script>
+  <link defer rel="stylesheet" href="/css/backgroundize.css" />
+  
+  <div id="aplayer" style="width:300px"></div>
+  <link defer rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css" />
+  <script src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js"></script>
+  <script defer src="/js/aplayer.js"></script><script src="/js/githubcalendar.js"></script> 
+  <script data-pjax src="/js/githubcalendar.js"></script>
+  <script data-pjax>
+        function GithubCalendarConfig(){
+            var git_githubapiurl ="https://python-github-calendar-api.vercel.app/api?greensch";
+            var git_color =['#ebedf0', '#f0fff4', '#dcffe4', '#bef5cb', '#85e89d', '#34d058', '#28a745', '#22863a', '#176f2c', '#165c26', '#144620'];
+            var git_user ="greensch";
+            var parent_div_git = document.getElementById('board');
+            var git_div_html = '<div id="github-calendar" style="width:100%;height:auto;padding:10px;margin-bottom:20px;box-shadow:none;"><div id="github_loading" style="width:10%;height:100%;margin:0 auto;display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div><div id="github_container"></div></div>';
+            if(parent_div_git && location.pathname =='/'){
+                console.log('已挂载github calendar')
+                // parent_div_git.innerHTML=git_div_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",git_div_html) // 有报错，但不影响使用(支持pjax跳转)
+            };
+            GithubCalendar(git_githubapiurl,git_color,git_user)
+        }
+        if(document.getElementById('board')){
+            GithubCalendarConfig()
+        }
+    </script>
+    <style>#github_container{min-height:200px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
+    <style>#github_container > .position-relative > .border{border:0!important}#github-calendar{position: relative;margin-top: -2rem;background-color: var(--board-bg-color);transition: background-color 0.2s ease-in-out;border-radius: 0.5rem;z-index: 3;-webkit-box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);}</style><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"superSample":1,"position":"left","width":150,"height":400,"vOffset":-18},"mobile":{"show":false,"scale":0.25},"dialog":{"enable":false,"hitokoto":true,"width":10,"height":10,"vOffset":-100},"log":false});</script></body>
+</html>

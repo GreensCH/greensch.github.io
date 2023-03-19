@@ -1,0 +1,1316 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/con1.png">
+  <link rel="icon" href="/img/con1.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="RISCV入门，包括基础概念和参考资料">
+  <meta name="author" content="友人律 | Guilin Chang">
+  <meta name="keywords" content="三差学生、不学无术">
+  <meta name="description" content="RISCV入门，包括基础概念和参考资料">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RISCV 入门">
+<meta property="og:url" content="http://yoursite.com/202205121523/IC/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/RISCV/index.html">
+<meta property="og:site_name" content="友人律的博客">
+<meta property="og:description" content="RISCV入门，包括基础概念和参考资料">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/5685.1535301669.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6Iqv546L5Zu9,size_20,color_FFFFFF,t_70,g_se,x_16.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220511144415947.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220511145141541.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220511172336422.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220511172510014.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220513111620388.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220513113048612.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220513113259768.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220513180638446.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220513192148583.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220513113048612.png">
+<meta property="og:image" content="http://yoursite.com/202205121523/IC/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86essay/ic/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/RISCV/RISCV/image-20220608160139020.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220511203959665.png">
+<meta property="og:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220511203756282.png">
+<meta property="article:published_time" content="2022-05-12T07:23:16.587Z">
+<meta property="article:modified_time" content="2023-03-19T06:43:13.578Z">
+<meta property="article:author" content="友人律 | Guilin Chang">
+<meta property="article:tag" content="IC">
+<meta property="article:tag" content="数字电路">
+<meta property="article:tag" content="源码">
+<meta property="article:tag" content="code">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/5685.1535301669.png">
+  
+  <title>RISCV 入门 - 友人律的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/stackoverflow-dark.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"eca4a4d34dadf0d4e282cc6ef2dc3de6","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body><!-- hexo injector body_begin start -->
+<link defer rel="stylesheet" href="/css/article_para.css" />
+<div id="web_bg"></div><!-- hexo injector body_begin end -->
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>友人律的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E9%80%9A%E7%9F%A5/">
+                <i class="iconfont icon-link-fill"></i>
+                通知
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1/">
+                <i class="iconfont icon-link-fill"></i>
+                项目与设计
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">
+                <i class="iconfont icon-link-fill"></i>
+                开发工具
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/CS/">
+                <i class="iconfont icon-link-fill"></i>
+                CS
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/IC/">
+                <i class="iconfont icon-link-fill"></i>
+                IC
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/banner_img/anime/98062954_p0.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="RISCV 入门">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-05-12 15:23" pubdate>
+        2022年5月12日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      14k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      45 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">RISCV 入门</h1>
+            
+            <div class="markdown-body">
+              <h1><span id="riscv-入门">RISCV 入门</span></h1><p>参考资料：</p>
+<ol>
+<li>用户手册</li>
+<li>特权手册</li>
+<li>中文手册</li>
+<li>RISC-V 指令格式和6种基本整数指令：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39507748/article/details/120150936">https://blog.csdn.net/qq_39507748/article/details/120150936</a></li>
+<li>RV32I基础整数指令集 ：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/mikewolf2002/p/11196680.html">https://www.cnblogs.com/mikewolf2002/p/11196680.html</a></li>
+<li>RV64I基础整数指令集：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/mikewolf2002/p/11199014.html">https://www.cnblogs.com/mikewolf2002/p/11199014.html</a></li>
+<li>外网概述：<a target="_blank" rel="noopener" href="https://devopedia.org/risc-v-instruction-sets">https://devopedia.org/risc-v-instruction-sets</a></li>
+<li>rv64i与rv32i区别、多少条指令的问题：<a target="_blank" rel="noopener" href="https://blog.csdn.net/u011011827/article/details/121371305">https://blog.csdn.net/u011011827/article/details/121371305</a></li>
+<li>旋转？与框图介绍：<a target="_blank" rel="noopener" href="https://blog.csdn.net/limanjihe/article/details/122395354">https://blog.csdn.net/limanjihe/article/details/122395354</a></li>
+<li>颜色看起来很舒服,，类型归纳的不错，指令集分类写的还行：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40377195/article/details/123647133">https://blog.csdn.net/weixin_40377195/article/details/123647133</a></li>
+<li>shamt：<a target="_blank" rel="noopener" href="https://blog.csdn.net/zh328271057/article/details/82728958">https://blog.csdn.net/zh328271057/article/details/82728958</a></li>
+<li>这人写的比较通俗易懂、ret：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43245691/article/details/110260112">https://blog.csdn.net/qq_43245691/article/details/110260112</a></li>
+<li>FENCE提到了一部分：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_33767813/article/details/93521646">https://blog.csdn.net/weixin_33767813/article/details/93521646</a></li>
+<li>FENCE与FENCE.I：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/139797515">https://zhuanlan.zhihu.com/p/139797515</a></li>
+<li>RV32M&amp;RV64M扩展指令集 ：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/mikewolf2002/p/9872287.html">https://www.cnblogs.com/mikewolf2002/p/9872287.html</a></li>
+<li>算数溢出与指令详解(riscv-flxmcu)：<a target="_blank" rel="noopener" href="http://www.philisense.com/Risc/Risc-v-flxMCU.pdf">http://www.philisense.com/Risc/Risc-v-flxMCU.pdf</a></li>
+<li>异常与中断：<a target="_blank" rel="noopener" href="https://www.it610.com/article/1494953718276227072.htm">https://www.it610.com/article/1494953718276227072.htm</a></li>
+<li>RVZicsr指令集：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/mikewolf2002/p/11305031.html">https://www.cnblogs.com/mikewolf2002/p/11305031.html</a></li>
+</ol>
+<h2><span id="rv32i">RV32I</span></h2><p><strong>0）特权结构与可选扩展</strong></p>
+<p><strong>特权结构：</strong></p>
+<p>RISC-V官方标准主要分为两部分：用户指令集、特权模式</p>
+<p>根据不同的应用场景和需求，同一指令集根据不用特权模式在设计上采取不同的策略；为了加强对操作系统和信息安全的支持，定义三种模式，每一钟模式对应一个特权层级，机器模式层级最高，普通用户模式层级最低，层级越高软件可操作的权限就越高；在处理器设计时，机器模式是必须要实现的，其他两个模式根据需求加以实现，如果目标是简易的MCU，因此也只需要实现机器模式即可</p>
+<ul>
+<li><p>U-mode：应用程序代码通常在用户模式或 U 模式下运行，RV32I 和 RV32G 是用户模式 ISA。</p>
+</li>
+<li><p>S-mode：用于支持 Linux、FreeBSD 或 Windows 等操作系统需求。这比U模式具有更高的特权，但比 M 模式具有更低的特权。当操作系统需要处理异常/中断时，异常委托用于选择性地将控制传递给 S 模式。 S-mode 还提供了一个虚拟内存系统。</p>
+</li>
+<li>M-mode：机器模式（M-mode）：用于运行受信任的代码。这是 RISC-V 中最高特权的模式，可以完全访问内存、I/O 和其他任何东西来引导和配置系统。它最重要的功能是处理同步异常和中断。最简单的 RISC-V 微控制器只需要支持 M 模式</li>
+</ul>
+<p><strong>可选扩展</strong></p>
+<p>RISC-V 定义了许多扩展，所有这些都是可选的。</p>
+<p>其中一些是Frozen的，这些记录如下：</p>
+<ul>
+<li>M: Integer multiplication and division.</li>
+<li>A: Atomic</li>
+<li>F: Single-precision floating point compliant with IEEE 754-2008.</li>
+<li>D: Double-precision floating point compliant with IEEE 754-2008.</li>
+<li>Q: Quad-precision floating point compliant with IEEE 754-2008.</li>
+<li>C: Compressed instructions (16-bit instructions) to yield about 25-30% reduced code size. “RVC” refers to compressed instruction set.</li>
+</ul>
+<p>不断发展或未来的扩展：</p>
+<ul>
+<li>L (decimal float)</li>
+<li>B (bit manipulation)</li>
+<li>J (dynamically translated languages)</li>
+<li>T (transactional memory)</li>
+<li>P (packed SIMD)</li>
+<li>V (vector operations)</li>
+<li>N (user-level interrupts)</li>
+<li>H (hypervisor support)</li>
+</ul>
+<p>当支持多个扩展时，可以通过连接字母来描述该 ISA 变体；例如，RV64IMAFD。为了表示标准通用ISA，“G”被定义为“IMAFD”的缩写形式</p>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/5685.1535301669.png" srcset="/img/loading.gif" lazyload alt="Versions of ISA base and extensions. Source: Waterman and Asanović 2017, pg. i."></p>
+<p>参考资料1：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40377195/article/details/123647133">https://blog.csdn.net/weixin_40377195/article/details/123647133</a><br>参考资料2：<a target="_blank" rel="noopener" href="https://devopedia.org/risc-v-instruction-sets">https://devopedia.org/risc-v-instruction-sets</a></p>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6Iqv546L5Zu9,size_20,color_FFFFFF,t_70,g_se,x_16.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><strong>1）非特权态的32个寄存器：</strong></p>
+<ul>
+<li>长度XLEN=32bits</li>
+<li>x0始终为0</li>
+<li>通用寄存器x1-x32有各种不同解释</li>
+<li>除此32个寄存器外，非特权态还有一个pc寄存器，保存当前指令的地址</li>
+</ul>
+<p><strong>除此之外：</strong></p>
+<p>RISCV采用load-store架构，对比RV64I使用了64位地址空间</p>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220511144415947.png" srcset="/img/loading.gif" lazyload alt="image-20220511144415947"></p>
+<p><strong>2）rs、rd与立即数</strong></p>
+<ul>
+<li><p>源（rs1和rs2）和目标（rd）寄存器<strong>保持在所有格式的相同位置</strong>，以简化解码</p>
+<blockquote>
+<p>指令提供三个寄存器操作数，避免了只有两个寄存器操作数的 ISA 所需的额外移动。它们也位于相同的位置，因此可以在解码指令之前开始访问。<a target="_blank" rel="noopener" href="https://devopedia.org/risc-v-instruction-sets">https://devopedia.org/risc-v-instruction-sets</a></p>
+</blockquote>
+</li>
+<li><p>立即数：除了CSR指令（第10章）中使用的5位即时消息外，<strong>立即数始终是符号扩展的</strong>，并且通常打包到指令中<strong>最左边的可用位</strong>，并已分配以降低硬件复杂性。</p>
+<ul>
+<li>特别是，<strong>所有立即数的符号位始终位于指令的第31位</strong>，以加快符号扩展电路。</li>
+</ul>
+</li>
+</ul>
+<p><strong>3）四种基本整数指令格式</strong></p>
+<p>在基本 RV32I ISA 中，有四种核心指令格式（R/I/S/U）</p>
+<blockquote>
+<p>RV32I指令格式包括以下6种，每种指令格式都是固定的32位指令，所以指令在内存中必须4字节对齐。比如一个分支跳转指令，当条件判定是跳转的时候，而目的地址不是4字节对齐，则产生指令地址不对齐异常。无条件跳转指令也是如此，目的地址不是4字节对齐，则产生指令地址不对齐异常。备注：但在实际应用中，很难会产生这种错误，因为在汇编语言中，我们用label作为跳转目的，汇编器会自动帮我们产生字节对齐的偏移地址。[5]</p>
+</blockquote>
+<ul>
+<li>所有的长度都是固定的 32 位，并且必须在内存中的四字节边界上对齐<ul>
+<li>如果目标地址不是四字节对齐的，则会在采用分支或无条件跳转时生成指令地址未对齐异常。 此异常在分支或跳转指令上报告，而不是在目标指令上。 对于未采用的条件分支，不会生成指令地址未对齐的异常</li>
+<li>每个立即数子字段都labeled正在产生的立即值中的位位置 (imm[x])，<strong>而不是通常在指令的立即字段中的位位置</strong></li>
+</ul>
+</li>
+</ul>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220511145141541.png" srcset="/img/loading.gif" lazyload alt="risc-v基本指令格式"></p>
+<ul>
+<li>其中 opcode 表示 7 位指令操作码，其作用是区分不同的指令</li>
+<li>funct3 表示 3 位 的功能码，funct7 表示 7 位的功能码，它们可以辅助区分不同种类的指令</li>
+<li>rs1 和 rs2表示两个 5 位的源寄存器</li>
+<li>rd 是 5 位的目的寄存器，指令运算的结果就存储 rd 中</li>
+<li>imm 代表不同长度的立即数，可直接作为操作数使用<br><strong>imm</strong>：imm表示指令中的立即数，比如imm[11:0]，表示一个12位的立即数，它的高20位会符号位扩展，也就是用最左边的位imm[11]来进行扩展。imm[31:12]表示一个32位的立即数，它的低12位会补0。备注： csr指令中的5位立即数不需要符号位扩展</li>
+<li><strong>shamt</strong> 表示位移指令中的位移量比如sll $t0,$s1,4 的shamt就是4</li>
+</ul>
+<p>下图是各种指令格式扩展后的32位立即数。</p>
+<p><strong>4）6中基本整数指令集</strong></p>
+<p>关于处理立即数还有两种变体(B/J)，分支指令（B 类型）的立即数字段在 S 类型的基础上旋转了 1 位。跳转指令（J类型）的直接字段在 U 类型的基础上旋转了 12 位。因此,RISC-V 实际上只有四种基本格式，但我们可以保守地认为它有六种格式[5]</p>
+<blockquote>
+<p>S和B格式之间的唯一区别是，12位立即数字段用于以B格式中2的倍数对分支偏移进行编码。在硬件中，将指令编码的所有位按常规左移一位，而不是将中间位（imm[10:1]）和符号位保持在固定位置，而S格式的最低位（inst[7]）将高阶位编码为B格式。 </p>
+<p>类似地，U和J格式之间的唯一区别是，20位立即数左移12位以形成U立即数，左移1位以形成J立即数。选择U和J格式的指令位的位置是为了最大限度地与其他格式和彼此重叠。 [1]</p>
+</blockquote>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220511172336422.png" srcset="/img/loading.gif" lazyload alt="RISC-V base instruction formats showing immediate variants."></p>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220511172510014.png" srcset="/img/loading.gif" lazyload alt="Types of immediate produced by RISC-V instructions. The fields are labeled with the
+instruction bits used to construct their value. Sign extension always uses inst[31]."></p>
+<blockquote>
+<p>每种基本指令格式产生的立即数，并标记为显示哪个指令位（inst[y]）产生立即数值的每一位</p>
+<p>Figure  shows the immediates produced by each of the base instruction formats, and is labeled<br>to show which instruction bit (inst[y]) produces each bit of the immediate value.</p>
+<p>Types of immediate produced by RISC-V instructions. The fields are labeled with the instruction bits used to construct their value. Sign extension always uses inst[31].</p>
+</blockquote>
+<ul>
+<li><strong>R-type: register-register</strong><ul>
+<li><strong>R-typed 指令是最常用的运算指令</strong>，具有三个寄存器地址，每个都用 5bit 的数表示。指令的操作由 7 位的 opcode、7 位的 funct7 以及 3 位的 funct3 共同决定的。<strong>R-typed 是不包含立即数的所有整数计算指令，一般表示寄存器-寄存器操作的指令。</strong></li>
+</ul>
+</li>
+<li><strong>I-type: short immediates and loads</strong><ul>
+<li>I-typed 具有两个寄存器地址和一个立即数，其中一个是源寄存器 rs1，一个是目的寄存器 rd，指令的高 12 位是立即数。指令的操作仅由 7 位的 opcode 和 3 位的funct3两者决定。值得注意的是，在执行运算时需要先把 12 位立即数扩展到 32 位之后再进行运算。<strong>I-typed 指令相当于将 R-typed 指令格式中的一个操作数改为立即数。一般表示短立即数和访存 load 操作的指令</strong></li>
+</ul>
+</li>
+<li><strong>S-type: stores</strong><ul>
+<li>S-typed 的指令功能由 7 位 opcode 和 3 位 funct3 决定，指令中包含两个源寄存器和指令的imm[31:25]和 imm[11:7]构成的一个12位的立即数，在执行指令运算时需要把12 位立即数扩展到 32 位，然后再进行运算，S-typed 一般表示访存 store 操作指令，如存储字(sw)、半字(sh)、字节(sb)等指令</li>
+</ul>
+</li>
+<li><strong>B-type: conditional branches, a variation of S-type</strong><ul>
+<li>B-typed 的指令操作由 7 位 opcode 和 3 位 funct3 决定，指令中具有两个源寄存器和一个 12 位的立即数，该立即数构成是指令的第32位是 imm[12]、第7位是imm[11]、25 到 30 是 imm[10:5]、8 到 11 位是 imm[4:1]，同样的，在执行运算时需要把12 位立即数扩展到 32 位，然后再进行运算。B-typed 一般表示条件跳转操作指令，如相等(beq)、不相等(bne)、大于等于(bge)以及小于(blt)等跳转指令。</li>
+</ul>
+</li>
+<li><strong>U-type: long immediates</strong><ul>
+<li>U-typed 的指令操作仅由 7 位 opcode 决定，指令中包括一个目的寄存器 rd 和高20 位表示的 20 位立即数。<strong>U-typed 一般表示长立即数操作指令，例如 lui 指令，将立即数左移 12 位，并将低 12 位置零，结果写回目的寄存器中。</strong></li>
+</ul>
+</li>
+<li><strong>J-type: unconditional jumps, a variation of U-type</strong><ul>
+<li>J-typed 的指令操作由 7 位 opcode 决定，与 U-typed 一样只有一个目的寄存器 rd和一个 20 位的立即数，但是 20 位的立即数组成不同，即指令的 31 位是 imm[20]、 12 到 19 位是 imm[19:12]、20 位是 imm[11]、21 到 30 位是 imm[10:1]，J-typed 一般表示无条件跳转指令，如 jal 指令。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>[参考资料——外网概述]：<a target="_blank" rel="noopener" href="https://devopedia.org/risc-v-instruction-sets">https://devopedia.org/risc-v-instruction-sets</a><br>[参考资料——6种类型分类详解]：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39507748/article/details/120150936">https://blog.csdn.net/qq_39507748/article/details/120150936</a></p>
+</blockquote>
+<p><strong>5）ABI与寄存器</strong></p>
+<p>在Risc-V汇编语言中，每个通用寄存器都有一个对应的ABI名字，也就是说<strong>在汇编语言中，x1等价于ra，它们都会汇编成相同的机器码</strong>。对于RV32I，通用寄存器是32位的寄存器，xlen=32；对于RV64I，通用寄存器是64位寄存器，xlen=64</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>寄存器</th>
+<th>ABI名字</th>
+<th>注释</th>
+<th>Saver</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x0</td>
+<td>zero</td>
+<td>Hard-wired zero，常数0</td>
+<td></td>
+</tr>
+<tr>
+<td>x1</td>
+<td>ra</td>
+<td>Return address</td>
+<td>caller，调用函数的指令pc</td>
+</tr>
+<tr>
+<td>x2</td>
+<td>sp</td>
+<td>Stack pointer</td>
+<td>callee，被调用的函数指令pc</td>
+</tr>
+<tr>
+<td>x3</td>
+<td>gp</td>
+<td>Global pointer</td>
+<td></td>
+</tr>
+<tr>
+<td>x4</td>
+<td>tp</td>
+<td>Thread pointer</td>
+<td></td>
+</tr>
+<tr>
+<td>x5</td>
+<td>t0</td>
+<td>Temporary/alternate link register</td>
+<td>caller</td>
+</tr>
+<tr>
+<td>x6</td>
+<td>t1</td>
+<td>Temporaries</td>
+<td>caller</td>
+</tr>
+<tr>
+<td>x7</td>
+<td>t2</td>
+<td>Temporaries</td>
+<td>caller</td>
+</tr>
+<tr>
+<td>x8</td>
+<td>s0/fp</td>
+<td>Saved register/frame pointer</td>
+<td>caller</td>
+</tr>
+<tr>
+<td>x9</td>
+<td>s1</td>
+<td>Saved register</td>
+<td>caller</td>
+</tr>
+<tr>
+<td>x10</td>
+<td>a0</td>
+<td>Function arguments/return values</td>
+<td>caller</td>
+</tr>
+<tr>
+<td>x11</td>
+<td>a1</td>
+<td>Function arguments/return values</td>
+<td>caller</td>
+</tr>
+<tr>
+<td>x12</td>
+<td>a2</td>
+<td>Function arguments</td>
+<td>caller</td>
+</tr>
+<tr>
+<td>x13</td>
+<td>a3</td>
+<td>Function arguments</td>
+<td>caller</td>
+</tr>
+<tr>
+<td>x14</td>
+<td>a4</td>
+<td>Function arguments</td>
+<td>caller</td>
+</tr>
+<tr>
+<td>x15</td>
+<td>a5</td>
+<td>Function arguments</td>
+<td>caller</td>
+</tr>
+<tr>
+<td>x16</td>
+<td>a6</td>
+<td>Function arguments</td>
+<td>caller</td>
+</tr>
+<tr>
+<td>x17</td>
+<td>a7</td>
+<td>Function arguments</td>
+<td>caller</td>
+</tr>
+<tr>
+<td>x18</td>
+<td>s2</td>
+<td>Saved registers</td>
+<td>caller</td>
+</tr>
+<tr>
+<td>x19</td>
+<td>s3</td>
+<td>Saved registers</td>
+<td>caller</td>
+</tr>
+<tr>
+<td>x20</td>
+<td>s4</td>
+<td>Saved registers</td>
+<td>caller</td>
+</tr>
+<tr>
+<td>x21</td>
+<td>s5</td>
+<td>Saved registers</td>
+<td>caller</td>
+</tr>
+<tr>
+<td>x22</td>
+<td>s6</td>
+<td>Saved registers</td>
+<td>caller</td>
+</tr>
+<tr>
+<td>x23</td>
+<td>s7</td>
+<td>Saved registers</td>
+<td>caller</td>
+</tr>
+<tr>
+<td>x24</td>
+<td>s8</td>
+<td>Saved registers</td>
+<td>caller</td>
+</tr>
+<tr>
+<td>x25</td>
+<td>s9</td>
+<td>Saved registers</td>
+<td>caller</td>
+</tr>
+<tr>
+<td>x26</td>
+<td>s10</td>
+<td>Saved registers</td>
+<td>caller</td>
+</tr>
+<tr>
+<td>x27</td>
+<td>s11</td>
+<td>Saved registers</td>
+<td>caller</td>
+</tr>
+<tr>
+<td>x28</td>
+<td>t3</td>
+<td>Temporaries</td>
+<td>caller</td>
+</tr>
+<tr>
+<td>x29</td>
+<td>t4</td>
+<td>Temporaries</td>
+<td>caller</td>
+</tr>
+<tr>
+<td>x30</td>
+<td>t5</td>
+<td>Temporaries</td>
+<td>caller</td>
+</tr>
+<tr>
+<td>x31</td>
+<td>t6</td>
+<td>Temporaries</td>
+<td>caller</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>参考资料——博客RV32I基础整数指令集：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/mikewolf2002/p/11196680.html">https://www.cnblogs.com/mikewolf2002/p/11196680.html</a></p>
+</blockquote>
+<p><strong>6）说了那么半天，一共有多少指令呢？</strong></p>
+<ul>
+<li><p>RV32I：[8]</p>
+<ul>
+<li>之前是47条指令</li>
+<li>现在是41条指令，即40条基本指令+<a target="_blank" rel="noopener" href="https://www.cnblogs.com/mikewolf2002/p/11191254.html">Zifencei扩展指令集:1个</a> (也就是fence.i扩展指令)</li>
+<li><p>现在的47条指令：40条基本指令+1条Zifencei扩展指令 (也就是fence.i扩展指令)+6条csr指令</p>
+<ul>
+<li><p>如果要实现RV32I还有机器模式，还需要6条csr指令</p>
+</li>
+<li><blockquote>
+<p>[13]Risc-V在多个hart（硬件线程）之间使用的是松散一致性模型，所以需要存储器fence指令。</p>
+<p>fence指令能够保证存储器访问的执行顺序。在fence指令之前的所有存储器访问指令，比该fence之后的所有数据存储器访问指令先执行。</p>
+<p>Risc-V架构将数据存储器的地址空间分为设备IO(device IO)和普通存储器空间，因此其读写访问分为四种类型：</p>
+<p>I：设备读（device-input)</p>
+<p>O:设备写（device-ouput）</p>
+<p>R：存储器读（memory-reads）</p>
+<p>W：存储器写（memory-writes）</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>[8]如果用更简单的实现方式</strong><br>    <strong>比如对于ECALL和EBREAK指令，调用时候，系统总是自陷(trap),所以可以减一条指令</strong><br>    <strong>以及用NOP指令模拟Fence指令(备注：在RISC V中，NOP指令是伪代码，其实就是addi, x0,x0,0）,所以可以减一条指令</strong><br>    则RV32I甚至可以减少到38条指令：40-fence-nop=38</p>
+<p>RV64I</p>
+<p>ADDIW rd, rs1, 0 将寄存器 rs1 的低32位的符号扩展写入寄存器 rd (伪指令 SEXT.W)</p>
+</blockquote>
+<ul>
+<li>RV32M[3]，8条(不用实现)</li>
+</ul>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220513111620388.png" srcset="/img/loading.gif" lazyload alt="image-20220513111620388"></p>
+<ul>
+<li>RV64M</li>
+</ul>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220513113048612.png" srcset="/img/loading.gif" lazyload alt="image-20220513113048612"></p>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220513113259768.png" srcset="/img/loading.gif" lazyload alt="image-20220513113259768"></p>
+<ul>
+<li>RV64I：[8]<ul>
+<li>53：38+3+12 或者 41+12<ul>
+<li>RV32I原版38条（40基本+1ifence）</li>
+<li>改动3条位移指令(slli, srli,srai)</li>
+<li>新增12条RV32I中没有的指令</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>RV64I指令集:41+12个 增41+12个</li>
+<li>RVZicsr指令集:6个 共6个</li>
+<li>[privileged instructions:4个] 共4个</li>
+</ul>
+<figure class="highlight armasm"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs armasm"><span class="hljs-symbol">mret</span><br><span class="hljs-symbol">sret</span><br><span class="hljs-keyword">wfi</span><br><span class="hljs-symbol">sfence.vma</span><br></code></pre></div></td></tr></table></figure>
+<p>RV32I类型分析：[10]</p>
+<ul>
+<li><p>U-type：2条，区分方式操作码不一样</p>
+<ul>
+<li>lui</li>
+<li>auipc</li>
+</ul>
+</li>
+<li><p>J-type：2条，区分方式操作码不一样</p>
+<ul>
+<li>jal </li>
+<li>jalr</li>
+</ul>
+</li>
+<li><p>B-type：6条</p>
+<blockquote>
+<p>该指令将源寄存器1、2相比较，条件成立跳转至目标地址；将其携带的12位立即数做符号扩展，并左移1位，产生一个32位的立即数，与PC值相加，得到目标地址，可跳转至PC±4KB的地址范围；</p>
+</blockquote>
+</li>
+<li><p>I-type：5+9=14条；</p>
+<ul>
+<li><p>主要功能1：5条，读取数据存储器的数据</p>
+<blockquote>
+<p>立即数做符号扩展，与源寄存器1做逻辑运算，将结果存入目标寄存器；<br>其中比较指令：源寄存器1值小于符号扩展后的立即数，则条件成立，目标寄存器置1，否则置0；<br>而其他指令：将逻辑运算的结果存入目标寄存器；</p>
+</blockquote>
+</li>
+<li><p>主要功能2：9条，立即数运算</p>
+<blockquote>
+<p>立即数做符号扩展，与源寄存器1做逻辑运算，将结果存入目标寄存器；<br>其中比较指令：源寄存器1值小于符号扩展后的立即数，则条件成立，目标寄存器置1，否则置0；<br>而其他指令：将逻辑运算的结果存入目标寄存器；</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>S-type：3条</p>
+<blockquote>
+<p>立即数做符号扩展，与源寄存器1相加作为 数据存储器的地址；而源寄存器2中的数据将存储到目标地址的数据存储器中；<br>汇编写法：</p>
+</blockquote>
+</li>
+<li><p>R-type：10条</p>
+<blockquote>
+<p>对源寄存器1、2进行运算，结果将被写入目标寄存器中;</p>
+</blockquote>
+</li>
+</ul>
+<h2><span id="rv32m">RV32M</span></h2><p><strong>1）MUL Operations[1]</strong></p>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220513180638446.png" srcset="/img/loading.gif" lazyload alt="image-20220513180638446"></p>
+<ul>
+<li>MUL执行rs1与rs2的XLEN位×XLEN位乘法，并将较低的XLEN位放入目标寄存器。</li>
+<li>MULH、MULHU和MULHSU执行相同的乘法，但返回完整2×XLEN位乘积的高位XLEN位，分别用于有符号×有符号、无符号×无符号和有符号rs1×无符号rs2乘法。</li>
+</ul>
+<blockquote>
+<p>如果需要同一产品的高位和低位，则建议的代码序列为：MULH[[S]U]rdh，rs1，rs2；MUL rdl、rs1、rs2（源寄存器说明符的顺序必须相同，rdh不能与rs1或rs2相同）。微体系结构可以将这些信息融合到一个乘法运算中，而不是执行两个单独的乘法运算。</p>
+</blockquote>
+<p><strong>2）DIV Operations[1]</strong></p>
+<ul>
+<li><p>DIV和DIVU将rs1除以rs2，并将其四舍五入到零，然后执行一个由XLEN位乘以有符号和无符号整数除法的XLEN位运算。</p>
+</li>
+<li><p>REM和REMU提供相应除法运算的剩余部分。对于REM，结果的符号等于股息的符号</p>
+</li>
+</ul>
+<blockquote>
+<p>对于有符号除法和无符号除法，它都认为除数=除数×商+余数</p>
+</blockquote>
+<p><strong>3）零除与除法溢出：</strong></p>
+<p>表8.1总结了按零除法和除法溢出的语义。</p>
+<ul>
+<li>零除的商设置了所有位，零除的余数等于被除数。</li>
+<li>只有当最负整数除以−1.带溢出的有符号除法的商等于被除数，余数为零。<strong>无法发生无符号除法溢出。</strong></li>
+</ul>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220513192148583.png" srcset="/img/loading.gif" lazyload alt="image-20220513192148583"></p>
+<blockquote>
+<p>如果<strong>语言标准要求“零除”异常必须立即导致控制流更改</strong>，则每个除法操作只需添加一条分支指令，并且该分支指令可以在除法之后插入，并且通常不应被采用，从而增加很少的运行时开销。为简化除法器电路，无符号和有符号除法均返回所有位集的值。所有1的值既是无符号除法返回的自然值（表示最大的无符号数），也是简单无符号除法实现的自然结果。有符号除法通常使用无符号除法电路实现，指定相同的溢出结果可以简化硬件</p>
+</blockquote>
+<h2><span id="rv64m">RV64M</span></h2><p><strong>MUL Operations[1]</strong></p>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220513113048612.png" srcset="/img/loading.gif" lazyload alt="image-20220513113048612"></p>
+<p>MULW是一条RV64指令，它将源寄存器的低32位相乘，将结果的低32位的符号扩展放入目标寄存器</p>
+<p>在RV64中，MUL可用于获取64位乘积的高32位，但有符号参数必须是正确的32位有符号值，而无符号参数必须清除其上32位。如果不知道参数是符号扩展还是零扩展，另一种方法是将两个参数左移32位，然后使用MULH[[S]U]</p>
+<p><strong>2）DIV Operations[1]</strong></p>
+<ul>
+<li><p>DIVW和DIVUW是RV64指令，将rs1的低32位除以rs2的低32位，分别将其视为有符号整数和无符号整数，将32位商放入rd中，符号扩展到64位。</p>
+</li>
+<li><p>REMW和REMUW是RV64指令，分别提供相应的有符号和无符号余数运算。REMW和REMUW总是将32位结果扩展到64位，包括除以零。</p>
+</li>
+</ul>
+<p>3）Zmmul扩展</p>
+<p>Zmmul扩展实现了M扩展的乘法子集。它添加了第8.1节中定义的所有指令，即：MUL、MULH、MULHU、MULHSU和（仅适用于RV64）MULW。编码与相应M扩展指令的编码相同。</p>
+<p><strong>3）溢出</strong></p>
+<p>除以零和除法溢出的语义如下图所示。除以零，结果商的所有位被置为 1， 也即是说，对于无符号除法来说，商是 2XLEN-1，对于有符号除法来说，商是-1。除以零，结果的余数等于被除数。有符号除法溢出仅当用最小的负整数， -2XLEN-1，除以-1 时，才会出现。有符号除法溢出的商等于被除数，余数等于零。无符号除法不会产生溢出</p>
+<p><img src="RISCV/image-20220608160139020.png" srcset="/img/loading.gif" lazyload alt="image-20220608160139020"></p>
+<h2><span id="rv64i">RV64I</span></h2><p>RV64I将整数寄存器和支持的用户地址空间扩大到64位 (图2.1中的XLEN = 64)</p>
+<ul>
+<li>RV32I 带有指令布局，操作码，格式类型和名称的操作码映射。（此图基于[Waterman and Asanovi’c 2017]的表 19.2</li>
+</ul>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220511203959665.png" srcset="/img/loading.gif" lazyload alt="RV32I 带有指令布局，操作码，格式类型和名称的操作码映射。（此图基于[Waterman and
+Asanovi&#39;c 2017]的表 19.2。"></p>
+<ul>
+<li>RV64I Satndard Extension (in addition to RV32I)</li>
+</ul>
+<p><img src="http://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20220511203756282.png" srcset="/img/loading.gif" lazyload alt="RV64I Satndard Extension (in addition to RV32I)"></p>
+<p><strong>RV64特性（数依然从0开始）</strong></p>
+<p>编译器和调用约定保持不变，即所有32位值都以符号扩展格式保存在64位寄存器中。<strong>甚至32位无符号整数将位31扩展为位63到32。</strong>因此，<strong>无符号和有符号32位整数之间的转换是no-op,</strong>，<strong>从有符号32位整数转换为有符号64位整数也是如此</strong>。现有的64位宽SLTU和无符号分支比较仍然在此不变量下对无符号32位整数正确操作。类似地，对32位符号扩展整数的现有64位宽逻辑操作保留符号扩展属性。</p>
+<p>添加和移位需要一些新指令（ADD[I]W/SUBW/SxxW），以确保32位值的合理性能。[1]</p>
+<p><strong>RV64 和 RV32 有什么不同总览</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>RV32</strong></th>
+<th><strong>RV64</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>寄存器位宽</td>
+<td>32</td>
+<td>64</td>
+</tr>
+<tr>
+<td>指令位宽</td>
+<td>32</td>
+<td>32</td>
+</tr>
+<tr>
+<td>指令</td>
+<td>RV32IMAFDC(RV64IMAFDC的子集?)</td>
+<td>RV64IMAFDC</td>
+</tr>
+<tr>
+<td>寄存器种类</td>
+<td>4096CSR+32G+32F+PC</td>
+<td>4096CSR+32G+32F+PC</td>
+</tr>
+<tr>
+<td>RV64CPU是否可以跑RV32代码</td>
+<td>应该可以跑</td>
+<td>但是不能跑所有(不完全兼容)的RV32代码</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight less"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs less">怎么写出兼容<span class="hljs-selector-tag">RV32</span>和<span class="hljs-selector-tag">RV64</span>的<span class="hljs-selector-tag">code</span><br>	用<span class="hljs-selector-tag">C</span>天然兼容,用汇编(只用RV64GC和RV32GC的交集部分)<br>怎么编译出 <span class="hljs-selector-tag">RV32CPU</span> 和 <span class="hljs-selector-tag">RC64</span> <span class="hljs-selector-tag">CPU</span> 都能跑的 二进制文件<br>	编译时用 的<span class="hljs-selector-tag">ABI</span> 为 <span class="hljs-selector-tag">ilp32</span>(-mabi= ilp32) 且编译时用的 指令集为 <span class="hljs-selector-tag">rv32ima</span>(-march= rv32ima)<br>	<span class="hljs-comment">// 用 objcopy 出来的bin文件是不同的</span><br></code></pre></div></td></tr></table></figure>
+<h2><span id="补充说明">补充说明</span></h2><h3><span id="fence">FENCE</span></h3><p>[14]：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/139797515">https://zhuanlan.zhihu.com/p/139797515</a></p>
+<p><strong>1）FENCE</strong></p>
+<p>对于简单的单hart理器来说，FENCE指令可以当做NOP来处理。如果想以简单的硬件实现FENCE的功能可以将其实现为一个trap，把工作量转嫁到软件上去。Rocket对于FENCE的实现是在decode stage停下来，知道cache通知它可以继续。</p>
+<p><strong>2）FENCE.I</strong></p>
+<blockquote>
+<p>RV32I also provides an instruction to synchronize the instruction stream with data memory accesses, called FENCE.I. A store to instruction memory is only guaranteed to be reflected by subsequent instruction fetches after a FENCE.I has been executed.</p>
+</blockquote>
+<p>FENCE.I是条扩展指令，处理的是指令存取一致性的问题。假设我们的CPU里并无分离的I$和D$，也无prefetch buffer等任何缓存，可以想象，指令被修改了之后，下次执行此条指令一定是修改后的指令，并不需要做任何特殊处理。然而如果系统有了分离的I$和D$，或者有了prefetch buffer，我们就有可能面临这样的问题：指令所在的地址的内容被修改了，但是最新的值存在D$里，而I$或prefetch buffer还有旧的值，此时如果不加处理，就会得到不想要的结果。这个scenario存在于self-modifying的程序中，也存在于software breakpoint的调试过程中。</p>
+<p>x86体系结构对于此类问题有着不同的解决方案，它通过snoop的方式监视I$和D$从而保证coherence。但这种实现方式的硬件实现代价较大，RISC-V引入FENCE.I指令解放了硬件实现，从软件层面来保证instruction coherence。</p>
+<p>所以，<strong>FENCE.I和FENCE指令不同，并不是必须的指令，解决的也是不同类型的问题。</strong></p>
+<p>对于有I$的CPU来说，FENCE.I一般可以采用invalidate I$来解决（当然这不是唯一的途径），prefetch一并clear掉。如果只有prefetch buffer的就可以像处理跳转指令一样把prefetch buffer clear掉，就像Ibex的处理方式一样。</p>
+<p><strong>但是也不能对FENCE.I指令期望过高，它解决的仅仅是单hart上的code coherence问题。</strong> 其他hart上的code改动并不能保证一定被当前的hart及时取到。这个时候就需要在OS层面用诸如system call之类的软件方案去实现指令存取一致性。这也就是为什么FENCE.I指令被从I指令集移了出来的原因之一了，另一个原因是对于一些系统实现FENCE.I的代价太大。</p>
+<h3><span id="csr-control-and-status-registers">CSR Control and Status Registers</span></h3><ol>
+<li>CSR地址映射的约定（原文查看卷II即可）</li>
+</ol>
+<p>标准RISC-V ISA为多达4,096个csr留出12位编码空间(csr[11:0])。按照约定，CSR地址的前4位(CSR[11:8])根据权限级别对CSR的读写可访问性进行编码，最上面的两位(csr[11:10])表示寄存器是读/写(00、01或10)还是只读(11)，接下来的两位(csr[9:8])编码可以访问csr的最低特权级别。</p>
+<p>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/dai_xiangjun/article/details/123373303">https://blog.csdn.net/dai_xiangjun/article/details/123373303</a></p>
+<h2><span id="riscv-的交叉编译环境搭建">RISCV 的交叉编译环境搭建</span></h2><h3><span id="参考文章">参考文章</span></h3><ul>
+<li>我主要参考的：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44881486/article/details/121712865">https://blog.csdn.net/qq_44881486/article/details/121712865</a></li>
+<li>内容较全，有上面文章中的一些行为的解释：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42454243/article/details/124087611">https://blog.csdn.net/weixin_42454243/article/details/124087611</a></li>
+<li>正常的拉取步骤、riscv32版本可以参考这个configure、QEMU安装：<a target="_blank" rel="noopener" href="https://blog.csdn.net/limanjihe/article/details/122373942">https://blog.csdn.net/limanjihe/article/details/122373942</a></li>
+<li>这里是一个汇总了不同版本的，配置选项的链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/lizhao_yang_/article/details/121809405">https://blog.csdn.net/lizhao_yang_/article/details/121809405</a></li>
+<li>一篇不明不白地博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40836704/article/details/120391584">https://blog.csdn.net/qq_40836704/article/details/120391584</a></li>
+</ul>
+<h3><span id="正文">正文</span></h3><h4><span id="方式一主要介绍这一种gitee-riscv-toolchain">方式一（主要介绍这一种）：gitee riscv-toolchain</span></h4><p>riscv工具链整个工程太大，在<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=github&amp;spm=1001.2101.3001.7020">github</a>下载再递归下载子文件夹，以国内的网络很容易超时断开。一般去码云gitee上面找镜像文件</p>
+<p><strong>1）clone riscv-toolchain</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> <span class="hljs-variable">$HOME</span><br>mkdir riscv<br><span class="hljs-built_in">cd</span> riscv<br><br>git <span class="hljs-built_in">clone</span> https://gitee.com/lizeyujack/riscv-gnu-toolchain.git<br><span class="hljs-comment"># 或者 git clone  https://gitee.com/mirrors/riscv-gnu-toolchain</span><br><span class="hljs-built_in">cd</span> riscv-gnu-toolchain<br>rm -rf riscv-*<br></code></pre></div></td></tr></table></figure>
+<ul>
+<li>建立git clone目录</li>
+<li>git clone  riscv-toolchain</li>
+<li>删除原有riscv-*子目录</li>
+</ul>
+<p><strong>2）clone submodule</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">sudo git <span class="hljs-built_in">clone</span> https://gitee.com/mirrors/riscv-dejagnu.git<br>sudo git <span class="hljs-built_in">clone</span> -b riscv-gcc-10.2.0 https://gitee.com/mirrors/riscv-gcc.git<br>sudo git <span class="hljs-built_in">clone</span> -b riscv-glibc-2.29 https://gitee.com/mirrors/riscv-glibc.git<br>sudo git <span class="hljs-built_in">clone</span> https://gitee.com/mirrors/riscv-newlib.git<br><br>sudo git <span class="hljs-built_in">clone</span> -b riscv-binutils-2.35 https://gitee.com/mirrors/riscv-binutils-gdb.git  riscv-binutils<br>sudo git <span class="hljs-built_in">clone</span> -b fsf-gdb-10.1-with-sim https://gitee.com/mirrors/riscv-binutils-gdb.git riscv-gdb<br></code></pre></div></td></tr></table></figure>
+<ul>
+<li>码云上的子模块的地址仍然为github的地址，所以需要分别拉取其子模块在码云上的镜像</li>
+<li>riscv-binutils与riscv-gdb来自于同一个仓库，且与本地要求的文件夹名称不同，需用命令指定本地名，riscv-gdb同理</li>
+</ul>
+<p>补充内容：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/limanjihe/article/details/122373942">子模块地址</a>：</li>
+</ul>
+<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">riscv-newlib：https:<span class="hljs-regexp">//gi</span>tee.com<span class="hljs-regexp">/mirrors/</span>riscv-newlib<br>riscv-binutils：https:<span class="hljs-regexp">//gi</span>tee.com<span class="hljs-regexp">/mirrors/</span>riscv-binutils-gdb<br>riscv-gdb：https:<span class="hljs-regexp">//gi</span>tee.com<span class="hljs-regexp">/mirrors/</span>riscv-binutils-gdb(riscv-gdb和riscv-binutils为同一个仓库下的不同分支)<br>riscv-dejagnu：https:<span class="hljs-regexp">//gi</span>tee.com<span class="hljs-regexp">/mirrors/</span>riscv-dejagnu<br>riscv-glibc：https:<span class="hljs-regexp">//gi</span>tee.com<span class="hljs-regexp">/mirrors/</span>riscv-glibc<br>riscv-gcc：https:<span class="hljs-regexp">//gi</span>tee.com<span class="hljs-regexp">/mirrors/</span>riscv-gcc<br><br></code></pre></div></td></tr></table></figure>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/limanjihe/article/details/122373942">子模块对应的分支</a>：(工具链可能会更新，要使用最新版本大家自行切换具体分支）</li>
+</ul>
+<figure class="highlight apache"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">riscv</span>-binutils：riscv-binutils-<span class="hljs-number">2</span>.<span class="hljs-number">35</span><br><span class="hljs-attribute">riscv</span>-dejagnu：master<br><span class="hljs-attribute">riscv</span>-gcc：riscv-gcc-<span class="hljs-number">10</span>.<span class="hljs-number">2</span>.<span class="hljs-number">0</span><br><span class="hljs-attribute">riscv</span>-gdb：fsf-gdb-<span class="hljs-number">10</span>.<span class="hljs-number">1</span>-with-sim<br><span class="hljs-attribute">riscv</span>-glibc：riscv-glibc-<span class="hljs-number">2</span>.<span class="hljs-number">29</span><br><span class="hljs-attribute">riscv</span>-newlib：master<br></code></pre></div></td></tr></table></figure>
+<p><strong>3）下载依赖库</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">sudo apt-get install autoconf automake autotools-dev curl libmpc-dev libmpfr-dev libgmp-dev gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev libexpat-dev<br>sudo apt-get install libnewlib-dev<br></code></pre></div></td></tr></table></figure>
+<p><strong>4）配置与编译</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">./configure --prefix=/opt/riscv <span class="hljs-comment">#--prefix后面是你想要安装的位置，opt文件夹下默认是应用程序</span><br>sudo make -jN <span class="hljs-comment">#考虑到opt文件夹创建文件和删除文件需要用root权限</span><br><span class="hljs-comment"># make linux 带linux-gnu的gcc</span><br></code></pre></div></td></tr></table></figure>
+<p><strong>5）添加环境变量</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">vim ~/.bashrc		<span class="hljs-comment">#然后添加语句</span><br><span class="hljs-built_in">export</span> PATH=/opt/riscv/bin:<span class="hljs-variable">$PATH</span>	<span class="hljs-comment">#保存并更新环境</span><br>:wq<br><span class="hljs-built_in">source</span> ~/.bashrc<br></code></pre></div></td></tr></table></figure>
+<p><strong>6）测试</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">riscv64-unknown-elf-gcc --version<br></code></pre></div></td></tr></table></figure>
+<h4><span id="方式二github-riscv-toolchain">方式二：github riscv-toolchain</span></h4><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span>  git@github.com:riscv/riscv-gnu-toolchain.git<br><span class="hljs-built_in">cd</span> riscv-gnu-toolchain<br>git submodule update --init --recursive<br></code></pre></div></td></tr></table></figure>
+<h3><span id="其他问题">其他问题</span></h3><h4><span id="如何生成riscv64-unknown-linux-gnu-gcc">如何生成riscv64-unknown-linux-gnu-gcc</span></h4><p>指定make linux，否则默认为unknown-elf</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">make linux<br></code></pre></div></td></tr></table></figure>
+<h3><span id="riscv-gnu-toolchain不同版本">riscv-gnu-toolchain不同版本</span></h3><p>riscv-gnu-toolchain 工具链分elf-gcc，linux-gnu-gcc两个版本，以及他们对应的32位和64位版本。两个的主要区别在于<a target="_blank" rel="noopener" href="https://blog.csdn.net/limanjihe/article/details/122373942">参考链接</a>：</p>
+<ul>
+<li>riscv32-unknown-elf-gcc，riscv64-unknown-elf-gcc：使用的riscv-newlib库(面向嵌入式的C库)，而且只支持静态链接，不支持动态链接</li>
+<li>riscv32-unknown-linux-gnu-gcc，riscv64-unknown-linux-gnu-gcc：使用的是glibc标准库，支持动态链接</li>
+</ul>
+<p>个人认为从名字上便可以区分两者的使用场景，如果是编译简单，较小的elf程序，使用elf-gcc版本即可，如果编译比较大的程序或者需要动态库（比如编译linux，或opencv库等），推荐使用linux-gnu-gcc版本</p>
+<p>这里是一个汇总了不同版本的，配置选项的链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/lizhao_yang_/article/details/121809405">https://blog.csdn.net/lizhao_yang_/article/details/121809405</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/">IC</a>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/">理论知识</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/IC/">IC</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/">数字电路</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%BA%90%E7%A0%81/">源码</a>
+                    
+                      <a class="hover-with-bg" href="/tags/code/">code</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/202205201345/IC/Chieslessay/cs/scala/2022-5-20-chisel/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Chisel（二）：你的第一个Chisel工程应该这么来</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/202205091339/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/hexoessay/tools/hexo%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/">
+                        <span class="hidden-mobile">hexo插件汇总</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'preferred-color-scheme';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'GreensCH/commitutterances');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <span> | </span> <a href="https://weibo.com/u/7453939976" target="_blank" rel="nofollow noopener"> Green Weibo</a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?eca4a4d34dadf0d4e282cc6ef2dc3de6";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<!-- hexo injector body_end start --><script src="/js/backgroundize.js"></script>
+  <link defer rel="stylesheet" href="/css/backgroundize.css" />
+  
+  <div id="aplayer" style="width:300px"></div>
+  <link defer rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css" />
+  <script src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js"></script>
+  <script defer src="/js/aplayer.js"></script><script src="/js/githubcalendar.js"></script> 
+  <script data-pjax src="/js/githubcalendar.js"></script>
+  <script data-pjax>
+        function GithubCalendarConfig(){
+            var git_githubapiurl ="https://python-github-calendar-api.vercel.app/api?greensch";
+            var git_color =['#ebedf0', '#f0fff4', '#dcffe4', '#bef5cb', '#85e89d', '#34d058', '#28a745', '#22863a', '#176f2c', '#165c26', '#144620'];
+            var git_user ="greensch";
+            var parent_div_git = document.getElementById('board');
+            var git_div_html = '<div id="github-calendar" style="width:100%;height:auto;padding:10px;margin-bottom:20px;box-shadow:none;"><div id="github_loading" style="width:10%;height:100%;margin:0 auto;display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div><div id="github_container"></div></div>';
+            if(parent_div_git && location.pathname =='/'){
+                console.log('已挂载github calendar')
+                // parent_div_git.innerHTML=git_div_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",git_div_html) // 有报错，但不影响使用(支持pjax跳转)
+            };
+            GithubCalendar(git_githubapiurl,git_color,git_user)
+        }
+        if(document.getElementById('board')){
+            GithubCalendarConfig()
+        }
+    </script>
+    <style>#github_container{min-height:200px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
+    <style>#github_container > .position-relative > .border{border:0!important}#github-calendar{position: relative;margin-top: -2rem;background-color: var(--board-bg-color);transition: background-color 0.2s ease-in-out;border-radius: 0.5rem;z-index: 3;-webkit-box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);}</style><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"superSample":1,"position":"left","width":150,"height":400,"vOffset":-18},"mobile":{"show":false,"scale":0.25},"dialog":{"enable":false,"hitokoto":true,"width":10,"height":10,"vOffset":-100},"log":false});</script></body>
+</html>
