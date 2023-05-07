@@ -149,7 +149,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315163007030.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230315170607200.png">
 <meta property="article:published_time" content="2021-01-21T15:31:00.000Z">
-<meta property="article:modified_time" content="2023-03-19T06:19:00.840Z">
+<meta property="article:modified_time" content="2023-04-27T12:31:06.161Z">
 <meta property="article:author" content="友人律 | Guilin Chang">
 <meta property="article:tag" content="uvm学习">
 <meta property="article:tag" content="实验">
@@ -686,17 +686,17 @@
 <p><strong>elem_seqs</strong></p>
 <p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312222707188.png" srcset="/img/loading.gif" lazyload alt="image-20230312222707188"></p>
 <p>1.<code>rkv_apb_xxx_sequence.sv</code>：利用寄存器模型对寄存器进行访问</p>
-<p><code>config_seq</code>：会对设计里面的若干寄存器做操作，以实现DUT工作前的预期状态</p>
-<p><code>write_packet_seq</code>：把packet[]数据写入DUT</p>
-<p><code>read_packet_seq</code>：</p>
+<p><code>rkv_apb_config_seq</code>：会对设计里面的若干寄存器做操作，以实现DUT工作前的预期状态</p>
+<p><code>rkv_apb_write_packet_seq</code>：把packet[]数据写入DUT</p>
+<p><code>rkv_apb_read_packet_seq</code>：</p>
 <ul>
 <li>根据packet数量，把读命令全部写入寄存器中</li>
 <li>根据packet数量，把数据读出来（只要rx FIFO不为空就读）</li>
 </ul>
-<p><code>wait_empty_seq</code>：严格来说应该是<code>wait_tx_empty_seq</code>，读状态寄存器，如果ACTIVITY等于零并且FIFO为空</p>
-<p><code>intr_enable_seq</code>：内部为空，可能不需要使用到后期可能会删除这个seq，因为目前没有intr没有相应的enable，i2c的intr不需要给他intr，只需要给他对应状态，不需要使能</p>
-<p><code>intr_wait_seq</code>：根据intr_id不同，等待不同的intr</p>
-<p><code>intr_clear_seq</code>：好多intr可以通过软件clear掉（直接用rgm写寄存器）</p>
+<p><code>rkv_apb_wait_empty_seq</code>：严格来说应该是<code>wait_tx_empty_seq</code>，读状态寄存器，如果ACTIVITY等于零并且FIFO为空</p>
+<p><code>rkv_apb_intr_enable_seq</code>：内部为空，可能不需要使用到后期可能会删除这个seq，因为目前没有intr没有相应的enable，i2c的intr不需要给他intr，只需要给他对应状态，不需要使能</p>
+<p><code>rkv_apb_intr_wait_seq</code>：根据intr_id不同，等待不同的intr</p>
+<p><code>rkv_apb_intr_clear_seq</code>：好多intr可以通过软件clear掉（直接用rgm写寄存器）</p>
 <p>2.<code>rkv_i2c_slave_xxx_sequence.sv</code>：表示目前外接的i2c_slave VIP，需要做一些反馈</p>
 <p>就是一个write和read（和上图比删掉了rkv_i2c_slave_rx_seq）</p>
 <p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230312232044751.png" srcset="/img/loading.gif" lazyload alt="image-20230312232044751"></p>
@@ -747,7 +747,7 @@
 <p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230313125242591.png" srcset="/img/loading.gif" lazyload alt="image-20230313125242591"></p>
 <p>图标保存</p>
 <p><img src="https://raw.githubusercontent.com/GreensCH/blog-drawbed/main/common/image-20230313125405246.png" srcset="/img/loading.gif" lazyload alt="image-20230313125405246"></p>
-<h2><span id="第三周">第三周</span></h2><p>完善我们几个virtual sequence：</p>
+<h2><span id="第三周">第三周</span></h2><p>上一周任务：完善我们几个virtual sequence：</p>
 <ul>
 <li>quick_reg</li>
 <li>master_directed_read</li>
@@ -1358,26 +1358,5 @@
   <div id="aplayer" style="width:300px"></div>
   <link defer rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css" />
   <script src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js"></script>
-  <script defer src="/js/aplayer.js"></script><script src="/js/githubcalendar.js"></script> 
-  <script data-pjax src="/js/githubcalendar.js"></script>
-  <script data-pjax>
-        function GithubCalendarConfig(){
-            var git_githubapiurl ="https://python-github-calendar-api.vercel.app/api?greensch";
-            var git_color =['#ebedf0', '#f0fff4', '#dcffe4', '#bef5cb', '#85e89d', '#34d058', '#28a745', '#22863a', '#176f2c', '#165c26', '#144620'];
-            var git_user ="greensch";
-            var parent_div_git = document.getElementById('board');
-            var git_div_html = '<div id="github-calendar" style="width:100%;height:auto;padding:10px;margin-bottom:20px;box-shadow:none;"><div id="github_loading" style="width:10%;height:100%;margin:0 auto;display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div><div id="github_container"></div></div>';
-            if(parent_div_git && location.pathname =='/'){
-                console.log('已挂载github calendar')
-                // parent_div_git.innerHTML=git_div_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
-                parent_div_git.insertAdjacentHTML("afterbegin",git_div_html) // 有报错，但不影响使用(支持pjax跳转)
-            };
-            GithubCalendar(git_githubapiurl,git_color,git_user)
-        }
-        if(document.getElementById('board')){
-            GithubCalendarConfig()
-        }
-    </script>
-    <style>#github_container{min-height:200px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
-    <style>#github_container > .position-relative > .border{border:0!important}#github-calendar{position: relative;margin-top: -2rem;background-color: var(--board-bg-color);transition: background-color 0.2s ease-in-out;border-radius: 0.5rem;z-index: 3;-webkit-box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);}</style><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"superSample":1,"position":"left","width":150,"height":400,"vOffset":-18},"mobile":{"show":false,"scale":0.25},"dialog":{"enable":false,"hitokoto":true,"width":10,"height":10,"vOffset":-100},"log":false});</script></body>
+  <script defer src="/js/aplayer.js"></script><script src="/js/githubcalendar.js"></script> <!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"superSample":1,"position":"left","width":150,"height":400,"vOffset":-18},"mobile":{"show":false,"scale":0.25},"dialog":{"enable":false,"hitokoto":true,"width":10,"height":10,"vOffset":-100},"log":false});</script></body>
 </html>

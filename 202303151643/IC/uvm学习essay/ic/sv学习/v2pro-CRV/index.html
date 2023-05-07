@@ -1,0 +1,1344 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/con1.png">
+  <link rel="icon" href="/img/con1.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="“无论最终结果将人类历史导向何处，我们决定选择希望”">
+  <meta name="author" content="友人律 | Guilin Chang">
+  <meta name="keywords" content="三差学生、不学无术">
+  <meta name="description" content="CRV验证体系逻辑最后一公里的问题  DVT Eclipse验证开发套件DVT（Design and Verification Tools）面向e语言（Cadence）、sv、verilog、VHDL 覆盖率验证课程逻辑CRV, Coverage Driven Verification覆盖率驱动验证问题背景 验证管理规范：把覆盖率与功能点进行验证管理规范：把覆盖率与功能点进行   与验证相关的数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CRV验证">
+<meta property="og:url" content="http://yoursite.com/202303151643/IC/uvm%E5%AD%A6%E4%B9%A0essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/index.html">
+<meta property="og:site_name" content="友人律的博客">
+<meta property="og:description" content="CRV验证体系逻辑最后一公里的问题  DVT Eclipse验证开发套件DVT（Design and Verification Tools）面向e语言（Cadence）、sv、verilog、VHDL 覆盖率验证课程逻辑CRV, Coverage Driven Verification覆盖率驱动验证问题背景 验证管理规范：把覆盖率与功能点进行验证管理规范：把覆盖率与功能点进行   与验证相关的数据">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327164649089.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327211555483.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327211603574.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327211733677.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327222653018.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327222518955.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327222612299.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327223002433.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327223026415.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327223140474.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327223337845.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327223444672.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327223552952.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327223632667.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327223811060.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327230542392.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327224008494.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327224307847.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327224547170.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327224627308.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327224915738.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/image-20230327225047996.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327225509527.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327225623963.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327225704871.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327225839119.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327225901961.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327230014416.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327230645290.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327230717384.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230328212148996.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230328212300055.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327231115881.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327231447486.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230328211504053.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327232051884.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230328222814254.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230328222904182.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230328222934697.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230328223631677.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230328223842160.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329104809985.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329110353685.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329110406496.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329110620784.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329110714661.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329110719918.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329110906805.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329105116791.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329105758502.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329105325962.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329105417989.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329105553758.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329105704937.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329110029793.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329110234667.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329110245275.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329110259244.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329111142315.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329111125447.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329111234652.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329111258607.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329111348323.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331205427466.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331205913074.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331205938709.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331224355106.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331224418071.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331224339547.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331224600481.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331224931261.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331225201003.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331225235744.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331225522621.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331225658573.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331225806592.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331225859096.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331231232366.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331230144112.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331230206001.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331230246187.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331230252691.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331230405791.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331230541435.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331230650625.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331232108142.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331232124964.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331232230295.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331232541412.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331232703085.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331232822547.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331232917000.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331233309786.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331233325740.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331233414480.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331233505129.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331233907200.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331234106085.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331234109995.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331234157175.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331233556228.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331233710696.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331233750238.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402005746982.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402010239508.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402010818558.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402011332037.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402020506564.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402021425361.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402020810389.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402231615945.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402231743771.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402231838930.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402021536603.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402024020772.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402032559124.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402035409130.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402035638370.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402041840091.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402042427615.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402162621422.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402035409130.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402212308548.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402164031755.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402164046215.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402202355984.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402203504127.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402163408665.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402172914059.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402211655243.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402215615475.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402215638777.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402224905109.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402225001319.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402221819242.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402223053340.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402230125892.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402230140915.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402221423765.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402222414702.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402222511030.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402231034225.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402043302793.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402042614684.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402043350605.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402043423840.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402043451222.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402043716270.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402043137244.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402043323454.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402232033795.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402232452869.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402232804707.png">
+<meta property="og:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402233223718.png">
+<meta property="article:published_time" content="2023-03-15T08:43:00.000Z">
+<meta property="article:modified_time" content="2023-05-07T08:04:00.914Z">
+<meta property="article:author" content="友人律 | Guilin Chang">
+<meta property="article:tag" content="uvm学习">
+<meta property="article:tag" content="实验">
+<meta property="article:tag" content="IC">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="c:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327164649089.png">
+  
+  <title>CRV验证 - 友人律的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/stackoverflow-dark.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"eca4a4d34dadf0d4e282cc6ef2dc3de6","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body><!-- hexo injector body_begin start -->
+<link defer rel="stylesheet" href="/css/article_para.css" />
+<div id="web_bg"></div><!-- hexo injector body_begin end -->
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>友人律的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E9%80%9A%E7%9F%A5/">
+                <i class="iconfont icon-link-fill"></i>
+                通知
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E9%A1%B9%E7%9B%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1/">
+                <i class="iconfont icon-link-fill"></i>
+                项目与设计
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">
+                <i class="iconfont icon-link-fill"></i>
+                开发工具
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/CS/">
+                <i class="iconfont icon-link-fill"></i>
+                CS
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/IC/">
+                <i class="iconfont icon-link-fill"></i>
+                IC
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/banner_img/anime/105151138_p0.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="CRV验证">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2023-03-15 16:43" pubdate>
+        2023年3月15日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      6.7k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      21 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">CRV验证</h1>
+            
+            <div class="markdown-body">
+              <h2><span id="crv验证">CRV验证</span></h2><h3><span id="体系逻辑">体系逻辑</span></h3><p><strong>最后一公里的问题</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327164649089.png" srcset="/img/loading.gif" lazyload alt="image-20230327164649089"></p>
+<h3><span id="dvt-eclipse验证开发套件">DVT Eclipse验证开发套件</span></h3><p>DVT（Design and Verification Tools）面向e语言（Cadence）、sv、verilog、VHDL</p>
+<h2><span id="覆盖率验证课程逻辑">覆盖率验证课程逻辑</span></h2><h3><span id="crv-coverage-driven-verification覆盖率驱动验证">CRV, Coverage Driven Verification覆盖率驱动验证</span></h3><h4><span id="问题背景"><strong>问题背景</strong></span></h4><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327211555483.png" srcset="/img/loading.gif" lazyload alt="image-20230327211555483"></p>
+<h4><span id="验证管理规范把覆盖率与功能点进行"><strong>验证管理规范</strong>：把覆盖率与功能点进行</span></h4><p><strong>验证管理规范</strong>：把覆盖率与功能点进行</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327211603574.png" srcset="/img/loading.gif" lazyload alt="image-20230327211603574"></p>
+<ul>
+<li>与验证相关的数据都进行格式化：覆盖率、功能点表格…</li>
+<li>格式化的验证数据存在的形式？Questa中是UCDB，其他EDA是其他形式</li>
+<li>CRV是一种验证量化规范</li>
+</ul>
+<h4><span id="为什么要学习tcl">为什么要学习TCL</span></h4><p>为什么要学习TCL：验证回归管理</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327211733677.png" srcset="/img/loading.gif" lazyload alt="image-20230327211733677"></p>
+<h3><span id="crv流程说明questasim验证管理特性">CRV流程说明（Questasim验证管理特性）</span></h3><h4><span id="questasim验证管理特性"><strong>Questasim验证管理特性</strong></span></h4><p>Questa SIM中的验证管理 Verification Management是一组功能，用来管理测试环境，包括：</p>
+<ul>
+<li>覆盖率数据的合并和汇总</li>
+<li>测试排名</li>
+<li>测试计划量化映射</li>
+<li>测试和命令重新运行</li>
+<li>覆盖率数据的各种分析</li>
+<li>生成易于阅读的HTML覆盖率报告</li>
+</ul>
+<h4><span id="流程分析"><strong>流程分析</strong></span></h4><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327222653018.png" srcset="/img/loading.gif" lazyload alt="image-20230327222653018"></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327222518955.png" srcset="/img/loading.gif" lazyload alt="image-20230327222518955"></p>
+<h4><span id="进入验证计划详细分析"><strong>进入验证计划，详细分析</strong></span></h4><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327222612299.png" srcset="/img/loading.gif" lazyload alt="image-20230327222612299"></p>
+<p>Design Spec验证计划</p>
+<h4><span id="ucdb包括什么"><strong>UCDB包括什么</strong></span></h4><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327223002433.png" srcset="/img/loading.gif" lazyload alt="image-20230327223002433"></p>
+<h4><span id="如何看与编辑ucdb"><strong>如何看与编辑UCDB</strong></span></h4><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327223026415.png" srcset="/img/loading.gif" lazyload alt="image-20230327223026415"></p>
+<ul>
+<li>Simulation Mode仿真模式直接read</li>
+</ul>
+<p><strong>保存UCDB需要的条件</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327223140474.png" srcset="/img/loading.gif" lazyload alt="image-20230327223140474"></p>
+<p><strong>默认与指定测试名称</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327223337845.png" srcset="/img/loading.gif" lazyload alt="image-20230327223337845"></p>
+<ul>
+<li>UVM测试需要指定uvmtestname，而不是testname</li>
+</ul>
+<p><strong>UCDB数据属性</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327223444672.png" srcset="/img/loading.gif" lazyload alt="image-20230327223444672"></p>
+<ul>
+<li>自定义的属性目前不涉及到</li>
+<li>预定义的属性都可以通过coverage attribute获取到</li>
+</ul>
+<p><strong>合并覆盖率</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327223552952.png" srcset="/img/loading.gif" lazyload alt="image-20230327223552952"></p>
+<h4><span id="两种打开browser-以及不同界面功能">两种打开Browser、以及不同界面功能</span></h4><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327223632667.png" srcset="/img/loading.gif" lazyload alt="image-20230327223632667"></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327223811060.png" srcset="/img/loading.gif" lazyload alt="image-20230327223811060"></p>
+<ul>
+<li>Tracker是Plan相关的</li>
+<li>Browser是测试相关的</li>
+<li>Analysis仿真的分析</li>
+<li>Capacity-Object可以先不看，意义是仿真的时候谁消耗的比较大</li>
+</ul>
+<p><strong>可以在analysis中分析具体的覆盖情况</strong>（27分钟）</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327230542392.png" srcset="/img/loading.gif" lazyload alt="image-20230327230542392"></p>
+<h4><span id="测试贡献排名">测试贡献排名</span></h4><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327224008494.png" srcset="/img/loading.gif" lazyload alt="image-20230327224008494"></p>
+<ul>
+<li>某个测试对总体覆盖率占比大，则应该多跑一下</li>
+</ul>
+<p><strong>可以设置rank中各种元素的权重</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327224307847.png" srcset="/img/loading.gif" lazyload alt="image-20230327224307847"></p>
+<p><strong>rank结果解读</strong></p>
+<p>没有覆盖率占比的测试，即没有贡献的测试，可以不用跑（如下两个）</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327224547170.png" srcset="/img/loading.gif" lazyload alt="image-20230327224547170"></p>
+<p>rank报告中覆盖率是递增的，表示第一个测试做了68.83的覆盖率，第二个增长到76.77，依次类推，没有出现的则证明没有贡献覆盖率：</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327224627308.png" srcset="/img/loading.gif" lazyload alt="image-20230327224627308"></p>
+<p>从rank你可得出哪些测试可以多跑（占比多的），哪些可以少跑（占比少的）</p>
+<p><strong>合并数据（merge）对比贡献数据（rank）</strong></p>
+<p>合并数据是基于每个测试，它的覆盖率是多少</p>
+<p>贡献数据是递增的</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327224915738.png" srcset="/img/loading.gif" lazyload alt="image-20230327224915738"></p>
+<h4><span id="重点分析验证计划track">重点！分析验证计划track</span></h4><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/image-20230327225047996.png" srcset="/img/loading.gif" lazyload alt="image-20230327225047996"></p>
+<h4><span id="plan的生成与合并">plan的生成与合并</span></h4><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327225509527.png" srcset="/img/loading.gif" lazyload alt="image-20230327225509527"></p>
+<ul>
+<li>vplan.xlsx是questa自己的格式，vcs也支持表格但不如直接在verdi或dve里方便</li>
+</ul>
+<p><strong>如何生成表格：</strong>通过Questa的excel插件</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327225623963.png" srcset="/img/loading.gif" lazyload alt="image-20230327225623963"></p>
+<p><strong>如何导出：</strong>使用插件从**xlsx导出ucdb或者xml</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327225704871.png" srcset="/img/loading.gif" lazyload alt="image-20230327225704871"></p>
+<p><strong>导入plan的ucdb，并把plan和test的ucdb合并</strong></p>
+<ul>
+<li>导入：右键add file</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327225839119.png" srcset="/img/loading.gif" lazyload alt="image-20230327225839119"></p>
+<ul>
+<li>合并：选中右键</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327225901961.png" srcset="/img/loading.gif" lazyload alt="image-20230327225901961"></p>
+<p>合并后可以把功能点与覆盖率对应起来</p>
+<p>合并后的ucdb图标右上角多了一个<strong>p</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327230014416.png" srcset="/img/loading.gif" lazyload alt="image-20230327230014416"></p>
+<h4><span id="生成报告">生成报告</span></h4><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327230645290.png" srcset="/img/loading.gif" lazyload alt="image-20230327230645290"></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327230717384.png" srcset="/img/loading.gif" lazyload alt="image-20230327230717384"></p>
+<h4><span id="exclude">Exclude</span></h4><p>Exclude场景：有些地址不会访问到，因此对应toggle需要过滤掉</p>
+<p>Exclude之后的coverage不会直接变，需要保存该exclude.ucde后再导入则会显示如下图：</p>
+<ul>
+<li>导出之前，右边第二行为exclude的ucdb，可以看到statments是相同的</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230328212148996.png" srcset="/img/loading.gif" lazyload alt="image-20230328212148996"></p>
+<ul>
+<li>重新导入后，可以看到statements和branches变量<ul>
+<li>重要！做完一次exclude一定要保存，才能生成对应的report或者更新coverage</li>
+</ul>
+</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230328212300055.png" srcset="/img/loading.gif" lazyload alt="image-20230328212300055"></p>
+<p>Exclude补充：<strong>过滤前一定要分析是否需要exclude</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327231115881.png" srcset="/img/loading.gif" lazyload alt="image-20230327231115881"></p>
+<p>Exclusion补充：不只有这一种方式，vsim编译的时候也可以添加，coverage命令也可以添加</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327231447486.png" srcset="/img/loading.gif" lazyload alt="image-20230327231447486"></p>
+<p>过滤后的analysis界面会多一个E</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230328211504053.png" srcset="/img/loading.gif" lazyload alt="image-20230328211504053"></p>
+<h4><span id="修改后的保存">修改后的保存</span></h4><p>1.修改后的database单独保存</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230327232051884.png" srcset="/img/loading.gif" lazyload alt="image-20230327232051884"></p>
+<p>2.exclude操作也可以单独保存一个文件exclude.do或者exclusion.do</p>
+<p>两种保存方法：</p>
+<p>①Coverage Analysis，但是有可能会报错</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230328222814254.png" srcset="/img/loading.gif" lazyload alt="image-20230328222814254"></p>
+<p> 保存不了的情况</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230328222904182.png" srcset="/img/loading.gif" lazyload alt="image-20230328222904182"></p>
+<p>②Coverage Report，导出的exclusion.do内容和exclude.do一样，；哦昂椎间盘美国大批u偶昂</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230328222934697.png" srcset="/img/loading.gif" lazyload alt="image-20230328222934697"></p>
+<h3><span id="验证计划表格">验证计划表格</span></h3><h4><span id="验证计划表格">验证计划表格</span></h4><p><strong>验证计划表格</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230328223631677.png" srcset="/img/loading.gif" lazyload alt="image-20230328223631677"></p>
+<ul>
+<li>验证管理的核心是<strong>验证计划</strong>！</li>
+</ul>
+<p><strong>各种都能直接转换为ucdb、xml2ucdb、tag</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230328223842160.png" srcset="/img/loading.gif" lazyload alt="image-20230328223842160"></p>
+<h4><span id="excel插件"><strong>excel插件</strong></span></h4><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329104809985.png" srcset="/img/loading.gif" lazyload alt="image-20230329104809985"></p>
+<ul>
+<li>QuestaExcelAddIn.msi为插件安装包</li>
+</ul>
+<p><strong>插件细节</strong></p>
+<p><strong>菜单栏、工具栏</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329110353685.png" srcset="/img/loading.gif" lazyload alt="image-20230329110353685"></p>
+<p><strong>常用操作</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329110406496.png" srcset="/img/loading.gif" lazyload alt="image-20230329110406496"></p>
+<ul>
+<li>更快捷的Add Link、检查Validation一致性</li>
+</ul>
+<p><strong>创建表格</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329110620784.png" srcset="/img/loading.gif" lazyload alt="image-20230329110620784"></p>
+<p><strong>插入行（Section）</strong></p>
+<p>①</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329110714661.png" srcset="/img/loading.gif" lazyload alt="image-20230329110714661"></p>
+<p>②</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329110719918.png" srcset="/img/loading.gif" lazyload alt="image-20230329110719918"></p>
+<p><strong>AddLink</strong>：可以通过UCDB或者手动按照格式写，下面是Add Link(通过UCDB方式)</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329110906805.png" srcset="/img/loading.gif" lazyload alt="image-20230329110906805"></p>
+<h4><span id="表格内容">表格内容</span></h4><p><strong>表格可识别的覆盖指标</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329105116791.png" srcset="/img/loading.gif" lazyload alt="image-20230329105116791"></p>
+<ul>
+<li>不建议识别bin，太细了</li>
+</ul>
+<p><strong>表格细节讲解</strong></p>
+<p>整体表格</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329105758502.png" srcset="/img/loading.gif" lazyload alt="image-20230329105758502"></p>
+<ul>
+<li>Covergroup：功能点</li>
+<li>CodeCoverage：代码覆盖率</li>
+<li>Test：具体测试用例</li>
+</ul>
+<p>Covergroup的映射</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329105325962.png" srcset="/img/loading.gif" lazyload alt="image-20230329105325962"></p>
+<p>Statement、Branch、Toggle</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329105417989.png" srcset="/img/loading.gif" lazyload alt="image-20230329105417989"></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329105553758.png" srcset="/img/loading.gif" lazyload alt="image-20230329105553758"></p>
+<ul>
+<li>Branch、Toggle只关心design的</li>
+<li>Statement为什么不能写成Branch、Toggle？因为没有Statement这种Type，只能归为Bin的</li>
+</ul>
+<p>查看你的Test状态，Type就是test（而不是按照功能点）</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329105704937.png" srcset="/img/loading.gif" lazyload alt="image-20230329105704937"></p>
+<p><strong>（最重要）Link格式</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329110029793.png" srcset="/img/loading.gif" lazyload alt="image-20230329110029793"></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329110234667.png" srcset="/img/loading.gif" lazyload alt="image-20230329110234667"></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329110245275.png" srcset="/img/loading.gif" lazyload alt="image-20230329110245275"></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329110259244.png" srcset="/img/loading.gif" lazyload alt="image-20230329110259244"></p>
+<h4><span id="plan导入ucdb">plan导入ucdb</span></h4><p><strong>先Validate验证合法性</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329111142315.png" srcset="/img/loading.gif" lazyload alt="image-20230329111142315"></p>
+<p><strong>可以导出UCDB或者XML</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329111125447.png" srcset="/img/loading.gif" lazyload alt="image-20230329111125447"></p>
+<p><strong>UCDB直接导入Questasim就Addfile就行</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329111234652.png" srcset="/img/loading.gif" lazyload alt="image-20230329111234652"></p>
+<p><strong>XML使用Testplan Import</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329111258607.png" srcset="/img/loading.gif" lazyload alt="image-20230329111258607"></p>
+<h3><span id="分析验证数据">分析验证数据</span></h3><h4><span id="分析验证进度">分析验证进度</span></h4><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230329111348323.png" srcset="/img/loading.gif" lazyload alt="image-20230329111348323"></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331205427466.png" srcset="/img/loading.gif" lazyload alt="image-20230331205427466"></p>
+<h4><span id="编译仿真及覆盖率收集">编译仿真及覆盖率收集</span></h4><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331205913074.png" srcset="/img/loading.gif" lazyload alt="image-20230331205913074"></p>
+<h4><span id="数据追踪">数据追踪</span></h4><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331205938709.png" srcset="/img/loading.gif" lazyload alt="image-20230331205938709"></p>
+<h4><span id="数据分析">数据分析</span></h4><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331224355106.png" srcset="/img/loading.gif" lazyload alt="image-20230331224355106"></p>
+<p><strong>两种测试：覆盖率分析、结果分析</strong>，用于回归测试（regression testing）与单一仿真</p>
+<p><strong>回归测试</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331224418071.png" srcset="/img/loading.gif" lazyload alt="image-20230331224418071"></p>
+<p><strong>单一仿真</strong>：用的不是很多，打开结果查看</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331224339547.png" srcset="/img/loading.gif" lazyload alt="image-20230331224339547"></p>
+<h4><span id="数据分析分流">数据分析：分流</span></h4><p><strong>验证管理中的特性：triage（分流）</strong>，用于数据分析</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331224600481.png" srcset="/img/loading.gif" lazyload alt="image-20230331224600481"></p>
+<p>分流？不同的WLF（目前没生成）、Transcript（Log）、第三方的Log（暂时不谈）统一生成分析结果</p>
+<p>主要流程：</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331224931261.png" srcset="/img/loading.gif" lazyload alt="image-20230331224931261"></p>
+<ul>
+<li>可以理解为<ul>
+<li>Transform Engine之前的是原始DataBase</li>
+<li>Transform Engine是过滤器</li>
+<li>Transform Engine之后的是处理过的DataBase</li>
+</ul>
+</li>
+</ul>
+<p>类似上面这种数据分析是独立的过程，隶属于Verification Management或者Questa CDV的一部分，对于大型测试有好几版有作用</p>
+<p><strong>大量测试的分析好处</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331225201003.png" srcset="/img/loading.gif" lazyload alt="image-20230331225201003"></p>
+<p><strong>如何实现triage流程</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331225235744.png" srcset="/img/loading.gif" lazyload alt="image-20230331225235744"></p>
+<ul>
+<li>目前主要拿到的是UCDB、transform rule（实际上是一些patten的正则表达式）、LOG文件</li>
+</ul>
+<p><strong>实现步骤（PPT上的，看不懂建议看下面的）</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331225522621.png" srcset="/img/loading.gif" lazyload alt="image-20230331225522621"></p>
+<p><strong>实现步骤</strong></p>
+<p>①首先你需要一个Analysis DataBase</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331225658573.png" srcset="/img/loading.gif" lazyload alt="image-20230331225658573"></p>
+<p>②指定UCDB和Log文件等等各种文件（可以不用指定Log，会自动提取）</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331225806592.png" srcset="/img/loading.gif" lazyload alt="image-20230331225806592"></p>
+<p>③指定transform rules</p>
+<ul>
+<li>选择选项</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331225859096.png" srcset="/img/loading.gif" lazyload alt="image-20230331225859096"></p>
+<ul>
+<li>Input Files Options（设置不知关心报错的状态，而是所有状态）</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331231232366.png" srcset="/img/loading.gif" lazyload alt="image-20230331231232366"></p>
+<ul>
+<li>新建rule(Xform-&gt;New-&gt;加号)</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331230144112.png" srcset="/img/loading.gif" lazyload alt="image-20230331230144112"></p>
+<ul>
+<li>Preview打开Log信息看一眼</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331230206001.png" srcset="/img/loading.gif" lazyload alt="image-20230331230206001"></p>
+<ul>
+<li>添加Message，在Expression中改写为正则表达式，使用Captured sub-strings提取，看是否捕捉到该Message（这种方式写正则表达式方便点）</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331230246187.png" srcset="/img/loading.gif" lazyload alt="image-20230331230246187"></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331230252691.png" srcset="/img/loading.gif" lazyload alt="image-20230331230252691"></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331230405791.png" srcset="/img/loading.gif" lazyload alt="image-20230331230405791"></p>
+<ul>
+<li>把该正则表达式添加到Field中，保存退出即可</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331230541435.png" srcset="/img/loading.gif" lazyload alt="image-20230331230541435"></p>
+<p>④结束创建分析DataBase即可生成TDB</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331230650625.png" srcset="/img/loading.gif" lazyload alt="image-20230331230650625"></p>
+<p><strong>利用TDB可以做的工作</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331232108142.png" srcset="/img/loading.gif" lazyload alt="image-20230331232108142"></p>
+<p><strong>生成报告</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331232124964.png" srcset="/img/loading.gif" lazyload alt="image-20230331232124964"></p>
+<p><strong>案列分析演示</strong></p>
+<p>问题分析</p>
+<ul>
+<li>Show list of errors over time：因为跑过了发生的错误，因为有的测试会跑过因此会报Timeout</li>
+<li>Show earliest error for each test：找到种报错的第一次报错（假设有种错误会报100次，则show第一次出现这个错误的情况）</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331232230295.png" srcset="/img/loading.gif" lazyload alt="image-20230331232230295"></p>
+<p>信息过滤</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331232541412.png" srcset="/img/loading.gif" lazyload alt="image-20230331232541412"></p>
+<p>层次显示</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331232703085.png" srcset="/img/loading.gif" lazyload alt="image-20230331232703085"></p>
+<h4><span id="其他数据分析之前讲了这里不讲了">其他数据分析（之前讲了，这里不讲了）</span></h4><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331232822547.png" srcset="/img/loading.gif" lazyload alt="image-20230331232822547"></p>
+<h4><span id="趋势分析-trend">趋势分析-trend</span></h4><p><strong>不管怎么我们都需要一个曲线：</strong></p>
+<ul>
+<li>bug-tracking曲线</li>
+<li>coverage曲线</li>
+</ul>
+<p><strong>趋势UCDB</strong>：基于每一版的回归UCDB，抽取核心数据</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331232917000.png" srcset="/img/loading.gif" lazyload alt="image-20230331232917000"></p>
+<p><strong>什么是趋势UCDB</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331233309786.png" srcset="/img/loading.gif" lazyload alt="image-20230331233309786"></p>
+<p><strong>趋势UCDB与标准UCDB的区别</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331233325740.png" srcset="/img/loading.gif" lazyload alt="image-20230331233325740"></p>
+<p><strong>使用到的数据类型</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331233414480.png" srcset="/img/loading.gif" lazyload alt="image-20230331233414480"></p>
+<p><strong>实现步骤</strong>：两种，命令模式和GUI模式</p>
+<p>①创建trend ucdb</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331233505129.png" srcset="/img/loading.gif" lazyload alt="image-20230331233505129"></p>
+<ul>
+<li>GUI中合并为Trend DataBase</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331233907200.png" srcset="/img/loading.gif" lazyload alt="image-20230331233907200"></p>
+<ul>
+<li>生成即可</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331234106085.png" srcset="/img/loading.gif" lazyload alt="image-20230331234106085"></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331234109995.png" srcset="/img/loading.gif" lazyload alt="image-20230331234109995"></p>
+<ul>
+<li>查看报告（HTML、Verification Trender等）</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331234157175.png" srcset="/img/loading.gif" lazyload alt="image-20230331234157175"></p>
+<p>②生成report</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331233556228.png" srcset="/img/loading.gif" lazyload alt="image-20230331233556228"></p>
+<p>③查看报告</p>
+<ul>
+<li>Verification Trender</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331233710696.png" srcset="/img/loading.gif" lazyload alt="image-20230331233710696"></p>
+<ul>
+<li>HTML Report（为啥又画了俩斜线？因为原来是向下的路科不满意，自己又用手画上去了，一般覆盖率是往上的）</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230331233750238.png" srcset="/img/loading.gif" lazyload alt="image-20230331233750238"></p>
+<h4><span id="ucdb">UCDB</span></h4><ul>
+<li>run test UCDB</li>
+<li>plan UCDB</li>
+<li>TDB-UCDB</li>
+<li>趋势UCDB</li>
+</ul>
+<h2><span id="验证回归管理课程逻辑">验证回归管理课程逻辑</span></h2><h4><span id="为什么要学回归管理工具">为什么要学回归管理工具</span></h4><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402005746982.png" srcset="/img/loading.gif" lazyload alt="image-20230402005746982"></p>
+<p>验证工作流程：人工工作-&gt;脚本维护-&gt;批量处理</p>
+<p>本节主要用途：实现批量处理、结果查询、更方便的自动化</p>
+<p>你需要快速了解到未来公司使用到的那种回归管理工具？功能大同小异但是也有区别</p>
+<ul>
+<li>小公司，内部管理工具</li>
+<li>Questa Verification Run Manager（V2，学习这个主要是了解回归管理）</li>
+<li>Synopsys Exqution Manager（V3）</li>
+<li>Cadence V Manager</li>
+</ul>
+<h4><span id="vrm介绍">VRM介绍</span></h4><p>我们讲VRM的PPT会比之前的工具少很多，主要是了解基础操作，更多需要你掌握，针对需求在以后练的时候不断自己掌握</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402010239508.png" srcset="/img/loading.gif" lazyload alt="image-20230402010239508"></p>
+<p>VRM主要作用：使用命令的方式执行（单个/部分/整体）任务</p>
+<p>具体作用见上图</p>
+<p><strong>VRM基本操作逻辑——查询数据库并启动任务</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402010818558.png" srcset="/img/loading.gif" lazyload alt="image-20230402010818558"></p>
+<ul>
+<li>什么是一次action/job？编译、仿真、数据分析…</li>
+<li>VRM命令：<code>vrun</code></li>
+<li>在哪里执行这个job？见上图</li>
+</ul>
+<p><strong>job之间的依赖</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402011332037.png" srcset="/img/loading.gif" lazyload alt="image-20230402011332037"></p>
+<ul>
+<li>依赖关系的解决由VRM进行管理</li>
+<li>可以并行提交job</li>
+<li>通过job不仅可以运行Questa命令，也可以执行VCS（毕竟实现就是执行命令），只不过VRM包括很多内置的Questa挂钩，方便Questa使用</li>
+</ul>
+<p><strong>VRM运行结构图</strong></p>
+<p>两种VRM方式：GUI或vrun命令</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402020506564.png" srcset="/img/loading.gif" lazyload alt="image-20230402020506564"></p>
+<p>设置：首先需要一个vrun的配置文件ConfigDB，配置文件从RMDB过来的，从而vrun得知了仿真内容、独立性、失败了需不需要重新跑等内容</p>
+<ul>
+<li>ConfigDB的配置文件RMDB（Run Manager Data Base）实际上就是XML格式，路科推荐你手写XML</li>
+<li>ConfigDB的配置文件也可以通过HTML生成RMDB，但不推荐，不好用</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402021425361.png" srcset="/img/loading.gif" lazyload alt="image-20230402021425361"></p>
+<p>设置之后是管理：</p>
+<ul>
+<li>运行时很多脚本可以参与进来：第三方（生成其他格式的DB）、Questa（生成UCDB）、各种脚本</li>
+<li>Graph是可选的，通过graphviz开源图格式你可以看到调用链，一般不需要看，我们可以直接在RMDB中了解到当前情况</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402020810389.png" srcset="/img/loading.gif" lazyload alt="image-20230402020810389"></p>
+<p><strong>如何生成graphviz（没啥用，你在VRM中就能看到）？</strong></p>
+<ul>
+<li>vrun参数</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402231615945.png" srcset="/img/loading.gif" lazyload alt="image-20230402231615945"></p>
+<ul>
+<li>生成graphviz</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402231743771.png" srcset="/img/loading.gif" lazyload alt="image-20230402231743771"></p>
+<ul>
+<li>使用dot工具画图</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402231838930.png" srcset="/img/loading.gif" lazyload alt="image-20230402231838930"></p>
+<p><strong>Monitor完成了一个集成的过程</strong>：如果是GUI，则Monitor会提示当前job运行情况，以及各种job运行后生成文件的打开</p>
+<p><strong>设置中的变量</strong></p>
+<ul>
+<li>Grouping：分组可以按照job类型（编译、仿真、测试）进行分组，按照不同测试用例进行分组，按照功能把不同测试用例放在一个组里面（例如smoke测试，用来查看当前的测试环境是否稳定），按照功能点进行分组，按照vplan进行分组<ul>
+<li>VCS不仅有Group还有Tap标签这种概念</li>
+</ul>
+</li>
+<li>Parameterization：变量，一般用于实现：repeat count（最常见，job重复进行次数）</li>
+<li>Inheritance：继承，一般用于Group公共部分的集成，例如实现如果按照功能点进行分组，需要有编译、仿真…流程，通过继承公共操作简化Group的设置实现</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402021536603.png" srcset="/img/loading.gif" lazyload alt="image-20230402021536603"></p>
+<h4><span id="vrm使用场景">VRM使用场景</span></h4><ul>
+<li>每晚回归（nightly regression）<ul>
+<li>发生时期：项目后期稳定时候</li>
+<li>介绍：不同工程师晚上跑完，白天汇总，<strong>无人值守</strong></li>
+<li>网格管理器（grid）：把执行程序分发到不同的server</li>
+<li>RMDB：有了这个文件就知道你要跑什么样的配置</li>
+</ul>
+</li>
+<li>用户测试的桌面运行（desktop run / local run）<ul>
+<li>介绍：就是使用RMDB进行一次手动的测试，<strong>用户手动</strong></li>
+</ul>
+</li>
+<li>修复源代码后重新运行失败的测试<ul>
+<li>介绍：之前失败的设计模块，修复之后把之前错误的测试用例重新run一边（但是最好是全部run一边，但是大型系统级别往往测试用例太多，因此就选几个先跑一下）</li>
+</ul>
+</li>
+<li>调试模型（debug mode）<ul>
+<li>介绍：夜间失败的测试<strong>自动运行</strong></li>
+<li>发生时期：<ul>
+<li>比如server繁忙job提交timeout，则自动重新分配server运行</li>
+<li>测试用例跑失败了，UVM_ERROR可以不用重新跑，不过为了生成更多日志消息、波形文件可以再跑一次，跑之前自动化配置打印消息的模式</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>在执行全部测试前进行冒烟测试（smoke tests）<ul>
+<li>介绍：使用小的测试套件实现最大程度覆盖，验证最基本功能。<strong>用户手动</strong></li>
+<li>发生时期：在执行全部测试前进行</li>
+</ul>
+</li>
+<li>寻找高覆盖率的随机种子</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402024020772.png" srcset="/img/loading.gif" lazyload alt="image-20230402024020772"></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402032559124.png" srcset="/img/loading.gif" lazyload alt="image-20230402032559124"></p>
+<h4><span id="vrm操作模式">VRM操作模式</span></h4><p>下面几种操作模式在前台(GUI)、后台(vrun)都可进行</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402035409130.png" srcset="/img/loading.gif" lazyload alt="image-20230402035409130"></p>
+<p><strong>具体解释</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402035638370.png" srcset="/img/loading.gif" lazyload alt="image-20230402035638370"></p>
+<h4><span id="questa-vrm-vm-ucdb之间的关系">Questa VRM、VM、UCDB之间的关系</span></h4><p>VM：Verification Management</p>
+<p>VRM：Verification Run Manager</p>
+<ul>
+<li>RMDB是VRM的数据库，可以贯穿所有的流程（编译、仿真、脚本处理、UCDB合并、VM报告生成…）</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402041840091.png" srcset="/img/loading.gif" lazyload alt="image-20230402041840091"></p>
+<h4><span id="vrm在ip验证时的使用模式及演示">VRM在IP验证时的使用模式及演示</span></h4><p>先做演示，主要内容有：</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402042427615.png" srcset="/img/loading.gif" lazyload alt="image-20230402042427615"></p>
+<p>使用第四周的i2c项目</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402162621422.png" srcset="/img/loading.gif" lazyload alt="image-20230402162621422"></p>
+<p><strong>vrun相关命令（默认run模式，因此命令输完就run了）</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402035409130.png" srcset="/img/loading.gif" lazyload alt="image-20230402035409130"></p>
+<p>启动vrm，输入命令：<code>vrun -gui</code></p>
+<p>启动vrm，并指定rmdb：<code>vrun -gui -rmdb &lt;RMDB_FILE_PATH&gt;</code></p>
+<p>config.db设置与RMDB抽取</p>
+<p>启动vrm，并指定rmdb，以及指定特定group并运行：<code>vrun -rmdb &lt;RMDB_FILE_PATH&gt; &lt;GROUP_NAME&gt;</code></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402212308548.png" srcset="/img/loading.gif" lazyload alt="image-20230402212308548"></p>
+<hr>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402164031755.png" srcset="/img/loading.gif" lazyload alt="image-20230402164031755"></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402164046215.png" srcset="/img/loading.gif" lazyload alt="image-20230402164046215"></p>
+<p>配置完事就直接运行了，上面这种运行时<strong>后台运行</strong>的方式，同时我们也可以<strong>前台运行</strong>，实现方式通过在上面设置时添加下方的参数</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402202355984.png" srcset="/img/loading.gif" lazyload alt="image-20230402202355984"></p>
+<p>失败的job重新运行，并选择哪个config</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402203504127.png" srcset="/img/loading.gif" lazyload alt="image-20230402203504127"></p>
+<p><strong>RMDB与Configuration的关系</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402163408665.png" srcset="/img/loading.gif" lazyload alt="image-20230402163408665"></p>
+<ul>
+<li>一个Project中可以包含多个config.db（Project只对GUI有用，batch只需要rmdb就够了）</li>
+<li>一个config.db完成一系列任务：如smoke、random等</li>
+<li>RMDB存放所有测试的配置信息，可以被不同的config.db抽取</li>
+</ul>
+<p><strong>其他操作</strong></p>
+<p>从tcl脚本添加波形信号，使用文件：<code>i2c_wave_mti.do</code></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402172914059.png" srcset="/img/loading.gif" lazyload alt="image-20230402172914059"></p>
+<h4><span id="jenlcings">Jenlcings</span></h4><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402211655243.png" srcset="/img/loading.gif" lazyload alt="image-20230402211655243"></p>
+<h3><span id="rmdb术语的概念和场景带入">RMDB术语的概念和场景带入</span></h3><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402215615475.png" srcset="/img/loading.gif" lazyload alt="image-20230402215615475"></p>
+<p><strong>解释</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402215638777.png" srcset="/img/loading.gif" lazyload alt="image-20230402215638777"></p>
+<ul>
+<li>action：只要你做的动作都叫action，代表某一步的单个脚本，分为execScript、preScript、postScript，最底层的task就是action<ul>
+<li>preScript：编译</li>
+<li>进入三个member</li>
+<li>execScript：仿真vsim、run、coverage、coverage save</li>
+<li>postScript：给予test报告，生成两个HTML的文件夹（coverage summary、vrm regressiong run的结果）</li>
+</ul>
+</li>
+<li>继承特性：我们一般在顶层group中定义execScript、preScript、postScript，这样它内部的member可以集成到这些内容，不用再实现。（顶层光定义不执行execScript）</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402224905109.png" srcset="/img/loading.gif" lazyload alt="image-20230402224905109"></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402225001319.png" srcset="/img/loading.gif" lazyload alt="image-20230402225001319"></p>
+<ul>
+<li>runnable：节点，见下图（顶层节点、子一级的节点），同时节点有两种类型<ul>
+<li>树状标志为Group用于组织关系</li>
+<li>闪电标志为Task代表最底层节点，用于具体实现如：编译仿真调用脚本。同时最底层的task就是action</li>
+</ul>
+</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402221819242.png" srcset="/img/loading.gif" lazyload alt="image-20230402221819242"></p>
+<ul>
+<li>Calling Chain调用链</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402223053340.png" srcset="/img/loading.gif" lazyload alt="image-20230402223053340"></p>
+<ul>
+<li>Collateral Files：附属文件，一个或多个动作产生的文件</li>
+<li>parameter：变量，用于配置预定义参数</li>
+<li>Parameter reference：参数索引/如何调用变量：<code>(%parameters名称)</code></li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402230125892.png" srcset="/img/loading.gif" lazyload alt="image-20230402230125892"></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402230140915.png" srcset="/img/loading.gif" lazyload alt="image-20230402230140915"></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402221423765.png" srcset="/img/loading.gif" lazyload alt="image-20230402221423765"></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402222414702.png" srcset="/img/loading.gif" lazyload alt="image-20230402222414702"></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402222511030.png" srcset="/img/loading.gif" lazyload alt="image-20230402222511030"></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402231034225.png" srcset="/img/loading.gif" lazyload alt="image-20230402231034225"></p>
+<h3><span id="xml基本语法">XML基本语法</span></h3><p>大致了解下，方便阅读编辑RMDB</p>
+<p><strong>术语</strong></p>
+<ul>
+<li>Element元素：<code>&lt;????&gt;</code></li>
+<li>Tag标签：<code>&lt;????&gt;   &lt;/????&gt;</code></li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402043302793.png" srcset="/img/loading.gif" lazyload alt="image-20230402043302793"></p>
+<ul>
+<li>Attribute属性：RMDB要求的属性值</li>
+<li>值：Tag内部的</li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402042614684.png" srcset="/img/loading.gif" lazyload alt="image-20230402042614684"></p>
+<p><strong>元素可嵌套</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402043350605.png" srcset="/img/loading.gif" lazyload alt="image-20230402043350605"></p>
+<p><strong>区分大小写，回车不起作用</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402043423840.png" srcset="/img/loading.gif" lazyload alt="image-20230402043423840"></p>
+<p><strong>其他语法规则：属性需要引号、注释、命名规则</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402043451222.png" srcset="/img/loading.gif" lazyload alt="image-20230402043451222"></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402043716270.png" srcset="/img/loading.gif" lazyload alt="image-20230402043716270"></p>
+<p><strong>示例</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402043137244.png" srcset="/img/loading.gif" lazyload alt="image-20230402043137244"></p>
+<ul>
+<li>定义了一个名称时VSIMARGS_batch，值是框中7行的parameter（RMDB变量）</li>
+</ul>
+<p><strong>示例2</strong></p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402043323454.png" srcset="/img/loading.gif" lazyload alt="image-20230402043323454"></p>
+<h3><span id="理解rmdb文件">理解RMDB文件</span></h3><p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402232033795.png" srcset="/img/loading.gif" lazyload alt="image-20230402232033795"></p>
+<ul>
+<li>组织关系不讲了</li>
+</ul>
+<p>冒号的作用？如果没定义MODE则相当于空内容</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402232452869.png" srcset="/img/loading.gif" lazyload alt="image-20230402232452869"></p>
+<p>检查RMDB语法：check</p>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402232804707.png" srcset="/img/loading.gif" lazyload alt="image-20230402232804707"></p>
+<p>执行模拟，dry run：看看流程是否正确，但不会真实执行脚本</p>
+<ul>
+<li>实现：<code>vrun *********** -noexec</code></li>
+<li>更详细：<code>vrun *********** -noexec -showcmds</code></li>
+</ul>
+<p><img src="C:/Users/Public/Documents/GitHub/blog-code/source/_posts/essay/ic/sv%E5%AD%A6%E4%B9%A0/v2pro-CRV/image-20230402233223718.png" srcset="/img/loading.gif" lazyload alt="image-20230402233223718"></p>
+<p><strong>v2pro最终一节课结束！</strong></p>
+<h2><span id="自动化流程辅助实现">自动化流程辅助实现</span></h2>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/">IC</a>
+                    
+                      <a class="hover-with-bg" href="/categories/IC/uvm%E5%AD%A6%E4%B9%A0/">uvm学习</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/uvm%E5%AD%A6%E4%B9%A0/">uvm学习</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AE%9E%E9%AA%8C/">实验</a>
+                    
+                      <a class="hover-with-bg" href="/tags/IC/">IC</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/202303052204/IC/sv%E5%AD%A6%E4%B9%A0/%E9%80%9A%E8%AF%86essay/ic/sv%E5%AD%A6%E4%B9%A0/%E9%AA%8C%E8%AF%81IP%E6%A8%A1%E6%9D%BF/">
+                        <span class="hidden-mobile">验证IP模板、VIP</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'preferred-color-scheme';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'GreensCH/commitutterances');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <span> | </span> <a href="https://weibo.com/u/7453939976" target="_blank" rel="nofollow noopener"> Green Weibo</a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?eca4a4d34dadf0d4e282cc6ef2dc3de6";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<!-- hexo injector body_end start --><script src="/js/backgroundize.js"></script>
+  <link defer rel="stylesheet" href="/css/backgroundize.css" />
+  
+  <div id="aplayer" style="width:300px"></div>
+  <link defer rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css" />
+  <script src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js"></script>
+  <script defer src="/js/aplayer.js"></script><script src="/js/githubcalendar.js"></script> <!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"superSample":1,"position":"left","width":150,"height":400,"vOffset":-18},"mobile":{"show":false,"scale":0.25},"dialog":{"enable":false,"hitokoto":true,"width":10,"height":10,"vOffset":-100},"log":false});</script></body>
+</html>
